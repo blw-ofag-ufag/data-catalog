@@ -1,0 +1,115 @@
+[{
+        "dataset": {
+            "BFE-DS-0001": {
+                "metadata": {
+                    "lastChangeDate": "2024-07-03T10:23:55",
+                    "lastChangeUser": "Jana",
+					          "ImageURL": "url"
+                },
+                "attributes": {
+                    "dct:identifier": "BFE-DS-0001",
+                    "dct:title": {
+                        "de": "VBE (Vorbild Energie Klima) Berichterstattung über Zielerreichung",
+                        "fr": "dummy",
+                        "it": "dummy",
+                        "en": "dummy"
+                    },
+                    "dct:description": {
+                        "de": "Die Initiative Vorbild Energie und Klima zählt (September 2020) 10 bundesnahe,kantonsnahe Mitglieder (die Schweizerischen Bundesbahnen SBB, die Schweizerische Post, Swisscom, die Schweizerische Unfallversicherung Suva, Genève Aéroport, Services Industriels de Genève SIG, Skyguide, der ETH-Bereich). In einer Absichtserklärung werden für den Zeitraum 2021-2031 Zielwerte zum Zielsystem (Energieeffizienz (basierend auf der Endenergie), Anteil erneuerbare Energien, ökologische Stromproduktion, gemeinsame Massnahmen, spezifische Massnahmen) festgelegt. Die Zielerreichung wird jährlich mit einem Monitoring überprüft.",
+                        "fr": "dummy",
+                        "it": "dummy",
+                        "en": "dummy"
+                    },
+                    "dct:accessRights": "",
+                    "dct:publisher": "AEE-GD",
+                    "dcat:contactPoint": "-",
+                    "dct:issued": "",
+                    "dcat:keyword": "-",
+                    "dct:accrualPeriodicity": "Jährlich",
+                    "dct:modified": "-",
+                    "bv:dataOwner": "Stefanie Reding",
+                    "bv:dataSteward": "Stefanie Reding",
+                    "bv:dataCustodian": "Stefanie Reding",
+                    "adms:status": "Wird vorbereitet",
+                    "bv:classification": "Keine",
+                    "bv:personalData": "Keine",
+                    "bv:typeOfData": "Unstrukturierte Daten",
+                    "bv:archivalValue": true,
+                    "bv:ogdPublication": "opendata.swiss_id",
+                    "dcat:themeTaxonomy": "whatever",
+                    "dcat:landingPage": "url",
+                    "dct:spatial": "-",
+                    "dct:temporal": "-",
+                    "bv:legalBasis": "<ul><li>BRB</li></ul>",
+                    "bv:businessProcess": "-",
+                    "bv:retentionPeriod": "-",
+                    "dcat:catalog": "-",
+                    "prov:wasDerivedFrom": "-",
+                    "bv:geoIdentifier": "-",
+                    "foaf:page": "-",
+                    "bv:comments": "initial version",
+                    "bv:abrogation": "-",
+                    "bv:itSystem": "IT system",
+                    "dcat:inSeries": "SERIE-01",
+                    "dcat:distribution": {
+                        "dct:identifier": "id",
+                        "dcat:accessURL": "url",
+                        "adms:status": "status",
+                        "dct:format": "format",
+                        "dct:modified": "date",
+                        "dcat:downloadURL": "url",
+                        "dct:title": {
+                            "de": "VBE (Vorbild Energie Klima) Berichterstattung über Zielerreichung",
+                            "fr": "dummy",
+                            "it": "dummy",
+                            "en": "dummy"
+                        },
+                        "dct:description": {
+                            "de": "Die Initiative Vorbild Energie und Klima zählt (September 2020) 10 bundesnahe,kantonsnahe Mitglieder (die Schweizerischen Bundesbahnen SBB, die Schweizerische Post, Swisscom, die Schweizerische Unfallversicherung Suva, Genève Aéroport, Services Industriels de Genève SIG, Skyguide, der ETH-Bereich). In einer Absichtserklärung werden für den Zeitraum 2021-2031 Zielwerte zum Zielsystem (Energieeffizienz (basierend auf der Endenergie), Anteil erneuerbare Energien, ökologische Stromproduktion, gemeinsame Massnahmen, spezifische Massnahmen) festgelegt. Die Zielerreichung wird jährlich mit einem Monitoring überprüft.",
+                            "fr": "dummy",
+                            "it": "dummy",
+                            "en": "dummy"
+                        },
+                        "dct:conformsTo": "conforms",
+                        "dct:licence": "licence",
+                        "bv:comments": "initial version",
+                        "dcat:accessService": "service"
+                    }
+                }
+            }
+        },
+        "datasetSeries": {
+            "SERIE-01": {
+                "metadata": {
+                    "lastChangeDate": "2024-07-03T10:23:55",
+                    "lastChangeUser": "Jana",
+					          "ImageURL": "url"
+                },
+                "attributes": {
+                    "dct:identifier": "SERIE-01",
+                    "dct:title": {
+                        "de": "VBE (Vorbild Energie Klima) Berichterstattung über Zielerreichung",
+                        "fr": "dummy",
+                        "it": "dummy",
+                        "en": "dummy"
+                    },
+                    "dct:description": {
+                        "de": "Die Initiative Vorbild Energie und Klima zählt (September 2020) 10 bundesnahe,kantonsnahe Mitglieder (die Schweizerischen Bundesbahnen SBB, die Schweizerische Post, Swisscom, die Schweizerische Unfallversicherung Suva, Genève Aéroport, Services Industriels de Genève SIG, Skyguide, der ETH-Bereich). In einer Absichtserklärung werden für den Zeitraum 2021-2031 Zielwerte zum Zielsystem (Energieeffizienz (basierend auf der Endenergie), Anteil erneuerbare Energien, ökologische Stromproduktion, gemeinsame Massnahmen, spezifische Massnahmen) festgelegt. Die Zielerreichung wird jährlich mit einem Monitoring überprüft.",
+                        "fr": "dummy",
+                        "it": "dummy",
+                        "en": "dummy"
+                    },
+                    "dct:accessRights": "rights",
+                    "dcat:endpointURL": "url",
+                    "dcat:contactPoint": "contact",
+                    "dct:publisher": "publisher",
+                    "adms:status": "status",
+                    "dcat:servesDataset": "BFE-DS-0001",
+                    "dcat:endpointDescription": "endpointdescr",
+                    "foaf:page": "documentation",
+                    "bv:comment": "comment"
+                }
+            }
+        }
+    }
+]
