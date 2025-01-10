@@ -1,51 +1,123 @@
+/* Import a cool font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+/* General styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background: #f9f9f9;
-  color: #333;
+  background: #161616; /* Dark background */
+  color: #e0e0e0; /* Light text for contrast */
 }
 
+/* Header styles */
 header {
-  background-color: #007acc;
+  background-color: #1f1f1f;
   color: #fff;
   padding: 20px;
   text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+header h1 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 36px;
+}
+
+/* Default link style */
+a {
+  color: #12ca4f; /* Teal accent color */
+  text-decoration: none; /* Remove underline by default */
+  transition: color 0.3s, text-decoration 0.3s; /* Smooth color and decoration changes */
+}
+a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Control bar styles */
 .controls {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 10px 0;
+  gap: 20px;
+  margin: 15px 0;
 }
 
-#search, #language-select, #sort-options {
-  padding: 8px;
+#search,
+#language-select,
+#sort-options {
+  padding: 12px;
   font-size: 16px;
+  background: #1f1f1f;
+  color: #e0e0e0;
+  border: 2px solid #333;
+  border-radius: 30px; /* Rounder corners */
+  max-width: 800px; /* Limit the width */
+  width: 20%; /* Ensure the search field grows to available space */
+  box-sizing: border-box; /* Prevent padding from affecting width */
+}
+#language-select {
+  max-width: 120px
+}
+#search {
+  width: 50%;
+  max-width: 1000px;
+}
+#search:hover,
+#language-select:hover,
+#sort-options:hover {
+  outline: none;
+  border-color: #ffffff66;
+}
+#language-select,
+#sort-options {
+  -webkit-appearance: none; /* Remove default dropdown arrow */
+  -moz-appearance: none;
+  appearance: none;
+}
+#search:focus,
+#language-select:focus,
+#sort-options:focus {
+  outline: none;
+  border-color: #ffffff;
 }
 
+/* Ensure proper spacing for text in dropdowns */
+#language-select option,
+#sort-options option {
+  padding-left: 25px;
+}
+
+/* Main container styles */
 main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 15px;
+  gap: 20px;
   padding: 20px;
 }
 
+/* Dataset tiles */
 .dataset-tile {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: #1f1f1f;
+  border: 1px solid #333;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.dataset-tile:hover {
+  border-color: #ffffff; /* Bright white border */
+  box-shadow: 0 0 8px 3px #ffffff44; /* Even glow in all directions */
 }
 
 .dataset-tile img {
   width: 100%;
-  height: 200px;
+  height: 300px;
   object-fit: cover;
 }
 
+/* Tile information */
 .dataset-info {
   padding: 15px;
 }
@@ -58,10 +130,52 @@ main {
 .dataset-info p {
   margin: 5px 0;
   font-size: 14px;
-  color: #666;
+  color: #ffffffaa;
+  display: -webkit-box; /* Enable webkit box model for text clipping */
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-box-orient: vertical; /* Specify vertical orientation */
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Add "..." for overflowing text */
 }
 
+/* Description text (darker shade for emphasis) */
+.dataset-info p:first-of-type {
+  color: #ffffff44; /* Slightly darker gray for the description */
+}
+
+/* Keywords container */
 .keywords {
+  display: flex;
+  flex-wrap: wrap; /* Allow tags to wrap if there's not enough space */
+  gap: 5px; /* Space between tags */
+  margin-top: 10px; /* Separate keywords from other info */
+}
+
+/* Individual keyword tag */
+.keywords span {
+  display: inline-block;
+  background-color: #107030; /* Purple background for tags */
+  color: #ffffff; /* White text for contrast */
+  padding: 5px 10px; /* Add spacing inside the tag */
+  font-size: 12px; /* Slightly smaller text */
+  border-radius: 15px; /* Round edges for a badge-like look */
+  font-weight: 600; /* Bold text for better visibility */
+  text-transform: capitalize; /* Capitalize the first letter of each keyword */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for tags */
+.keywords span:hover {
+  background-color: #12ca4f; /* Lighter purple on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  cursor: pointer; /* Change cursor to pointer for interactivity */
+}
+
+/* Footer styles (optional) */
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #1f1f1f;
+  color: #bdbdbd;
   font-size: 12px;
-  color: #007acc;
 }
