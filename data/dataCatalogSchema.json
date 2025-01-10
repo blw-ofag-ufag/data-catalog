@@ -534,8 +534,11 @@
                                     ]
                                 },
                                 "dcat:dataset": {
-                                    "type": "string",
-                                    "description": "Indicates which dataset(s) this series serves or is related to."
+                                    "type": "array",
+                                    "description": "Indicates which dataset(s) this series serves or is related to.",
+                                    "items": {
+                                        "type": "string"
+                                    }
                                 },
                                 "foaf:page": {
                                     "type": "string",
