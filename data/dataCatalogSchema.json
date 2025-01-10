@@ -35,7 +35,7 @@
                                     "description": "Name or identifier of the user who performed the last update."
                                 },
                                 "ImageURL": {
-                                    "type": "string",
+                                    "type": ["string", "null"],
                                     "format": "uri",
                                     "description": "URL linking to an image for this dataset."
                                 }
@@ -123,7 +123,7 @@
                                     "required": ["name", "email"]
                                 },
                                 "dct:issued": {
-                                    "type": "string",
+                                    "type": ["string", "null"],
                                     "format": "date",
                                     "description": "When the dataset was formally issued (YYYY-MM-DD or empty)."
                                 },
@@ -149,7 +149,7 @@
                                     ]
                                 },
                                 "dct:modified": {
-                                    "type": "string",
+                                    "type": ["string", "null"],
                                     "format": "date",
                                     "description": "Last modification date of the dataset (could be free text or date)."
                                 },
@@ -224,7 +224,7 @@
                                     ]
                                 },
                                 "dcat:landingPage": {
-                                    "type": "string",
+                                    "type": ["string", "null"],
                                     "format": "uri",
                                     "description": "Landing page or homepage for the dataset."
                                 },
@@ -239,7 +239,7 @@
                                 "bv:legalBasis": {
                                     "type": "array",
                                     "items": {
-                                        "type": "string",
+                                        "type": ["string", "null"],
                                         "format": "uri"
                                     },
                                     "description": "Legal basis for the dataset (as URI)."
@@ -265,7 +265,7 @@
                                     "description": "Geographical identifier (e.g., BFS numbers)."
                                 },
                                 "foaf:page": {
-                                    "type": "string",
+                                    "type": ["string", "null"],
                                     "format": "uri",
                                     "description": "Any related page or resource."
                                 },
@@ -274,7 +274,7 @@
                                     "description": "Additional comments about the dataset."
                                 },
                                 "bv:abrogation": {
-                                    "type": "string",
+                                    "type": ["string", "null"],
                                     "format": "date",
                                     "description": "Indicates if the dataset was abrogated or replaced."
                                 },
@@ -309,7 +309,7 @@
                                                     "description": "Name or identifier of the user who performed the last update."
                                                 },
                                                 "ImageURL": {
-                                                    "type": "string",
+                                                    "type": ["string", "null"],
                                                     "format": "uri"
                                                 }
                                             }
@@ -348,12 +348,12 @@
                                                     "description": "File format (e.g., CSV, JSON)."
                                                 },
                                                 "dct:modified": {
-                                                    "type": "string",
+                                                    "type": ["string", "null"],
                                                     "format": "date-time",
                                                     "description": "When the distribution file was last modified."
                                                 },
                                                 "dcat:downloadURL": {
-                                                    "type": "string",
+                                                    "type": ["string", "null"],
                                                     "format": "uri",
                                                     "description": "Download URL of the distribution file."
                                                 },
@@ -451,7 +451,7 @@
                                     "description": "User or identifier who last updated the series."
                                 },
                                 "ImageURL": {
-                                    "type": "string",
+                                    "type": ["string", "null"],
                                     "format": "uri",
                                     "description": "URL linking to an image for this series."
                                 }
@@ -517,7 +517,7 @@
                                     ]
                                 },
                                 "dcat:endpointURL": {
-                                    "type": "string",
+                                    "type": ["string", "null"],
                                     "format": "uri",
                                     "description": "Endpoint URL where the series data can be accessed."
                                 },
