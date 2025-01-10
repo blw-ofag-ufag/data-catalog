@@ -68,7 +68,7 @@
                                 "lastChangeUser": "Monika Muster",
                                 "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/2wObKhav-rUnzxEEqoWk8_4a275b9a16c54877be5fde7cc3214beb.jpg"
                             },
-                            "properties": {
+                            "attributes": {
                                 "dct:identifier": "FOAG-D00001-1",
                                 "dcat:accessURL": "https://milch.ch/milkPrices/data.csv",
                                 "adms:status": "published",
@@ -104,7 +104,7 @@
                                 "lastChangeUser": "Monika Muster",
                                 "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/2wObKhav-rUnzxEEqoWk8_4a275b9a16c54877be5fde7cc3214beb.jpg"
                             },
-                            "properties": {
+                            "attributes": {
                                 "dct:identifier": "FOAG-D00001-2",
                                 "dcat:accessURL": "https://milch.ch/milkPrices/data.json",
                                 "adms:status": "published",
@@ -142,7 +142,7 @@
                 "metadata": {
                     "lastChangeDate": "2024-07-10T09:15:00",
                     "lastChangeUser": "Hans Beispiel",
-                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/nitrogen_loss_example.jpg"
+                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/JnLt-KUfu8IhX2KecnrWQ_7140ebd5a35f4c06a903b25941cfceb2.jpg"
                 },
                 "attributes": {
                     "dct:identifier": "FOAG-D00002",
@@ -203,9 +203,9 @@
                             "metadata": {
                                 "lastChangeDate": "2024-07-10T09:15:00",
                                 "lastChangeUser": "Hans Beispiel",
-                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/nitrogen_loss_example.jpg"
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/JnLt-KUfu8IhX2KecnrWQ_7140ebd5a35f4c06a903b25941cfceb2.jpg"
                             },
-                            "properties": {
+                            "attributes": {
                                 "dct:identifier": "FOAG-D00002-1",
                                 "dcat:accessURL": "https://environment.ch/nitrogenLosses/data.csv",
                                 "adms:status": "published",
@@ -239,9 +239,9 @@
                             "metadata": {
                                 "lastChangeDate": "2024-07-10T09:15:00",
                                 "lastChangeUser": "Hans Beispiel",
-                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/nitrogen_loss_example.jpg"
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/JnLt-KUfu8IhX2KecnrWQ_7140ebd5a35f4c06a903b25941cfceb2.jpg"
                             },
-                            "properties": {
+                            "attributes": {
                                 "dct:identifier": "FOAG-D00002-2",
                                 "dcat:accessURL": "https://environment.ch/nitrogenLosses/data.json",
                                 "adms:status": "published",
@@ -279,7 +279,7 @@
                 "metadata": {
                     "lastChangeDate": "2025-01-02T08:00:00",
                     "lastChangeUser": "Fritz Mustermann",
-                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/structural_data_example.jpg"
+                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/r2l0836xoyGP5ZsF3Xcgx_49870dae18a04bbfb8d1d25a83be7a39.jpg"
                 },
                 "attributes": {
                     "dct:identifier": "FOAG-D00003",
@@ -340,9 +340,9 @@
                             "metadata": {
                                 "lastChangeDate": "2025-01-02T08:00:00",
                                 "lastChangeUser": "Fritz Mustermann",
-                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/structural_data_example.jpg"
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/r2l0836xoyGP5ZsF3Xcgx_49870dae18a04bbfb8d1d25a83be7a39.jpg"
                             },
-                            "properties": {
+                            "attributes": {
                                 "dct:identifier": "FOAG-D00003-1",
                                 "dcat:accessURL": "https://structure.ch/farmData/data.csv",
                                 "adms:status": "published",
@@ -376,9 +376,9 @@
                             "metadata": {
                                 "lastChangeDate": "2025-01-02T08:00:00",
                                 "lastChangeUser": "Fritz Mustermann",
-                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/structural_data_example.jpg"
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/r2l0836xoyGP5ZsF3Xcgx_49870dae18a04bbfb8d1d25a83be7a39.jpg"
                             },
-                            "properties": {
+                            "attributes": {
                                 "dct:identifier": "FOAG-D00003-2",
                                 "dcat:accessURL": "https://structure.ch/farmData/data.json",
                                 "adms:status": "published",
@@ -415,7 +415,7 @@
                 "metadata": {
                     "lastChangeDate": "2025-01-03T14:12:00",
                     "lastChangeUser": "Julia Musterfrau",
-                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/socio_economic_example.jpg"
+                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/6xRs0taPLVO2xwJicFUIX_446c1f04b5474d9c9029cd627d68656e.jpg"
                 },
                 "attributes": {
                     "dct:identifier": "FOAG-D00004",
@@ -476,9 +476,9 @@
                             "metadata": {
                                 "lastChangeDate": "2025-01-03T14:12:00",
                                 "lastChangeUser": "Julia Musterfrau",
-                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/socio_economic_example.jpg"
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/6xRs0taPLVO2xwJicFUIX_446c1f04b5474d9c9029cd627d68656e.jpg"
                             },
-                            "properties": {
+                            "attributes": {
                                 "dct:identifier": "FOAG-D00004-1",
                                 "dcat:accessURL": "https://socioecon.ch/data/data.csv",
                                 "adms:status": "published",
@@ -512,9 +512,9 @@
                             "metadata": {
                                 "lastChangeDate": "2025-01-03T14:12:00",
                                 "lastChangeUser": "Julia Musterfrau",
-                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/socio_economic_example.jpg"
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/6xRs0taPLVO2xwJicFUIX_446c1f04b5474d9c9029cd627d68656e.jpg"
                             },
-                            "properties": {
+                            "attributes": {
                                 "dct:identifier": "FOAG-D00004-2",
                                 "dcat:accessURL": "https://socioecon.ch/data/data.json",
                                 "adms:status": "published",
