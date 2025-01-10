@@ -1,51 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Data Catalog Overview</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Catalog</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <div class="header-content">
-      <h1 id="pageTitle">Data Catalog</h1>
-      <div class="controls">
-        <!-- Language Switcher -->
-        <select id="languageSelect">
-          <option value="en" selected>English</option>
-          <option value="de">Deutsch</option>
-          <option value="fr">Français</option>
-          <option value="it">Italiano</option>
-        </select>
-
-        <!-- Search -->
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Search..."
-          aria-label="Search across title, description, data owner, keywords"
-        />
-
-        <!-- Sort -->
-        <select id="sortSelect" aria-label="Sort datasets">
-          <option value="title">Sort by Title</option>
-          <option value="issued">Sort by Issued Date</option>
-          <option value="dataOwner">Sort by Data Owner</option>
-        </select>
-      </div>
+    <h1>Data Catalog</h1>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search..." />
+      <select id="language-select">
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="it">Italiano</option>
+      </select>
+      <select id="sort-options">
+        <option value="title">Sort by Title</option>
+        <option value="issued">Sort by Issued Date</option>
+        <option value="owner">Sort by Data Owner</option>
+      </select>
     </div>
   </header>
-
-  <main>
-    <div id="catalogContainer" class="catalog-container">
-      <!-- Dataset tiles will be injected here via JavaScript -->
-    </div>
-  </main>
-
-  <footer>
-    <p id="footerText">© 2025. All rights reserved.</p>
-  </footer>
-
+  <main id="dataset-container"></main>
   <script src="main.js"></script>
 </body>
 </html>

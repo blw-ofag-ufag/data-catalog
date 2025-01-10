@@ -27,7 +27,7 @@
                         "name": "Monika Muster",
                         "email": "monika.muster@blw.admin.ch"
                     },
-                    "dct:issued": null,
+                    "dct:issued": "2024-07-03",
                     "dcat:keyword": [
                         "milk",
                         "market"
@@ -164,7 +164,7 @@
                         "name": "Hans Beispiel",
                         "email": "hans.beispiel@blw.admin.ch"
                     },
-                    "dct:issued": null,
+                    "dct:issued": "2023-01-04",
                     "dcat:keyword": [
                         "nitrogen",
                         "environment"
@@ -301,7 +301,7 @@
                         "name": "Fritz Mustermann",
                         "email": "fritz.mustermann@blw.admin.ch"
                     },
-                    "dct:issued": null,
+                    "dct:issued": "2022-05-23",
                     "dcat:keyword": [
                         "structure",
                         "farm size",
