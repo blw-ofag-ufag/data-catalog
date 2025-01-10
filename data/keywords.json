@@ -1,0 +1,20 @@
+{
+    "milk": {
+        "id": "milk",
+        "name": {
+            "de": "Milch",
+            "fr": "Lait",
+            "it": "Latte",
+            "en": "Milk"
+        }
+    },
+    "market": {
+        "id": "market",
+        "name": {
+            "de": "Markt",
+            "fr": "Marché",
+            "it": "Mercato",
+            "en": "Market"
+        }
+    }
+}

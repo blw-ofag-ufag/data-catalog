@@ -1,0 +1,35 @@
+{
+    "en": {
+      "pageTitle": "Data Catalog",
+      "searchPlaceholder": "Search...",
+      "footerText": "© 2025. All rights reserved.",
+      "issuedLabel": "Issued",
+      "ownerLabel": "Data Owner",
+      "keywordLabel": "Keywords"
+    },
+    "de": {
+      "pageTitle": "Datenkatalog",
+      "searchPlaceholder": "Suchen...",
+      "footerText": "© 2025. Alle Rechte vorbehalten.",
+      "issuedLabel": "Veröffentlicht",
+      "ownerLabel": "Daten-Eigentümer",
+      "keywordLabel": "Schlüsselwörter"
+    },
+    "fr": {
+      "pageTitle": "Catalogue de Données",
+      "searchPlaceholder": "Rechercher...",
+      "footerText": "© 2025. Tous droits réservés.",
+      "issuedLabel": "Date de publication",
+      "ownerLabel": "Propriétaire des données",
+      "keywordLabel": "Mots-clés"
+    },
+    "it": {
+      "pageTitle": "Catalogo dei Dati",
+      "searchPlaceholder": "Cerca...",
+      "footerText": "© 2025. Tutti i diritti riservati.",
+      "issuedLabel": "Data di pubblicazione",
+      "ownerLabel": "Proprietario dei dati",
+      "keywordLabel": "Parole chiave"
+    }
+  }
+  

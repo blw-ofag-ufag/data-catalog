@@ -1,113 +1,689 @@
-[{
+[
+    {
         "dataset": {
-            "BFE-DS-0001": {
+            "FOAG-D00001": {
                 "metadata": {
                     "lastChangeDate": "2024-07-03T10:23:55",
-                    "lastChangeUser": "Jana",
-					          "ImageURL": "url"
+                    "lastChangeUser": "Monika Muster",
+                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/2wObKhav-rUnzxEEqoWk8_4a275b9a16c54877be5fde7cc3214beb.jpg"
                 },
                 "attributes": {
-                    "dct:identifier": "BFE-DS-0001",
+                    "dct:identifier": "FOAG-D00001",
                     "dct:title": {
-                        "de": "VBE (Vorbild Energie Klima) Berichterstattung über Zielerreichung",
-                        "fr": "dummy",
-                        "it": "dummy",
-                        "en": "dummy"
+                        "de": "Jährliche Milchpreise",
+                        "fr": "Prix annuels du lait",
+                        "it": "Prezzi annuali del latte",
+                        "en": "Annual Milk Prices"
                     },
                     "dct:description": {
-                        "de": "Die Initiative Vorbild Energie und Klima zählt (September 2020) 10 bundesnahe,kantonsnahe Mitglieder (die Schweizerischen Bundesbahnen SBB, die Schweizerische Post, Swisscom, die Schweizerische Unfallversicherung Suva, Genève Aéroport, Services Industriels de Genève SIG, Skyguide, der ETH-Bereich). In einer Absichtserklärung werden für den Zeitraum 2021-2031 Zielwerte zum Zielsystem (Energieeffizienz (basierend auf der Endenergie), Anteil erneuerbare Energien, ökologische Stromproduktion, gemeinsame Massnahmen, spezifische Massnahmen) festgelegt. Die Zielerreichung wird jährlich mit einem Monitoring überprüft.",
-                        "fr": "dummy",
-                        "it": "dummy",
-                        "en": "dummy"
+                        "de": "Dieser Datensatz enthält die jährlichen Milchpreise für verschiedene Milchkategorien wie Molkereimilch, Bio-Milch, Käsereimilch etc. ab 2002.",
+                        "fr": "Ce jeu de données contient les prix annuels du lait pour différentes catégories de lait, telles que le lait de consommation, le lait biologique, le lait de fromagerie, etc., à partir de 2002.",
+                        "it": "Questo dataset contiene i prezzi annuali del latte per diverse categorie di latte, come latte da consumo, latte biologico, latte da caseificio, ecc., a partire dal 2002.",
+                        "en": "This dataset contains the annual milk prices for various milk categories, such as dairy milk, organic milk, cheese milk, etc., starting from 2002."
                     },
-                    "dct:accessRights": "",
-                    "dct:publisher": "AEE-GD",
-                    "dcat:contactPoint": "-",
-                    "dct:issued": "",
-                    "dcat:keyword": "-",
-                    "dct:accrualPeriodicity": "Jährlich",
-                    "dct:modified": "-",
-                    "bv:dataOwner": "Stefanie Reding",
-                    "bv:dataSteward": "Stefanie Reding",
-                    "bv:dataCustodian": "Stefanie Reding",
-                    "adms:status": "Wird vorbereitet",
-                    "bv:classification": "Keine",
-                    "bv:personalData": "Keine",
-                    "bv:typeOfData": "Unstrukturierte Daten",
+                    "dct:accessRights": "PUBLIC",
+                    "dct:publisher": "FOAG-FBMA",
+                    "dcat:contactPoint": {
+                        "name": "Monika Muster",
+                        "email": "monika.muster@blw.admin.ch"
+                    },
+                    "dct:issued": null,
+                    "dcat:keyword": [
+                        "milk",
+                        "market"
+                    ],
+                    "dct:accrualPeriodicity": "ANNUAL",
+                    "dct:modified": "2024-05-07",
+                    "bv:dataOwner": "Monika Muster",
+                    "bv:dataSteward": "Gabriel Gibtesnicht",
+                    "bv:dataCustodian": "Gabriel Gibtesnicht",
+                    "adms:status": "published",
+                    "bv:classification": "none",
+                    "bv:personalData": "none",
+                    "bv:typeOfData": "thematicData",
                     "bv:archivalValue": true,
-                    "bv:ogdPublication": "opendata.swiss_id",
-                    "dcat:themeTaxonomy": "whatever",
-                    "dcat:landingPage": "url",
-                    "dct:spatial": "-",
-                    "dct:temporal": "-",
-                    "bv:legalBasis": "<ul><li>BRB</li></ul>",
-                    "bv:businessProcess": "-",
-                    "bv:retentionPeriod": "-",
-                    "dcat:catalog": "-",
-                    "prov:wasDerivedFrom": "-",
-                    "bv:geoIdentifier": "-",
-                    "foaf:page": "-",
-                    "bv:comments": "initial version",
-                    "bv:abrogation": "-",
-                    "bv:itSystem": "IT system",
-                    "dcat:inSeries": "SERIE-01",
+                    "bv:ogdPublication": "F_MilkDairyProducts_Consumption__Price_Year@bundesamt-fur-landwirtschaft-blw",
+                    "dcat:themeTaxonomy": "agricultureFisheriesForestryFood",
+                    "dcat:landingPage": "https://milch.ch/milkPrices",
+                    "dct:spatial": "",
+                    "dct:temporal": "",
+                    "bv:legalBasis": [
+                        "https://www.fedlex.admin.ch/eli/cc/2013/733#art_1",
+                        "https://www.fedlex.admin.ch/eli/cc/2013/733#art_5_a"
+                    ],
+                    "bv:businessProcess": "",
+                    "bv:retentionPeriod": 30,
+                    "dcat:catalog": "",
+                    "prov:wasDerivedFrom": "",
+                    "bv:geoIdentifier": "",
+                    "foaf:page": null,
+                    "bv:comments": "",
+                    "bv:abrogation": null,
+                    "bv:itSystem": "DBmilch",
+                    "dcat:inSeries": "FOAG-S00001",
                     "dcat:distribution": {
-                        "dct:identifier": "id",
-                        "dcat:accessURL": "url",
-                        "adms:status": "status",
-                        "dct:format": "format",
-                        "dct:modified": "date",
-                        "dcat:downloadURL": "url",
-                        "dct:title": {
-                            "de": "VBE (Vorbild Energie Klima) Berichterstattung über Zielerreichung",
-                            "fr": "dummy",
-                            "it": "dummy",
-                            "en": "dummy"
+                        "FOAG-D00001-1": {
+                            "metadata": {
+                                "lastChangeDate": "2024-11-03T10:11:55",
+                                "lastChangeUser": "Monika Muster",
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/2wObKhav-rUnzxEEqoWk8_4a275b9a16c54877be5fde7cc3214beb.jpg"
+                            },
+                            "properties": {
+                                "dct:identifier": "FOAG-D00001-1",
+                                "dcat:accessURL": "https://milch.ch/milkPrices/data.csv",
+                                "adms:status": "published",
+                                "dct:format": "CSV",
+                                "dct:modified": "2024-11-07",
+                                "dcat:downloadURL": "https://milch.ch/milkPrices/data.csv",
+                                "dct:title": {
+                                    "de": "Jährliche Milchpreise",
+                                    "fr": "Prix annuels du lait",
+                                    "it": "Prezzi annuali del latte",
+                                    "en": "Annual Milk Prices"
+                                },
+                                "dct:description": {
+                                    "de": "Dieser Datensatz enthält die jährlichen Milchpreise für verschiedene Milchkategorien wie Molkereimilch, Bio-Milch, Käsereimilch etc. ab 2002.",
+                                    "fr": "Ce jeu de données contient les prix annuels du lait pour différentes catégories de lait, telles que le lait de consommation, le lait biologique, le lait de fromagerie, etc., à partir de 2002.",
+                                    "it": "Questo dataset contiene i prezzi annuali del latte per diverse categorie di latte, come latte da consumo, latte biologico, latte da caseificio, ecc., a partire dal 2002.",
+                                    "en": "This dataset contains the annual milk prices for various milk categories, such as dairy milk, organic milk, cheese milk, etc., starting from 2002."
+                                },
+                                "dct:conformsTo": "https://milkschema.com/",
+                                "dct:license": "terms_by_ask",
+                                "bv:comments": {
+                                    "de": "Die Milchpreise werden jeweils am ersten Arbeitstag des Monates erhoben. Die auf Alpen produzierte Milch wird erst im Oktober angerechnet.",
+                                    "fr": "Les prix du lait sont relevés chaque premier jour ouvrable du mois. Le lait produit en alpage n'est pris en compte qu'à partir d'octobre.",
+                                    "it": "I prezzi del latte vengono rilevati il primo giorno lavorativo di ogni mese. Il latte prodotto sugli alpeggi viene contabilizzato solo a partire da ottobre.",
+                                    "en": "Milk prices are collected on the first working day of each month. Milk produced in the Alps is only accounted for starting in October."
+                                },
+                                "dcat:accessService": "https://lindas.admin.ch/"
+                            }
                         },
-                        "dct:description": {
-                            "de": "Die Initiative Vorbild Energie und Klima zählt (September 2020) 10 bundesnahe,kantonsnahe Mitglieder (die Schweizerischen Bundesbahnen SBB, die Schweizerische Post, Swisscom, die Schweizerische Unfallversicherung Suva, Genève Aéroport, Services Industriels de Genève SIG, Skyguide, der ETH-Bereich). In einer Absichtserklärung werden für den Zeitraum 2021-2031 Zielwerte zum Zielsystem (Energieeffizienz (basierend auf der Endenergie), Anteil erneuerbare Energien, ökologische Stromproduktion, gemeinsame Massnahmen, spezifische Massnahmen) festgelegt. Die Zielerreichung wird jährlich mit einem Monitoring überprüft.",
-                            "fr": "dummy",
-                            "it": "dummy",
-                            "en": "dummy"
+                        "FOAG-D00001-2": {
+                            "metadata": {
+                                "lastChangeDate": "2024-11-03T10:11:55",
+                                "lastChangeUser": "Monika Muster",
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/2wObKhav-rUnzxEEqoWk8_4a275b9a16c54877be5fde7cc3214beb.jpg"
+                            },
+                            "properties": {
+                                "dct:identifier": "FOAG-D00001-2",
+                                "dcat:accessURL": "https://milch.ch/milkPrices/data.json",
+                                "adms:status": "published",
+                                "dct:format": "JSON",
+                                "dct:modified": "2024-11-07",
+                                "dcat:downloadURL": "https://milch.ch/milkPrices/data.json",
+                                "dct:title": {
+                                    "de": "Jährliche Milchpreise",
+                                    "fr": "Prix annuels du lait",
+                                    "it": "Prezzi annuali del latte",
+                                    "en": "Annual Milk Prices"
+                                },
+                                "dct:description": {
+                                    "de": "Dieser Datensatz enthält die jährlichen Milchpreise für verschiedene Milchkategorien wie Molkereimilch, Bio-Milch, Käsereimilch etc. ab 2002.",
+                                    "fr": "Ce jeu de données contient les prix annuels du lait pour différentes catégories de lait, telles que le lait de consommation, le lait biologique, le lait de fromagerie, etc., à partir de 2002.",
+                                    "it": "Questo dataset contiene i prezzi annuali del latte per diverse categorie di latte, come latte da consumo, latte biologico, latte da caseificio, ecc., a partire dal 2002.",
+                                    "en": "This dataset contains the annual milk prices for various milk categories, such as dairy milk, organic milk, cheese milk, etc., starting from 2002."
+                                },
+                                "dct:conformsTo": "https://milkschema.com/",
+                                "dct:license": "terms_by_ask",
+                                "bv:comments": {
+                                    "de": "Die Milchpreise werden jeweils am ersten Arbeitstag des Monates erhoben. Die auf Alpen produzierte Milch wird erst im Oktober angerechnet.",
+                                    "fr": "Les prix du lait sont relevés chaque premier jour ouvrable du mois. Le lait produit en alpage n'est pris en compte qu'à partir d'octobre.",
+                                    "it": "I prezzi del latte vengono rilevati il primo giorno lavorativo di ogni mese. Il latte prodotto sugli alpeggi viene contabilizzato solo a partire da ottobre.",
+                                    "en": "Milk prices are collected on the first working day of each month. Milk produced in the Alps is only accounted for starting in October."
+                                },
+                                "dcat:accessService": "https://lindas.admin.ch/"
+                            }
+                        }
+                    }
+                }
+            },
+
+            "FOAG-D00002": {
+                "metadata": {
+                    "lastChangeDate": "2024-07-10T09:15:00",
+                    "lastChangeUser": "Hans Beispiel",
+                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/nitrogen_loss_example.jpg"
+                },
+                "attributes": {
+                    "dct:identifier": "FOAG-D00002",
+                    "dct:title": {
+                        "de": "Stickstoffverluste in der Landwirtschaft",
+                        "fr": "Pertes d'azote dans l'agriculture",
+                        "it": "Perdite di azoto nell'agricoltura",
+                        "en": "Nitrogen Losses in Agriculture"
+                    },
+                    "dct:description": {
+                        "de": "Dieser Datensatz enthält Schätzungen zu den Stickstoffverlusten auf landwirtschaftlichen Betrieben (z. B. Emissionen, Auswaschungen).",
+                        "fr": "Ce jeu de données contient des estimations des pertes d'azote dans les exploitations agricoles (par exemple émissions, lessivage).",
+                        "it": "Questo dataset contiene stime delle perdite di azoto nelle aziende agricole (ad esempio emissioni, lisciviazioni).",
+                        "en": "This dataset contains estimates of nitrogen losses on farms (e.g., emissions, leaching)."
+                    },
+                    "dct:accessRights": "PUBLIC",
+                    "dct:publisher": "FOAG-ENV",
+                    "dcat:contactPoint": {
+                        "name": "Hans Beispiel",
+                        "email": "hans.beispiel@blw.admin.ch"
+                    },
+                    "dct:issued": null,
+                    "dcat:keyword": [
+                        "nitrogen",
+                        "environment"
+                    ],
+                    "dct:accrualPeriodicity": "ANNUAL",
+                    "dct:modified": "2025-01-05",
+                    "bv:dataOwner": "Hans Beispiel",
+                    "bv:dataSteward": "Martina Model",
+                    "bv:dataCustodian": "Martina Model",
+                    "adms:status": "published",
+                    "bv:classification": "none",
+                    "bv:personalData": "none",
+                    "bv:typeOfData": "thematicData",
+                    "bv:archivalValue": true,
+                    "bv:ogdPublication": "F_Environment_Nitrogen_Losses_Year@bundesamt-fur-landwirtschaft-blw",
+                    "dcat:themeTaxonomy": "agricultureFisheriesForestryFood",
+                    "dcat:landingPage": "https://environment.ch/nitrogenLosses",
+                    "dct:spatial": "",
+                    "dct:temporal": "",
+                    "bv:legalBasis": [
+                        "https://www.fedlex.admin.ch/eli/cc/2013/733#art_2",
+                        "https://www.fedlex.admin.ch/eli/cc/2013/733#art_3"
+                    ],
+                    "bv:businessProcess": "",
+                    "bv:retentionPeriod": 20,
+                    "dcat:catalog": "",
+                    "prov:wasDerivedFrom": "",
+                    "bv:geoIdentifier": "",
+                    "foaf:page": null,
+                    "bv:comments": "",
+                    "bv:abrogation": null,
+                    "bv:itSystem": "DBnitrogen",
+                    "dcat:inSeries": "FOAG-S00002",
+                    "dcat:distribution": {
+                        "FOAG-D00002-1": {
+                            "metadata": {
+                                "lastChangeDate": "2024-07-10T09:15:00",
+                                "lastChangeUser": "Hans Beispiel",
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/nitrogen_loss_example.jpg"
+                            },
+                            "properties": {
+                                "dct:identifier": "FOAG-D00002-1",
+                                "dcat:accessURL": "https://environment.ch/nitrogenLosses/data.csv",
+                                "adms:status": "published",
+                                "dct:format": "CSV",
+                                "dct:modified": "2025-01-05",
+                                "dcat:downloadURL": "https://environment.ch/nitrogenLosses/data.csv",
+                                "dct:title": {
+                                    "de": "Stickstoffverluste in der Landwirtschaft (CSV)",
+                                    "fr": "Pertes d'azote dans l'agriculture (CSV)",
+                                    "it": "Perdite di azoto nell'agricoltura (CSV)",
+                                    "en": "Nitrogen Losses in Agriculture (CSV)"
+                                },
+                                "dct:description": {
+                                    "de": "Dieser Datensatz enthält Schätzungen zu den Stickstoffverlusten auf landwirtschaftlichen Betrieben.",
+                                    "fr": "Ce jeu de données contient des estimations des pertes d'azote dans les exploitations agricoles.",
+                                    "it": "Questo dataset contiene stime delle perdite di azoto nelle aziende agricole.",
+                                    "en": "This dataset contains estimates of nitrogen losses on farms."
+                                },
+                                "dct:conformsTo": "https://nitrogenschema.com/",
+                                "dct:license": "terms_by_ask",
+                                "bv:comments": {
+                                    "de": "Dummy-Kommentar zu Stickstoffverlusten CSV",
+                                    "fr": "Commentaire fictif sur les pertes d'azote CSV",
+                                    "it": "Commento fittizio sulle perdite di azoto CSV",
+                                    "en": "Dummy comment about nitrogen losses CSV"
+                                },
+                                "dcat:accessService": "https://lindas.admin.ch/"
+                            }
                         },
-                        "dct:conformsTo": "conforms",
-                        "dct:licence": "licence",
-                        "bv:comments": "initial version",
-                        "dcat:accessService": "service"
+                        "FOAG-D00002-2": {
+                            "metadata": {
+                                "lastChangeDate": "2024-07-10T09:15:00",
+                                "lastChangeUser": "Hans Beispiel",
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/nitrogen_loss_example.jpg"
+                            },
+                            "properties": {
+                                "dct:identifier": "FOAG-D00002-2",
+                                "dcat:accessURL": "https://environment.ch/nitrogenLosses/data.json",
+                                "adms:status": "published",
+                                "dct:format": "JSON",
+                                "dct:modified": "2025-01-05",
+                                "dcat:downloadURL": "https://environment.ch/nitrogenLosses/data.json",
+                                "dct:title": {
+                                    "de": "Stickstoffverluste in der Landwirtschaft (JSON)",
+                                    "fr": "Pertes d'azote dans l'agriculture (JSON)",
+                                    "it": "Perdite di azoto nell'agricoltura (JSON)",
+                                    "en": "Nitrogen Losses in Agriculture (JSON)"
+                                },
+                                "dct:description": {
+                                    "de": "Dieser Datensatz enthält Schätzungen zu den Stickstoffverlusten auf landwirtschaftlichen Betrieben.",
+                                    "fr": "Ce jeu de données contient des estimations des pertes d'azote dans les exploitations agricoles.",
+                                    "it": "Questo dataset contiene stime delle perdite di azoto nelle aziende agricole.",
+                                    "en": "This dataset contains estimates of nitrogen losses on farms."
+                                },
+                                "dct:conformsTo": "https://nitrogenschema.com/",
+                                "dct:license": "terms_by_ask",
+                                "bv:comments": {
+                                    "de": "Dummy-Kommentar zu Stickstoffverlusten JSON",
+                                    "fr": "Commentaire fictif sur les pertes d'azote JSON",
+                                    "it": "Commento fittizio sulle perdite di azoto JSON",
+                                    "en": "Dummy comment about nitrogen losses JSON"
+                                },
+                                "dcat:accessService": "https://lindas.admin.ch/"
+                            }
+                        }
+                    }
+                }
+            },
+
+            "FOAG-D00003": {
+                "metadata": {
+                    "lastChangeDate": "2025-01-02T08:00:00",
+                    "lastChangeUser": "Fritz Mustermann",
+                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/structural_data_example.jpg"
+                },
+                "attributes": {
+                    "dct:identifier": "FOAG-D00003",
+                    "dct:title": {
+                        "de": "Strukturdaten der Landwirtschaft",
+                        "fr": "Données structurelles de l'agriculture",
+                        "it": "Dati strutturali dell'agricoltura",
+                        "en": "Agricultural Structural Data"
+                    },
+                    "dct:description": {
+                        "de": "Dieser Datensatz enthält Informationen zu Betriebsgrößen, Flächennutzung und Tierbeständen.",
+                        "fr": "Ce jeu de données contient des informations sur la taille des exploitations, l'utilisation des surfaces et les effectifs d'animaux.",
+                        "it": "Questo dataset contiene informazioni sulle dimensioni delle aziende, sull'uso del suolo e sui capi di bestiame.",
+                        "en": "This dataset contains information on farm sizes, land use, and livestock numbers."
+                    },
+                    "dct:accessRights": "PUBLIC",
+                    "dct:publisher": "FOAG-STRUCT",
+                    "dcat:contactPoint": {
+                        "name": "Fritz Mustermann",
+                        "email": "fritz.mustermann@blw.admin.ch"
+                    },
+                    "dct:issued": null,
+                    "dcat:keyword": [
+                        "structure",
+                        "farm size",
+                        "livestock"
+                    ],
+                    "dct:accrualPeriodicity": "ANNUAL",
+                    "dct:modified": "2025-01-08",
+                    "bv:dataOwner": "Fritz Mustermann",
+                    "bv:dataSteward": "Anna Admin",
+                    "bv:dataCustodian": "Anna Admin",
+                    "adms:status": "published",
+                    "bv:classification": "none",
+                    "bv:personalData": "none",
+                    "bv:typeOfData": "thematicData",
+                    "bv:archivalValue": true,
+                    "bv:ogdPublication": "F_Structure_FarmSize_Livestock_Year@bundesamt-fur-landwirtschaft-blw",
+                    "dcat:themeTaxonomy": "agricultureFisheriesForestryFood",
+                    "dcat:landingPage": "https://structure.ch/farmData",
+                    "dct:spatial": "",
+                    "dct:temporal": "",
+                    "bv:legalBasis": [
+                        "https://www.fedlex.admin.ch/eli/cc/2013/733#art_10"
+                    ],
+                    "bv:businessProcess": "",
+                    "bv:retentionPeriod": 30,
+                    "dcat:catalog": "",
+                    "prov:wasDerivedFrom": "",
+                    "bv:geoIdentifier": "",
+                    "foaf:page": null,
+                    "bv:comments": "",
+                    "bv:abrogation": null,
+                    "bv:itSystem": "DBstructure",
+                    "dcat:inSeries": "FOAG-S00003",
+                    "dcat:distribution": {
+                        "FOAG-D00003-1": {
+                            "metadata": {
+                                "lastChangeDate": "2025-01-02T08:00:00",
+                                "lastChangeUser": "Fritz Mustermann",
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/structural_data_example.jpg"
+                            },
+                            "properties": {
+                                "dct:identifier": "FOAG-D00003-1",
+                                "dcat:accessURL": "https://structure.ch/farmData/data.csv",
+                                "adms:status": "published",
+                                "dct:format": "CSV",
+                                "dct:modified": "2025-01-08",
+                                "dcat:downloadURL": "https://structure.ch/farmData/data.csv",
+                                "dct:title": {
+                                    "de": "Strukturdaten der Landwirtschaft (CSV)",
+                                    "fr": "Données structurelles de l'agriculture (CSV)",
+                                    "it": "Dati strutturali dell'agricoltura (CSV)",
+                                    "en": "Agricultural Structural Data (CSV)"
+                                },
+                                "dct:description": {
+                                    "de": "Informationen zu Betriebsgrößen, Flächennutzung und Tierbeständen.",
+                                    "fr": "Informations sur la taille des exploitations, l'utilisation des surfaces et les effectifs d'animaux.",
+                                    "it": "Informazioni sulle dimensioni delle aziende, l'uso del suolo e i capi di bestiame.",
+                                    "en": "Information on farm sizes, land use, and livestock numbers."
+                                },
+                                "dct:conformsTo": "https://structureschema.com/",
+                                "dct:license": "terms_by_ask",
+                                "bv:comments": {
+                                    "de": "Beispielkommentar zu Strukturdaten (CSV).",
+                                    "fr": "Commentaire d'exemple sur les données structurelles (CSV).",
+                                    "it": "Commento di esempio sui dati strutturali (CSV).",
+                                    "en": "Example comment about structural data (CSV)."
+                                },
+                                "dcat:accessService": "https://lindas.admin.ch/"
+                            }
+                        },
+                        "FOAG-D00003-2": {
+                            "metadata": {
+                                "lastChangeDate": "2025-01-02T08:00:00",
+                                "lastChangeUser": "Fritz Mustermann",
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/structural_data_example.jpg"
+                            },
+                            "properties": {
+                                "dct:identifier": "FOAG-D00003-2",
+                                "dcat:accessURL": "https://structure.ch/farmData/data.json",
+                                "adms:status": "published",
+                                "dct:format": "JSON",
+                                "dct:modified": "2025-01-08",
+                                "dcat:downloadURL": "https://structure.ch/farmData/data.json",
+                                "dct:title": {
+                                    "de": "Strukturdaten der Landwirtschaft (JSON)",
+                                    "fr": "Données structurelles de l'agriculture (JSON)",
+                                    "it": "Dati strutturali dell'agricoltura (JSON)",
+                                    "en": "Agricultural Structural Data (JSON)"
+                                },
+                                "dct:description": {
+                                    "de": "Informationen zu Betriebsgrößen, Flächennutzung und Tierbeständen.",
+                                    "fr": "Informations sur la taille des exploitations, l'utilisation des surfaces et les effectifs d'animaux.",
+                                    "it": "Informazioni sulle dimensioni delle aziende, l'uso del suolo e i capi di bestiame.",
+                                    "en": "Information on farm sizes, land use, and livestock numbers."
+                                },
+                                "dct:conformsTo": "https://structureschema.com/",
+                                "dct:license": "terms_by_ask",
+                                "bv:comments": {
+                                    "de": "Beispielkommentar zu Strukturdaten (JSON).",
+                                    "fr": "Commentaire d'exemple sur les données structurelles (JSON).",
+                                    "it": "Commento di esempio sui dati strutturali (JSON).",
+                                    "en": "Example comment about structural data (JSON)."
+                                },
+                                "dcat:accessService": "https://lindas.admin.ch/"
+                            }
+                        }
+                    }
+                }
+            },
+            "FOAG-D00004": {
+                "metadata": {
+                    "lastChangeDate": "2025-01-03T14:12:00",
+                    "lastChangeUser": "Julia Musterfrau",
+                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/socio_economic_example.jpg"
+                },
+                "attributes": {
+                    "dct:identifier": "FOAG-D00004",
+                    "dct:title": {
+                        "de": "Sozioökonomische Daten im Agrarbereich",
+                        "fr": "Données socio-économiques dans le domaine agricole",
+                        "it": "Dati socio-economici nel settore agricolo",
+                        "en": "Socio-economic Data in Agriculture"
+                    },
+                    "dct:description": {
+                        "de": "Dieser Datensatz enthält Informationen zu Einkommen, Beschäftigung und Kostenstrukturen in der Landwirtschaft.",
+                        "fr": "Ce jeu de données contient des informations sur les revenus, l'emploi et la structure des coûts dans l'agriculture.",
+                        "it": "Questo dataset contiene informazioni sui redditi, l'occupazione e le strutture dei costi nell'agricoltura.",
+                        "en": "This dataset contains information on income, employment, and cost structures in agriculture."
+                    },
+                    "dct:accessRights": "PUBLIC",
+                    "dct:publisher": "FOAG-SEC",
+                    "dcat:contactPoint": {
+                        "name": "Julia Musterfrau",
+                        "email": "julia.musterfrau@blw.admin.ch"
+                    },
+                    "dct:issued": null,
+                    "dcat:keyword": [
+                        "income",
+                        "employment",
+                        "cost structure"
+                    ],
+                    "dct:accrualPeriodicity": "ANNUAL",
+                    "dct:modified": "2025-01-09",
+                    "bv:dataOwner": "Julia Musterfrau",
+                    "bv:dataSteward": "Peter Pfad",
+                    "bv:dataCustodian": "Peter Pfad",
+                    "adms:status": "published",
+                    "bv:classification": "none",
+                    "bv:personalData": "none",
+                    "bv:typeOfData": "thematicData",
+                    "bv:archivalValue": true,
+                    "bv:ogdPublication": "F_SocioEconomic_Incomes_Employment_Year@bundesamt-fur-landwirtschaft-blw",
+                    "dcat:themeTaxonomy": "agricultureFisheriesForestryFood",
+                    "dcat:landingPage": "https://socioecon.ch/data",
+                    "dct:spatial": "",
+                    "dct:temporal": "",
+                    "bv:legalBasis": [
+                        "https://www.fedlex.admin.ch/eli/cc/2013/733#art_11"
+                    ],
+                    "bv:businessProcess": "",
+                    "bv:retentionPeriod": 25,
+                    "dcat:catalog": "",
+                    "prov:wasDerivedFrom": "",
+                    "bv:geoIdentifier": "",
+                    "foaf:page": null,
+                    "bv:comments": "",
+                    "bv:abrogation": null,
+                    "bv:itSystem": "DBsocioEcon",
+                    "dcat:inSeries": "FOAG-S00004",
+                    "dcat:distribution": {
+                        "FOAG-D00004-1": {
+                            "metadata": {
+                                "lastChangeDate": "2025-01-03T14:12:00",
+                                "lastChangeUser": "Julia Musterfrau",
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/socio_economic_example.jpg"
+                            },
+                            "properties": {
+                                "dct:identifier": "FOAG-D00004-1",
+                                "dcat:accessURL": "https://socioecon.ch/data/data.csv",
+                                "adms:status": "published",
+                                "dct:format": "CSV",
+                                "dct:modified": "2025-01-09",
+                                "dcat:downloadURL": "https://socioecon.ch/data/data.csv",
+                                "dct:title": {
+                                    "de": "Sozioökonomische Daten im Agrarbereich (CSV)",
+                                    "fr": "Données socio-économiques dans le domaine agricole (CSV)",
+                                    "it": "Dati socio-economici nel settore agricolo (CSV)",
+                                    "en": "Socio-economic Data in Agriculture (CSV)"
+                                },
+                                "dct:description": {
+                                    "de": "Informationen zu Einkommen, Beschäftigung und Kostenstrukturen in der Landwirtschaft.",
+                                    "fr": "Informations sur les revenus, l'emploi et la structure des coûts dans l'agriculture.",
+                                    "it": "Informazioni su redditi, occupazione e strutture dei costi nell'agricoltura.",
+                                    "en": "Information on income, employment, and cost structures in agriculture."
+                                },
+                                "dct:conformsTo": "https://socioeconschema.com/",
+                                "dct:license": "terms_by_ask",
+                                "bv:comments": {
+                                    "de": "Beispielkommentar zu sozioökonomischen Daten (CSV).",
+                                    "fr": "Commentaire d'exemple sur les données socio-économiques (CSV).",
+                                    "it": "Commento di esempio sui dati socio-economici (CSV).",
+                                    "en": "Example comment about socio-economic data (CSV)."
+                                },
+                                "dcat:accessService": "https://lindas.admin.ch/"
+                            }
+                        },
+                        "FOAG-D00004-2": {
+                            "metadata": {
+                                "lastChangeDate": "2025-01-03T14:12:00",
+                                "lastChangeUser": "Julia Musterfrau",
+                                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/socio_economic_example.jpg"
+                            },
+                            "properties": {
+                                "dct:identifier": "FOAG-D00004-2",
+                                "dcat:accessURL": "https://socioecon.ch/data/data.json",
+                                "adms:status": "published",
+                                "dct:format": "JSON",
+                                "dct:modified": "2025-01-09",
+                                "dcat:downloadURL": "https://socioecon.ch/data/data.json",
+                                "dct:title": {
+                                    "de": "Sozioökonomische Daten im Agrarbereich (JSON)",
+                                    "fr": "Données socio-économiques dans le domaine agricole (JSON)",
+                                    "it": "Dati socio-economici nel settore agricolo (JSON)",
+                                    "en": "Socio-economic Data in Agriculture (JSON)"
+                                },
+                                "dct:description": {
+                                    "de": "Informationen zu Einkommen, Beschäftigung und Kostenstrukturen in der Landwirtschaft.",
+                                    "fr": "Informations sur les revenus, l'emploi et la structure des coûts dans l'agriculture.",
+                                    "it": "Informazioni su redditi, occupazione e strutture dei costi nell'agricoltura.",
+                                    "en": "Information on income, employment, and cost structures in agriculture."
+                                },
+                                "dct:conformsTo": "https://socioeconschema.com/",
+                                "dct:license": "terms_by_ask",
+                                "bv:comments": {
+                                    "de": "Beispielkommentar zu sozioökonomischen Daten (JSON).",
+                                    "fr": "Commentaire d'exemple sur les données socio-économiques (JSON).",
+                                    "it": "Commento di esempio sui dati socio-economici (JSON).",
+                                    "en": "Example comment about socio-economic data (JSON)."
+                                },
+                                "dcat:accessService": "https://lindas.admin.ch/"
+                            }
+                        }
                     }
                 }
             }
         },
+
         "datasetSeries": {
-            "SERIE-01": {
+            "FOAG-S00001": {
                 "metadata": {
                     "lastChangeDate": "2024-07-03T10:23:55",
-                    "lastChangeUser": "Jana",
-					          "ImageURL": "url"
+                    "lastChangeUser": "Monika Muster",
+                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/6xRs0taPLVO2xwJicFUIX_446c1f04b5474d9c9029cd627d68656e.jpg"
                 },
                 "attributes": {
-                    "dct:identifier": "SERIE-01",
+                    "dct:identifier": "FOAG-S00001",
                     "dct:title": {
-                        "de": "VBE (Vorbild Energie Klima) Berichterstattung über Zielerreichung",
+                        "de": "Marktdaten",
                         "fr": "dummy",
                         "it": "dummy",
                         "en": "dummy"
                     },
                     "dct:description": {
-                        "de": "Die Initiative Vorbild Energie und Klima zählt (September 2020) 10 bundesnahe,kantonsnahe Mitglieder (die Schweizerischen Bundesbahnen SBB, die Schweizerische Post, Swisscom, die Schweizerische Unfallversicherung Suva, Genève Aéroport, Services Industriels de Genève SIG, Skyguide, der ETH-Bereich). In einer Absichtserklärung werden für den Zeitraum 2021-2031 Zielwerte zum Zielsystem (Energieeffizienz (basierend auf der Endenergie), Anteil erneuerbare Energien, ökologische Stromproduktion, gemeinsame Massnahmen, spezifische Massnahmen) festgelegt. Die Zielerreichung wird jährlich mit einem Monitoring überprüft.",
+                        "de": "Daten zu Produktpreisen, -mengen, und -zahlen allgemein im Agrar- und Ernährungssektor.",
                         "fr": "dummy",
                         "it": "dummy",
                         "en": "dummy"
                     },
-                    "dct:accessRights": "rights",
-                    "dcat:endpointURL": "url",
-                    "dcat:contactPoint": "contact",
-                    "dct:publisher": "publisher",
-                    "adms:status": "status",
-                    "dcat:servesDataset": "BFE-DS-0001",
-                    "dcat:endpointDescription": "endpointdescr",
-                    "foaf:page": "documentation",
-                    "bv:comment": "comment"
+                    "dcat:contactPoint": {
+                        "name": "Monika Muster",
+                        "email": "monika.muster@blw.admin.ch"
+                    },
+                    "dct:publisher": "",
+                    "adms:status": "published",
+                    "dcat:dataset": [
+                        "FOAG-D00001"
+                    ],
+                    "foaf:page": "",
+                    "bv:comment": "comment",
+                    "dcat:keyword": ["market"]
+                }
+            },
+            "FOAG-S00002": {
+                "metadata": {
+                    "lastChangeDate": "2024-07-10T09:15:00",
+                    "lastChangeUser": "Hans Beispiel",
+                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/nitrogen_loss_series_example.jpg"
+                },
+                "attributes": {
+                    "dct:identifier": "FOAG-S00002",
+                    "dct:title": {
+                        "de": "Umweltdaten Stickstoff",
+                        "fr": "Données environnementales sur l'azote",
+                        "it": "Dati ambientali sull'azoto",
+                        "en": "Environmental Data Nitrogen"
+                    },
+                    "dct:description": {
+                        "de": "Zeitreihen zu Stickstoffverlusten in der Landwirtschaft.",
+                        "fr": "Séries chronologiques sur les pertes d'azote dans l'agriculture.",
+                        "it": "Serie storiche sulle perdite di azoto in agricoltura.",
+                        "en": "Time series on nitrogen losses in agriculture."
+                    },
+                    "dcat:contactPoint": {
+                        "name": "Hans Beispiel",
+                        "email": "hans.beispiel@blw.admin.ch"
+                    },
+                    "dct:publisher": "",
+                    "adms:status": "published",
+                    "dcat:dataset": [
+                        "FOAG-D00002"
+                    ],
+                    "foaf:page": "",
+                    "bv:comment": "comment",
+                    "dcat:keyword": ["nitrogen"]
+                }
+            },
+            "FOAG-S00003": {
+                "metadata": {
+                    "lastChangeDate": "2025-01-02T08:00:00",
+                    "lastChangeUser": "Fritz Mustermann",
+                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/structural_data_series_example.jpg"
+                },
+                "attributes": {
+                    "dct:identifier": "FOAG-S00003",
+                    "dct:title": {
+                        "de": "Agrar-Strukturdaten",
+                        "fr": "Données structurelles agricoles",
+                        "it": "Dati strutturali agricoli",
+                        "en": "Agricultural Structural Data Series"
+                    },
+                    "dct:description": {
+                        "de": "Sammelreihe zu unterschiedlichen Aspekten der landwirtschaftlichen Struktur (Betriebsgrößen, Tierbestände etc.).",
+                        "fr": "Série de données portant sur divers aspects de la structure agricole (taille des exploitations, cheptel, etc.).",
+                        "it": "Serie di dati su vari aspetti della struttura agricola (dimensioni aziendali, bestiame, ecc.).",
+                        "en": "Collection of data series on various aspects of agricultural structure (farm sizes, livestock, etc.)."
+                    },
+                    "dcat:contactPoint": {
+                        "name": "Fritz Mustermann",
+                        "email": "fritz.mustermann@blw.admin.ch"
+                    },
+                    "dct:publisher": "",
+                    "adms:status": "published",
+                    "dcat:dataset": [
+                        "FOAG-D00003"
+                    ],
+                    "foaf:page": "",
+                    "bv:comment": "comment",
+                    "dcat:keyword": ["nitrogen"]
+                }
+            },
+            "FOAG-S00004": {
+                "metadata": {
+                    "lastChangeDate": "2025-01-03T14:12:00",
+                    "lastChangeUser": "Julia Musterfrau",
+                    "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/socio_economic_series_example.jpg"
+                },
+                "attributes": {
+                    "dct:identifier": "FOAG-S00004",
+                    "dct:title": {
+                        "de": "Sozioökonomische Datenreihen",
+                        "fr": "Séries de données socio-économiques",
+                        "it": "Serie di dati socio-economici",
+                        "en": "Socio-economic Data Series"
+                    },
+                    "dct:description": {
+                        "de": "Zeitreihen zu Einkommen, Beschäftigung und Kostenstrukturen im Agrarbereich.",
+                        "fr": "Séries chronologiques sur les revenus, l'emploi et la structure des coûts dans l'agriculture.",
+                        "it": "Serie storiche sui redditi, l'occupazione e le strutture dei costi in agricoltura.",
+                        "en": "Time series on income, employment, and cost structures in agriculture."
+                    },
+                    "dcat:contactPoint": {
+                        "name": "Julia Musterfrau",
+                        "email": "julia.musterfrau@blw.admin.ch"
+                    },
+                    "dct:publisher": "",
+                    "adms:status": "published",
+                    "dcat:dataset": [
+                        "FOAG-D00004"
+                    ],
+                    "foaf:page": "",
+                    "bv:comment": "comment",
+                    "dcat:keyword": ["nitrogen"]
                 }
             }
         }
