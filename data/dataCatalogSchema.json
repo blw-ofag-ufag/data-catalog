@@ -5,404 +5,571 @@
     "description": "JSON Schema for validating data catalog entries, including datasets and datasetSeries.",
     "type": "array",
     "items": {
-      "type": "object",
-      "description": "One or more data catalog blocks can exist in an array. Each block contains `dataset` and `datasetSeries` objects.",
-      "required": ["dataset"],
-      "properties": {
-        "dataset": {
-          "type": "object",
-          "description": "Container for individual datasets keyed by an identifier such as 'BFE-DS-0001'.",
-          "additionalProperties": {
-            "type": "object",
-            "description": "Structure of each dataset entry. Keys are dataset IDs (e.g. 'BFE-DS-0001').",
-            "required": ["metadata", "attributes"],
-            "properties": {
-              "metadata": {
+        "type": "object",
+        "description": "One or more data catalog blocks can exist in an array. Each block contains `dataset` and `datasetSeries` objects.",
+        "required": ["dataset"],
+        "properties": {
+            "dataset": {
                 "type": "object",
-                "description": "Metadata about the dataset, including last change date, user, etc.",
-                "required": [
-                  "lastChangeDate",
-                  "lastChangeUser"
-                ],
-                "properties": {
-                  "lastChangeDate": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Date/time when the dataset was last updated."
-                  },
-                  "lastChangeUser": {
-                    "type": "string",
-                    "description": "Name or identifier of the user who performed the last update."
-                  },
-                  "ImageURL": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URL linking to an image for this dataset."
-                  }
-                }
-              },
-              "attributes": {
-                "type": "object",
-                "description": "Descriptive attributes for the dataset entry.",
-                "required": [
-                  "dct:identifier",
-                  "dct:title"
-                ],
-                "properties": {
-                  "dct:identifier": {
-                    "type": "string",
-                    "description": "Unique identifier for the dataset."
-                  },
-                  "dct:title": {
+                "description": "Container for individual datasets keyed by an identifier such as 'BFE-DS-0001'.",
+                "additionalProperties": {
                     "type": "object",
-                    "description": "Title of the dataset in multiple languages.",
+                    "description": "Structure of each dataset entry. Keys are dataset IDs (e.g. 'BFE-DS-0001').",
+                    "required": ["metadata", "attributes"],
                     "properties": {
-                      "de": { "type": "string" },
-                      "fr": { "type": "string" },
-                      "it": { "type": "string" },
-                      "en": { "type": "string" }
-                    },
-                    "required": ["de", "fr", "it", "en"]
-                  },
-                  "dct:description": {
-                    "type": "object",
-                    "description": "Description of the dataset in multiple languages.",
-                    "properties": {
-                      "de": { "type": "string" },
-                      "fr": { "type": "string" },
-                      "it": { "type": "string" },
-                      "en": { "type": "string" }
-                    }
-                  },
-                  "dct:accessRights": {
-                    "type": "string",
-                    "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.)."
-                  },
-                  "dct:publisher": {
-                    "type": "string",
-                    "description": "Name of the publishing entity or organization."
-                  },
-                  "dcat:contactPoint": {
-                    "type": "string",
-                    "description": "Contact information for inquiries."
-                  },
-                  "dct:issued": {
-                    "type": "string",
-                    "description": "When the dataset was formally issued (YYYY-MM-DD or empty).",
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$"
-                  },
-                  "dcat:keyword": {
-                    "type": "string",
-                    "description": "Keywords describing the dataset."
-                  },
-                  "dct:accrualPeriodicity": {
-                    "type": "string",
-                    "description": "Frequency with which dataset is updated (e.g., 'Annual')."
-                  },
-                  "dct:modified": {
-                    "type": "string",
-                    "description": "Last modification date of the dataset (could be free text or date)."
-                  },
-                  "bv:dataOwner": {
-                    "type": "string",
-                    "description": "The official owner of the data."
-                  },
-                  "bv:dataSteward": {
-                    "type": "string",
-                    "description": "Person or entity responsible for data stewardship."
-                  },
-                  "bv:dataCustodian": {
-                    "type": "string",
-                    "description": "Person or entity responsible for data custody."
-                  },
-                  "adms:status": {
-                    "type": "string",
-                    "description": "Current status of the dataset (sample enumeration).",
-                    "enum": [
-                      "Wird vorbereitet",
-                      "Aktiv",
-                      "Abgeschlossen",
-                      "Veröffentlicht"
-                    ]
-                  },
-                  "bv:classification": {
-                    "type": "string",
-                    "description": "Classification level of the dataset (sample enumeration).",
-                    "enum": [
-                      "Keine",
-                      "Intern",
-                      "Vertraulich"
-                    ]
-                  },
-                  "bv:personalData": {
-                    "type": "string",
-                    "description": "Indicates presence of personal data (e.g., 'Keine', 'Anonymized', etc.)."
-                  },
-                  "bv:typeOfData": {
-                    "type": "string",
-                    "description": "Specifies the type of data (structured, unstructured, etc.).",
-                    "enum": [
-                      "Unstrukturierte Daten",
-                      "Strukturierte Daten"
-                    ]
-                  },
-                  "bv:archivalValue": {
-                    "type": "boolean",
-                    "description": "Indicates if this dataset has archival value."
-                  },
-                  "bv:ogdPublication": {
-                    "type": "string",
-                    "description": "Link or reference to the Open Government Data publication ID."
-                  },
-                  "dcat:themeTaxonomy": {
-                    "type": "string",
-                    "description": "Reference or URL to a theme taxonomy classification."
-                  },
-                  "dcat:landingPage": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "Landing page or homepage for the dataset."
-                  },
-                  "dct:spatial": {
-                    "type": "string",
-                    "description": "Spatial/geographical coverage."
-                  },
-                  "dct:temporal": {
-                    "type": "string",
-                    "description": "Temporal coverage of the dataset."
-                  },
-                  "bv:legalBasis": {
-                    "type": "string",
-                    "description": "Legal basis for the dataset (HTML or plain text allowed)."
-                  },
-                  "bv:businessProcess": {
-                    "type": "string",
-                    "description": "Related business process or context."
-                  },
-                  "bv:retentionPeriod": {
-                    "type": "string",
-                    "description": "Retention period for the dataset."
-                  },
-                  "dcat:catalog": {
-                    "type": "string",
-                    "description": "Indicates which catalog this dataset belongs to."
-                  },
-                  "prov:wasDerivedFrom": {
-                    "type": "string",
-                    "description": "Source from which this dataset was derived."
-                  },
-                  "bv:geoIdentifier": {
-                    "type": "string",
-                    "description": "Geographical identifier (e.g., BFS numbers)."
-                  },
-                  "foaf:page": {
-                    "type": "string",
-                    "description": "Any related page or resource."
-                  },
-                  "bv:comments": {
-                    "type": "string",
-                    "description": "Additional comments about the dataset."
-                  },
-                  "bv:abrogation": {
-                    "type": "string",
-                    "description": "Indicates if the dataset was abrogated or replaced."
-                  },
-                  "bv:itSystem": {
-                    "type": "string",
-                    "description": "Name of the IT system managing this dataset."
-                  },
-                  "dcat:inSeries": {
-                    "type": "string",
-                    "description": "Reference to the series this dataset belongs to."
-                  },
-                  "dcat:distribution": {
-                    "type": "object",
-                    "description": "Distribution info describing how and where to access the dataset.",
-                    "required": [
-                      "dct:identifier",
-                      "dcat:accessURL",
-                      "dct:title",
-                      "dct:description"
-                    ],
-                    "properties": {
-                      "dct:identifier": {
-                        "type": "string",
-                        "description": "Identifier for this distribution."
-                      },
-                      "dcat:accessURL": {
-                        "type": "string",
-                        "format": "uri",
-                        "description": "URL for accessing this distribution."
-                      },
-                      "adms:status": {
-                        "type": "string",
-                        "description": "Status of this distribution (e.g., 'active', 'deprecated')."
-                      },
-                      "dct:format": {
-                        "type": "string",
-                        "description": "File format (e.g., CSV, JSON)."
-                      },
-                      "dct:modified": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "When the distribution file was last modified."
-                      },
-                      "dcat:downloadURL": {
-                        "type": "string",
-                        "format": "uri",
-                        "description": "Download URL of the distribution file."
-                      },
-                      "dct:title": {
-                        "type": "object",
-                        "description": "Title for the distribution, in multiple languages.",
-                        "properties": {
-                          "de": { "type": "string" },
-                          "fr": { "type": "string" },
-                          "it": { "type": "string" },
-                          "en": { "type": "string" }
+                        "metadata": {
+                            "type": "object",
+                            "description": "Metadata about the dataset, including last change date, user, etc.",
+                            "required": [
+                                "lastChangeDate",
+                                "lastChangeUser"
+                            ],
+                            "properties": {
+                                "lastChangeDate": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Date/time when the dataset was last updated."
+                                },
+                                "lastChangeUser": {
+                                    "type": "string",
+                                    "description": "Name or identifier of the user who performed the last update."
+                                },
+                                "ImageURL": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "URL linking to an image for this dataset."
+                                }
+                            }
+                        },
+                        "attributes": {
+                            "type": "object",
+                            "description": "Descriptive attributes for the dataset entry.",
+                            "required": [
+                                "dct:identifier",
+                                "dct:title",
+                                "dct:description",
+                                "dct:accessRights",
+                                "bv:dataOwner"
+                            ],
+                            "properties": {
+                                "dct:identifier": {
+                                    "type": "string",
+                                    "description": "Unique identifier for the dataset."
+                                },
+                                "dct:title": {
+                                    "type": "object",
+                                    "description": "Title of the dataset in multiple languages.",
+                                    "properties": {
+                                        "de": {
+                                            "type": "string"
+                                        },
+                                        "fr": {
+                                            "type": "string"
+                                        },
+                                        "it": {
+                                            "type": "string"
+                                        },
+                                        "en": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": ["de", "fr"]
+                                },
+                                "dct:description": {
+                                    "type": "object",
+                                    "description": "Description of the dataset in multiple languages.",
+                                    "properties": {
+                                        "de": {
+                                            "type": "string"
+                                        },
+                                        "fr": {
+                                            "type": "string"
+                                        },
+                                        "it": {
+                                            "type": "string"
+                                        },
+                                        "en": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": ["de", "fr"]
+                                },
+                                "dct:accessRights": {
+                                    "type": "string",
+                                    "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
+                                    "enum": [
+                                        "CONFIDENTIAL",
+                                        "NON_PUBLIC",
+                                        "PUBLIC",
+                                        "RESTRICTED",
+                                        "SENSITIVE"
+                                    ]
+                                },
+                                "dct:publisher": {
+                                    "type": "string",
+                                    "description": "Name of the publishing entity or organization."
+                                },
+                                "dcat:contactPoint": {
+                                    "type": "object",
+                                    "description": "Contact information for inquiries.",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": ["name", "email"]
+                                },
+                                "dct:issued": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "description": "When the dataset was formally issued (YYYY-MM-DD or empty)."
+                                },
+                                "dcat:keyword": {
+                                    "type": "array",
+                                    "description": "Keywords describing the dataset.",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "dct:accrualPeriodicity": {
+                                    "type": "string",
+                                    "description": "Frequency with which dataset is updated (e.g., 'Annual').",
+                                    "enum": [
+                                        "OTHER",
+                                        "HOURLY",
+                                        "UNKNOWN",
+                                        "QUARTERLY",
+                                        "NEVER",
+                                        "ANNUAL",
+                                        "DAILY",
+                                        "AS_NEEDED"
+                                    ]
+                                },
+                                "dct:modified": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "description": "Last modification date of the dataset (could be free text or date)."
+                                },
+                                "bv:dataOwner": {
+                                    "type": "string",
+                                    "description": "The official owner of the data."
+                                },
+                                "bv:dataSteward": {
+                                    "type": "string",
+                                    "description": "Person or entity responsible for data stewardship."
+                                },
+                                "bv:dataCustodian": {
+                                    "type": "string",
+                                    "description": "Person or entity responsible for data custody."
+                                },
+                                "adms:status": {
+                                    "type": "string",
+                                    "description": "Current status of the dataset (sample enumeration).",
+                                    "enum": [
+                                        "workInProgress",
+                                        "validated",
+                                        "published",
+                                        "deleted",
+                                        "archived"
+                                    ]
+                                },
+                                "bv:classification": {
+                                    "type": "string",
+                                    "description": "Classification level of the dataset (sample enumeration).",
+                                    "enum": [
+                                        "Keine",
+                                        "Intern",
+                                        "Vertraulich",
+                                        "Geheim"
+                                    ]
+                                },
+                                "bv:personalData": {
+                                    "type": "string",
+                                    "description": "Indicates presence of personal data (e.g., 'Keine', 'Anonymized', etc.).",
+                                    "enum": [
+                                        "Keine",
+                                        "Personendaten",
+                                        "Besonders schützenswerte Personendaten"
+                                    ]
+                                },
+                                "bv:typeOfData": {
+                                    "type": "string",
+                                    "description": "Specifies the type of data (structured, unstructured, etc.).",
+                                    "enum": [
+                                        "Fachdaten",
+                                        "Stammdaten",
+                                        "Referenzdaten",
+                                        "Unstrukturierte Daten"
+                                    ]
+                                },
+                                "bv:archivalValue": {
+                                    "type": "boolean",
+                                    "description": "Indicates if this dataset has archival value."
+                                },
+                                "bv:ogdPublication": {
+                                    "type": "string",
+                                    "description": "Reference to the Open Government Data publication ID."
+                                },
+                                "dcat:themeTaxonomy": {
+                                    "type": "string",
+                                    "description": "Reference or URL to a theme taxonomy classification.",
+                                    "enum": [
+                                        "Bevölkerung und Gesellschaft",
+                                        "Landwirtschaft, Fischerei, Forstwirtschaft und Nahrungsmittel",
+                                        "Internationale Themen",
+                                        "Umwelt"
+                                    ]
+                                },
+                                "dcat:landingPage": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "Landing page or homepage for the dataset."
+                                },
+                                "dct:spatial": {
+                                    "type": "string",
+                                    "description": "Spatial/geographical coverage."
+                                },
+                                "dct:temporal": {
+                                    "type": "string",
+                                    "description": "Temporal coverage of the dataset."
+                                },
+                                "bv:legalBasis": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "description": "Legal basis for the dataset (as URI)."
+                                },
+                                "bv:businessProcess": {
+                                    "type": "string",
+                                    "description": "Related business process or context."
+                                },
+                                "bv:retentionPeriod": {
+                                    "type": "integer",
+                                    "description": "Retention period for the dataset."
+                                },
+                                "dcat:catalog": {
+                                    "type": "string",
+                                    "description": "Indicates which catalog this dataset belongs to."
+                                },
+                                "prov:wasDerivedFrom": {
+                                    "type": "string",
+                                    "description": "Source from which this dataset was derived."
+                                },
+                                "bv:geoIdentifier": {
+                                    "type": "string",
+                                    "description": "Geographical identifier (e.g., BFS numbers)."
+                                },
+                                "foaf:page": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "Any related page or resource."
+                                },
+                                "bv:comments": {
+                                    "type": "string",
+                                    "description": "Additional comments about the dataset."
+                                },
+                                "bv:abrogation": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "description": "Indicates if the dataset was abrogated or replaced."
+                                },
+                                "bv:itSystem": {
+                                    "type": "string",
+                                    "description": "Name of the IT system managing this dataset."
+                                },
+                                "dcat:inSeries": {
+                                    "type": "string",
+                                    "description": "Reference to the series this dataset belongs to."
+                                },
+                                "dcat:distribution": {
+                                    "type": "object",
+                                    "description": "Distribution info describing how and where to access the dataset.",
+                                    "required": ["metadata", "attributes"],
+                                    "properties": {
+                                        "metadata": {
+                                            "type": "object",
+                                            "description": "Metadata about the distribution, including last change date, user, etc.",
+                                            "required": [
+                                                "lastChangeDate",
+                                                "lastChangeUser"
+                                            ],
+                                            "properties": {
+                                                "lastChangeDate": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "description": "Date/time when the dataset was last updated."
+                                                },
+                                                "lastChangeUser": {
+                                                    "type": "string",
+                                                    "description": "Name or identifier of the user who performed the last update."
+                                                },
+                                                "ImageURL": {
+                                                    "type": "string",
+                                                    "format": "uri"
+                                                }
+                                            }
+                                        },
+                                        "attributes": {
+                                            "type": "object",
+                                            "required": [
+                                                "dct:identifier",
+                                                "dcat:accessURL",
+                                                "dct:title",
+                                                "dct:description"
+                                            ],
+                                            "properties": {
+                                                "dct:identifier": {
+                                                    "type": "string",
+                                                    "description": "Identifier for this distribution."
+                                                },
+                                                "dcat:accessURL": {
+                                                    "type": "string",
+                                                    "format": "uri",
+                                                    "description": "URL for accessing this distribution."
+                                                },
+                                                "adms:status": {
+                                                    "type": "string",
+                                                    "description": "Status of this distribution (e.g., 'active', 'deprecated').",
+                                                    "enum": [
+                                                        "workInProgress",
+                                                        "validated",
+                                                        "published",
+                                                        "deleted",
+                                                        "archived"
+                                                    ]
+                                                },
+                                                "dct:format": {
+                                                    "type": "string",
+                                                    "description": "File format (e.g., CSV, JSON)."
+                                                },
+                                                "dct:modified": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "description": "When the distribution file was last modified."
+                                                },
+                                                "dcat:downloadURL": {
+                                                    "type": "string",
+                                                    "format": "uri",
+                                                    "description": "Download URL of the distribution file."
+                                                },
+                                                "dct:title": {
+                                                    "type": "object",
+                                                    "description": "Title for the distribution, in multiple languages.",
+                                                    "properties": {
+                                                        "de": {
+                                                            "type": "string"
+                                                        },
+                                                        "fr": {
+                                                            "type": "string"
+                                                        },
+                                                        "it": {
+                                                            "type": "string"
+                                                        },
+                                                        "en": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "dct:description": {
+                                                    "type": "object",
+                                                    "description": "Description for the distribution, in multiple languages.",
+                                                    "properties": {
+                                                        "de": {
+                                                            "type": "string"
+                                                        },
+                                                        "fr": {
+                                                            "type": "string"
+                                                        },
+                                                        "it": {
+                                                            "type": "string"
+                                                        },
+                                                        "en": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "dct:conformsTo": {
+                                                    "type": "string",
+                                                    "description": "Reference to a standard or specification the distribution conforms to."
+                                                },
+                                                "dct:licence": {
+                                                    "type": "string",
+                                                    "description": "License under which this distribution is released.",
+                                                    "enum": [
+                                                        "terms_open",
+                                                        "terms_by",
+                                                        "terms_ask",
+                                                        "terms_by_ask",
+                                                        "cc-zero"
+                                                    ]
+                                                },
+                                                "bv:comments": {
+                                                    "type": "string",
+                                                    "description": "Additional comments about the distribution."
+                                                },
+                                                "dcat:accessService": {
+                                                    "type": "string",
+                                                    "description": "Indicates a service used to provide access to the data."
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-                      },
-                      "dct:description": {
-                        "type": "object",
-                        "description": "Description for the distribution, in multiple languages.",
-                        "properties": {
-                          "de": { "type": "string" },
-                          "fr": { "type": "string" },
-                          "it": { "type": "string" },
-                          "en": { "type": "string" }
+                    }
+                }
+            },
+            "datasetSeries": {
+                "type": "object",
+                "description": "Container for dataset series keyed by an identifier such as 'SERIE-01'.",
+                "additionalProperties": {
+                    "type": "object",
+                    "description": "Structure of each dataset series entry. Keys are series IDs (e.g. 'SERIE-01').",
+                    "required": ["metadata", "attributes"],
+                    "properties": {
+                        "metadata": {
+                            "type": "object",
+                            "description": "Metadata about the dataset series (last update date, user, image, etc.).",
+                            "required": [
+                                "lastChangeDate",
+                                "lastChangeUser"
+                            ],
+                            "properties": {
+                                "lastChangeDate": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Date/time when the series was last changed."
+                                },
+                                "lastChangeUser": {
+                                    "type": "string",
+                                    "description": "User or identifier who last updated the series."
+                                },
+                                "ImageURL": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "URL linking to an image for this series."
+                                }
+                            }
+                        },
+                        "attributes": {
+                            "type": "object",
+                            "description": "Descriptive attributes for the dataset series.",
+                            "required": [
+                                "dct:identifier",
+                                "dct:title"
+                            ],
+                            "properties": {
+                                "dct:identifier": {
+                                    "type": "string",
+                                    "description": "Unique identifier for the dataset series."
+                                },
+                                "dct:title": {
+                                    "type": "object",
+                                    "description": "Title for the series in multiple languages.",
+                                    "properties": {
+                                        "de": {
+                                            "type": "string"
+                                        },
+                                        "fr": {
+                                            "type": "string"
+                                        },
+                                        "it": {
+                                            "type": "string"
+                                        },
+                                        "en": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "dct:description": {
+                                    "type": "object",
+                                    "description": "Description for the series in multiple languages.",
+                                    "properties": {
+                                        "de": {
+                                            "type": "string"
+                                        },
+                                        "fr": {
+                                            "type": "string"
+                                        },
+                                        "it": {
+                                            "type": "string"
+                                        },
+                                        "en": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "dct:accessRights": {
+                                    "type": "string",
+                                    "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
+                                    "enum": [
+                                        "CONFIDENTIAL",
+                                        "NON_PUBLIC",
+                                        "PUBLIC",
+                                        "RESTRICTED",
+                                        "SENSITIVE"
+                                    ]
+                                },
+                                "dcat:endpointURL": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "Endpoint URL where the series data can be accessed."
+                                },
+                                "dcat:contactPoint": {
+                                    "type": "object",
+                                    "description": "Contact information for inquiries.",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": ["name", "email"]
+                                },
+                                "dct:publisher": {
+                                    "type": "string",
+                                    "description": "Publisher or organization responsible for the series."
+                                },
+                                "adms:status": {
+                                    "type": "string",
+                                    "description": "Current status of the dataset (sample enumeration).",
+                                    "enum": [
+                                        "workInProgress",
+                                        "validated",
+                                        "published",
+                                        "deleted",
+                                        "archived"
+                                    ]
+                                },
+                                "dcat:servesDataset": {
+                                    "type": "string",
+                                    "description": "Indicates which dataset(s) this series serves or is related to."
+                                },
+                                "dcat:endpointDescription": {
+                                    "type": "string",
+                                    "description": "Description of the endpoint that serves the data."
+                                },
+                                "foaf:page": {
+                                    "type": "string",
+                                    "description": "Any documentation or reference page related to the series."
+                                },
+                                "bv:comment": {
+                                    "type": "string",
+                                    "description": "Additional comments or notes about the series."
+                                }
+                            }
                         }
-                      },
-                      "dct:conformsTo": {
-                        "type": "string",
-                        "description": "Reference to a standard or specification the distribution conforms to."
-                      },
-                      "dct:licence": {
-                        "type": "string",
-                        "description": "License under which this distribution is released."
-                      },
-                      "bv:comments": {
-                        "type": "string",
-                        "description": "Additional comments about the distribution."
-                      },
-                      "dcat:accessService": {
-                        "type": "string",
-                        "description": "Indicates a service used to provide access to the data."
-                      }
                     }
-                  }
                 }
-              }
             }
-          }
-        },
-        "datasetSeries": {
-          "type": "object",
-          "description": "Container for dataset series keyed by an identifier such as 'SERIE-01'.",
-          "additionalProperties": {
-            "type": "object",
-            "description": "Structure of each dataset series entry. Keys are series IDs (e.g. 'SERIE-01').",
-            "required": ["metadata", "attributes"],
-            "properties": {
-              "metadata": {
-                "type": "object",
-                "description": "Metadata about the dataset series (last update date, user, image, etc.).",
-                "required": [
-                  "lastChangeDate",
-                  "lastChangeUser",
-                  "ImageURL"
-                ],
-                "properties": {
-                  "lastChangeDate": {
-                    "type": "string",
-                    "format": "date-time",
-                    "description": "Date/time when the series was last changed."
-                  },
-                  "lastChangeUser": {
-                    "type": "string",
-                    "description": "User or identifier who last updated the series."
-                  },
-                  "ImageURL": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "URL linking to an image for this series."
-                  }
-                }
-              },
-              "attributes": {
-                "type": "object",
-                "description": "Descriptive attributes for the dataset series.",
-                "required": [
-                  "dct:identifier",
-                  "dct:title"
-                ],
-                "properties": {
-                  "dct:identifier": {
-                    "type": "string",
-                    "description": "Unique identifier for the dataset series."
-                  },
-                  "dct:title": {
-                    "type": "object",
-                    "description": "Title for the series in multiple languages.",
-                    "properties": {
-                      "de": { "type": "string" },
-                      "fr": { "type": "string" },
-                      "it": { "type": "string" },
-                      "en": { "type": "string" }
-                    }
-                  },
-                  "dct:description": {
-                    "type": "object",
-                    "description": "Description for the series in multiple languages.",
-                    "properties": {
-                      "de": { "type": "string" },
-                      "fr": { "type": "string" },
-                      "it": { "type": "string" },
-                      "en": { "type": "string" }
-                    }
-                  },
-                  "dct:accessRights": {
-                    "type": "string",
-                    "description": "Access rights or policy for the series."
-                  },
-                  "dcat:endpointURL": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "Endpoint URL where the series data can be accessed."
-                  },
-                  "dcat:contactPoint": {
-                    "type": "string",
-                    "description": "Contact point for inquiries about this dataset series."
-                  },
-                  "dct:publisher": {
-                    "type": "string",
-                    "description": "Publisher or organization responsible for the series."
-                  },
-                  "adms:status": {
-                    "type": "string",
-                    "description": "Status of the dataset series (e.g., planned, active, etc.)."
-                  },
-                  "dcat:servesDataset": {
-                    "type": "string",
-                    "description": "Indicates which dataset(s) this series serves or is related to."
-                  },
-                  "dcat:endpointDescription": {
-                    "type": "string",
-                    "description": "Description of the endpoint that serves the data."
-                  },
-                  "foaf:page": {
-                    "type": "string",
-                    "description": "Any documentation or reference page related to the series."
-                  },
-                  "bv:comment": {
-                    "type": "string",
-                    "description": "Additional comments or notes about the series."
-                  }
-                }
-              }
-            }
-          }
         }
-      }
     }
-  }
-  
+}
