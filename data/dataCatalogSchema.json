@@ -180,29 +180,29 @@
                                     "type": "string",
                                     "description": "Classification level of the dataset (sample enumeration).",
                                     "enum": [
-                                        "Keine",
-                                        "Intern",
-                                        "Vertraulich",
-                                        "Geheim"
+                                        "none",
+                                        "internal",
+                                        "confidential",
+                                        "secret"
                                     ]
                                 },
                                 "bv:personalData": {
                                     "type": "string",
                                     "description": "Indicates presence of personal data (e.g., 'Keine', 'Anonymized', etc.).",
                                     "enum": [
-                                        "Keine",
-                                        "Personendaten",
-                                        "Besonders schützenswerte Personendaten"
+                                        "none",
+                                        "personalData",
+                                        "sensitivePersonalData"
                                     ]
                                 },
                                 "bv:typeOfData": {
                                     "type": "string",
                                     "description": "Specifies the type of data (structured, unstructured, etc.).",
                                     "enum": [
-                                        "Fachdaten",
-                                        "Stammdaten",
-                                        "Referenzdaten",
-                                        "Unstrukturierte Daten"
+                                        "thematicData",
+                                        "referenceData",
+                                        "masterData",
+                                        "unstructuredData"
                                     ]
                                 },
                                 "bv:archivalValue": {
@@ -217,10 +217,10 @@
                                     "type": "string",
                                     "description": "Reference or URL to a theme taxonomy classification.",
                                     "enum": [
-                                        "Bevölkerung und Gesellschaft",
-                                        "Landwirtschaft, Fischerei, Forstwirtschaft und Nahrungsmittel",
-                                        "Internationale Themen",
-                                        "Umwelt"
+                                        "populationAndSociety",
+                                        "agricultureFisheriesForestryFood",
+                                        "internationalTopics",
+                                        "environment"
                                     ]
                                 },
                                 "dcat:landingPage": {
