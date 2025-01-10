@@ -1,22 +1,40 @@
+/* Define color variables */
+:root {
+  --background-color: #161616;
+  --secondary-background-color: #222222;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #bdbdbd;
+  --description-text-color: #666666;
+  --accent-color: #12ca4f;
+  --hover-accent-color: #6200ea;
+  --tag-background-color: #6200ea;
+  --tag-hover-background-color: #bb86fc;
+  --border-color: #444444;
+  --border-color-hover: #aaaaaa;
+  --tile-hover-border-color: #ffffff;
+  --tile-shadow-color: rgba(0, 0, 0, 0.5);
+  --tile-hover-shadow-color: rgba(255, 255, 255, 0.27);
+}
+
 /* Import a cool font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
 /* General styles */
 body {
   font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #161616; /* Dark background */
-  color: #e0e0e0; /* Light text for contrast */
+  margin: 20px;
+  padding: 0px;
+  background: var(--background-color); /* Dark background */
+  color: var(--primary-text-color); /* Light text for contrast */
+  justify-content: center; /* Center content horizontally */
 }
 
 /* Header styles */
 header {
-  background-color: #1f1f1f;
-  color: #fff;
+  color: var(--primary-text-color);
   padding: 20px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  text-align: center;        /* Align header to the left */
 }
 
 header h1 {
@@ -27,7 +45,7 @@ header h1 {
 
 /* Default link style */
 a {
-  color: #12ca4f; /* Teal accent color */
+  color: var(--accent-color); /* Teal accent color */
   text-decoration: none; /* Remove underline by default */
   transition: color 0.3s, text-decoration 0.3s; /* Smooth color and decoration changes */
 }
@@ -48,26 +66,26 @@ a:hover {
 #sort-options {
   padding: 12px;
   font-size: 16px;
-  background: #1f1f1f;
-  color: #e0e0e0;
-  border: 2px solid #333;
+  background: var(--secondary-background-color);
+  color: var(--primary-text-color);
+  border: 2px solid var(--border-color);
   border-radius: 30px; /* Rounder corners */
-  max-width: 800px; /* Limit the width */
-  width: 20%; /* Ensure the search field grows to available space */
+  max-width: 500px; /* Limit the width */
+  width: 18%; /* Ensure the search field grows to available space */
   box-sizing: border-box; /* Prevent padding from affecting width */
 }
 #language-select {
   max-width: 120px
 }
 #search {
-  width: 50%;
-  max-width: 1000px;
+  width: 40%;
+  max-width: 800px;
 }
 #search:hover,
 #language-select:hover,
 #sort-options:hover {
   outline: none;
-  border-color: #ffffff66;
+  border-color: var(--border-color-hover);
 }
 #language-select,
 #sort-options {
@@ -79,7 +97,7 @@ a:hover {
 #language-select:focus,
 #sort-options:focus {
   outline: none;
-  border-color: #ffffff;
+  border-color: var(--accent-color);
 }
 
 /* Ensure proper spacing for text in dropdowns */
@@ -88,32 +106,35 @@ a:hover {
   padding-left: 25px;
 }
 
-/* Main container styles */
+/* Main grid container */
 main {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  max-width: 1200px;
+  grid-template-columns: repeat(3, 1fr); /* Ensure max 3 tiles per row */
+  gap: 20px; /* Space between tiles */
+  justify-content: start; /* Align tiles to the left */
+  margin: 0 auto; /* Center the entire grid on the page */
 }
 
 /* Dataset tiles */
 .dataset-tile {
-  background: #1f1f1f;
-  border: 1px solid #333;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  background: var(--secondary-background-color);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  width: 100%; /* Allow tiles to stretch within the column */
 }
 
 .dataset-tile:hover {
-  border-color: #ffffff; /* Bright white border */
-  box-shadow: 0 0 8px 3px #ffffff44; /* Even glow in all directions */
+  border-color: var(--border-color-hover); /* Bright white border */
 }
 
+/* Tile images */
 .dataset-tile img {
   width: 100%;
-  height: 300px;
+  height: 200px; /* Reduce height to balance proportions */
   object-fit: cover;
 }
 
@@ -130,7 +151,7 @@ main {
 .dataset-info p {
   margin: 5px 0;
   font-size: 14px;
-  color: #ffffffaa;
+  color: var(--secondary-text-color);
   display: -webkit-box; /* Enable webkit box model for text clipping */
   -webkit-line-clamp: 3; /* Limit to 3 lines */
   -webkit-box-orient: vertical; /* Specify vertical orientation */
@@ -140,7 +161,7 @@ main {
 
 /* Description text (darker shade for emphasis) */
 .dataset-info p:first-of-type {
-  color: #ffffff44; /* Slightly darker gray for the description */
+  color: var(--description-text-color); /* Slightly darker gray for the description */
 }
 
 /* Keywords container */
@@ -154,8 +175,8 @@ main {
 /* Individual keyword tag */
 .keywords span {
   display: inline-block;
-  background-color: #107030; /* Purple background for tags */
-  color: #ffffff; /* White text for contrast */
+  background-color: var(--border-color); /* Purple background for tags */
+  color: var(--primary-text-color); /* White text for contrast */
   padding: 5px 10px; /* Add spacing inside the tag */
   font-size: 12px; /* Slightly smaller text */
   border-radius: 15px; /* Round edges for a badge-like look */
@@ -166,16 +187,7 @@ main {
 
 /* Hover effect for tags */
 .keywords span:hover {
-  background-color: #12ca4f; /* Lighter purple on hover */
-  transform: scale(1.1); /* Slightly enlarge on hover */
+  background-color: var(--border-color-hover); /* Lighter purple on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
   cursor: pointer; /* Change cursor to pointer for interactivity */
-}
-
-/* Footer styles (optional) */
-footer {
-  text-align: center;
-  padding: 10px;
-  background: #1f1f1f;
-  color: #bdbdbd;
-  font-size: 12px;
 }
