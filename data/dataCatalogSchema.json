@@ -505,22 +505,6 @@
                                         }
                                     }
                                 },
-                                "dct:accessRights": {
-                                    "type": "string",
-                                    "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
-                                    "enum": [
-                                        "CONFIDENTIAL",
-                                        "NON_PUBLIC",
-                                        "PUBLIC",
-                                        "RESTRICTED",
-                                        "SENSITIVE"
-                                    ]
-                                },
-                                "dcat:endpointURL": {
-                                    "type": ["string", "null"],
-                                    "format": "uri",
-                                    "description": "Endpoint URL where the series data can be accessed."
-                                },
                                 "dcat:contactPoint": {
                                     "type": "object",
                                     "description": "Contact information for inquiries.",
@@ -549,13 +533,9 @@
                                         "archived"
                                     ]
                                 },
-                                "dcat:servesDataset": {
+                                "dcat:dataset": {
                                     "type": "string",
                                     "description": "Indicates which dataset(s) this series serves or is related to."
-                                },
-                                "dcat:endpointDescription": {
-                                    "type": "string",
-                                    "description": "Description of the endpoint that serves the data."
                                 },
                                 "foaf:page": {
                                     "type": "string",
@@ -564,6 +544,13 @@
                                 "bv:comment": {
                                     "type": "string",
                                     "description": "Additional comments or notes about the series."
+                                },
+                                "dcat:keyword": {
+                                    "type": "array",
+                                    "description": "Keywords describing the dataset Serie.",
+                                    "items": {
+                                        "type": "string"
+                                    }
                                 }
                             }
                         }
