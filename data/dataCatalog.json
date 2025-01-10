@@ -65,7 +65,7 @@
                         "FOAG-D00001-1": {
                             "metadata": {
                                 "lastChangeDate": "2024-11-03T10:11:55",
-                                "lastChangeUser": "Monika Muster",
+                                "lastChangeUser": "Monika Muster"
                             },
                             "attributes": {
                                 "dct:identifier": "FOAG-D00001-1",
@@ -201,7 +201,7 @@
                         "FOAG-D00002-1": {
                             "metadata": {
                                 "lastChangeDate": "2024-07-10T09:15:00",
-                                "lastChangeUser": "Hans Beispiel",
+                                "lastChangeUser": "Hans Beispiel"
                             },
                             "attributes": {
                                 "dct:identifier": "FOAG-D00002-1",
@@ -337,7 +337,7 @@
                         "FOAG-D00003-1": {
                             "metadata": {
                                 "lastChangeDate": "2025-01-02T08:00:00",
-                                "lastChangeUser": "Fritz Mustermann",
+                                "lastChangeUser": "Fritz Mustermann"
                             },
                             "attributes": {
                                 "dct:identifier": "FOAG-D00003-1",
@@ -472,7 +472,7 @@
                         "FOAG-D00004-1": {
                             "metadata": {
                                 "lastChangeDate": "2025-01-03T14:12:00",
-                                "lastChangeUser": "Julia Musterfrau",
+                                "lastChangeUser": "Julia Musterfrau"
                             },
                             "attributes": {
                                 "dct:identifier": "FOAG-D00004-1",
