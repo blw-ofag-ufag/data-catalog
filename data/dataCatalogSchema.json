@@ -293,9 +293,12 @@
                                     "description": "Geographical identifier (e.g., BFS numbers)."
                                 },
                                 "foaf:page": {
-                                    "type": ["string", "null"],
-                                    "format": "uri",
-                                    "description": "Any related page or resource."
+                                    "type": "array",
+                                    "description": "Any related page or resource.",
+				    "items": {
+                                        "type": ["string", "null"],
+					"format": "uri"
+                                    }
                                 },
                                 "bv:comments": {
                                     "type": "string",
@@ -569,8 +572,12 @@
                                     }
                                 },
                                 "foaf:page": {
-                                    "type": "string",
-                                    "description": "Any documentation or reference page related to the series."
+                                    "type": "array",
+                                    "description": "Any related page or resource.",
+				    "items": {
+                                        "type": ["string", "null"],
+					"format": "uri"
+                                    }
                                 },
                                 "bv:comment": {
                                     "type": "string",
