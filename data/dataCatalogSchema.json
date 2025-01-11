@@ -210,8 +210,27 @@
                                     "description": "Indicates if this dataset has archival value."
                                 },
                                 "bv:ogdPublication": {
-                                    "type": "string",
-                                    "description": "Reference to the Open Government Data publication ID."
+                                    "type": "object",
+                                    "description": "Reference to the Open Government Data publication ID.",
+                                    "properties": {
+                                        "opendata.swiss": {
+                                            "type": "boolean"
+                                        },
+                                        "attributes": {
+                                            "type": "object",
+                                            "properties": {
+                                                "dct:identifier": {
+                                                    "type": "string",
+                                                    "description": "Identifier for the OGD publication"
+                                                },
+                                                "dcat:accessURL": {
+                                                    "type": "string",
+                                                    "format": "uri",
+                                                    "description": "URL on opendata.swiss"
+                                                }
+                                            }
+                                        }
+                                    }
                                 },
                                 "dcat:themeTaxonomy": {
                                     "type": "array",
