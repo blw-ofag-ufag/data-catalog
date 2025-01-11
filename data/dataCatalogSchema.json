@@ -214,14 +214,17 @@
                                     "description": "Reference to the Open Government Data publication ID."
                                 },
                                 "dcat:themeTaxonomy": {
-                                    "type": "string",
+                                    "type": "array",
                                     "description": "Reference or URL to a theme taxonomy classification.",
-                                    "enum": [
-                                        "populationAndSociety",
-                                        "agricultureFisheriesForestryFood",
-                                        "internationalTopics",
-                                        "environment"
-                                    ]
+                                    "items": {
+                                        "type": "string",
+                                        "enum": [
+                                            "populationAndSociety",
+                                            "agricultureFisheriesForestryFood",
+                                            "internationalTopics",
+                                            "environment"
+                                        ]
+                                    }
                                 },
                                 "dcat:landingPage": {
                                     "type": ["string", "null"],
