@@ -282,8 +282,11 @@
                                     "description": "Indicates which catalog this dataset belongs to."
                                 },
                                 "prov:wasDerivedFrom": {
-                                    "type": "string",
-                                    "description": "Source from which this dataset was derived."
+                                    "type": "array",
+                                    "description": "Source from which this dataset was derived.",
+				    "items": {
+                                        "type": "string"
+                                    }
                                 },
                                 "bv:geoIdentifier": {
                                     "type": "string",
