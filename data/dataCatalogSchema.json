@@ -248,8 +248,11 @@
                                     "description": "Legal basis for the dataset (as URI)."
                                 },
                                 "bv:businessProcess": {
-                                    "type": "string",
-                                    "description": "Related business process or context."
+                                    "type": "array",
+                                    "description": "Related business process or context.",
+									"items": {
+                                        "type": "string"
+                                    }
                                 },
                                 "bv:retentionPeriod": {
                                     "type": "integer",
