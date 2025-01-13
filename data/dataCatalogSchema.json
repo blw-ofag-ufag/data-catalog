@@ -286,7 +286,7 @@
                                     "type": "string",
                                     "description": "Reference to the series this dataset belongs to."
                                 },
-                                "dcat:distribution": {
+                                "distribution": {
                                     "type": "object",
                                     "description": "Distribution info describing how and where to access the dataset.",
                                     "required": ["metadata", "attributes"],
