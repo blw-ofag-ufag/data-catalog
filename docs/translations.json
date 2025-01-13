@@ -1,26 +1,52 @@
 {
-  "en": {
-    "searchPlaceholder": "Search...",
-    "sortTitle": "Sort by Title",
-    "sortIssued": "Sort by Issued Date",
-    "sortOwner": "Sort by Data Owner"
-  },
-  "de": {
-    "searchPlaceholder": "Suche...",
-    "sortTitle": "Nach Titel sortieren",
-    "sortIssued": "Nach Datum sortieren",
-    "sortOwner": "Nach Eigentümer sortieren"
-  },
-  "fr": {
-    "searchPlaceholder": "Recherche...",
-    "sortTitle": "Trier par Titre",
-    "sortIssued": "Trier par Date",
-    "sortOwner": "Trier par Propriétaire"
-  },
-  "it": {
-    "searchPlaceholder": "Cerca...",
-    "sortTitle": "Ordina per Titolo",
-    "sortIssued": "Ordina per Data",
-    "sortOwner": "Ordina per Proprietario"
+  "index.html": {
+    "title": {
+      "en": "Welcome to the data catalog of the Federal Office for Agriculture",
+      "de": "Willkommen zum Datenkatalog des Bundesamts für Landwirtschaft",
+      "fr": "...",
+      "it": "..."
+    },
+    "keywords": {
+      "en": "Here, you'll be able to find any data set collected by the Federal Office for Agriculture (FOAG). The data itself is published and maintained on this GitHub repository.",
+      "de": "...",
+      "fr": "...",
+      "it": "..."
+    },
+    "searchPlaceholder": {
+      "en": "Search by title, description, issue date or people",
+      "de": "xxx",
+      "fr": "xxx",
+      "it": "xxx"
+    },
+    "sortTitle": {
+      "en": "Sort by title",
+      "de": "Nach Titel sortieren",
+      "fr": "xxx",
+      "it": "xxx"
+    },
+    "sortIssuedAscending": {
+      "en": "Sort by date (ascending)",
+      "de": "Nach Datum sortieren (aufsteigend)",
+      "fr": "xxx",
+      "it": "xxx"
+    },
+    "sortIssuedDescending": {
+      "en": "Sort by date (descending)",
+      "de": "Nach Datum sortieren (absteigend)",
+      "fr": "xxx",
+      "it": "xxx"
+    },
+    "sortOwner": {
+      "en": "Sort by data owner",
+      "de": "xxx",
+      "fr": "xxx",
+      "it": "xxx"
+    },
+    "parameter": {
+      "en": "xxx",
+      "de": "xxx",
+      "fr": "xxx",
+      "it": "xxx"
+    }
   }
 }
