@@ -11,6 +11,7 @@
       <h1>Welcome to the data catalog of the Federal Office for Agriculture</h1>
       <p>Here, you'll be able to find any data set collected by the Federal Office for Agriculture (FOAG). The data itself is published and maintained on <a href="https://github.com/blw-ofag-ufag/data-catalog/blob/main/data/dataCatalog.json">this GitHub repository</a>.</p>
       <div class="controls">
+        
         <input type="text" id="search" placeholder="Search in the title, description, dates, owners or keywords..." />
         <select id="sort-options">
           <option value="title">Sort by Title</option>
@@ -25,6 +26,7 @@
           <option value="it">Italiano</option>
         </select>
       </div>
+      <div id="search-chips-container"></div>
     </header>
   <main id="dataset-container"></main>
   <script src="main.js"></script>

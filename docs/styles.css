@@ -191,3 +191,35 @@ main {
   transform: scale(1.05); /* Slightly enlarge on hover */
   cursor: pointer; /* Change cursor to pointer for interactivity */
 }
+
+#search-chips-container {
+  margin-top: 0.5rem;
+}
+
+.search-chip {
+  display: inline-block;
+  background-color: var(--border-color); /* Purple background for tags */
+  color: var(--primary-text-color); /* White text for contrast */
+  gap: 15px; /* Space between tags */
+  padding: 5px 10px; /* Add spacing inside the tag */
+  font-size: 12px; /* Slightly smaller text */
+  border-radius: 15px; /* Round edges for a badge-like look */
+  font-weight: 600; /* Bold text for better visibility */
+  text-transform: capitalize; /* Capitalize the first letter of each keyword */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px; /* Separate keywords from other info */
+  margin: 5px;
+}
+
+.search-chip.keyword-chip {
+  background-color: var(--border-color); /* Purple background for tags */
+}
+
+.search-chip .remove-btn {
+  background: none;
+  border: none;
+  color: var(--primary-text-color); /* White text for contrast */
+  font-weight: bold;
+  margin-left: 0.1em;
+  cursor: pointer;
+}

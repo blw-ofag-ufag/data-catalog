@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Input with Tags</title>
+  <style>
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid #ccc;
+      padding: 5px;
+      border-radius: 4px;
+      cursor: text;
+    }
+    .tag {
+      background-color: #007BFF;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 3px;
+      margin: 2px;
+      display: flex;
+      align-items: center;
+    }
+    .tag .remove-tag {
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    .tag-input {
+      border: none;
+      flex: 1;
+      padding: 5px;
+      font-size: 14px;
+      min-width: 150px;
+    }
+    .tag-input:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="tag-container" onclick="focusInput()">
+    <input type="text" class="tag-input" id="tag-input" placeholder="Type and press Enter" onkeydown="handleKeyDown(event)">
+  </div>
+
+  <script>
+    const predefinedKeywords = ["JavaScript", "Python", "HTML", "CSS", "React", "Node.js", "Vue", "Angular"];
+    const tagContainer = document.querySelector('.tag-container');
+    const input = document.getElementById('tag-input');
+
+    function createTag(label) {
+      const div = document.createElement('div');
+      div.setAttribute('class', 'tag');
+      div.textContent = label;
+
+      const span = document.createElement('span');
+      span.setAttribute('class', 'remove-tag');
+      span.textContent = '×';
+      span.onclick = () => {
+        tagContainer.removeChild(div);
+      };
+
+      div.appendChild(span);
+      return div;
+    }
+
+    function addTags() {
+      const inputValue = input.value.trim();
+      if (inputValue) {
+        const terms = inputValue.split(',').map(term => term.trim());
+        terms.forEach(term => {
+          if (predefinedKeywords.includes(term) && !isTagPresent(term)) {
+            const tag = createTag(term);
+            tagContainer.insertBefore(tag, input);
+          }
+        });
+        input.value = '';
+      }
+    }
+
+    function isTagPresent(label) {
+      const tags = document.querySelectorAll('.tag');
+      return Array.from(tags).some(tag => tag.textContent.replace('×', '').trim() === label);
+    }
+
+    function handleKeyDown(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        addTags();
+      }
+    }
+
+    function focusInput() {
+      input.focus();
+    }
+  </script>
+</body>
+</html>
