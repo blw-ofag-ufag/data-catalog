@@ -57,7 +57,7 @@ function updateUrlParams() {
   }
 
   keywordChips.forEach(chip => {
-    tokens.push(`#${chip}`);
+    tokens.push(`${chip}`);
   });
 
   const combined = tokens.join(", ");
@@ -125,8 +125,6 @@ function extractHashtagIfFinished() {
   const val = inputEl.value;
 
   // 1) Split by whitespace to get tokens
-  //    e.g. "my milk #soi" => ["my","milk","#soi"]
-  //    if user typed space, we can check the last token
   let tokens = val.split(/\s+/);
 
   if (!tokens.length) return;
@@ -137,29 +135,23 @@ function extractHashtagIfFinished() {
   // If the last token does NOT start with "#", do nothing
   if (!lastToken.startsWith("#")) return;
 
-  // If it DOES start with '#', but is just "#", we skip for now
-  // because user typed "# " but no actual word
+  // If it's just "#" => skip
   if (lastToken.length < 2) return;
 
-  // Example: lastToken="#milk,"
-  // Remove punctuation from end, e.g. comma or period
-  // so "#milk," => "#milk"
+  // Example: "#milk,"
   lastToken = lastToken.replace(/[.,|]+$/, "");
 
-  // Remove the "#", store in chips
+  // Remove the "#"
   const chipWord = lastToken.slice(1).toLowerCase();
   if (!keywordChips.includes(chipWord)) {
     keywordChips.push(chipWord);
   }
 
-  // Now remove the last token from the leftover tokens
-  tokens.pop(); // remove the last item
-
-  // Rebuild leftover text
+  // remove last token from array
+  tokens.pop();
   const leftoverText = tokens.join(" ");
-
-  // Update input
   inputEl.value = leftoverText;
+
   // Re-render chips
   updateSearchChips();
 }
@@ -207,25 +199,42 @@ function applySearchLangSort() {
   renderDatasets(sorted);
 }
 
+/**
+ * - The normal text tokens (from #search) are OR'd among themselves.
+ * - The keyword chips (in `keywordChips`) are AND'd among themselves.
+ * - Final result is AND between the chip match and the normal-text match.
+ *
+ * So a dataset must:
+ *   (1) Match ALL chips in its "dcat:keyword" (AND),
+ *   (2) AND also match at least one text token if any text tokens exist (OR).
+ */
 function getFilteredDatasets(sourceData) {
+  // 1) Parse normal text tokens => OR logic
   const normalText = document.getElementById("search").value.trim();
   const normalTokens = parseNormalTokens(normalText);
 
-  // If no normal tokens + no chips => everything
-  if (normalTokens.length === 0 && keywordChips.length === 0) {
-    return sourceData;
-  }
-
+  // 2) If no normal tokens => no text restriction
+  //   => "text pass" is automatically true
+  //   => else we check if dataset matches any of them (OR).
+  
+  // 3) The chips => must match ALL chips (AND logic).
+  
   return sourceData.filter(dataset => {
-    const matchesNormal = normalTokens.some(tok => matchFullText(tok, dataset));
-
-    const matchesChips = keywordChips.some(chip => {
-      const kwds = dataset.attributes["dcat:keyword"] || [];
-      return kwds.some(k => k.toLowerCase().includes(chip));
+    // A) Must pass the "chips" filter => i.e. has all the chips
+    const hasAllChips = keywordChips.every(chip => {
+      const keywords = dataset.attributes["dcat:keyword"] || [];
+      return keywords.some(k => k.toLowerCase().includes(chip));
     });
+    if (!hasAllChips) return false; // fail early if missing a chip
 
-    // OR logic
-    return matchesNormal || matchesChips;
+    // B) If user typed no normal tokens => automatically pass text filter
+    if (normalTokens.length === 0) {
+      return true;
+    }
+
+    // Otherwise, dataset must match ANY normal token => OR
+    const matchesAnyTextToken = normalTokens.some(tok => matchFullText(tok, dataset));
+    return matchesAnyTextToken;
   });
 }
 
@@ -237,6 +246,12 @@ function parseNormalTokens(str) {
     .filter(x => x.length > 0);
 }
 
+/** 
+ * Checks if 'term' is found in 
+ *   dct:identifier, dct:title, dct:description, bv:dataOwner,
+ *   dcat:keyword, dct:issued
+ * (the normal text fields).
+ */
 function matchFullText(term, dataset) {
   const fields = [
     "dct:identifier",
@@ -361,14 +376,13 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Error fetching data:", err));
 
-  // We do partial text search on input...
+  // We do partial text search on input
   document.getElementById("search").addEventListener("input", () => {
-    // normal text => partial search
     applySearchLangSort();
     updateUrlParams();
   });
 
-  // ...and hashtag detection on keyup, if user pressed space/comma/Enter/Tab
+  // ...and hashtag detection on keyup
   document.getElementById("search").addEventListener("keyup", e => {
     if ([" ", ",", "Enter", "Tab"].includes(e.key)) {
       extractHashtagIfFinished();
