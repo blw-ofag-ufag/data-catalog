@@ -272,6 +272,22 @@ function getSortedDatasets(sourceData) {
  *****************************************************/
 function renderDatasets(data) {
   const container = document.getElementById("dataset-container");
+
+  // Helper function to format the date
+  const formatDate = (dateString) => {
+    if (!dateString) return "N/A";
+    try {
+      const date = new Date(dateString);
+      return new Intl.DateTimeFormat(currentLanguage, { 
+        day: 'numeric', 
+        month: 'long', 
+        year: 'numeric' 
+      }).format(date);
+    } catch (error) {
+      return "Invalid Date";
+    }
+  };
+
   container.innerHTML = data
     .map(dataset => {
       const { metadata, attributes } = dataset;
@@ -294,7 +310,7 @@ function renderDatasets(data) {
           <div class="dataset-info">
             <h3>${attributes["dct:title"][currentLanguage]}</h3>
             <p>${attributes["dct:description"][currentLanguage]}</p>
-            <p><strong>Issued:</strong> ${attributes["dct:issued"] || "N/A"}</p>
+            <p><strong>Issued:</strong> ${formatDate(attributes["dct:issued"])}</p>
             <p><strong>Owner:</strong> ${attributes["bv:dataOwner"] || "N/A"}</p>
             <div class="keywords">${keywordsHTML}</div>
           </div>
