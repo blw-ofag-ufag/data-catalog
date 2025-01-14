@@ -1,98 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search Input with Tags</title>
+  <meta charset="UTF-8" />
+  <title>Dataset Details</title>
+  <!-- Reuse your existing stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Optionally, add detail-specific styles right here -->
   <style>
-    .tag-container {
-      display: flex;
-      flex-wrap: wrap;
-      border: 1px solid #ccc;
-      padding: 5px;
-      border-radius: 4px;
-      cursor: text;
+    /* HERO BANNER */
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 20px;
     }
-    .tag {
-      background-color: #007BFF;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 3px;
-      margin: 2px;
-      display: flex;
-      align-items: center;
+    .hero-overlay {
+      position: absolute;
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
     }
-    .tag .remove-tag {
-      margin-left: 8px;
-      cursor: pointer;
+    .hero-content {
+      position: absolute;
+      bottom: 30px;
+      left: 40px;
+      color: #fff;
     }
-    .tag-input {
-      border: none;
-      flex: 1;
-      padding: 5px;
-      font-size: 14px;
-      min-width: 150px;
+    .hero-content h1 {
+      margin: 0;
+      font-size: 2.5rem;
     }
-    .tag-input:focus {
-      outline: none;
+
+    /* MAIN CONTAINER */
+    #detailsMain {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* HEADINGS & TEXT */
+    #detailsMain h2 {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      color: var(--primary-text-color);
+    }
+    #detailsMain p {
+      color: var(--secondary-text-color);
+      margin: 0.5rem 0;
+    }
+
+    /* METADATA LIST (example) */
+    .metadata-list p strong {
+      color: var(--primary-text-color);
+    }
+
+    /* DISTRIBUTIONS */
+    .distributions-list ul {
+      list-style: disc inside;
+      margin: 0.5rem 0 1.5rem 0;
+    }
+    .distributions-list li {
+      margin-bottom: 0.75rem;
     }
   </style>
 </head>
+
 <body>
-  <div class="tag-container" onclick="focusInput()">
-    <input type="text" class="tag-input" id="tag-input" placeholder="Type and press Enter" onkeydown="handleKeyDown(event)">
+  <!-- The hero banner is placed at the top -->
+  <div class="hero-banner" id="heroBanner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <!-- We'll set <h1> content in JS based on the dataset's title -->
+      <h1 id="datasetTitle">Loading...</h1>
+    </div>
   </div>
 
-  <script>
-    const predefinedKeywords = ["JavaScript", "Python", "HTML", "CSS", "React", "Node.js", "Vue", "Angular"];
-    const tagContainer = document.querySelector('.tag-container');
-    const input = document.getElementById('tag-input');
+  <!-- Main content area for details -->
+  <main id="detailsMain">
+    <!-- We will fill these sections via JS -->
+    <section id="descriptionSection"></section>
+    <section id="metadataSection"></section>
+    <section id="keywordsSection"></section>
+    <section id="distributionsSection"></section>
+  </main>
 
-    function createTag(label) {
-      const div = document.createElement('div');
-      div.setAttribute('class', 'tag');
-      div.textContent = label;
-
-      const span = document.createElement('span');
-      span.setAttribute('class', 'remove-tag');
-      span.textContent = '×';
-      span.onclick = () => {
-        tagContainer.removeChild(div);
-      };
-
-      div.appendChild(span);
-      return div;
-    }
-
-    function addTags() {
-      const inputValue = input.value.trim();
-      if (inputValue) {
-        const terms = inputValue.split(',').map(term => term.trim());
-        terms.forEach(term => {
-          if (predefinedKeywords.includes(term) && !isTagPresent(term)) {
-            const tag = createTag(term);
-            tagContainer.insertBefore(tag, input);
-          }
-        });
-        input.value = '';
-      }
-    }
-
-    function isTagPresent(label) {
-      const tags = document.querySelectorAll('.tag');
-      return Array.from(tags).some(tag => tag.textContent.replace('×', '').trim() === label);
-    }
-
-    function handleKeyDown(event) {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        addTags();
-      }
-    }
-
-    function focusInput() {
-      input.focus();
-    }
-  </script>
+  <script src="details.js"></script>
 </body>
 </html>
