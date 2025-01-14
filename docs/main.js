@@ -271,6 +271,7 @@ function getSortedDatasets(sourceData) {
  *  6) Rendering the Dataset Tiles
  *****************************************************/
 function renderDatasets(data) {
+  
   const container = document.getElementById("dataset-container");
 
   // Helper function to format the date
@@ -324,7 +325,7 @@ function renderDatasets(data) {
  *  7) Clickable Keyword in Tiles => add as Chip
  *****************************************************/
 function addKeywordChip(keyword) {
-  const normalized = keyword.trim().toLowerCase();
+  const normalized = keyword.trim().toLowerCase();  
   if (!keywordChips.includes(normalized)) {
     keywordChips.push(normalized);
     updateSearchChips();
@@ -344,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch(dataUrl)
     .then(res => res.json())
     .then(data => {
-      datasets = data.flatMap(d => Object.values(d.dataset));
+      datasets = data.datasets;
       applySearchLangSort();
       updateSearchChips();
     })

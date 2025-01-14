@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch(dataUrl)
     .then(res => res.json())
     .then(data => {
-      // Flatten all datasets
-      const allDatasets = data.flatMap(d => Object.values(d.dataset));
+      // The new structure has "datasets" as an array
+      const allDatasets = data.datasets;
 
       // Locate the matching dataset by ID
       const dataset = allDatasets.find(ds => {
@@ -47,13 +47,12 @@ function renderNotFound(datasetId) {
   const banner = document.getElementById("heroBanner");
   banner.style.background = "var(--secondary-background-color)";
 
+  document.getElementById("datasetID").textContent = "";
   document.getElementById("datasetTitle").textContent = "Dataset Not Found";
+  document.getElementById("datasetDescription").textContent =
+    `No dataset found with ID ${datasetId}`;
 
-  const main = document.getElementById("detailsMain");
-  main.innerHTML = `
-    <h2>404 - Not Found</h2>
-    <p>No dataset found with ID <strong>${datasetId}</strong>.</p>
-  `;
+  // or you could fill the main with a bigger message
 }
 
 /**
@@ -63,13 +62,10 @@ function renderErrorMessage() {
   const banner = document.getElementById("heroBanner");
   banner.style.background = "var(--secondary-background-color)";
 
+  document.getElementById("datasetID").textContent = "";
   document.getElementById("datasetTitle").textContent = "Error";
-
-  const main = document.getElementById("detailsMain");
-  main.innerHTML = `
-    <h2>Could Not Load Dataset</h2>
-    <p>Check the console for more information.</p>
-  `;
+  document.getElementById("datasetDescription").textContent =
+    "Could not load dataset. Check console for more information.";
 }
 
 /**
@@ -78,80 +74,113 @@ function renderErrorMessage() {
 function renderFullPageDetails(dataset, lang) {
   const { metadata, attributes } = dataset;
 
-  // 1) Hero Banner => set background image + h1 title
+  // 1) Hero Banner => set background image
   const heroBanner = document.getElementById("heroBanner");
   heroBanner.style.backgroundImage = `url('${metadata.imageURL}')`;
+
+  // 2) ID (monospace), Title (H1), Description
+  const datasetIDEl = document.getElementById("datasetID");
+  datasetIDEl.textContent = attributes["dct:identifier"] || "";
 
   const titleEl = document.getElementById("datasetTitle");
   const datasetTitle = getLocalized(attributes["dct:title"], lang);
   titleEl.textContent = datasetTitle || "Untitled Dataset";
 
-  // 2) Fill out the rest
-  renderDescription(attributes, lang);
+  const descEl = document.getElementById("datasetDescription");
+  const desc = getLocalized(attributes["dct:description"], lang);
+  descEl.textContent = desc;
+
+  // 3) Keywords
+  const keywordsContainer = document.getElementById("keywordsContainer");
+  const keywords = attributes["dcat:keyword"] || [];
+  keywordsContainer.innerHTML = ""; // clear if any
+  keywords.forEach(kw => {
+    const span = document.createElement("span");
+    span.classList.add("keyword-chip"); // your tile-based styling
+    span.textContent = kw; // or capitalize if you want
+    keywordsContainer.appendChild(span);
+  });
+
+  // 4) Metadata => re-use the logic for the "common" fields
+  // Then we also show *all* other leftover fields
   renderMetadata(attributes, lang);
-  renderKeywords(attributes);
+
+  // 5) Distributions
   renderDistributions(attributes, lang);
 }
 
 /**
- * Renders the "Description" section
- */
-function renderDescription(attributes, lang) {
-  const section = document.getElementById("descriptionSection");
-
-  const desc = getLocalized(attributes["dct:description"], lang);
-  section.innerHTML = `
-    <h2>Description</h2>
-    <p>${desc}</p>
-  `;
-}
-
-/**
- * Renders the metadata in a section (e.g., issued, publisher, contact)
+ * Renders the metadata (common fields + leftover fields)
  */
 function renderMetadata(attributes, lang) {
   const section = document.getElementById("metadataSection");
+  section.innerHTML = `<h2>Metadata</h2><div class="metadata-list" id="allMetadata"></div>`;
 
-  // Some sample fields
+  const allMetaDiv = document.getElementById("allMetadata");
+
+  // Prepare a list of "already displayed" fields so we skip them.
+  const displayed = [
+    "dct:identifier",
+    "dct:title",
+    "dct:description",
+    "dcat:keyword",
+    "dcat:distribution" 
+    // We'll skip these from the "all leftover" loop
+  ];
+
+  // Show the standard fields first
   const issued = attributes["dct:issued"] || "N/A";
   const accessRights = attributes["dct:accessRights"] || "N/A";
   const publisher = attributes["dct:publisher"] || "N/A";
   const contact = attributes["dcat:contactPoint"] || {};
   const owner = attributes["bv:dataOwner"] || "N/A";
 
-  section.innerHTML = `
-    <h2>Metadata</h2>
-    <div class="metadata-list">
-      <p><strong>Issued:</strong> ${issued}</p>
-      <p><strong>Owner:</strong> ${owner}</p>
-      <p><strong>Publisher:</strong> ${publisher}</p>
-      <p><strong>Access Rights:</strong> ${accessRights}</p>
-      <p><strong>Contact:</strong> ${contact.name || "N/A"} (${contact.email || "N/A"})</p>
-    </div>
+  let html = `
+    <p><strong>Issued:</strong> ${issued}</p>
+    <p><strong>Owner:</strong> ${owner}</p>
+    <p><strong>Publisher:</strong> ${publisher}</p>
+    <p><strong>Access Rights:</strong> ${accessRights}</p>
+    <p><strong>Contact:</strong> ${contact.name || "N/A"} (${contact.email || "N/A"})</p>
   `;
+
+  displayed.push("dct:issued","dct:accessRights","dct:publisher","bv:dataOwner","dcat:contactPoint");
+
+  // Now let's show leftover fields (i.e. all attributes not in "displayed")
+  for (const key of Object.keys(attributes)) {
+    if (displayed.includes(key)) continue;
+
+    const val = attributes[key];
+    // Could be string, array, or object
+    let valStr;
+
+    if (Array.isArray(val)) {
+      // e.g. "bv:legalBasis": ["...", "..."]
+      valStr = val.join(", ");
+    } else if (typeof val === "object") {
+      // If it’s an object with subfields, we can JSON-stringify or skip
+      valStr = JSON.stringify(val);
+    } else {
+      valStr = String(val);
+    }
+
+    if (valStr === "") continue; // skip empty
+
+    html += `<p><strong>${key}:</strong> ${valStr}</p>`;
+  }
+
+  allMetaDiv.innerHTML = html;
 }
 
 /**
- * Renders the keywords in a section
- */
-function renderKeywords(attributes) {
-  const section = document.getElementById("keywordsSection");
-  const keywords = attributes["dcat:keyword"] || [];
-
-  section.innerHTML = `
-    <h2>Keywords</h2>
-    <p>${keywords.join(", ") || "None"}</p>
-  `;
-}
-
-/**
- * Renders distributions (if any) in a section
+ * Renders distributions (if any) in a bullet list:
+ *   - **Name**: Description <download_link>
+ * with a small download icon.
  */
 function renderDistributions(attributes, lang) {
   const section = document.getElementById("distributionsSection");
   const distributions = attributes["dcat:distribution"] || {};
 
-  // Build a list of <li> items
+  // Build bullet list
   const distList = Object.values(distributions)
     .map(dist => {
       const distTitle = getLocalized(dist.attributes["dct:title"], lang);
@@ -162,11 +191,15 @@ function renderDistributions(attributes, lang) {
         dist.attributes["dcat:accessURL"] ||
         "#";
 
+      // Example bullet:
+      //  - **Annual Milk Prices**: This dataset ... <download_icon>
+      // We'll incorporate the "format" if you wish, or skip it
       return `
         <li>
-          <strong>${distTitle} (${distFormat})</strong><br />
-          <em>${distDesc}</em><br />
-          <a href="${distURL}" target="_blank">Download</a>
+          - <strong>${distTitle}</strong>: ${distDesc}
+          <a href="${distURL}" target="_blank" class="download-icon" title="Download">
+            ⬇
+          </a>
         </li>
       `;
     })

@@ -6,86 +6,118 @@
   <!-- Reuse your existing stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Optionally, add detail-specific styles right here -->
+  <!-- Optionally, add detail-specific styles -->
   <style>
-    /* HERO BANNER */
-    .hero-banner {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      background-size: cover;
-      background-position: center;
-      margin-bottom: 20px;
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 0; 
-      left: 0; 
-      right: 0; 
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
-    }
-    .hero-content {
-      position: absolute;
-      bottom: 30px;
-      left: 40px;
-      color: #fff;
-    }
-    .hero-content h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
+/* 1) The hero banner is just a wide block with an image. */
+#heroBanner {
+  width: 100%;
+  height: 300px; /* pick your height */
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 30px;
+}
 
-    /* MAIN CONTAINER */
-    #detailsMain {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+/* 2) The container is a normal block layout, no flex or grid. */
+#detailsMain {
+  display: block;
+  max-width: 1200px; /* or your preference */
+  margin: 0 auto;
+  padding: 20px;
+}
 
-    /* HEADINGS & TEXT */
-    #detailsMain h2 {
-      margin-top: 1.5rem;
-      font-size: 1.5rem;
-      color: var(--primary-text-color);
-    }
-    #detailsMain p {
-      color: var(--secondary-text-color);
-      margin: 0.5rem 0;
-    }
+/* 3) ID above the title, in monospace. */
+.dataset-id {
+  font-family: monospace;
+  font-size: 14px;
+  color: var(--secondary-text-color);
+  margin-bottom: 5px;
+}
 
-    /* METADATA LIST (example) */
-    .metadata-list p strong {
-      color: var(--primary-text-color);
-    }
+/* 4) Title is an H1 below the ID. */
+.dataset-title {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--primary-text-color);
+}
 
-    /* DISTRIBUTIONS */
-    .distributions-list ul {
-      list-style: disc inside;
-      margin: 0.5rem 0 1.5rem 0;
-    }
-    .distributions-list li {
-      margin-bottom: 0.75rem;
-    }
+/* 5) Description is slightly bigger text. */
+.dataset-description {
+  font-size: 16px; /* or 15–18 as you prefer */
+  line-height: 1.4;
+  margin: 15px 0 20px; 
+  color: var(--secondary-text-color);
+}
+
+/* 6) Keywords in one row. */
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.keywords span {
+  background-color: var(--border-color);
+  color: var(--primary-text-color);
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 15px;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+/* 7) Standard block sections for metadata & distributions. */
+#metadataSection {
+  margin-bottom: 30px; 
+}
+
+#metadataSection h2,
+#distributionsSection h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: var(--primary-text-color);
+}
+
+/* 8) Display leftover fields as normal paragraphs. */
+.metadata-list p {
+  margin: 0.2rem 0;
+  color: var(--secondary-text-color);
+}
+.metadata-list p strong {
+  color: var(--primary-text-color);
+}
+
+/* 9) The distributions list is normal block bullets. */
+.distributions-list ul {
+  list-style: none;
+  padding: 0;
+}
+.distributions-list li {
+  margin-bottom: 0.75rem;
+}
+
   </style>
 </head>
 
 <body>
-  <!-- The hero banner is placed at the top -->
-  <div class="hero-banner" id="heroBanner">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <!-- We'll set <h1> content in JS based on the dataset's title -->
-      <h1 id="datasetTitle">Loading...</h1>
-    </div>
-  </div>
 
-  <!-- Main content area for details -->
+  <div id="heroBanner"></div>
+
   <main id="detailsMain">
-    <!-- We will fill these sections via JS -->
-    <section id="descriptionSection"></section>
+    <!-- Dataset ID (monospace) above the H1 -->
+    <p class="dataset-id" id="datasetID"></p>
+
+    <h1 class="dataset-title" id="datasetTitle"></h1>
+
+    <!-- Description below the title -->
+    <p class="dataset-description" id="datasetDescription"></p>
+    
+    <!-- Keywords in a normal row below the description -->
+    <div class="keywords" id="keywordsContainer"></div>
+
+    <!-- Then Metadata and Distributions in normal block sections -->
     <section id="metadataSection"></section>
-    <section id="keywordsSection"></section>
     <section id="distributionsSection"></section>
   </main>
 
