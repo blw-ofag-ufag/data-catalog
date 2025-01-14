@@ -216,19 +216,14 @@
                                         "opendata.swiss": {
                                             "type": "boolean"
                                         },
-                                        "attributes": {
-                                            "type": "object",
-                                            "properties": {
-                                                "dct:identifier": {
-                                                    "type": "string",
-                                                    "description": "Identifier for the OGD publication"
-                                                },
-                                                "dcat:accessURL": {
-                                                    "type": "string",
-                                                    "format": "uri",
-                                                    "description": "URL on opendata.swiss"
-                                                }
-                                            }
+					"dct:identifier": {
+                                            "type": "string",
+                                            "description": "Identifier for the OGD publication"
+                                        },
+                                        "dcat:accessURL": {
+                                            "type": "string",
+                                            "format": "uri",
+                                            "description": "URL on opendata.swiss"
                                         }
                                     }
                                 },
