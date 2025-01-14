@@ -210,18 +210,35 @@
                                     "description": "Indicates if this dataset has archival value."
                                 },
                                 "bv:ogdPublication": {
-                                    "type": "string",
-                                    "description": "Reference to the Open Government Data publication ID."
+                                    "type": "object",
+                                    "description": "Reference to the Open Government Data publication ID.",
+                                    "properties": {
+                                        "opendata.swiss": {
+                                            "type": "boolean"
+                                        },
+					"dct:identifier": {
+                                            "type": "string",
+                                            "description": "Identifier for the OGD publication"
+                                        },
+                                        "dcat:accessURL": {
+                                            "type": "string",
+                                            "format": "uri",
+                                            "description": "URL on opendata.swiss"
+                                        }
+                                    }
                                 },
                                 "dcat:themeTaxonomy": {
-                                    "type": "string",
+                                    "type": "array",
                                     "description": "Reference or URL to a theme taxonomy classification.",
-                                    "enum": [
-                                        "populationAndSociety",
-                                        "agricultureFisheriesForestryFood",
-                                        "internationalTopics",
-                                        "environment"
-                                    ]
+                                    "items": {
+                                        "type": "string",
+                                        "enum": [
+                                            "populationAndSociety",
+                                            "agricultureFisheriesForestryFood",
+                                            "internationalTopics",
+                                            "environment"
+                                        ]
+                                    }
                                 },
                                 "dcat:landingPage": {
                                     "type": ["string", "null"],
@@ -245,8 +262,11 @@
                                     "description": "Legal basis for the dataset (as URI)."
                                 },
                                 "bv:businessProcess": {
-                                    "type": "string",
-                                    "description": "Related business process or context."
+                                    "type": "array",
+                                    "description": "Related business process or context.",
+									"items": {
+                                        "type": "string"
+                                    }
                                 },
                                 "bv:retentionPeriod": {
                                     "type": "integer",
@@ -257,17 +277,23 @@
                                     "description": "Indicates which catalog this dataset belongs to."
                                 },
                                 "prov:wasDerivedFrom": {
-                                    "type": "string",
-                                    "description": "Source from which this dataset was derived."
+                                    "type": "array",
+                                    "description": "Source from which this dataset was derived.",
+				    "items": {
+                                        "type": "string"
+                                    }
                                 },
                                 "bv:geoIdentifier": {
                                     "type": "string",
                                     "description": "Geographical identifier (e.g., BFS numbers)."
                                 },
                                 "foaf:page": {
-                                    "type": ["string", "null"],
-                                    "format": "uri",
-                                    "description": "Any related page or resource."
+                                    "type": "array",
+                                    "description": "Any related page or resource.",
+				    "items": {
+                                        "type": ["string", "null"],
+					"format": "uri"
+                                    }
                                 },
                                 "bv:comments": {
                                     "type": "string",
@@ -541,8 +567,12 @@
                                     }
                                 },
                                 "foaf:page": {
-                                    "type": "string",
-                                    "description": "Any documentation or reference page related to the series."
+                                    "type": "array",
+                                    "description": "Any related page or resource.",
+				    "items": {
+                                        "type": ["string", "null"],
+					"format": "uri"
+                                    }
                                 },
                                 "bv:comment": {
                                     "type": "string",
