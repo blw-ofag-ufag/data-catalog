@@ -1,6 +1,7 @@
 # 🌟 Proof-of-concept data catalog
 
 Welcome to the **proof-of-concept data catalog** repository! This project is a prototype for organizing and presenting a data catalog in a structured and user-friendly way.
+At the moment, the resulting frontend is published via Github Pages and can be found here: https://blw-ofag-ufag.github.io/data-catalog/
 
 ## 📁 Repository structure
 
