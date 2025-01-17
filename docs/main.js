@@ -2,7 +2,7 @@
  *  Global configuration & variables
  *****************************************************/
 const dataUrl =
-  "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/data/dataCatalog.json";
+  "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/data/dataCatalogOld.json";
 
 let datasets = [];
 let currentLanguage = "en";
