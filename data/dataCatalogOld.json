@@ -21,18 +21,18 @@
                   "en": "This dataset contains the annual milk prices for various milk categories, such as dairy milk, organic milk, cheese milk, etc., starting from 2002."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-FBMA",
+              "dcterms:publisher": "FOAG-FBMA",
               "dcat:contactPoint": {
                   "name": "Monika Muster",
                   "email": "monika.muster@blw.admin.ch"
               },
-              "dct:issued": "2024-07-03",
+              "dcterms:issued": "2024-07-03",
               "dcat:keyword": [
                   "milk",
                   "market"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2024-05-07",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -58,8 +58,8 @@
               "bv:ogdPublication": "F_MilkDairyProducts_Consumption__Price_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://milch.ch/milkPrices",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_1",
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_5_a"
@@ -84,8 +84,8 @@
                           "dcterms:identifier": "FOAG-D00001-1",
                           "dcat:accessURL": "https://milch.ch/milkPrices/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2024-11-07",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2024-11-07T10:11:55",
                           "dcat:downloadURL": "https://milch.ch/milkPrices/data.csv",
                           "dcterms:title": {
                               "de": "Jährliche Milchpreise",
@@ -99,8 +99,8 @@
                               "it": "Questo dataset contiene i prezzi annuali del latte per diverse categorie di latte, come latte da consumo, latte biologico, latte da caseificio, ecc., a partire dal 2002.",
                               "en": "This dataset contains the annual milk prices for various milk categories, such as dairy milk, organic milk, cheese milk, etc., starting from 2002."
                           },
-                          "dct:conformsTo": "https://milkschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://milkschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Milk prices are collected on the first working day of each month. Milk produced in the Alps is only accounted for starting in October.",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -115,8 +115,8 @@
                           "dcterms:identifier": "FOAG-D00001-2",
                           "dcat:accessURL": "https://milch.ch/milkPrices/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2024-11-07",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2024-11-07T10:11:55",
                           "dcat:downloadURL": "https://milch.ch/milkPrices/data.json",
                           "dcterms:title": {
                               "de": "Jährliche Milchpreise",
@@ -130,8 +130,8 @@
                               "it": "Questo dataset contiene i prezzi annuali del latte per diverse categorie di latte, come latte da consumo, latte biologico, latte da caseificio, ecc., a partire dal 2002.",
                               "en": "This dataset contains the annual milk prices for various milk categories, such as dairy milk, organic milk, cheese milk, etc., starting from 2002."
                           },
-                          "dct:conformsTo": "https://milkschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://milkschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Milk prices are collected on the first working day of each month. Milk produced in the Alps is only accounted for starting in October.",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -160,18 +160,18 @@
                   "en": "This dataset contains estimates of nitrogen losses on farms (e.g., emissions, leaching)."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-ENV",
+              "dcterms:publisher": "FOAG-ENV",
               "dcat:contactPoint": {
                   "name": "Hans Beispiel",
                   "email": "hans.beispiel@blw.admin.ch"
               },
-              "dct:issued": "2023-01-04",
+              "dcterms:issued": "2023-01-04",
               "dcat:keyword": [
                   "nitrogen",
                   "environment"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2025-01-05",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -197,8 +197,8 @@
               "bv:ogdPublication": "F_Environment_Nitrogen_Losses_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://environment.ch/nitrogenLosses",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_2",
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_3"
@@ -223,8 +223,8 @@
                           "dcterms:identifier": "FOAG-D00002-1",
                           "dcat:accessURL": "https://environment.ch/nitrogenLosses/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2025-01-05",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://environment.ch/nitrogenLosses/data.csv",
                           "dcterms:title": {
                               "de": "Stickstoffverluste in der Landwirtschaft (CSV)",
@@ -238,8 +238,8 @@
                               "it": "Questo dataset contiene stime delle perdite di azoto nelle aziende agricole.",
                               "en": "This dataset contains estimates of nitrogen losses on farms."
                           },
-                          "dct:conformsTo": "https://nitrogenschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://nitrogenschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Dummy comment about nitrogen losses CSV",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -254,8 +254,8 @@
                           "dcterms:identifier": "FOAG-D00002-2",
                           "dcat:accessURL": "https://environment.ch/nitrogenLosses/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2025-01-05",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://environment.ch/nitrogenLosses/data.json",
                           "dcterms:title": {
                               "de": "Stickstoffverluste in der Landwirtschaft (JSON)",
@@ -269,8 +269,8 @@
                               "it": "Questo dataset contiene stime delle perdite di azoto nelle aziende agricole.",
                               "en": "This dataset contains estimates of nitrogen losses on farms."
                           },
-                          "dct:conformsTo": "https://nitrogenschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://nitrogenschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Dummy comment about nitrogen losses JSON",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -299,19 +299,19 @@
                   "en": "This dataset contains information on farm sizes, land use, and livestock numbers."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-STRUCT",
+              "dcterms:publisher": "FOAG-STRUCT",
               "dcat:contactPoint": {
                   "name": "Fritz Mustermann",
                   "email": "fritz.mustermann@blw.admin.ch"
               },
-              "dct:issued": "2022-05-23",
+              "dcterms:issued": "2022-05-23",
               "dcat:keyword": [
                   "structure",
                   "farm size",
                   "livestock"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2025-01-08",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -337,8 +337,8 @@
               "bv:ogdPublication": "F_Structure_FarmSize_Livestock_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://structure.ch/farmData",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_10"
               ],
@@ -362,8 +362,8 @@
                           "dcterms:identifier": "FOAG-D00003-1",
                           "dcat:accessURL": "https://structure.ch/farmData/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2025-01-08",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://structure.ch/farmData/data.csv",
                           "dcterms:title": {
                               "de": "Strukturdaten der Landwirtschaft (CSV)",
@@ -377,8 +377,8 @@
                               "it": "Informazioni sulle dimensioni delle aziende, l'uso del suolo e i capi di bestiame.",
                               "en": "Information on farm sizes, land use, and livestock numbers."
                           },
-                          "dct:conformsTo": "https://structureschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://structureschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about structural data (CSV).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -393,8 +393,8 @@
                           "dcterms:identifier": "FOAG-D00003-2",
                           "dcat:accessURL": "https://structure.ch/farmData/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2025-01-08",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://structure.ch/farmData/data.json",
                           "dcterms:title": {
                               "de": "Strukturdaten der Landwirtschaft (JSON)",
@@ -408,8 +408,8 @@
                               "it": "Informazioni sulle dimensioni delle aziende, l'uso del suolo e i capi di bestiame.",
                               "en": "Information on farm sizes, land use, and livestock numbers."
                           },
-                          "dct:conformsTo": "https://structureschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://structureschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about structural data (JSON).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -438,19 +438,19 @@
                   "en": "This dataset contains information on income, employment, and cost structures in agriculture. It was collected as part of the Agroscope study 2023.234 and includes a sample size of 2340 farms."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-SEC",
+              "dcterms:publisher": "FOAG-SEC",
               "dcat:contactPoint": {
                   "name": "Julia Musterfrau",
                   "email": "julia.musterfrau@blw.admin.ch"
               },
-              "dct:issued": null,
+              "dcterms:issued": null,
               "dcat:keyword": [
                   "income",
                   "employment",
                   "cost structure"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2025-01-09",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -471,8 +471,8 @@
               "bv:ogdPublication": "F_SocioEconomic_Incomes_Employment_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://socioecon.ch/data",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_11"
               ],
@@ -496,8 +496,8 @@
                           "dcterms:identifier": "FOAG-D00004-1",
                           "dcat:accessURL": "https://socioecon.ch/data/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2025-01-09",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://socioecon.ch/data/data.csv",
                           "dcterms:title": {
                               "de": "Sozioökonomische Daten im Agrarbereich (CSV)",
@@ -511,8 +511,8 @@
                               "it": "Informazioni su redditi, occupazione e strutture dei costi nell'agricoltura.",
                               "en": "Information on income, employment, and cost structures in agriculture."
                           },
-                          "dct:conformsTo": "https://socioeconschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://socioeconschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about socio-economic data (CSV)",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -527,8 +527,8 @@
                           "dcterms:identifier": "FOAG-D00004-2",
                           "dcat:accessURL": "https://socioecon.ch/data/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2025-01-09",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://socioecon.ch/data/data.json",
                           "dcterms:title": {
                               "de": "Sozioökonomische Daten im Agrarbereich (JSON)",
@@ -542,8 +542,8 @@
                               "it": "Informazioni su redditi, occupazione e strutture dei costi nell'agricoltura.",
                               "en": "Information on income, employment, and cost structures in agriculture."
                           },
-                          "dct:conformsTo": "https://socioeconschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://socioeconschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about socio-economic data (JSON).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -572,18 +572,18 @@
                   "en": "Data on the use of plant protection products in various crops and regions."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-PPP",
+              "dcterms:publisher": "FOAG-PPP",
               "dcat:contactPoint": {
                   "name": "Monika Muster",
                   "email": "monika.muster@blw.admin.ch"
               },
-              "dct:issued": "2025-01-10",
+              "dcterms:issued": "2025-01-10",
               "dcat:keyword": [
                   "environment",
                   "market"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2025-01-10",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -604,8 +604,8 @@
               "bv:ogdPublication": "F_PlantProtection_Usage_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://plantprotection.ch/data",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_4"
               ],
@@ -629,8 +629,8 @@
                           "dcterms:identifier": "FOAG-D00005-1",
                           "dcat:accessURL": "https://plantprotection.ch/data/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://plantprotection.ch/data/data.csv",
                           "dcterms:title": {
                               "de": "Pflanzenschutzmittel-Einsatz (CSV)",
@@ -644,8 +644,8 @@
                               "it": "Dati sull'uso di prodotti fitosanitari.",
                               "en": "Data on the use of plant protection products."
                           },
-                          "dct:conformsTo": "https://plantprotectionschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://plantprotectionschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about plant protection products (CSV).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -659,8 +659,8 @@
                           "dcterms:identifier": "FOAG-D00005-2",
                           "dcat:accessURL": "https://plantprotection.ch/data/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://plantprotection.ch/data/data.json",
                           "dcterms:title": {
                               "de": "Pflanzenschutzmittel-Einsatz (JSON)",
@@ -674,8 +674,8 @@
                               "it": "Dati sull'uso di prodotti fitosanitari.",
                               "en": "Data on the use of plant protection products."
                           },
-                          "dct:conformsTo": "https://plantprotectionschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://plantprotectionschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about plant protection products (JSON).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -704,18 +704,18 @@
                   "en": "Statistics on yields of various cereals (wheat, barley, rye, etc.)."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-GRAIN",
+              "dcterms:publisher": "FOAG-GRAIN",
               "dcat:contactPoint": {
                   "name": "Hans Beispiel",
                   "email": "hans.beispiel@blw.admin.ch"
               },
-              "dct:issued": "2025-01-09",
+              "dcterms:issued": "2025-01-09",
               "dcat:keyword": [
                   "market",
                   "structure"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2025-01-10",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -741,8 +741,8 @@
               "bv:ogdPublication": "F_Grain_Yield_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://cereals.ch/yields",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_6"
               ],
@@ -766,8 +766,8 @@
                           "dcterms:identifier": "FOAG-D00006-1",
                           "dcat:accessURL": "https://cereals.ch/yields/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://cereals.ch/yields/data.csv",
                           "dcterms:title": {
                               "de": "Getreideertragsdaten (CSV)",
@@ -781,8 +781,8 @@
                               "it": "Rese di frumento, orzo, segale, ecc.",
                               "en": "Yields of wheat, barley, rye, etc."
                           },
-                          "dct:conformsTo": "https://grainproductionschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://grainproductionschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about cereal yields (CSV).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -796,8 +796,8 @@
                           "dcterms:identifier": "FOAG-D00006-2",
                           "dcat:accessURL": "https://cereals.ch/yields/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://cereals.ch/yields/data.json",
                           "dcterms:title": {
                               "de": "Getreideertragsdaten (JSON)",
@@ -811,8 +811,8 @@
                               "it": "Rese di frumento, orzo, segale, ecc.",
                               "en": "Yields of wheat, barley, rye, etc."
                           },
-                          "dct:conformsTo": "https://grainproductionschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://grainproductionschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about cereal yields (JSON).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -841,18 +841,18 @@
                   "en": "Information on pastures, livestock, and production in alpine regions."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-ALP",
+              "dcterms:publisher": "FOAG-ALP",
               "dcat:contactPoint": {
                   "name": "Julia Musterfrau",
                   "email": "julia.musterfrau@blw.admin.ch"
               },
-              "dct:issued": "2025-01-08",
+              "dcterms:issued": "2025-01-08",
               "dcat:keyword": [
                   "livestock",
                   "milk"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2025-01-10",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -878,8 +878,8 @@
               "bv:ogdPublication": "F_Alp_Pastures_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://alpfarming.ch/data",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_7"
               ],
@@ -903,8 +903,8 @@
                           "dcterms:identifier": "FOAG-D00007-1",
                           "dcat:accessURL": "https://alpfarming.ch/data/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://alpfarming.ch/data/data.csv",
                           "dcterms:title": {
                               "de": "Daten zur Alpbewirtschaftung (CSV)",
@@ -918,8 +918,8 @@
                               "it": "Pascoli, bestiame, quantità prodotte.",
                               "en": "Pastures, livestock, production amounts."
                           },
-                          "dct:conformsTo": "https://alpineschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://alpineschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about alpine farming (CSV).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -933,8 +933,8 @@
                           "dcterms:identifier": "FOAG-D00007-2",
                           "dcat:accessURL": "https://alpfarming.ch/data/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://alpfarming.ch/data/data.json",
                           "dcterms:title": {
                               "de": "Daten zur Alpbewirtschaftung (JSON)",
@@ -948,8 +948,8 @@
                               "it": "Pascoli, bestiame, quantità prodotte.",
                               "en": "Pastures, livestock, production amounts."
                           },
-                          "dct:conformsTo": "https://alpineschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://alpineschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about alpine farming (JSON).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -978,18 +978,18 @@
                   "en": "Information on training programs, research focus areas, and publications."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-EDU",
+              "dcterms:publisher": "FOAG-EDU",
               "dcat:contactPoint": {
                   "name": "Fritz Mustermann",
                   "email": "fritz.mustermann@blw.admin.ch"
               },
-              "dct:issued": "2025-01-05",
+              "dcterms:issued": "2025-01-05",
               "dcat:keyword": [
                   "employment",
                   "market"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2025-01-10",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -1010,8 +1010,8 @@
               "bv:ogdPublication": "F_Education_Research_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://edu-research.ch/data",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_12"
               ],
@@ -1037,8 +1037,8 @@
                           "dcterms:identifier": "FOAG-D00008-1",
                           "dcat:accessURL": "https://edu-research.ch/data/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://edu-research.ch/data/data.csv",
                           "dcterms:title": {
                               "de": "Bildungs- und Forschungsdaten (CSV)",
@@ -1052,8 +1052,8 @@
                               "it": "Offerte formative, aree di ricerca e pubblicazioni.",
                               "en": "Training programs, research focus areas, publications."
                           },
-                          "dct:conformsTo": "https://agrieduschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://agrieduschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -1067,8 +1067,8 @@
                           "dcterms:identifier": "FOAG-D00008-2",
                           "dcat:accessURL": "https://edu-research.ch/data/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://edu-research.ch/data/data.json",
                           "dcterms:title": {
                               "de": "Bildungs- und Forschungsdaten (JSON)",
@@ -1082,8 +1082,8 @@
                               "it": "Offerte formative, aree di ricerca e pubblicazioni.",
                               "en": "Training programs, research focus areas, publications."
                           },
-                          "dct:conformsTo": "https://agrieduschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://agrieduschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about education and research (JSON).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -1112,18 +1112,18 @@
                   "en": "Overview of digital technologies such as sensor networks or precision agriculture in field crop operations."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-DIGI",
+              "dcterms:publisher": "FOAG-DIGI",
               "dcat:contactPoint": {
                   "name": "Hans Beispiel",
                   "email": "hans.beispiel@blw.admin.ch"
               },
-              "dct:issued": "2025-01-01",
+              "dcterms:issued": "2025-01-01",
               "dcat:keyword": [
                   "market",
                   "employment"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2025-01-10",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -1149,8 +1149,8 @@
               "bv:ogdPublication": "F_Digitization_FieldCrops_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://digitalfarming.ch/data",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_8"
               ],
@@ -1174,8 +1174,8 @@
                           "dcterms:identifier": "FOAG-D00009-1",
                           "dcat:accessURL": "https://digitalfarming.ch/data/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://digitalfarming.ch/data/data.csv",
                           "dcterms:title": {
                               "de": "Digitalisierung im Ackerbau (CSV)",
@@ -1189,8 +1189,8 @@
                               "it": "Sensori, agricoltura di precisione, automazione.",
                               "en": "Sensors, precision agriculture, automation."
                           },
-                          "dct:conformsTo": "https://digitalfarmingchema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://digitalfarmingchema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about digital technologies (CSV).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -1204,8 +1204,8 @@
                           "dcterms:identifier": "FOAG-D00009-2",
                           "dcat:accessURL": "https://digitalfarming.ch/data/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://digitalfarming.ch/data/data.json",
                           "dcterms:title": {
                               "de": "Digitalisierung im Ackerbau (JSON)",
@@ -1219,8 +1219,8 @@
                               "it": "Sensori, agricoltura di precisione, automazione.",
                               "en": "Sensors, precision agriculture, automation."
                           },
-                          "dct:conformsTo": "https://digitalfarmingchema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://digitalfarmingchema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about digital technologies (JSON).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -1249,18 +1249,18 @@
                   "en": "Data on grape varieties, yields, and production volumes in viticulture."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-WINE",
+              "dcterms:publisher": "FOAG-WINE",
               "dcat:contactPoint": {
                   "name": "Julia Musterfrau",
                   "email": "julia.musterfrau@blw.admin.ch"
               },
-              "dct:issued": "2025-01-02",
+              "dcterms:issued": "2025-01-02",
               "dcat:keyword": [
                   "market",
                   "environment"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2025-01-10",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -1286,8 +1286,8 @@
               "bv:ogdPublication": "F_Viticulture_Statistics_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://wine.ch/data",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_9"
               ],
@@ -1311,8 +1311,8 @@
                           "dcterms:identifier": "FOAG-D00010-1",
                           "dcat:accessURL": "https://wine.ch/data/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://wine.ch/data/data.csv",
                           "dcterms:title": {
                               "de": "Weinbau-Statistik (CSV)",
@@ -1326,8 +1326,8 @@
                               "it": "Vitigni, rese, volume di produzione.",
                               "en": "Grape varieties, yields, production volume."
                           },
-                          "dct:conformsTo": "https://viti-schema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://viti-schema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about viticulture statistics (CSV).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -1341,8 +1341,8 @@
                           "dcterms:identifier": "FOAG-D00010-2",
                           "dcat:accessURL": "https://wine.ch/data/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://wine.ch/data/data.json",
                           "dcterms:title": {
                               "de": "Weinbau-Statistik (JSON)",
@@ -1356,8 +1356,8 @@
                               "it": "Vitigni, rese, volume di produzione.",
                               "en": "Grape varieties, yields, production volume."
                           },
-                          "dct:conformsTo": "https://viti-schema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://viti-schema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about viticulture statistics (JSON).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -1386,18 +1386,18 @@
                   "en": "Information on the use of antibiotics and other veterinary drugs in agriculture."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-VET",
+              "dcterms:publisher": "FOAG-VET",
               "dcat:contactPoint": {
                   "name": "Fritz Mustermann",
                   "email": "fritz.mustermann@blw.admin.ch"
               },
-              "dct:issued": "2025-01-07",
+              "dcterms:issued": "2025-01-07",
               "dcat:keyword": [
                   "livestock",
                   "environment"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2025-01-10",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -1423,8 +1423,8 @@
               "bv:ogdPublication": "F_VetMedicines_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://vetmed.ch/data",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_13"
               ],
@@ -1448,8 +1448,8 @@
                           "dcterms:identifier": "FOAG-D00011-1",
                           "dcat:accessURL": "https://vetmed.ch/data/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://vetmed.ch/data/data.csv",
                           "dcterms:title": {
                               "de": "Tierarzneimittel-Einsatz (CSV)",
@@ -1463,8 +1463,8 @@
                               "it": "Antibiotici, vaccini e altri medicinali.",
                               "en": "Antibiotics, vaccines, and other drugs."
                           },
-                          "dct:conformsTo": "https://vetmedschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://vetmedschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about veterinary medicines (CSV).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -1478,8 +1478,8 @@
                           "dcterms:identifier": "FOAG-D00011-2",
                           "dcat:accessURL": "https://vetmed.ch/data/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://vetmed.ch/data/data.json",
                           "dcterms:title": {
                               "de": "Tierarzneimittel-Einsatz (JSON)",
@@ -1493,8 +1493,8 @@
                               "it": "Antibiotici, vaccini e altri medicinali.",
                               "en": "Antibiotics, vaccines, and other drugs."
                           },
-                          "dct:conformsTo": "https://vetmedschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://vetmedschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about veterinary medicines (JSON).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -1523,20 +1523,20 @@
                   "en": "Overview of funded innovation projects in various areas of agriculture."
               },
               "dcterms:accessRights": "PUBLIC",
-              "dct:publisher": "FOAG-INNO",
+              "dcterms:publisher": "FOAG-INNO",
               "dcat:contactPoint": {
                   "name": "Monika Muster",
                   "email": "monika.muster@blw.admin.ch"
               },
-              "dct:issued": "2025-01-09",
+              "dcterms:issued": "2025-01-09",
               "dcat:keyword": [
                   "income",
                   "employment",
                   "innovation",
                   "projects"
               ],
-              "dct:accrualPeriodicity": "ANNUAL",
-              "dct:modified": "2025-01-10",
+              "dcterms:accrualPeriodicity": "ANNUAL",
+              "dcterms:modified": "2025-01-02T08:00:00",
               "bv:affiliatedPersons": [
                 {
                   "name": "Hans Beispiel",
@@ -1562,8 +1562,8 @@
               "bv:ogdPublication": "F_Agriculture_Innovation_Year@bundesamt-fur-landwirtschaft-blw",
               "dcat:themeTaxonomy": ["agricultureFisheriesForestryFood"],
               "dcat:landingPage": "https://innovation.ch/data",
-              "dct:spatial": "",
-              "dct:temporal": "",
+              "dcterms:spatial": "",
+              "dcterms:temporal": "",
               "bv:legalBasis": [
                   "https://www.fedlex.admin.ch/eli/cc/2013/733#art_14"
               ],
@@ -1587,8 +1587,8 @@
                           "dcterms:identifier": "FOAG-D00012-1",
                           "dcat:accessURL": "https://innovation.ch/data/data.csv",
                           "adms:status": "published",
-                          "dct:format": "CSV",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "CSV",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://innovation.ch/data/data.csv",
                           "dcterms:title": {
                               "de": "Agrarische Innovationsprojekte (CSV)",
@@ -1602,8 +1602,8 @@
                               "it": "Progetti in diversi settori, ad es. digitalizzazione, sostenibilità.",
                               "en": "Projects in various areas, e.g., digitization, sustainability."
                           },
-                          "dct:conformsTo": "https://agrinnovschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://agrinnovschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about innovation projects (CSV).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
@@ -1617,8 +1617,8 @@
                           "dcterms:identifier": "FOAG-D00012-2",
                           "dcat:accessURL": "https://innovation.ch/data/data.json",
                           "adms:status": "published",
-                          "dct:format": "JSON",
-                          "dct:modified": "2025-01-10",
+                          "dcterms:format": "JSON",
+                          "dcterms:modified": "2025-01-02T08:00:00",
                           "dcat:downloadURL": "https://innovation.ch/data/data.json",
                           "dcterms:title": {
                               "de": "Agrarische Innovationsprojekte (JSON)",
@@ -1632,8 +1632,8 @@
                               "it": "Progetti in diversi settori, ad es. digitalizzazione, sostenibilità.",
                               "en": "Projects in various areas, e.g., digitization, sustainability."
                           },
-                          "dct:conformsTo": "https://agrinnovschema.com/",
-                          "dct:license": "terms_by_ask",
+                          "dcterms:conformsTo": "https://agrinnovschema.com/",
+                          "dcterms:license": "terms_by_ask",
                           "bv:comments": "Example comment about innovation projects (JSON).",
                           "dcat:accessService": "https://lindas.admin.ch/"
                       }
