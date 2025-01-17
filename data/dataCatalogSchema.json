@@ -1,3 +1,4 @@
+
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://example.com/dataCatalogSchema.json",
@@ -355,7 +356,7 @@
                                 "items": {
                                     "type": "string"
                                 }
-                            }
+                            },
                             "dcat:distribution": {
                                 "type": "array",
                                 "description": "Distribution info describing how and where to access the dataset.",
@@ -848,7 +849,7 @@
                             "dcterms:identifier": {
                                 "type": "string",
                                 "description": "Unique identifier for the Catalog."
-                            }, ,
+                            },
                             "dcterms:title": {
                                 "type": "object",
                                 "description": "Title for the series in multiple languages.",
