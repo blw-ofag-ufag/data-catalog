@@ -7,6 +7,7 @@
     "properties": {
         "datasets": {
             "type": "array",
+            "additionalProperties": false,
             "description": "One or more data catalog blocks can exist in an array. Each block contains `dataset` and `datasetSeries` objects.",
             "items": {
                 "type": "object",
@@ -39,6 +40,7 @@
                     },
                     "attributes": {
                         "type": "object",
+                        "additionalProperties": false,
                         "description": "Descriptive attributes for the dataset entry.",
                         "required": [
                             "dcterms:identifier",
@@ -361,6 +363,7 @@
                                 "description": "Distribution info describing how and where to access the dataset.",
                                 "items": {
                                     "type": "object",
+                                    "additionalProperties": false,
                                     "required": ["metadata", "attributes"],
                                     "properties": {
                                         "metadata": {
@@ -388,6 +391,7 @@
                                         },
                                         "attributes": {
                                             "type": "object",
+                                            "additionalProperties": false,
                                             "required": [
                                                 "dcterms:identifier",
                                                 "dcat:accessURL",
