@@ -45,7 +45,7 @@
                             "dcterms:title",
                             "dcterms:description",
                             "dcterms:accessRights",
-                            "bv:dataOwner"
+                            "bv:affiliatedPersons"
                         ],
                         "properties": {
                             "dcterms:identifier": {
@@ -149,17 +149,40 @@
                                 "format": "date",
                                 "description": "Last modification date of the dataset (could be free text or date)."
                             },
-                            "bv:dataOwner": {
-                                "type": "string",
-                                "description": "The official owner of the data."
-                            },
-                            "bv:dataSteward": {
-                                "type": "string",
-                                "description": "Person or entity responsible for data stewardship."
-                            },
-                            "bv:dataCustodian": {
-                                "type": "string",
-                                "description": "Person or entity responsible for data custody."
+                            "bv:affiliatedPersons": {
+                                "type": "array",
+                                "description": "list of affiliated people with roles",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "role": {
+                                            "type": "string",
+                                            "description": "role",
+                                            "enum": [
+                                                "dataOwner",
+                                                "dataSteward",
+                                                "dataCustodian"
+                                            ]
+                                        }
+                                    },
+                                    "required": ["name", "email", "role"]
+                                },
+                                "minItems": 1,
+                                "contains": {
+                                    "type": "object",
+                                    "properties": {
+                                        "role": {
+                                            "const": "dataOwner"
+                                        }
+                                    },
+                                    "required": ["role"]
+                                }
                             },
                             "adms:status": {
                                 "type": "string",
