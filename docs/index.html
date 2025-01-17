@@ -8,8 +8,8 @@
 </head>
 <body data-page="index.html">
     <header>
-      <h1 data-i18n="title">Welcome to the data catalog of the Federal Office for Agriculture</h1>
-      <p data-i18n="subtitle">
+      <h1 data-i18n="index.title">Welcome to the data catalog of the Federal Office for Agriculture</h1>
+      <p data-i18n="index.subtitle">
         Here, you'll be able to find any data set collected by the Federal Office for Agriculture (FOAG). The data itself is published and maintained on <a href="https://github.com/blw-ofag-ufag/data-catalog/blob/main/data/dataCatalog.json">this GitHub repository</a>.
       </p>
       <div class="controls">
@@ -20,10 +20,10 @@
           data-i18n="searchPlaceholder"
         />
         <select id="sort-options">
-          <option value="title" data-i18n="sortTitle">Sort by Title</option>
-          <option value="issued-asc" data-i18n="sortIssuedAscending">Sort by Issued Date (Ascending)</option>
-          <option value="issued-desc" data-i18n="sortIssuedDescending">Sort by Issued Date (Descending)</option>
-          <option value="owner" data-i18n="sortOwner">Sort by Data Owner</option>
+          <option value="title" data-i18n="index.sortTitle">Sort by Title</option>
+          <option value="issued-asc" data-i18n="index.sortIssuedAscending">Sort by Issued Date (Ascending)</option>
+          <option value="issued-desc" data-i18n="index.sortIssuedDescending">Sort by Issued Date (Descending)</option>
+          <option value="owner" data-i18n="index.sortOwner">Sort by Data Owner</option>
         </select>
         <select id="language-select">
           <option value="en">English</option>
@@ -35,7 +35,7 @@
       <div id="search-chips-container"></div>
     </header>
   <main id="dataset-container"></main>
-  <script src="main.js"></script>
   <script src="translations.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

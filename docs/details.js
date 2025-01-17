@@ -338,7 +338,7 @@ function renderMetadata(attributes, lang) {
     </colgroup>
     <thead>
       <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
-        <th style="padding: 8px;">Field</th>
+        <th style="padding: 8px;">Attribute</th>
         <th style="padding: 8px;">Value</th>
       </tr>
     </thead>

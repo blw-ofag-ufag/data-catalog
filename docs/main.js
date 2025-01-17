@@ -293,6 +293,9 @@ function getSortedDatasets(sourceData) {
 /******************************************************
  *  6) Rendering the Dataset Tiles
  *****************************************************/
+/******************************************************
+ *  6) Rendering the Dataset Tiles
+ *****************************************************/
 function renderDatasets(data) {
   const container = document.getElementById("dataset-container");
 
@@ -310,6 +313,10 @@ function renderDatasets(data) {
       return "Invalid Date";
     }
   };
+
+  // Fetch translations for "Issued" and "Owner"
+  const issuedLabel = translations["dcterms:issued"]?.[currentLanguage] || "Issued:";
+  const ownerLabel = translations["index.owner"]?.[currentLanguage] || "Owner:";
 
   container.innerHTML = data
     .map(dataset => {
@@ -342,8 +349,8 @@ function renderDatasets(data) {
           <div class="dataset-info">
             <h3>${attributes["dcterms:title"][currentLanguage]}</h3>
             <p>${attributes["dcterms:description"][currentLanguage]}</p>
-            <p><strong>Issued:</strong> ${formatDate(attributes["dcterms:issued"])}</p>
-            <p><strong>Owner:</strong> ${getDataOwnerName(attributes)}</p>
+            <p><strong>${issuedLabel}</strong> ${formatDate(attributes["dcterms:issued"])}</p>
+            <p><strong>${ownerLabel}</strong> ${getDataOwnerName(attributes)}</p>
             <div class="keywords">${keywordsHTML}</div>
           </div>
         </div>
