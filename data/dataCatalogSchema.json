@@ -588,6 +588,152 @@
                     }
                 }
             }
+        },
+        "dataServices": {
+            "type": "array",
+            "description": "Container for dcat:DataService"
+            "items": {
+                "type": "object",
+                "description": "structure of DataService",
+                "required": ["metadata", "attributes"],
+                "properties": {
+                    "metadata": {
+                        "type": "object",
+                        "description": "Metadata about the dataset series (last update date, user, image, etc.).",
+                        "required": [
+                            "lastChangeDate",
+                            "lastChangeUser"
+                        ],
+                        "properties": {
+                            "lastChangeDate": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Date/time when the series was last changed."
+                            },
+                            "lastChangeUser": {
+                                "type": "string",
+                                "description": "User or identifier who last updated the series."
+                            },
+                            "ImageURL": {
+                                "type": ["string", "null"],
+                                "format": "uri",
+                                "description": "URL linking to an image for this series."
+                            }
+                        }
+                    },
+                    "attributes": {
+                        "type": "object",
+                        "description": "attributes for the DataService",
+                        "required": ["dct:title", "dct:description", "dct:publisher", "dcat:contactPoint"],
+                        "properties": {
+                            "dct:title": {
+                                "type": "object",
+                                "description": "Title for the series in multiple languages.",
+                                "properties": {
+                                    "de": {
+                                        "type": "string"
+                                    },
+                                    "fr": {
+                                        "type": "string"
+                                    },
+                                    "it": {
+                                        "type": "string"
+                                    },
+                                    "en": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "dct:description": {
+                                "type": "object",
+                                "description": "Description for the series in multiple languages.",
+                                "properties": {
+                                    "de": {
+                                        "type": "string"
+                                    },
+                                    "fr": {
+                                        "type": "string"
+                                    },
+                                    "it": {
+                                        "type": "string"
+                                    },
+                                    "en": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "dct:publisher": {
+                                "type": "string",
+                                "description": "Publisher or organization responsible for the series."
+                            },
+                            "dcat:contactPoint": {
+                                "type": "object",
+                                "description": "Contact information for inquiries.",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": ["name", "email"]
+                            },
+                            "dct:accessRights": {
+                                "type": "string",
+                                "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
+                                "enum": [
+                                    "CONFIDENTIAL",
+                                    "NON_PUBLIC",
+                                    "PUBLIC",
+                                    "RESTRICTED",
+                                    "SENSITIVE"
+                                ]
+                            },
+                            "dcat:endopointURL": {
+                                "type": ["string", "null"],
+                                "format": "uri",
+                                "description": "URL of the service."
+                            },
+                            "adms:status": {
+                                "type": "string",
+                                "description": "Current status of the dataset (sample enumeration).",
+                                "enum": [
+                                    "workInProgress",
+                                    "validated",
+                                    "published",
+                                    "deleted",
+                                    "archived"
+                                ]
+                            },
+                            "dcat:servesDataset": {
+                                "type": "array",
+                                "description": "IDs of the datasets served",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "dcat:endpointDescription": {
+                                "type": ["string", "null"],
+                                "format": "uri",
+                                "description": "URL of documentation."
+                            },
+                            "foaf:page": {
+                                "type": "array",
+                                "description": "Any related page or resource.",
+                                "items": {
+                                    "type": ["string", "null"],
+                                    "format": "uri"
+                                }
+                            },
+                            "bv:comments": {
+                                "type": "string",
+                                "description": "Additional comments about the DataService."
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
