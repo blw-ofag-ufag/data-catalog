@@ -4,7 +4,7 @@
             "metadata": {
                 "lastChangeDate": "2024-07-03T10:23:55",
                 "lastChangeUser": "Monika Muster",
-                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/2wObKhav-rUnzxEEqoWk8_4a275b9a16c54877be5fde7cc3214beb.jpg"
+                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/cows-002.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "FOAG-D00001",
@@ -133,7 +133,7 @@
                             "dcat:accessURL": "https://milch.ch/milkPrices/data.json",
                             "adms:status": "published",
                             "dcterms:format": "JSON",
-                            "dcterms:modified": "2024-11-08",
+                            "dcterms:modified": "2021-03-08",
                             "dcat:downloadURL": "https://milch.ch/milkPrices/data.json",
                             "dcterms:title": {
                                 "de": "Jährliche Milchpreise",
@@ -142,10 +142,10 @@
                                 "en": "Annual Milk Prices"
                             },
                             "dcterms:description": {
-                                "de": "Dieser Datensatz enthält die jährlichen Milchpreise für verschiedene Milchkategorien wie Molkereimilch, Bio-Milch, Käsereimilch etc. ab 2002.",
-                                "fr": "Ce jeu de données contient les prix annuels du lait pour différentes catégories de lait, telles que le lait de consommation, le lait biologique, le lait de fromagerie, etc., à partir de 2002.",
-                                "it": "Questo dataset contiene i prezzi annuali del latte per diverse categorie di latte, come latte da consumo, latte biologico, latte da caseificio, ecc., a partire dal 2002.",
-                                "en": "This dataset contains the annual milk prices for various milk categories, such as dairy milk, organic milk, cheese milk, etc., starting from 2002."
+                                "de": "Dieser Datensatz enthält die jährlichen Milchpreise für verschiedene Milchkategorien wie Molkereimilch, Bio-Milch, Käsereimilch und andere Sorten seit dem Jahr 2002. Er bietet umfangreiche Informationen über Preisentwicklungen, saisonale Schwankungen und langfristige Trends im Milchmarkt. Die Daten ermöglichen es, Preisvergleiche zwischen verschiedenen Milchsorten durchzuführen und liefern wertvolle Einblicke in die wirtschaftlichen Aspekte der Milchproduktion und -vermarktung.",
+                                "fr": "Ce jeu de données fournit les prix annuels du lait pour différentes catégories telles que le lait de consommation, le lait biologique, le lait de fromagerie, et d'autres variétés, à partir de l'année 2002. Il offre une analyse détaillée de l'évolution des prix, des variations saisonnières et des tendances sur le long terme du marché laitier. Ces informations permettent de comparer les prix entre différentes catégories de lait et apportent des éclairages précieux sur les aspects économiques de la production et de la commercialisation du lait.",
+                                "it": "Questo dataset raccoglie i prezzi annuali del latte per diverse categorie, come latte da consumo, latte biologico, latte da caseificio e altre varianti, a partire dal 2002. Include analisi approfondite delle variazioni di prezzo, delle fluttuazioni stagionali e delle tendenze a lungo termine nel mercato del latte. I dati permettono di confrontare i prezzi tra le varie tipologie di latte e offrono preziose indicazioni sugli aspetti economici legati alla produzione e alla distribuzione del latte.",
+                                "en": "This dataset provides annual milk prices for various milk categories, such as dairy milk, organic milk, cheese milk, and other types, starting from 2002. It offers in-depth analyses of price developments, seasonal fluctuations, and long-term trends in the milk market. The comprehensive information enables comparisons between different milk types and provides valuable insights into the economic aspects of milk production, distribution, and market dynamics."
                             },
                             "dcterms:conformsTo": "https://milkschema.com/",
                             "dcterms:license": "terms_by_ask",
@@ -158,9 +158,9 @@
         },
         {
             "metadata": {
-                "lastChangeDate": "2024-07-10T09:15:00",
+                "lastChangeDate": "2023-02-10T09:15:00",
                 "lastChangeUser": "Hans Beispiel",
-                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/JnLt-KUfu8IhX2KecnrWQ_7140ebd5a35f4c06a903b25941cfceb2.jpg"
+                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/chicken-001.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "FOAG-D00002",
@@ -171,10 +171,10 @@
                     "en": "Nitrogen Losses in Agriculture"
                 },
                 "dcterms:description": {
-                    "de": "Dieser Datensatz enthält Schätzungen zu den Stickstoffverlusten auf landwirtschaftlichen Betrieben (z. B. Emissionen, Auswaschungen).",
-                    "fr": "Ce jeu de données contient des estimations des pertes d'azote dans les exploitations agricoles (par exemple émissions, lessivage).",
-                    "it": "Questo dataset contiene stime delle perdite di azoto nelle aziende agricole (ad esempio emissioni, lisciviazioni).",
-                    "en": "This dataset contains estimates of nitrogen losses on farms (e.g., emissions, leaching)."
+                    "de": "Dieser Datensatz enthält umfassende Schätzungen zu den Stickstoffverlusten auf landwirtschaftlichen Betrieben, einschließlich detaillierter Messungen von Emissionen in die Luft sowie Auswaschungen in den Boden und Gewässer. Die Daten ermöglichen es, Trends über mehrere Jahre zu analysieren und bieten Einblicke in Ursachen, Auswirkungen und mögliche Maßnahmen zur Reduzierung von Stickstoffverlusten in der Landwirtschaft.",
+                    "fr": "Ce jeu de données propose des estimations détaillées des pertes d'azote dans les exploitations agricoles, englobant les émissions atmosphériques et le lessivage dans les sols et les cours d'eau. Les informations fournies permettent une analyse approfondie des tendances sur plusieurs années, fournissant des éclaircissements sur les causes, les impacts environnementaux et les stratégies potentielles pour réduire ces pertes.",
+                    "it": "Questo dataset fornisce stime approfondite delle perdite di azoto nelle aziende agricole, comprendendo misurazioni delle emissioni atmosferiche e delle lisciviazioni nel suolo e nelle acque. I dati permettono di analizzare le tendenze nel tempo, offrendo spunti sui fattori che contribuiscono alle perdite di azoto e suggerendo possibili interventi per mitigare tali impatti ambientali.",
+                    "en": "This dataset provides comprehensive estimates of nitrogen losses on farms, including detailed measurements of emissions into the air as well as leaching into the soil and water bodies. The data allow for analysis of trends over multiple years, offering insights into the causes, environmental impacts, and potential mitigation strategies for reducing nitrogen losses in agriculture."
                 },
                 "dcterms:accessRights": "PUBLIC",
                 "dcterms:publisher": "FOAG-ENV",
