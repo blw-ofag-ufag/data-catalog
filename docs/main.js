@@ -271,7 +271,6 @@ function getSortedDatasets(sourceData) {
  *  6) Rendering the Dataset Tiles
  *****************************************************/
 function renderDatasets(data) {
-  
   const container = document.getElementById("dataset-container");
 
   // Helper function to format the date
@@ -292,18 +291,27 @@ function renderDatasets(data) {
   container.innerHTML = data
     .map(dataset => {
       const { metadata, attributes } = dataset;
+      const datasetId = attributes["dct:identifier"];
       const keywords = attributes["dcat:keyword"] || [];
 
+      // Build the HTML for keywords, each with stopPropagation
       const keywordsHTML = keywords
         .map(kw => `
-          <span class="keyword-chip" onclick="addKeywordChip('${kw}')">
+          <span
+            class="keyword-chip"
+            onclick="addKeywordChip('${kw}'); event.stopPropagation();"
+          >
             ${kw}
           </span>
         `)
         .join("");
 
+      // Return the tile (now clickable)
       return `
-        <div class="dataset-tile">
+        <div
+          class="dataset-tile"
+          onclick="redirectToDetails('${datasetId}', '${currentLanguage}')"
+        >
           <img 
             src="${metadata.imageURL}" 
             alt="${attributes["dct:title"][currentLanguage]}" 
@@ -320,6 +328,14 @@ function renderDatasets(data) {
     })
     .join("");
 }
+
+// redirect to the details.html page
+function redirectToDetails(datasetId, lang) {
+  // Build the details URL
+  const url = `details.html?dataset=${datasetId}&lang=${lang}`;
+  window.location.href = url;
+}
+
 
 /******************************************************
  *  7) Clickable Keyword in Tiles => add as Chip

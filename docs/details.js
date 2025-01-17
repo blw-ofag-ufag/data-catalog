@@ -198,7 +198,7 @@ function renderDistributions(attributes, lang) {
         <li>
           - <strong>${distTitle}</strong>: ${distDesc}
           <a href="${distURL}" target="_blank" class="download-icon" title="Download">
-            ⬇
+            [Download]
           </a>
         </li>
       `;
