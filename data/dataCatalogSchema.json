@@ -473,7 +473,7 @@
                                                     "type": "string",
                                                     "description": "Reference to a standard or specification the distribution conforms to."
                                                 },
-                                                "dcterms:licence": {
+                                                "dcterms:license": {
                                                     "type": "string",
                                                     "description": "License under which this distribution is released.",
                                                     "enum": [
