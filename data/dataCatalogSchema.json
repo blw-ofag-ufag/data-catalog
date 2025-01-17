@@ -205,11 +205,11 @@
                                 "type": "boolean",
                                 "description": "Indicates if this dataset has archival value."
                             },
-                            "bv:ogdPublication": {
+                            "bv:opendata.swiss": {
                                 "type": "object",
                                 "description": "Reference to the Open Government Data publication ID.",
                                 "properties": {
-                                    "opendata.swiss": {
+                                    "bv:mustBePublished": {
                                         "type": "boolean"
                                     },
                                     "dcterms:identifier": {
@@ -223,6 +223,24 @@
                                     }
                                 }
                             },
+							"bv:i14y": {
+								"type": "object",
+                                "description": "Reference to the I14Y publication ID.",
+                                "properties": {
+                                    "bv:mustBePublished": {
+                                        "type": "boolean"
+                                    },
+                                    "dcterms:identifier": {
+                                        "type": "string",
+                                        "description": "Identifier for the I14Y publication"
+                                    },
+                                    "dcat:accessURL": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URL on I14Y"
+                                    }
+                                }
+							},
                             "dcat:themeTaxonomy": {
                                 "type": "array",
                                 "description": "Reference or URL to a theme taxonomy classification.",
