@@ -5,6 +5,29 @@ const dataUrl =
   "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/data/dataCatalog.json";
 
 /******************************************************
+ *  Helper for Date Formatting
+ *****************************************************/
+/**
+ * If `val` looks like a date/time string, convert it to the user's
+ * chosen language, "long" format. Otherwise return as-is.
+ */
+function formatDateIfPossible(val, lang) {
+  if (typeof val !== "string") return val; // only attempt on strings
+  if (!val) return val; // empty string => just return it
+
+  // Try parsing as a date
+  const d = new Date(val);
+  if (isNaN(d.getTime())) {
+    // Not a valid Date => just return original
+    return val;
+  }
+
+  // If valid, return in localized "long" format
+  // e.g., "January 5, 2025"
+  return new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(d);
+}
+
+/******************************************************
  *  On Page Load
  *****************************************************/
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,14 +38,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 2) Fetch the data from your GitHub JSON
   fetch(dataUrl)
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       // The new structure has "datasets" as an array
       const allDatasets = data.datasets;
 
-      // Locate the matching dataset by ID
-      const dataset = allDatasets.find(ds => {
-        return ds.attributes["dct:identifier"] === datasetId;
+      // Locate the matching dataset by ID (note "dcterms:identifier")
+      const dataset = allDatasets.find((ds) => {
+        return ds.attributes["dcterms:identifier"] === datasetId;
       });
 
       if (!dataset) {
@@ -31,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderFullPageDetails(dataset, selectedLang);
       }
     })
-    .catch(err => {
+    .catch((err) => {
       console.error("Error fetching data:", err);
       renderErrorMessage();
     });
@@ -49,10 +72,7 @@ function renderNotFound(datasetId) {
 
   document.getElementById("datasetID").textContent = "";
   document.getElementById("datasetTitle").textContent = "Dataset Not Found";
-  document.getElementById("datasetDescription").textContent =
-    `No dataset found with ID ${datasetId}`;
-
-  // or you could fill the main with a bigger message
+  document.getElementById("datasetDescription").textContent = `No dataset found with ID ${datasetId}`;
 }
 
 /**
@@ -75,131 +95,204 @@ function renderFullPageDetails(dataset, lang) {
   const { metadata, attributes } = dataset;
 
   // 1) Hero Banner => set background image
+  //    (Adjust to "metadata.ImageURL" if needed)
   const heroBanner = document.getElementById("heroBanner");
   heroBanner.style.backgroundImage = `url('${metadata.imageURL}')`;
 
   // 2) ID (monospace), Title (H1), Description
   const datasetIDEl = document.getElementById("datasetID");
-  datasetIDEl.textContent = attributes["dct:identifier"] || "";
+  datasetIDEl.textContent = attributes["dcterms:identifier"] || "";
 
   const titleEl = document.getElementById("datasetTitle");
-  const datasetTitle = getLocalized(attributes["dct:title"], lang);
+  const datasetTitle = getLocalized(attributes["dcterms:title"], lang);
   titleEl.textContent = datasetTitle || "Untitled Dataset";
 
   const descEl = document.getElementById("datasetDescription");
-  const desc = getLocalized(attributes["dct:description"], lang);
+  const desc = getLocalized(attributes["dcterms:description"], lang);
   descEl.textContent = desc;
 
   // 3) Keywords
   const keywordsContainer = document.getElementById("keywordsContainer");
   const keywords = attributes["dcat:keyword"] || [];
   keywordsContainer.innerHTML = ""; // clear if any
-  keywords.forEach(kw => {
+  keywords.forEach((kw) => {
     const span = document.createElement("span");
-    span.classList.add("keyword-chip"); // your tile-based styling
-    span.textContent = kw; // or capitalize if you want
+    span.classList.add("keyword-chip");
+    span.textContent = kw;
     keywordsContainer.appendChild(span);
   });
 
-  // 4) Metadata => re-use the logic for the "common" fields
-  // Then we also show *all* other leftover fields
+  // 4) Show the "Affiliated roles" (bv:affiliatedPersons) in its own table
+  renderAffiliatedPersons(attributes, lang);
+
+  // 5) Show leftover "Metadata" in a table
   renderMetadata(attributes, lang);
 
-  // 5) Distributions
+  // 6) Distributions
   renderDistributions(attributes, lang);
 }
 
 /**
- * Renders the metadata (common fields + leftover fields)
+ * Renders the array of `bv:affiliatedPersons` in a minimalistic table
  */
-function renderMetadata(attributes, lang) {
+function renderAffiliatedPersons(attributes, lang) {
   const section = document.getElementById("metadataSection");
-  section.innerHTML = `<h2>Metadata</h2><div class="metadata-list" id="allMetadata"></div>`;
+  // We'll add a sub-section for affiliated persons
+  const persons = attributes["bv:affiliatedPersons"] || [];
 
-  const allMetaDiv = document.getElementById("allMetadata");
+  let html = `<h2>Affiliated Roles</h2>`;
 
-  // Prepare a list of "already displayed" fields so we skip them.
-  const displayed = [
-    "dct:identifier",
-    "dct:title",
-    "dct:description",
-    "dcat:keyword",
-    "dcat:distribution" 
-    // We'll skip these from the "all leftover" loop
-  ];
-
-  // Show the standard fields first
-  const issued = attributes["dct:issued"] || "N/A";
-  const accessRights = attributes["dct:accessRights"] || "N/A";
-  const publisher = attributes["dct:publisher"] || "N/A";
-  const contact = attributes["dcat:contactPoint"] || {};
-  const owner = attributes["bv:dataOwner"] || "N/A";
-
-  let html = `
-    <p><strong>Issued:</strong> ${issued}</p>
-    <p><strong>Owner:</strong> ${owner}</p>
-    <p><strong>Publisher:</strong> ${publisher}</p>
-    <p><strong>Access Rights:</strong> ${accessRights}</p>
-    <p><strong>Contact:</strong> ${contact.name || "N/A"} (${contact.email || "N/A"})</p>
-  `;
-
-  displayed.push("dct:issued","dct:accessRights","dct:publisher","bv:dataOwner","dcat:contactPoint");
-
-  // Now let's show leftover fields (i.e. all attributes not in "displayed")
-  for (const key of Object.keys(attributes)) {
-    if (displayed.includes(key)) continue;
-
-    const val = attributes[key];
-    // Could be string, array, or object
-    let valStr;
-
-    if (Array.isArray(val)) {
-      // e.g. "bv:legalBasis": ["...", "..."]
-      valStr = val.join(", ");
-    } else if (typeof val === "object") {
-      // If it’s an object with subfields, we can JSON-stringify or skip
-      valStr = JSON.stringify(val);
-    } else {
-      valStr = String(val);
-    }
-
-    if (valStr === "") continue; // skip empty
-
-    html += `<p><strong>${key}:</strong> ${valStr}</p>`;
+  if (!Array.isArray(persons) || persons.length === 0) {
+    html += `<p>No affiliated persons.</p>`;
+    section.innerHTML = html;
+    return;
   }
 
-  allMetaDiv.innerHTML = html;
+  // A simple table
+  html += `
+    <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
+      <thead>
+        <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
+          <th style="padding: 8px;">Name</th>
+          <th style="padding: 8px;">Email</th>
+          <th style="padding: 8px;">Role</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  persons.forEach((p) => {
+    html += `
+      <tr style="border-bottom: 1px solid var(--border-color);">
+        <td style="padding: 8px;">${p.name}</td>
+        <td style="padding: 8px;">${p.email}</td>
+        <td style="padding: 8px;">${p.role}</td>
+      </tr>
+    `;
+  });
+
+  html += `
+      </tbody>
+    </table>
+  `;
+
+  section.innerHTML = html;
 }
 
 /**
- * Renders distributions (if any) in a bullet list:
- *   - **Name**: Description <download_link>
- * with a small download icon.
+ * Renders the leftover metadata (excluding the known fields) in a table
+ */
+function renderMetadata(attributes, lang) {
+  // We'll place it below the roles (in the same #metadataSection) or you can place it elsewhere
+  const section = document.getElementById("metadataSection");
+
+  // Prepare a list of fields to skip
+  const displayed = [
+    "dcterms:identifier",
+    "dcterms:title",
+    "dcterms:description",
+    "dcat:keyword",
+    "bv:affiliatedPersons",
+    "dcat:distribution"
+  ];
+
+  // We'll build a sub-header plus table
+  let html = `
+    <h2>Metadata</h2>
+    <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
+      <thead>
+        <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
+          <th style="padding: 8px;">Field</th>
+          <th style="padding: 8px;">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  // Loop over leftover fields
+  for (const key of Object.keys(attributes)) {
+    if (displayed.includes(key)) continue;
+
+    let val = attributes[key];
+
+    // If it's a date string, localize it
+    if (typeof val === "string") {
+      val = formatDateIfPossible(val, lang);
+    }
+    // If it's an array, we might date-format each item
+    else if (Array.isArray(val)) {
+      val = val.map((item) => formatDateIfPossible(item, lang)).join(", ");
+    }
+    // If it's an object, try JSON-stringify
+    else if (typeof val === "object" && val !== null) {
+      val = JSON.stringify(val);
+    }
+
+    if (!val) continue; // skip empty or undefined
+
+    html += `
+      <tr style="border-bottom: 1px solid var(--border-color);">
+        <td style="padding: 8px;"><strong>${key}</strong></td>
+        <td style="padding: 8px;">${val}</td>
+      </tr>
+    `;
+  }
+
+  html += `
+      </tbody>
+    </table>
+  `;
+
+  // Append to the existing content in #metadataSection
+  section.innerHTML += html;
+}
+
+/**
+ * Renders distributions (if any) in a bullet list
  */
 function renderDistributions(attributes, lang) {
   const section = document.getElementById("distributionsSection");
-  const distributions = attributes["dcat:distribution"] || {};
+  const distributions = attributes["dcat:distribution"] || [];
+
+  if (!Array.isArray(distributions) || distributions.length === 0) {
+    section.innerHTML = `
+      <h2>Distributions</h2>
+      <div class="distributions-list">
+        <ul><li>No Distributions</li></ul>
+      </div>
+    `;
+    return;
+  }
 
   // Build bullet list
-  const distList = Object.values(distributions)
-    .map(dist => {
-      const distTitle = getLocalized(dist.attributes["dct:title"], lang);
-      const distDesc = getLocalized(dist.attributes["dct:description"], lang);
-      const distFormat = dist.attributes["dct:format"] || "N/A";
+  const distList = distributions
+    .map((dist) => {
+      const distAttrs = dist.attributes || {};
+      const distTitle = getLocalized(distAttrs["dcterms:title"], lang);
+      const distDesc = getLocalized(distAttrs["dcterms:description"], lang);
+      const distFormat = distAttrs["dcterms:format"] || "N/A";
+
+      // If there's a "dcterms:modified", format it
+      if (distAttrs["dcterms:modified"]) {
+        distAttrs["dcterms:modified"] = formatDateIfPossible(
+          distAttrs["dcterms:modified"],
+          lang
+        );
+      }
+
       const distURL =
-        dist.attributes["dcat:downloadURL"] ||
-        dist.attributes["dcat:accessURL"] ||
+        distAttrs["dcat:downloadURL"] ||
+        distAttrs["dcat:accessURL"] ||
         "#";
 
-      // Example bullet:
-      //  - **Annual Milk Prices**: This dataset ... <download_icon>
-      // We'll incorporate the "format" if you wish, or skip it
       return `
         <li>
-          - <strong>${distTitle}</strong>: ${distDesc}
-          <a href="${distURL}" target="_blank" class="download-icon" title="Download">
-            [Download]
-          </a>
+          - <strong>${distTitle}</strong>
+            (Format: ${distFormat})<br />
+            ${distDesc}<br />
+            <a href="${distURL}" target="_blank" class="download-icon" title="Download">
+              [Download]
+            </a>
         </li>
       `;
     })
@@ -208,7 +301,7 @@ function renderDistributions(attributes, lang) {
   section.innerHTML = `
     <h2>Distributions</h2>
     <div class="distributions-list">
-      <ul>${distList || "<li>No Distributions</li>"}</ul>
+      <ul>${distList}</ul>
     </div>
   `;
 }

@@ -11,6 +11,17 @@ let currentLanguage = "en";
 // The recognized hashtag chips (without "#") live here.
 let keywordChips = [];
 
+/**
+ * Returns the name of the person whose role is "dataOwner", or "N/A" if none.
+ */
+function getDataOwnerName(attributes) {
+  const persons = attributes["bv:affiliatedPersons"];
+  if (!Array.isArray(persons)) return "N/A";
+  
+  const ownerObj = persons.find(p => p.role === "dataOwner");
+  return ownerObj ? ownerObj.name : "N/A";
+}
+
 /******************************************************
  *  1) Reading & Writing URL parameters
  *****************************************************/
@@ -212,12 +223,12 @@ function parseNormalTokens(str) {
 /** Checks if 'term' is found in normal text fields: title, desc, owner, etc. */
 function matchFullText(term, dataset) {
   const fields = [
-    "dct:identifier",
-    "dct:title",
-    "dct:description",
-    "bv:dataOwner",
-    "dcat:keyword", // normal text also hits keywords
-    "dct:issued",
+    "dcterms:identifier",
+    "dcterms:title",
+    "dcterms:description",
+    "dcat:keyword",
+    "dcterms:issued",
+    "bv:affiliatedPersons"
   ];
   return fields.some(field => {
     const value = dataset.attributes[field];
@@ -226,12 +237,24 @@ function matchFullText(term, dataset) {
     if (field === "dcat:keyword") {
       return value.some(k => k.toLowerCase().includes(term));
     }
-    if (field === "dct:title" || field === "dct:description") {
+    if (field === "dcterms:title" || field === "dcterms:description") {
+      // Localized object: e.g. { en: "...", de: "...", ... }
       return Object.values(value).some(v => v.toLowerCase().includes(term));
     }
-    if (field === "dct:issued") {
+    if (field === "dcterms:issued") {
       return value.toLowerCase().includes(term);
     }
+    if (field === "bv:affiliatedPersons") {
+      if (!Array.isArray(value)) return false;
+      return value.some(person => {
+        const nameMatch = person.name && person.name.toLowerCase().includes(term);
+        const emailMatch = person.email && person.email.toLowerCase().includes(term);
+        const roleMatch = person.role && person.role.toLowerCase().includes(term);
+        return nameMatch || emailMatch || roleMatch;
+      });
+    }
+
+    // Fallback: Just convert to string and search
     return String(value).toLowerCase().includes(term);
   });
 }
@@ -245,12 +268,12 @@ function getSortedDatasets(sourceData) {
     let fieldA, fieldB;
 
     if (sortBy === "title") {
-      fieldA = a.attributes["dct:title"][currentLanguage] || "";
-      fieldB = b.attributes["dct:title"][currentLanguage] || "";
+      fieldA = a.attributes["dcterms:title"][currentLanguage] || "";
+      fieldB = b.attributes["dcterms:title"][currentLanguage] || "";
       return fieldA.localeCompare(fieldB, undefined, { numeric: true });
     } else if (sortBy === "issued-asc" || sortBy === "issued-desc") {
-      fieldA = a.attributes["dct:issued"] || "";
-      fieldB = b.attributes["dct:issued"] || "";
+      fieldA = a.attributes["dcterms:issued"] || "";
+      fieldB = b.attributes["dcterms:issued"] || "";
       if (!fieldA) return 1;
       if (!fieldB) return -1;
 
@@ -259,10 +282,10 @@ function getSortedDatasets(sourceData) {
       if (sortBy === "issued-asc") return dateA - dateB;
       return dateB - dateA;
     } else if (sortBy === "owner") {
-      fieldA = a.attributes["bv:dataOwner"] || "";
-      fieldB = b.attributes["bv:dataOwner"] || "";
-      return fieldA.localeCompare(fieldB, undefined, { numeric: true });
-    }
+      const aOwner = getDataOwnerName(a.attributes);
+      const bOwner = getDataOwnerName(b.attributes);
+      return aOwner.localeCompare(bOwner, undefined, { numeric: true });
+    }    
     return 0;
   });
 }
@@ -291,7 +314,7 @@ function renderDatasets(data) {
   container.innerHTML = data
     .map(dataset => {
       const { metadata, attributes } = dataset;
-      const datasetId = attributes["dct:identifier"];
+      const datasetId = attributes["dcterms:identifier"];
       const keywords = attributes["dcat:keyword"] || [];
 
       // Build the HTML for keywords, each with stopPropagation
@@ -314,13 +337,13 @@ function renderDatasets(data) {
         >
           <img 
             src="${metadata.imageURL}" 
-            alt="${attributes["dct:title"][currentLanguage]}" 
+            alt="${attributes["dcterms:title"][currentLanguage]}" 
           />
           <div class="dataset-info">
-            <h3>${attributes["dct:title"][currentLanguage]}</h3>
-            <p>${attributes["dct:description"][currentLanguage]}</p>
-            <p><strong>Issued:</strong> ${formatDate(attributes["dct:issued"])}</p>
-            <p><strong>Owner:</strong> ${attributes["bv:dataOwner"] || "N/A"}</p>
+            <h3>${attributes["dcterms:title"][currentLanguage]}</h3>
+            <p>${attributes["dcterms:description"][currentLanguage]}</p>
+            <p><strong>Issued:</strong> ${formatDate(attributes["dcterms:issued"])}</p>
+            <p><strong>Owner:</strong> ${getDataOwnerName(attributes)}</p>
             <div class="keywords">${keywordsHTML}</div>
           </div>
         </div>
