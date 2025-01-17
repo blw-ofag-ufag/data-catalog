@@ -56,9 +56,9 @@
                 "bv:typeOfData": "thematicData",
                 "bv:archivalValue": true,
                 "bv:opendata.swiss": {
-                    "bv:mustBePublished": true,
-                    "dcterms:identifier": "F_SocioEconomic_Incomes_Employment_Year@bundesamt-fur-landwirtschaft-blw",
-                    "dcat:accessURL": "https://opendata.swiss/de/dataset/beschaftigte-landwirtschaft-pers"
+                    "bv:mustBePublished": false,
+                    "dcterms:identifier": null,
+                    "dcat:accessURL": null
                 },
                 "bv:i14y": {
                     "bv:mustBePublished": true,
@@ -218,7 +218,7 @@
                 },
                 "bv:i14y": {
                     "bv:mustBePublished": true,
-                    "dcterms:identifier": "F_SocioEconomic_Incomes_Employment_Year@bundesamt-fur-landwirtschaft-blw",
+                    "dcterms:identifier": "1324-3422-5342-5422",
                     "dcat:accessURL": "https://opendata.swiss/de/dataset/beschaftigte-landwirtschaft-pers"
                 },
                 "dcat:themeTaxonomy": [
