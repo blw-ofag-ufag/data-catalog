@@ -41,18 +41,18 @@
                         "type": "object",
                         "description": "Descriptive attributes for the dataset entry.",
                         "required": [
-                            "dct:identifier",
-                            "dct:title",
-                            "dct:description",
-                            "dct:accessRights",
+                            "dcterms:identifier",
+                            "dcterms:title",
+                            "dcterms:description",
+                            "dcterms:accessRights",
                             "bv:dataOwner"
                         ],
                         "properties": {
-                            "dct:identifier": {
+                            "dcterms:identifier": {
                                 "type": "string",
                                 "description": "Unique identifier for the dataset."
                             },
-                            "dct:title": {
+                            "dcterms:title": {
                                 "type": "object",
                                 "description": "Title of the dataset in multiple languages.",
                                 "properties": {
@@ -71,7 +71,7 @@
                                 },
                                 "required": ["de", "fr"]
                             },
-                            "dct:description": {
+                            "dcterms:description": {
                                 "type": "object",
                                 "description": "Description of the dataset in multiple languages.",
                                 "properties": {
@@ -90,7 +90,7 @@
                                 },
                                 "required": ["de", "fr"]
                             },
-                            "dct:accessRights": {
+                            "dcterms:accessRights": {
                                 "type": "string",
                                 "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
                                 "enum": [
@@ -101,7 +101,7 @@
                                     "SENSITIVE"
                                 ]
                             },
-                            "dct:publisher": {
+                            "dcterms:publisher": {
                                 "type": "string",
                                 "description": "Name of the publishing entity or organization."
                             },
@@ -118,7 +118,7 @@
                                 },
                                 "required": ["name", "email"]
                             },
-                            "dct:issued": {
+                            "dcterms:issued": {
                                 "type": ["string", "null"],
                                 "format": "date",
                                 "description": "When the dataset was formally issued (YYYY-MM-DD or empty)."
@@ -130,7 +130,7 @@
                                     "type": "string"
                                 }
                             },
-                            "dct:accrualPeriodicity": {
+                            "dcterms:accrualPeriodicity": {
                                 "type": "string",
                                 "description": "Frequency with which dataset is updated (e.g., 'Annual').",
                                 "enum": [
@@ -144,7 +144,7 @@
                                     "AS_NEEDED"
                                 ]
                             },
-                            "dct:modified": {
+                            "dcterms:modified": {
                                 "type": ["string", "null"],
                                 "format": "date",
                                 "description": "Last modification date of the dataset (could be free text or date)."
@@ -212,7 +212,7 @@
                                     "opendata.swiss": {
                                         "type": "boolean"
                                     },
-                                    "dct:identifier": {
+                                    "dcterms:identifier": {
                                         "type": "string",
                                         "description": "Identifier for the OGD publication"
                                     },
@@ -241,11 +241,11 @@
                                 "format": "uri",
                                 "description": "Landing page or homepage for the dataset."
                             },
-                            "dct:spatial": {
+                            "dcterms:spatial": {
                                 "type": "string",
                                 "description": "Spatial/geographical coverage."
                             },
-                            "dct:temporal": {
+                            "dcterms:temporal": {
                                 "type": "string",
                                 "description": "Temporal coverage of the dataset."
                             },
@@ -308,6 +308,13 @@
                                 "type": "string",
                                 "description": "Reference to the series this dataset belongs to."
                             },
+                            "dcterms:replaces": {
+                                "type": "array",
+                                "description": "ID of datasets replaced by this one",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
                             "dcat:distribution": {
                                 "type": "array",
                                 "description": "Distribution info describing how and where to access the dataset.",
@@ -341,13 +348,13 @@
                                         "attributes": {
                                             "type": "object",
                                             "required": [
-                                                "dct:identifier",
+                                                "dcterms:identifier",
                                                 "dcat:accessURL",
-                                                "dct:title",
-                                                "dct:description"
+                                                "dcterms:title",
+                                                "dcterms:description"
                                             ],
                                             "properties": {
-                                                "dct:identifier": {
+                                                "dcterms:identifier": {
                                                     "type": "string",
                                                     "description": "Identifier for this distribution."
                                                 },
@@ -367,11 +374,11 @@
                                                         "archived"
                                                     ]
                                                 },
-                                                "dct:format": {
+                                                "dcterms:format": {
                                                     "type": "string",
                                                     "description": "File format (e.g., CSV, JSON)."
                                                 },
-                                                "dct:modified": {
+                                                "dcterms:modified": {
                                                     "type": ["string", "null"],
                                                     "format": "date-time",
                                                     "description": "When the distribution file was last modified."
@@ -381,7 +388,7 @@
                                                     "format": "uri",
                                                     "description": "Download URL of the distribution file."
                                                 },
-                                                "dct:title": {
+                                                "dcterms:title": {
                                                     "type": "object",
                                                     "description": "Title for the distribution, in multiple languages.",
                                                     "properties": {
@@ -399,7 +406,7 @@
                                                         }
                                                     }
                                                 },
-                                                "dct:description": {
+                                                "dcterms:description": {
                                                     "type": "object",
                                                     "description": "Description for the distribution, in multiple languages.",
                                                     "properties": {
@@ -417,11 +424,11 @@
                                                         }
                                                     }
                                                 },
-                                                "dct:conformsTo": {
+                                                "dcterms:conformsTo": {
                                                     "type": "string",
                                                     "description": "Reference to a standard or specification the distribution conforms to."
                                                 },
-                                                "dct:licence": {
+                                                "dcterms:licence": {
                                                     "type": "string",
                                                     "description": "License under which this distribution is released.",
                                                     "enum": [
@@ -486,15 +493,17 @@
                         "type": "object",
                         "description": "Descriptive attributes for the dataset series.",
                         "required": [
-                            "dct:identifier",
-                            "dct:title"
+                            "dcterms:identifier",
+                            "dcterms:title",
+                            "bv:classification",
+                            "bv:personalData"
                         ],
                         "properties": {
-                            "dct:identifier": {
+                            "dcterms:identifier": {
                                 "type": "string",
                                 "description": "Unique identifier for the dataset series."
                             },
-                            "dct:title": {
+                            "dcterms:title": {
                                 "type": "object",
                                 "description": "Title for the series in multiple languages.",
                                 "properties": {
@@ -512,7 +521,7 @@
                                     }
                                 }
                             },
-                            "dct:description": {
+                            "dcterms:description": {
                                 "type": "object",
                                 "description": "Description for the series in multiple languages.",
                                 "properties": {
@@ -543,7 +552,7 @@
                                 },
                                 "required": ["name", "email"]
                             },
-                            "dct:publisher": {
+                            "dcterms:publisher": {
                                 "type": "string",
                                 "description": "Publisher or organization responsible for the series."
                             },
@@ -583,6 +592,25 @@
                                 "items": {
                                     "type": "string"
                                 }
+                            },
+                            "bv:classification": {
+                                "type": "string",
+                                "description": "Classification level of the dataset (sample enumeration).",
+                                "enum": [
+                                    "none",
+                                    "internal",
+                                    "confidential",
+                                    "secret"
+                                ]
+                            },
+                            "bv:personalData": {
+                                "type": "string",
+                                "description": "Indicates presence of personal data (e.g., 'Keine', 'Anonymized', etc.).",
+                                "enum": [
+                                    "none",
+                                    "personalData",
+                                    "sensitivePersonalData"
+                                ]
                             }
                         }
                     }
@@ -624,13 +652,13 @@
                     "attributes": {
                         "type": "object",
                         "description": "attributes for the DataService",
-                        "required": ["dct:identifier", "dct:title", "dct:description", "dct:publisher", "dcat:contactPoint"],
+                        "required": ["dcterms:identifier", "dcterms:title", "dcterms:description", "dcterms:publisher", "dcat:contactPoint"],
                         "properties": {
-                            "dct:identifier": {
+                            "dcterms:identifier": {
                                 "type": "string",
                                 "description": "Unique identifier for the DataService."
                             },
-                            "dct:title": {
+                            "dcterms:title": {
                                 "type": "object",
                                 "description": "Title for the series in multiple languages.",
                                 "properties": {
@@ -648,7 +676,7 @@
                                     }
                                 }
                             },
-                            "dct:description": {
+                            "dcterms:description": {
                                 "type": "object",
                                 "description": "Description for the series in multiple languages.",
                                 "properties": {
@@ -666,7 +694,7 @@
                                     }
                                 }
                             },
-                            "dct:publisher": {
+                            "dcterms:publisher": {
                                 "type": "string",
                                 "description": "Publisher or organization responsible for the series."
                             },
@@ -683,7 +711,7 @@
                                 },
                                 "required": ["name", "email"]
                             },
-                            "dct:accessRights": {
+                            "dcterms:accessRights": {
                                 "type": "string",
                                 "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
                                 "enum": [
@@ -774,13 +802,13 @@
                     "attributes": {
                         "type": "object",
                         "description": "attributes for the Catalog",
-                        "required": ["dct:identifier", "dct:title", "dct:description", "dct:publisher", "dcat:contactPoint"],
+                        "required": ["dcterms:identifier", "dcterms:title", "dcterms:description", "dcterms:publisher", "dcat:contactPoint"],
                         "properties": {
-                            "dct:identifier": {
+                            "dcterms:identifier": {
                                 "type": "string",
                                 "description": "Unique identifier for the Catalog."
                             }, ,
-                            "dct:title": {
+                            "dcterms:title": {
                                 "type": "object",
                                 "description": "Title for the series in multiple languages.",
                                 "properties": {
@@ -798,7 +826,7 @@
                                     }
                                 }
                             },
-                            "dct:description": {
+                            "dcterms:description": {
                                 "type": "object",
                                 "description": "Description for the series in multiple languages.",
                                 "properties": {
@@ -816,7 +844,7 @@
                                     }
                                 }
                             },
-                            "dct:publisher": {
+                            "dcterms:publisher": {
                                 "type": "string",
                                 "description": "Publisher or organization responsible for the series."
                             },
@@ -833,7 +861,7 @@
                                 },
                                 "required": ["name", "email"]
                             },
-                            "dct:accessRights": {
+                            "dcterms:accessRights": {
                                 "type": "string",
                                 "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
                                 "enum": [
