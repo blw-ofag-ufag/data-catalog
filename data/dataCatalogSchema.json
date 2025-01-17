@@ -425,7 +425,7 @@
                                                 },
                                                 "dcterms:modified": {
                                                     "type": ["string", "null"],
-                                                    "format": "date-time",
+                                                    "format": "date",
                                                     "description": "When the distribution file was last modified."
                                                 },
                                                 "dcat:downloadURL": {
