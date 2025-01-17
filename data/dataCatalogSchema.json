@@ -141,6 +141,7 @@
                                     "UNKNOWN",
                                     "QUARTERLY",
                                     "NEVER",
+				    "MONTHLY",	
                                     "ANNUAL",
                                     "DAILY",
                                     "AS_NEEDED"
