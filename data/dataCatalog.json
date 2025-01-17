@@ -1,0 +1,333 @@
+{
+    "datasets": [{
+            "metadata": {
+                "lastChangeDate": "2025-01-17T04:21:27.639746",
+                "lastChangeUser": "Script",
+                "imageURL": null
+            },
+            "attributes": {
+                "dcterms:identifier": "0c391726-45f9-4f26-b9fd-c567e954659e",
+                "dcterms:title": {
+                    "de": "Marktzahlen Eier - Jährliche Importmengen",
+                    "fr": "Chiffres du marché des œufs - Quantités importées annuelles",
+                    "it": "Cifre del mercato delle uova - Volumi d'importazione annuali",
+                    "en": "Market figures eggs - Annual import quantities "
+                },
+                "dcterms:description": {
+                    "de": "Jährliche Mengenangaben für importierte Eiprodukte und Eier auf Wertschöpfungsstufe Verarbeitung und Konsum",
+                    "fr": "Quantités annuelles en millions d'œufs importés à l’échelon de création de valeur transformation et consommation",
+                    "it": "Volumi annuali di uova importate e di una selezione di prodotti importati a base di uova a livello della catena di valore transformazione e consumi",
+                    "en": "Annual quantities of eggs imported at the tranformation or consumption stage of the value chain"
+                },
+                "dcterms:accessRights": "PUBLIC",
+                "bv:affiliatedPersons": [{
+                        "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+                        "email": "marktanalysen@blw.admin.ch",
+                        "role": "dataOwner"
+                    }
+                ],
+                "dcterms:modified": "2024-10-11",
+                "dcat:keyword": [
+                    "market-data",
+                    "quantity"
+                ]
+            }
+        }, {
+            "metadata": {
+                "lastChangeDate": "2025-01-17T04:21:26.942382",
+                "lastChangeUser": "Script",
+                "imageURL": null
+            },
+            "attributes": {
+                "dcterms:identifier": "9a08809b-66f0-4010-993d-43357ccbf514",
+                "dcterms:title": {
+                    "de": "Marktzahlen Milch und Milchprodukte - Jährliche Konsumentenpreise",
+                    "fr": "Chiffres du marché du lait et des produits laitiers - Prix annuels à la consommation",
+                    "it": "Cifre di mercato latte e latticini - Prezzi annuali al consumo ",
+                    "en": "Market figures milk and dairy products - Annual consumer prices"
+                },
+                "dcterms:description": {
+                    "de": "Jährlicher Durchschnittspreis ausgewählter Milchprodukte auf der Wertschöpfungsstufe Konsum",
+                    "fr": "Prix moyens annuels d’une sélection de produits laitiers à l’échelon de création de valeur Consommation",
+                    "it": "Prezzo medio annuo di latticini selezionati a livello della catena del valore consumo",
+                    "en": "Annual average price of selected dairy products at the consumption stage of the value chain "
+                },
+                "dcterms:accessRights": "PUBLIC",
+                "bv:affiliatedPersons": [{
+                        "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+                        "email": "marktanalysen@blw.admin.ch",
+                        "role": "dataOwner"
+                    }
+                ],
+                "dcterms:modified": "2024-10-11",
+                "dcat:keyword": [
+                    "market-data",
+                    "price"
+                ]
+            }
+        }, {
+            "metadata": {
+                "lastChangeDate": "2025-01-17T04:21:26.326827",
+                "lastChangeUser": "Script",
+                "imageURL": null
+            },
+            "attributes": {
+                "dcterms:identifier": "8e494087-0931-4f2c-932b-67913ed57bf1",
+                "dcterms:title": {
+                    "de": "Marktzahlen Milch und Milchprodukte - Monatliche Produzentenpreise",
+                    "fr": "Chiffres du marché du lait et des produits laitiers - Prix mensuels à la production ",
+                    "it": "Cifre di mercato latte e latticini - Prezzi mensili alla produzione",
+                    "en": "Market figures milk and dairy products - Monthly producer prices"
+                },
+                "dcterms:description": {
+                    "de": "Monatliche Durchschnittspreise von Rohmilch auf der Wertschöpfungsstufe Produktion",
+                    "fr": "Prix moyens mensuels du lait cru à l’échelon de création de valeur Production",
+                    "it": "Prezzi medi mensili del latte crudo a livello della catena del valore produzione",
+                    "en": "Annual average prices on marketed raw milk at production stage of the value chain"
+                },
+                "dcterms:accessRights": "PUBLIC",
+                "bv:affiliatedPersons": [{
+                        "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+                        "email": "marktanalysen@blw.admin.ch",
+                        "role": "dataOwner"
+                    }
+                ],
+                "dcterms:modified": "2024-10-11",
+                "dcat:keyword": [
+                    "price",
+                    "market-data"
+                ]
+            }
+        }, {
+            "metadata": {
+                "lastChangeDate": "2025-01-17T04:21:25.652520",
+                "lastChangeUser": "Script",
+                "imageURL": null
+            },
+            "attributes": {
+                "dcterms:identifier": "c49e3861-9b41-4e77-878e-1cead201bf9c",
+                "dcterms:title": {
+                    "de": "Marktzahlen Eier - Jährliche Marktstruktur (Produktion)",
+                    "fr": "Chiffres du marché des œufs - Structure annuelle du marché (production)",
+                    "it": "Cifre del mercato delle uova -Fonti e contributi versati annuali disponibili",
+                    "en": "Market figures eggs - Annual market structure (production)"
+                },
+                "dcterms:description": {
+                    "de": "Struktur des jährlichen Eiermarktes in Prozent auf der Wertschöpfungsstufe Produktion",
+                    "fr": "Structure du marché annuel des œufs en pourcentage au niveau de la chaîne de valeur ajoutée production",
+                    "it": "Struttura del mercato annuale delle uova in percentuale a livello della catena del valore produzione",
+                    "en": "Structure of the annual egg market in per cent at the production value chain level"
+                },
+                "dcterms:accessRights": "PUBLIC",
+                "bv:affiliatedPersons": [{
+                        "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+                        "email": "marktanalysen@blw.admin.ch",
+                        "role": "dataOwner"
+                    }
+                ],
+                "dcterms:modified": "2024-10-11",
+                "dcat:keyword": [
+                    "market-data",
+                    "price"
+                ]
+            }
+        }, {
+            "metadata": {
+                "lastChangeDate": "2025-01-17T04:21:25.021390",
+                "lastChangeUser": "Script",
+                "imageURL": null
+            },
+            "attributes": {
+                "dcterms:identifier": "5ba84e07-f6dd-454b-bf8a-68dfad9c5fa1",
+                "dcterms:title": {
+                    "de": "Marktzahlen Eier - Jährliche Exportmengen",
+                    "fr": "Chiffres du marché des œufs - Quantités exportées annuelles",
+                    "it": "Cifre del mercato delle uova - Volumi d'esportazioni annuali",
+                    "en": "Market figures eggs - Annual export quantities "
+                },
+                "dcterms:description": {
+                    "de": "Jährliche Mengenangaben für exportierte Eiprodukte und Eier auf Wertschöpfungsstufe Verarbeitung und Konsum",
+                    "fr": "Quantités annuelles en millions d'œufs exportés à l’échelon de création de valeur transformation et consommation",
+                    "it": "Volumi annuali di uova esportate e di una selezione di prodotti importati a base di uovai a livello di creazione di valore transformazione e consumi",
+                    "en": "Annual quantities of eggs exported at the tranformation or consumption stage of the value chain"
+                },
+                "dcterms:accessRights": "PUBLIC",
+                "bv:affiliatedPersons": [{
+                        "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+                        "email": "marktanalysen@blw.admin.ch",
+                        "role": "dataOwner"
+                    }
+                ],
+                "dcterms:modified": "2024-10-11",
+                "dcat:keyword": [
+                    "market-data",
+                    "quantity"
+                ]
+            }
+        }, {
+            "metadata": {
+                "lastChangeDate": "2025-01-17T04:21:24.356126",
+                "lastChangeUser": "Script",
+                "imageURL": null
+            },
+            "attributes": {
+                "dcterms:identifier": "4b7c2e6b-07e8-4310-a262-2581bda63ac1",
+                "dcterms:title": {
+                    "de": "Marktzahlen Fleisch, Fleischwaren und Wurstwaren - Jährliche Produktionsmengen",
+                    "fr": "Chiffres du marché de la viande, produits à base de viande et charcuterie - Quantités produites annuelles ",
+                    "it": "Cifre del mercato della carne, dei prodotti carnei e dei insaccati - Volumi di produzione annuali",
+                    "en": "Market figures meat, meat products, and sausages - Annual production quantitites "
+                },
+                "dcterms:description": {
+                    "de": "Jährliche Mengenangaben für Fleisch, Fleischwaren und Wurstwaren auf der Wertschöpfungsstufe Produktion",
+                    "fr": "Quantités moyennes annuelles de viande, produits à base de viande et charcuterie commercialisées à l’échelon de création de valeur production",
+                    "it": "Volumi annuali di carne, pordotti carnei e insaccati commercializzati a livello della catena del valore produzione",
+                    "en": "Annual quantities of meat, meat products, and sausages produced at the production stage of the value chain "
+                },
+                "dcterms:accessRights": "PUBLIC",
+                "bv:affiliatedPersons": [{
+                        "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+                        "email": "marktanalysen@blw.admin.ch",
+                        "role": "dataOwner"
+                    }
+                ],
+                "dcat:keyword": [
+                    "quantity",
+                    "market-data"
+                ]
+            }
+        }, {
+            "metadata": {
+                "lastChangeDate": "2025-01-17T04:21:23.671502",
+                "lastChangeUser": "Script",
+                "imageURL": null
+            },
+            "attributes": {
+                "dcterms:identifier": "0c5885ce-c147-4cfd-85cb-1279298860b0",
+                "dcterms:title": {
+                    "de": "Marktzahlen Eier - Monatliche Produzentenpreise",
+                    "fr": "Chiffres du marché des oeufs - Prix mensuels à la production",
+                    "it": "Cifre del mercato delle uova - Prezzi mensili alla produzione",
+                    "en": "Market figures eggs - Monthly producer prices "
+                },
+                "dcterms:description": {
+                    "de": "Monatliche Durchschnittspreise für Eier auf der Wertschöpfungsstufe Produktion",
+                    "fr": "Prix moyens mensuels des œufs à l’échelon de création de valeur production",
+                    "it": "Prezzi medi mensili delle uova nella fase di produzione della catena di valore",
+                    "en": "Monthly average prices for eggs at the production stage of the value chain"
+                },
+                "dcterms:accessRights": "PUBLIC",
+                "bv:affiliatedPersons": [{
+                        "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+                        "email": "marktanalysen@blw.admin.ch",
+                        "role": "dataOwner"
+                    }
+                ],
+                "dcterms:modified": "2024-10-11",
+                "dcat:keyword": [
+                    "market-data",
+                    "price"
+                ]
+            }
+        }, {
+            "metadata": {
+                "lastChangeDate": "2025-01-17T04:21:22.958819",
+                "lastChangeUser": "Script",
+                "imageURL": null
+            },
+            "attributes": {
+                "dcterms:identifier": "5b1e77a6-a9cc-4364-af23-a5e12d3bf0b3",
+                "dcterms:title": {
+                    "de": "Marktzahlen Milch und Milchprodukte - Jährliche Produktionsmengen",
+                    "fr": "Chiffres du marché du lait et des produits laitiers - Quantités produites annuelles",
+                    "it": "Cifre di mercato latte e latticini - Volumi di produzione annuali",
+                    "en": "Market figures milk and dairy products - Annual production quantities"
+                },
+                "dcterms:description": {
+                    "de": "Jährliche Mengenangaben zur vermarkteten Rohmilch auf der Wertschöpfungsstufe Produktion",
+                    "fr": "Quantités moyennes annuelles de lait cru commercialisé à l’échelon de création de valeur Production",
+                    "it": "Volumi annuali di latte crudo commercializzato a livello della catena del valore produzione",
+                    "en": "Annual quantities on marketed raw milk at production stage of the value chain"
+                },
+                "dcterms:accessRights": "PUBLIC",
+                "bv:affiliatedPersons": [{
+                        "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+                        "email": "marktanalysen@blw.admin.ch",
+                        "role": "dataOwner"
+                    }
+                ],
+                "dcterms:modified": "2024-10-11",
+                "dcat:keyword": [
+                    "market-data",
+                    "quantity"
+                ]
+            }
+        }, {
+            "metadata": {
+                "lastChangeDate": "2025-01-17T04:21:22.330888",
+                "lastChangeUser": "Script",
+                "imageURL": null
+            },
+            "attributes": {
+                "dcterms:identifier": "27629a23-2ee1-4344-990d-889c86780b01",
+                "dcterms:title": {
+                    "de": "Marktzahlen Eier - Jährliche Mittel und Beiträge",
+                    "fr": "Chiffres du marché des œufs - Ressources et contributions annuelles disponibles",
+                    "it": "Cifre del mercato delle uova -Fonti e contributi versati annuali disponibili",
+                    "en": "Market figures eggs - Annual funds available and contributions"
+                },
+                "dcterms:description": {
+                    "de": "Jährlich zur Verfügung stehende Mittel und ausbezahlte Beiträge im Rahmen der Marktentlastungsmassnahmen (MEM) für Eier ",
+                    "fr": "Ressources annuelles disponibles et contributions versées dans le cadre des mesures d'allègement de marché pour les œufs ",
+                    "it": "Fondi annuali disponibili e contributi versati nell'ambito delle misure di allentamento del mercato per le uova ",
+                    "en": "Annual funds available and contributions paid out as part of the relief measures for egg market"
+                },
+                "dcterms:accessRights": "PUBLIC",
+                "bv:affiliatedPersons": [{
+                        "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+                        "email": "marktanalysen@blw.admin.ch",
+                        "role": "dataOwner"
+                    }
+                ],
+                "dcterms:modified": "2024-10-11",
+                "dcat:keyword": [
+                    "market-data",
+                    "price"
+                ]
+            }
+        }, {
+            "metadata": {
+                "lastChangeDate": "2025-01-17T04:21:21.666606",
+                "lastChangeUser": "Script",
+                "imageURL": null
+            },
+            "attributes": {
+                "dcterms:identifier": "ea8c7919-23cb-4e42-8355-ee8f64cc257d",
+                "dcterms:title": {
+                    "de": "Marktzahlen Milch und Milchprodukte - Jährliche Grosshandelspreise",
+                    "fr": "Chiffres du marché du lait et des produits laitiers - Prix de gros annuels",
+                    "it": "Cifre di mercato latte e latticini - Prezzi annuali all'ingrosso ",
+                    "en": "Market figures milk and dairy products - Annual wholesale/processing prices"
+                },
+                "dcterms:description": {
+                    "de": "Jährliche Durchschnittspreise von ausgewählten Milchprodukten auf der Wertschöpfungsstufe Grosshandel/Verarbeitung",
+                    "fr": "Prix moyens annuels d’une sélection de produits laitiers à l’échelon de création de valeur Commerce de gros/transformation",
+                    "it": "Prezzi medi annui di latticini selezionati a livello della catena del valore commercio all'ingrosso/trasformazione",
+                    "en": "Annual average prices of selected dairy products at the wholesale/processing stage of the value chain"
+                },
+                "dcterms:accessRights": "PUBLIC",
+                "bv:affiliatedPersons": [{
+                        "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+                        "email": "marktanalysen@blw.admin.ch",
+                        "role": "dataOwner"
+                    }
+                ],
+                "dcterms:modified": "2024-10-11",
+                "dcat:keyword": [
+                    "price",
+                    "market-data"
+                ]
+            }
+        }
+    ]
+}
