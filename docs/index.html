@@ -6,18 +6,24 @@
   <title>FOAG Data Catalog</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="index.html">
     <header>
-      <h1>Welcome to the data catalog of the Federal Office for Agriculture</h1>
-      <p>Here, you'll be able to find any data set collected by the Federal Office for Agriculture (FOAG). The data itself is published and maintained on <a href="https://github.com/blw-ofag-ufag/data-catalog/blob/main/data/dataCatalog.json">this GitHub repository</a>.</p>
+      <h1 data-i18n="title">Welcome to the data catalog of the Federal Office for Agriculture</h1>
+      <p data-i18n="subtitle">
+        Here, you'll be able to find any data set collected by the Federal Office for Agriculture (FOAG). The data itself is published and maintained on <a href="https://github.com/blw-ofag-ufag/data-catalog/blob/main/data/dataCatalog.json">this GitHub repository</a>.
+      </p>
       <div class="controls">
-        
-        <input type="text" id="search" placeholder="Search in the title, description, dates, owners or keywords..." />
+        <input
+          type="text"
+          id="search"
+          placeholder="Search in the title, description, dates, owners or keywords..."
+          data-i18n="searchPlaceholder"
+        />
         <select id="sort-options">
-          <option value="title">Sort by Title</option>
-          <option value="issued-asc">Sort by Issued Date (Ascending)</option>
-          <option value="issued-desc">Sort by Issued Date (Descending)</option>
-          <option value="owner">Sort by Data Owner</option>
+          <option value="title" data-i18n="sortTitle">Sort by Title</option>
+          <option value="issued-asc" data-i18n="sortIssuedAscending">Sort by Issued Date (Ascending)</option>
+          <option value="issued-desc" data-i18n="sortIssuedDescending">Sort by Issued Date (Descending)</option>
+          <option value="owner" data-i18n="sortOwner">Sort by Data Owner</option>
         </select>
         <select id="language-select">
           <option value="en">English</option>
@@ -30,5 +36,6 @@
     </header>
   <main id="dataset-container"></main>
   <script src="main.js"></script>
+  <script src="translations.js"></script>
 </body>
 </html>
