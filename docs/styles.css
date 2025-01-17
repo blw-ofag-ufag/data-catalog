@@ -5,7 +5,7 @@
   --background-color: #161616;
   --secondary-background-color: #222222;
   --primary-text-color: #ffffff;
-  --secondary-text-color: #bdbdbd;
+  --secondary-text-color: #999999;
   --description-text-color: #666666;
   --accent-color: #12ca4f;
   --hover-accent-color: #6200ea;
@@ -233,4 +233,10 @@ main {
   color: var(--primary-text-color);
   font-weight: 400;
   margin: 2px 4px 2px 0;
+}
+
+.keyword-chip.more-keywords {
+  background-color: var(--border-color); /* Adjust as needed */
+  color: var(--secondary-text-color);
+  cursor: default; /* Disable pointer interactions */
 }

@@ -4,7 +4,7 @@
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:27.639746",
                 "lastChangeUser": "Unknown",
-                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/default.jpg"
+                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/eggs-001.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "0c391726-45f9-4f26-b9fd-c567e954659e",
@@ -101,7 +101,7 @@
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:26.942382",
                 "lastChangeUser": "Unknown",
-                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/default.jpg"
+                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/cows-001.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "9a08809b-66f0-4010-993d-43357ccbf514",
@@ -143,7 +143,9 @@
                 "dcterms:issued": "2025-01-16",
                 "dcat:keyword": [
                     "market-data",
-                    "price"
+                    "price",
+                    "milk",
+                    "dairy products"
                 ],
                 "dcterms:accrualPeriodicity": "ANNUAL",
                 "dcterms:modified": "2025-01-15",
@@ -198,7 +200,7 @@
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:26.326827",
                 "lastChangeUser": "Unknown",
-                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/default.jpg"
+                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/cows-002.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "8e494087-0931-4f2c-932b-67913ed57bf1",
@@ -240,7 +242,9 @@
                 "dcterms:issued": "2025-01-16",
                 "dcat:keyword": [
                     "price",
-                    "market-data"
+                    "market-data",
+                    "milk",
+                    "dairy-product"
                 ],
                 "dcterms:accrualPeriodicity": "MONTHLY",
                 "dcterms:modified": "2025-01-15",
@@ -295,7 +299,7 @@
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:25.652520",
                 "lastChangeUser": "Unknown",
-                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/default.jpg"
+                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/eggs-002.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "c49e3861-9b41-4e77-878e-1cead201bf9c",
@@ -391,7 +395,7 @@
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:25.021390",
                 "lastChangeUser": "Unknown",
-                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/default.jpg"
+                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/eggs-003.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "5ba84e07-f6dd-454b-bf8a-68dfad9c5fa1",
@@ -433,7 +437,8 @@
                 "dcterms:issued": "2025-01-16",
                 "dcat:keyword": [
                     "market-data",
-                    "quantity"
+                    "quantity",
+                    "eggs"
                 ],
                 "dcterms:accrualPeriodicity": "ANNUAL",
                 "dcterms:modified": "2025-01-15",
@@ -488,7 +493,7 @@
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:24.356126",
                 "lastChangeUser": "Unknown",
-                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/default.jpg"
+                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/meat-001.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "4b7c2e6b-07e8-4310-a262-2581bda63ac1",
@@ -530,7 +535,8 @@
                 "dcterms:issued": "2025-01-16",
                 "dcat:keyword": [
                     "quantity",
-                    "market-data"
+                    "market-data",
+                    "meat"
                 ],
                 "dcterms:accrualPeriodicity": "ANNUAL",
                 "dcterms:modified": "2025-01-15",
@@ -1499,7 +1505,8 @@
                 "dcterms:issued": "2025-01-16",
                 "dcat:keyword": [
                     "quantity",
-                    "market-data"
+                    "market-data",
+                    "milk"
                 ],
                 "dcterms:accrualPeriodicity": "MONTHLY",
                 "dcterms:modified": "2025-01-15",
@@ -2133,7 +2140,7 @@
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:12.303180",
                 "lastChangeUser": "Unknown",
-                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/default.jpg"
+                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/meat-002.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "b8368066-995a-424d-96bc-d6993720865b",
@@ -7429,7 +7436,7 @@
                 },
                 "dcterms:issued": "2012-07-01",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "soil",
                     "meteorology",
                     "FSDI"
@@ -7628,7 +7635,7 @@
                 },
                 "dcterms:issued": "2012-07-01",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "soil",
                     "meteorology",
                     "FSDI"
@@ -7827,7 +7834,7 @@
                 },
                 "dcterms:issued": "2012-07-01",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "soil",
                     "meteorology",
                     "FSDI"
@@ -8711,7 +8718,7 @@
                 },
                 "dcterms:issued": "2007-06-28",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "climatic-effect",
                     "meteorology",
                     "land-use",
@@ -9251,7 +9258,7 @@
                 },
                 "dcterms:issued": "2000-12-31",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "soil",
                     "meteorology",
                     "FSDI"
@@ -9450,7 +9457,7 @@
                 },
                 "dcterms:issued": "2007-06-28",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "climatic-effect",
                     "meteorology",
                     "land-use",
@@ -9650,7 +9657,8 @@
                 "dcterms:issued": "2023-07-14",
                 "dcat:keyword": [
                     "statistical-units",
-                    "FSDI"
+                    "FSDI",
+                    "milk"
                 ],
                 "dcterms:accrualPeriodicity": "AS_NEEDED",
                 "dcterms:modified": "2025-01-15",
@@ -9846,7 +9854,7 @@
                 },
                 "dcterms:issued": "2007-06-28",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "climatic-effect",
                     "meteorology",
                     "land-use",
@@ -10247,7 +10255,7 @@
                 },
                 "dcterms:issued": "2012-07-01",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "soil",
                     "meteorology",
                     "FSDI"
@@ -10445,15 +10453,11 @@
                 },
                 "dcterms:issued": "2012-05-11",
                 "dcat:keyword": [
-                    "alpine-products",
-                    "summer-grazing",
-                    "regional-designation",
-                    "food-labeling",
-                    "raw-materials",
-                    "dairy-products",
-                    "meat-processing",
-                    "cheese-maturation",
-                    "legal-framework",
+                    "alpine",
+                    "summering",
+                    "milk",
+                    "meat",
+                    "cheese",
                     "FSDI"
                 ],                
                 "dcterms:accrualPeriodicity": "OTHER",
@@ -10622,7 +10626,7 @@
                 },
                 "dcterms:issued": "2012-07-01",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "soil",
                     "meteorology",
                     "FSDI"
@@ -11193,7 +11197,7 @@
                 },
                 "dcterms:issued": "2007-06-28",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "climatic-effect",
                     "meteorology",
                     "land-use",
@@ -11563,7 +11567,7 @@
                 },
                 "dcterms:issued": "2007-06-28",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "climatic-effect",
                     "meteorology",
                     "land-use",
@@ -11936,7 +11940,7 @@
                 },
                 "dcterms:issued": "2007-06-28",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "climatic-effect",
                     "meteorology",
                     "land-use",
@@ -12135,7 +12139,7 @@
                 },
                 "dcterms:issued": "2000-12-31",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "soil",
                     "meteorology",
                     "FSDI"
@@ -12676,7 +12680,7 @@
                 },
                 "dcterms:issued": "2012-07-01",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "soil",
                     "meteorology",
                     "FSDI"
@@ -12874,7 +12878,7 @@
                 },
                 "dcterms:issued": "2007-06-28",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "climatic-effect",
                     "meteorology",
                     "land-use",
@@ -13245,7 +13249,7 @@
                 },
                 "dcterms:issued": "2007-06-28",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "climatic-effect",
                     "meteorology",
                     "land-use",
@@ -13444,7 +13448,7 @@
                 },
                 "dcterms:issued": "2007-06-28",
                 "dcat:keyword": [
-                    "cultivation-suitability",
+                    "suitability",
                     "climatic-effect",
                     "meteorology",
                     "land-use",

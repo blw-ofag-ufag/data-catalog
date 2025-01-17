@@ -255,56 +255,59 @@ function renderFullPageDetails(dataset, lang) {
  * with columns: 25%, 25%, 50%.
  */
 function renderAffiliatedPersons(attributes, lang) {
+  
   const section = document.getElementById("metadataSection");
-  // We'll add a sub-section for affiliated persons
   const persons = attributes["bv:affiliatedPersons"] || [];
 
-  let html = `<h2>Affiliated Roles</h2>`;
+  const nameHeader = translations["details.name"]?.[lang] || "Name";
+  const emailHeader = translations["details.email"]?.[lang] || "Email";
+  const roleHeader = translations["details.role"]?.[lang] || "Role";
+
+  let html = `<h2>${translations["details.affiliatedRoles"]?.[lang] || "Affiliated Roles"}</h2>`;
 
   if (!Array.isArray(persons) || persons.length === 0) {
-    html += `<p>No affiliated persons.</p>`;
-    section.innerHTML = html;
-    return;
+      html += `<p>${translations["details.noAffiliatedPersons"]?.[lang] || "No affiliated persons."}</p>`;
+      section.innerHTML = html;
+      return;
   }
 
-  // A simple table with specified column widths
   html += `
-    <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
-      <colgroup>
-        <col style="width: 25%;" />
-        <col style="width: 25%;" />
-        <col style="width: 50%;" />
-      </colgroup>
-      <thead>
-        <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
-          <th style="padding: 8px;">Name</th>
-          <th style="padding: 8px;">Email</th>
-          <th style="padding: 8px;">Role</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
+  <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
+    <colgroup>
+      <col style="width: 25%;" />
+      <col style="width: 25%;" />
+      <col style="width: 50%;" />
+    </colgroup>
+    <thead>
+      <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
+        <th style="padding: 8px;">${nameHeader}</th>
+        <th style="padding: 8px;">${emailHeader}</th>
+        <th style="padding: 8px;">${roleHeader}</th>
+      </tr>
+    </thead>
+    <tbody>
+`;
 
   persons.forEach((p) => {
-    const name = p.name || "N/A";
-    const email = p.email
-      ? `<a href="mailto:${p.email}">${p.email}</a>`
-      : "N/A"; // Anchor the email address
-    const role = p.role || "N/A";
+      const name = p.name || translations["details.unknown"]?.[lang] || "Unknown";
+      const email = p.email
+          ? `<a href="mailto:${p.email}">${p.email}</a>`
+          : translations["details.noEmail"]?.[lang] || "No Email";
+      const role = p.role || translations["details.unknownRole"]?.[lang] || "Unknown Role";
 
-    html += `
-      <tr style="border-bottom: 1px solid var(--border-color);">
-        <td style="padding: 8px;">${name}</td>
-        <td style="padding: 8px;">${email}</td>
-        <td style="padding: 8px;">${role}</td>
-      </tr>
-    `;
+      html += `
+    <tr style="border-bottom: 1px solid var(--border-color);">
+      <td style="padding: 8px;">${name}</td>
+      <td style="padding: 8px;">${email}</td>
+      <td style="padding: 8px;"><span class="enumeration-chip">${role}</span></td>
+    </tr>
+  `;
   });
 
   html += `
-      </tbody>
-    </table>
-  `;
+    </tbody>
+  </table>
+`;
 
   section.innerHTML = html;
 }
@@ -315,7 +318,8 @@ function renderAffiliatedPersons(attributes, lang) {
  * in .enumeration-chip spans for emphasis.
  */
 function renderMetadata(attributes, lang) {
-    // We'll place it below the roles (in the same #metadataSection)
+    
+  // We'll place it below the roles (in the same #metadataSection)
     const section = document.getElementById("metadataSection");
 
     // Prepare a list of fields to skip
@@ -328,9 +332,13 @@ function renderMetadata(attributes, lang) {
         "dcat:distribution"
     ];
 
-    // We'll build a sub-header plus table
+    // Fetch translations
+    const attributeHeader = translations["details.attribute"]?.[lang] || "Attribute";
+    const valueHeader = translations["details.value"]?.[lang] || "Value";
+
+    // Build a table
     let html = `
-  <h2>Metadata</h2>
+  <h2>${translations["details.metadata"]?.[lang] || "Metadata"}</h2>
   <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
     <colgroup>
       <col style="width: 25%;" />
@@ -338,8 +346,8 @@ function renderMetadata(attributes, lang) {
     </colgroup>
     <thead>
       <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
-        <th style="padding: 8px;">Attribute</th>
-        <th style="padding: 8px;">Value</th>
+        <th style="padding: 8px;">${attributeHeader}</th>
+        <th style="padding: 8px;">${valueHeader}</th>
       </tr>
     </thead>
     <tbody>
@@ -348,39 +356,40 @@ function renderMetadata(attributes, lang) {
     // Loop over leftover fields
     for (const key of Object.keys(attributes)) {
       if (displayed.includes(key)) continue;
-    
+  
+      let fieldLabel = translations[`${key}`]?.[lang] || key;
       let val = attributes[key];
-    
-      // Handle specific fields differently
+  
+      // Format specific fields
       if (key === "dcat:contactPoint") {
-        val = formatContactPoint(val);
+          val = formatContactPoint(val);
       } else if (key === "bv:opendata.swiss" || key === "bv:i14y") {
-        val = formatPublicationMetadata(val);
+          val = formatPublicationMetadata(val);
       } else if (key === "bv:legalBasis") {
-        val = formatUrlArray(val); // Handles arrays of URLs
+          val = formatUrlArray(val); // Handles arrays of URLs
       } else if (key === "dcat:landingPage") {
-        val = formatSingleUrl(val); // Handles single URL
+          val = formatSingleUrl(val); // Handles single URL
       } else if (typeof val === "string") {
-        val = formatDateIfPossible(val, lang);
+          val = formatDateIfPossible(val, lang);
       } else if (Array.isArray(val)) {
-        val = val.map((item) => formatDateIfPossible(item, lang));
+          val = val.map((item) => formatDateIfPossible(item, lang));
       }
-    
+  
       if (enumeratedFields.includes(key)) {
-        val = highlightEnumeratedValues(val);
+          val = highlightEnumeratedValues(val);
       } else {
-        val = stringifyIfNeeded(val);
+          val = stringifyIfNeeded(val);
       }
-    
+  
       if (!val) continue; // Skip empty or undefined values
-    
+  
       html += `
         <tr style="border-bottom: 1px solid var(--border-color);">
-          <td style="padding: 8px;"><strong>${key}</strong></td>
+          <td style="padding: 8px;"><strong>${fieldLabel}</strong></td>
           <td style="padding: 8px;">${val}</td>
         </tr>
       `;
-    }
+  }  
 
     html += `
     </tbody>
@@ -399,17 +408,11 @@ function renderDistributions(attributes, lang) {
     const section = document.getElementById("distributionsSection");
     const distributions = attributes["dcat:distribution"] || [];
 
-    if (!Array.isArray(distributions) || distributions.length === 0) {
-        section.innerHTML = `
-    <h2>Distributions</h2>
-    <p>No Distributions</p>
-  `;
-        return;
-    }
-
+    const distributionsHeader = translations["dcat:distribution"]?.[lang] || "Distributions";
+    
     // Start building the table
     let html = `
-  <h2>Distributions</h2>
+  <h2>${distributionsHeader}</h2>
   <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
     <colgroup>
       <col style="width: 25%;" />

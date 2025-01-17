@@ -12,8 +12,8 @@
       "it": "Qui puoi trovare tutti i set di dati raccolti dall'Ufficio federale dell'agricoltura (UFAG). I dati sono pubblicati e mantenuti in questo <a href='https://github.com/blw-ofag-ufag/data-catalog/blob/main/data/dataCatalog.json'>repository GitHub</a>. Se desideri contribuire a questa raccolta, contatta il <a href='mailto:kompetenzzentrumdigitaletransformation@blw.admin.ch'>centro di competenza per la trasformazione digitale</a>."
   },
   "index.searchPlaceholder": {
-      "en": "Search by title, description, issue date or people",
-      "de": "Nach Titel, Beschreibung, Veröffentlichungsdatum oder Personen suchen",
+      "en": "Search for title, description, issue date, people...",
+      "de": "Suche nach Titel, Beschreibung, Veröffentlichungsdatum, Personen...",
       "fr": "Rechercher par titre, description, date de publication ou personnes",
       "it": "Cerca per titolo, descrizione, data di pubblicazione o persone"
   },
@@ -24,14 +24,14 @@
       "it": "Ordina per titolo"
   },
   "index.sortIssuedAscending": {
-      "en": "Sort by date (ascending)",
-      "de": "Nach Datum sortieren (aufsteigend)",
+      "en": "Sort by date (old to new)",
+      "de": "Nach Datum sortieren (alt zu neu)",
       "fr": "Trier par date (croissante)",
       "it": "Ordina per data (crescente)"
   },
   "index.sortIssuedDescending": {
-      "en": "Sort by date (descending)",
-      "de": "Nach Datum sortieren (absteigend)",
+      "en": "Sort by date (new to old)",
+      "de": "Nach Datum sortieren (neu zu alt)",
       "fr": "Trier par date (décroissante)",
       "it": "Ordina per data (decrescente)"
   },
@@ -143,6 +143,12 @@
       "fr": "Personnes affiliées",
       "it": "Persone affiliate"
   },
+  "dcterms:accrualPeriodicity": {
+    "en": "Accrual periodicity",
+    "de": "Erfassungsperiodizität",
+    "fr": "Périodicité d'acquisition",
+    "it": "Periodicità di acquisizione"
+  },  
   "bv:classification": {
       "en": "Classification",
       "de": "Klassifikation",
@@ -246,45 +252,45 @@
       "it": "Derivato da"
   },
   "index.owner": {
-    "en": "Data owner",
-    "de": "Verantwortlich",
-    "fr": "Propriétaire des données",
-    "it": "Proprietario dei dati"
+      "en": "Data owner",
+      "de": "Verantwortlich",
+      "fr": "Propriétaire des données",
+      "it": "Proprietario dei dati"
   },
   "details.metadata": {
-    "en": "Metadata",
-    "de": "Metadaten",
-    "fr": "Métadonnées",
-    "it": "Metadati"
+      "en": "Metadata",
+      "de": "Metadaten",
+      "fr": "Métadonnées",
+      "it": "Metadati"
   },
   "details.attribute": {
-    "en": "Attribute",
-    "de": "Attribut",
-    "fr": "Attribut",
-    "it": "Attributo"
+      "en": "Attribute",
+      "de": "Attribut",
+      "fr": "Attribut",
+      "it": "Attributo"
   },
   "details.value": {
-    "en": "Value",
-    "de": "Wert",
-    "fr": "Valeur",
-    "it": "Valore"
+      "en": "Value",
+      "de": "Wert",
+      "fr": "Valeur",
+      "it": "Valore"
   },
   "details.name": {
-    "en": "Name",
-    "de": "Name",
-    "fr": "Nom",
-    "it": "Nome"
+      "en": "Name",
+      "de": "Name",
+      "fr": "Nom",
+      "it": "Nome"
   },
   "details.email": {
-    "en": "Email address",
-    "de": "Email-Adresse",
-    "fr": "Adresse e-mail",
-    "it": "Indirizzo email"
+      "en": "Email address",
+      "de": "Email-Adresse",
+      "fr": "Adresse e-mail",
+      "it": "Indirizzo email"
   },
   "details.role": {
-    "en": "Role",
-    "de": "Rolle",
-    "fr": "Rôle",
-    "it": "Ruolo"
-  }  
+      "en": "Role",
+      "de": "Rolle",
+      "fr": "Rôle",
+      "it": "Ruolo"
+  }
 }

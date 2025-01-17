@@ -14,10 +14,26 @@ async function loadTranslations() {
 }
 
 /**
- * Translate the page based on the selected language.
+ * Get the current language from the page or URL.
+ * If the `language-select` element exists, use its value.
+ * Otherwise, read from the URL `lang` parameter.
+ */
+function getCurrentLanguage() {
+  const langSelect = document.getElementById("language-select");
+  if (langSelect) {
+    return langSelect.value; // From dropdown (index.html)
+  }
+  
+  // From URL parameter (details.html)
+  const params = new URLSearchParams(window.location.search);
+  return params.get("lang") || "en"; // Default to "en"
+}
+
+/**
+ * Translate the page based on the selected or URL language.
  */
 function translatePage() {
-  const lang = document.getElementById("language-select").value;
+  const lang = getCurrentLanguage();
 
   // Loop through all translatable elements
   document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -38,11 +54,14 @@ function translatePage() {
   });
 }
 
-// Event listener for language selection change
-document.getElementById("language-select").addEventListener("change", translatePage);
-
-// Load translations on page load
+// Add an event listener for language selection dropdown if it exists
 document.addEventListener("DOMContentLoaded", async () => {
   await loadTranslations();
+
+  const langSelect = document.getElementById("language-select");
+  if (langSelect) {
+    langSelect.addEventListener("change", translatePage);
+  }
+
   translatePage(); // Apply translations after loading
 });

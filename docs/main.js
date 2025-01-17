@@ -314,18 +314,23 @@ function renderDatasets(data) {
     }
   };
 
-  // Fetch translations for "Issued" and "Owner"
-  const issuedLabel = translations["dcterms:issued"]?.[currentLanguage] || "Issued:";
-  const ownerLabel = translations["index.owner"]?.[currentLanguage] || "Owner:";
-
   container.innerHTML = data
     .map(dataset => {
       const { metadata, attributes } = dataset;
       const datasetId = attributes["dcterms:identifier"];
       const keywords = attributes["dcat:keyword"] || [];
+      const maxTitleLength = 50; // Limit title to 50 characters
+      const maxKeywords = 5; // Display only 3 keywords
 
-      // Build the HTML for keywords, each with stopPropagation
-      const keywordsHTML = keywords
+      // Truncate title if too long
+      let title = attributes["dcterms:title"][currentLanguage] || "Untitled";
+      if (title.length > maxTitleLength) {
+        title = title.slice(0, maxTitleLength) + "...";
+      }
+
+      // Display only a limited number of keywords
+      let keywordsHTML = keywords
+        .slice(0, maxKeywords)
         .map(kw => `
           <span
             class="keyword-chip"
@@ -335,6 +340,12 @@ function renderDatasets(data) {
           </span>
         `)
         .join("");
+      
+      // Add "+X more" if there are additional keywords
+      if (keywords.length > maxKeywords) {
+        const remaining = keywords.length - maxKeywords;
+        keywordsHTML += `<span class="keyword-chip more-keywords">+${remaining} more</span>`;
+      }
 
       // Return the tile (now clickable)
       return `
@@ -344,13 +355,13 @@ function renderDatasets(data) {
         >
           <img 
             src="${metadata.imageURL}" 
-            alt="${attributes["dcterms:title"][currentLanguage]}" 
+            alt="${title}" 
           />
           <div class="dataset-info">
-            <h3>${attributes["dcterms:title"][currentLanguage]}</h3>
+            <h3>${title}</h3>
             <p>${attributes["dcterms:description"][currentLanguage]}</p>
-            <p><strong>${issuedLabel}</strong> ${formatDate(attributes["dcterms:issued"])}</p>
-            <p><strong>${ownerLabel}</strong> ${getDataOwnerName(attributes)}</p>
+            <p><strong>${translations["tile.issued"]?.[currentLanguage] || "Issued:"}</strong> ${formatDate(attributes["dcterms:issued"])}</p>
+            <p><strong>${translations["tile.owner"]?.[currentLanguage] || "Owner:"}</strong> ${getDataOwnerName(attributes)}</p>
             <div class="keywords">${keywordsHTML}</div>
           </div>
         </div>

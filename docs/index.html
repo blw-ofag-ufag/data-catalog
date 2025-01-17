@@ -17,19 +17,19 @@
           type="text"
           id="search"
           placeholder="Search in the title, description, dates, owners or keywords..."
-          data-i18n="searchPlaceholder"
+          data-i18n="index.searchPlaceholder"
         />
         <select id="sort-options">
           <option value="title" data-i18n="index.sortTitle">Sort by Title</option>
           <option value="issued-asc" data-i18n="index.sortIssuedAscending">Sort by Issued Date (Ascending)</option>
-          <option value="issued-desc" data-i18n="index.sortIssuedDescending">Sort by Issued Date (Descending)</option>
+          <option value="issued-desc" data-i18n="index.sortIssuedDescending" selected>Sort by Issued Date (Descending)</option>
           <option value="owner" data-i18n="index.sortOwner">Sort by Data Owner</option>
         </select>
         <select id="language-select">
-          <option value="en">English</option>
-          <option value="de">Deutsch</option>
+          <option value="de" selected>Deutsch</option>
           <option value="fr">Français</option>
           <option value="it">Italiano</option>
+          <option value="en">English</option>
         </select>
       </div>
       <div id="search-chips-container"></div>
