@@ -30,7 +30,7 @@
                                 "type": "string",
                                 "description": "Name or identifier of the user who performed the last update."
                             },
-                            "ImageURL": {
+                            "imageURL": {
                                 "type": ["string", "null"],
                                 "format": "uri",
                                 "description": "URL linking to an image for this dataset."
@@ -380,7 +380,7 @@
                                                     "type": "string",
                                                     "description": "Name or identifier of the user who performed the last update."
                                                 },
-                                                "ImageURL": {
+                                                "imageURL": {
                                                     "type": ["string", "null"],
                                                     "format": "uri"
                                                 }
@@ -523,7 +523,7 @@
                                 "type": "string",
                                 "description": "User or identifier who last updated the series."
                             },
-                            "ImageURL": {
+                            "imageURL": {
                                 "type": ["string", "null"],
                                 "format": "uri",
                                 "description": "URL linking to an image for this series."
@@ -683,7 +683,7 @@
                                 "type": "string",
                                 "description": "User or identifier who last updated the series."
                             },
-                            "ImageURL": {
+                            "imageURL": {
                                 "type": ["string", "null"],
                                 "format": "uri",
                                 "description": "URL linking to an image for this series."
@@ -833,7 +833,7 @@
                                 "type": "string",
                                 "description": "User or identifier who last updated the series."
                             },
-                            "ImageURL": {
+                            "imageURL": {
                                 "type": ["string", "null"],
                                 "format": "uri",
                                 "description": "URL linking to an image for this series."
