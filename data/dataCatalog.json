@@ -3,7 +3,7 @@
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:27.639746",
                 "lastChangeUser": "Unknown",
-				"imageURL": "https://github.com/blw-ofag-ufag/data-catalog/blob/main/docs/img/blw_placeholder.jpg"
+		"imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img//blw_placeholder.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "0c391726-45f9-4f26-b9fd-c567e954659e",
@@ -92,7 +92,8 @@
         }, {
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:26.942382",
-                "lastChangeUser": "Unknown"
+                "lastChangeUser": "Unknown",
+		"imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img//blw_placeholder.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "9a08809b-66f0-4010-993d-43357ccbf514",
@@ -182,7 +183,8 @@
         }, {
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:26.326827",
-                "lastChangeUser": "Unknown"
+                "lastChangeUser": "Unknown",
+		"imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img//blw_placeholder.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "8e494087-0931-4f2c-932b-67913ed57bf1",
@@ -272,7 +274,8 @@
         }, {
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:25.652520",
-                "lastChangeUser": "Unknown"
+                "lastChangeUser": "Unknown",
+		"imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img//blw_placeholder.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "c49e3861-9b41-4e77-878e-1cead201bf9c",
@@ -361,7 +364,8 @@
         }, {
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:25.021390",
-                "lastChangeUser": "Unknown"
+                "lastChangeUser": "Unknown",
+		"imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img//blw_placeholder.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "5ba84e07-f6dd-454b-bf8a-68dfad9c5fa1",
@@ -451,7 +455,8 @@
         }, {
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:24.356126",
-                "lastChangeUser": "Unknown"
+                "lastChangeUser": "Unknown",
+		"imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img//blw_placeholder.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "4b7c2e6b-07e8-4310-a262-2581bda63ac1",
@@ -541,7 +546,8 @@
         }, {
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:23.671502",
-                "lastChangeUser": "Unknown"
+                "lastChangeUser": "Unknown",
+                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/chicken-001.jpg"
             },
             "attributes": {
                 "dcterms:identifier": "0c5885ce-c147-4cfd-85cb-1279298860b0",
