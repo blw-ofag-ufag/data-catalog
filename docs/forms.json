@@ -696,7 +696,7 @@
         {
             "type": "fieldset",
             "title": "Dataset title",
-            "expandable": true,
+            "expandable": false,
             "items": [
                 "items.attributes.dcterms:title.de",
                 "items.attributes.dcterms:title.fr",
@@ -707,7 +707,7 @@
         {
             "type": "fieldset",
             "title": "Dataset description",
-            "expandable": true,
+            "expandable": false,
             "items": [
                 {
                     "key": "items.attributes.dcterms:description.de",
@@ -730,7 +730,7 @@
         {
             "type": "fieldset",
             "title": "Security and access",
-            "expandable": true,
+            "expandable": false,
             "items": [
                 {
                     "key": "items.attributes.dcterms:accessRights"
@@ -749,7 +749,7 @@
         {
             "type": "fieldset",
             "title": "Dates and Periods",
-            "expandable": true,
+            "expandable": false,
             "items": [
                 {
                     "key": "items.attributes.dcterms:issued",
