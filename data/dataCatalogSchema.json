@@ -326,6 +326,7 @@
                                 "description": "Legal basis for the dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
                                 "type": ["array","null"],
                                 "items": {
+                                    "title": "URI",
                                     "type": ["string", "null"],
                                     "format": "uri"
                                 }

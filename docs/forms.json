@@ -317,7 +317,7 @@
                             "description": "Legal basis for the dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
                             "type": ["array","null"],
                             "items": {
-                                "title": "Law URL",
+                                "title": "IRI",
                                 "type": ["string", "null"],
                                 "format": "uri"
                             }
@@ -532,166 +532,6 @@
             }
         }
     },
-    "datasetSeries": {
-        "type": "array",
-        "description": "Container for dataset series keyed by an identifier such as 'SERIE-01'.",
-        "items": {
-            "type": "object",
-            "description": "Structure of each dataset series entry. Keys are series IDs (e.g. 'SERIE-01').",
-            "required": ["metadata", "attributes"],
-            "properties": {
-                "metadata": {
-                    "type": "object",
-                    "description": "Metadata about the dataset series (last update date, user, image, etc.).",
-                    "required": [
-                        "lastChangeDate",
-                        "lastChangeUser"
-                    ],
-                    "properties": {
-                        "lastChangeDate": {
-                            "type": "string",
-                            "format": "date-time",
-                            "description": "Date/time when the series was last changed."
-                        },
-                        "lastChangeUser": {
-                            "type": "string",
-                            "description": "User or identifier who last updated the series."
-                        },
-                        "imageURL": {
-                            "type": ["string", "null"],
-                            "format": "uri",
-                            "description": "URL linking to an image for this series."
-                        }
-                    }
-                },
-                "attributes": {
-                    "type": "object",
-                    "description": "Descriptive attributes for the dataset series.",
-                    "required": [
-                        "dcterms:identifier",
-                        "dcterms:title",
-                        "bv:classification",
-                        "bv:personalData"
-                    ],
-                    "properties": {
-                        "dcterms:identifier": {
-                            "type": "string",
-                            "description": "Unique identifier for the dataset series."
-                        },
-                        "dcterms:title": {
-                            "type": "object",
-                            "description": "Title for the series in multiple languages.",
-                            "properties": {
-                                "de": {
-                                    "type": "string"
-                                },
-                                "fr": {
-                                    "type": "string"
-                                },
-                                "it": {
-                                    "type": "string"
-                                },
-                                "en": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "dcterms:description": {
-                            "type": "object",
-                            "description": "Description for the series in multiple languages.",
-                            "properties": {
-                                "de": {
-                                    "type": "string"
-                                },
-                                "fr": {
-                                    "type": "string"
-                                },
-                                "it": {
-                                    "type": "string"
-                                },
-                                "en": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "dcat:contactPoint": {
-                            "type": "object",
-                            "description": "Contact information for inquiries.",
-                            "properties": {
-                                "name": {
-                                    "type": "string"
-                                },
-                                "email": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": ["name", "email"]
-                        },
-                        "dcterms:publisher": {
-                            "type": "string",
-                            "description": "Publisher or organization responsible for the series."
-                        },
-                        "adms:status": {
-                            "type": "string",
-                            "description": "Current status of the dataset (sample enumeration).",
-                            "enum": [
-                                "workInProgress",
-                                "validated",
-                                "published",
-                                "deleted",
-                                "archived"
-                            ]
-                        },
-                        "dcat:dataset": {
-                            "type": ["array","null"],
-                            "description": "Indicates which dataset(s) this series serves or is related to.",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "foaf:page": {
-                            "type": ["array","null"],
-                            "description": "Any related page or resource.",
-                            "items": {
-                                "type": ["string", "null"],
-                                "format": "uri"
-                            }
-                        },
-                        "bv:comment": {
-                            "type": "string",
-                            "description": "Additional comments or notes about the series."
-                        },
-                        "dcat:keyword": {
-                            "type": ["array","null"],
-                            "description": "Keywords describing the dataset Serie.",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "bv:classification": {
-                            "type": "string",
-                            "description": "Classification level of the dataset (sample enumeration).",
-                            "enum": [
-                                "none",
-                                "internal",
-                                "confidential",
-                                "secret"
-                            ]
-                        },
-                        "bv:personalData": {
-                            "type": "string",
-                            "description": "Indicates presence of personal data (e.g., 'Keine', 'Anonymized', etc.).",
-                            "enum": [
-                                "none",
-                                "personalData",
-                                "sensitivePersonalData"
-                            ]
-                        }
-                    }
-                }
-            }
-        }
-    },
     "form": [
         {
             "type": "fieldset",
@@ -761,6 +601,46 @@
                 },
                 {
                     "key": "items.attributes.dcterms:accrualPeriodicity"
+                }
+            ]
+        },
+        {
+            "type": "fieldset",
+            "title": "Business details",
+            "expandable": false,
+            "items": [
+                {
+                    "key": "items.attributes.bv:retentionPeriod",
+                    "type": "number"
+                },
+                {
+                    "key": "items.attributes.bv:businessProcess"
+                },
+                {
+                    "key": "items.attributes.prov:wasDerivedFrom"
+                }
+            ]
+        },
+        {
+            "type": "fieldset",
+            "title": "Distributions",
+            "expandable": false,
+            "items": [
+                {
+                    "type": "tabarray",
+                    "items": [
+                      {
+                        "type": "section",
+                        "legend": "{{idx}}. {{value}}",
+                        "items": [
+                          {
+                            "key": "items.attributes.dcat:distribution[].attributes.dcat:accessURL",
+                            "title": "{{idx}}",
+                            "valueInLegend": true
+                          }
+                        ]
+                      }
+                    ]
                 }
             ]
         }
