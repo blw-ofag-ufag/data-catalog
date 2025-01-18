@@ -313,12 +313,14 @@
                             "description": "Temporal coverage of the dataset."
                         },
                         "bv:legalBasis": {
+                            "title": "Legal basis",
+                            "description": "Legal basis for the dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
                             "type": ["array","null"],
                             "items": {
+                                "title": "Law URL",
                                 "type": ["string", "null"],
                                 "format": "uri"
-                            },
-                            "description": "Legal basis for the dataset (as URI)."
+                            }
                         },
                         "bv:businessProcess": {
                             "type": ["array","null"],
@@ -738,6 +740,9 @@
                 },
                 {
                     "key": "items.attributes.adms:status"
+                },
+                {
+                    "key": "items.attributes.bv:legalBasis"
                 }
             ]
         },
