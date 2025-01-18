@@ -324,13 +324,16 @@
                         },
                         "bv:businessProcess": {
                             "type": ["array","null"],
+                            "title": "Business processes",
                             "description": "Related business process or context.",
                             "items": {
-                                "type": "string"
+                                "type": "string",
+                                "title": "Process"
                             }
                         },
                         "bv:retentionPeriod": {
                             "type": "integer",
+                            "title": "Retention period",
                             "description": "Retention period for the dataset."
                         },
                         "dcat:catalog": {
@@ -339,9 +342,11 @@
                         },
                         "prov:wasDerivedFrom": {
                             "type": ["array","null"],
+                            "title": "Data derivation source",
                             "description": "Source from which this dataset was derived.",
                             "items": {
-                                "type": "string"
+                                "type": "string",
+                                "title": "Source"
                             }
                         },
                         "bv:geoIdentifier": {
@@ -428,6 +433,7 @@
                                             "dcat:accessURL": {
                                                 "type": "string",
                                                 "format": "uri",
+                                                "title": "Access URL",
                                                 "description": "URL for accessing this distribution."
                                             },
                                             "adms:status": {
@@ -443,7 +449,17 @@
                                             },
                                             "dcterms:format": {
                                                 "type": "string",
-                                                "description": "File format (e.g., CSV, JSON)."
+                                                "title": "Format",
+                                                "description": "File format (e.g., CSV, JSON).",
+                                                "enum": [
+                                                    "XSLX",
+                                                    "CSV",
+                                                    "JSON",
+                                                    "API",
+                                                    "SPARQL Endpoint",
+                                                    "XML",
+                                                    "Other"
+                                                ]
                                             },
                                             "dcterms:modified": {
                                                 "type": ["string", "null"],
@@ -633,11 +649,33 @@
                         "type": "section",
                         "legend": "{{idx}}. {{value}}",
                         "items": [
-                          {
-                            "key": "items.attributes.dcat:distribution[].attributes.dcat:accessURL",
-                            "title": "{{idx}}",
-                            "valueInLegend": true
-                          }
+                            {
+                                "key": "items.attributes.dcat:distribution[].attributes.dcterms:title.de",
+                                "type": "text",
+                                "title": "Title (German)"
+                            },
+                            {
+                                "key": "items.attributes.dcat:distribution[].attributes.dcterms:title.fr",
+                                "type": "text",
+                                "title": "Title (French)"
+                            },
+                            {
+                                "key": "items.attributes.dcat:distribution[].attributes.dcterms:title.it",
+                                "type": "text",
+                                "title": "Title (Italian)"
+                            },
+                            {
+                                "key": "items.attributes.dcat:distribution[].attributes.dcterms:title.en",
+                                "type": "text",
+                                "title": "Title (English)"
+                            },
+                            {
+                                "key": "items.attributes.dcat:distribution[].attributes.dcat:accessURL"
+                            },
+                            {
+                                "key": "items.attributes.dcat:distribution[].attributes.dcterms:format",
+                                "valueInLegend": true
+                            }
                         ]
                       }
                     ]
