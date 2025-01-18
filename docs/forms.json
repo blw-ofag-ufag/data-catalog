@@ -694,7 +694,7 @@
         {
             "type": "fieldset",
             "title": "Dataset title",
-            "expandable": false,
+            "expandable": true,
             "items": [
                 "items.attributes.dcterms:title.de",
                 "items.attributes.dcterms:title.fr",
@@ -705,7 +705,7 @@
         {
             "type": "fieldset",
             "title": "Dataset description",
-            "expandable": false,
+            "expandable": true,
             "items": [
                 {
                     "key": "items.attributes.dcterms:description.de",
@@ -728,7 +728,7 @@
         {
             "type": "fieldset",
             "title": "Security and access",
-            "expandable": false,
+            "expandable": true,
             "items": [
                 {
                     "key": "items.attributes.dcterms:accessRights"
@@ -738,6 +738,24 @@
                 },
                 {
                     "key": "items.attributes.adms:status"
+                }
+            ]
+        },
+        {
+            "type": "fieldset",
+            "title": "Dates and Periods",
+            "expandable": true,
+            "items": [
+                {
+                    "key": "items.attributes.dcterms:issued",
+                    "type": "date"
+                },
+                {
+                    "key": "items.attributes.dcterms:modified",
+                    "type": "date"
+                },
+                {
+                    "key": "items.attributes.dcterms:accrualPeriodicity"
                 }
             ]
         }

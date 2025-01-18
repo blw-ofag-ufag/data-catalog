@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JSON Form Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic JSON Form</title>
   <!-- Include Bootstrap CSS for styling -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container">
-    <h1>Dataset Information Form</h1>
+    <h1>Dataset Metadata Form</h1>
     <!-- Form will be rendered here -->
     <form id="my-form"></form>
     <!-- Container to display the generated JSON -->
@@ -23,125 +24,40 @@
 
   <script>
     $(document).ready(function() {
-      // Define your JSON schema and form definition
-      var formSchema = {
-        schema: {
-          "dcterms:title_de": {
-            type: "string",
-            title: "German",
-            required: true
-          },
-          "dcterms:title_fr": {
-            type: "string",
-            title: "French",
-            required: true
-          },
-          "dcterms:title_it": {
-            type: "string",
-            title: "Italian"
-          },
-          "dcterms:title_en": {
-            type: "string",
-            title: "English"
-          },
-          "dcterms:description_de": {
-            type: "string",
-            title: "German",
-            required: true
-          },
-          "dcterms:description_fr": {
-            type: "string",
-            title: "French",
-            required: true
-          },
-          "dcterms:description_it": {
-            type: "string",
-            title: "Italian"
-          },
-          "dcterms:description_en": {
-            type: "string",
-            title: "English"
-          },
-          "dcterms:accessRights": {
-            type: "string",
-            title: "Access rights",
-            description: "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
-            enum: [
-              "CONFIDENTIAL",
-              "NON_PUBLIC",
-              "PUBLIC",
-              "RESTRICTED",
-              "SENSITIVE"
-            ]
-          }
-        },
-        form: [
-          {
-            type: "fieldset",
-            title: "Dataset title",
-            expandable: false,
-            items: [
-              "dcterms:title_de",
-              "dcterms:title_fr",
-              "dcterms:title_it",
-              "dcterms:title_en"
-            ]
-          },
-          {
-            type: "fieldset",
-            title: "Dataset description",
-            expandable: false,
-            items: [
-              {
-                key: "dcterms:description_de",
-                type: "textarea"
-              },
-              {
-                key: "dcterms:description_fr",
-                type: "textarea"
-              },
-              {
-                key: "dcterms:description_it",
-                type: "textarea"
-              },
-              {
-                key: "dcterms:description_en",
-                type: "textarea"
-              }
-            ]
-          },
-          {
-            type: "fieldset",
-            title: "Security and access",
-            expandable: false,
-            items: [
-              {
-                key: "dcterms:accessRights"
-              }
-            ]
-          },
-          {
-            type: "actions",
-            items: [
-              {
-                type: "submit",
-                value: "Submit"
-              }
-            ]
-          }
-        ],
-        onSubmit: function (errors, values) {
-          if (errors) {
-            alert('Please correct the errors in the form.');
-          } else {
-            // Display the generated JSON in the <pre> element
-            $('#result').text(JSON.stringify(values, null, 2));
-          }
-        }
-      };
+      // URL of the external JSON schema
+      var schemaUrl = 'https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/forms.json';
 
-      // Render the form
-      $('#my-form').jsonForm(formSchema);
+      // Fetch the external schema
+      $.getJSON(schemaUrl, function(data) {
+        // Add submit button to the form definition if not present
+        if (!data.form.some(item => item.type === 'actions')) {
+          data.form.push({
+            type: 'actions',
+            items: [
+              {
+                type: 'submit',
+                value: 'Submit'
+              }
+            ]
+          });
+        }
+
+        // Initialize the form
+        $('#my-form').jsonForm({
+          schema: data.schema,
+          form: data.form,
+          onSubmit: function (errors, values) {
+            if (errors) {
+              alert('Please correct the errors in the form.');
+            } else {
+              // Display the generated JSON in the <pre> element
+              $('#result').text(JSON.stringify(values, null, 2));
+            }
+          }
+        });
+      }).fail(function() {
+        alert('Failed to load the schema. Please check the URL and try again.');
+      });
     });
   </script>
 </body>
