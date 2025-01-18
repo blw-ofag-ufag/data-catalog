@@ -11,11 +11,13 @@
             "description": "One or more data catalog blocks can exist in an array. Each block contains `dataset` and `datasetSeries` objects.",
             "items": {
                 "type": "object",
-                "description": "Structure of each dataset entry. Keys are dataset IDs (e.g. 'BFE-DS-0001').",
+                "title": "Dataset metadata",
+                "description": "One item (i.e., one datset metadata) in the collection of datasets.",
                 "required": ["metadata", "attributes"],
                 "properties": {
                     "metadata": {
                         "type": "object",
+                        "title": "Metadata about the dataset metadata (maybe meta-metadata?)",
                         "description": "Metadata about the dataset, including last change date, user, etc.",
                         "required": [
                             "lastChangeDate",
@@ -25,23 +27,27 @@
                             "lastChangeDate": {
                                 "type": "string",
                                 "format": "date-time",
-                                "description": "Date/time when the dataset was last updated."
+                                "title": "Last change date and time",
+                                "description": "Date and time when the dataset metadata was modified the last time."
                             },
                             "lastChangeUser": {
                                 "type": "string",
-                                "description": "Name or identifier of the user who performed the last update."
+                                "title": "Last change user",
+                                "description": "User that changed the dataset metadata for the last time."
                             },
                             "imageURL": {
                                 "type": ["string", "null"],
                                 "format": "uri",
-                                "description": "URL linking to an image for this dataset."
+                                "title": "Image URL",
+                                "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
                             }
                         }
                     },
                     "attributes": {
                         "type": "object",
                         "additionalProperties": false,
-                        "description": "Descriptive attributes for the dataset entry.",
+                        "title": "Dataset metadata",
+                        "description": "Descriptive attributes for the dataset itself, i.e. the actual dataset metadata.",
                         "required": [
                             "dcterms:identifier",
                             "dcterms:title",
@@ -52,48 +58,60 @@
                         "properties": {
                             "dcterms:identifier": {
                                 "type": "string",
+                                "title": "Dataset identifier",
                                 "description": "Unique identifier for the dataset."
                             },
                             "dcterms:title": {
                                 "type": "object",
-                                "description": "Title of the dataset in multiple languages.",
+                                "title": "Title",
+                                "description": "Title of the dataset.",
                                 "properties": {
                                     "de": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Deutsch"
                                     },
                                     "fr": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Français"
                                     },
                                     "it": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Italiano"
                                     },
                                     "en": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "English"
                                     }
                                 },
                                 "required": ["de", "fr"]
                             },
                             "dcterms:description": {
                                 "type": "object",
-                                "description": "Description of the dataset in multiple languages.",
+                                "title": "Description",
+                                "description": "Description of the dataset. May go into details about the dataset content.",
                                 "properties": {
                                     "de": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Deutsch"
                                     },
                                     "fr": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Français"
                                     },
                                     "it": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Italiano"
                                     },
                                     "en": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "English"
                                     }
                                 },
                                 "required": ["de", "fr"]
                             },
                             "dcterms:accessRights": {
                                 "type": "string",
+                                "title": "Access rights",
                                 "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
                                 "enum": [
                                     "CONFIDENTIAL",
@@ -105,11 +123,13 @@
                             },
                             "dcterms:publisher": {
                                 "type": "string",
-                                "description": "Name of the publishing entity or organization."
+                                "title": "Publisher",
+                                "description": "Name of the entity (person or organization) who published the dataset."
                             },
                             "dcat:contactPoint": {
                                 "type": "object",
-                                "description": "Contact information for inquiries.",
+                                "title": "Contact point",
+                                "description": "Contact information for potential inquiries abou the dataset.",
                                 "properties": {
                                     "name": {
                                         "type": "string"
@@ -121,12 +141,14 @@
                                 "required": ["name", "email"]
                             },
                             "dcterms:issued": {
+                                "title": "Issued date",
+                                "description": "Date when the dataset was formally issued.",
                                 "type": ["string", "null"],
-                                "format": "date",
-                                "description": "When the dataset was formally issued (YYYY-MM-DD or empty)."
+                                "format": "date"
                             },
                             "dcat:keyword": {
                                 "type": ["array","null"],
+                                "title": "Keywords",
                                 "description": "Keywords describing the dataset.",
                                 "items": {
                                     "type": "string"
@@ -134,6 +156,7 @@
                             },
                             "dcterms:accrualPeriodicity": {
                                 "type": "string",
+                                "title": "Accrual periodicity",
                                 "description": "Frequency with which dataset is updated (e.g., 'Annual').",
                                 "enum": [
                                     "OTHER",
@@ -141,7 +164,7 @@
                                     "UNKNOWN",
                                     "QUARTERLY",
                                     "NEVER",
-				    "MONTHLY",	
+				                    "MONTHLY",	
                                     "ANNUAL",
                                     "DAILY",
                                     "AS_NEEDED"
@@ -150,11 +173,13 @@
                             "dcterms:modified": {
                                 "type": ["string", "null"],
                                 "format": "date",
-                                "description": "Last modification date of the dataset (could be free text or date)."
+                                "title": "Last modification date",
+                                "description": "Last modification date of the dataset (not to be confused with the dataset metadata)."
                             },
                             "bv:affiliatedPersons": {
                                 "type": "array",
-                                "description": "list of affiliated people with roles",
+                                "title": "Affiliated person(s)",
+                                "description": "List of affiliated people, their contact address and respective roles.",
                                 "items": {
                                     "type": "object",
                                     "properties": {
@@ -189,6 +214,7 @@
                             },
                             "adms:status": {
                                 "type": "string",
+                                "title": "Status",
                                 "description": "Current status of the dataset (sample enumeration).",
                                 "enum": [
                                     "workInProgress",
@@ -200,6 +226,7 @@
                             },
                             "bv:classification": {
                                 "type": "string",
+                                "title": "Classification level",
                                 "description": "Classification level of the dataset (sample enumeration).",
                                 "enum": [
                                     "none",
@@ -210,7 +237,8 @@
                             },
                             "bv:personalData": {
                                 "type": "string",
-                                "description": "Indicates presence of personal data (e.g., 'Keine', 'Anonymized', etc.).",
+                                "title": "Categorization regarding data protection act",
+                                "description": "Categorization regarding the Swiss data protection act. For information regarding the categorization, consult <a href='https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5'>the Swiss data protection act article 5</a>.",
                                 "enum": [
                                     "none",
                                     "personalData",
@@ -439,16 +467,20 @@
                                                     "description": "Title for the distribution, in multiple languages.",
                                                     "properties": {
                                                         "de": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "title": "Deutsch"
                                                         },
                                                         "fr": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "title": "Français"
                                                         },
                                                         "it": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "title": "Italiano"
                                                         },
                                                         "en": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "title": "English"
                                                         }
                                                     }
                                                 },
@@ -457,16 +489,20 @@
                                                     "description": "Description for the distribution, in multiple languages.",
                                                     "properties": {
                                                         "de": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "title": "Deutsch"
                                                         },
                                                         "fr": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "title": "Français"
                                                         },
                                                         "it": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "title": "Italiano"
                                                         },
                                                         "en": {
-                                                            "type": "string"
+                                                            "type": "string",
+                                                            "title": "English"
                                                         }
                                                     }
                                                 },

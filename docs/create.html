@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSON Form Example</title>
+  <!-- Include Bootstrap CSS for styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Dataset Information Form</h1>
+    <!-- Form will be rendered here -->
+    <form id="my-form"></form>
+    <!-- Container to display the generated JSON -->
+    <h2>Generated JSON</h2>
+    <pre id="result"></pre>
+  </div>
+
+  <!-- Include necessary libraries -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://underscorejs.org/underscore-min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/jsonform/jsonform@2.2.5/lib/jsonform.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      // Define your JSON schema and form definition
+      var formSchema = {
+        schema: {
+          "dcterms:title_de": {
+            type: "string",
+            title: "German",
+            required: true
+          },
+          "dcterms:title_fr": {
+            type: "string",
+            title: "French",
+            required: true
+          },
+          "dcterms:title_it": {
+            type: "string",
+            title: "Italian"
+          },
+          "dcterms:title_en": {
+            type: "string",
+            title: "English"
+          },
+          "dcterms:description_de": {
+            type: "string",
+            title: "German",
+            required: true
+          },
+          "dcterms:description_fr": {
+            type: "string",
+            title: "French",
+            required: true
+          },
+          "dcterms:description_it": {
+            type: "string",
+            title: "Italian"
+          },
+          "dcterms:description_en": {
+            type: "string",
+            title: "English"
+          },
+          "dcterms:accessRights": {
+            type: "string",
+            title: "Access rights",
+            description: "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
+            enum: [
+              "CONFIDENTIAL",
+              "NON_PUBLIC",
+              "PUBLIC",
+              "RESTRICTED",
+              "SENSITIVE"
+            ]
+          }
+        },
+        form: [
+          {
+            type: "fieldset",
+            title: "Dataset title",
+            expandable: false,
+            items: [
+              "dcterms:title_de",
+              "dcterms:title_fr",
+              "dcterms:title_it",
+              "dcterms:title_en"
+            ]
+          },
+          {
+            type: "fieldset",
+            title: "Dataset description",
+            expandable: false,
+            items: [
+              {
+                key: "dcterms:description_de",
+                type: "textarea"
+              },
+              {
+                key: "dcterms:description_fr",
+                type: "textarea"
+              },
+              {
+                key: "dcterms:description_it",
+                type: "textarea"
+              },
+              {
+                key: "dcterms:description_en",
+                type: "textarea"
+              }
+            ]
+          },
+          {
+            type: "fieldset",
+            title: "Security and access",
+            expandable: false,
+            items: [
+              {
+                key: "dcterms:accessRights"
+              }
+            ]
+          },
+          {
+            type: "actions",
+            items: [
+              {
+                type: "submit",
+                value: "Submit"
+              }
+            ]
+          }
+        ],
+        onSubmit: function (errors, values) {
+          if (errors) {
+            alert('Please correct the errors in the form.');
+          } else {
+            // Display the generated JSON in the <pre> element
+            $('#result').text(JSON.stringify(values, null, 2));
+          }
+        }
+      };
+
+      // Render the form
+      $('#my-form').jsonForm(formSchema);
+    });
+  </script>
+</body>
+</html>
