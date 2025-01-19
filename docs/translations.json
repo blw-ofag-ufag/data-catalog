@@ -24,22 +24,22 @@
       "it": "Ordina per titolo"
   },
   "index.sortIssuedAscending": {
-      "en": "Sort by date (old to new)",
-      "de": "Nach Datum sortieren (alt zu neu)",
-      "fr": "Trier par date (croissante)",
-      "it": "Ordina per data (crescente)"
+    "en": "Oldest first",
+    "de": "Älteste zuerst",
+    "fr": "Plus ancien",
+    "it": "Più vecchio"
   },
   "index.sortIssuedDescending": {
-      "en": "Sort by date (new to old)",
-      "de": "Nach Datum sortieren (neu zu alt)",
-      "fr": "Trier par date (décroissante)",
-      "it": "Ordina per data (decrescente)"
+    "en": "Newest first",
+    "de": "Neueste zuerst",
+    "fr": "Plus récent",
+    "it": "Più recente"
   },
   "index.sortOwner": {
-      "en": "Sort by data owner",
-      "de": "Nach Datenverantwortlichem sortieren",
-      "fr": "Trier par responsable des données",
-      "it": "Ordina per responsabile dei dati"
+    "en": "Data owner",
+    "de": "Daten-Verantwortlich",
+    "fr": "Propriétaire des données",
+    "it": "Proprietario dei dati"
   },
   "dcterms:identifier": {
       "en": "Identifier",
