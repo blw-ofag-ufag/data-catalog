@@ -59,11 +59,13 @@
                             "properties": {
                                 "de": {
                                     "type": "string",
-                                    "title": "Deutsch"
+                                    "title": "Deutsch",
+                                    "required": true
                                 },
                                 "fr": {
                                     "type": "string",
-                                    "title": "Français"
+                                    "title": "Français",
+                                    "required": true
                                 },
                                 "it": {
                                     "type": "string",
@@ -83,11 +85,13 @@
                             "properties": {
                                 "de": {
                                     "type": "string",
-                                    "title": "Deutsch"
+                                    "title": "Deutsch",
+                                    "required": true
                                 },
                                 "fr": {
                                     "type": "string",
-                                    "title": "Français"
+                                    "title": "Français",
+                                    "required": true
                                 },
                                 "it": {
                                     "type": "string",
