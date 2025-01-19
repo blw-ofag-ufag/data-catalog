@@ -686,5 +686,11 @@
                 }
             ]
         }
-    ]
+    ],
+    "value": {
+        "items.attributes.dcterms:title.de": "Hallo, Sie können dies ändern.",
+        "items.attributes.dcterms:title.fr": "Bonjour, vous pouvez changer cela.",
+        "items.attributes.dcterms:title.it": "Ciao, puoi cambiare questo.",
+        "items.attributes.dcterms:title.en": "Hello, you can change this."
+    }
 }
