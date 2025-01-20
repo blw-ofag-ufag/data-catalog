@@ -4,6 +4,58 @@
             "metadata": {
                 "lastChangeDate": "2025-01-17T04:21:27.639746",
                 "lastChangeUser": "Unknown",
+                "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/wetland-001.jpg"
+            },
+            "attributes": {
+                "dcterms:title": {
+                    "de": "Massnahmenmonitoring Klimastrategie Landwirtschaft und Ernährung",
+                    "fr": "Suivi des mesures Stratégie Climat pour l'agriculture et l'alimentation"
+                },
+                "dcterms:description": {
+                    "de": "Daten zur Massnahmenumsetzung geben einen Überblick zum Umsetzungsstand der 42 Massnahmen bezüglich Klimastrategie Landwirtschaft und Ernährung. Dieser Massnahmenplan läuft bis 2030.",
+                    "fr": "Les données relatives à la mise en œuvre des mesures donnent un aperçu de l'état de mise en œuvre des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation. Ce plan de mesures court jusqu'en 2030."
+                },
+                "dcterms:accessRights": "NON_PUBLIC",
+                "bv:affiliatedPersons": [
+                    {
+                        "name": "Philip Stevanon",
+                        "email": "philip.stevanon@blw.admin.ch",
+                        "role": "dataOwner"
+                    }
+                ],
+                "dcat:keyword": [
+                    "environment",
+                    "sustainability",
+                    "climate",
+                    "monitoring",
+                    "food"
+                ],
+                "bv:personalData": "none",
+                "adms:status": "workInProgress",
+                "dcterms:issued": "2024-12-04",
+                "dcterms:modified": "2025-01-22",
+                "dcterms:accrualPeriodicity": "ANNUAL",
+                "prov:wasDerivedFrom": [
+                    "Meinungen aus Expertenbefragungen"
+                ],
+                "dcat:distribution": [
+                    {
+                        "attributes": {
+                            "dcterms:title": {
+                                "de": "Tabelle mit den Daten zum Massnahmenmonitoring",
+                                "fr": "Tableau des données de suivi des mesures"
+                            },
+                            "dcat:accessURL": "https://object.gever.admin.ch:443/web/?ObjectToOpenID=%24ActaNovaDocument%7C574FDB97-8106-4294-94C3-8A121A593B9E&TenantID=123",
+                            "dcterms:format": "XSLX"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "metadata": {
+                "lastChangeDate": "2025-01-17T04:21:27.639746",
+                "lastChangeUser": "Unknown",
                 "imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/img/eggs-001.jpg"
             },
             "attributes": {
@@ -3360,7 +3412,7 @@
                     "financial-support",
                     "regional-funding",
                     "subsidies"
-                ],                
+                ],
                 "dcterms:accrualPeriodicity": "ANNUAL",
                 "dcterms:modified": "2025-01-15",
                 "adms:status": "published",
@@ -6426,7 +6478,16 @@
                     "email": "alessandro.rossi@blw.admin.ch"
                 },
                 "dcterms:issued": "2016-11-08",
-                "dcat:keyword": ["eggs", "meat", "cereals", "fish", "fruits", "vegetables", "import", "export"],
+                "dcat:keyword": [
+                    "eggs",
+                    "meat",
+                    "cereals",
+                    "fish",
+                    "fruits",
+                    "vegetables",
+                    "import",
+                    "export"
+                ],
                 "dcterms:accrualPeriodicity": "ANNUAL",
                 "dcterms:modified": "2025-01-15",
                 "adms:status": "published",
@@ -6565,7 +6626,12 @@
                     "email": "alessandro.rossi@blw.admin.ch"
                 },
                 "dcterms:issued": "2016-11-08",
-                "dcat:keyword": ["eggs", "market", "animals", "meat"],
+                "dcat:keyword": [
+                    "eggs",
+                    "market",
+                    "animals",
+                    "meat"
+                ],
                 "dcterms:accrualPeriodicity": "ANNUAL",
                 "dcterms:modified": "2025-01-15",
                 "adms:status": "published",
@@ -6965,7 +7031,7 @@
                     "fr": "Dépenses de la Confédération dans le domaine du lait (par exemple, supplément pour le lait transformé en fromage, supplément pour l'alimentation sans ensilage, ...)",
                     "it": "Spese della Confederazione nel settore lattiero (ad esempio, supplemento per il latte trasformato in formaggio, supplemento per l'alimentazione senza insilati, ...)",
                     "en": "Federal expenditures in the dairy sector (e.g., allowance for milk processed into cheese, allowance for feeding without silage, ...)"
-                },                
+                },
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
@@ -6980,7 +7046,11 @@
                     "email": "alessandro.rossi@blw.admin.ch"
                 },
                 "dcterms:issued": "2016-11-08",
-                "dcat:keyword": ["milk", "budget", "expenditure"],
+                "dcat:keyword": [
+                    "milk",
+                    "budget",
+                    "expenditure"
+                ],
                 "dcterms:accrualPeriodicity": "ANNUAL",
                 "dcterms:modified": "2025-01-15",
                 "adms:status": "published",
@@ -10459,7 +10529,7 @@
                     "meat",
                     "cheese",
                     "FSDI"
-                ],                
+                ],
                 "dcterms:accrualPeriodicity": "OTHER",
                 "dcterms:modified": "2025-01-15",
                 "adms:status": "published",
@@ -14049,7 +14119,14 @@
                     "email": "alessandro.rossi@blw.admin.ch"
                 },
                 "dcterms:issued": "2016-11-08",
-                "dcat:keyword": ["environment", "nutrients", "nitrogen", "phosphorus", "biodiversity", "soil"],
+                "dcat:keyword": [
+                    "environment",
+                    "nutrients",
+                    "nitrogen",
+                    "phosphorus",
+                    "biodiversity",
+                    "soil"
+                ],
                 "dcterms:accrualPeriodicity": "ANNUAL",
                 "dcterms:modified": "2025-01-15",
                 "adms:status": "published",

@@ -68,10 +68,10 @@ a:hover {
   background: var(--secondary-background-color);
   color: var(--primary-text-color);
   border: 2px solid var(--border-color);
-  border-radius: 30px; /* Rounder corners */
-  max-width: 200px; /* Limit the width */
-  width: 12%; /* Ensure the search field grows to available space */
-  box-sizing: border-box; /* Prevent padding from affecting width */
+  border-radius: 30px;
+  max-width: 200px;
+  width: 12%;
+  box-sizing: border-box;
 }
 #language-select {
   max-width: 100px
