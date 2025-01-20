@@ -35,8 +35,13 @@ function formatEnumerationString(input) {
     return ''; // Return an empty string or handle gracefully
   }
 
-  // Handle camelCase splitting and keep ALL CAPS as is
-  return input.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
+  // Perform transformations
+  let formatted = input
+    .replace(/([a-z])([A-Z])/g, '$1 $2') // Split camelCase into "CAMEL CASE"
+    .toUpperCase(); // Convert everything to uppercase
+
+  // Replace underscores with spaces
+  return formatted.replace(/_/g, ' ');
 }
 
 /**
@@ -83,37 +88,39 @@ function formatContactPoint(contact) {
  * @param {Object} publication - The publication metadata object.
  * @returns {string} - HTML string with a structured table layout.
  */
-/**
- * Formats the publication metadata for bv:opendata.swiss and bv:i14y.
- * @param {Object} publication - The publication metadata object.
- * @returns {string} - HTML string with a structured table layout.
- */
 function formatPublicationMetadata(publication) {
   if (!publication || typeof publication !== "object") {
     console.warn("Invalid publication object:", publication);
-    return "N/A";
+    return "";
   }
 
   // Extract the fields from the object
-  const mustBePublished = publication["bv:mustBePublished"] ? "true" : "false";
-  const id = publication["dcterms:identifier"] || "N/A";
-  const accessUrl = publication["dcat:accessURL"] || "N/A";
+  const mustBePublished = publication["bv:mustBePublished"] ? true : false;
+  const id = publication["dcterms:identifier"] || "";
+  const accessUrl = publication["dcat:accessURL"] || "";
 
-  // Build the inner table rows
+  // Build the publication row
   const publicationRow = `<tr>
     <td>Publication:</td>
     <td><span class="enumeration-chip">${formatEnumerationString(mustBePublished)}</span></td>
   </tr>`;
-  const idRow = `<tr>
-    <td>ID:</td>
-    <td>${id}</td>
-  </tr>`;
-  const accessUrlRow = `<tr>
-    <td>Access URL:</td>
-    <td>
-      <a href="${accessUrl}" target="_blank">${accessUrl !== "N/A" ? accessUrl : ""}</a>
-    </td>
-  </tr>`;
+
+  // Conditionally build the ID and Access URL rows
+  const idRow = mustBePublished
+    ? `<tr>
+         <td>ID:</td>
+         <td>${id}</td>
+       </tr>`
+    : "";
+
+  const accessUrlRow = mustBePublished
+    ? `<tr>
+         <td>Access URL:</td>
+         <td>
+           <a href="${accessUrl}" target="_blank">${accessUrl !== "N/A" ? accessUrl : ""}</a>
+         </td>
+       </tr>`
+    : "";
 
   // Combine rows into a table structure
   return `
