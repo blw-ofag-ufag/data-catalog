@@ -69,15 +69,15 @@ a:hover {
   color: var(--primary-text-color);
   border: 2px solid var(--border-color);
   border-radius: 30px; /* Rounder corners */
-  max-width: 500px; /* Limit the width */
-  width: 18%; /* Ensure the search field grows to available space */
+  max-width: 200px; /* Limit the width */
+  width: 12%; /* Ensure the search field grows to available space */
   box-sizing: border-box; /* Prevent padding from affecting width */
 }
 #language-select {
-  max-width: 120px
+  max-width: 100px
 }
 #search {
-  width: 40%;
+  width: 50%;
   max-width: 800px;
 }
 #search:hover,
