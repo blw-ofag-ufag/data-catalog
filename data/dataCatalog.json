@@ -6426,7 +6426,7 @@
                     "email": "alessandro.rossi@blw.admin.ch"
                 },
                 "dcterms:issued": "2016-11-08",
-                "dcat:keyword": [],
+                "dcat:keyword": ["eggs", "meat", "cereals", "fish", "fruits", "vegetables", "import", "export"],
                 "dcterms:accrualPeriodicity": "ANNUAL",
                 "dcterms:modified": "2025-01-15",
                 "adms:status": "published",
@@ -6565,7 +6565,7 @@
                     "email": "alessandro.rossi@blw.admin.ch"
                 },
                 "dcterms:issued": "2016-11-08",
-                "dcat:keyword": [],
+                "dcat:keyword": ["eggs", "market", "animals", "meat"],
                 "dcterms:accrualPeriodicity": "ANNUAL",
                 "dcterms:modified": "2025-01-15",
                 "adms:status": "published",
