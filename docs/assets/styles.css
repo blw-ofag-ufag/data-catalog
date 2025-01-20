@@ -233,6 +233,7 @@ main {
   color: var(--primary-text-color);
   font-weight: 400;
   margin: 2px 4px 2px 0;
+  text-transform: capitalize; /* Ensure each word starts with uppercase */
 }
 
 .keyword-chip.more-keywords {

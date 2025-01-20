@@ -21,6 +21,24 @@ const enumeratedFields = [
 /******************************************************
  *  Helper functions
  *****************************************************/
+
+// Function to convert enumeration string to legible content
+function formatEnumerationString(input) {
+  // Handle boolean values
+  if (typeof input === 'boolean') {
+    return input ? 'YES' : 'NO';
+  }
+
+  // Ensure input is a string for further processing
+  if (typeof input !== 'string') {
+    console.error(`Invalid input type: ${typeof input}`, input);
+    return ''; // Return an empty string or handle gracefully
+  }
+
+  // Handle camelCase splitting and keep ALL CAPS as is
+  return input.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
+}
+
 /**
  * If `val` looks like a date/time string, convert it to the user's
  * chosen language, "long" format. Otherwise return as-is.
@@ -84,7 +102,7 @@ function formatPublicationMetadata(publication) {
   // Build the inner table rows
   const publicationRow = `<tr>
     <td>Publication:</td>
-    <td><span class="enumeration-chip">${mustBePublished}</span></td>
+    <td><span class="enumeration-chip">${formatEnumerationString(mustBePublished)}</span></td>
   </tr>`;
   const idRow = `<tr>
     <td>ID:</td>
@@ -299,7 +317,7 @@ function renderAffiliatedPersons(attributes, lang) {
     <tr style="border-bottom: 1px solid var(--border-color);">
       <td style="padding: 8px;">${name}</td>
       <td style="padding: 8px;">${email}</td>
-      <td style="padding: 8px;"><span class="enumeration-chip">${role}</span></td>
+      <td style="padding: 8px;"><span class="enumeration-chip">${formatEnumerationString(role)}</span></td>
     </tr>
   `;
   });
@@ -494,11 +512,11 @@ function highlightEnumeratedValues(val) {
     // If array, highlight each item
     if (Array.isArray(val)) {
         return val
-            .map((item) => `<span class="enumeration-chip">${item}</span>`)
+            .map((item) => `<span class="enumeration-chip">${formatEnumerationString(item)}</span>`)
             .join(" ");
     }
     // If boolean or string
-    return `<span class="enumeration-chip">${val}</span>`;
+    return `<span class="enumeration-chip">${formatEnumerationString(val)}</span>`;
 }
 
 /**
