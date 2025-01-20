@@ -451,13 +451,13 @@ function renderDistributions(attributes, lang) {
         // Build table row
         html += `
     <tr style="border-bottom: 1px solid var(--border-color);">
-      <td style="padding: 8px;">
-        <a href="${distURL}" target="_blank" class="download-icon" title="Download">
-          ${distTitle}
-        </a>
-      </td>
+      <td style="padding: 8px;">${distTitle}</td>
       <td style="padding: 8px;">${distDesc}</td>
-      <td style="padding: 8px;">${distFormat}</td>
+      <td style="padding: 8px;">
+      <a href="${distURL}">
+        ${distFormat}
+      </a>
+    </td>
     </tr>
   `;
     });
