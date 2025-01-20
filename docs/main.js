@@ -360,8 +360,8 @@ function renderDatasets(data) {
           <div class="dataset-info">
             <h3>${title}</h3>
             <p>${attributes["dcterms:description"][currentLanguage]}</p>
-            <p><strong>${translations["tile.issued"]?.[currentLanguage] || "Issued:"}</strong> ${formatDate(attributes["dcterms:issued"])}</p>
-            <p><strong>${translations["tile.owner"]?.[currentLanguage] || "Owner:"}</strong> ${getDataOwnerName(attributes)}</p>
+            <p><strong>${translations["dcterms:issued"]?.[currentLanguage] || "Issued:"}</strong> ${formatDate(attributes["dcterms:issued"])}</p>
+            <p><strong>${translations["index.owner"]?.[currentLanguage] || "Owner:"}</strong> ${getDataOwnerName(attributes)}</p>
             <div class="keywords">${keywordsHTML}</div>
           </div>
         </div>
