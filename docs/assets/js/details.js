@@ -284,8 +284,7 @@ function renderAffiliatedPersons(attributes, lang) {
   const section = document.getElementById("metadataSection");
   const persons = attributes["bv:affiliatedPersons"] || [];
 
-  const nameHeader = translations["details.name"]?.[lang] || "Name";
-  const emailHeader = translations["details.email"]?.[lang] || "Email";
+  const adminDirIDHeader = translations["details.adminDirID"]?.[lang] || "Name";
   const roleHeader = translations["details.role"]?.[lang] || "Role";
 
   let html = `<h2>${translations["details.affiliatedRoles"]?.[lang] || "Affiliated Roles"}</h2>`;
@@ -300,13 +299,11 @@ function renderAffiliatedPersons(attributes, lang) {
   <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
     <colgroup>
       <col style="width: 25%;" />
-      <col style="width: 25%;" />
-      <col style="width: 50%;" />
+      <col style="width: 75%;" />
     </colgroup>
     <thead>
       <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
-        <th style="padding: 8px;">${nameHeader}</th>
-        <th style="padding: 8px;">${emailHeader}</th>
+        <th style="padding: 8px;">${adminDirIDHeader}</th>
         <th style="padding: 8px;">${roleHeader}</th>
       </tr>
     </thead>
@@ -314,16 +311,16 @@ function renderAffiliatedPersons(attributes, lang) {
 `;
 
   persons.forEach((p) => {
-      const name = p.name || translations["details.unknown"]?.[lang] || "Unknown";
-      const email = p.email
-          ? `<a href="mailto:${p.email}">${p.email}</a>`
-          : translations["details.noEmail"]?.[lang] || "No Email";
+    const name = p["bv:adminDirID"] || translations["details.unknown"]?.[lang] || "Unknown";
       const role = p.role || translations["details.unknownRole"]?.[lang] || "Unknown Role";
 
       html += `
     <tr style="border-bottom: 1px solid var(--border-color);">
-      <td style="padding: 8px;">${name}</td>
-      <td style="padding: 8px;">${email}</td>
+      <td style="padding: 8px;">
+        <a href='https://admindir.verzeichnisse.admin.ch/person/${name}' target="_blank" rel="noopener noreferrer">
+          ${name}
+        </a>
+      </td>  
       <td style="padding: 8px;"><span class="enumeration-chip">${formatEnumerationString(role)}</span></td>
     </tr>
   `;
