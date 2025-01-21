@@ -174,22 +174,28 @@
       "it": "Valore archivistico"
   },
   "bv:opendata.swiss": {
-      "en": "OpenData.swiss",
-      "de": "OpenData.swiss",
-      "fr": "OpenData.swiss",
-      "it": "OpenData.swiss"
-  },
-  "bv:i14y": {
-      "en": "I14Y",
-      "de": "I14Y",
-      "fr": "I14Y",
-      "it": "I14Y"
-  },
+    "en": "opendata.swiss publication",
+    "de": "opendata.swiss Publikation",
+    "fr": "Publication opendata.swiss",
+    "it": "Pubblicazione opendata.swiss"
+    },
+    "bv:i14y": {
+        "en": "I14Y publication",
+        "de": "I14Y Veröffentlichung",
+        "fr": "Publication I14Y",
+        "it": "Pubblicazione I14Y"
+    },
   "bv:legalBasis": {
       "en": "Legal Basis",
       "de": "Rechtsgrundlage",
       "fr": "Base légale",
       "it": "Base giuridica"
+  },
+  "details.affiliatedRoles": {
+    "en": "Affiliated roles",
+    "de": "Zugehörige Rollen",
+    "fr": "Rôles affiliés",
+    "it": "Ruoli affiliati"
   },
   "bv:businessProcess": {
       "en": "Business Process",
