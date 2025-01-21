@@ -23,8 +23,7 @@
                 "dcterms:accessRights": "NON_PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Philip Stevanon",
-                        "email": "philip.stevanon@blw.admin.ch",
+                        "bv:adminDirID": "p-1Y4L0Y450",
                         "role": "dataOwner"
                     }
                 ],
@@ -113,18 +112,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -210,18 +206,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -309,18 +302,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -408,18 +398,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -504,18 +491,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -602,18 +586,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -700,18 +681,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -799,18 +777,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -896,18 +871,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -992,18 +964,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -1089,18 +1058,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -1186,18 +1152,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -1282,18 +1245,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -1379,18 +1339,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -1475,18 +1432,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -1572,18 +1526,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -1669,18 +1620,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -1766,18 +1714,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -1863,18 +1808,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -1960,18 +1902,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -2056,18 +1995,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -2153,18 +2089,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -2249,18 +2182,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -2346,18 +2276,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -2443,18 +2370,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -2540,18 +2464,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -2637,18 +2558,15 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Korner-Steffen Angela",
-                        "email": "angela.korner@blw.admin.ch",
+                        "bv:adminDirID": "Korner-Steffen Angela",
                         "role": "dataOwner"
                     },
                     {
-                        "name": "Kuhlgatz Christian",
-                        "email": "christian.kuhlgatz@blw.admin.ch",
+                        "bv:adminDirID": "p-2713578",
                         "role": "dataSteward"
                     },
                     {
-                        "name": "Gendre Matthieu",
-                        "email": "matthieu.gendre@blw.admin.ch",
+                        "bv:adminDirID": "p-1ZBQBWTM0",
                         "role": "dataCustodian"
                     }
                 ],
@@ -2733,7 +2651,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -2873,7 +2791,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -3012,7 +2930,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -3152,7 +3070,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -3292,7 +3210,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -3432,7 +3350,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -3578,7 +3496,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -3717,7 +3635,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -3857,7 +3775,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -3997,7 +3915,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -4136,7 +4054,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -4276,7 +4194,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -4415,7 +4333,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -4555,7 +4473,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -4694,7 +4612,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -4833,7 +4751,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -4973,7 +4891,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -5112,7 +5030,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -5251,7 +5169,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -5391,7 +5309,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -5530,7 +5448,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -5669,7 +5587,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -5809,7 +5727,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -5948,7 +5866,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -6087,7 +6005,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -6227,7 +6145,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -6366,7 +6284,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -6505,7 +6423,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -6653,7 +6571,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -6797,7 +6715,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -6936,7 +6854,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -7073,7 +6991,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -7216,7 +7134,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -7359,7 +7277,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -7532,7 +7450,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -7731,7 +7649,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -7930,7 +7848,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -8129,7 +8047,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -8273,7 +8191,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -8442,7 +8360,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -8612,7 +8530,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -8814,7 +8732,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -9013,7 +8931,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -9185,7 +9103,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -9354,7 +9272,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -9553,7 +9471,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -9752,7 +9670,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -9950,7 +9868,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -10149,7 +10067,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -10351,7 +10269,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -10549,7 +10467,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "BLW-OFAG-UFAG",
+                        "bv:adminDirID": "BLW-OFAG-UFAG",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -10722,7 +10640,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -10920,7 +10838,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -11121,7 +11039,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -11293,7 +11211,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -11492,7 +11410,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -11663,7 +11581,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -11862,7 +11780,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -12036,7 +11954,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -12235,7 +12153,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -12434,7 +12352,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -12605,7 +12523,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -12776,7 +12694,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -12974,7 +12892,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -13173,7 +13091,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -13345,7 +13263,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -13544,7 +13462,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -13743,7 +13661,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -13945,7 +13863,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "info@blw.admin.ch",
+                        "bv:adminDirID": "info@blw.admin.ch",
                         "email": "info@blw.admin.ch",
                         "role": "dataOwner"
                     }
@@ -14146,7 +14064,7 @@
                 "dcterms:accessRights": "PUBLIC",
                 "bv:affiliatedPersons": [
                     {
-                        "name": "Bundesamt für Landwirtschaft",
+                        "bv:adminDirID": "Bundesamt für Landwirtschaft",
                         "email": "alessandro.rossi@blw.admin.ch",
                         "role": "dataOwner"
                     }
