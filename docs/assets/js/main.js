@@ -19,7 +19,7 @@ function getDataOwnerName(attributes) {
   if (!Array.isArray(persons)) return "N/A";
   
   const ownerObj = persons.find(p => p.role === "dataOwner");
-  return ownerObj ? ownerObj.name : "N/A";
+  return ownerObj ? ownerObj["bv:adminDirID"] : "N/A";
 }
 
 /******************************************************
@@ -247,7 +247,7 @@ function matchFullText(term, dataset) {
     if (field === "bv:affiliatedPersons") {
       if (!Array.isArray(value)) return false;
       return value.some(person => {
-        const nameMatch = person.name && person.name.toLowerCase().includes(term);
+        const nameMatch = person["bv:adminDirID"] && person["bv:adminDirID"].toLowerCase().includes(term);
         const emailMatch = person.email && person.email.toLowerCase().includes(term);
         const roleMatch = person.role && person.role.toLowerCase().includes(term);
         return nameMatch || emailMatch || roleMatch;

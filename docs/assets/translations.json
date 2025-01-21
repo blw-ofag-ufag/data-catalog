@@ -282,10 +282,10 @@
       "it": "Valore"
   },
   "details.name": {
-      "en": "Name",
-      "de": "Name",
-      "fr": "Nom",
-      "it": "Nome"
+    "en": "AdminDir ID",
+    "de": "AdminDir-ID",
+    "fr": "ID AdminDir",
+    "it": "ID AdminDir"
   },
   "details.email": {
       "en": "Email address",
