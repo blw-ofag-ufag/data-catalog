@@ -70,7 +70,7 @@ a:hover {
   border: 2px solid var(--border-color);
   border-radius: 30px;
   max-width: 200px;
-  width: 12%;
+  width: 15%;
   box-sizing: border-box;
 }
 #language-select {
