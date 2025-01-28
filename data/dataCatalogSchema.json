@@ -395,31 +395,8 @@
                                 "items": {
                                     "type": "object",
                                     "additionalProperties": false,
-                                    "required": ["metadata", "attributes"],
+                                    "required": ["attributes"],
                                     "properties": {
-                                        "metadata": {
-                                            "type": "object",
-                                            "description": "Metadata about the distribution, including last change date, user, etc.",
-                                            "required": [
-                                                "lastChangeDate",
-                                                "lastChangeUser"
-                                            ],
-                                            "properties": {
-                                                "lastChangeDate": {
-                                                    "type": "string",
-                                                    "format": "date-time",
-                                                    "description": "Date/time when the dataset was last updated."
-                                                },
-                                                "lastChangeUser": {
-                                                    "type": "string",
-                                                    "description": "Name or identifier of the user who performed the last update."
-                                                },
-                                                "imageURL": {
-                                                    "type": ["string", "null"],
-                                                    "format": "uri"
-                                                }
-                                            }
-                                        },
                                         "attributes": {
                                             "type": "object",
                                             "additionalProperties": false,
