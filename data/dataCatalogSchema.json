@@ -164,7 +164,7 @@
                                 "type": ["string", "null"],
                                 "format": "date",
                                 "title": "Last_modification_date",
-                                "description": "Last modification date of the data in the dataset (not to be confused with the dataset metadata)."
+                                "description": "Last modification date of the data in the dataset."
                             },
                             "bv:affiliatedPersons": {
 				"required": true,
@@ -459,7 +459,8 @@
                             "dcat:distribution": {
 				"required": false,
                                 "type": ["array","null"],
-                                "description": "Distribution info describing how and where to access the dataset.",
+				"title": "Distribution",
+                                "description": "Distribution info describing how and where to access the dataset. This class describes a specific, final, and ready-to-use format in which a dataset is made available to users. For example, the same data may be available as both a CSV file and an Excel file, each representing a separate distribution of the same dataset. Each distribution must be part of a dataset and should point to a reachable source (e.g. an URL for download). All distributions within a dataset must maintain the same level of timeliness across all channels. This means, for instance, that the 2021 CSV file should be published simultaneously with the Excel file, and vice versa.",
                                 "items": {
                                     "type": "object",
                                     "additionalProperties": false,
@@ -469,20 +470,23 @@
                                             "additionalProperties": false,
                                             "properties": {
                                                 "dcterms:identifier": {
+						    "title": "Distribution_id",
 						    "required": true,
                                                     "type": "string",
-                                                    "description": "Identifier for this distribution."
+                                                    "description": "Identifier for this distribution. If left empty, it will be automatically assigned."
                                                 },
                                                 "dcat:accessURL": {
+						    "title": "access_url",
 						    "required": true,
                                                     "type": "string",
                                                     "format": "uri",
-                                                    "description": "URL for accessing this distribution."
+                                                    "description": "URL to a page for accessing this distribution. This must not be a direct download URL but, for example, a link to a webpage containing download links."
                                                 },
                                                 "adms:status": {
+						    "title": "Status",
 						    "required": true,
                                                     "type": "string",
-                                                    "description": "Status of this distribution (e.g., 'active', 'deprecated').",
+                                                    "description": "Current status of the distribution.",
                                                     "enum": [
                                                         "workInProgress",
                                                         "validated",
@@ -492,57 +496,66 @@
                                                     ]
                                                 },
                                                 "dcterms:format": {
+						    "title": "format",
 						    "required": true,
                                                     "type": "string",
-                                                    "description": "File format (e.g., CSV, JSON)."
+                                                    "description": "File format for this distribution (e.g., CSV, JSON)."
                                                 },
                                                 "dcterms:modified": {
+						    "title": "Last_modification_date",
 						    "required": true,
                                                     "type": ["string", "null"],
                                                     "format": "date",
-                                                    "description": "When the distribution file was last modified."
+                                                    "description": "Last modification date of the data in this distribution."
                                                 },
                                                 "dcat:downloadURL": {
+						    "title": "download_url",
 						    "required": false,
                                                     "type": ["string", "null"],
                                                     "format": "uri",
-                                                    "description": "Download URL of the distribution file."
+                                                    "description": "Direct download URL of the distribution file. This link must directly point to the file."
                                                 },
                                                 "dcterms:title": {
+						    "title": "Distribution_title",
 						    "required": false,
                                                     "type": "object",
                                                     "description": "Title for the distribution, in multiple languages.",
                                                     "properties": {
                                                         "de": {
+							    "required": true,
                                                             "type": "string",
                                                             "title": "Deutsch"
                                                         },
                                                         "fr": {
+							    "required": true,
                                                             "type": "string",
                                                             "title": "Français"
                                                         },
                                                         "it": {
+							    "required": false,
                                                             "type": "string",
                                                             "title": "Italiano"
                                                         },
                                                         "en": {
+							    "required": false,
                                                             "type": "string",
                                                             "title": "English"
                                                         }
                                                     }
                                                 },
                                                 "dcterms:description": {
+						    "title": "Distribution_description",
 						    "required": false,
                                                     "type": "object",
                                                     "description": "Description for the distribution, in multiple languages.",
                                                     "properties": {
                                                         "de": {
-							    "required": false,
+							    "required": true,
                                                             "type": "string",
                                                             "title": "Deutsch"
                                                         },
                                                         "fr": {
-							    "required": false,
+							    "required": true,
                                                             "type": "string",
                                                             "title": "Français"
                                                         },
@@ -559,14 +572,16 @@
                                                     }
                                                 },
                                                 "dcterms:conformsTo": {
+						    "title": "conforms_to",
 						    "required": false,
                                                     "type": "string",
                                                     "description": "Reference to a standard or specification the distribution conforms to."
                                                 },
                                                 "dcterms:license": {
+						    "title": "license",
 						    "required": false,
                                                     "type": "string",
-                                                    "description": "License under which this distribution is released.",
+                                                    "description": "License under which this distribution is released. This is mandatory for opendata.swiss publications.",
                                                     "enum": [
                                                         "terms_open",
                                                         "terms_by",
@@ -576,14 +591,16 @@
                                                     ]
                                                 },
                                                 "bv:comments": {
+						    "title": "comments",
 						    "required": false,
                                                     "type": "string",
                                                     "description": "Additional comments about the distribution."
                                                 },
                                                 "dcat:accessService": {
+						    "title": "access_service",
 						    "required": false,
                                                     "type": "string",
-                                                    "description": "Indicates a service used to provide access to the data."
+                                                    "description": "Reference to a service used to provide access to the data."
                                                 }
                                             }
                                         }
