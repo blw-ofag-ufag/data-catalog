@@ -371,15 +371,27 @@
                                 "type": "string",
                                 "description": "Geographical identifier (e.g., BFS numbers)."
                             },
-                            "foaf:page": {
+			    "foaf:page": {
 				"required": false,
-                                "type": ["array","null"],
-                                "description": "Any related page or resource.",
-                                "items": {
-                                    "type": ["string", "null"],
-                                    "format": "uri"
-                                }
-                            },
+    				"type": ["array","null"],
+    				"title": "Related resources",
+    				"description": "Any related page or resource.",
+				"items": {
+					"type": "object",
+        				"additionalProperties": false,
+        				"properties": {
+					     "alias": {
+						"required": false,
+						"type": "string"
+					    },
+					    "uri": {
+						"required": true,
+						"type": ["string", "null"],
+                				"format": "uri"
+					    }
+	    			       }
+				 }
+			    },
                             "bv:comments": {
 				"required": false,
                                 "type": "string",
@@ -657,15 +669,27 @@
                                     "type": "string"
                                 }
                             },
-                            "foaf:page": {
+			    "foaf:page": {
 				"required": false,
-                                "type": ["array","null"],
-                                "description": "Any related page or resource.",
-                                "items": {
-                                    "type": ["string", "null"],
-                                    "format": "uri"
-                                }
-                            },
+    				"type": ["array","null"],
+    				"title": "Related resources",
+    				"description": "Any related page or resource.",
+				"items": {
+					"type": "object",
+        				"additionalProperties": false,
+        				"properties": {
+					     "alias": {
+						"required": false,
+						"type": "string"
+					    },
+					    "uri": {
+						"required": true,
+						"type": ["string", "null"],
+                				"format": "uri"
+					    }
+	    			       }
+				 }
+			    },
                             "bv:comment": {
 				"required": false,
                                 "type": "string",
@@ -838,15 +862,27 @@
                                 "format": "uri",
                                 "description": "URL of documentation."
                             },
-                            "foaf:page": {
+			    "foaf:page": {
 				"required": false,
-                                "type": ["array","null"],
-                                "description": "Any related page or resource.",
-                                "items": {
-                                    "type": ["string", "null"],
-                                    "format": "uri"
-                                }
-                            },
+    				"type": ["array","null"],
+    				"title": "Related resources",
+    				"description": "Any related page or resource.",
+				"items": {
+					"type": "object",
+        				"additionalProperties": false,
+        				"properties": {
+					     "alias": {
+						"required": false,
+						"type": "string"
+					    },
+					    "uri": {
+						"required": true,
+						"type": ["string", "null"],
+                				"format": "uri"
+					    }
+	    			       }
+				 }
+			    },
                             "bv:comments": {
 				"required": false,
                                 "type": "string",
