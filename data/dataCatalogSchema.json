@@ -812,7 +812,8 @@
             "description": "Container for dcat:DataService",
             "items": {
                 "type": "object",
-                "description": "structure of DataService",
+		"title": "dataServices_objects",
+                "description": "A DataService represents a collection of operations accessible through an interface (API) that provide access to one or more datasets or data processing functions.",
                 "properties": {
                     "attributes": {
                         "type": "object",
@@ -822,83 +823,99 @@
 				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
-                                "title": "Image URL",
+                                "title": "Image_URL",
                                 "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
                             },
 			    "dcterms:identifier": {
+				"title": "Service_id",
 				"required": true,
                                 "type": "string",
-                                "description": "Unique identifier for the DataService."
+                                "description": "Identifier for this DataService. If left empty, it will be automatically assigned."
                             },
                             "dcterms:title": {
+				"title": "dataService_title",
 				"required": true,
                                 "type": "object",
-                                "description": "Title for the series in multiple languages.",
+                                "description": "Title for the DataService in multiple languages.",
                                 "properties": {
                                     "de": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Deutsch"
                                     },
                                     "fr": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Français"
                                     },
                                     "it": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Italiano"
                                     },
                                     "en": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "English"
                                     }
                                 }
                             },
                             "dcterms:description": {
+				"title": "dataService_description",
 				"required": true,
                                 "type": "object",
                                 "description": "Description for the series in multiple languages.",
                                 "properties": {
                                     "de": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Deutsch"
                                     },
                                     "fr": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Français"
                                     },
                                     "it": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Italiano"
                                     },
                                     "en": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "English"
                                     }
                                 }
                             },
                             "dcterms:publisher": {
 				"required": true,
                                 "type": "string",
-                                "description": "Publisher or organization responsible for the series."
+                                "title": "Publisher",
+                                "description": "Publisher or organization responsible for the DataService."
                             },
                             "dcat:contactPoint": {
+				"title": "Contact_point",
+                                "description": "Contact information for potential inquiries about the DataService.",
 				"required": true,
                                 "type": "object",
-                                "description": "Contact information for inquiries.",
                                 "properties": {
                                     "name": {
 					"required": true,
                                         "type": "string"
+					"title": "Name"
                                     },
                                     "email": {
 					"required": true,
                                         "type": "string"
+					"title": "email"
                                     }
                                 }
                             },
                             "dcterms:accessRights": {
 				"required": true,
                                 "type": "string",
+                                "title": "Access_rights",
                                 "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
                                 "enum": [
                                     "CONFIDENTIAL",
@@ -909,15 +926,17 @@
                                 ]
                             },
                             "dcat:endopointURL": {
+				"title": "endpoint_url",
 				"required": true,
                                 "type": ["string", "null"],
                                 "format": "uri",
-                                "description": "URL of the service."
+                                "description": "URL of the technical endpoint of the DataService."
                             },
                             "adms:status": {
+				"title": "Status",
 				"required": true,
                                 "type": "string",
-                                "description": "Current status of the dataset (sample enumeration).",
+                                "description": "Current status of the DataService.",
                                 "enum": [
                                     "workInProgress",
                                     "validated",
@@ -927,33 +946,39 @@
                                 ]
                             },
                             "dcat:servesDataset": {
+				"title": "serves_dataset",
 				"required": false,
                                 "type": ["array","null"],
-                                "description": "IDs of the datasets served",
+                                "description": "IDs of the datasets served by this DataService",
                                 "items": {
                                     "type": "string"
                                 }
                             },
                             "dcat:endpointDescription": {
+				"title": "endpoint_description",
 				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
-                                "description": "URL of documentation."
+                                "description": "URL of technical documentation of the DataService, such as for example a Swagger documentation."
                             },
 			    "foaf:page": {
 				"required": false,
     				"type": ["array","null"],
-    				"title": "Related resources",
-    				"description": "Any related page or resource.",
+    				"title": "Related_resources",
+    				"description": "Any related page, document or resource.",
 				"items": {
 					"type": "object",
         				"additionalProperties": false,
         				"properties": {
 					     "alias": {
+						"title": "page_alias",
+						"description": "Alias to be showed in the interface for this link.",
 						"required": false,
 						"type": "string"
 					    },
 					    "uri": {
+						"title": "url",
+						"description": "URL for the page, document or resource",
 						"required": true,
 						"type": ["string", "null"],
                 				"format": "uri"
@@ -962,6 +987,7 @@
 				 }
 			    },
                             "bv:comments": {
+				"title": "comments",
 				"required": false,
                                 "type": "string",
                                 "description": "Additional comments about the DataService."
