@@ -19,74 +19,78 @@
                         "additionalProperties": false,
                         "title": "Dataset metadata",
                         "description": "Descriptive attributes for the dataset itself, i.e. the actual dataset metadata.",
-                        "required": [
-                            "dcterms:identifier",
-                            "dcterms:title",
-                            "dcterms:description",
-                            "dcterms:accessRights",
-                            "bv:affiliatedPersons"
-                        ],
                         "properties": {
                             "imageURL": {
-                                "type": ["string", "null"],
+                                "required": false,
+				"type": ["string", "null"],
                                 "format": "uri",
                                 "title": "Image URL",
                                 "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
                             },
 			    "dcterms:identifier": {
+				"required": true,
                                 "type": "string",
                                 "title": "Dataset identifier",
                                 "description": "Unique identifier for the dataset."
                             },
                             "dcterms:title": {
-                                "type": "object",
+                                "required": true,
+				"type": "object",
                                 "title": "Title",
                                 "description": "Title of the dataset.",
                                 "properties": {
                                     "de": {
+					"required": true,
                                         "type": "string",
                                         "title": "Deutsch"
                                     },
                                     "fr": {
+					"required": true,
                                         "type": "string",
                                         "title": "Français"
                                     },
                                     "it": {
+					"required": false,
                                         "type": "string",
                                         "title": "Italiano"
                                     },
                                     "en": {
+					"required": false,
                                         "type": "string",
                                         "title": "English"
                                     }
-                                },
-                                "required": ["de", "fr"]
+                                }
                             },
                             "dcterms:description": {
+				"required": true,
                                 "type": "object",
                                 "title": "Description",
                                 "description": "Description of the dataset. May go into details about the dataset content.",
                                 "properties": {
                                     "de": {
+					"required": true,
                                         "type": "string",
                                         "title": "Deutsch"
                                     },
                                     "fr": {
+					"required": true,
                                         "type": "string",
                                         "title": "Français"
                                     },
                                     "it": {
+					"required": false,
                                         "type": "string",
                                         "title": "Italiano"
                                     },
                                     "en": {
+					"required": false,
                                         "type": "string",
                                         "title": "English"
                                     }
-                                },
-                                "required": ["de", "fr"]
+                                }
                             },
                             "dcterms:accessRights": {
+				"required": true,
                                 "type": "string",
                                 "title": "Access rights",
                                 "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
@@ -99,31 +103,36 @@
                                 ]
                             },
                             "dcterms:publisher": {
+				"required": true,
                                 "type": "string",
                                 "title": "Publisher",
                                 "description": "Name of the entity (person or organization) who published the dataset."
                             },
                             "dcat:contactPoint": {
+				"required": true,
                                 "type": "object",
                                 "title": "Contact point",
                                 "description": "Contact information for potential inquiries abou the dataset.",
                                 "properties": {
                                     "name": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "email": {
+					"required": true,
                                         "type": "string"
                                     }
-                                },
-                                "required": ["name", "email"]
+                                }
                             },
                             "dcterms:issued": {
+				"required": true,
                                 "title": "Issued date",
                                 "description": "Date when the dataset was formally issued.",
                                 "type": ["string", "null"],
                                 "format": "date"
                             },
                             "dcat:keyword": {
+				"required": false,
                                 "type": ["array","null"],
                                 "title": "Keywords",
                                 "description": "Keywords describing the dataset.",
@@ -132,6 +141,7 @@
                                 }
                             },
                             "dcterms:accrualPeriodicity": {
+				"required": true,
                                 "type": "string",
                                 "title": "Accrual periodicity",
                                 "description": "Frequency with which dataset is updated (e.g., 'Annual').",
@@ -141,19 +151,21 @@
                                     "UNKNOWN",
                                     "QUARTERLY",
                                     "NEVER",
-				                    "MONTHLY",	
+				    "MONTHLY",	
                                     "ANNUAL",
                                     "DAILY",
                                     "AS_NEEDED"
                                 ]
                             },
                             "dcterms:modified": {
+				"required": true,
                                 "type": ["string", "null"],
                                 "format": "date",
                                 "title": "Last modification date",
                                 "description": "Last modification date of the dataset (not to be confused with the dataset metadata)."
                             },
                             "bv:affiliatedPersons": {
+				"required": true,
                                 "type": "array",
                                 "title": "Affiliated person(s)",
                                 "description": "List of affiliated people, their contact address and respective roles.",
@@ -161,12 +173,15 @@
                                     "type": "object",
                                     "properties": {
                                         "name": {
+					    "required": true,
                                             "type": "string"
                                         },
                                         "email": {
+					    "required": true,
                                             "type": "string"
                                         },
                                         "role": {
+					    "required": true,
                                             "type": "string",
                                             "description": "role",
                                             "enum": [
@@ -175,21 +190,21 @@
                                                 "dataCustodian"
                                             ]
                                         }
-                                    },
-                                    "required": ["name", "email", "role"]
+                                    }
                                 },
                                 "minItems": 1,
                                 "contains": {
                                     "type": "object",
                                     "properties": {
                                         "role": {
+					    "required": true,
                                             "const": "dataOwner"
                                         }
-                                    },
-                                    "required": ["role"]
+                                    }
                                 }
                             },
                             "adms:status": {
+				"required": true,
                                 "type": "string",
                                 "title": "Status",
                                 "description": "Current status of the dataset (sample enumeration).",
@@ -202,6 +217,7 @@
                                 ]
                             },
                             "bv:classification": {
+				"required": true,
                                 "type": "string",
                                 "title": "Classification level",
                                 "description": "Classification level of the dataset (sample enumeration).",
@@ -213,6 +229,7 @@
                                 ]
                             },
                             "bv:personalData": {
+				"required": true,
                                 "type": "string",
                                 "title": "Categorization regarding data protection act",
                                 "description": "Categorization regarding the Swiss data protection act. For information regarding the categorization, consult <a href='https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5'>the Swiss data protection act article 5</a>.",
@@ -223,6 +240,7 @@
                                 ]
                             },
                             "bv:typeOfData": {
+				"required": true,
                                 "type": "string",
                                 "description": "Specifies the type of data (structured, unstructured, etc.).",
                                 "enum": [
@@ -233,21 +251,26 @@
                                 ]
                             },
                             "bv:archivalValue": {
+				"required": true,
                                 "type": "boolean",
                                 "description": "Indicates if this dataset has archival value."
                             },
                             "bv:opendata.swiss": {
+				"required": true,
                                 "type": "object",
                                 "description": "Reference to the Open Government Data publication ID.",
                                 "properties": {
                                     "bv:mustBePublished": {
+					"required": true,
                                         "type": "boolean"
                                     },
                                     "dcterms:identifier": {
+					"required": false,
                                         "type": "string",
                                         "description": "Identifier for the OGD publication"
                                     },
                                     "dcat:accessURL": {
+					"required": false,
                                         "type": "string",
                                         "format": "uri",
                                         "description": "URL on opendata.swiss"
@@ -255,17 +278,21 @@
                                 }
                             },
 			    "bv:i14y": {
+				"required": true,
 				"type": "object",
                                 "description": "Reference to the I14Y publication ID.",
                                 "properties": {
                                     "bv:mustBePublished": {
+					"required": true,
                                         "type": "boolean"
                                     },
                                     "dcterms:identifier": {
+					"required": false,
                                         "type": "string",
                                         "description": "Identifier for the I14Y publication"
                                     },
                                     "dcat:accessURL": {
+					"required": false,
                                         "type": "string",
                                         "format": "uri",
                                         "description": "URL on I14Y"
@@ -273,6 +300,7 @@
                                 }
 			    },
                             "dcat:themeTaxonomy": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "Reference or URL to a theme taxonomy classification.",
                                 "items": {
@@ -286,19 +314,23 @@
                                 }
                             },
                             "dcat:landingPage": {
+				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
                                 "description": "Landing page or homepage for the dataset."
                             },
                             "dcterms:spatial": {
+				"required": false,
                                 "type": "string",
                                 "description": "Spatial/geographical coverage."
                             },
                             "dcterms:temporal": {
+				"required": false,
                                 "type": "string",
                                 "description": "Temporal coverage of the dataset."
                             },
                             "bv:legalBasis": {
+				"required": false,
                                 "title": "Legal basis",
                                 "description": "Legal basis for the dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
                                 "type": ["array","null"],
@@ -309,6 +341,7 @@
                                 }
                             },
                             "bv:businessProcess": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "Related business process or context.",
                                 "items": {
@@ -316,14 +349,17 @@
                                 }
                             },
                             "bv:retentionPeriod": {
+				"required": false,
                                 "type": "integer",
                                 "description": "Retention period for the dataset."
                             },
                             "dcat:catalog": {
+				"required": false,
                                 "type": "string",
                                 "description": "Indicates which catalog this dataset belongs to."
                             },
                             "prov:wasDerivedFrom": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "Source from which this dataset was derived.",
                                 "items": {
@@ -331,10 +367,12 @@
                                 }
                             },
                             "bv:geoIdentifier": {
+				"required": false,
                                 "type": "string",
                                 "description": "Geographical identifier (e.g., BFS numbers)."
                             },
                             "foaf:page": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "Any related page or resource.",
                                 "items": {
@@ -343,23 +381,28 @@
                                 }
                             },
                             "bv:comments": {
+				"required": false,
                                 "type": "string",
                                 "description": "Additional comments about the dataset."
                             },
                             "bv:abrogation": {
+				"required": false,
                                 "type": ["string", "null"],
                                 "format": "date",
                                 "description": "Indicates if the dataset was abrogated or replaced."
                             },
                             "bv:itSystem": {
+				"required": false,
                                 "type": "string",
                                 "description": "Name of the IT system managing this dataset."
                             },
                             "dcat:inSeries": {
+				"required": false,
                                 "type": "string",
                                 "description": "Reference to the series this dataset belongs to."
                             },
                             "dcterms:replaces": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "ID of datasets replaced by this one",
                                 "items": {
@@ -367,6 +410,7 @@
                                 }
                             },
                             "dcat:distribution": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "Distribution info describing how and where to access the dataset.",
                                 "items": {
@@ -376,23 +420,20 @@
                                         "attributes": {
                                             "type": "object",
                                             "additionalProperties": false,
-                                            "required": [
-                                                "dcterms:identifier",
-                                                "dcat:accessURL",
-                                                "dcterms:title",
-                                                "dcterms:description"
-                                            ],
                                             "properties": {
                                                 "dcterms:identifier": {
+						    "required": true,
                                                     "type": "string",
                                                     "description": "Identifier for this distribution."
                                                 },
                                                 "dcat:accessURL": {
+						    "required": true,
                                                     "type": "string",
                                                     "format": "uri",
                                                     "description": "URL for accessing this distribution."
                                                 },
                                                 "adms:status": {
+						    "required": true,
                                                     "type": "string",
                                                     "description": "Status of this distribution (e.g., 'active', 'deprecated').",
                                                     "enum": [
@@ -404,20 +445,24 @@
                                                     ]
                                                 },
                                                 "dcterms:format": {
+						    "required": true,
                                                     "type": "string",
                                                     "description": "File format (e.g., CSV, JSON)."
                                                 },
                                                 "dcterms:modified": {
+						    "required": true,
                                                     "type": ["string", "null"],
                                                     "format": "date",
                                                     "description": "When the distribution file was last modified."
                                                 },
                                                 "dcat:downloadURL": {
+						    "required": false,
                                                     "type": ["string", "null"],
                                                     "format": "uri",
                                                     "description": "Download URL of the distribution file."
                                                 },
                                                 "dcterms:title": {
+						    "required": false,
                                                     "type": "object",
                                                     "description": "Title for the distribution, in multiple languages.",
                                                     "properties": {
@@ -440,32 +485,39 @@
                                                     }
                                                 },
                                                 "dcterms:description": {
+						    "required": false,
                                                     "type": "object",
                                                     "description": "Description for the distribution, in multiple languages.",
                                                     "properties": {
                                                         "de": {
+							    "required": false,
                                                             "type": "string",
                                                             "title": "Deutsch"
                                                         },
                                                         "fr": {
+							    "required": false,
                                                             "type": "string",
                                                             "title": "Français"
                                                         },
                                                         "it": {
+							    "required": false,
                                                             "type": "string",
                                                             "title": "Italiano"
                                                         },
                                                         "en": {
+							    "required": false,
                                                             "type": "string",
                                                             "title": "English"
                                                         }
                                                     }
                                                 },
                                                 "dcterms:conformsTo": {
+						    "required": false,
                                                     "type": "string",
                                                     "description": "Reference to a standard or specification the distribution conforms to."
                                                 },
                                                 "dcterms:license": {
+						    "required": false,
                                                     "type": "string",
                                                     "description": "License under which this distribution is released.",
                                                     "enum": [
@@ -477,10 +529,12 @@
                                                     ]
                                                 },
                                                 "bv:comments": {
+						    "required": false,
                                                     "type": "string",
                                                     "description": "Additional comments about the distribution."
                                                 },
                                                 "dcat:accessService": {
+						    "required": false,
                                                     "type": "string",
                                                     "description": "Indicates a service used to provide access to the data."
                                                 }
@@ -504,77 +558,87 @@
                     "attributes": {
                         "type": "object",
                         "description": "Descriptive attributes for the dataset series.",
-                        "required": [
-                            "dcterms:identifier",
-                            "dcterms:title",
-                            "bv:classification",
-                            "bv:personalData"
-                        ],
                         "properties": {
                             "imageURL": {
+				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
                                 "title": "Image URL",
                                 "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
                             },
 			    "dcterms:identifier": {
+				"required": true,
                                 "type": "string",
                                 "description": "Unique identifier for the dataset series."
                             },
                             "dcterms:title": {
+				"required": true,
                                 "type": "object",
                                 "description": "Title for the series in multiple languages.",
                                 "properties": {
                                     "de": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "fr": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "it": {
+					"required": false,
                                         "type": "string"
                                     },
                                     "en": {
+					"required": false,
                                         "type": "string"
                                     }
                                 }
                             },
                             "dcterms:description": {
+				"required": true,
                                 "type": "object",
                                 "description": "Description for the series in multiple languages.",
                                 "properties": {
                                     "de": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "fr": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "it": {
+					"required": false,
                                         "type": "string"
                                     },
                                     "en": {
+					"required": false,
                                         "type": "string"
                                     }
                                 }
                             },
                             "dcat:contactPoint": {
+				"required": true,
                                 "type": "object",
                                 "description": "Contact information for inquiries.",
                                 "properties": {
                                     "name": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "email": {
+					"required": true,
                                         "type": "string"
                                     }
-                                },
-                                "required": ["name", "email"]
+                                }
                             },
                             "dcterms:publisher": {
+				"required": true,
                                 "type": "string",
                                 "description": "Publisher or organization responsible for the series."
                             },
                             "adms:status": {
+				"required": true,
                                 "type": "string",
                                 "description": "Current status of the dataset (sample enumeration).",
                                 "enum": [
@@ -586,6 +650,7 @@
                                 ]
                             },
                             "dcat:dataset": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "Indicates which dataset(s) this series serves or is related to.",
                                 "items": {
@@ -593,6 +658,7 @@
                                 }
                             },
                             "foaf:page": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "Any related page or resource.",
                                 "items": {
@@ -601,10 +667,12 @@
                                 }
                             },
                             "bv:comment": {
+				"required": false,
                                 "type": "string",
                                 "description": "Additional comments or notes about the series."
                             },
                             "dcat:keyword": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "Keywords describing the dataset Serie.",
                                 "items": {
@@ -612,6 +680,7 @@
                                 }
                             },
                             "bv:classification": {
+				"required": true,
                                 "type": "string",
                                 "description": "Classification level of the dataset (sample enumeration).",
                                 "enum": [
@@ -622,6 +691,7 @@
                                 ]
                             },
                             "bv:personalData": {
+				"required": true,
                                 "type": "string",
                                 "description": "Indicates presence of personal data (e.g., 'Keine', 'Anonymized', etc.).",
                                 "enum": [
@@ -645,72 +715,87 @@
                     "attributes": {
                         "type": "object",
                         "description": "attributes for the DataService",
-                        "required": ["dcterms:identifier", "dcterms:title", "dcterms:description", "dcterms:publisher", "dcat:contactPoint"],
                         "properties": {
                             "imageURL": {
+				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
                                 "title": "Image URL",
                                 "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
                             },
 			    "dcterms:identifier": {
+				"required": true,
                                 "type": "string",
                                 "description": "Unique identifier for the DataService."
                             },
                             "dcterms:title": {
+				"required": true,
                                 "type": "object",
                                 "description": "Title for the series in multiple languages.",
                                 "properties": {
                                     "de": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "fr": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "it": {
+					"required": false,
                                         "type": "string"
                                     },
                                     "en": {
+					"required": false,
                                         "type": "string"
                                     }
                                 }
                             },
                             "dcterms:description": {
+				"required": true,
                                 "type": "object",
                                 "description": "Description for the series in multiple languages.",
                                 "properties": {
                                     "de": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "fr": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "it": {
+					"required": false,
                                         "type": "string"
                                     },
                                     "en": {
+					"required": false,
                                         "type": "string"
                                     }
                                 }
                             },
                             "dcterms:publisher": {
+				"required": true,
                                 "type": "string",
                                 "description": "Publisher or organization responsible for the series."
                             },
                             "dcat:contactPoint": {
+				"required": true,
                                 "type": "object",
                                 "description": "Contact information for inquiries.",
                                 "properties": {
                                     "name": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "email": {
+					"required": true,
                                         "type": "string"
                                     }
-                                },
-                                "required": ["name", "email"]
+                                }
                             },
                             "dcterms:accessRights": {
+				"required": true,
                                 "type": "string",
                                 "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
                                 "enum": [
@@ -722,11 +807,13 @@
                                 ]
                             },
                             "dcat:endopointURL": {
+				"required": true,
                                 "type": ["string", "null"],
                                 "format": "uri",
                                 "description": "URL of the service."
                             },
                             "adms:status": {
+				"required": true,
                                 "type": "string",
                                 "description": "Current status of the dataset (sample enumeration).",
                                 "enum": [
@@ -738,6 +825,7 @@
                                 ]
                             },
                             "dcat:servesDataset": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "IDs of the datasets served",
                                 "items": {
@@ -745,11 +833,13 @@
                                 }
                             },
                             "dcat:endpointDescription": {
+				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
                                 "description": "URL of documentation."
                             },
                             "foaf:page": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "Any related page or resource.",
                                 "items": {
@@ -758,6 +848,7 @@
                                 }
                             },
                             "bv:comments": {
+				"required": false,
                                 "type": "string",
                                 "description": "Additional comments about the DataService."
                             }
@@ -776,72 +867,87 @@
                     "attributes": {
                         "type": "object",
                         "description": "attributes for the Catalog",
-                        "required": ["dcterms:identifier", "dcterms:title", "dcterms:description", "dcterms:publisher", "dcat:contactPoint"],
                         "properties": {
                             "imageURL": {
+				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
                                 "title": "Image URL",
                                 "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
                             },
 			    "dcterms:identifier": {
+				"required": true,
                                 "type": "string",
                                 "description": "Unique identifier for the Catalog."
                             },
                             "dcterms:title": {
+				"required": true,
                                 "type": "object",
                                 "description": "Title for the series in multiple languages.",
                                 "properties": {
                                     "de": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "fr": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "it": {
+					"required": false,
                                         "type": "string"
                                     },
                                     "en": {
+					"required": false,
                                         "type": "string"
                                     }
                                 }
                             },
                             "dcterms:description": {
+				"required": true,
                                 "type": "object",
                                 "description": "Description for the series in multiple languages.",
                                 "properties": {
                                     "de": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "fr": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "it": {
+					"required": false,
                                         "type": "string"
                                     },
                                     "en": {
+					"required": false,
                                         "type": "string"
                                     }
                                 }
                             },
                             "dcterms:publisher": {
+				"required": true,
                                 "type": "string",
                                 "description": "Publisher or organization responsible for the series."
                             },
                             "dcat:contactPoint": {
+				"required": true,
                                 "type": "object",
                                 "description": "Contact information for inquiries.",
                                 "properties": {
                                     "name": {
+					"required": true,
                                         "type": "string"
                                     },
                                     "email": {
+					"required": true,
                                         "type": "string"
                                     }
-                                },
-                                "required": ["name", "email"]
+                                }
                             },
                             "dcterms:accessRights": {
+				"required": true,
                                 "type": "string",
                                 "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
                                 "enum": [
@@ -853,11 +959,13 @@
                                 ]
                             },
                             "foaf:homepage": {
+				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
                                 "description": "homepage for the catalog"
                             },
                             "dcat:dataset": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "IDs of the datasets in the catalog",
                                 "items": {
@@ -865,6 +973,7 @@
                                 }
                             },
                             "dcat:service": {
+				"required": false,
                                 "type": ["array","null"],
                                 "description": "IDs of the dataServices in the catalog",
                                 "items": {
