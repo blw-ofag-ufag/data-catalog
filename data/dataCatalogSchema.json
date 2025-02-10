@@ -916,7 +916,7 @@
 				"required": true,
                                 "type": "string",
                                 "title": "Access_rights",
-                                "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
+                                "description": "Defines the accessibility of the DataService (e.g., public, internal, etc.).",
                                 "enum": [
                                     "CONFIDENTIAL",
                                     "NON_PUBLIC",
@@ -1002,94 +1002,111 @@
             "description": "container for dcat:Catalog",
             "items": {
                 "type": "object",
-                "description": "structure of Catalog",
+		"title": "catalog_objects",
+                "description": "Structure of Catalog. A catalog is a loose collection of Datasets, DatasetSeries and DataServices such as, for example, opendata.swiss or I14Y.",
                 "properties": {
                     "attributes": {
                         "type": "object",
-                        "description": "attributes for the Catalog",
+                        "description": "Attributes for the Catalog",
                         "properties": {
                             "imageURL": {
 				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
-                                "title": "Image URL",
+                                "title": "Image_URL",
                                 "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
                             },
 			    "dcterms:identifier": {
+				"title": "Catalog_id",
 				"required": true,
                                 "type": "string",
-                                "description": "Unique identifier for the Catalog."
+                                "description": "Identifier for this Catalog. If left empty, it will be automatically assigned."
                             },
                             "dcterms:title": {
+				"title": "Catalog_title",
 				"required": true,
                                 "type": "object",
-                                "description": "Title for the series in multiple languages.",
+                                "description": "Title for the Catalog in multiple languages.",
                                 "properties": {
                                     "de": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Deutsch"
                                     },
                                     "fr": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Français"
                                     },
                                     "it": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Italiano"
                                     },
                                     "en": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "English"
                                     }
                                 }
                             },
                             "dcterms:description": {
+				"title": "Catalog_description",
 				"required": true,
                                 "type": "object",
-                                "description": "Description for the series in multiple languages.",
+                                "description": "Description for the Catalog in multiple languages.",
                                 "properties": {
                                     "de": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Deutsch"
                                     },
                                     "fr": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Français"
                                     },
                                     "it": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Italiano"
                                     },
                                     "en": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "English"
                                     }
                                 }
                             },
                             "dcterms:publisher": {
 				"required": true,
+				"title": "Publisher",
                                 "type": "string",
-                                "description": "Publisher or organization responsible for the series."
+                                "description": "Publisher or organization responsible for the Catalog."
                             },
                             "dcat:contactPoint": {
+				"title": "Contact_point",
+                                "description": "Contact information for potential inquiries about the Catalog.",
 				"required": true,
                                 "type": "object",
-                                "description": "Contact information for inquiries.",
                                 "properties": {
                                     "name": {
 					"required": true,
                                         "type": "string"
+					"title": "Name"
                                     },
                                     "email": {
 					"required": true,
                                         "type": "string"
+					"title": "email"
                                     }
                                 }
                             },
                             "dcterms:accessRights": {
+				"title": "Access_rights",
 				"required": true,
                                 "type": "string",
-                                "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
+                                "description": "Defines the accessibility of the Catalog (e.g., public, internal, etc.).",
                                 "enum": [
                                     "CONFIDENTIAL",
                                     "NON_PUBLIC",
@@ -1102,12 +1119,14 @@
 				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
-                                "description": "homepage for the catalog"
+				"title": "homepage",
+                                "description": "Homepage for the Catalog."
                             },
                             "dcat:dataset": {
 				"required": false,
                                 "type": ["array","null"],
-                                "description": "IDs of the datasets in the catalog",
+				"title": "catalog_datasets",
+                                "description": "IDs of the datasets referenced in the Catalog.",
                                 "items": {
                                     "type": "string"
                                 }
@@ -1115,7 +1134,8 @@
                             "dcat:service": {
 				"required": false,
                                 "type": ["array","null"],
-                                "description": "IDs of the dataServices in the catalog",
+				"title": "catalog_services",
+                                "description": "IDs of the DataServices referenced in the catalog",
                                 "items": {
                                     "type": "string"
                                 }
