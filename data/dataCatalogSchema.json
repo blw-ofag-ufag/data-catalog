@@ -13,36 +13,7 @@
                 "type": "object",
                 "title": "Dataset metadata",
                 "description": "One item (i.e., one datset metadata) in the collection of datasets.",
-                "required": ["metadata", "attributes"],
                 "properties": {
-                    "metadata": {
-                        "type": "object",
-                        "title": "Metadata about the dataset metadata (maybe meta-metadata?)",
-                        "description": "Metadata about the dataset, including last change date, user, etc.",
-                        "required": [
-                            "lastChangeDate",
-                            "lastChangeUser"
-                        ],
-                        "properties": {
-                            "lastChangeDate": {
-                                "type": "string",
-                                "format": "date-time",
-                                "title": "Last change date and time",
-                                "description": "Date and time when the dataset metadata was modified the last time."
-                            },
-                            "lastChangeUser": {
-                                "type": "string",
-                                "title": "Last change user",
-                                "description": "User that changed the dataset metadata for the last time."
-                            },
-                            "imageURL": {
-                                "type": ["string", "null"],
-                                "format": "uri",
-                                "title": "Image URL",
-                                "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
-                            }
-                        }
-                    },
                     "attributes": {
                         "type": "object",
                         "additionalProperties": false,
@@ -56,7 +27,13 @@
                             "bv:affiliatedPersons"
                         ],
                         "properties": {
-                            "dcterms:identifier": {
+                            "imageURL": {
+                                "type": ["string", "null"],
+                                "format": "uri",
+                                "title": "Image URL",
+                                "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
+                            },
+			    "dcterms:identifier": {
                                 "type": "string",
                                 "title": "Dataset identifier",
                                 "description": "Unique identifier for the dataset."
@@ -277,8 +254,8 @@
                                     }
                                 }
                             },
-							"bv:i14y": {
-								"type": "object",
+			    "bv:i14y": {
+				"type": "object",
                                 "description": "Reference to the I14Y publication ID.",
                                 "properties": {
                                     "bv:mustBePublished": {
@@ -294,7 +271,7 @@
                                         "description": "URL on I14Y"
                                     }
                                 }
-							},
+			    },
                             "dcat:themeTaxonomy": {
                                 "type": ["array","null"],
                                 "description": "Reference or URL to a theme taxonomy classification.",
@@ -395,7 +372,6 @@
                                 "items": {
                                     "type": "object",
                                     "additionalProperties": false,
-                                    "required": ["attributes"],
                                     "properties": {
                                         "attributes": {
                                             "type": "object",
@@ -524,32 +500,7 @@
             "items": {
                 "type": "object",
                 "description": "Structure of each dataset series entry. Keys are series IDs (e.g. 'SERIE-01').",
-                "required": ["metadata", "attributes"],
                 "properties": {
-                    "metadata": {
-                        "type": "object",
-                        "description": "Metadata about the dataset series (last update date, user, image, etc.).",
-                        "required": [
-                            "lastChangeDate",
-                            "lastChangeUser"
-                        ],
-                        "properties": {
-                            "lastChangeDate": {
-                                "type": "string",
-                                "format": "date-time",
-                                "description": "Date/time when the series was last changed."
-                            },
-                            "lastChangeUser": {
-                                "type": "string",
-                                "description": "User or identifier who last updated the series."
-                            },
-                            "imageURL": {
-                                "type": ["string", "null"],
-                                "format": "uri",
-                                "description": "URL linking to an image for this series."
-                            }
-                        }
-                    },
                     "attributes": {
                         "type": "object",
                         "description": "Descriptive attributes for the dataset series.",
@@ -560,7 +511,13 @@
                             "bv:personalData"
                         ],
                         "properties": {
-                            "dcterms:identifier": {
+                            "imageURL": {
+                                "type": ["string", "null"],
+                                "format": "uri",
+                                "title": "Image URL",
+                                "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
+                            },
+			    "dcterms:identifier": {
                                 "type": "string",
                                 "description": "Unique identifier for the dataset series."
                             },
@@ -684,38 +641,19 @@
             "items": {
                 "type": "object",
                 "description": "structure of DataService",
-                "required": ["metadata", "attributes"],
                 "properties": {
-                    "metadata": {
-                        "type": "object",
-                        "description": "Metadata about the dataset series (last update date, user, image, etc.).",
-                        "required": [
-                            "lastChangeDate",
-                            "lastChangeUser"
-                        ],
-                        "properties": {
-                            "lastChangeDate": {
-                                "type": "string",
-                                "format": "date-time",
-                                "description": "Date/time when the series was last changed."
-                            },
-                            "lastChangeUser": {
-                                "type": "string",
-                                "description": "User or identifier who last updated the series."
-                            },
-                            "imageURL": {
-                                "type": ["string", "null"],
-                                "format": "uri",
-                                "description": "URL linking to an image for this series."
-                            }
-                        }
-                    },
                     "attributes": {
                         "type": "object",
                         "description": "attributes for the DataService",
                         "required": ["dcterms:identifier", "dcterms:title", "dcterms:description", "dcterms:publisher", "dcat:contactPoint"],
                         "properties": {
-                            "dcterms:identifier": {
+                            "imageURL": {
+                                "type": ["string", "null"],
+                                "format": "uri",
+                                "title": "Image URL",
+                                "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
+                            },
+			    "dcterms:identifier": {
                                 "type": "string",
                                 "description": "Unique identifier for the DataService."
                             },
@@ -834,38 +772,19 @@
             "items": {
                 "type": "object",
                 "description": "structure of Catalog",
-                "required": ["metadata", "attributes"],
                 "properties": {
-                    "metadata": {
-                        "type": "object",
-                        "description": "Metadata about the catalog (last update date, user, image, etc.).",
-                        "required": [
-                            "lastChangeDate",
-                            "lastChangeUser"
-                        ],
-                        "properties": {
-                            "lastChangeDate": {
-                                "type": "string",
-                                "format": "date-time",
-                                "description": "Date/time when the series was last changed."
-                            },
-                            "lastChangeUser": {
-                                "type": "string",
-                                "description": "User or identifier who last updated the series."
-                            },
-                            "imageURL": {
-                                "type": ["string", "null"],
-                                "format": "uri",
-                                "description": "URL linking to an image for this series."
-                            }
-                        }
-                    },
                     "attributes": {
                         "type": "object",
                         "description": "attributes for the Catalog",
                         "required": ["dcterms:identifier", "dcterms:title", "dcterms:description", "dcterms:publisher", "dcat:contactPoint"],
                         "properties": {
-                            "dcterms:identifier": {
+                            "imageURL": {
+                                "type": ["string", "null"],
+                                "format": "uri",
+                                "title": "Image URL",
+                                "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
+                            },
+			    "dcterms:identifier": {
                                 "type": "string",
                                 "description": "Unique identifier for the Catalog."
                             },
