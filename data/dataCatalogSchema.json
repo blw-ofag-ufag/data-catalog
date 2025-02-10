@@ -617,7 +617,8 @@
             "description": "Container for dataset series keyed by an identifier such as 'SERIE-01'.",
             "items": {
                 "type": "object",
-                "description": "Structure of each dataset series entry. Keys are series IDs (e.g. 'SERIE-01').",
+		"title": "datasetseries_objects",
+                "description": "Structure of each dataset series entry. Keys are series IDs (e.g. 'SERIE-01'). This class represents a collection of datasets that are published and can be used separately, but share some characteristics that group them.",
                 "properties": {
                     "attributes": {
                         "type": "object",
@@ -627,84 +628,100 @@
 				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
-                                "title": "Image URL",
-                                "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
+                                "title": "Image_URL",
+                                "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the series content."
                             },
 			    "dcterms:identifier": {
+				"title": "Series_id",
 				"required": true,
                                 "type": "string",
-                                "description": "Unique identifier for the dataset series."
+                                "description": "Identifier for this DatasetSeries. If left empty, it will be automatically assigned."
                             },
                             "dcterms:title": {
+				"title": "Series_title",
 				"required": true,
                                 "type": "object",
                                 "description": "Title for the series in multiple languages.",
                                 "properties": {
                                     "de": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Deutsch"
                                     },
                                     "fr": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Français"
                                     },
                                     "it": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Italiano"
                                     },
                                     "en": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "English"
                                     }
                                 }
                             },
                             "dcterms:description": {
+				"title": "Series_description",
 				"required": true,
                                 "type": "object",
                                 "description": "Description for the series in multiple languages.",
                                 "properties": {
                                     "de": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Deutsch"
                                     },
                                     "fr": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Français"
                                     },
                                     "it": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "Italiano"
                                     },
                                     "en": {
 					"required": false,
-                                        "type": "string"
+                                        "type": "string",
+                                        "title": "English"
                                     }
                                 }
                             },
                             "dcat:contactPoint": {
+				"title": "Contact_point",
+                                "description": "Contact information for potential inquiries about the DatasetSeries.",
 				"required": true,
                                 "type": "object",
-                                "description": "Contact information for inquiries.",
                                 "properties": {
                                     "name": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
+					"title": "Name"
                                     },
                                     "email": {
 					"required": true,
                                         "type": "string"
+					"title": "email"
                                     }
                                 }
                             },
                             "dcterms:publisher": {
 				"required": true,
                                 "type": "string",
+				"title": "Publisher",
                                 "description": "Publisher or organization responsible for the series."
                             },
                             "adms:status": {
+				"title": "Status",
 				"required": true,
                                 "type": "string",
-                                "description": "Current status of the dataset (sample enumeration).",
+                                "description": "Current status of the DatasetSeries.",
                                 "enum": [
                                     "workInProgress",
                                     "validated",
@@ -714,9 +731,10 @@
                                 ]
                             },
                             "dcat:dataset": {
+				"title": "series_dataset",
 				"required": false,
                                 "type": ["array","null"],
-                                "description": "Indicates which dataset(s) this series serves or is related to.",
+                                "description": "References which dataset(s) are grouped within this DatasetSeries. Please note that a Dataset may be referenced by multiple DatasetSeries.",
                                 "items": {
                                     "type": "string"
                                 }
@@ -724,17 +742,21 @@
 			    "foaf:page": {
 				"required": false,
     				"type": ["array","null"],
-    				"title": "Related resources",
-    				"description": "Any related page or resource.",
+    				"title": "Related_resources",
+    				"description": "Any related page, document or resource.",
 				"items": {
 					"type": "object",
         				"additionalProperties": false,
         				"properties": {
 					     "alias": {
+						"title": "page_alias",
+						"description": "Alias to be showed in the interface for this link.",
 						"required": false,
 						"type": "string"
 					    },
 					    "uri": {
+						"title": "url",
+						"description": "URL for the page, document or resource",
 						"required": true,
 						"type": ["string", "null"],
                 				"format": "uri"
@@ -743,14 +765,16 @@
 				 }
 			    },
                             "bv:comment": {
+				"title": "comments",
 				"required": false,
                                 "type": "string",
-                                "description": "Additional comments or notes about the series."
+                                "description": "Additional comments or notes about the DatasetSeries."
                             },
                             "dcat:keyword": {
 				"required": false,
                                 "type": ["array","null"],
-                                "description": "Keywords describing the dataset Serie.",
+                                "title": "Keywords",
+                                "description": "Keywords describing the DatasetSeries.",
                                 "items": {
                                     "type": "string"
                                 }
@@ -758,7 +782,8 @@
                             "bv:classification": {
 				"required": true,
                                 "type": "string",
-                                "description": "Classification level of the dataset (sample enumeration).",
+                                "title": "Classification_level",
+                                "description": "Classification level of the dataset according to the Swiss Informationssicherheitsgesetz, ISG. For information regarding the categorization, consult <a https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_13'>the Swiss Informationssicherheitsgesetz article 13</a>",
                                 "enum": [
                                     "none",
                                     "internal",
@@ -769,7 +794,8 @@
                             "bv:personalData": {
 				"required": true,
                                 "type": "string",
-                                "description": "Indicates presence of personal data (e.g., 'Keine', 'Anonymized', etc.).",
+                                "title": "Categorization_DSG",
+                                "description": "Categorization regarding the Swiss data protection act. For information regarding the categorization, consult <a href='https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5'>the Swiss data protection act article 5</a>.",
                                 "enum": [
                                     "none",
                                     "personalData",
