@@ -20,7 +20,7 @@
                         "title": "Dataset_metadata",
                         "description": "Descriptive attributes for the dataset itself, i.e. the actual dataset metadata.",
                         "properties": {
-                            "imageURL": {
+                            "schema:image": {
                                 "required": false,
 				"type": ["string", "null"],
                                 "format": "uri",
@@ -114,12 +114,12 @@
                                 "title": "Contact_point",
                                 "description": "Contact information for potential inquiries about the dataset.",
                                 "properties": {
-                                    "name": {
+                                    "schema:name": {
 					"required": true,
                                         "type": "string"
 					"title": "Name"
                                     },
-                                    "email": {
+                                    "schema:email": {
 					"required": true,
                                         "type": "string",
 					"title": "email"
@@ -166,7 +166,7 @@
                                 "title": "Last_modification_date",
                                 "description": "Last modification date of the data in the dataset."
                             },
-                            "bv:affiliatedPersons": {
+                            "schema:OrganizationRole": {
 				"required": true,
                                 "type": "array",
                                 "title": "Affiliated_persons",
@@ -174,17 +174,17 @@
                                 "items": {
                                     "type": "object",
                                     "properties": {
-                                        "name": {
+                                        "schema:name": {
 					    "required": true,
                                             "type": "string",
 					    "title": "Name"
                                         },
-                                        "email": {
+                                        "schema:email": {
 					    "required": true,
                                             "type": "string",
 					    "title": "email"
                                         },
-                                        "role": {
+                                        "schema:roleName": {
 					    "required": true,
                                             "type": "string",
 					    "title": "Role",
@@ -201,7 +201,7 @@
                                 "contains": {
                                     "type": "object",
                                     "properties": {
-                                        "role": {
+                                        "schema:roleName": {
 					    "required": true,
                                             "const": "dataOwner"
                                         }
@@ -350,7 +350,7 @@
                                 "type": "string",
                                 "description": "Temporal coverage of the dataset. For example, the first and last measurement years for a timeseries."
                             },
-                            "bv:legalBasis": {
+                            "dpv:hasLegalBasis": {
 				"required": false,
                                 "title": "Legal_basis",
                                 "description": "Legal basis for the dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
@@ -422,7 +422,7 @@
 	    			       }
 				 }
 			    },
-                            "bv:comments": {
+                            "schema:comment": {
 				"title": "comments",
 				"required": false,
                                 "type": "string",
@@ -590,7 +590,7 @@
                                                         "cc-zero"
                                                     ]
                                                 },
-                                                "bv:comments": {
+                                                "schema:comment": {
 						    "title": "comments",
 						    "required": false,
                                                     "type": "string",
@@ -624,7 +624,7 @@
                         "type": "object",
                         "description": "Descriptive attributes for the dataset series.",
                         "properties": {
-                            "imageURL": {
+                            "schema:image": {
 				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
@@ -699,12 +699,12 @@
 				"required": true,
                                 "type": "object",
                                 "properties": {
-                                    "name": {
+                                    "schema:name": {
 					"required": true,
                                         "type": "string",
 					"title": "Name"
                                     },
-                                    "email": {
+                                    "schema:email": {
 					"required": true,
                                         "type": "string"
 					"title": "email"
@@ -764,7 +764,7 @@
 	    			       }
 				 }
 			    },
-                            "bv:comment": {
+                            "schema:comment": {
 				"title": "comments",
 				"required": false,
                                 "type": "string",
@@ -819,7 +819,7 @@
                         "type": "object",
                         "description": "attributes for the DataService",
                         "properties": {
-                            "imageURL": {
+                            "schema:image": {
 				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
@@ -900,12 +900,12 @@
 				"required": true,
                                 "type": "object",
                                 "properties": {
-                                    "name": {
+                                    "schema:name": {
 					"required": true,
                                         "type": "string"
 					"title": "Name"
                                     },
-                                    "email": {
+                                    "schema:email": {
 					"required": true,
                                         "type": "string"
 					"title": "email"
@@ -986,7 +986,7 @@
 	    			       }
 				 }
 			    },
-                            "bv:comments": {
+                            "schema:comment": {
 				"title": "comments",
 				"required": false,
                                 "type": "string",
@@ -1009,7 +1009,7 @@
                         "type": "object",
                         "description": "Attributes for the Catalog",
                         "properties": {
-                            "imageURL": {
+                            "schema:image": {
 				"required": false,
                                 "type": ["string", "null"],
                                 "format": "uri",
@@ -1090,12 +1090,12 @@
 				"required": true,
                                 "type": "object",
                                 "properties": {
-                                    "name": {
+                                    "schema:name": {
 					"required": true,
                                         "type": "string"
 					"title": "Name"
                                     },
-                                    "email": {
+                                    "schema:email": {
 					"required": true,
                                         "type": "string"
 					"title": "email"
