@@ -14,12 +14,6 @@
                 "title": "Dataset_objects",
                 "description": "One item (i.e., one datset metadata) in the collection of datasets. This class describes a collection of homogeneous data characterized by its topic, process, infrastructure (including data processing and storage systems), purpose, and data type. A dataset is also consistent in terms of classification, the presence of personal data, and its degree of openness. Datasets are similar to products; they are prepared and made available to others under clearly defined usage criteria.",
                 "properties": {
-                    "attributes": {
-                        "type": "object",
-                        "additionalProperties": false,
-                        "title": "Dataset_metadata",
-                        "description": "Descriptive attributes for the dataset itself, i.e. the actual dataset metadata.",
-                        "properties": {
                             "schema:image": {
                                 "required": false,
 				"type": ["string", "null"],
@@ -466,10 +460,6 @@
                                     "type": "object",
                                     "additionalProperties": false,
                                     "properties": {
-                                        "attributes": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "properties": {
                                                 "dcterms:identifier": {
 						    "title": "Distribution_id",
 						    "required": true,
@@ -603,14 +593,10 @@
                                                     "type": "string",
                                                     "description": "Reference to a service used to provide access to the data."
                                                 }
-                                            }
-                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                }
             }
         },
         "datasetSeries": {
@@ -621,10 +607,6 @@
 		"title": "datasetseries_objects",
                 "description": "Structure of each dataset series entry. Keys are series IDs (e.g. 'SERIE-01'). This class represents a collection of datasets that are published and can be used separately, but share some characteristics that group them.",
                 "properties": {
-                    "attributes": {
-                        "type": "object",
-                        "description": "Descriptive attributes for the dataset series.",
-                        "properties": {
                             "schema:image": {
 				"required": false,
                                 "type": ["string", "null"],
@@ -804,8 +786,6 @@
                                 ]
                             }
                         }
-                    }
-                }
             }
         },
         "dataServices": {
@@ -816,10 +796,6 @@
 		"title": "dataServices_objects",
                 "description": "A DataService represents a collection of operations accessible through an interface (API) that provide access to one or more datasets or data processing functions.",
                 "properties": {
-                    "attributes": {
-                        "type": "object",
-                        "description": "attributes for the DataService",
-                        "properties": {
                             "schema:image": {
 				"required": false,
                                 "type": ["string", "null"],
@@ -1020,8 +996,6 @@
                                         "description": "URL for the DataService on I14Y"
                                     }
                                 }
-			    }
-                        }
                     }
                 }
             }
@@ -1034,10 +1008,6 @@
 		"title": "catalog_objects",
                 "description": "Structure of Catalog. A catalog is a loose collection of Datasets, DatasetSeries and DataServices such as, for example, opendata.swiss or I14Y.",
                 "properties": {
-                    "attributes": {
-                        "type": "object",
-                        "description": "Attributes for the Catalog",
-                        "properties": {
                             "schema:image": {
 				"required": false,
                                 "type": ["string", "null"],
@@ -1169,8 +1139,6 @@
                                     "type": "string"
                                 }
                             }
-                        }
-                    }
                 }
             }
         }
