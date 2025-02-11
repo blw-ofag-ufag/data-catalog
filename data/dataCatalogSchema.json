@@ -991,7 +991,34 @@
 				"required": false,
                                 "type": "string",
                                 "description": "Additional comments about the DataService."
-                            }
+                            },
+			    "bv:i14y": {
+				"required": true,
+				"type": "object",
+				"title": "i14y_publication",
+                                "description": "Indicates if the DataService metadata must be made available via the interoperability platform I14Y. Optionally references the I14Y publication ID.",
+                                "properties": {
+                                    "bv:mustBePublished": {
+					"title": "i14y_publication_flag",
+					"description": "Indicates if the DataService must be published on I14Y. May be used by harvesters or automatic metadata publication.",
+					"required": true,
+                                        "type": "boolean"
+                                    },
+                                    "dcterms:identifier": {
+					"title": "i14y_id",
+					"required": false,
+                                        "type": "string",
+                                        "description": "Identifier for the DataService on I14Y."
+                                    },
+                                    "dcat:accessURL": {
+					"title": "i14y_url",
+					"required": false,
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URL for the DataService on I14Y"
+                                    }
+                                }
+			    }
                         }
                     }
                 }
