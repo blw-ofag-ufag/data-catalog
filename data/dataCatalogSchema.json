@@ -297,9 +297,10 @@
                                 "properties": {
                                     "bv:mustBePublished": {
 					"title": "i14y_publication_flag",
-					"description": "Indicates if the dataset must be published on I14Y. May be used by harvesters or automatic metadata publication.",
+					"description": "Indicates if the dataset must be published on I14Y. May be used by harvesters or automatic metadata publication. This is true by default.",
 					"required": true,
-                                        "type": "boolean"
+                                        "type": "boolean",
+					"default": true
                                     },
                                     "dcterms:identifier": {
 					"title": "i14y_id",
@@ -1000,9 +1001,10 @@
                                 "properties": {
                                     "bv:mustBePublished": {
 					"title": "i14y_publication_flag",
-					"description": "Indicates if the DataService must be published on I14Y. May be used by harvesters or automatic metadata publication.",
+					"description": "Indicates if the DataService must be published on I14Y. May be used by harvesters or automatic metadata publication. This is true by default.",
 					"required": true,
-                                        "type": "boolean"
+                                        "type": "boolean",
+					"default": true
                                     },
                                     "dcterms:identifier": {
 					"title": "i14y_id",
