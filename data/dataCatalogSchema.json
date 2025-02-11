@@ -116,7 +116,7 @@
                                 "properties": {
                                     "schema:name": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
 					"title": "Name"
                                     },
                                     "schema:email": {
@@ -393,7 +393,7 @@
                                 }
                             },
                             "bv:geoIdentifier": {
-				"title": "geo_identifier"
+				"title": "geo_identifier",
 				"required": false,
                                 "type": "string",
                                 "description": "Identifier for the dataset according to the GeoIV."
@@ -437,7 +437,7 @@
                                 "description": "Indicates when the dataset was abrogated or replaced."
                             },
                             "bv:itSystem": {
-				"title": "it_system"
+				"title": "it_system",
 				"required": false,
                                 "type": "string",
                                 "description": "Name of the IT system managing this dataset."
@@ -707,7 +707,7 @@
                                     },
                                     "schema:email": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
 					"title": "email"
                                     }
                                 }
@@ -903,12 +903,12 @@
                                 "properties": {
                                     "schema:name": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
 					"title": "Name"
                                     },
                                     "schema:email": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
 					"title": "email"
                                     }
                                 }
@@ -1121,12 +1121,12 @@
                                 "properties": {
                                     "schema:name": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
 					"title": "Name"
                                     },
                                     "schema:email": {
 					"required": true,
-                                        "type": "string"
+                                        "type": "string",
 					"title": "email"
                                     }
                                 }
