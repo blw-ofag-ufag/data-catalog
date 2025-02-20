@@ -114,6 +114,10 @@
 					{
 						"bv:adminDirID": "p-0711690",
 						"role": "dataOwner"
+					},
+					{
+						"bv:adminDirID": "p-0264882",
+						"role": "dataSteward"
 					}
 				],
 				"dcat:keyword": [
@@ -138,7 +142,10 @@
 				],
 				"adms:status": "published",
 				"dcterms:issued": "2025-02-20",
-				"dcterms:modified": "2025-00-20",
+				"dcterms:modified": "2025-02-20",
+				"bv:legalBasis": [
+                    			"https://www.fedlex.admin.ch/eli/cc/2013/417/"
+                		],
 				"dcterms:accrualPeriodicity": "MONTHLY",
 				"prov:wasDerivedFrom": null,
 				"dcat:distribution": [
