@@ -128,6 +128,9 @@
 					"Variety protection"
 				],
 				"bv:personalData": "personalData",
+				"bv:classification": "none",
+				"bv:typeOfData": "thematicData",
+				"bv:itSystem": "ProVar",
 				"bv:i14y": {
 					"bv:mustBePublished": true,
 					"dcterms:identifier": "BLW_DS_VARIETIES",
@@ -164,7 +167,9 @@
 								"en": "«The term \"species\" is a familiar unit of botanical classification within the plant kingdom. However, it is clear that within a species there can be a wide range of different types of plant. Farmers and growers need plants with particular characteristics and that are adapted to their environment and their cultivation practices. A plant variety represents a more precisely defined group of plants, selected from within a species, with a common set of characteristics.» Source: UPOV https://www.upov.int/overview/en/variety.html\n\nA plant variety can be protected by the plant variety right (PVR) and/or registered in the catalogue of varieties (National Listing, NLI). The variety denomination is the same for both PVR and NLI, and the variety examination is the same for both as well.\n\nPlant variety protection belongs to the same family than patents and trademarks, the intellectual property right. The plant variety protection right regulates the commercial protection of new varieties. The person who holds the protection title has the right to protect their variety from undesired commercial use. Duration of plant variety protection: 25–30 years.\n\nThe national listing (NLI) includes plant species used for agriculture. They need an authorization, which is regulated by an ordinance (Plant Variety Ordinance) via catalogues and lists. Agroscope and professional associations establish recommended lists of varieties.\n\nThe varieties published here in the plant variety protection and in the national catalogue of varieties are currently incomplete. However, the list is continuously updated with newly validated data."
 							},
 							"dcat:accessURL": "https://github.com/blw-ofag-ufag/blw-ogd-data/blob/fb1fc64d032e1f40d2d1bcf52daef1fc7eb7f177/data/plant_varieties_in_switzerland.json",
-							"dcterms:format": "JSON"
+							"dcat:downloadURL": "https://github.com/blw-ofag-ufag/blw-ogd-data/blob/fb1fc64d032e1f40d2d1bcf52daef1fc7eb7f177/data/plant_varieties_in_switzerland.json",
+							"dcterms:format": "JSON",
+							"dcterms:license": "terms_by"
 						}
 					}
 				]
