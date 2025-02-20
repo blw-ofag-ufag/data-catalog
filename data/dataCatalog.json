@@ -123,7 +123,7 @@
 					"National listing",
 					"Variety protection"
 				],
-				"bv:personalData": "none",
+				"bv:personalData": "personalData",
 				"bv:i14y": {
 					"bv:mustBePublished": true
 				},
