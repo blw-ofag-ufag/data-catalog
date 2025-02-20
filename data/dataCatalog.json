@@ -125,7 +125,9 @@
 				],
 				"bv:personalData": "personalData",
 				"bv:i14y": {
-					"bv:mustBePublished": true
+					"bv:mustBePublished": true,
+					"dcterms:identifier": "BLW_DS_VARIETIES",
+					"dcat:accessURL": "https://www.i14y.admin.ch/de/catalog/datasets/BLW_DS_VARIETIESA/description"
 				},
 				"bv:opendata.swiss": {
 					"bv:mustBePublished": false
