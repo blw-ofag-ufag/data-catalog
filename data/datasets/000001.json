@@ -2,13 +2,23 @@
     "dcterms:identifier": "000001",
     "dcterms:title": {
         "de": "Massnahmenmonitoring Klimastrategie Landwirtschaft und Ernährung",
-        "fr": "Suivi des mesures Stratégie Climat pour l'agriculture et l'alimentation"
+        "fr": "Suivi des mesures Stratégie Climat pour l'agriculture et l'alimentation",
+        "it": "Monitoraggio delle misure Strategia Climatica per l'Agricoltura e l'Alimentazione",
+        "en": "Monitoring Measures Climate Strategy for Agriculture and Food"
     },
     "dcterms:description": {
         "de": "Daten zur Massnahmenumsetzung geben einen Überblick zum Umsetzungsstand der 42 Massnahmen bezüglich Klimastrategie Landwirtschaft und Ernährung. Dieser Massnahmenplan läuft bis 2030.",
-        "fr": "Les données relatives à la mise en œuvre des mesures donnent un aperçu de l'état de mise en œuvre des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation. Ce plan de mesures court jusqu'en 2030."
+        "fr": "Les données relatives à la mise en œuvre des mesures donnent un aperçu de l'état de mise en œuvre des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation. Ce plan de mesures court jusqu'en 2030.",
+        "it": "I dati sull'attuazione delle misure forniscono una panoramica dello stato di attuazione delle 42 misure relative alla Strategia Climatica per l'Agricoltura e l'Alimentazione. Questo piano d'azione è valido fino al 2030.",
+        "en": "Data on the implementation of measures provide an overview of the implementation status of the 42 measures related to the Climate Strategy for Agriculture and Food. This action plan runs until 2030."
     },
-    "dcterms:issued": "2024-12-04",
+    "dcterms:accessRights": "NON_PUBLIC",
+    "bv:affiliatedPersons": [
+        {
+            "bv:adminDirID": "p-1Y4L0Y450",
+            "role": "dataOwner"
+        }
+    ],
     "dcat:keyword": [
         "environment",
         "sustainability",
@@ -17,11 +27,19 @@
         "food"
     ],
     "bv:personalData": "none",
-    "bv:affiliatedPersons": [
-        {
-            "bv:adminDirID": "p-1Y4L0Y450",
-            "role": "dataOwner"
-        }
+    "bv:i14y": {
+        "bv:mustBePublished": false
+    },
+    "bv:opendata.swiss": {
+        "bv:mustBePublished": false
+    },
+    "dcat:themeTaxonomy": ["environment", "agricultureFisheriesForestryFood"],
+    "adms:status": "workInProgress",
+    "dcterms:issued": "2024-12-04",
+    "dcterms:modified": "2025-01-22",
+    "dcterms:accrualPeriodicity": "ANNUAL",
+    "prov:wasDerivedFrom": [
+        "Meinungen aus Expertenbefragungen"
     ],
     "dcat:distribution": [
         {
