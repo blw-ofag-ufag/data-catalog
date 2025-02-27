@@ -29,7 +29,7 @@
                     "bv:opendata_swiss",
                     "bv:i14y"
                 ],
-                "title": "Dataset_objects",
+                "title": "Dataset objects",
                 "description": "One item (i.e., one datset metadata) in the collection of datasets. This class describes a collection of homogeneous data characterized by its topic, process, infrastructure (including data processing and storage systems), purpose, and data type. A dataset is also consistent in terms of classification, the presence of personal data, and its degree of openness. Datasets are similar to products; they are prepared and made available to others under clearly defined usage criteria.",
                 "properties": {
                     "schema:image": {
@@ -38,12 +38,12 @@
                             "null"
                         ],
                         "format": "uri",
-                        "title": "Image_URL",
+                        "title": "Image URL",
                         "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the dataset's content."
                     },
                     "dcterms:identifier": {
                         "type": "string",
-                        "title": "Dataset_identifier",
+                        "title": "Dataset identifier",
                         "description": "Unique identifier for the dataset. If left empty, it is automatically assigned."
                     },
                     "dcterms:title": {
@@ -52,7 +52,7 @@
                             "de",
                             "fr"
                         ],
-                        "title": "Dataset_title",
+                        "title": "Dataset title",
                         "description": "Title of the dataset.",
                         "properties": {
                             "de": {
@@ -79,7 +79,7 @@
                             "de",
                             "fr"
                         ],
-                        "title": "Dataset_description",
+                        "title": "Dataset description",
                         "description": "Description of the dataset. Should go into details about the dataset content and help a non-specialist to understand what is the dataset about.",
                         "properties": {
                             "de": {
@@ -102,7 +102,7 @@
                     },
                     "dcterms:accessRights": {
                         "type": "string",
-                        "title": "Access_rights",
+                        "title": "Access rights",
                         "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
                         "enum": [
                             "CONFIDENTIAL",
@@ -123,7 +123,7 @@
                             "schema:name",
                             "schema:email"
                         ],
-                        "title": "Contact_point",
+                        "title": "Contact point",
                         "description": "Contact information for potential inquiries about the dataset.",
                         "properties": {
                             "schema:name": {
@@ -137,7 +137,7 @@
                         }
                     },
                     "dcterms:issued": {
-                        "title": "Issued_date",
+                        "title": "Issued date",
                         "description": "Date when the dataset was formally issued for the first time. If unknown, you may select the date of the first publication of this metadata.",
                         "type": [
                             "string",
@@ -158,7 +158,7 @@
                     },
                     "dcterms:accrualPeriodicity": {
                         "type": "string",
-                        "title": "Accrual_periodicity",
+                        "title": "Accrual periodicity",
                         "description": "Frequency with which dataset is updated (e.g., 'Annual').",
                         "enum": [
                             "OTHER",
@@ -178,12 +178,12 @@
                             "null"
                         ],
                         "format": "date",
-                        "title": "Last_modification_date",
+                        "title": "Last modification date",
                         "description": "Last modification date of the data in the dataset."
                     },
                     "schema:OrganizationRole": {
                         "type": "array",
-                        "title": "Affiliated_persons",
+                        "title": "Affiliated persons",
                         "description": "List of affiliated people, their contact address and respective roles.",
                         "items": {
                             "type": "object",
@@ -237,7 +237,7 @@
                     },
                     "bv:classification": {
                         "type": "string",
-                        "title": "Classification_level",
+                        "title": "Classification level",
                         "description": "Classification level of the dataset according to the Swiss Informationssicherheitsgesetz, ISG. For information regarding the categorization, consult <a https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_13'>the Swiss Informationssicherheitsgesetz article 13</a>",
                         "enum": [
                             "none",
@@ -248,7 +248,7 @@
                     },
                     "bv:personalData": {
                         "type": "string",
-                        "title": "Categorization_DSG",
+                        "title": "Categorization DSG",
                         "description": "Categorization regarding the Swiss data protection act. For information regarding the categorization, consult <a href='https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5'>the Swiss data protection act article 5</a>.",
                         "enum": [
                             "none",
@@ -258,7 +258,7 @@
                     },
                     "bv:typeOfData": {
                         "type": "string",
-                        "title": "Data_type",
+                        "title": "Data type",
                         "description": "Specifies the type of data in the dataset (master data, reference data, thematic data or unstructured data).",
                         "enum": [
                             "thematicData",
@@ -269,7 +269,7 @@
                     },
                     "bv:archivalValue": {
                         "type": "boolean",
-                        "title": "Archival_value",
+                        "title": "Archival value",
                         "description": "Indicates if this dataset has archival value and must be sent to the BAR."
                     },
                     "bv:opendata_swiss": {
@@ -277,21 +277,21 @@
                         "required": [
                             "bv:mustBePublished"
                         ],
-                        "title": "opendataswiss_publication",
+                        "title": "opendataswiss publication",
                         "description": "Indicates if the dataset must be published as Open Government Data (OGD) via the opendata.swiss portal. Optionally references the opendata.swiss publication ID.",
                         "properties": {
                             "bv:mustBePublished": {
-                                "title": "opendataswiss_publication_flag",
+                                "title": "opendataswiss publication flag",
                                 "description": "Indicates if the dataset must be published on opendata.swiss. May be used by harvesters or automatic metadata publication.",
                                 "type": "boolean"
                             },
                             "dcterms:identifier": {
-                                "title": "opendataswiss_id",
+                                "title": "opendataswiss id",
                                 "type": "string",
                                 "description": "Identifier for the dataset on opendata.swiss."
                             },
                             "dcat:accessURL": {
-                                "title": "opendataswiss_url",
+                                "title": "opendataswiss url",
                                 "type": "string",
                                 "format": "uri",
                                 "description": "URL for the dataset on opendata.swiss"
@@ -303,22 +303,22 @@
                         "required": [
                             "bv:mustBePublished"
                         ],
-                        "title": "i14y_publication",
+                        "title": "i14y publication",
                         "description": "Indicates if the dataset metadata must be made available via the interoperability platform I14Y. Optionally references the I14Y publication ID.",
                         "properties": {
                             "bv:mustBePublished": {
-                                "title": "i14y_publication_flag",
+                                "title": "i14y publication flag",
                                 "description": "Indicates if the dataset must be published on I14Y. May be used by harvesters or automatic metadata publication. This is true by default.",
                                 "type": "boolean",
                                 "default": true
                             },
                             "dcterms:identifier": {
-                                "title": "i14y_id",
+                                "title": "i14y id",
                                 "type": "string",
                                 "description": "Identifier for the dataset on I14Y."
                             },
                             "dcat:accessURL": {
-                                "title": "i14y_url",
+                                "title": "i14y url",
                                 "type": "string",
                                 "format": "uri",
                                 "description": "URL for the dataset on I14Y"
@@ -330,7 +330,7 @@
                             "array",
                             "null"
                         ],
-                        "title": "dataset_themes",
+                        "title": "Dataset themes",
                         "description": "This attribute classifies the dataset into one or more broad thematics. Proper classification allow other users interested in the topic to find the dataset without knowing its name or description.",
                         "items": {
                             "type": "string",
@@ -343,7 +343,7 @@
                         }
                     },
                     "dcat:landingPage": {
-                        "title": "Landing_page",
+                        "title": "Landing page",
                         "type": [
                             "string",
                             "null"
@@ -352,17 +352,17 @@
                         "description": "Landing page or homepage for the dataset."
                     },
                     "dcterms:spatial": {
-                        "title": "spatial_coverage",
+                        "title": "Spatial coverage",
                         "type": "string",
                         "description": "Spatial/geographical coverage of the dataset."
                     },
                     "dcterms:temporal": {
-                        "title": "temporal_coverage",
+                        "title": "Temporal coverage",
                         "type": "string",
                         "description": "Temporal coverage of the dataset. For example, the first and last measurement years for a timeseries."
                     },
                     "dpv:hasLegalBasis": {
-                        "title": "Legal_basis",
+                        "title": "Legal basis",
                         "description": "Legal basis for the dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
                         "type": [
                             "array",
@@ -378,7 +378,7 @@
                         }
                     },
                     "bv:businessProcess": {
-                        "title": "business_process",
+                        "title": "Business process",
                         "type": [
                             "array",
                             "null"
@@ -389,7 +389,7 @@
                         }
                     },
                     "bv:retentionPeriod": {
-                        "title": "retention_period",
+                        "title": "Retention period",
                         "type": "integer",
                         "description": "Retention period for the dataset. That is, the time that the dataset must legally be available after the end of its active use."
                     },
@@ -399,7 +399,7 @@
                         "description": "Indicates in which catalog this dataset is available."
                     },
                     "prov:wasDerivedFrom": {
-                        "title": "derived_from",
+                        "title": "Derived from",
                         "type": [
                             "array",
                             "null"
@@ -410,7 +410,7 @@
                         }
                     },
                     "bv:geoIdentifier": {
-                        "title": "geo_identifier",
+                        "title": "Geo identifier",
                         "type": "string",
                         "description": "Identifier for the dataset according to the GeoIV."
                     },
@@ -419,7 +419,7 @@
                             "array",
                             "null"
                         ],
-                        "title": "Related_resources",
+                        "title": "Related resources",
                         "description": "Any related page, document or resource.",
                         "items": {
                             "type": "object",
@@ -429,7 +429,7 @@
                             "additionalProperties": false,
                             "properties": {
                                 "alias": {
-                                    "title": "page_alias",
+                                    "title": "Page alias",
                                     "description": "Alias to be showed in the interface for this link.",
                                     "type": "string"
                                 },
@@ -460,12 +460,12 @@
                         "description": "Indicates when the dataset was abrogated or replaced."
                     },
                     "bv:itSystem": {
-                        "title": "it_system",
+                        "title": "IT system",
                         "type": "string",
                         "description": "Name of the IT system managing this dataset."
                     },
                     "dcat:inSeries": {
-                        "title": "in_series",
+                        "title": "In Series",
                         "type": "string",
                         "description": "Reference to the series this dataset belongs to."
                     },
@@ -499,12 +499,12 @@
                             "additionalProperties": false,
                             "properties": {
                                 "dcterms:identifier": {
-                                    "title": "Distribution_id",
+                                    "title": "Distribution id",
                                     "type": "string",
                                     "description": "Identifier for this distribution. If left empty, it will be automatically assigned."
                                 },
                                 "dcat:accessURL": {
-                                    "title": "access_url",
+                                    "title": "Access URL",
                                     "type": "string",
                                     "format": "uri",
                                     "description": "URL to a page for accessing this distribution. This must not be a direct download URL but, for example, a link to a webpage containing download links."
@@ -527,7 +527,7 @@
                                     "description": "File format for this distribution (e.g., CSV, JSON)."
                                 },
                                 "dcterms:modified": {
-                                    "title": "Last_modification_date",
+                                    "title": "Last modification date",
                                     "type": [
                                         "string",
                                         "null"
@@ -536,7 +536,7 @@
                                     "description": "Last modification date of the data in this distribution."
                                 },
                                 "dcat:downloadURL": {
-                                    "title": "download_url",
+                                    "title": "Download URL",
                                     "type": [
                                         "string",
                                         "null"
@@ -545,7 +545,7 @@
                                     "description": "Direct download URL of the distribution file. This link must directly point to the file."
                                 },
                                 "dcterms:title": {
-                                    "title": "Distribution_title",
+                                    "title": "Distribution title",
                                     "type": "object",
                                     "required": [
                                         "de",
@@ -572,7 +572,7 @@
                                     }
                                 },
                                 "dcterms:description": {
-                                    "title": "Distribution_description",
+                                    "title": "Distribution description",
                                     "type": "object",
                                     "required": [
                                         "de",
@@ -599,7 +599,7 @@
                                     }
                                 },
                                 "dcterms:conformsTo": {
-                                    "title": "conforms_to",
+                                    "title": "Conforms to",
                                     "type": "string",
                                     "description": "Reference to a standard or specification the distribution conforms to."
                                 },
@@ -621,7 +621,7 @@
                                     "description": "Additional comments about the distribution."
                                 },
                                 "dcat:accessService": {
-                                    "title": "access_service",
+                                    "title": "Access service",
                                     "type": "string",
                                     "description": "Reference to a service used to provide access to the data."
                                 }
@@ -646,7 +646,7 @@
                     "bv:classification",
                     "bv:personalData"
                 ],
-                "title": "datasetseries_objects",
+                "title": "DatasetSeries objects",
                 "description": "Structure of each dataset series entry. Keys are series IDs (e.g. 'SERIE-01'). This class represents a collection of datasets that are published and can be used separately, but share some characteristics that group them.",
                 "properties": {
                     "schema:image": {
@@ -655,16 +655,16 @@
                             "null"
                         ],
                         "format": "uri",
-                        "title": "Image_URL",
+                        "title": "Image URL",
                         "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the series content."
                     },
                     "dcterms:identifier": {
-                        "title": "Series_id",
+                        "title": "Series id",
                         "type": "string",
                         "description": "Identifier for this DatasetSeries. If left empty, it will be automatically assigned."
                     },
                     "dcterms:title": {
-                        "title": "Series_title",
+                        "title": "Series title",
                         "type": "object",
                         "required": [
                             "de",
@@ -691,7 +691,7 @@
                         }
                     },
                     "dcterms:description": {
-                        "title": "Series_description",
+                        "title": "Series description",
                         "type": "object",
                         "required": [
                             "de",
@@ -718,7 +718,7 @@
                         }
                     },
                     "dcat:contactPoint": {
-                        "title": "Contact_point",
+                        "title": "Contact point",
                         "description": "Contact information for potential inquiries about the DatasetSeries.",
                         "type": "object",
                         "required": [
@@ -754,7 +754,7 @@
                         ]
                     },
                     "dcat:dataset": {
-                        "title": "series_dataset",
+                        "title": "Series dataset",
                         "type": [
                             "array",
                             "null"
@@ -769,7 +769,7 @@
                             "array",
                             "null"
                         ],
-                        "title": "Related_resources",
+                        "title": "Related resources",
                         "description": "Any related page, document or resource.",
                         "items": {
                             "type": "object",
@@ -779,7 +779,7 @@
                             "additionalProperties": false,
                             "properties": {
                                 "alias": {
-                                    "title": "page_alias",
+                                    "title": "Page alias",
                                     "description": "Alias to be showed in the interface for this link.",
                                     "type": "string"
                                 },
@@ -813,7 +813,7 @@
                     },
                     "bv:classification": {
                         "type": "string",
-                        "title": "Classification_level",
+                        "title": "Classification level",
                         "description": "Classification level of the dataset according to the Swiss Informationssicherheitsgesetz, ISG. For information regarding the categorization, consult <a https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_13'>the Swiss Informationssicherheitsgesetz article 13</a>",
                         "enum": [
                             "none",
@@ -824,7 +824,7 @@
                     },
                     "bv:personalData": {
                         "type": "string",
-                        "title": "Categorization_DSG",
+                        "title": "Categorization DSG",
                         "description": "Categorization regarding the Swiss data protection act. For information regarding the categorization, consult <a href='https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5'>the Swiss data protection act article 5</a>.",
                         "enum": [
                             "none",
@@ -850,7 +850,7 @@
                     "dcat:endopointURL",
                     "adms:status"
                 ],
-                "title": "dataServices_objects",
+                "title": "DataServices objects",
                 "description": "A DataService represents a collection of operations accessible through an interface (API) that provide access to one or more datasets or data processing functions.",
                 "properties": {
                     "schema:image": {
@@ -859,16 +859,16 @@
                             "null"
                         ],
                         "format": "uri",
-                        "title": "Image_URL",
+                        "title": "Image URL",
                         "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
                     },
                     "dcterms:identifier": {
-                        "title": "Service_id",
+                        "title": "Service id",
                         "type": "string",
                         "description": "Identifier for this DataService. If left empty, it will be automatically assigned."
                     },
                     "dcterms:title": {
-                        "title": "dataService_title",
+                        "title": "DataService title",
                         "type": "object",
                         "required": [
                             "de",
@@ -895,7 +895,7 @@
                         }
                     },
                     "dcterms:description": {
-                        "title": "dataService_description",
+                        "title": "DataService description",
                         "type": "object",
                         "required": [
                             "de",
@@ -927,7 +927,7 @@
                         "description": "Publisher or organization responsible for the DataService."
                     },
                     "dcat:contactPoint": {
-                        "title": "Contact_point",
+                        "title": "Contact point",
                         "description": "Contact information for potential inquiries about the DataService.",
                         "type": "object",
                         "required": [
@@ -947,7 +947,7 @@
                     },
                     "dcterms:accessRights": {
                         "type": "string",
-                        "title": "Access_rights",
+                        "title": "Access rights",
                         "description": "Defines the accessibility of the DataService (e.g., public, internal, etc.).",
                         "enum": [
                             "CONFIDENTIAL",
@@ -958,7 +958,7 @@
                         ]
                     },
                     "dcat:endopointURL": {
-                        "title": "endpoint_url",
+                        "title": "Endpoint URL",
                         "type": [
                             "string",
                             "null"
@@ -979,7 +979,7 @@
                         ]
                     },
                     "dcat:servesDataset": {
-                        "title": "serves_dataset",
+                        "title": "Serves dataset",
                         "type": [
                             "array",
                             "null"
@@ -990,7 +990,7 @@
                         }
                     },
                     "dcat:endpointDescription": {
-                        "title": "endpoint_description",
+                        "title": "Endpoint description",
                         "type": [
                             "string",
                             "null"
@@ -1003,7 +1003,7 @@
                             "array",
                             "null"
                         ],
-                        "title": "Related_resources",
+                        "title": "Related resources",
                         "description": "Any related page, document or resource.",
                         "items": {
                             "type": "object",
@@ -1013,7 +1013,7 @@
                             "additionalProperties": false,
                             "properties": {
                                 "alias": {
-                                    "title": "page_alias",
+                                    "title": "Page alias",
                                     "description": "Alias to be showed in the interface for this link.",
                                     "type": "string"
                                 },
@@ -1039,22 +1039,22 @@
                         "required": [
                             "bv:mustBePublished"
                         ],
-                        "title": "i14y_publication",
+                        "title": "I14Y publication",
                         "description": "Indicates if the DataService metadata must be made available via the interoperability platform I14Y. Optionally references the I14Y publication ID.",
                         "properties": {
                             "bv:mustBePublished": {
-                                "title": "i14y_publication_flag",
+                                "title": "I14Y publication flag",
                                 "description": "Indicates if the DataService must be published on I14Y. May be used by harvesters or automatic metadata publication. This is true by default.",
                                 "type": "boolean",
                                 "default": true
                             },
                             "dcterms:identifier": {
-                                "title": "i14y_id",
+                                "title": "I14Y id",
                                 "type": "string",
                                 "description": "Identifier for the DataService on I14Y."
                             },
                             "dcat:accessURL": {
-                                "title": "i14y_url",
+                                "title": "I14Y URL",
                                 "type": "string",
                                 "format": "uri",
                                 "description": "URL for the DataService on I14Y"
@@ -1077,7 +1077,7 @@
                     "dcat:contactPoint",
                     "dcterms:accessRights"
                 ],
-                "title": "catalog_objects",
+                "title": "Catalog objects",
                 "description": "Structure of Catalog. A catalog is a loose collection of Datasets, DatasetSeries and DataServices such as, for example, opendata.swiss or I14Y.",
                 "properties": {
                     "schema:image": {
@@ -1086,16 +1086,16 @@
                             "null"
                         ],
                         "format": "uri",
-                        "title": "Image_URL",
+                        "title": "Image URL",
                         "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
                     },
                     "dcterms:identifier": {
-                        "title": "Catalog_id",
+                        "title": "Catalog id",
                         "type": "string",
                         "description": "Identifier for this Catalog. If left empty, it will be automatically assigned."
                     },
                     "dcterms:title": {
-                        "title": "Catalog_title",
+                        "title": "Catalog title",
                         "type": "object",
                         "required": [
                             "de",
@@ -1122,7 +1122,7 @@
                         }
                     },
                     "dcterms:description": {
-                        "title": "Catalog_description",
+                        "title": "Catalog description",
                         "type": "object",
                         "required": [
                             "de",
@@ -1154,7 +1154,7 @@
                         "description": "Publisher or organization responsible for the Catalog."
                     },
                     "dcat:contactPoint": {
-                        "title": "Contact_point",
+                        "title": "Contact point",
                         "description": "Contact information for potential inquiries about the Catalog.",
                         "type": "object",
                         "required": [
@@ -1173,7 +1173,7 @@
                         }
                     },
                     "dcterms:accessRights": {
-                        "title": "Access_rights",
+                        "title": "Access rights",
                         "type": "string",
                         "description": "Defines the accessibility of the Catalog (e.g., public, internal, etc.).",
                         "enum": [
@@ -1198,7 +1198,7 @@
                             "array",
                             "null"
                         ],
-                        "title": "catalog_datasets",
+                        "title": "Catalog datasets",
                         "description": "IDs of the datasets referenced in the Catalog.",
                         "items": {
                             "type": "string"
@@ -1209,7 +1209,7 @@
                             "array",
                             "null"
                         ],
-                        "title": "catalog_services",
+                        "title": "catalog services",
                         "description": "IDs of the DataServices referenced in the catalog",
                         "items": {
                             "type": "string"
