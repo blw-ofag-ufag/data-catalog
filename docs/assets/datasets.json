@@ -1,0 +1,50 @@
+[
+    {
+        "dcterms:identifier": "000002",
+        "dcterms:title": {
+            "de": "Marktzahlen Eier - Jährliche Importmengen",
+            "fr": "Chiffres du marché des œufs - Quantités importées annuelles"
+        },
+        "dcterms:description": {
+            "de": "Jährliche Mengenangaben für importierte Eiprodukte und Eier auf Wertschöpfungsstufe Verarbeitung und Konsum",
+            "fr": "Quantités annuelles en millions d'œufs importés à l’échelon de création de valeur transformation et consommation"
+        },
+        "dcterms:issued": "2025-01-16",
+        "dcat:keyword": [
+            "market-data",
+            "quantity",
+            "eggs"
+        ],
+        "bv:affiliatedPersons": [
+            {
+                "bv:adminDirID": "p-3966584",
+                "role": "dataOwner"
+            }
+        ]
+    },
+    {
+        "dcterms:identifier": "000001",
+        "dcterms:title": {
+            "de": "Massnahmenmonitoring Klimastrategie Landwirtschaft und Ernährung",
+            "fr": "Suivi des mesures Stratégie Climat pour l'agriculture et l'alimentation"
+        },
+        "dcterms:description": {
+            "de": "Daten zur Massnahmenumsetzung geben einen Überblick zum Umsetzungsstand der 42 Massnahmen bezüglich Klimastrategie Landwirtschaft und Ernährung. Dieser Massnahmenplan läuft bis 2030.",
+            "fr": "Les données relatives à la mise en œuvre des mesures donnent un aperçu de l'état de mise en œuvre des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation. Ce plan de mesures court jusqu'en 2030."
+        },
+        "dcterms:issued": "2024-12-04",
+        "dcat:keyword": [
+            "environment",
+            "sustainability",
+            "climate",
+            "monitoring",
+            "food"
+        ],
+        "bv:affiliatedPersons": [
+            {
+                "bv:adminDirID": "p-1Y4L0Y450",
+                "role": "dataOwner"
+            }
+        ]
+    }
+]
