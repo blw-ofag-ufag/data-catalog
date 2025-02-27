@@ -2,8 +2,7 @@
  * Configuration
  *****************************************************/
 const branch = "refactor-schema-with-data";
-// Base URL for individual dataset JSON files.
-// The final URL will be: 
+// Base URL for individual dataset JSON files. The full URL becomes:
 // https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/{branch}/data/datasets/{datasetId}.json
 const baseDataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/data/datasets/`;
 
@@ -155,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return res.json();
     })
     .then((data) => {
-      // Our new JSON structure is flat. We verify by checking the identifier.
+      // Since our JSON is flat, verify by checking the identifier.
       if (!data || data["dcterms:identifier"] !== datasetId) {
         renderNotFound(datasetId);
       } else {
@@ -223,6 +222,9 @@ function renderFullPageDetails(data, lang) {
 
   // 6) Render distributions.
   renderDistributions(data, lang);
+
+  // 7) Render the edit history (new section).
+  renderEditHistory(data["dcterms:identifier"], branch);
 }
 
 // Render affiliated persons as a table.
@@ -279,7 +281,6 @@ function renderAffiliatedPersons(data, lang) {
 // Render leftover metadata in a table. Certain known fields are skipped.
 function renderMetadata(data, lang) {
   const section = document.getElementById("metadataSection");
-  // List of fields to skip from metadata rendering.
   const displayed = [
     "dcterms:identifier",
     "dcterms:title",
@@ -314,7 +315,6 @@ function renderMetadata(data, lang) {
     let fieldLabel = translations[key]?.[lang] || key;
     let val = data[key];
 
-    // Special formatting for certain fields.
     if (key === "dcat:contactPoint") {
       val = formatContactPoint(val);
     } else if (key === "bv:opendata.swiss" || key === "bv:i14y") {
@@ -346,11 +346,10 @@ function renderMetadata(data, lang) {
       </tbody>
     </table>
   `;
-  // Append metadata below the existing content in the section.
   section.innerHTML += html;
 }
 
-// Render distributions (datasets may have one or more distributions) in a table.
+// Render distributions (if any) in a table.
 function renderDistributions(data, lang) {
   const section = document.getElementById("distributionsSection");
   const distributions = data["dcat:distribution"] || [];
@@ -374,14 +373,12 @@ function renderDistributions(data, lang) {
       <tbody>
   `;
   distributions.forEach((dist) => {
-    // Each distribution is a flat object.
     const distTitle = getLocalized(dist["dcterms:title"], lang);
     const distDesc = getLocalized(dist["dcterms:description"], lang);
     const distFormat = dist["dcterms:format"] || "N/A";
     if (dist["dcterms:modified"]) {
       dist["dcterms:modified"] = formatDateIfPossible(dist["dcterms:modified"], lang);
     }
-    // Determine the URL to use: try downloadURL first, then accessURL.
     const distURL = dist["dcat:downloadURL"] || dist["dcat:accessURL"] || "#";
     html += `
       <tr style="border-bottom: 1px solid var(--border-color);">
@@ -400,4 +397,77 @@ function renderDistributions(data, lang) {
     </table>
   `;
   section.innerHTML = html;
+}
+
+/******************************************************
+ * New: Render Edit History from GitHub
+ *****************************************************/
+/**
+ * Fetches the commit history for the dataset JSON file using the GitHub API,
+ * then renders a table with:
+ * - GitHub account image
+ * - GitHub account name
+ * - Commit date
+ * - First line of the commit message
+ * - Commit hash (as a link)
+ */
+function renderEditHistory(datasetId, branch) {
+  // Build the GitHub API URL for commits affecting this file.
+  const commitsApiUrl = `https://api.github.com/repos/blw-ofag-ufag/data-catalog/commits?path=data/datasets/${datasetId}.json&sha=${branch}`;
+
+  fetch(commitsApiUrl)
+    .then(response => response.json())
+    .then(commits => {
+      const section = document.getElementById("editHistorySection");
+      if (!Array.isArray(commits) || commits.length === 0) {
+        section.innerHTML = "<p>No edit history available.</p>";
+        return;
+      }
+      let html = `
+        <h2>Edit History</h2>
+        <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
+          <thead>
+            <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
+              <th style="padding: 8px;">Account</th>
+              <th style="padding: 8px;">Name</th>
+              <th style="padding: 8px;">Date</th>
+              <th style="padding: 8px;">Commit Message</th>
+              <th style="padding: 8px;">Hash</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+      commits.forEach(commitData => {
+        const commit = commitData.commit;
+        const sha = commitData.sha;
+        const date = commit.author ? commit.author.date : commit.committer.date;
+        const message = commit.message.split("\n")[0];
+        const authorLogin = commitData.author ? commitData.author.login : "Unknown";
+        const authorAvatar = commitData.author ? commitData.author.avatar_url : "";
+        const formattedDate = formatDateIfPossible(date, "en");
+        const commitUrl = `https://github.com/blw-ofag-ufag/data-catalog/commit/${sha}`;
+        html += `
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <td style="padding: 8px;">
+              ${authorAvatar ? `<img src="${authorAvatar}" alt="${authorLogin}" style="width:32px;height:32px;border-radius:50%;">` : ""}
+            </td>
+            <td style="padding: 8px;">${authorLogin}</td>
+            <td style="padding: 8px;">${formattedDate}</td>
+            <td style="padding: 8px;">${message}</td>
+            <td style="padding: 8px;">
+              <a href="${commitUrl}" target="_blank">${sha.substring(0,7)}</a>
+            </td>
+          </tr>
+        `;
+      });
+      html += `
+          </tbody>
+        </table>
+      `;
+      section.innerHTML = html;
+    })
+    .catch(error => {
+      console.error("Error fetching commit history:", error);
+      document.getElementById("editHistorySection").innerHTML = "<p>Error loading edit history.</p>";
+    });
 }
