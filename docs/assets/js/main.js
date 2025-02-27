@@ -3,7 +3,6 @@
  *****************************************************/
 const branch = "refactor-schema-with-data";
 const dataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/docs/assets/datasets.json`;
-
 let datasets = [];
 let currentLanguage = "en";
 
@@ -192,7 +191,7 @@ function getFilteredDatasets(sourceData) {
   return sourceData.filter(dataset => {
     // A) Check chips => AND logic
     const hasAllChips = keywordChips.every(chip => {
-      const keywords = dataset.attributes["dcat:keyword"] || [];
+      const keywords = dataset["dcat:keyword"] || [];
       return keywords.some(k => k.toLowerCase().includes(chip));
     });
     if (!hasAllChips) return false;
@@ -231,7 +230,7 @@ function matchFullText(term, dataset) {
     "bv:affiliatedPersons"
   ];
   return fields.some(field => {
-    const value = dataset.attributes[field];
+    const value = dataset[field];
     if (!value) return false;
 
     if (field === "dcat:keyword") {
@@ -282,8 +281,8 @@ function getSortedDatasets(sourceData) {
       if (sortBy === "issued-asc") return dateA - dateB;
       return dateB - dateA;
     } else if (sortBy === "owner") {
-      const aOwner = getDataOwnerName(a.attributes);
-      const bOwner = getDataOwnerName(b.attributes);
+      const aOwner = getDataOwnerName(a);
+      const bOwner = getDataOwnerName(b);
       return aOwner.localeCompare(bOwner, undefined, { numeric: true });
     }    
     return 0;
@@ -317,8 +316,7 @@ function renderDatasets(data) {
       const attributes = dataset;
 
       // Provide a default for metadata if not available
-      const metadata = dataset || { imageURL: "default-image.png" };
-
+      const imageURL = attributes["bv:imageURL"]
       const datasetId = attributes["dcterms:identifier"];
       const keywords = attributes["dcat:keyword"] || [];
       const maxTitleLength = 50; // Limit title to 50 characters
@@ -354,7 +352,7 @@ function renderDatasets(data) {
           onclick="redirectToDetails('${datasetId}', '${currentLanguage}')"
         >
           <img 
-            src="${attributes.imageURL}" 
+            src="${imageURL}" 
             alt="${title}" 
           />
           <div class="dataset-info">

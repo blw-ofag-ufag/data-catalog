@@ -1,128 +1,82 @@
 /******************************************************
- *  Configuration
+ * Configuration
  *****************************************************/
-const dataUrl =
-    "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/data/dataCatalog.json";
+const branch = "refactor-schema-with-data";
+// Base URL for individual dataset JSON files.
+// The final URL will be: 
+// https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/{branch}/data/datasets/{datasetId}.json
+const baseDataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/data/datasets/`;
 
 /******************************************************
- *  Hard-coded list of enumerated fields to highlight
+ * Hard-coded list of enumerated fields to highlight
  *****************************************************/
 const enumeratedFields = [
-    "dcterms:accessRights",
-    "dcterms:accrualPeriodicity",
-    "adms:status",
-    "bv:classification",
-    "bv:personalData",
-    "bv:typeOfData",
-    "bv:archivalValue",
-    "dcat:themeTaxonomy"
+  "dcterms:accessRights",
+  "dcterms:accrualPeriodicity",
+  "adms:status",
+  "bv:classification",
+  "bv:personalData",
+  "bv:typeOfData",
+  "bv:archivalValue",
+  "dcat:themeTaxonomy"
 ];
 
 /******************************************************
- *  Helper functions
+ * Helper Functions
  *****************************************************/
 
-// Function to convert enumeration string to legible content
+// Converts an enumeration string or boolean to a legible, uppercase string.
 function formatEnumerationString(input) {
-  // Handle boolean values
   if (typeof input === 'boolean') {
     return input ? 'YES' : 'NO';
   }
-
-  // Ensure input is a string for further processing
   if (typeof input !== 'string') {
     console.error(`Invalid input type: ${typeof input}`, input);
-    return ''; // Return an empty string or handle gracefully
+    return '';
   }
-
-  // Perform transformations
-  let formatted = input
-    .replace(/([a-z])([A-Z])/g, '$1 $2') // Split camelCase into "CAMEL CASE"
-    .toUpperCase(); // Convert everything to uppercase
-
-  // Replace underscores with spaces
+  let formatted = input.replace(/([a-z])([A-Z])/g, '$1 $2').toUpperCase();
   return formatted.replace(/_/g, ' ');
 }
 
-/**
- * If `val` looks like a date/time string, convert it to the user's
- * chosen language, "long" format. Otherwise return as-is.
- */
+// If the value looks like a date string, format it in a localized "long" style.
 function formatDateIfPossible(val, lang) {
-    if (typeof val !== "string") return val; // only attempt on strings
-    if (!val) return val; // empty string => just return it
-
-    // Try parsing as a date
-    const d = new Date(val);
-    if (isNaN(d.getTime())) {
-        // Not a valid Date => just return original
-        return val;
-    }
-
-    // If valid, return in localized "long" format
-    // e.g., "January 5, 2025"
-    return new Intl.DateTimeFormat(lang, {
-        dateStyle: "long"
-    }).format(d);
+  if (typeof val !== "string" || !val) return val;
+  const d = new Date(val);
+  if (isNaN(d.getTime())) return val;
+  return new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(d);
 }
 
-/**
- * Formats the dcat:contactPoint field.
- * @param {Object} contact - The contactPoint JSON object (e.g., { name: "John Doe", email: "john.doe@example.com" }).
- * @returns {string} - A formatted string with name and mailto link.
- */
+// Formats a contact point object into a name with a mailto link.
 function formatContactPoint(contact) {
   if (!contact || typeof contact !== "object") return "";
-
   const name = contact.name || "Unknown";
   const email = contact.email || "";
-
-  if (email) {
-    return `${name} (<a href="mailto:${email}">${email}</a>)`;
-  }
-  return name; // Fallback if email is missing
+  return email ? `${name} (<a href="mailto:${email}">${email}</a>)` : name;
 }
 
-/**
- * Formats the publication metadata for bv:opendata.swiss and bv:i14y.
- * @param {Object} publication - The publication metadata object.
- * @returns {string} - HTML string with a structured table layout.
- */
+// Formats publication metadata (if available) into a structured table.
 function formatPublicationMetadata(publication) {
   if (!publication || typeof publication !== "object") {
     console.warn("Invalid publication object:", publication);
     return "";
   }
-
-  // Extract the fields from the object
-  const mustBePublished = publication["bv:mustBePublished"] ? true : false;
+  const mustBePublished = !!publication["bv:mustBePublished"];
   const id = publication["dcterms:identifier"] || "";
   const accessUrl = publication["dcat:accessURL"] || "";
-
-  // Build the publication row
   const publicationRow = `<tr>
     <td>Publication:</td>
     <td><span class="enumeration-chip">${formatEnumerationString(mustBePublished)}</span></td>
   </tr>`;
-
-  // Conditionally build the ID and Access URL rows
-  const idRow = mustBePublished
-    ? `<tr>
+  const idRow = mustBePublished ? `<tr>
          <td>ID:</td>
          <td>${id}</td>
-       </tr>`
-    : "";
-
-  const accessUrlRow = mustBePublished
-    ? `<tr>
+       </tr>` : "";
+  const accessUrlRow = mustBePublished ? `<tr>
          <td>Access URL:</td>
          <td>
            <a href="${accessUrl}" target="_blank">${accessUrl !== "N/A" ? accessUrl : ""}</a>
          </td>
-       </tr>`
-    : "";
-
-  // Combine rows into a table structure
+       </tr>` : "";
   return `
     <table style="width:100%; border-collapse: collapse;">
       <tbody>
@@ -134,155 +88,147 @@ function formatPublicationMetadata(publication) {
   `;
 }
 
-/**
- * Formats a single URL into an anchor tag.
- * @param {string|null} url - The URL to format.
- * @returns {string} - A formatted anchor or "N/A".
- */
+// Formats a single URL into an anchor element.
 function formatSingleUrl(url) {
   if (!url || typeof url !== "string") return "N/A";
   return `<a href="${url}" target="_blank">${url}</a>`;
 }
 
-/**
- * Formats an array of URLs into anchored links.
- * @param {Array|null} urlArray - The array of URLs.
- * @returns {string} - A formatted string with anchors or "N/A".
- */
+// Formats an array of URLs into anchored links (separated by line breaks).
 function formatUrlArray(urlArray) {
-  if (!Array.isArray(urlArray) || urlArray.length === 0) {
-    return "N/A";
-  }
-
-  // Map each URL to an anchor (<a>) element
+  if (!Array.isArray(urlArray) || urlArray.length === 0) return "N/A";
   return urlArray
     .map(url => {
       if (!url || typeof url !== "string") return "N/A";
       return `<a href="${url}" target="_blank">${url}</a>`;
     })
-    .join("<br>"); // Separate links with line breaks
+    .join("<br>");
+}
+
+// Retrieves a localized string from an object like { en: "foo", de: "bar", ... }
+function getLocalized(fieldObj, lang) {
+  if (!fieldObj) return "";
+  return fieldObj[lang] || fieldObj["en"] || "";
+}
+
+// Wraps values in enumeration-chip spans. If the value is an array, each item is wrapped.
+function highlightEnumeratedValues(val) {
+  if (!val && val !== false) return "";
+  if (Array.isArray(val)) {
+    return val
+      .map(item => `<span class="enumeration-chip">${formatEnumerationString(item)}</span>`)
+      .join(" ");
+  }
+  return `<span class="enumeration-chip">${formatEnumerationString(val)}</span>`;
+}
+
+// Converts non-string values to a string (using JSON.stringify for objects).
+function stringifyIfNeeded(val) {
+  if (val === null || val === undefined) return "";
+  if (Array.isArray(val)) return val.join(", ");
+  else if (typeof val === "object") return JSON.stringify(val);
+  return String(val);
 }
 
 /******************************************************
- *  On Page Load
+ * On Page Load: Read URL params, fetch JSON, render page
  *****************************************************/
 document.addEventListener("DOMContentLoaded", () => {
-    // 1) Read parameters => ?dataset=FOAG-D00001&lang=it
-    const params = new URLSearchParams(window.location.search);
-    const datasetId = params.get("dataset"); // e.g. "FOAG-D00001"
-    const selectedLang = params.get("lang") || "en"; // default if missing
+  // Read URL parameters (?dataset=000001&lang=it)
+  const params = new URLSearchParams(window.location.search);
+  const datasetId = params.get("dataset"); // e.g., "000001"
+  const selectedLang = params.get("lang") || "en"; // default to English if missing
 
-    // 2) Fetch the data from your GitHub JSON
-    fetch(dataUrl)
-        .then((res) => res.json())
-        .then((data) => {
-            // The new structure has "datasets" as an array
-            const allDatasets = data.datasets;
+  if (!datasetId) {
+    renderErrorMessage("Dataset ID missing in URL parameters.");
+    return;
+  }
 
-            // Locate the matching dataset by ID (note "dcterms:identifier")
-            const dataset = allDatasets.find((ds) => {
-                return ds.attributes["dcterms:identifier"] === datasetId;
-            });
+  // Build the full URL to the dataset JSON file
+  const datasetUrl = `${baseDataUrl}${datasetId}.json`;
 
-            if (!dataset) {
-                renderNotFound(datasetId);
-            } else {
-                renderFullPageDetails(dataset, selectedLang);
-            }
-        })
-        .catch((err) => {
-            console.error("Error fetching data:", err);
-            renderErrorMessage();
-        });
+  fetch(datasetUrl)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return res.json();
+    })
+    .then((data) => {
+      // Our new JSON structure is flat. We verify by checking the identifier.
+      if (!data || data["dcterms:identifier"] !== datasetId) {
+        renderNotFound(datasetId);
+      } else {
+        renderFullPageDetails(data, selectedLang);
+      }
+    })
+    .catch((err) => {
+      console.error("Error fetching data:", err);
+      renderErrorMessage();
+    });
 });
 
 /******************************************************
- *  Rendering Functions
+ * Rendering Functions
  *****************************************************/
-/**
- * If dataset not found, show a simple message
- */
+
+// Render a "not found" message if the dataset is missing.
 function renderNotFound(datasetId) {
-    const banner = document.getElementById("heroBanner");
-    banner.style.background = "var(--secondary-background-color)";
-
-    document.getElementById("datasetID").textContent = "";
-    document.getElementById("datasetTitle").textContent = "Dataset Not Found";
-    document.getElementById("datasetDescription").textContent = `No dataset found with ID ${datasetId}`;
+  const banner = document.getElementById("heroBanner");
+  banner.style.background = "var(--secondary-background-color)";
+  document.getElementById("datasetID").textContent = "";
+  document.getElementById("datasetTitle").textContent = "Dataset Not Found";
+  document.getElementById("datasetDescription").textContent = `No dataset found with ID ${datasetId}`;
 }
 
-/**
- * Show a generic error if fetch fails
- */
-function renderErrorMessage() {
-    const banner = document.getElementById("heroBanner");
-    banner.style.background = "var(--secondary-background-color)";
-
-    document.getElementById("datasetID").textContent = "";
-    document.getElementById("datasetTitle").textContent = "Error";
-    document.getElementById("datasetDescription").textContent =
-        "Could not load dataset. Check console for more information.";
+// Render a generic error message.
+function renderErrorMessage(message) {
+  const banner = document.getElementById("heroBanner");
+  banner.style.background = "var(--secondary-background-color)";
+  document.getElementById("datasetID").textContent = "";
+  document.getElementById("datasetTitle").textContent = "Error";
+  document.getElementById("datasetDescription").textContent =
+    message || "Could not load dataset. Check console for more information.";
 }
 
-/**
- * Render the entire page in a "full-page" style with hero image at top
- */
-function renderFullPageDetails(dataset, lang) {
-    const {
-        metadata,
-        attributes
-    } = dataset;
+// Render the full details page.
+function renderFullPageDetails(data, lang) {
+  // 1) Set the Hero Banner background image using the flat JSON field "bv:imageURL"
+  const heroBanner = document.getElementById("heroBanner");
+  heroBanner.style.backgroundImage = `url('${data["bv:imageURL"]}')`;
 
-    // 1) Hero Banner => set background image
-    //    (Adjust to "metadata.ImageURL" if needed)
-    const heroBanner = document.getElementById("heroBanner");
-    heroBanner.style.backgroundImage = `url('${metadata.imageURL}')`;
+  // 2) Render the dataset ID, localized title, and description.
+  document.getElementById("datasetID").textContent = data["dcterms:identifier"] || "";
+  const titleEl = document.getElementById("datasetTitle");
+  const datasetTitle = getLocalized(data["dcterms:title"], lang);
+  titleEl.textContent = datasetTitle || "Untitled Dataset";
+  document.getElementById("datasetDescription").textContent = getLocalized(data["dcterms:description"], lang);
 
-    // 2) ID (monospace), Title (H1), Description
-    const datasetIDEl = document.getElementById("datasetID");
-    datasetIDEl.textContent = attributes["dcterms:identifier"] || "";
+  // 3) Render keywords.
+  const keywordsContainer = document.getElementById("keywordsContainer");
+  const keywords = data["dcat:keyword"] || [];
+  keywordsContainer.innerHTML = "";
+  keywords.forEach((kw) => {
+    const span = document.createElement("span");
+    span.classList.add("keyword-chip");
+    span.textContent = kw;
+    keywordsContainer.appendChild(span);
+  });
 
-    const titleEl = document.getElementById("datasetTitle");
-    const datasetTitle = getLocalized(attributes["dcterms:title"], lang);
-    titleEl.textContent = datasetTitle || "Untitled Dataset";
+  // 4) Render affiliated persons.
+  renderAffiliatedPersons(data, lang);
 
-    const descEl = document.getElementById("datasetDescription");
-    const desc = getLocalized(attributes["dcterms:description"], lang);
-    descEl.textContent = desc;
+  // 5) Render leftover metadata (all keys except known ones).
+  renderMetadata(data, lang);
 
-    // 3) Keywords
-    const keywordsContainer = document.getElementById("keywordsContainer");
-    const keywords = attributes["dcat:keyword"] || [];
-    keywordsContainer.innerHTML = ""; // clear if any
-    keywords.forEach((kw) => {
-        const span = document.createElement("span");
-        span.classList.add("keyword-chip");
-        span.textContent = kw;
-        keywordsContainer.appendChild(span);
-    });
-
-    // 4) Show the "Affiliated roles" (bv:affiliatedPersons) in its own table
-    renderAffiliatedPersons(attributes, lang);
-
-    // 5) Show leftover "Metadata" in a table
-    renderMetadata(attributes, lang);
-
-    // 6) Distributions (as a table)
-    renderDistributions(attributes, lang);
+  // 6) Render distributions.
+  renderDistributions(data, lang);
 }
 
-/**
- * Renders the array of `bv:affiliatedPersons` in a minimalistic table
- * with columns: 25%, 25%, 50%.
- */
-/**
- * Renders the array of `bv:affiliatedPersons` in a minimalistic table
- * with columns: 25%, 25%, 50%.
- */
-function renderAffiliatedPersons(attributes, lang) {
-  
+// Render affiliated persons as a table.
+function renderAffiliatedPersons(data, lang) {
   const section = document.getElementById("metadataSection");
-  const persons = attributes["bv:affiliatedPersons"] || [];
+  const persons = data["bv:affiliatedPersons"] || [];
 
   const adminDirIDHeader = translations["details.adminDirID"]?.[lang] || "Name";
   const roleHeader = translations["details.role"]?.[lang] || "Role";
@@ -290,251 +236,168 @@ function renderAffiliatedPersons(attributes, lang) {
   let html = `<h2>${translations["details.affiliatedRoles"]?.[lang] || "Affiliated Roles"}</h2>`;
 
   if (!Array.isArray(persons) || persons.length === 0) {
-      html += `<p>${translations["details.noAffiliatedPersons"]?.[lang] || "No affiliated persons."}</p>`;
-      section.innerHTML = html;
-      return;
+    html += `<p>${translations["details.noAffiliatedPersons"]?.[lang] || "No affiliated persons."}</p>`;
+    section.innerHTML = html;
+    return;
   }
 
   html += `
-  <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
-    <colgroup>
-      <col style="width: 25%;" />
-      <col style="width: 75%;" />
-    </colgroup>
-    <thead>
-      <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
-        <th style="padding: 8px;">${adminDirIDHeader}</th>
-        <th style="padding: 8px;">${roleHeader}</th>
-      </tr>
-    </thead>
-    <tbody>
-`;
-
+    <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
+      <colgroup>
+        <col style="width: 25%;" />
+        <col style="width: 75%;" />
+      </colgroup>
+      <thead>
+        <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
+          <th style="padding: 8px;">${adminDirIDHeader}</th>
+          <th style="padding: 8px;">${roleHeader}</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
   persons.forEach((p) => {
     const name = p["bv:adminDirID"] || translations["details.unknown"]?.[lang] || "Unknown";
-      const role = p.role || translations["details.unknownRole"]?.[lang] || "Unknown Role";
-
-      html += `
-    <tr style="border-bottom: 1px solid var(--border-color);">
-      <td style="padding: 8px;">
-        <a href='https://admindir.verzeichnisse.admin.ch/person/${name}' target="_blank" rel="noopener noreferrer">
-          ${name}
-        </a>
-      </td>  
-      <td style="padding: 8px;"><span class="enumeration-chip">${formatEnumerationString(role)}</span></td>
-    </tr>
-  `;
+    const role = p.role || translations["details.unknownRole"]?.[lang] || "Unknown Role";
+    html += `
+      <tr style="border-bottom: 1px solid var(--border-color);">
+        <td style="padding: 8px;">
+          <a href="https://admindir.verzeichnisse.admin.ch/person/${name}" target="_blank" rel="noopener noreferrer">
+            ${name}
+          </a>
+        </td>
+        <td style="padding: 8px;"><span class="enumeration-chip">${formatEnumerationString(role)}</span></td>
+      </tr>
+    `;
   });
-
   html += `
-    </tbody>
-  </table>
-`;
-
+      </tbody>
+    </table>
+  `;
   section.innerHTML = html;
 }
 
-/**
- * Renders the leftover metadata (excluding the known fields) in a table.
- * If a field is in `enumeratedFields`, we wrap the displayed value(s)
- * in .enumeration-chip spans for emphasis.
- */
-function renderMetadata(attributes, lang) {
-    
-  // We'll place it below the roles (in the same #metadataSection)
-    const section = document.getElementById("metadataSection");
+// Render leftover metadata in a table. Certain known fields are skipped.
+function renderMetadata(data, lang) {
+  const section = document.getElementById("metadataSection");
+  // List of fields to skip from metadata rendering.
+  const displayed = [
+    "dcterms:identifier",
+    "dcterms:title",
+    "dcterms:description",
+    "dcat:keyword",
+    "bv:affiliatedPersons",
+    "dcat:distribution",
+    "bv:imageURL"
+  ];
 
-    // Prepare a list of fields to skip
-    const displayed = [
-        "dcterms:identifier",
-        "dcterms:title",
-        "dcterms:description",
-        "dcat:keyword",
-        "bv:affiliatedPersons",
-        "dcat:distribution"
-    ];
+  const attributeHeader = translations["details.attribute"]?.[lang] || "Attribute";
+  const valueHeader = translations["details.value"]?.[lang] || "Value";
 
-    // Fetch translations
-    const attributeHeader = translations["details.attribute"]?.[lang] || "Attribute";
-    const valueHeader = translations["details.value"]?.[lang] || "Value";
-
-    // Build a table
-    let html = `
-  <h2>${translations["details.metadata"]?.[lang] || "Metadata"}</h2>
-  <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
-    <colgroup>
-      <col style="width: 25%;" />
-      <col style="width: 75%;" />
-    </colgroup>
-    <thead>
-      <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
-        <th style="padding: 8px;">${attributeHeader}</th>
-        <th style="padding: 8px;">${valueHeader}</th>
-      </tr>
-    </thead>
-    <tbody>
-`;
-
-    // Loop over leftover fields
-    for (const key of Object.keys(attributes)) {
-      if (displayed.includes(key)) continue;
-  
-      let fieldLabel = translations[`${key}`]?.[lang] || key;
-      let val = attributes[key];
-  
-      // Format specific fields
-      if (key === "dcat:contactPoint") {
-          val = formatContactPoint(val);
-      } else if (key === "bv:opendata.swiss" || key === "bv:i14y") {
-          val = formatPublicationMetadata(val);
-      } else if (key === "bv:legalBasis") {
-          val = formatUrlArray(val); // Handles arrays of URLs
-      } else if (key === "dcat:landingPage") {
-          val = formatSingleUrl(val); // Handles single URL
-      } else if (typeof val === "string") {
-          val = formatDateIfPossible(val, lang);
-      } else if (Array.isArray(val)) {
-          val = val.map((item) => formatDateIfPossible(item, lang));
-      }
-  
-      if (enumeratedFields.includes(key)) {
-          val = highlightEnumeratedValues(val);
-      } else {
-          val = stringifyIfNeeded(val);
-      }
-  
-      if (!val) continue; // Skip empty or undefined values
-  
-      html += `
-        <tr style="border-bottom: 1px solid var(--border-color);">
-          <td style="padding: 8px;"><strong>${fieldLabel}</strong></td>
-          <td style="padding: 8px;">${val}</td>
+  let html = `
+    <h2>${translations["details.metadata"]?.[lang] || "Metadata"}</h2>
+    <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
+      <colgroup>
+        <col style="width: 25%;" />
+        <col style="width: 75%;" />
+      </colgroup>
+      <thead>
+        <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
+          <th style="padding: 8px;">${attributeHeader}</th>
+          <th style="padding: 8px;">${valueHeader}</th>
         </tr>
-      `;
-  }  
-
-    html += `
-    </tbody>
-  </table>
-`;
-
-    // Append to the existing content in #metadataSection
-    section.innerHTML += html;
-}
-
-/**
- * Renders distributions (if any) in a table:
- *   3 columns: Name, Description, Format
- */
-function renderDistributions(attributes, lang) {
-    const section = document.getElementById("distributionsSection");
-    const distributions = attributes["dcat:distribution"] || [];
-
-    const distributionsHeader = translations["dcat:distribution"]?.[lang] || "Distributions";
-    
-    // Start building the table
-    let html = `
-  <h2>${distributionsHeader}</h2>
-  <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
-    <colgroup>
-      <col style="width: 25%;" />
-      <col style="width: 60%;" />
-      <col style="width: 15%;" />
-    </colgroup>
-    <thead>
-      <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
-        <th style="padding: 8px;">Name</th>
-        <th style="padding: 8px;">Description</th>
-        <th style="padding: 8px;">Format</th>
-      </tr>
-    </thead>
-    <tbody>
-`;
-
-    distributions.forEach((dist) => {
-        const distAttrs = dist.attributes || {};
-        const distTitle = getLocalized(distAttrs["dcterms:title"], lang);
-        const distDesc = getLocalized(distAttrs["dcterms:description"], lang);
-        const distFormat = distAttrs["dcterms:format"] || "N/A";
-
-        // If there's a "dcterms:modified", format it
-        if (distAttrs["dcterms:modified"]) {
-            distAttrs["dcterms:modified"] = formatDateIfPossible(
-                distAttrs["dcterms:modified"],
-                lang
-            );
-        }
-
-        const distURL =
-            distAttrs["dcat:downloadURL"] ||
-            distAttrs["dcat:accessURL"] ||
-            "#";
-
-        // Build table row
-        html += `
-    <tr style="border-bottom: 1px solid var(--border-color);">
-      <td style="padding: 8px;">${distTitle}</td>
-      <td style="padding: 8px;">${distDesc}</td>
-      <td style="padding: 8px;">
-      <a href="${distURL}">
-        ${distFormat}
-      </a>
-    </td>
-    </tr>
+      </thead>
+      <tbody>
   `;
-    });
 
+  Object.keys(data).forEach((key) => {
+    if (displayed.includes(key)) return;
+    let fieldLabel = translations[key]?.[lang] || key;
+    let val = data[key];
+
+    // Special formatting for certain fields.
+    if (key === "dcat:contactPoint") {
+      val = formatContactPoint(val);
+    } else if (key === "bv:opendata.swiss" || key === "bv:i14y") {
+      val = formatPublicationMetadata(val);
+    } else if (key === "bv:legalBasis") {
+      val = formatUrlArray(val);
+    } else if (key === "dcat:landingPage") {
+      val = formatSingleUrl(val);
+    } else if (typeof val === "string") {
+      val = formatDateIfPossible(val, lang);
+    } else if (Array.isArray(val)) {
+      val = val.map((item) => formatDateIfPossible(item, lang));
+    }
+    if (enumeratedFields.includes(key)) {
+      val = highlightEnumeratedValues(val);
+    } else {
+      val = stringifyIfNeeded(val);
+    }
+    if (!val) return;
     html += `
-    </tbody>
-  </table>
-`;
+      <tr style="border-bottom: 1px solid var(--border-color);">
+        <td style="padding: 8px;"><strong>${fieldLabel}</strong></td>
+        <td style="padding: 8px;">${val}</td>
+      </tr>
+    `;
+  });
 
-    section.innerHTML = html;
+  html += `
+      </tbody>
+    </table>
+  `;
+  // Append metadata below the existing content in the section.
+  section.innerHTML += html;
 }
 
-/******************************************************
- *  Utility Functions
- *****************************************************/
+// Render distributions (datasets may have one or more distributions) in a table.
+function renderDistributions(data, lang) {
+  const section = document.getElementById("distributionsSection");
+  const distributions = data["dcat:distribution"] || [];
+  const distributionsHeader = translations["dcat:distribution"]?.[lang] || "Distributions";
 
-/**
- * Safely retrieve the correct language text from an object
- * like { "en": "foo", "de": "bar", ... }
- */
-function getLocalized(fieldObj, lang) {
-    if (!fieldObj) return "";
-    return fieldObj[lang] || fieldObj["en"] || "";
-}
-
-/**
- * If the metadata value is an array, we map each item to a .enumeration-chip <span>.
- * If it's a string or boolean, we wrap it in a single chip.
- * If it's null/undefined/empty, returns empty string.
- */
-function highlightEnumeratedValues(val) {
-    if (!val && val !== false) return "";
-
-    // If array, highlight each item
-    if (Array.isArray(val)) {
-        return val
-            .map((item) => `<span class="enumeration-chip">${formatEnumerationString(item)}</span>`)
-            .join(" ");
+  let html = `
+    <h2>${distributionsHeader}</h2>
+    <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
+      <colgroup>
+        <col style="width: 25%;" />
+        <col style="width: 60%;" />
+        <col style="width: 15%;" />
+      </colgroup>
+      <thead>
+        <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
+          <th style="padding: 8px;">Name</th>
+          <th style="padding: 8px;">Description</th>
+          <th style="padding: 8px;">Format</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+  distributions.forEach((dist) => {
+    // Each distribution is a flat object.
+    const distTitle = getLocalized(dist["dcterms:title"], lang);
+    const distDesc = getLocalized(dist["dcterms:description"], lang);
+    const distFormat = dist["dcterms:format"] || "N/A";
+    if (dist["dcterms:modified"]) {
+      dist["dcterms:modified"] = formatDateIfPossible(dist["dcterms:modified"], lang);
     }
-    // If boolean or string
-    return `<span class="enumeration-chip">${formatEnumerationString(val)}</span>`;
-}
-
-/**
- * Converts an object or array to a JSON string, or leaves strings/booleans as is.
- */
-function stringifyIfNeeded(val) {
-    if (val === null || val === undefined) return "";
-    if (Array.isArray(val)) {
-        // Already date-formatted above if needed, just join
-        return val.join(", ");
-    } else if (typeof val === "object") {
-        // JSON-stringify
-        return JSON.stringify(val);
-    }
-    // String or boolean => toString
-    return String(val);
+    // Determine the URL to use: try downloadURL first, then accessURL.
+    const distURL = dist["dcat:downloadURL"] || dist["dcat:accessURL"] || "#";
+    html += `
+      <tr style="border-bottom: 1px solid var(--border-color);">
+        <td style="padding: 8px;">${distTitle}</td>
+        <td style="padding: 8px;">${distDesc}</td>
+        <td style="padding: 8px;">
+          <a href="${distURL}" target="_blank">
+            ${distFormat}
+          </a>
+        </td>
+      </tr>
+    `;
+  });
+  html += `
+      </tbody>
+    </table>
+  `;
+  section.innerHTML = html;
 }
