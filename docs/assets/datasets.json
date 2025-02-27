@@ -46,5 +46,30 @@
                 "role": "dataOwner"
             }
         ]
+    },
+    {
+        "dcterms:identifier": "000003",
+        "dcterms:title": {
+            "de": "Pflanzensorten in der Schweiz",
+            "fr": "Variétés végétales en Suisse"
+        },
+        "dcterms:description": {
+            "de": "«Der Begriff „Art“ ist eine gebräuchlich Einheit der botanischen Klassifizierung innerhalb des Pflanzenreichs. Innerhalb einer Art gibt es jedoch natürlich zahlreiche unterschiedliche Pflanzensorten. Landwirte und Pflanzer brauchen Pflanzen mit besonderen Merkmalen, die an deren Umweltbedingungen und Anbauverfahren angepasst sind. Eine Pflanzensorte stellt eine genauer bestimmte Gruppe von Pflanzen mit gemeinsamen Merkmalen innerhalb einer Art dar.» Quelle: UPOV https://www.upov.int/overview/de/variety.html\n\nEine Pflanzensorte kann den Sortenschutz (PVR) und/oder im Sortenkatalog (NLI) eingetragen sein. Die Sortenbezeichnung ist identisch und auch die Sortenprüfung ist für beide (PVR und NLI) gleich.\n\nSortenschutz gehört wie Patente und Marken zur Familie des Geistigen Eigentums. Das Sortenschutzrecht regelt den gewerblichen Schutz neuer Pflanzenzüchtungen. Die Person, welche den Sortenschutztitel innehat, hat das Recht, ihre Sorte vor unerwünschter gewerbsmässiger Nutzung zu schützen. Dauer Sortenschutz 25 - 30 Jahre.\n\nIm Sortenkatalog werden landwirtschaftlich genutzte Pflanzenarten erfasst. Man spricht von einer Zulassung, die durch eine Verordnung (Sortenverordnung) über Kataloge und Listen geregelt wird. Agroscope sowie Branchenverbände erstellen empfohlene Sortenlisten.\n\nDie hier veröffentlichten Sorten im Sortenschutz sowie im nationalen Sortenkatalog sind derzeit unvollständig. Die Liste wird jedoch laufend aktualisiert mit neu validierten Daten.",
+            "fr": "«L’éspèce est l’une des unités les plus connues de la classification botanique dans le règne végétal. Toutefois, il est évident qu’au sein d’une même espèce peut exister un large éventail de plantes très différentes. Les agriculteurs et les producteurs ont besoin de végétaux présentant des caractères précis, qui soient adaptés à l'environnement dans lequel ils sont cultivés ainsi qu’aux méthodes de culture employées. Une variété végétale représente donc un groupe de plantes défini de façon plus précise, sélectionné à partir d'une espèce et doté d’un ensemble de caractères communs.» Source: UPOV https://www.upov.int/overview/fr/variety.html\n\nUne variété végétale peut bénéficier de la protection des obtentions végétales (PVR) et/ou être inscrite au catalogue des variétés (NLI). La dénomination de la variété est identique et l'examen de la variété est également identique pour les deux (PVR et NLI).\n\nLa protection des variétés végétales fait partie de la famille de la propriété intellectuelle, tout comme les brevets et les marques. Le droit de la protection des variétés végétales régit la protection commerciale des nouvelles obtentions végétales. La personne qui détient le titre de protection de la variété a le droit de la protéger contre une utilisation commerciale indésirable. Durée de la protection des variétés : 25 à 30 ans.\n\nLes espèces végétales utilisées en agriculture sont répertoriées dans le catalogue des variétés. On parle d'homologation. Celle-ci est régie par une ordonnance (ordonnance sur les variétés), via des catalogues et des listes. Agroscope ainsi que les associations professionnelles établissent des listes de variétés recommandées.\n\nLes variétés dans le registre et répertoriées dans le catalogue national publiées ici sont actuellement incomplètes. La liste est toutefois mise à jour en permanence avec les données nouvellement validées."
+        },
+        "dcterms:issued": "2025-02-20",
+        "dcat:keyword": [
+            "variety",
+            "PVR",
+            "NLI",
+            "National listing",
+            "Variety protection"
+        ],
+        "bv:affiliatedPersons": [
+            {
+                "bv:adminDirID": "p-0711690",
+                "role": "dataOwner"
+            }
+        ]
     }
 ]
