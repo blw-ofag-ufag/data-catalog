@@ -1,0 +1,53 @@
+{
+    "dcterms:identifier": "000001",
+    "dcterms:title": {
+        "de": "Massnahmenmonitoring Klimastrategie Landwirtschaft und Ernährung",
+        "fr": "Suivi des mesures Stratégie Climat pour l'agriculture et l'alimentation"
+    },
+    "dcterms:description": {
+        "de": "Daten zur Massnahmenumsetzung geben einen Überblick zum Umsetzungsstand der 42 Massnahmen bezüglich Klimastrategie Landwirtschaft und Ernährung. Dieser Massnahmenplan läuft bis 2030.",
+        "fr": "Les données relatives à la mise en œuvre des mesures donnent un aperçu de l'état de mise en œuvre des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation. Ce plan de mesures court jusqu'en 2030."
+    },
+    "dcterms:issued": "2024-12-04",
+    "dcat:keyword": [
+        "environment",
+        "sustainability",
+        "climate",
+        "monitoring",
+        "food"
+    ],
+    "bv:personalData": "none",
+    "bv:affiliatedPersons": [
+        {
+            "bv:adminDirID": "p-1Y4L0Y450",
+            "role": "dataOwner"
+        }
+    ],
+    "dcat:distribution": [
+        {
+            "dcterms:title": {
+                "de": "Tabelle Massnahmenmonitoring",
+                "fr": "Tableau de suivi des mesures"
+            },
+            "dcterms:description": {
+                "de": "Excel-Tabelle mit den eigentlichen Daten zum Umsetzungsstand der 42 Massnahmen bezüglich Klimastrategie Landwirtschaft und Ernährung.",
+                "fr": "Tableau Excel contenant les données réelles sur l'état d'avancement des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation."
+            },
+            "dcat:accessURL": "https://object.gever.admin.ch:443/web/?ObjectToOpenID=%24ActaNovaDocument%7C574FDB97-8106-4294-94C3-8A121A593B9E&TenantID=123",
+            "dcterms:format": "XSLX"
+        },
+        {
+            "dcterms:title": {
+                "de": "PowerBI Report für das Massnahmenmonitoring",
+                "fr": "Rapport PowerBI pour le suivi des mesures"
+            },
+            "dcterms:description": {
+                "de": "Interaktiver PowerBI-Report, welcher einen Überblick zum Umsetzungsstand der 42 Massnahmen bezüglich Klimastrategie Landwirtschaft und Ernährung gibt.",
+                "fr": "Rapport PowerBI interactif donnant un aperçu de l'état d'avancement des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation."
+            },
+            "dcat:accessURL": "https://www.blw.admin.ch/de/klimastrategie-landwirtschaft-und-ernaehrung-2050#%C3%9Cberpr%C3%BCfung-der-Massnahmen-und-Zielerreichung",
+            "dcterms:format": "PowerBI Report"
+        }
+    ],
+    "bv:imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-001.jpg"
+}
