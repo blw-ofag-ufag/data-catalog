@@ -20,32 +20,8 @@
                 "bv:adminDirID": "p-3966584",
                 "role": "dataOwner"
             }
-        ]
-    },
-    {
-        "dcterms:identifier": "000001",
-        "dcterms:title": {
-            "de": "Massnahmenmonitoring Klimastrategie Landwirtschaft und Ernährung",
-            "fr": "Suivi des mesures Stratégie Climat pour l'agriculture et l'alimentation"
-        },
-        "dcterms:description": {
-            "de": "Daten zur Massnahmenumsetzung geben einen Überblick zum Umsetzungsstand der 42 Massnahmen bezüglich Klimastrategie Landwirtschaft und Ernährung. Dieser Massnahmenplan läuft bis 2030.",
-            "fr": "Les données relatives à la mise en œuvre des mesures donnent un aperçu de l'état de mise en œuvre des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation. Ce plan de mesures court jusqu'en 2030."
-        },
-        "dcterms:issued": "2024-12-04",
-        "dcat:keyword": [
-            "environment",
-            "sustainability",
-            "climate",
-            "monitoring",
-            "food"
         ],
-        "bv:affiliatedPersons": [
-            {
-                "bv:adminDirID": "p-1Y4L0Y450",
-                "role": "dataOwner"
-            }
-        ]
+        "bv:imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-001.jpg"
     },
     {
         "dcterms:identifier": "000003",
@@ -70,6 +46,33 @@
                 "bv:adminDirID": "p-0711690",
                 "role": "dataOwner"
             }
-        ]
+        ],
+        "bv:imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/sortenliste.png"
+    },
+    {
+        "dcterms:identifier": "000001",
+        "dcterms:title": {
+            "de": "Massnahmenmonitoring Klimastrategie Landwirtschaft und Ernährung",
+            "fr": "Suivi des mesures Stratégie Climat pour l'agriculture et l'alimentation"
+        },
+        "dcterms:description": {
+            "de": "Daten zur Massnahmenumsetzung geben einen Überblick zum Umsetzungsstand der 42 Massnahmen bezüglich Klimastrategie Landwirtschaft und Ernährung. Dieser Massnahmenplan läuft bis 2030.",
+            "fr": "Les données relatives à la mise en œuvre des mesures donnent un aperçu de l'état de mise en œuvre des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation. Ce plan de mesures court jusqu'en 2030."
+        },
+        "dcterms:issued": "2024-12-04",
+        "dcat:keyword": [
+            "environment",
+            "sustainability",
+            "climate",
+            "monitoring",
+            "food"
+        ],
+        "bv:affiliatedPersons": [
+            {
+                "bv:adminDirID": "p-1Y4L0Y450",
+                "role": "dataOwner"
+            }
+        ],
+        "bv:imageURL": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-001.jpg"
     }
 ]

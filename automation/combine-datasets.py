@@ -12,7 +12,8 @@ ATTRIBUTES = [
     "dcterms:description",
     "dcterms:issued",
     "dcat:keyword",
-    "bv:affiliatedPersons"
+    "bv:affiliatedPersons",
+    "bv:imageURL"
 ]
 
 def extract_relevant_data(file_path):
