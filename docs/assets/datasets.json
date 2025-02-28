@@ -22,7 +22,8 @@
             "archiving",
             "subsidy",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00028",
@@ -42,7 +43,8 @@
         "dcat:keyword": [
             "market-data",
             "price"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00059",
@@ -59,7 +61,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00056",
@@ -76,7 +79,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00063",
@@ -100,7 +104,8 @@
             "e-geoch",
             "subsidy",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00037",
@@ -117,7 +122,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00092",
@@ -139,7 +145,8 @@
             "soil",
             "meteorology",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00066",
@@ -161,7 +168,8 @@
             "soil",
             "meteorology",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00058",
@@ -183,7 +191,8 @@
             "market",
             "animals",
             "meat"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00048",
@@ -200,7 +209,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00069",
@@ -221,7 +231,8 @@
             "land-use",
             "natural-risk-zones",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00010",
@@ -241,7 +252,8 @@
         "dcat:keyword": [
             "market-data",
             "quantity"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00096",
@@ -264,7 +276,8 @@
             "meteorology",
             "land-use",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00053",
@@ -281,7 +294,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00072",
@@ -304,7 +318,8 @@
             "soil-erosion",
             "erosion",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00016",
@@ -324,7 +339,8 @@
         "dcat:keyword": [
             "price",
             "market-data"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00076",
@@ -345,7 +361,8 @@
             "statistical-units",
             "FSDI",
             "milk"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00082",
@@ -370,7 +387,8 @@
             "land-use",
             "regulation-zones",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00025",
@@ -390,7 +408,8 @@
         "dcat:keyword": [
             "market-data",
             "quantity"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/meat-002.jpg"
     },
     {
         "dcterms:identifier": "D00008",
@@ -411,7 +430,8 @@
             "quantity",
             "market-data",
             "meat"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/meat-001.jpg"
     },
     {
         "dcterms:identifier": "D00033",
@@ -428,7 +448,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00088",
@@ -451,7 +472,8 @@
             "meteorology",
             "land-use",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00032",
@@ -468,7 +490,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00090",
@@ -491,7 +514,8 @@
             "soil-erosion",
             "e-geoch",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00006",
@@ -511,7 +535,8 @@
         "dcat:keyword": [
             "market-data",
             "price"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-002.jpg"
     },
     {
         "dcterms:identifier": "D00091",
@@ -533,7 +558,8 @@
             "erosion",
             "e-geoch",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00089",
@@ -555,7 +581,8 @@
             "soil",
             "meteorology",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00071",
@@ -578,7 +605,8 @@
             "meteorology",
             "land-use",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00057",
@@ -604,7 +632,8 @@
             "vegetables",
             "import",
             "export"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00031",
@@ -621,7 +650,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00098",
@@ -646,7 +676,8 @@
             "land-use",
             "regulation-zones",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00050",
@@ -663,7 +694,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00017",
@@ -683,7 +715,8 @@
         "dcat:keyword": [
             "market-data",
             "price"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00080",
@@ -707,7 +740,8 @@
             "meat",
             "cheese",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/alps-002.jpg"
     },
     {
         "dcterms:identifier": "D00093",
@@ -730,7 +764,8 @@
             "meteorology",
             "land-use",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00034",
@@ -747,7 +782,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00002",
@@ -770,7 +806,8 @@
             "NLI",
             "National listing",
             "Variety protection"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/sortenliste.png"
     },
     {
         "dcterms:identifier": "D00051",
@@ -787,7 +824,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00097",
@@ -813,7 +851,8 @@
             "land-use",
             "regulation-zones",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00099",
@@ -837,7 +876,8 @@
             "phosphorus",
             "biodiversity",
             "soil"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-003.jpg"
     },
     {
         "dcterms:identifier": "D00011",
@@ -857,7 +897,8 @@
         "dcat:keyword": [
             "market-data",
             "price"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00020",
@@ -877,7 +918,8 @@
         "dcat:keyword": [
             "price",
             "market-data"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00065",
@@ -899,7 +941,8 @@
             "soil",
             "meteorology",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00077",
@@ -922,7 +965,8 @@
             "meteorology",
             "land-use",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00004",
@@ -944,7 +988,8 @@
             "price",
             "milk",
             "dairy products"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-001.jpg"
     },
     {
         "dcterms:identifier": "D00068",
@@ -964,7 +1009,8 @@
         "dcat:keyword": [
             "meteorology",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00035",
@@ -988,7 +1034,8 @@
             "financial-support",
             "regional-funding",
             "subsidies"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/rural-003.jpg"
     },
     {
         "dcterms:identifier": "D00084",
@@ -1011,7 +1058,8 @@
             "meteorology",
             "land-use",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00014",
@@ -1031,7 +1079,8 @@
         "dcat:keyword": [
             "market-data",
             "price"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00070",
@@ -1057,7 +1106,8 @@
             "land-use",
             "regulation-zones",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00027",
@@ -1077,7 +1127,8 @@
         "dcat:keyword": [
             "price",
             "market-data"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00045",
@@ -1094,7 +1145,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00015",
@@ -1114,7 +1166,8 @@
         "dcat:keyword": [
             "quantity",
             "market-data"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00086",
@@ -1137,7 +1190,8 @@
             "meteorology",
             "land-use",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00085",
@@ -1160,7 +1214,8 @@
             "regulation-zones",
             "utility-and-governmental-services",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00041",
@@ -1177,7 +1232,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00024",
@@ -1197,7 +1253,8 @@
         "dcat:keyword": [
             "price",
             "market-data"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00026",
@@ -1217,7 +1274,8 @@
         "dcat:keyword": [
             "price",
             "market-data"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00064",
@@ -1239,7 +1297,8 @@
             "soil",
             "meteorology",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00023",
@@ -1259,7 +1318,8 @@
         "dcat:keyword": [
             "price",
             "market-data"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00018",
@@ -1280,7 +1340,8 @@
             "quantity",
             "market-data",
             "milk"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00003",
@@ -1301,7 +1362,8 @@
             "market-data",
             "quantity",
             "eggs"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-001.jpg"
     },
     {
         "dcterms:identifier": "D00061",
@@ -1322,7 +1384,8 @@
             "milk",
             "budget",
             "expenditure"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-002.jpg"
     },
     {
         "dcterms:identifier": "D00067",
@@ -1345,7 +1408,8 @@
             "land-use",
             "regulation-zones",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00021",
@@ -1365,7 +1429,8 @@
         "dcat:keyword": [
             "price",
             "market-data"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00047",
@@ -1382,7 +1447,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00049",
@@ -1399,7 +1465,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00040",
@@ -1416,7 +1483,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00013",
@@ -1436,7 +1504,8 @@
         "dcat:keyword": [
             "market-data",
             "quantity"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00074",
@@ -1458,7 +1527,8 @@
             "soil",
             "meteorology",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00029",
@@ -1478,7 +1548,8 @@
         "dcat:keyword": [
             "market-data",
             "price"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00030",
@@ -1495,7 +1566,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00094",
@@ -1518,7 +1590,8 @@
             "soil-erosion",
             "erosion",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00046",
@@ -1535,7 +1608,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00009",
@@ -1557,7 +1631,8 @@
             "price",
             "eggs",
             "time-series"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-001.jpg"
     },
     {
         "dcterms:identifier": "D00095",
@@ -1580,7 +1655,8 @@
             "meteorology",
             "land-use",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00038",
@@ -1597,7 +1673,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00005",
@@ -1619,7 +1696,8 @@
             "market-data",
             "milk",
             "dairy-product"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-002.jpg"
     },
     {
         "dcterms:identifier": "D00054",
@@ -1636,7 +1714,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00042",
@@ -1653,7 +1732,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00012",
@@ -1673,7 +1753,8 @@
         "dcat:keyword": [
             "price",
             "market-data"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00044",
@@ -1690,7 +1771,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00073",
@@ -1711,7 +1793,8 @@
             "soil",
             "agriculture",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00081",
@@ -1733,7 +1816,8 @@
             "soil",
             "meteorology",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00043",
@@ -1750,7 +1834,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00001",
@@ -1773,7 +1858,8 @@
             "climate",
             "monitoring",
             "food"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-001.jpg"
     },
     {
         "dcterms:identifier": "D00055",
@@ -1790,7 +1876,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00062",
@@ -1811,7 +1898,8 @@
             "expenditure",
             "agriculture",
             "budget"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/agriculture-001.jpg"
     },
     {
         "dcterms:identifier": "D00075",
@@ -1834,7 +1922,8 @@
             "meteorology",
             "land-use",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00078",
@@ -1860,7 +1949,8 @@
             "regulation-zones",
             "land-use",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00022",
@@ -1880,7 +1970,8 @@
         "dcat:keyword": [
             "price",
             "market-data"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00079",
@@ -1902,7 +1993,8 @@
             "soil",
             "meteorology",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00083",
@@ -1925,7 +2017,8 @@
             "e-geoch",
             "soil",
             "FSDI"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00007",
@@ -1946,7 +2039,8 @@
             "market-data",
             "quantity",
             "eggs"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-003.jpg"
     },
     {
         "dcterms:identifier": "D00052",
@@ -1963,7 +2057,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00036",
@@ -1980,7 +2075,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00039",
@@ -1997,7 +2093,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00060",
@@ -2014,7 +2111,8 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": []
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dcterms:identifier": "D00019",
@@ -2034,6 +2132,7 @@
         "dcat:keyword": [
             "market-data",
             "price"
-        ]
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     }
 ]
