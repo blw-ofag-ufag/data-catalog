@@ -24,6 +24,12 @@
   ],
   "dcterms:accrualPeriodicity": "ANNUAL",
   "dcterms:modified": "2025-01-22",
+  "schema:OrganizationRole": [
+    {
+      "schema:name": "p-1Y4L0Y450",
+      "schema:roleName": "dataOwner"
+    }
+  ],
   "adms:status": "workInProgress",
   "bv:personalData": "none",
   "dcat:themeTaxonomy": [
