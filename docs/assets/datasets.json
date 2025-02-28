@@ -1675,11 +1675,11 @@
         },
         "dcterms:issued": "2025-01-29",
         "dcat:keyword": [
-            "variety",
-            "PVR",
-            "NLI",
-            "National listing",
-            "Variety protection"
+            "software",
+            "data",
+            "systems",
+            "network",
+            "organization"
         ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
         "dataOwner": "p-1ZFWFFNP6"
