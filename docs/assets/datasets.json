@@ -1859,6 +1859,7 @@
             "monitoring",
             "food"
         ],
+        "schema:OrganizationRole": [],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-001.jpg"
     },
     {
