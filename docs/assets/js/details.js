@@ -43,6 +43,28 @@ function formatDateIfPossible(val, lang) {
   return new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(d);
 }
 
+function formatDateTimeIfPossible(val, lang) {
+  let d;
+  // If val is already a Date object, use it; otherwise, try to create a Date from it.
+  if (val instanceof Date) {
+    d = val;
+  } else if (typeof val === "string" && val) {
+    d = new Date(val);
+  } else {
+    return val;
+  }
+  
+  if (isNaN(d.getTime())) return val;
+  
+  // If the time portion is present (non-midnight), include time formatting.
+  const hasTime = d.getHours() || d.getMinutes() || d.getSeconds();
+  const options = hasTime 
+    ? { dateStyle: "long", timeStyle: "short" }
+    : { dateStyle: "long" };
+    
+  return new Intl.DateTimeFormat(lang, options).format(d);
+}
+
 // Formats a contact point object into a name with a mailto link.
 function formatContactPoint(contact) {
   if (!contact || typeof contact !== "object") return "";
@@ -222,13 +244,13 @@ function renderFullPageDetails(data, lang) {
   renderDistributions(data, lang);
 
   // 7) Render the edit history (new section).
-  renderEditHistory(data["dcterms:identifier"], branch);
+  renderEditHistory(data["dcterms:identifier"], branch, lang);
 }
 
 // Render affiliated persons as a table.
 function renderAffiliatedPersons(data, lang) {
   const section = document.getElementById("metadataSection");
-  const persons = data["bv:affiliatedPersons"] || [];
+  const persons = data["schema:OrganizationRole"] || [];
 
   const adminDirIDHeader = translations["details.adminDirID"]?.[lang] || "Name";
   const roleHeader = translations["details.role"]?.[lang] || "Role";
@@ -243,10 +265,6 @@ function renderAffiliatedPersons(data, lang) {
 
   html += `
     <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
-      <colgroup>
-        <col style="width: 25%;" />
-        <col style="width: 75%;" />
-      </colgroup>
       <thead>
         <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
           <th style="padding: 8px;">${adminDirIDHeader}</th>
@@ -255,9 +273,10 @@ function renderAffiliatedPersons(data, lang) {
       </thead>
       <tbody>
   `;
+
   persons.forEach((p) => {
-    const name = p["bv:adminDirID"] || translations["details.unknown"]?.[lang] || "Unknown";
-    const role = p.role || translations["details.unknownRole"]?.[lang] || "Unknown Role";
+    const name = p["schema:name"] || translations["details.unknown"]?.[lang] || "Unknown";
+    const role = p["schema:roleName"] || translations["details.unknownRole"]?.[lang] || "Unknown Role";
     html += `
       <tr style="border-bottom: 1px solid var(--border-color);">
         <td style="padding: 8px;">
@@ -269,6 +288,7 @@ function renderAffiliatedPersons(data, lang) {
       </tr>
     `;
   });
+
   html += `
       </tbody>
     </table>
@@ -284,7 +304,7 @@ function renderMetadata(data, lang) {
     "dcterms:title",
     "dcterms:description",
     "dcat:keyword",
-    "bv:affiliatedPersons",
+    "schema:OrganizationRole",
     "dcat:distribution",
     "schema:image"
   ];
@@ -317,7 +337,7 @@ function renderMetadata(data, lang) {
       val = formatContactPoint(val);
     } else if (key === "bv:opendata.swiss" || key === "bv:i14y") {
       val = formatPublicationMetadata(val);
-    } else if (key === "bv:legalBasis") {
+    } else if (key === "dpv:hasLegalBasis") {
       val = formatUrlArray(val);
     } else if (key === "dcat:landingPage") {
       val = formatSingleUrl(val);
@@ -351,10 +371,8 @@ function renderMetadata(data, lang) {
 function renderDistributions(data, lang) {
   const section = document.getElementById("distributionsSection");
   const distributions = data["dcat:distribution"] || [];
-  const distributionsHeader = translations["dcat:distribution"]?.[lang] || "Distributions";
-
   let html = `
-    <h2>${distributionsHeader}</h2>
+    <h2>${translations["dcat:distribution"]?.[lang] || "Distributions"}</h2>
     <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
       <colgroup>
         <col style="width: 25%;" />
@@ -409,7 +427,7 @@ function renderDistributions(data, lang) {
  * - First line of the commit message
  * - Commit hash (as a link)
  */
-function renderEditHistory(datasetId, branch) {
+function renderEditHistory(datasetId, branch, lang) {
   // Build the GitHub API URL for commits affecting this file.
   const commitsApiUrl = `https://api.github.com/repos/blw-ofag-ufag/data-catalog/commits?path=data/datasets/${datasetId}.json&sha=${branch}`;
 
@@ -422,39 +440,42 @@ function renderEditHistory(datasetId, branch) {
         return;
       }
       let html = `
-        <h2>Edit History</h2>
+        <h2>${translations["details.editHistory"]?.[lang] || "Edit history"}</h2>
         <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
+          <colgroup>
+            <col style="width: 3%;" />
+            <col style="width: 12%;" />
+            <col style="width: 20%;" />
+            <col style="width: 50%;" />
+            <col style="width: 15%;" />
+          </colgroup>  
           <thead>
-            <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
-              <th style="padding: 8px;">Account</th>
-              <th style="padding: 8px;">Name</th>
-              <th style="padding: 8px;">Date</th>
-              <th style="padding: 8px;">Commit Message</th>
-              <th style="padding: 8px;">Hash</th>
-            </tr>
+            <tr style="text-align:left; border-bottom: 1px solid var(--border-color);"></tr>
           </thead>
           <tbody>
       `;
       commits.forEach(commitData => {
         const commit = commitData.commit;
         const sha = commitData.sha;
-        const date = commit.author ? commit.author.date : commit.committer.date;
+        const datetime = commit.author ? commit.author.date : commit.committer.date;
         const message = commit.message.split("\n")[0];
         const authorLogin = commitData.author ? commitData.author.login : "Unknown";
         const authorAvatar = commitData.author ? commitData.author.avatar_url : "";
-        const formattedDate = formatDateIfPossible(date, "en");
+        const formattedDate = formatDateTimeIfPossible(datetime, lang);
         const commitUrl = `https://github.com/blw-ofag-ufag/data-catalog/commit/${sha}`;
         html += `
           <tr style="border-bottom: 1px solid var(--border-color);">
+            <small>
             <td style="padding: 8px;">
-              ${authorAvatar ? `<img src="${authorAvatar}" alt="${authorLogin}" style="width:32px;height:32px;border-radius:50%;">` : ""}
+              ${authorAvatar ? `<img src="${authorAvatar}" alt="${authorLogin}" style="width:24px;height:24px;border-radius:50%;">` : ""}
             </td>
-            <td style="padding: 8px;">${authorLogin}</td>
-            <td style="padding: 8px;">${formattedDate}</td>
-            <td style="padding: 8px;">${message}</td>
+            <td style="padding: 8px;"><small>${authorLogin}</small></td>
+            <td style="padding: 8px;"><small>${formattedDate}</small></td>
+            <td style="padding: 8px;"><small>${message}</small></td>
             <td style="padding: 8px;">
-              <a href="${commitUrl}" target="_blank">${sha.substring(0,7)}</a>
+              <a href="${commitUrl}" target="_blank"><tt>${sha.substring(0,20)}</tt></a>
             </td>
+            </small>
           </tr>
         `;
       });

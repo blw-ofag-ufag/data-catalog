@@ -14,11 +14,7 @@ let keywordChips = [];
  * Returns the name of the person whose role is "dataOwner", or "N/A" if none.
  */
 function getDataOwnerName(attributes) {
-  const persons = attributes["bv:affiliatedPersons"];
-  if (!Array.isArray(persons)) return "N/A";
-  
-  const ownerObj = persons.find(p => p.role === "dataOwner");
-  return ownerObj ? ownerObj["bv:adminDirID"] : "N/A";
+  return attributes["dataOwner"] || "N/A";
 }
 
 /******************************************************
@@ -227,7 +223,7 @@ function matchFullText(term, dataset) {
     "dcterms:description",
     "dcat:keyword",
     "dcterms:issued",
-    "bv:affiliatedPersons"
+    "dataOwner"
   ];
   return fields.some(field => {
     const value = dataset[field];
@@ -243,16 +239,10 @@ function matchFullText(term, dataset) {
     if (field === "dcterms:issued") {
       return value.toLowerCase().includes(term);
     }
-    if (field === "bv:affiliatedPersons") {
-      if (!Array.isArray(value)) return false;
-      return value.some(person => {
-        const nameMatch = person["bv:adminDirID"] && person["bv:adminDirID"].toLowerCase().includes(term);
-        const emailMatch = person.email && person.email.toLowerCase().includes(term);
-        const roleMatch = person.role && person.role.toLowerCase().includes(term);
-        return nameMatch || emailMatch || roleMatch;
-      });
+    if (field === "dataOwner") {
+      return value.toLowerCase().includes(term);
     }
-
+    
     // Fallback: Just convert to string and search
     return String(value).toLowerCase().includes(term);
   });

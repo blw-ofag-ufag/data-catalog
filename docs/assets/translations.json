@@ -197,6 +197,12 @@
     "fr": "Rôles affiliés",
     "it": "Ruoli affiliati"
   },
+  "details.editHistory": {
+    "en": "Edit history",
+    "de": "Editierverlauf",
+    "fr": "Historique des modifications",
+    "it": "Cronologia delle modifiche"
+  },
   "bv:businessProcess": {
       "en": "Business Process",
       "de": "Geschäftsprozess",
