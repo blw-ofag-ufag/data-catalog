@@ -5,7 +5,7 @@ import json
 DATASET_DIR = os.path.expanduser("data/datasets")
 OUTPUT_FILE = os.path.expanduser("docs/assets/datasets.json")
 
-# Attributes to extract
+# Attributes to extract (note: schema:OrganizationRole will be used only to extract dataOwner)
 ATTRIBUTES = [
     "dcterms:identifier",
     "dcterms:title",
@@ -17,19 +17,21 @@ ATTRIBUTES = [
 ]
 
 def extract_relevant_data(file_path):
-    """Extract relevant attributes from a JSON file."""
+    """Extract relevant attributes from a JSON file, add dataOwner if exists, and remove schema:OrganizationRole."""
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             data = json.load(f)
         
         extracted_data = {key: data[key] for key in ATTRIBUTES if key in data}
         
-        # Filter only the data owner from schema:OrganizationRole
+        # Extract the dataOwner if exists from schema:OrganizationRole
         if "schema:OrganizationRole" in extracted_data:
-            extracted_data["schema:OrganizationRole"] = [
-                person for person in extracted_data["schema:OrganizationRole"] 
-                if person.get("role") == "dataOwner"
-            ]
+            for role in extracted_data["schema:OrganizationRole"]:
+                if role.get("schema:roleName") == "dataOwner":
+                    extracted_data["dataOwner"] = role.get("schema:name")
+                    break
+            # Remove schema:OrganizationRole from the output
+            extracted_data.pop("schema:OrganizationRole", None)
         
         return extracted_data
     except Exception as e:
@@ -37,7 +39,7 @@ def extract_relevant_data(file_path):
         return None
 
 def process_all_files():
-    """Process all JSON files in the dataset directory and write into one output file."""
+    """Process all JSON files in the dataset directory and write them into one output file."""
     combined_data = []
     
     for filename in os.listdir(DATASET_DIR):
