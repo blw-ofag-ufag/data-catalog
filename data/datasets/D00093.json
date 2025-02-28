@@ -1,0 +1,151 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00093",
+  "dcterms:title": {
+    "de": "Klimaeignungskarte für die Landwirtschaft - Futterbau",
+    "fr": "Cartes des aptitudes climatiques pour l'agriculture en Suisse - culture fourragère",
+    "it": "Carta delle attitudini climatiche per l'agricoltura in Svizzera - Foraggicoltura",
+    "en": "Climate suitability map for agriculture - Forage crops"
+  },
+  "dcterms:description": {
+    "de": "Auf den vier Blättern der Karte im Massstab 1:200 000 ist eine Gesamtbeurteilung der klimatischen Voraussetzungen und Einschränkungen für die Landwirtschaft, in 20 Kategorien, wiedergegeben. Die Karte will auf die erheblichen Unterschiede in den Anbaumöglichkeiten der einzelnen Regionen hinweisen.",
+    "fr": "La carte établie à l'échelle 1:200 000 reflète, une appréciation générale des conditions climatiques et des restrictions à l'égard de l'agriculture, subdivisées en vingt catégories d'aptitudes. Son but est de souligner les différences sensibles relatives aux possibilités de culture propres aux diverses régions.",
+    "it": "I quattro fogli della carta in scala 1:200 000 forniscono una valutazione d'insieme delle condizioni climatiche e delle restrizioni relative all'agricoltura, suddivise in 20 categorie. La carta intende sottolineare le differenze di rilievo relative alle possibilità di coltivazione esistenti nelle singole regioni.",
+    "en": "The four sheets of the map, which has a scale of 1:200,000, show an overall evaluation of the climatic conditions and restrictions for agriculture, broken down into 20 categories. The map aims to highlight the significant differences in the cultivation options available in the individual regions."
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "info@blw.admin.ch",
+    "email": "info@blw.admin.ch"
+  },
+  "dcterms:issued": "2007-06-28",
+  "dcat:keyword": [
+    "suitability",
+    "climatic-effect",
+    "meteorology",
+    "land-use",
+    "FSDI"
+  ],
+  "dcterms:accrualPeriodicity": "NEVER",
+  "dcterms:modified": "2007-06-28",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "internationalTopics"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/geografisches-informationssystem-gis/klimaeignungskarte.html",
+  "dcterms:spatial": "Schweiz",
+  "dcterms:temporal": "",
+  "dpv:hasLegalBasis": [],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "6ecaa537-675e-4d94-8752-6fd855478c99",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.klimaeignung-futterbau",
+      "adms:status": "published",
+      "dcterms:format": "SERVICE",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://map.geo.admin.ch/?layers=ch.blw.klimaeignung-futterbau",
+      "dcterms:title": {
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "Vorschau map.geo.admin.ch",
+        "fr": "Aperçu map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "0e1d02af-2026-45e0-8c1d-3291e660180d",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.klimaeignung-futterbau",
+        "fr": "ch.blw.klimaeignung-futterbau",
+        "it": "ch.blw.klimaeignung-futterbau",
+        "en": "ch.blw.klimaeignung-futterbau"
+      },
+      "dcterms:description": {
+        "de": "WMS-BGDI Dienst, Layer \"Klimaeignung Futterbau\"",
+        "fr": "Service WMS-IFDG, couche \"Climat - culture fourragère\"",
+        "it": "Servizio WMS-IFDG, strato \"Clima - Foraggicoltura\"",
+        "en": "WMS-FSDI service, layer \"Climate - forage crop\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "b97d0ece-46d3-40ee-bfcc-22c070e803ab",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMTS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.klimaeignung-futterbau",
+        "fr": "ch.blw.klimaeignung-futterbau",
+        "it": "ch.blw.klimaeignung-futterbau",
+        "en": "ch.blw.klimaeignung-futterbau"
+      },
+      "dcterms:description": {
+        "de": "WMTS-BGDI Dienst, Layer \"Klimaeignung Futterbau\"",
+        "fr": "Service WMTS-IFDG, couche , Layer \"Climat - culture fourragère\"",
+        "it": "Servizio WMTS-IFDG, strato \"Clima - Foraggicoltura\"",
+        "en": "WMTS-FSDI service, layer \"Climate - forage crop\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "543d4120-7bd9-4d93-aa86-d1f4d9a65e09",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.klimaeignung-futterbau",
+      "adms:status": "published",
+      "dcterms:format": "HTML",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.klimaeignung-futterbau",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "Download Server von geo.admin.ch",
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "it": "Server di download di geo.admin.ch",
+        "en": "Download server from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "85006380-7b50-448c-a11d-e53ecf5beb7b",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.klimaeignung-futterbau",
+      "adms:status": "published",
+      "dcterms:format": "API",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.klimaeignung-futterbau",
+      "dcterms:title": {
+        "de": "RESTful API von geo.admin.ch",
+        "fr": "RESTful API de geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "RESTful API von geo.admin.ch",
+        "fr": "RESTful API de geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00059",
+  "dcterms:title": {
+    "de": "Ausgaben Tierzucht 1999-2015",
+    "fr": "Dépenses élevage 1999-2015",
+    "it": "Uscite allevamento di animali 1999-2015",
+    "en": ""
+  },
+  "dcterms:description": {
+    "de": "Ausgaben des Bundes im Bereich Tierzucht (Rinder, Pferde, Schweine, Schafe, Ziegen und Milchschafe, Neuweltkameliden, Honigbienen) in CHF",
+    "fr": "",
+    "it": "",
+    "en": ""
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft",
+    "email": "alessandro.rossi@blw.admin.ch"
+  },
+  "dcterms:issued": "2016-11-08",
+  "dcat:keyword": [],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "agricultureFisheriesForestryFood"
+  ],
+  "dcat:landingPage": "https://www.efv.admin.ch/efv/de/home/finanzberichterstattung/finanzberichte/staatsrechnung.html",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "1999-01-01 - 2015-12-31",
+  "dpv:hasLegalBasis": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "bda474f6-a3c1-4a9f-b218-58a8b8ea96a6",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/33/kpjoe7ka20ji64g6yozoo29e3k31wj/ausgaben_tierzucht_1999-2015_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/33/kpjoe7ka20ji64g6yozoo29e3k31wj/ausgaben_tierzucht_1999-2015_datenreihe_d.xlsx",
+      "dcterms:title": {
+        "de": "Ausgaben Tierzucht 1999-2015",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "56a0ec1b-8110-4638-8001-ce5adff50242",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/94/uyrz2ermsb94q8flxnap1pt0xrr0b2/ausgaben_tierzucht_1999-2015_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/94/uyrz2ermsb94q8flxnap1pt0xrr0b2/ausgaben_tierzucht_1999-2015_datenreihe_f.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "Dépenses élevage 1999-2015",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "84a2e18d-b327-43b7-b371-56878bb2acad",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/43/q564zgqmy07gqycww25zgs3wtoqwm2/ausgaben_tierzucht_1999-2015_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/43/q564zgqmy07gqycww25zgs3wtoqwm2/ausgaben_tierzucht_1999-2015_datenreihe_i.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "Uscite allevamento di animali 1999-2015",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

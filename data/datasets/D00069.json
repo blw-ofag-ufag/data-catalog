@@ -1,0 +1,129 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00069",
+  "dcterms:title": {
+    "de": "Hanglagen Abschwemmung",
+    "fr": "Terrains en pente et ruissellement",
+    "it": "Zone declive Dilavamento",
+    "en": ""
+  },
+  "dcterms:description": {
+    "de": "Der Datensatz Hanglagen Abschwemmung dient dazu, die Flächen zu bestimmen, auf welchen Massnahmen gegen Abschwemmung zu ergreifen sind. Die Massnahmen gegen Abschwemmung richten sich nach dem ÖLN gemäss DZV Anhang 1 Ziffer 6.1a.4 und nach den Weisungen der Zulassungsstelle Pflanzenschutzmittel des Bundesamtes für Lebensmittelsicherheit und Veterinärwese betreffend die Massnahmen zur Reduktion der Risiken bei der Anwendung von Pflanzenschutzmitteln. Der Datensatz wurde gesamtschweizerisch einheitlich berechnet. Die Produktion beruht auf dem digitalen Höhenmodell DHM25 (Maschenweite 25m) von swisstopo. Folgende Hangneigungsklassen wurden unterschieden: <=2 Prozent; >2 Prozent.",
+    "fr": "Le jeu de données « Terrains en pente et ruissellement » sert à déterminer les surfaces sur lesquelles des mesures contre le ruissellement doivent être prises. Les prescriptions concernant les mesures contre le ruissellement se fondent sur les PER, conformément à l’annexe 1, ch. 6.1a.4, de l’OPD et aux instructions du service d’homologation des produits phytosanitaires de l’Office fédéral de la sécurité alimentaire et des affaires vétérinaires relatives aux mesures de réduction des risques lors de l’application de produits phytosanitaires. Ce jeu de données a été élaboré selon une méthode homogène à l’échelle nationale. La production se base sur le modèle numérique d'altitude MNT25 (maille de 25m) de swisstopo. Les classes de pente suivantes ont été distinguées : <=2 pour cent ; >2 pour cent.",
+    "it": "Il set di dati «Zone declive Dilavamento» serve per determinare le superfici su cui vanno adottate misure per la riduzione del dilavamento. Le prescrizioni concernenti le misure per la riduzione del dilavamento si basano sulle esigenze relative alla PER secondo l’allegato 1 numero 6.1a.4 OPD e sulle istruzioni del servizio d’omologazione dei prodotti fitosanitari dell’Ufficio federale della sicurezza alimentare e di veterinaria concernenti misure per la riduzione dei rischi nell’utilizzo di prodotti fitosanitari. I calcoli sono stati effettuati secondo criteri unitari per tutta la Svizzera. La produzione si basa sul modello digitale di elevazione DHM25 (dimensione maglia 25m) di swisstopo. Sono state distinte le seguenti classi di inclinazione del pendio: <=2 per cento; >2 per cento.",
+    "en": ""
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "info@blw.admin.ch",
+    "email": "info@blw.admin.ch"
+  },
+  "dcterms:issued": "2023-07-14",
+  "dcat:keyword": [
+    "land-use",
+    "natural-risk-zones",
+    "FSDI"
+  ],
+  "dcterms:accrualPeriodicity": "AS_NEEDED",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "internationalTopics",
+    "environment"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/",
+  "dcterms:spatial": "Schweiz",
+  "dcterms:temporal": "",
+  "dpv:hasLegalBasis": [],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "8197f93b-5805-43c9-9c30-6f08ff0a3aa0",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.hanglagen-abschwemmung",
+      "adms:status": "published",
+      "dcterms:format": "HTML",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.hanglagen-abschwemmung",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "Download Server von geo.admin.ch",
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "it": "Server di download di geo.admin.ch",
+        "en": "Download server from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "30453da2-7522-4cf1-bfba-d8506ed3a105",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.hanglagen-abschwemmung",
+        "fr": "ch.blw.hanglagen-abschwemmung",
+        "it": "ch.blw.hanglagen-abschwemmung",
+        "en": "ch.blw.hanglagen-abschwemmung"
+      },
+      "dcterms:description": {
+        "de": "WMS-BGDI Dienst, Layer \"Hanglagen Abschwemmung\"",
+        "fr": "Service WMS-IFDG, couche \"Terrains pente ruissellement\"",
+        "it": "Servizio WMS-IFDG, strato \"Zone declive Dilavamento\"",
+        "en": "WMS-FSDI service, layer \"Hanglagen Abschwemmung\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "d011b48b-1938-4bcb-bd3c-ca00c5ee3c40",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMTS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.hanglagen-abschwemmung",
+        "fr": "ch.blw.hanglagen-abschwemmung",
+        "it": "ch.blw.hanglagen-abschwemmung",
+        "en": "ch.blw.hanglagen-abschwemmung"
+      },
+      "dcterms:description": {
+        "de": "WMTS-BGDI Dienst, Layer \"Hanglagen Abschwemmung\"",
+        "fr": "Service WMTS-IFDG, couche \"Terrains pente ruissellement\"",
+        "it": "Servizio WMTS-IFDG, strato \"Zone declive Dilavamento\"",
+        "en": "WMTS-FSDI service, layer \"-\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "a496952f-b1b9-4289-8bfd-bd080abf1932",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.hanglagen-abschwemmung",
+      "adms:status": "published",
+      "dcterms:format": "SERVICE",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://map.geo.admin.ch/?layers=ch.blw.hanglagen-abschwemmung",
+      "dcterms:title": {
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "Vorschau map.geo.admin.ch",
+        "fr": "Aperçu map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

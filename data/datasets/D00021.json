@@ -1,0 +1,67 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00021",
+  "dcterms:title": {
+    "de": "Marktzahlen Eier - Monatliche Konsumentenpreise ",
+    "fr": "Chiffres du marché des œufs - Prix mensuels à la consommation ",
+    "it": "Cifre del mercato delle uova - Prezzi mensili al consumo ",
+    "en": "Market figures eggs - Monthly consumer prices "
+  },
+  "dcterms:description": {
+    "de": "Monatliche Durchschnittspreise ausgewählter Eiprodukte und Eier auf der Wertschöpfungsstufe Konsum",
+    "fr": "Prix moyens mensuels des œufs et d’une sélection de divers produits à base d'oeufs à l’échelon de création de valeur consommation",
+    "it": "Prezzi medi mensili delle uova e di una selezione di prodotti a base di uova nella fase di consumo della catena del valore",
+    "en": "Monthly average prices for a selection of different egg products or eggs at the consumption stage of the value chain"
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+    "email": "marktanalysen@blw.admin.ch"
+  },
+  "dcterms:issued": "2025-01-16",
+  "dcat:keyword": [
+    "price",
+    "market-data"
+  ],
+  "dcterms:accrualPeriodicity": "MONTHLY",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "populationAndSociety",
+    "agricultureFisheriesForestryFood"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "2020-01-01 - 2024-11-01T23:59:59.999999",
+  "dpv:hasLegalBasis": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "22c5eda7-5905-41e4-886c-c9025d8f18d0",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FEggs%2FConsumption_Price_Month%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dcterms:format": "SPARQL",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FEggs%2FConsumption_Price_Month%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "dcterms:title": {
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "it": "",
+        "en": "SPARQL Endpoint with graph preselection"
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

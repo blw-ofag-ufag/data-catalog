@@ -1,0 +1,67 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00010",
+  "dcterms:title": {
+    "de": "Marktzahlen Milch und Milchprodukte - Jährliche Produktionsmengen",
+    "fr": "Chiffres du marché du lait et des produits laitiers - Quantités produites annuelles",
+    "it": "Cifre di mercato latte e latticini - Volumi di produzione annuali",
+    "en": "Market figures milk and dairy products - Annual production quantities"
+  },
+  "dcterms:description": {
+    "de": "Jährliche Mengenangaben zur vermarkteten Rohmilch auf der Wertschöpfungsstufe Produktion",
+    "fr": "Quantités moyennes annuelles de lait cru commercialisé à l’échelon de création de valeur Production",
+    "it": "Volumi annuali di latte crudo commercializzato a livello della catena del valore produzione",
+    "en": "Annual quantities on marketed raw milk at production stage of the value chain"
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+    "email": "marktanalysen@blw.admin.ch"
+  },
+  "dcterms:issued": "2025-01-16",
+  "dcat:keyword": [
+    "market-data",
+    "quantity"
+  ],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "agricultureFisheriesForestryFood",
+    "populationAndSociety"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "2001-01-01 - 2023-01-01T23:59:59.999999",
+  "dpv:hasLegalBasis": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "7e6ad5af-b4b7-4e0a-a01a-3589aa33d98c",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FMilkDairyProducts%2FProduction_Quantity_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dcterms:format": "SPARQL",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FMilkDairyProducts%2FProduction_Quantity_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "dcterms:title": {
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "it": "",
+        "en": "SPARQL Endpoint with graph preselection"
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00056",
+  "dcterms:title": {
+    "de": "Konsumentenpreise konventionell 2002/04-2015",
+    "fr": "Prix à la consommation sans le bio 2002/04-2015",
+    "it": "Prezzi al consumo (Bio escluso) 2002/04-2015",
+    "en": ""
+  },
+  "dcterms:description": {
+    "de": "Konsumentenpreise für verschiedene konventionelle Produkte (Milch und Milchprodukte, Fleisch, Eier, Mehl und Brot, Kartoffeln, Zucker, Obst, Gemüse) in CHF",
+    "fr": "",
+    "it": "",
+    "en": ""
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft",
+    "email": "alessandro.rossi@blw.admin.ch"
+  },
+  "dcterms:issued": "2016-11-08",
+  "dcat:keyword": [],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "internationalTopics"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/markt/marktbeobachtung.html",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "2002-01-01 - 2015-12-31",
+  "dpv:hasLegalBasis": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "52f041d4-010a-4685-9933-8f4c3275faeb",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9e/8w3q4c4i1po1h7xemk2ywe7961xd2p/kpreise_konv_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9e/8w3q4c4i1po1h7xemk2ywe7961xd2p/kpreise_konv_datenreihe_d.xlsx",
+      "dcterms:title": {
+        "de": "Konsumentenpreise konventionell 2002/04-2015",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "41ec5bd7-b174-4769-9097-a795bb5b6c2f",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/23/70k5id9xcthfx2264yrk5tkb4i64zw/kpreise_konv_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/23/70k5id9xcthfx2264yrk5tkb4i64zw/kpreise_konv_datenreihe_f.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "Prix à la consommation sans le bio 2002/04-2015",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "97f89b4d-b94b-4681-a7ff-5420bd8eabfc",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/12/hpv9k3aldbscduaqvcxv3pk0t2ejw1/kpreise_konv_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/12/hpv9k3aldbscduaqvcxv3pk0t2ejw1/kpreise_konv_datenreihe_i.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "Prezzi al consumo (Bio escluso) 2002/04-2015",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

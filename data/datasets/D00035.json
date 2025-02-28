@@ -1,0 +1,112 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/rural-003.jpg",
+  "dcterms:identifier": "D00035",
+  "dcterms:title": {
+    "de": "An die Kantone ausbezahlte Beiträge 1999-2015",
+    "fr": "Contributions versées aux cantons 1999-2015",
+    "it": "Contributi versati ai cantoni 1999-2015",
+    "en": "Contributions paid to the cantons 1999-2015"
+  },
+  "dcterms:description": {
+    "de": "An die Kantone ausbezahlte Beiträge für Bodenverbesserungen und landwirtschaftliche Gebäude, nach Kanton in CHF",
+    "fr": "Contributions versées aux cantons pour des améliorations foncières et des bâtiments agricoles, par canton en CHF",
+    "it": "Contributi versati ai cantoni per migliorie fondiarie e fabbricati agricoli, per cantone in CHF",
+    "en": "Contributions paid to the cantons for land improvements and agricultural buildings, by canton in CHF"
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft",
+    "email": "alessandro.rossi@blw.admin.ch"
+  },
+  "dcterms:issued": "2016-11-08",
+  "dcat:keyword": [
+    "cantons",
+    "land-improvements",
+    "buildings",
+    "financial-support",
+    "regional-funding",
+    "subsidies"
+  ],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "populationAndSociety"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/laendliche-entwicklung-und-strukturverbesserungen.html",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "1999-01-01 - 2015-12-31",
+  "dpv:hasLegalBasis": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "cf485d0d-b751-490d-ae9c-5fb2c3e804d6",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/18/ha2rqb5yjze1un7d4xq31nn5uhwno6/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/18/ha2rqb5yjze1un7d4xq31nn5uhwno6/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_d.xlsx",
+      "dcterms:title": {
+        "de": "An die Kantone ausbezahlte Beiträge 1999-2015",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "9857d27e-c31c-4f30-a899-903cfdcc7767",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ae/uhd6hgrn5g05fgmyrv6wi3gvwwnwy2/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ae/uhd6hgrn5g05fgmyrv6wi3gvwwnwy2/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_f.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "Contributions versées aux cantons 1999-2015",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "4265f8a9-c743-4ce8-889e-b3a3fcaafdd9",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/37/cs26uscosusgo2xpw1u4ln3vyd72mh/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/37/cs26uscosusgo2xpw1u4ln3vyd72mh/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_i.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "Contributi versati ai cantoni 1999-2015",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

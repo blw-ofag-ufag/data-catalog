@@ -1,0 +1,105 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00046",
+  "dcterms:title": {
+    "de": "Nutztierhalter und Nutztierbestände 2000/02-2015",
+    "fr": "Détenteurs et effectifs des animaux 2000/02-2015",
+    "it": "Detentori ed effettivi di animali 2000/02-2015",
+    "en": ""
+  },
+  "dcterms:description": {
+    "de": "Anzahl Nutztierhalter nach Kategorie und Anzahl Nutztierbestände (Rindvieh, Pferde, Schweine Schafe, Ziegen, Geflügel)",
+    "fr": "",
+    "it": "",
+    "en": ""
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft",
+    "email": "alessandro.rossi@blw.admin.ch"
+  },
+  "dcterms:issued": "2016-11-08",
+  "dcat:keyword": [],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "populationAndSociety"
+  ],
+  "dcat:landingPage": "https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/landwirtschaft/strukturen.html",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "2000-01-01 - 2015-12-31",
+  "dpv:hasLegalBasis": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "6d68de93-d861-4739-b0ad-ad5ddf7f85f0",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/8f/t27700o6ckavt8855r625o7ew14otl/nutztierhalter_und_nutztierbestaende_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/8f/t27700o6ckavt8855r625o7ew14otl/nutztierhalter_und_nutztierbestaende_datenreihe_d.xlsx",
+      "dcterms:title": {
+        "de": "Nutztierhalter und Nutztierbestände 2000/02-2015",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "cd8c900a-0838-4142-8b1f-4bed2a081ada",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/a2/6vk5n4edkk0kwah69ue3l4z030r6gf/nutztierhalter_und_nutztierbestaende_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/a2/6vk5n4edkk0kwah69ue3l4z030r6gf/nutztierhalter_und_nutztierbestaende_datenreihe_f.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "Détenteurs et effectifs des animaux 2000/02-2015",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "1f0625af-3e08-440c-a4ae-90ad6a3ebc65",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/83/izqb7ex5edfxmtmhibkqg1e0pjdmiy/nutztierhalter_und_nutztierbestaende_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/83/izqb7ex5edfxmtmhibkqg1e0pjdmiy/nutztierhalter_und_nutztierbestaende_datenreihe_i.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "Detentori ed effettivi di animali 2000/02-2015",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

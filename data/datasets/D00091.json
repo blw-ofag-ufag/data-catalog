@@ -1,0 +1,130 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00091",
+  "dcterms:title": {
+    "de": "Erosionsrisikokarte des Ackerlandes, mittlerer Bodenabtrag in Tonnen/(ha*Jahr)",
+    "fr": "Carte des risques d'érosion des terres arables, perte moyenne de sol en tonnes (ha*année)",
+    "it": "Carta del rischio di erosione dei terreni coltivi, perdita di suolo media sul lungo periodo, espressa in tonnellate per ettaro e anno",
+    "en": "Erosion risk map for arable land, with average soil erosion in tonnes /(ha*year)"
+  },
+  "dcterms:description": {
+    "de": "Erosionsrisikokarte des Ackerlandes, mittlerer Bodenabtrag in Tonnen/(ha*Jahr) (Bundesamt für Landwirtschaft) Erosionsrisikokarte des Ackerlandes der Schweiz im 2x2-Meter-Raster auf der Basis von SwissALTI3D und kantonalen Flächendaten zum Ackerland (Stand 2021). Die Karte zeigt den langjährigen mittleren potentiellen Bodenabtrag in Tonnen pro Hektare und Jahr, berechnet auf der Basis von Schwarzbrache (Erosion, die theoretisch eintreten könnte, wenn der Boden dauernd nackt wäre). Grüne Farbtöne bedeuten ein geringes, gelbe ein mittleres und rote ein hohes Erosionsrisiko. Die im Modell berechneten Werte sind durchwegs viel höher als in der Realität (ca. um den Faktor 10), weil die Bodenbearbeitung und -bewirtschaftung (C-Faktor) ausgeklammert wurden und als Konstante mit dem Wert 1 in die Berechnung eingeflossen sind. Die Berechnung des Erosionsrisikos mit Multiple-Flow-Algorithmen erlaubt die Struktur des Geländes detailgenau darzustellen – z. B. den Verlauf von Geländemulden oder von steilen Querhängen – und damit z. B. auch das Risiko von Talwegerosion zu erkennen. Dies ist in der Fliesswegkarte (siehe Fliesswegkarte) detailliert dargestellt. Die räumliche Berechnungsgrundlage bilden Feldblöcke (siehe Feldblockkarte).",
+    "fr": "Carte des risques d’érosion des terres arables, perte moyenne de sol en tonnes (ha*année) (Office fédéral de l'agriculture) Carte des risques d’érosion des terres arables de la Suisse au raster 2x2 m, sur la base du modèle swissALTI3D et des données cantonales sur les terres arables (situation en 2021). La carte indique la perte moyenne potentielle de sol sur le long terme, en tonnes par hectare et par an, calculée sur la base d’une jachère nue, autrement dit l’érosion qui pourrait théoriquement se produire si le sol était nu en permanence. Les tons verts indiquent un risque d’érosion faible, les jaunes un risque moyen et les rouges un risque élevé. Les valeurs modélisées sont toutes beaucoup plus élevées (environ d’un facteur 10) que dans la réalité, du fait que le travail et le mode d'exploitation du sol (facteur C) ont été factorisés et intégrés en tant que constante de valeur 1 dans le calcul. Le calcul du risque d’érosion au moyen d’algorithmes multi-flux permet de représenter de manière plus précise et détaillée la structure du terrain, p. ex. le tracé des cuvettes ou des fortes pentes transversales et, par conséquent, d’identifier également le risque d’érosion de talweg, ce qui est représenté de manière détaillée sur la carte des écoulements (voir carte des écoulements). Les blocs de parcelles servent de base de calcul géographique (voir carte de blocs de parcelles).",
+    "it": "Carta del rischio di erosione dei terreni coltivi, perdita di suolo media sul lungo periodo, espressa in tonnellate per ettaro e anno (Ufficio federale dell’agricoltura) Carta del rischio di erosione dei terreni coltivi della Svizzera realizzata con un reticolo a celle di 2x2 metri sulla base di SwissALTI3D e dei dati cantonali sulle superfici riguardanti i terreni coltivi (stato 2021). La carta riporta la potenziale perdita di suolo media sul lungo periodo, espressa in tonnellate per ettaro e anno, calcolata sulla base del maggese nero (erosione che potrebbe teoricamente verificarsi, se il suolo venisse lasciato permanentemente senza vegetazione). Le tonalità verdi si riferiscono a un ridotto rischio di erosione, quelle gialle a un rischio medio e quelle rosse a un rischio elevato. I valori calcolati nel modello sono sempre più alti di quelli riscontrabili nella realtà (di un coefficiente 10 circa), poiché la lavorazione e la gestione del suolo (coefficiente C) non sono state tenute in considerazione, bensì figurano come costante con il valore 1 nel calcolo. Il calcolo del rischio di erosione con algoritmi a flusso multiplo consente di rappresentare la struttura del terreno in maniera dettagliata (p.es. l’andamento di conche del terreno o di versanti trasversali con declività notevoli) e quindi anche di riconoscere il rischio di erosione del talweg, rappresentato dettagliatamente nella carta delle vie di deflusso idrico (vedi Carta delle vie di deflusso idrico). I blocchi di particelle costituiscono la base di calcolo spaziale (vedi Carta dei blocchi di particelle).",
+    "en": "Erosion risk map for arable land, with average soil erosion in tonnes /(ha*year) (Federal Office for Agriculture) Erosion risk map for arable land in Switzerland in a 2x2-metre grid based on SwissALTI3D and cantonal surface-area data on arable land (status 2021). The map shows the long-term average potential soil erosion in tonnes per hectare and year, calculated on the basis of bare fallow (erosion which theoretically could occur if the soil were permanently bare). Shades of green, yellow and red mean a slight, average and high risk of erosion, respectively. The values calculated in the model are consistently much higher than in actual fact (by around a factor of 10), since soil tillage and management (C-factor) were excluded and incorporated in the calculation as a constant with the value of 1. Calculating the erosion risk with multiple-flow algorithms allows us to illustrate the structure of the terrain in great detail – e.g. the shape of basins or of steep transverse slopes – and hence e.g. also to identify the risk of thalweg erosion. This is shown in detail in the flow-path map (which see). Field blocks (see field-block map) constitute the basis of the spatial calculation."
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "info@blw.admin.ch",
+    "email": "info@blw.admin.ch"
+  },
+  "dcterms:issued": "2019-03-30",
+  "dcat:keyword": [
+    "soil-erosion",
+    "erosion",
+    "e-geoch",
+    "FSDI"
+  ],
+  "dcterms:accrualPeriodicity": "OTHER",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "populationAndSociety",
+    "environment"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/nachhaltige-produktion/umwelt/boden.html",
+  "dcterms:spatial": "Landeskarte 1:25'000",
+  "dcterms:temporal": "",
+  "dpv:hasLegalBasis": [],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "43d22a16-a375-4adb-ada0-73f55b665961",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.erosion-quantitativ",
+      "adms:status": "published",
+      "dcterms:format": "SERVICE",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://map.geo.admin.ch/?layers=ch.blw.erosion-quantitativ",
+      "dcterms:title": {
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "Vorschau map.geo.admin.ch",
+        "fr": "Aperçu map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "c774063c-2109-4da4-9615-12b2f3b1ac2c",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.erosion-quantitativ",
+        "fr": "ch.blw.erosion-quantitativ",
+        "it": "ch.blw.erosion-quantitativ",
+        "en": "ch.blw.erosion-quantitativ"
+      },
+      "dcterms:description": {
+        "de": "WMS-BGDI Dienst, Layer \"Erosionsrisiko Acker quantitativ\"",
+        "fr": "Service WMS-IFDG, couche \"Risque d`érosion ter. arab. quant.\"",
+        "it": "Servizio WMS-IFDG, strato \"Rischio erosione ter. colt. quant.\"",
+        "en": "WMS-FSDI service, layer \"Erosion risk crop quantitative\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "3cc7f66e-f067-461f-be4f-3a191a8b756b",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMTS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.erosion-quantitativ",
+        "fr": "ch.blw.erosion-quantitativ",
+        "it": "ch.blw.erosion-quantitativ",
+        "en": "ch.blw.erosion-quantitativ"
+      },
+      "dcterms:description": {
+        "de": "WMTS-BGDI Dienst, Layer \"Erosionsrisiko Acker quantitativ\"",
+        "fr": "Service WMTS-IFDG, couche , Layer \"Risque d'érosion ter. arab. quant.\"",
+        "it": "Servizio WMTS-IFDG, strato \"Rischio erosione ter. colt. quant.\"",
+        "en": "WMTS-FSDI service, layer \"Erosion risk crop quantitative\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "6b63eeaf-14da-4ad3-9739-b5e4e5d44f2a",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.erosion-quantitativ",
+      "adms:status": "published",
+      "dcterms:format": "HTML",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.erosion-quantitativ",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "Download von data.geo.admin.ch",
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "it": "Server di download di geo.admin.ch",
+        "en": "Download server from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

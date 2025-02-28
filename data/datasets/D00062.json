@@ -1,0 +1,109 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/agriculture-001.jpg",
+  "dcterms:identifier": "D00062",
+  "dcterms:title": {
+    "de": "Ausgaben Bund Landwirtschaft und Ernährung 2004-2015",
+    "fr": "Dépenses de la Confédération pour l'agriculture et l'alimentation 2004-2015",
+    "it": "Spese della Confederazione per l'agricoltura e l'alimentazione 2004-2015",
+    "en": "Federal expenditures for agriculture and food 2004-2015"
+  },
+  "dcterms:description": {
+    "de": "Ausgaben des Bundes für Landwirtschaft und Ernährung in den Bereichen Produktion und Absatz, Direktzahlungen, Grundlagenverbesserung in 1000 CHF",
+    "fr": "Dépenses de la Confédération pour l'agriculture et l'alimentation dans les domaines de la production et de la commercialisation, des paiements directs, et de l'amélioration des infrastructures de base en 1000 CHF",
+    "it": "Spese della Confederazione per l'agricoltura e l'alimentazione nei settori della produzione e della commercializzazione, dei pagamenti diretti e del miglioramento delle infrastrutture di base in 1000 CHF",
+    "en": "Federal expenditures for agriculture and food in the areas of production and marketing, direct payments, and infrastructure improvement in 1000 CHF"
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft",
+    "email": "alessandro.rossi@blw.admin.ch"
+  },
+  "dcterms:issued": "2016-11-08",
+  "dcat:keyword": [
+    "expenditure",
+    "agriculture",
+    "budget"
+  ],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "environment"
+  ],
+  "dcat:landingPage": "https://www.efv.admin.ch/efv/de/home/finanzberichterstattung/finanzberichte/staatsrechnung.html",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "2004-01-01 - 2015-12-31",
+  "dpv:hasLegalBasis": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "f808c0b1-60ce-466a-b2ac-e5c428d1ae68",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/fd/8ukhdkdzx1yj827ok4v1ohn1m1d2lo/ausgaben_bund_fuer_landwirtschaft_und_ernaehrung_2004-2015_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/fd/8ukhdkdzx1yj827ok4v1ohn1m1d2lo/ausgaben_bund_fuer_landwirtschaft_und_ernaehrung_2004-2015_datenreihe_d.xlsx",
+      "dcterms:title": {
+        "de": "Ausgaben Bund Landwirtschaft und Ernährung 2004-2015",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "a4627364-cba8-4332-ba27-9713c5f88e39",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/63/756yxqygrrphnk2hlm8mch65el4tbi/ausgaben_bund_fuer_landwirtschaft_und_ernaehrung_2004-2015_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/63/756yxqygrrphnk2hlm8mch65el4tbi/ausgaben_bund_fuer_landwirtschaft_und_ernaehrung_2004-2015_datenreihe_f.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "Dépenses Confédération pour agriculture et alimentation 2004-2015",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "699ccedf-9fd1-43f4-a223-d036c76bbb77",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/a5/fm1w0zhkyb14otpvo1z6yffcc1vtt3/ausgaben_bund_fuer_landwirtschaft_und_ernaehrung_2004-2015_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/a5/fm1w0zhkyb14otpvo1z6yffcc1vtt3/ausgaben_bund_fuer_landwirtschaft_und_ernaehrung_2004-2015_datenreihe_i.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "Uscite Confederazione per agricoltura e alimentazione 2004-2015",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

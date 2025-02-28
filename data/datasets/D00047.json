@@ -1,0 +1,105 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00047",
+  "dcterms:title": {
+    "de": "Landwirtschaftliche Nutzfläche nach Nutzungsarten 1990/92-2015",
+    "fr": "Surface agricole utile en fonction des modes d'utilisation 1990/92-2015",
+    "it": "Superficie agricola utile secondo le forme di utilizzazione 1990/92-2015",
+    "en": ""
+  },
+  "dcterms:description": {
+    "de": "Landwirtschaftliche Nutzfläche in Hektaren nach Kulturen",
+    "fr": "",
+    "it": "",
+    "en": ""
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft",
+    "email": "alessandro.rossi@blw.admin.ch"
+  },
+  "dcterms:issued": "2016-11-08",
+  "dcat:keyword": [],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "internationalTopics"
+  ],
+  "dcat:landingPage": "https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/landwirtschaft/strukturen.html",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "1990-01-01 - 2015-12-31",
+  "dpv:hasLegalBasis": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "51678cb5-ca82-4770-a1b2-3df096e405d0",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/98/eakeg0jthapzdz10rnrv5b2vefzsfc/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/98/eakeg0jthapzdz10rnrv5b2vefzsfc/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_d.xlsx",
+      "dcterms:title": {
+        "de": "Landwirtschaftliche Nutzfläche nach Nutzungsarten 1990/92-2015",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "5728dffe-e4e5-4d85-aeea-32bc35626a94",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/14/50vi8k8rj48xula3kt2xpdjg5t86i4/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/14/50vi8k8rj48xula3kt2xpdjg5t86i4/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_f.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "Surface agricole utile en fonction des modes d'utilisation 1990/92-2015",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "b9f8bd39-db22-41b5-9a0c-c7470beb2f5a",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d5/eb0e422basbpysg29kq0g66yxq5f64/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d5/eb0e422basbpysg29kq0g66yxq5f64/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_i.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "Superficie agricola utile secondo le forme di utilizzazione 1990/92-2015",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

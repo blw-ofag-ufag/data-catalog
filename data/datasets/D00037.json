@@ -1,0 +1,106 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00037",
+  "dcterms:title": {
+    "de": "Produktionssystembeiträge 2014-2015",
+    "fr": "Contributions au système de production 2014-2015",
+    "it": "Contributi per i sistemi di produzione 2014-2015",
+    "en": ""
+  },
+  "dcterms:description": {
+    "de": "Beiträge für Produktionssysteme (Biologischer Landbau, extensive Produktion von Getreide und Raps, Graslandbasierte Milch- und Fleischproduktion) nach Kantonen und Zonen (Anzahl Betriebe, Fläche in Hektaren, Beitrag in CHF)",
+    "fr": "",
+    "it": "",
+    "en": ""
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft",
+    "email": "alessandro.rossi@blw.admin.ch"
+  },
+  "dcterms:issued": "2016-11-08",
+  "dcat:keyword": [],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "internationalTopics",
+    "populationAndSociety"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/direktzahlungen.html",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "2014-01-01 - 2015-12-31",
+  "dpv:hasLegalBasis": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "bd112795-5a88-4ab8-be06-221c777455c2",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/49/ozq85jiokzlrtyq2dgju9kjb7l0urk/35_ab16_statdz2015_anhaenge_tab_produktionssys_i_datenreihe_d_ok.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/49/ozq85jiokzlrtyq2dgju9kjb7l0urk/35_ab16_statdz2015_anhaenge_tab_produktionssys_i_datenreihe_d_ok.xlsx",
+      "dcterms:title": {
+        "de": "Produktionssystembeiträge 2014-2015",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "c9ebd389-bddd-4d22-8814-76e532f6b800",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/20/dbt09f8xc8tvan36g6c2fd9fhg1mwd/35_ab16_statdz2015_anhaenge_tab_produktionssysi_datenreihe_f_ok.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/20/dbt09f8xc8tvan36g6c2fd9fhg1mwd/35_ab16_statdz2015_anhaenge_tab_produktionssysi_datenreihe_f_ok.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "Contributions au système de production 2014-2015",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "76c3f49f-8c1d-4e6d-a455-5843e2f4dc97",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ac/x5v9coz9lzuwm6c232hkwjatovyyk7/35_ab16_statdz2015_anhaenge_tab_produktionssysi_datenreihe_i_ok.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ac/x5v9coz9lzuwm6c232hkwjatovyyk7/35_ab16_statdz2015_anhaenge_tab_produktionssysi_datenreihe_i_ok.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "Contributi per i sistemi di produzione 2014-2015",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}
