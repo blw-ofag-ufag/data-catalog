@@ -1,5 +1,5 @@
 {
-  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/network.jpg",
   "dcterms:identifier": "D00100",
   "dcterms:title": {
     "de": "DigiAgriFoodCH Systemlandkarte",
