@@ -1,0 +1,150 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00079",
+  "dcterms:title": {
+    "de": "Digitale Bodeneignungskarte der Schweiz - Gründigkeit",
+    "fr": "Carte digitale des aptitudes des sols de la Suisse - Profondeur",
+    "it": "Carta digitale delle attitudini dei suoli svizzeri - Profondità",
+    "en": "Digital soil suitability map of Switzerland - Root penetration depth"
+  },
+  "dcterms:description": {
+    "de": "Durchwurzelbare Bodentiefe (allgemeine Grob- und Feindurchwurzelung; nicht dazugerechnet werden z. B. in Klüfte vordringende Wurzeln).(Details: Bodeneignungskarte der Schweiz, März 1980)",
+    "fr": "Profondeur du sol exploitable par les racines (enracinement général; on ne tient pas compte par exemple de racines pénétrant dans des crevasses).",
+    "it": "Profondità del suolo penetrabile dalle radici (in generale radici sottili e spesse; non si tiene conto ad esempio delle radici che penetrano in fenditure). (Dettagli: carta delle attitudini dei suoli svizzeri, marzo 1980).",
+    "en": "Depth of soil that can be penetrated by roots (general thick and fine roots; roots that penetrate into clefts or crevices are not included). (Details: Soil suitability map of Switzerland, March 1980.)"
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "info@blw.admin.ch",
+    "email": "info@blw.admin.ch"
+  },
+  "dcterms:issued": "2012-07-01",
+  "dcat:keyword": [
+    "suitability",
+    "soil",
+    "meteorology",
+    "FSDI"
+  ],
+  "dcterms:accrualPeriodicity": "NEVER",
+  "dcterms:modified": "2012-07-01",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "environment"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/geografisches-informationssystem-gis/bodeneignungskarte.html",
+  "dcterms:spatial": "Schweiz",
+  "dcterms:temporal": "",
+  "dpv:hasLegalBasis": [],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "00fd5ef0-a61b-4a88-9c89-bb4d5053dfe1",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.bodeneignung-gruendigkeit",
+      "adms:status": "published",
+      "dcterms:format": "SERVICE",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://map.geo.admin.ch/?layers=ch.blw.bodeneignung-gruendigkeit",
+      "dcterms:title": {
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "Vorschau map.geo.admin.ch",
+        "fr": "Aperçu map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "d26768d3-b62f-4705-ab20-1a45810c2e64",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.bodeneignung-gruendigkeit",
+        "fr": "ch.blw.bodeneignung-gruendigkeit",
+        "it": "ch.blw.bodeneignung-gruendigkeit",
+        "en": "ch.blw.bodeneignung-gruendigkeit"
+      },
+      "dcterms:description": {
+        "de": "WMS-BGDI Dienst, Layer \"Gründigkeit\"",
+        "fr": "Service WMS-IFDG, couche \"Profondeur\"",
+        "it": "Servizio WMS-IFDG, strato \"Profondità\"",
+        "en": "WMS-FSDI service, layer \"Root penetration depth\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "e65f25f2-494e-4a96-8575-5aeff728b726",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMTS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.bodeneignung-gruendigkeit",
+        "fr": "ch.blw.bodeneignung-gruendigkeit",
+        "it": "ch.blw.bodeneignung-gruendigkeit",
+        "en": "ch.blw.bodeneignung-gruendigkeit"
+      },
+      "dcterms:description": {
+        "de": "WMTS-BGDI Dienst, Layer \"Gründigkeit\"",
+        "fr": "Service WMTS-IFDG, couche , Layer \"Profondeur\"",
+        "it": "Servizio WMTS-IFDG, strato \"Profondità\"",
+        "en": "WMTS-FSDI service, layer \"Root penetration depth\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "39c7cdfc-053d-42a1-a11a-1591c137bb6a",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bodeneignung-gruendigkeit",
+      "adms:status": "published",
+      "dcterms:format": "HTML",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bodeneignung-gruendigkeit",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "Download Server von geo.admin.ch",
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "it": "Server di download di geo.admin.ch",
+        "en": "Download server from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "e68e7981-1bc5-4e6b-8659-ef46b24c558a",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.bodeneignung-gruendigkeit",
+      "adms:status": "published",
+      "dcterms:format": "API",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.bodeneignung-gruendigkeit",
+      "dcterms:title": {
+        "de": "RESTful API von geo.admin.ch",
+        "fr": "RESTful API de geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "RESTful API von geo.admin.ch",
+        "fr": "RESTful API de geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00057",
+  "dcterms:title": {
+    "de": "Aussenhandel 1990/92-2015",
+    "fr": "Commerce extérieur 1990/92-2015",
+    "it": "Commercio estero 1990/92-2015",
+    "en": ""
+  },
+  "dcterms:description": {
+    "de": "Ein- und Ausfuhren von landwirtschaftlichen Produkten (Milch und Milchprodukte, Fleisch, Eier und Fische, Getreide, Hackfrüchte, Ölsaaten, Früchte, Gemüse, Wein) in Tonnen",
+    "fr": "",
+    "it": "",
+    "en": ""
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft",
+    "email": "alessandro.rossi@blw.admin.ch"
+  },
+  "dcterms:issued": "2016-11-08",
+  "dcat:keyword": [
+    "eggs",
+    "meat",
+    "cereals",
+    "fish",
+    "fruits",
+    "vegetables",
+    "import",
+    "export"
+  ],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "agricultureFisheriesForestryFood"
+  ],
+  "dcat:landingPage": "https://www.ezv.admin.ch/ezv/de/home/themen/schweizerische-aussenhandelsstatistik/datenbank-swiss-impex.html",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "1990-01-01 - 2015-12-31",
+  "dpv:hasLegalBasis": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "e4051314-7791-42c9-8062-11d4156b81db",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/05/42b67e1a2xm7swnt1et18cn8qhpb2g/aussenhandel_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/05/42b67e1a2xm7swnt1et18cn8qhpb2g/aussenhandel_datenreihe_d.xlsx",
+      "dcterms:title": {
+        "de": "Aussenhandel 1990/92-2015",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "d2e60fb0-3f47-4e7d-aff4-5e597a928d8e",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/44/pn33gyni8s4gkmc98f8ub1srv8m4uv/aussenhandel_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/44/pn33gyni8s4gkmc98f8ub1srv8m4uv/aussenhandel_datenreihe_f.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "Commerce extérieur 1990/92-2015",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "5ef368c3-6563-4f1a-a230-cde0ac1b3a23",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9e/k10zdlez7wiamzk19rl3m4lrpfbq9j/aussenhandel_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9e/k10zdlez7wiamzk19rl3m4lrpfbq9j/aussenhandel_datenreihe_i.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "Commercio estero 1990/92-2015",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

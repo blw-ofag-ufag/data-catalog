@@ -1,0 +1,67 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00026",
+  "dcterms:title": {
+    "de": "Marktzahlen Eier - Jährliche Produzentenpreise",
+    "fr": "Chiffres du marché des oeufs - Prix annuels à la production",
+    "it": "Cifre del mercato delle uova - Prezzi annuali alla produzione annuali",
+    "en": "Market figures eggs - Annual producer prices "
+  },
+  "dcterms:description": {
+    "de": "Jährliche Durchschnittspreise für Eier auf der Wertschöpfungsstufe Produktion",
+    "fr": "Prix moyens annuels des œufs à l’échelon de création de valeur production",
+    "it": "Prezzi medi annui delle uova nella fase di produzione della catena dei valore",
+    "en": "Annual average prices for eggs at the production stage of the value chain"
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+    "email": "marktanalysen@blw.admin.ch"
+  },
+  "dcterms:issued": "2025-01-16",
+  "dcat:keyword": [
+    "price",
+    "market-data"
+  ],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "internationalTopics",
+    "agricultureFisheriesForestryFood"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "2001-01-01 - 2023-01-01T23:59:59.999999",
+  "dpv:hasLegalBasis": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "feb383b1-7d04-4bea-9b81-6714cb3273db",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FEggs%2FProduction_Price_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dcterms:format": "SPARQL",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FEggs%2FProduction_Price_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "dcterms:title": {
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "it": "",
+        "en": "SPARQL Endpoint with graph preselection"
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

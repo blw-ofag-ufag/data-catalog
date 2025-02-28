@@ -1,0 +1,131 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00072",
+  "dcterms:title": {
+    "de": "Gewässeranschlusskarte, Anschlusswahrscheinlichkeit",
+    "fr": "Carte des surfaces attenantes à des eaux de surface, probabilité de surfaces attenantes",
+    "it": "Carta delle superfici collegate ad acque superficiali, probabilità di collegamento",
+    "en": "Water connection map, probability of connection"
+  },
+  "dcterms:description": {
+    "de": "Die potenzielle Gewässeranschlusskarte zeigt in einer Art „Worst-Case-Szenario“ (permanente Schwarzbrache, keine Pufferstreifen oder bauliche Massnahmen) Flächen auf, auf denen bei nicht standortgerechter Bewirtschaftung mit einer erheblichen Gefahr für Stoffeinträge in Gewässer gerechnet werden muss. Sie bildet damit ein Hilfsmittel für eine zielgerichtete Massnahmenplanung im Gewässerschutz.Das Modell zur Identifizierung des Gewässeranschlusses von potenziell erosionsgefährdeten landwirtschaftlichen Flächen basiert auf der ERK2. Mit dem Gewässeranschlussmodell kann für jede Rasterzelle der ERK2 berechnet werden, wie hoch die Anschlusswahrscheinlichkeit an ein Gewässer ist. Um vom potenziellen auf den aktuellen Gewässeranschluss zu kommen, braucht es Informationen über die Nutzung der gefährdeten Flächen und allfällige abflussvermindernde Massnahmen. Diese müssen im Feld erhoben werden.",
+    "fr": "La carte potentielle des surfaces attenantes à un cours d’eau représente, dans le cas d'un « Scénario du pire », (jachère nue permanente, pas de bordures tampons, mesures de construction), les surfaces sur lesquelles il faut s’attendre à un risque élevé d’apports de substances polluantes dans les eaux lors d’exploitation non adaptée aux conditions locales. Cette carte constitue donc un outil pour une planification ciblée de la protection des eaux. Le modèle d’identification des surfaces agricoles potentiellement menacées d’érosion attenantes à un cours d’eau est fondé sur la carte CRE2. Ce modèle permet de calculer pour chaque cellule de raster de la CRE2 la probabilité de surfaces attenantes à un cours d’eau. Pour passer du modèle potentiel au modèle actuel il faut acquérir des informations sur l’utilisation des surfaces menacées et sur les mesures éventuellement prises pour diminuer l’écoulement. Ces données doivent être relevées sur le terrain.",
+    "it": "La potenziale carta delle superfici collegate ad acque superficiali mostra, sotto forma di \"scenario del caso peggiore\" (maggese nero permanente, fasce tampone inesistenti o provvedimenti edilizi), le superfici sulle quali in caso di gestione non adatta alle caratteristiche locali vi è un rischio notevole di immissioni di sostanze nei corsi d'acqua. Funge pertanto da ausilio per una pianificazione mirata dei provvedimenti nel settore della protezione delle acque. Il modello per l'identificazione del collegamento alle acque superficiali di superfici agricole potenzialmente a rischio d'erosione si basa sulla CRE2. Il modello di collegamento alle acque superficiali consente di calcolare, per ogni cella del reticolo della CRE2, la probabilità di collegamento a un corso d'acqua. Onde passare dal collegamento potenziale alle acque superficiali a quello reale, è necessario disporre di informazioni sull'utilizzo delle superfici a rischio e su eventuali provvedimenti volti a ridurre il deflusso. Tali informazioni vanno rilevate sul campo.",
+    "en": "The potential water connection map shows areas in a worst case scenario (permanent fallow land, no buffer strips or construction measures) where, if the land is not cultivated in a suitable way, there is a significant risk of sediment input into bodies of water. Therefore, it helps with the targeted planning of measures to protect the bodies of water. The model for identifying the connection between bodies of water and agricultural areas that are at potential risk of erosion is based on the erosion risk map 2. The water connection model allows the probability of a connection to a body of water to be calculated for every cell in the grid on the erosion risk map 2. In order to move from potential to actual water connections, information is needed about the use of the areas that are at risk and about possible measures to reduce runoff. This information must be obtained in the field."
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "info@blw.admin.ch",
+    "email": "info@blw.admin.ch"
+  },
+  "dcterms:issued": "2012-12-31",
+  "dcat:keyword": [
+    "e-geoch",
+    "archiving",
+    "soil-erosion",
+    "erosion",
+    "FSDI"
+  ],
+  "dcterms:accrualPeriodicity": "AS_NEEDED",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "populationAndSociety",
+    "agricultureFisheriesForestryFood"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/nachhaltige-produktion/umwelt/boden.html",
+  "dcterms:spatial": "Landeskarte 1:25'000",
+  "dcterms:temporal": "",
+  "dpv:hasLegalBasis": [],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "6e0a7540-e27d-45fa-97ed-8c3e93616081",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.gewaesseranschlusskarte",
+      "adms:status": "published",
+      "dcterms:format": "SERVICE",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://map.geo.admin.ch/?layers=ch.blw.gewaesseranschlusskarte",
+      "dcterms:title": {
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "Vorschau map.geo.admin.ch",
+        "fr": "Aperçu map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "763696ad-a1be-4aca-918c-8ab5f257f6f1",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.gewaesseranschlusskarte",
+        "fr": "ch.blw.gewaesseranschlusskarte",
+        "it": "ch.blw.gewaesseranschlusskarte",
+        "en": "ch.blw.gewaesseranschlusskarte"
+      },
+      "dcterms:description": {
+        "de": "WMS-BGDI Dienst, Layer \"Gewässeranschluss\"",
+        "fr": "Service WMS-IFDG, couche \"Surface en connexion des eaux\"",
+        "it": "Servizio WMS-IFDG, strato \"Superfici collegate ad acque\"",
+        "en": "WMS-FSDI service, layer \"Water connection\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "f8d4d37d-7953-4fc0-a39e-12ead16239b3",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMTS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.gewaesseranschlusskarte",
+        "fr": "ch.blw.gewaesseranschlusskarte",
+        "it": "ch.blw.gewaesseranschlusskarte",
+        "en": "ch.blw.gewaesseranschlusskarte"
+      },
+      "dcterms:description": {
+        "de": "WMTS-BGDI Dienst, Layer \"Gewässeranschluss\"",
+        "fr": "Service WMTS-IFDG, couche , Layer \"Surface en connexion des eaux\"",
+        "it": "Servizio WMTS-IFDG, strato \"Superfici collegate ad acque\"",
+        "en": "WMTS-FSDI service, layer \"Water connection\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "f5929228-52db-4ba7-9347-0fbdf9db1d75",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.gewaesseranschlusskarte",
+      "adms:status": "published",
+      "dcterms:format": "HTML",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.gewaesseranschlusskarte",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "Download Server von geo.admin.ch",
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "it": "Server di download di geo.admin.ch",
+        "en": "Download server from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

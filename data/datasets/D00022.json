@@ -1,0 +1,66 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00022",
+  "dcterms:title": {
+    "de": "Marktzahlen Milch und Milchprodukte - Monatlicher Preis-Index (Grosshandel/Verarbeitung)",
+    "fr": "Chiffres du marché du lait et des produits laitiers - Indice des prix mensuels (commerce de gros/transformation)",
+    "it": "Cifre di mercato latte e latticini - Indice dei prezzi mensile (commercio all'ingrosso/trasformazione)",
+    "en": "Market figures milk and dairy products - Monthly price indices (wholesale/processing)"
+  },
+  "dcterms:description": {
+    "de": "Monatliche Preis-Indizes von ausgewählten Milchprodukten auf der Wertschöpfungsstufe Grosshandel/Verarbeitung",
+    "fr": "Indice de prix mensuel d’une sélection de produits laitiers à l’échelon de création de valeur Commerce de gros/transformation",
+    "it": "Indice dei prezzi mensili di latticini selezionati a livello della catena del valore commercio all'ingrosso/trasformazione",
+    "en": "Monthly price indices of selected dairy products at the wholesale/processing stage of the value chain"
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+    "email": "marktanalysen@blw.admin.ch"
+  },
+  "dcterms:issued": "2025-01-16",
+  "dcat:keyword": [
+    "price",
+    "market-data"
+  ],
+  "dcterms:accrualPeriodicity": "MONTHLY",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "populationAndSociety"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "2010-01-01 - 2024-10-01T23:59:59.999999",
+  "dpv:hasLegalBasis": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "c97f8d42-c61c-4a3f-977d-b1ab2d0c97b5",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FMilkDairyProducts%2FWholesaleProcessing_Index_Month%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dcterms:format": "SPARQL",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FMilkDairyProducts%2FWholesaleProcessing_Index_Month%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "dcterms:title": {
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "it": "",
+        "en": "SPARQL Endpoint with graph preselection"
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

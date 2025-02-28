@@ -1,0 +1,101 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Dataset Metadata Schema",
+    "type": "object",
+    "properties": {
+      "dcterms:identifier": {
+        "type": "string"
+      },
+      "dcterms:title": {
+        "type": "object",
+        "properties": {
+          "de": { "type": "string" },
+          "fr": { "type": "string" }
+        },
+        "required": ["de", "fr"]
+      },
+      "dcterms:description": {
+        "type": "object",
+        "properties": {
+          "de": { "type": "string" },
+          "fr": { "type": "string" }
+        },
+        "required": ["de", "fr"]
+      },
+      "dcterms:issued": {
+        "type": "string",
+        "format": "date"
+      },
+      "dcat:keyword": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "bv:personalData": {
+        "type": "string"
+      },
+      "bv:affiliatedPersons": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "bv:adminDirID": { "type": "string" },
+            "role": { "type": "string" }
+          },
+          "required": ["bv:adminDirID", "role"]
+        }
+      },
+      "dcat:distribution": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "dcterms:title": {
+              "type": "object",
+              "properties": {
+                "de": { "type": "string" },
+                "fr": { "type": "string" }
+              },
+              "required": ["de", "fr"]
+            },
+            "dcterms:description": {
+              "type": "object",
+              "properties": {
+                "de": { "type": "string" },
+                "fr": { "type": "string" }
+              },
+              "required": ["de", "fr"]
+            },
+            "dcat:accessURL": {
+              "type": "string",
+              "format": "uri"
+            },
+            "dcterms:format": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "dcterms:title",
+            "dcterms:description",
+            "dcat:accessURL",
+            "dcterms:format"
+          ]
+        }
+      },
+      "bv:imageURL": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "required": [
+      "dcterms:identifier",
+      "dcterms:title",
+      "dcterms:description",
+      "dcterms:issued",
+      "dcat:keyword",
+      "bv:personalData",
+      "bv:affiliatedPersons",
+      "dcat:distribution",
+      "bv:imageURL"
+    ]
+  }
+  

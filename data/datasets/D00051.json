@@ -1,0 +1,106 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00051",
+  "dcterms:title": {
+    "de": "Kulturlandschaftsbeiträge 2014-2015",
+    "fr": "Contributions au paysage cultivé 2014-2015",
+    "it": "Contributi per il paesaggio rurale 2014-2015",
+    "en": ""
+  },
+  "dcterms:description": {
+    "de": "Kulturlandschaftsbeiträge (Offenhaltungsbeitrag, Hangbeitrag, Steillagenbeitrag, Beitrag für Rebflächen, Alpungsbeitrag) nach Kantonen und Zonen (Anzahl Betriebe, Fläche in Hektaren, Beitrag in CHF)",
+    "fr": "",
+    "it": "",
+    "en": ""
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft",
+    "email": "alessandro.rossi@blw.admin.ch"
+  },
+  "dcterms:issued": "2016-11-08",
+  "dcat:keyword": [],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "agricultureFisheriesForestryFood",
+    "internationalTopics"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/direktzahlungen.html",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "2014-01-01 - 2015-12-31",
+  "dpv:hasLegalBasis": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "04f625a7-a763-43a6-84e4-c5179ca41a5b",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/41/q3a2ugh9ik1h87usyh1yk11689oioe/6_ab16_statdz2015_anhaenge_tab_kulturlandi_datenreihe_d_ok.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/41/q3a2ugh9ik1h87usyh1yk11689oioe/6_ab16_statdz2015_anhaenge_tab_kulturlandi_datenreihe_d_ok.xlsx",
+      "dcterms:title": {
+        "de": "Kulturlandschaftsbeiträge 2014-2015",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "e02e650d-e8de-4f88-8117-2c087d6cc257",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/66/4a8e8wa9n0f0oflusfv7f841fjqeg9/6_ab16_statdz2015_anhaenge_tab_kulturlandi_datenreihe_f_ok.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/66/4a8e8wa9n0f0oflusfv7f841fjqeg9/6_ab16_statdz2015_anhaenge_tab_kulturlandi_datenreihe_f_ok.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "Contributions au paysage cultivé 2014-2015",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "093144eb-6ae3-4ca9-8fca-8e3f0cf78ade",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/fc/t3tfinmgbnlp707s0w36aattglw43h/6_ab16_statdz2015_anhaenge_tab_kulturlandi_datenreihe_i_ok.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/fc/t3tfinmgbnlp707s0w36aattglw43h/6_ab16_statdz2015_anhaenge_tab_kulturlandi_datenreihe_i_ok.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "Contributi per il paesaggio rurale 2014-2015",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

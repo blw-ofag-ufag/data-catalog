@@ -1,0 +1,130 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00085",
+  "dcterms:title": {
+    "de": "Bergprodukte",
+    "fr": "Produits de montagne",
+    "it": "Prodotti di montagna",
+    "en": "Mountain products"
+  },
+  "dcterms:description": {
+    "de": "Um die Bezeichnung „Bergprodukt“ (z.B. Bergkäse) verwenden zu können, müssen die Rohstoffe aus dem Berggebiet oder dem Sömmerungsgebiet stammen und in einer Gemeinde verarbeitet werden, die ganz oder teilweise im Berg- oder im Sömmerungsgebiet liegt.Die Verarbeitung folgender Produkte darf auch ausserhalb des Berg- und Sömmerungsgebiets stattfinden: genussfertige Milch; genussfertiger Rahm; Reifung der Käse sowie die Schlachtung und Zerlegung der Tiere. Die Bezeichnung „Berg“ darf auch in der Kennzeichnung eines aus mehreren Zutaten zusammengesetzten Lebensmit-tels verwendet werden, auch wenn das Lebensmittel selbst die Anforderungen für die Verwendung der Bezeichnung „Berg“ nicht erfüllt. Die Bezeichnung „Berg“ darf sich ausschliesslich auf die betreffenden Zutaten beziehen (z.B. „Jogurt aus Bergmilch“). (SR 910.19)",
+    "fr": "Pour pouvoir porter la désignation « produit de montagne » (p. ex. fromage de montagne), les matières premières utilisées doivent provenir de la région de montagne ou de la région d'estivage et avoir été également transformées dans des communes entièrement ou partiellement situées dans la région de montagne ou d'estivage.La transformation des produits suivants peut également avoir lieu en dehors de la région de montagne et d'estivage : lait prêt à la consommation ; crème prête à la consommation ; affinage des fromages ; abattage et découpage des animaux. La dénomination « montagne » peut aussi être utilisée dans l'étiquetage d'une denrée alimentaire composée de plusieurs ingrédients, même si la denrée alimentaire en tant que telle ne satisfait pas aux exigences requises pour l'utilisation de la dénomination « montagne ». La dénomination « montagne » peut uniquement se référer aux ingrédients concernés (p. ex. « yoghourt au lait de montagne »). (RS 910.19)",
+    "it": "La designazione “montagna” (p.es. formaggio di montagna) può essere impiegata se le materie prime provengono dalla regione di montagna o dalla regione d'estivazione e se lì sono anche trasformate. La trasformazione può avvenire pure in Comuni il cui territorio si trova in parte nella regione di montagna o in quella d'estivazione.La trasformazione dei seguenti prodotti può avvenire anche al di fuori della regione di montagna e di quella d'estivazione: latte pronto al consumo, panna pronta al consumo, maturazione del formaggio, nonché macellazione e sezionamento degli animali. La designazione «montagna» può essere utilizzata anche nella caratterizzazione di una derrata alimentare composta da più ingredienti anche se la derrata alimentare in sé non adempie le esigenze per l'impiego della designazione «montagna». La designazione «montagna» può riferirsi esclusivamente agli ingredienti in questione (p.es. «yogurt con latte di montagna»). (RS 910.19)",
+    "en": "Um die Bezeichnung „Bergprodukt“ (z.B. Bergkäse) verwenden zu können, müssen die Rohstoffe aus dem Berggebiet oder dem Sömmerungsgebiet stammen und in einer Gemeinde verarbeitet werden, die ganz oder teilweise im Berg- oder im Sömmerungsgebiet liegt.Die Verarbeitung folgender Produkte darf auch ausserhalb des Berg- und Sömmerungsgebiets stattfinden: genussfertige Milch; genussfertiger Rahm; Reifung der Käse sowie die Schlachtung und Zerlegung der Tiere. Die Bezeichnung „Berg“ darf auch in der Kennzeichnung eines aus mehreren Zutaten zusammengesetzten Lebensmit-tels verwendet werden, auch wenn das Lebensmittel selbst die Anforderungen für die Verwendung der Bezeichnung „Berg“ nicht erfüllt. Die Bezeichnung „Berg“ darf sich ausschliesslich auf die betreffenden Zutaten beziehen (z.B. „Jogurt aus Bergmilch“). (SR 910.19)"
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "info@blw.admin.ch",
+    "email": "info@blw.admin.ch"
+  },
+  "dcterms:issued": "2012-05-11",
+  "dcat:keyword": [
+    "mountain-management",
+    "alpine-economy",
+    "regulation-zones",
+    "utility-and-governmental-services",
+    "FSDI"
+  ],
+  "dcterms:accrualPeriodicity": "OTHER",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "environment"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/kennzeichnung/berg-und-alp.html",
+  "dcterms:spatial": "Schweiz",
+  "dcterms:temporal": "",
+  "dpv:hasLegalBasis": [],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "227e3469-9739-4008-9ddd-16dbcb4ba504",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.bergprodukte",
+      "adms:status": "published",
+      "dcterms:format": "SERVICE",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://map.geo.admin.ch/?layers=ch.blw.bergprodukte",
+      "dcterms:title": {
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "Vorschau map.geo.admin.ch",
+        "fr": "Aperçu map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "abfb1737-f0ee-456b-a7c6-f6d51a671446",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.bergprodukte",
+        "fr": "ch.blw.bergprodukte",
+        "it": "ch.blw.bergprodukte",
+        "en": "ch.blw.bergprodukte"
+      },
+      "dcterms:description": {
+        "de": "WMS-BGDI Dienst, Layer \"Bergprodukte\"",
+        "fr": "Service WMS-IFDG, couche \"Produits montagne et alpage\"",
+        "it": "Servizio WMS-IFDG, strato \"Prodotti di montagna\"",
+        "en": "WMS-FSDI service, layer \"Mountain products\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "7a3d9c6f-b79d-4063-b859-be89753719c8",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMTS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.bergprodukte",
+        "fr": "ch.blw.bergprodukte",
+        "it": "ch.blw.bergprodukte",
+        "en": "ch.blw.bergprodukte"
+      },
+      "dcterms:description": {
+        "de": "WMTS-BGDI Dienst, Layer \"Bergprodukte\"",
+        "fr": "Service WMTS-IFDG, couche , Layer \"Produits montagne et alpage\"",
+        "it": "Servizio WMTS-IFDG, strato \"Prodotti di montagna\"",
+        "en": "WMTS-FSDI service, layer \"Mountain products\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "0ac06dd2-f74d-4ffa-82cb-26ced46b5b71",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bergprodukte",
+      "adms:status": "published",
+      "dcterms:format": "HTML",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bergprodukte",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "Download Server von geo.admin.ch",
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "it": "Server di download di geo.admin.ch",
+        "en": "Download server from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

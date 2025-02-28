@@ -1,0 +1,151 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00066",
+  "dcterms:title": {
+    "de": "Digitale Bodeneignungskarte der Schweiz - Vernässung",
+    "fr": "Carte digitale des aptitudes des sols de la Suisse - Mouillure",
+    "it": "Carta digitale delle attitudini dei suoli svizzeri - Saturazione idrica",
+    "en": "Digital soil suitability map of Switzerland - Waterlogging"
+  },
+  "dcterms:description": {
+    "de": "Wenn ausser dem Niederschlagswasser noch Fremdwasser (Hang- oder Grundwasser) im Boden vorhanden ist, so spricht man von Fremdvernässung.(Details: Bodeneignungskarte der Schweiz, März 1980)",
+    "fr": "La mouillure est le fait d'une nappe phréatique (de pente ou de fond).",
+    "it": "Per saturazione idrica s'intende la presenza, oltre alle acque meteoriche, di acque estranee (di pendio o di falda). (Dettagli: carta delle attitudini dei suoli svizzeri, marzo 1980).",
+    "en": "If external water (runoff from slopes and groundwater) is present in the soil as well as precipitation, this is described as external waterlogging. (Details: Soil suitability map of Switzerland, March 1980)."
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "info@blw.admin.ch",
+    "email": "info@blw.admin.ch"
+  },
+  "dcterms:issued": "2012-07-01",
+  "dcat:keyword": [
+    "suitability",
+    "soil",
+    "meteorology",
+    "FSDI"
+  ],
+  "dcterms:accrualPeriodicity": "NEVER",
+  "dcterms:modified": "2012-07-01",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "internationalTopics",
+    "agricultureFisheriesForestryFood"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/geografisches-informationssystem-gis/bodeneignungskarte.html",
+  "dcterms:spatial": "Schweiz",
+  "dcterms:temporal": "",
+  "dpv:hasLegalBasis": [],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "9d557dfd-9bc6-40a1-b2d3-fa5d02899f8a",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.bodeneignung-vernaessung",
+      "adms:status": "published",
+      "dcterms:format": "SERVICE",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://map.geo.admin.ch/?layers=ch.blw.bodeneignung-vernaessung",
+      "dcterms:title": {
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "Vorschau map.geo.admin.ch",
+        "fr": "Aperçu map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "e7cd1e7b-794d-49c6-87ce-eb7b10223a75",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.bodeneignung-vernaessung",
+        "fr": "ch.blw.bodeneignung-vernaessung",
+        "it": "ch.blw.bodeneignung-vernaessung",
+        "en": "ch.blw.bodeneignung-vernaessung"
+      },
+      "dcterms:description": {
+        "de": "WMS-BGDI Dienst, Layer \"Vernässung\"",
+        "fr": "Service WMS-IFDG, couche \"Mouillure\"",
+        "it": "Servizio WMS-IFDG, strato \"Saturazione idrica\"",
+        "en": "WMS-FSDI service, layer \"Waterlogging\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "deb96ae4-f463-468b-916c-fa8fbfaa9419",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMTS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.bodeneignung-vernaessung",
+        "fr": "ch.blw.bodeneignung-vernaessung",
+        "it": "ch.blw.bodeneignung-vernaessung",
+        "en": "ch.blw.bodeneignung-vernaessung"
+      },
+      "dcterms:description": {
+        "de": "WMTS-BGDI Dienst, Layer \"Vernässung\"",
+        "fr": "Service WMTS-IFDG, couche , Layer \"Mouillure\"",
+        "it": "Servizio WMTS-IFDG, strato \"Saturazione idrica\"",
+        "en": "WMTS-FSDI service, layer \"Waterlogging\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "dcafcceb-1d77-4c0a-9f3a-fdd4ced33be6",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bodeneignung-vernaessung",
+      "adms:status": "published",
+      "dcterms:format": "HTML",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bodeneignung-vernaessung",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "Download Server von geo.admin.ch",
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "it": "Server di download di geo.admin.ch",
+        "en": "Download server from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "ceecb2af-712e-453b-becf-5ff0d4b53c0c",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.bodeneignung-vernaessung",
+      "adms:status": "published",
+      "dcterms:format": "API",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.bodeneignung-vernaessung",
+      "dcterms:title": {
+        "de": "RESTful API von geo.admin.ch",
+        "fr": "RESTful API de geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "RESTful API von geo.admin.ch",
+        "fr": "RESTful API de geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

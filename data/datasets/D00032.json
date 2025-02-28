@@ -1,0 +1,106 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00032",
+  "dcterms:title": {
+    "de": "Verwertung der Ernte im Pflanzenbau 1990/92-2015",
+    "fr": "Mise en valeur de la récolte en production végétale 1990/92-2015",
+    "it": "Valorizzazione del raccolto della produzione vegetale 1990/92-2015",
+    "en": ""
+  },
+  "dcterms:description": {
+    "de": "Verwertung von Kartoffeln, Mostäpfel und -birnen, Spirituosenerzeugung, Frischgemüse zur Verarbeitung in Tonnen",
+    "fr": "",
+    "it": "",
+    "en": ""
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft",
+    "email": "alessandro.rossi@blw.admin.ch"
+  },
+  "dcterms:issued": "2016-11-08",
+  "dcat:keyword": [],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "environment",
+    "internationalTopics"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/nachhaltige-produktion/pflanzliche-produktion.html",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "1990-01-01 - 2015-12-31",
+  "dpv:hasLegalBasis": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "26827c4a-75d1-402f-8979-6729491e2759",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/7b/tihijwtv7hcukxaludgglucghihage/verwertung_pflanzenbau_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/7b/tihijwtv7hcukxaludgglucghihage/verwertung_pflanzenbau_datenreihe_d.xlsx",
+      "dcterms:title": {
+        "de": "Verwertung der Ernte im Pflanzenbau 1990/92-2015",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "99a9d17f-d5ab-464d-8ef0-c55cbae64469",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/38/7zpxmkyam4fgxvrh5divyvntfueztf/verwertung_pflanzenbau_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/38/7zpxmkyam4fgxvrh5divyvntfueztf/verwertung_pflanzenbau_datenreihe_f.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "Mise en valeur de la récolte en production végétale 1990/92-2015",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "7e899513-3b0a-4d74-a4cb-48fa2016cf85",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ec/70t4fw03qw1bflr58q048mnw1gev88/verwertung_pflanzenbau_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ec/70t4fw03qw1bflr58q048mnw1gev88/verwertung_pflanzenbau_datenreihe_i.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "Valorizzazione del raccolto della produzione vegetale 1990/92-2015",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

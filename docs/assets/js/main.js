@@ -1,9 +1,8 @@
 /******************************************************
  *  Global configuration & variables
  *****************************************************/
-const dataUrl =
-  "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/data/dataCatalog.json";
-
+const branch = "refactor-schema-with-data";
+const dataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/docs/assets/datasets.json`;
 let datasets = [];
 let currentLanguage = "en";
 
@@ -192,7 +191,7 @@ function getFilteredDatasets(sourceData) {
   return sourceData.filter(dataset => {
     // A) Check chips => AND logic
     const hasAllChips = keywordChips.every(chip => {
-      const keywords = dataset.attributes["dcat:keyword"] || [];
+      const keywords = dataset["dcat:keyword"] || [];
       return keywords.some(k => k.toLowerCase().includes(chip));
     });
     if (!hasAllChips) return false;
@@ -231,7 +230,7 @@ function matchFullText(term, dataset) {
     "bv:affiliatedPersons"
   ];
   return fields.some(field => {
-    const value = dataset.attributes[field];
+    const value = dataset[field];
     if (!value) return false;
 
     if (field === "dcat:keyword") {
@@ -268,12 +267,12 @@ function getSortedDatasets(sourceData) {
     let fieldA, fieldB;
 
     if (sortBy === "title") {
-      fieldA = a.attributes["dcterms:title"][currentLanguage] || "";
-      fieldB = b.attributes["dcterms:title"][currentLanguage] || "";
+      fieldA = a["dcterms:title"][currentLanguage] || "";
+      fieldB = b["dcterms:title"][currentLanguage] || "";
       return fieldA.localeCompare(fieldB, undefined, { numeric: true });
     } else if (sortBy === "issued-asc" || sortBy === "issued-desc") {
-      fieldA = a.attributes["dcterms:issued"] || "";
-      fieldB = b.attributes["dcterms:issued"] || "";
+      fieldA = a["dcterms:issued"] || "";
+      fieldB = b["dcterms:issued"] || "";
       if (!fieldA) return 1;
       if (!fieldB) return -1;
 
@@ -282,17 +281,14 @@ function getSortedDatasets(sourceData) {
       if (sortBy === "issued-asc") return dateA - dateB;
       return dateB - dateA;
     } else if (sortBy === "owner") {
-      const aOwner = getDataOwnerName(a.attributes);
-      const bOwner = getDataOwnerName(b.attributes);
+      const aOwner = getDataOwnerName(a);
+      const bOwner = getDataOwnerName(b);
       return aOwner.localeCompare(bOwner, undefined, { numeric: true });
     }    
     return 0;
   });
 }
 
-/******************************************************
- *  6) Rendering the Dataset Tiles
- *****************************************************/
 /******************************************************
  *  6) Rendering the Dataset Tiles
  *****************************************************/
@@ -316,11 +312,15 @@ function renderDatasets(data) {
 
   container.innerHTML = data
     .map(dataset => {
-      const { metadata, attributes } = dataset;
+      // Use dataset directly as attributes
+      const attributes = dataset;
+
+      // Provide a default for metadata if not available
+      const imageURL = attributes["schema:image"]
       const datasetId = attributes["dcterms:identifier"];
       const keywords = attributes["dcat:keyword"] || [];
       const maxTitleLength = 50; // Limit title to 50 characters
-      const maxKeywords = 5; // Display only 3 keywords
+      const maxKeywords = 5; // Display only a limited number of keywords
 
       // Truncate title if too long
       let title = attributes["dcterms:title"][currentLanguage] || "Untitled";
@@ -328,7 +328,7 @@ function renderDatasets(data) {
         title = title.slice(0, maxTitleLength) + "...";
       }
 
-      // Display only a limited number of keywords
+      // Build keywords HTML
       let keywordsHTML = keywords
         .slice(0, maxKeywords)
         .map(kw => `
@@ -341,20 +341,18 @@ function renderDatasets(data) {
         `)
         .join("");
       
-      // Add "+X more" if there are additional keywords
       if (keywords.length > maxKeywords) {
         const remaining = keywords.length - maxKeywords;
         keywordsHTML += `<span class="keyword-chip more-keywords">+${remaining} more</span>`;
       }
 
-      // Return the tile (now clickable)
       return `
         <div
           class="dataset-tile"
           onclick="redirectToDetails('${datasetId}', '${currentLanguage}')"
         >
           <img 
-            src="${metadata.imageURL}" 
+            src="${imageURL}" 
             alt="${title}" 
           />
           <div class="dataset-info">
@@ -402,7 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch(dataUrl)
     .then(res => res.json())
     .then(data => {
-      datasets = data.datasets;
+      datasets = data;
       applySearchLangSort();
       updateSearchChips();
     })

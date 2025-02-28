@@ -1,0 +1,151 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00064",
+  "dcterms:title": {
+    "de": "Digitale Bodeneignungskarte der Schweiz - Wasserdurchlässigkeit",
+    "fr": "Carte digitale des aptitudes des sols de la Suisse - Perméabilité",
+    "it": "Carta digitale delle attitudini dei suoli svizzeri - Permeabilità",
+    "en": "Digital soil suitability map of Switzerland - Permeability"
+  },
+  "dcterms:description": {
+    "de": "Die Wasserdurchlässigkeit wurde an gesättigten Stechzylinderproben im Labor bestimmt. Aus Beobachtungen im Feld ergaben sich Beziehungen zwischen dem Niederschlag, der Durchlässigkeit und den morphologischen Merkmalen. Berücksichtigt wurde der am schlechtesten durchlässige Horizont der obersten 50 cm.(Details: Bodeneignungskarte der Schweiz, März 1980)",
+    "fr": "La perméabilité est mesurée en laboratoire sur des échantillons cylindriques saturés. Les observations de terrain permettent d'etablir des relations entre les précipitations, la perméablilité et les traits morphologiques. On a pris en considération l'horizon le moins perméable des 50 cm supérieurs.",
+    "it": "La permeabilità è misurata in laboratorio su campioni cilindrici saturi. Le osservazioni del terreno consentono di stabilire correlazioni tra le precipitazioni, la permeabilità e i tratti morfologici. È stato considerato l'orizzone meno permeabile dei 50 cm superiori. (Dettagli: carta delle attitudini dei suoli svizzeri, marzo 1980).",
+    "en": "Permeability is measured using saturated soil core samples in the laboratory. Observations in the field highlighted a relationship between precipitation, permeability and morphological features. The least permeable soil horizon of the top 50 cm was evaluated. (Details: Soil suitability map of Switzerland, March 1980)."
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "info@blw.admin.ch",
+    "email": "info@blw.admin.ch"
+  },
+  "dcterms:issued": "2012-07-01",
+  "dcat:keyword": [
+    "suitability",
+    "soil",
+    "meteorology",
+    "FSDI"
+  ],
+  "dcterms:accrualPeriodicity": "NEVER",
+  "dcterms:modified": "2012-07-01",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "internationalTopics",
+    "populationAndSociety"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/geografisches-informationssystem-gis/bodeneignungskarte.html",
+  "dcterms:spatial": "Schweiz",
+  "dcterms:temporal": "",
+  "dpv:hasLegalBasis": [],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "6c8c8086-baa8-4758-981b-6b8fa542496f",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.bodeneignung-wasserdurchlaessigkeit",
+      "adms:status": "published",
+      "dcterms:format": "SERVICE",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://map.geo.admin.ch/?layers=ch.blw.bodeneignung-wasserdurchlaessigkeit",
+      "dcterms:title": {
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "Vorschau map.geo.admin.ch",
+        "fr": "Aperçu map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "9d6999fb-3d48-464c-a0f2-e4b2769fa504",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.bodeneignung-wasserdurchlaessigkeit",
+        "fr": "ch.blw.bodeneignung-wasserdurchlaessigkeit",
+        "it": "ch.blw.bodeneignung-wasserdurchlaessigkeit",
+        "en": "ch.blw.bodeneignung-wasserdurchlaessigkeit"
+      },
+      "dcterms:description": {
+        "de": "WMS-BGDI Dienst, Layer \"Wasserdurchlässigkeit\"",
+        "fr": "Service WMS-IFDG, couche \"Perméabilité\"",
+        "it": "Servizio WMS-IFDG, strato \"Permeabilità\"",
+        "en": "WMS-FSDI service, layer \"Permeability\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "99d2a8c6-c94f-4557-a103-85d412acb5e3",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMTS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.bodeneignung-wasserdurchlaessigkeit",
+        "fr": "ch.blw.bodeneignung-wasserdurchlaessigkeit",
+        "it": "ch.blw.bodeneignung-wasserdurchlaessigkeit",
+        "en": "ch.blw.bodeneignung-wasserdurchlaessigkeit"
+      },
+      "dcterms:description": {
+        "de": "WMTS-BGDI Dienst, Layer \"Wasserdurchlässigkeit\"",
+        "fr": "Service WMTS-IFDG, couche , Layer \"Perméabilité\"",
+        "it": "Servizio WMTS-IFDG, strato \"Permeabilità\"",
+        "en": "WMTS-FSDI service, layer \"Permeability\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "8d80fc2c-114b-4b37-ace6-55cf478bc712",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bodeneignung-wasserdurchlaessigkeit",
+      "adms:status": "published",
+      "dcterms:format": "HTML",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bodeneignung-wasserdurchlaessigkeit",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "Download Server von geo.admin.ch",
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "it": "Server di download di geo.admin.ch",
+        "en": "Download server from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "cc1f7892-35e6-4e3f-ace9-021ed3bdff2b",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.bodeneignung-wasserdurchlaessigkeit",
+      "adms:status": "published",
+      "dcterms:format": "API",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.bodeneignung-wasserdurchlaessigkeit",
+      "dcterms:title": {
+        "de": "RESTful API von geo.admin.ch",
+        "fr": "RESTful API de geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "RESTful API von geo.admin.ch",
+        "fr": "RESTful API de geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+  "dcterms:identifier": "D00070",
+  "dcterms:title": {
+    "de": "Register Ursprungsbezeichnungen (GUB) und geografische Angaben (GGA) Pflanzliche Produkte",
+    "fr": "Registre des appellations d'origine (AOP) et des indications géographiques (IGP) produits végétaux",
+    "it": "Registro delle denominazioni di origine (DOP) e delle indicazioni geografiche (IGP) Prodotti vegetali",
+    "en": "Register of designations of origin (PDO) and geographical indications (PGI) - products of plant origin"
+  },
+  "dcterms:description": {
+    "de": "Mit dem Register Ursprungsbezeichnungen (GUB) und geografischen Angaben (GGA) lassen sich die Gebietsnamen und traditionellen Bezeichnungen von landwirtschaftlichen Erzeugnissen schützen (Wein ausgenommen), deren Qualität und Haupteigenschaften durch ihre geografische Herkunft bestimmt werden. Ist ein Name geschützt, darf er nur von den Produzentinnen und Produzenten des entsprechend definierten geografischen Gebiets benutzt werden, die sich an ein detailliertes Pflichtenheft halten.Der Schutz bestimmter Bezeichnungen für Landwirtschaftsprodukte bezweckt, die Konsumentinnen und Konsumenten vor Täuschung zu schützen und - im Interesse der Bäuerinnen und Bauern - den unlauteren Wettbewerb in der Verwendung dieser Begriffe zu verhindern. Die Regelungen in diesem Bereich ermöglichen, die gegenseitige Anerkennung von Qualitätsprodukten zwischen der Schweiz und der Europäischen Union. Es wird zwischen den vier Kategorien Käse, Fleischwaren, pflanzliche Produkte und Spirituosen unterschieden. Aktuell sind gegen 30 verschiedene Erzeugnisse im Register Ursprungsbezeichnungen eingetragen und es kommen laufend neue dazu.",
+    "fr": "Le registre des appellations d’origine (AOP) et des indications géographiques (IGP) sert à protéger les noms géographiques et les dénominations traditionnelles qui désignent des produits agricoles (autres que le vin) dont l’identité et les principales caractéristiques sont déterminées par leur origine. Lorsqu’un nom est protégé, son utilisation est réservée aux producteurs de l’aire géographique définie, pour autant qu’ils respectent un cahier des charges détaillé. La protection de certaines désignations de produits agricoles vise à défendre les consommateurs contre la tromperie et à protéger les paysans contre la concurrence déloyale quant à l’utilisation de ces désignations. La réglementation applicable dans ce domaine permet la reconnaissance réciproque des produits de qualité entre la Suisse et l’Union européenne.Les AOP/IGP sont réparties en quatre catégories : fromages, produits à base de viande, produits végétaux et spiritueux. Environ 30 produits sont aujourd’hui inscrits au registre des appellations d’origine, qui en accueille en permanence de nouveaux.",
+    "it": "Il Registro delle denominazioni di origine (DOP) e delle indicazioni geografiche (IGP) consente di tutelare i nomi geografici e tradizionali che designano prodotti agricoli (ad eccezione del vino) la cui qualità e le cui caratteristiche principali sono determinate dalla loro origine. L'utilizzo di un nome protetto è appannaggio dei produttori della zona geografica definita che ottemperano ad un dettagliato elenco degli obblighi. La protezione di determinate denominazioni di prodotti agricoli è finalizzata a tutelare i consumatori dalle frodi e a proteggere i contadini dalla concorrenza sleale dovuta all'abuso delle denominazioni. La regolamentazione applicabile in questo settore permette il reciproco riconoscimento dei prodotti di qualità tra Svizzera e UE. Le DOP/IGP sono suddivise in quattro categorie: formaggi, prodotti carnei, prodotti vegetali e distillati. Attualmente il registro delle DOP/IGP conta 30 prodotti e il numero di registrazioni è in costante aumento.",
+    "en": "The register of designations of origin (PDO) and geographical indications (PGI) allows the region names and traditional designations of agricultural products to be protected (with the exception of wine), where the quality and the main characteristics of the products are determined by their geographical origin. If a name is protected, it can only be used by producers in the specified geographical region, who must comply with a detailed requirements specification. The purpose of protecting certain designations of agricultural products is to prevent consumers from being exposed to fraud and, in the interests of farmers, to stop unfair competition relating to the use of the designations. The rules in this area allow for the mutual recognition of quality products by Switzerland and the European Union. There are four categories: cheese, meat products, products of plant origin and spirits. The register of designations of origin currently contains around 30 different products and new ones are frequently being added."
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "info@blw.admin.ch",
+    "email": "info@blw.admin.ch"
+  },
+  "dcterms:issued": "2009-12-16",
+  "dcat:keyword": [
+    "protected-designation-of-origin",
+    "protected-geographical-indication",
+    "plant-resource",
+    "crop-production",
+    "processed-agricultural-produce",
+    "land-use",
+    "regulation-zones",
+    "FSDI"
+  ],
+  "dcterms:accrualPeriodicity": "OTHER",
+  "dcterms:modified": "2009-12-16",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "populationAndSociety"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/kennzeichnung/ursprungsbezeichungen-und-geografische-angaben.html",
+  "dcterms:spatial": "Schweiz",
+  "dcterms:temporal": "",
+  "dpv:hasLegalBasis": [],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "96a7eae7-233b-4751-a4f8-9d6d129c2dfa",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.ursprungsbezeichnungen-pflanzen",
+      "adms:status": "published",
+      "dcterms:format": "SERVICE",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://map.geo.admin.ch/?layers=ch.blw.ursprungsbezeichnungen-pflanzen",
+      "dcterms:title": {
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "Vorschau map.geo.admin.ch",
+        "fr": "Aperçu map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "3f4c4c7e-0282-4743-8730-1a5e32d3ebc9",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.ursprungsbezeichnungen-pflanzen",
+        "fr": "ch.blw.ursprungsbezeichnungen-pflanzen",
+        "it": "ch.blw.ursprungsbezeichnungen-pflanzen",
+        "en": "ch.blw.ursprungsbezeichnungen-pflanzen"
+      },
+      "dcterms:description": {
+        "de": "WMS-BGDI Dienst, Layer \"Pflanzliche Produkte\"",
+        "fr": "Service WMS-IFDG, couche \"Produits végétaux\"",
+        "it": "Servizio WMS-IFDG, strato \"Prodotti vegetali\"",
+        "en": "WMS-FSDI service, layer \"Plant products\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "59247c55-72ab-493c-befa-c3e22fc469ab",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dcterms:format": "WMTS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "dcterms:title": {
+        "de": "ch.blw.ursprungsbezeichnungen-pflanzen",
+        "fr": "ch.blw.ursprungsbezeichnungen-pflanzen",
+        "it": "ch.blw.ursprungsbezeichnungen-pflanzen",
+        "en": "ch.blw.ursprungsbezeichnungen-pflanzen"
+      },
+      "dcterms:description": {
+        "de": "WMTS-BGDI Dienst, Layer \"Pflanzliche Produkte\"",
+        "fr": "Service WMTS-IFDG, couche , Layer \"Produits végétaux\"",
+        "it": "Servizio WMTS-IFDG, strato \"Prodotti vegetali\"",
+        "en": "WMTS-FSDI service, layer \"Plant products\""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "9cda069b-155e-485a-bf70-0c2eb608ebde",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.ursprungsbezeichnungen-pflanzen",
+      "adms:status": "published",
+      "dcterms:format": "HTML",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.ursprungsbezeichnungen-pflanzen",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "Download von data.geo.admin.ch",
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "it": "Server di download di geo.admin.ch",
+        "en": "Download server from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "76ced07d-8a5b-4ccd-b592-2daff707e340",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.ursprungsbezeichnungen-pflanzen",
+      "adms:status": "published",
+      "dcterms:format": "API",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.ursprungsbezeichnungen-pflanzen",
+      "dcterms:title": {
+        "de": "RESTful API von geo.admin.ch",
+        "fr": "RESTful API de geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch"
+      },
+      "dcterms:description": {
+        "de": "RESTful API von geo.admin.ch",
+        "fr": "RESTful API de geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch"
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}

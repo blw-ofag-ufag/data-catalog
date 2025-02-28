@@ -1,0 +1,109 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-002.jpg",
+  "dcterms:identifier": "D00061",
+  "dcterms:title": {
+    "de": "Ausgaben Milchwirtschaft 1999-2015",
+    "fr": "Dépenses pour l'économie laitière 1999-2015",
+    "it": "Spese per l'economia lattiera 1999-2015",
+    "en": "Expenditures for the dairy industry 1999-2015"
+  },
+  "dcterms:description": {
+    "de": "Ausgaben des Bundes im Bereich Milch (z.B. Zulage für verkäste Milch, Zulage für Fütterung ohne Silage, ...)",
+    "fr": "Dépenses de la Confédération dans le domaine du lait (par exemple, supplément pour le lait transformé en fromage, supplément pour l'alimentation sans ensilage, ...)",
+    "it": "Spese della Confederazione nel settore lattiero (ad esempio, supplemento per il latte trasformato in formaggio, supplemento per l'alimentazione senza insilati, ...)",
+    "en": "Federal expenditures in the dairy sector (e.g., allowance for milk processed into cheese, allowance for feeding without silage, ...)"
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "name": "Bundesamt für Landwirtschaft",
+    "email": "alessandro.rossi@blw.admin.ch"
+  },
+  "dcterms:issued": "2016-11-08",
+  "dcat:keyword": [
+    "milk",
+    "budget",
+    "expenditure"
+  ],
+  "dcterms:accrualPeriodicity": "ANNUAL",
+  "dcterms:modified": "2025-01-15",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "bv:archivalValue": false,
+  "dcat:themeTaxonomy": [
+    "internationalTopics"
+  ],
+  "dcat:landingPage": "https://www.efv.admin.ch/efv/de/home/finanzberichterstattung/finanzberichte/staatsrechnung.html",
+  "dcterms:spatial": "",
+  "dcterms:temporal": "1999-01-01 - 2015-12-31",
+  "dpv:hasLegalBasis": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "dcat:distribution": [
+    {
+      "dcterms:identifier": "7ee04dd4-63c1-498b-9b02-3bd5cc157eb2",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d4/kjoriwrpnugm81s066eeiqfyhxgpwv/ausgaben_milchwirtschaft_1999-2015_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d4/kjoriwrpnugm81s066eeiqfyhxgpwv/ausgaben_milchwirtschaft_1999-2015_datenreihe_d.xlsx",
+      "dcterms:title": {
+        "de": "Ausgaben Milchwirtschaft 1999-2015",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "6646c742-adb2-40d1-a5fd-1d2cf6b7772c",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/1f/1fybysudtgjvdaj8s9x4oe0odztivy/ausgaben_milchwirtschaft_1999-2015_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/1f/1fybysudtgjvdaj8s9x4oe0odztivy/ausgaben_milchwirtschaft_1999-2015_datenreihe_f.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "Dépenses économie laitière 1999-2015",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    },
+    {
+      "dcterms:identifier": "ca41f2a2-0bce-4d78-b259-2670a141b952",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/36/r6philnbgb6ai5bz7a2slv03rf1060/ausgaben_milchwirtschaft_1999-2015_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dcterms:format": "XLS",
+      "dcterms:modified": "2025-01-15",
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/36/r6philnbgb6ai5bz7a2slv03rf1060/ausgaben_milchwirtschaft_1999-2015_datenreihe_i.xlsx",
+      "dcterms:title": {
+        "de": "",
+        "fr": "",
+        "it": "Uscite economia lattiera 1999-2015",
+        "en": ""
+      },
+      "dcterms:description": {
+        "de": "",
+        "fr": "",
+        "it": "",
+        "en": ""
+      },
+      "dcterms:license": "terms_by"
+    }
+  ]
+}
