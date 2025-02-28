@@ -807,7 +807,8 @@
             "National listing",
             "Variety protection"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/sortenliste.png"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/sortenliste.png",
+        "dataOwner": "p-0711690"
     },
     {
         "dcterms:identifier": "D00051",
