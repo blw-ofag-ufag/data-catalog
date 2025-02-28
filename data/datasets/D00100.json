@@ -46,6 +46,12 @@
         "it": "File di grafo RDF",
         "en": "RDF graph file"
       },
+      "dcterms:description": {
+        "de": "Ein Turtle-File (.ttl) mit allen Informationen der DigiAgriFoodCH Systemlandkarte.",
+        "fr": "Un fichier Turtle (.ttl) contenant toutes les informations de la carte système DigiAgriFoodCH.",
+        "it": "Un file Turtle (.ttl) con tutte le informazioni della mappa di sistema DigiAgriFoodCH.",
+        "en": "A Turtle file (.ttl) containing all the information of the DigiAgriFoodCH system map."
+      },
       "dcat:accessURL": "https://github.com/blw-ofag-ufag/system-map/blob/main/graph.ttl",
       "dcat:downloadURL": "https://raw.githubusercontent.com/blw-ofag-ufag/system-map/refs/heads/main/graph.ttl",
       "dcterms:format": "RDF"
@@ -56,6 +62,12 @@
         "fr": "Point d'accès SPARQL pour les requêtes sur le graphe",
         "it": "Endpoint SPARQL per interrogazioni sul grafo",
         "en": "SPARQL endpoint for graph queries"
+      },
+      "dcterms:description": {
+        "de": "Ein YASGUI-SPARQL-Endpunkt für eine direkte Abfrage von Daten bei LINDAS, dem Linked Data Service des Bundesarchives.",
+        "fr": "Un point d'accès YASGUI-SPARQL pour interroger directement les données de LINDAS, le service de données liées des Archives fédérales.",
+        "it": "Un endpoint YASGUI-SPARQL per interrogare direttamente i dati di LINDAS, il servizio di dati collegati dell'Archivio federale.",
+        "en": "A YASGUI-SPARQL endpoint for directly querying data from LINDAS, the Linked Data Service of the Federal Archives."
       },
       "dcat:accessURL": "https://s.zazuko.com/3sAp7YF",
       "dcat:downloadURL": "https://s.zazuko.com/3sAp7YF",
