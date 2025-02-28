@@ -1660,6 +1660,31 @@
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
+        "dcterms:identifier": "D00100",
+        "dcterms:title": {
+            "de": "DigiAgriFoodCH Systemlandkarte",
+            "fr": "Variétés végétales en Suisse",
+            "it": "Varietà vegetali in Svizzera",
+            "en": "Plant varieties in Switzerland"
+        },
+        "dcterms:description": {
+            "de": "Strukturierte Informationen über IT-Systeme, die darin enthaltenen Daten und deren betreibende Organisationen im Schweizer Agrar- und Ernährungssektor.",
+            "fr": "Informations structurées sur les systèmes informatiques, les données qu'ils contiennent et les organisations qui les gèrent dans le secteur agricole et alimentaire suisse.",
+            "it": "Informazioni strutturate sui sistemi IT, i dati in essi contenuti e le organizzazioni che li gestiscono nel settore agricolo e alimentare svizzero.",
+            "en": "Structured information about IT systems, the data they contain, and the organizations that manage them in the Swiss agriculture and food sector."
+        },
+        "dcterms:issued": "2025-01-29",
+        "dcat:keyword": [
+            "variety",
+            "PVR",
+            "NLI",
+            "National listing",
+            "Variety protection"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.png",
+        "dataOwner": "p-1ZFWFFNP6"
+    },
+    {
         "dcterms:identifier": "D00038",
         "dcterms:title": {
             "de": "Biodiversitätsbeiträge 2014-2015",
