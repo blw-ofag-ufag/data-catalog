@@ -1,0 +1,65 @@
+{
+  "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.png",
+  "dcterms:identifier": "D00100",
+  "dcterms:title": {
+    "de": "DigiAgriFoodCH Systemlandkarte",
+    "fr": "Variétés végétales en Suisse",
+    "it": "Varietà vegetali in Svizzera",
+    "en": "Plant varieties in Switzerland"
+  },
+  "dcterms:description": {
+    "de": "Strukturierte Informationen über IT-Systeme, die darin enthaltenen Daten und deren betreibende Organisationen im Schweizer Agrar- und Ernährungssektor.",
+    "fr": "Informations structurées sur les systèmes informatiques, les données qu'ils contiennent et les organisations qui les gèrent dans le secteur agricole et alimentaire suisse.",
+    "it": "Informazioni strutturate sui sistemi IT, i dati in essi contenuti e le organizzazioni che li gestiscono nel settore agricolo e alimentare svizzero.",
+    "en": "Structured information about IT systems, the data they contain, and the organizations that manage them in the Swiss agriculture and food sector."
+  },
+  "dcterms:accessRights": "PUBLIC",
+  "dcterms:issued": "2025-01-29",
+  "dcat:keyword": [
+    "variety",
+    "PVR",
+    "NLI",
+    "National listing",
+    "Variety protection"
+  ],
+  "dcterms:modified": "2025-02-24",
+  "schema:OrganizationRole": [
+    {
+      "schema:name": "p-1ZFWFFNP6",
+      "schema:roleName": "dataOwner"
+    }
+  ],
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "dcat:themeTaxonomy": [
+    "environment",
+    "agricultureFisheriesForestryFood"
+  ],
+  "bv:itSystem": "https://agriculture.ld.admin.ch/system-map/SYS042",
+  "dcat:distribution": [
+    {
+      "dcterms:title": {
+        "de": "RDF-Graph-File",
+        "fr": "Fichier de graphe RDF",
+        "it": "File di grafo RDF",
+        "en": "RDF graph file"
+      },
+      "dcat:accessURL": "https://github.com/blw-ofag-ufag/system-map/blob/main/graph.ttl",
+      "dcat:downloadURL": "https://raw.githubusercontent.com/blw-ofag-ufag/system-map/refs/heads/main/graph.ttl",
+      "dcterms:format": "RDF"
+    },
+    {
+      "dcterms:title": {
+        "de": "SPARQL Endpunkt für Datenabfrage",
+        "fr": "Point d'accès SPARQL pour les requêtes sur le graphe",
+        "it": "Endpoint SPARQL per interrogazioni sul grafo",
+        "en": "SPARQL endpoint for graph queries"
+      },
+      "dcat:accessURL": "https://s.zazuko.com/3sAp7YF",
+      "dcat:downloadURL": "https://s.zazuko.com/3sAp7YF",
+      "dcterms:format": "SPARQL-Service"
+    }
+  ]  
+}
