@@ -16,11 +16,11 @@
   "dcterms:accessRights": "PUBLIC",
   "dcterms:issued": "2025-01-29",
   "dcat:keyword": [
-    "variety",
-    "PVR",
-    "NLI",
-    "National listing",
-    "Variety protection"
+    "software",
+    "data",
+    "systems",
+    "network",
+    "organization"
   ],
   "dcterms:modified": "2025-02-24",
   "schema:OrganizationRole": [
