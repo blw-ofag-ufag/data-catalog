@@ -41,7 +41,7 @@
   "dpv:hasLegalBasis": [
     "https://www.fedlex.admin.ch/eli/cc/2013/417/"
   ],
-  "bv:itSystem": "ProVar",
+  "bv:itSystem": "https://agriculture.ld.admin.ch/system-map/SYS011",
   "dcat:distribution": [
     {
       "dcterms:title": {
