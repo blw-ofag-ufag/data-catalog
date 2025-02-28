@@ -316,7 +316,7 @@ function renderDatasets(data) {
       const attributes = dataset;
 
       // Provide a default for metadata if not available
-      const imageURL = attributes["bv:imageURL"]
+      const imageURL = attributes["schema:image"]
       const datasetId = attributes["dcterms:identifier"];
       const keywords = attributes["dcat:keyword"] || [];
       const maxTitleLength = 50; // Limit title to 50 characters

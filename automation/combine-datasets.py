@@ -12,8 +12,8 @@ ATTRIBUTES = [
     "dcterms:description",
     "dcterms:issued",
     "dcat:keyword",
-    "bv:affiliatedPersons",
-    "bv:imageURL"
+    "schema:OrganizationRole",
+    "schema:image"
 ]
 
 def extract_relevant_data(file_path):
@@ -24,10 +24,10 @@ def extract_relevant_data(file_path):
         
         extracted_data = {key: data[key] for key in ATTRIBUTES if key in data}
         
-        # Filter only the data owner from bv:affiliatedPersons
-        if "bv:affiliatedPersons" in extracted_data:
-            extracted_data["bv:affiliatedPersons"] = [
-                person for person in extracted_data["bv:affiliatedPersons"] 
+        # Filter only the data owner from schema:OrganizationRole
+        if "schema:OrganizationRole" in extracted_data:
+            extracted_data["schema:OrganizationRole"] = [
+                person for person in extracted_data["schema:OrganizationRole"] 
                 if person.get("role") == "dataOwner"
             ]
         

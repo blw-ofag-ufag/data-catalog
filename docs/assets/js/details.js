@@ -192,9 +192,9 @@ function renderErrorMessage(message) {
 
 // Render the full details page.
 function renderFullPageDetails(data, lang) {
-  // 1) Set the Hero Banner background image using the flat JSON field "bv:imageURL"
+  // 1) Set the Hero Banner background image using the flat JSON field "schema:image"
   const heroBanner = document.getElementById("heroBanner");
-  heroBanner.style.backgroundImage = `url('${data["bv:imageURL"]}')`;
+  heroBanner.style.backgroundImage = `url('${data["schema:image"]}')`;
 
   // 2) Render the dataset ID, localized title, and description.
   document.getElementById("datasetID").textContent = data["dcterms:identifier"] || "";
@@ -288,7 +288,7 @@ function renderMetadata(data, lang) {
     "dcat:keyword",
     "bv:affiliatedPersons",
     "dcat:distribution",
-    "bv:imageURL"
+    "schema:image"
   ];
 
   const attributeHeader = translations["details.attribute"]?.[lang] || "Attribute";
