@@ -24,6 +24,12 @@
   ],
   "dcterms:accrualPeriodicity": "MONTHLY",
   "dcterms:modified": "2025-02-20",
+  "schema:OrganizationRole": [
+    {
+      "schema:name": "p-0711690",
+      "schema:roleName": "dataOwner"
+    }
+  ],
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "personalData",
