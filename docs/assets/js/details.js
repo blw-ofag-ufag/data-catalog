@@ -333,7 +333,7 @@ function renderMetadata(data, lang) {
       val = formatPublicationMetadata(val);
     } else if (key === "dpv:hasLegalBasis") {
       val = formatUrlArray(val);
-    } else if (key === "dcat:landingPage") {
+    } else if (key === "dcat:landingPage" || key === "bv:itSystem") {
       val = formatSingleUrl(val);
     } else if (typeof val === "string") {
       val = formatDateIfPossible(val, lang);
