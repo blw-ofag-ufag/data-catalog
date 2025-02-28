@@ -241,3 +241,9 @@ main {
   color: var(--secondary-text-color);
   cursor: default; /* Disable pointer interactions */
 }
+
+/* Hide scrollbar for modern browsers */
+html, body {
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE/Edge */
+}
