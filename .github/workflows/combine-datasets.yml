@@ -3,10 +3,10 @@ name: Combine Datasets
 on:
   push:
     branches:
-      - refactor-schema-with-data  # Runs only on pushes to the 'refactor-schema-with-data' branch; to be changed!
+      - main  # Runs only on pushes to the 'main' branch; to be changed!
   pull_request:
     branches:
-      - refactor-schema-with-data  # Runs on PRs targeting the 'refactor-schema-with-data' branch; to be changed!
+      - main  # Runs on PRs targeting the 'main' branch; to be changed!
 
 jobs:
   process_datasets:

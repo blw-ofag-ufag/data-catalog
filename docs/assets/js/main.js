@@ -1,7 +1,7 @@
 /******************************************************
  *  Global configuration & variables
  *****************************************************/
-const branch = "refactor-schema-with-data";
+const branch = "main";
 const dataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/docs/assets/datasets.json`;
 let datasets = [];
 let currentLanguage = "en";

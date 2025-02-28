@@ -1,9 +1,7 @@
 /******************************************************
  * Configuration
  *****************************************************/
-const branch = "refactor-schema-with-data";
-// Base URL for individual dataset JSON files. The full URL becomes:
-// https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/{branch}/data/datasets/{datasetId}.json
+const branch = "main";
 const baseDataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/data/datasets/`;
 
 /******************************************************
