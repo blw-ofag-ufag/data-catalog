@@ -252,9 +252,6 @@ function renderAffiliatedPersons(data, lang) {
   const section = document.getElementById("metadataSection");
   const persons = data["schema:OrganizationRole"] || [];
 
-  const adminDirIDHeader = translations["details.adminDirID"]?.[lang] || "Name";
-  const roleHeader = translations["details.role"]?.[lang] || "Role";
-
   let html = `<h2>${translations["details.affiliatedRoles"]?.[lang] || "Affiliated Roles"}</h2>`;
 
   if (!Array.isArray(persons) || persons.length === 0) {
@@ -265,10 +262,12 @@ function renderAffiliatedPersons(data, lang) {
 
   html += `
     <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
+      <colgroup>
+        <col style="width: 25%;" />
+        <col style="width: 75%;" />
+      </colgroup>
       <thead>
         <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
-          <th style="padding: 8px;">${adminDirIDHeader}</th>
-          <th style="padding: 8px;">${roleHeader}</th>
         </tr>
       </thead>
       <tbody>
@@ -309,9 +308,6 @@ function renderMetadata(data, lang) {
     "schema:image"
   ];
 
-  const attributeHeader = translations["details.attribute"]?.[lang] || "Attribute";
-  const valueHeader = translations["details.value"]?.[lang] || "Value";
-
   let html = `
     <h2>${translations["details.metadata"]?.[lang] || "Metadata"}</h2>
     <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
@@ -321,8 +317,6 @@ function renderMetadata(data, lang) {
       </colgroup>
       <thead>
         <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
-          <th style="padding: 8px;">${attributeHeader}</th>
-          <th style="padding: 8px;">${valueHeader}</th>
         </tr>
       </thead>
       <tbody>
@@ -376,14 +370,11 @@ function renderDistributions(data, lang) {
     <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem;">
       <colgroup>
         <col style="width: 25%;" />
-        <col style="width: 60%;" />
-        <col style="width: 15%;" />
+        <col style="width: 65%;" />
+        <col style="width: 10%;" />
       </colgroup>
       <thead>
         <tr style="text-align:left; border-bottom: 1px solid var(--border-color);">
-          <th style="padding: 8px;">Name</th>
-          <th style="padding: 8px;">Description</th>
-          <th style="padding: 8px;">Format</th>
         </tr>
       </thead>
       <tbody>
@@ -398,9 +389,9 @@ function renderDistributions(data, lang) {
     const distURL = dist["dcat:downloadURL"] || dist["dcat:accessURL"] || "#";
     html += `
       <tr style="border-bottom: 1px solid var(--border-color);">
-        <td style="padding: 8px;">${distTitle}</td>
+        <td style="padding: 8px;"><b>${distTitle}</b></td>
         <td style="padding: 8px;">${distDesc}</td>
-        <td style="padding: 8px;">
+        <td style="padding: 8px; text-align: right;">
           <a href="${distURL}" target="_blank">
             ${distFormat}
           </a>
@@ -472,7 +463,7 @@ function renderEditHistory(datasetId, branch, lang) {
             <td style="padding: 8px;"><small>${authorLogin}</small></td>
             <td style="padding: 8px;"><small>${formattedDate}</small></td>
             <td style="padding: 8px;"><small>${message}</small></td>
-            <td style="padding: 8px;">
+            <td style="padding: 8px; text-align: right;">
               <a href="${commitUrl}" target="_blank"><tt>${sha.substring(0,20)}</tt></a>
             </td>
             </small>
