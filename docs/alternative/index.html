@@ -3,15 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FOAG Data Catalog – Enhanced</title>
+  <title>FOAG Data Catalog – Unified Pagination</title>
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- DataTables CSS -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+  />
   <!-- Tagify CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" />
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" 
+  />
+  <!-- twbs-pagination CSS (optional; often you just style the .pagination class) -->
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link 
+    rel="stylesheet" 
+    href="assets/css/style.css" 
+  />
 </head>
 <body data-page="index.html">
 
@@ -43,7 +51,7 @@
   <section class="hero-banner">
     <h1>Willkommen zum Datenkatalog des Bundesamts für Landwirtschaft</h1>
     <p class="lead">
-        Hier finden Sie alle vom Bundesamt für Landwirtschaft (BLW) gesammelten Datensätze. Die Daten selbst werden in diesem GitHub-Repository veröffentlicht und gepflegt. Wenn Sie zu dieser Sammlung beitragen möchten, wenden Sie sich bitte an das Kompetenzzentrum für die digitale Transformation.
+      Hier finden Sie alle vom Bundesamt für Landwirtschaft (BLW) gesammelten Datensätze. Die Daten selbst werden in diesem GitHub-Repository veröffentlicht und gepflegt. Wenn Sie zu dieser Sammlung beitragen möchten, wenden Sie sich bitte an das Kompetenzzentrum für die digitale Transformation.
     </p>
     <div class="hero-stats" id="hero-dataset-count">12’916 Datensätze</div>
   </section>
@@ -54,13 +62,23 @@
       <div class="row align-items-center">
         <!-- Search bar (full left aligned) -->
         <div class="col-sm-4">
-          <input type="text" id="search" class="form-control" placeholder="Search text..." />
+          <input 
+            type="text" 
+            id="search" 
+            class="form-control" 
+            placeholder="Search text..." 
+          />
         </div>
         <!-- Tag input (a bit wider) -->
         <div class="col-sm-3">
-          <input type="text" id="tag-input" class="form-control" placeholder="Add tags..." />
+          <input 
+            type="text" 
+            id="tag-input" 
+            class="form-control" 
+            placeholder="Add tags..." 
+          />
         </div>
-        <!-- Sort by dropdown (visible only in tile view) -->
+        <!-- Sort by dropdown (visible only in tile view, or maybe you want it in both) -->
         <div class="col-sm-3" id="sort-container">
           <select id="sort-options" class="form-select">
             <option value="title">Sort by Title</option>
@@ -72,9 +90,24 @@
         <!-- Grid/Table toggle always right aligned -->
         <div class="col-sm-2 text-end">
           <div class="btn-group" role="group">
-            <input type="radio" class="btn-check" name="viewMode" id="tile-view" autocomplete="off" value="tile" checked />
+            <input 
+              type="radio" 
+              class="btn-check" 
+              name="viewMode" 
+              id="tile-view" 
+              autocomplete="off" 
+              value="tile" 
+              checked
+            />
             <label class="btn btn-outline-primary" for="tile-view">Tile</label>
-            <input type="radio" class="btn-check" name="viewMode" id="table-view" autocomplete="off" value="table" />
+            <input 
+              type="radio" 
+              class="btn-check" 
+              name="viewMode" 
+              id="table-view" 
+              autocomplete="off" 
+              value="table" 
+            />
             <label class="btn btn-outline-primary" for="table-view">Table</label>
           </div>
         </div>
@@ -85,13 +118,12 @@
 
   <!-- Main Content Area -->
   <main class="container my-3">
-    <!-- Tile view container -->
-    <div id="dataset-container"></div>
-    <!-- Pagination for tile view -->
-    <ul id="pagination-container" class="pagination justify-content-center"></ul>
+    <!-- Tile view container (Bootstrap row for cards) -->
+    <div id="tile-view-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
+
     <!-- Table view container (hidden by default) -->
     <div id="table-container" style="display:none;">
-      <table id="dataset-table" class="display" style="width:100%">
+      <table class="table table-striped align-middle" id="dataset-table">
         <thead>
           <tr>
             <th>Identifier</th>
@@ -101,14 +133,20 @@
             <th>Keywords</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <!-- Rows appended dynamically -->
+        </tbody>
       </table>
     </div>
+
+    <!-- Shared Pagination for both views -->
+    <ul id="pagination-container" class="pagination justify-content-center"></ul>
   </main>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Federal Office for Agriculture.<br/>
+    <p>
+      &copy; 2025 Federal Office for Agriculture.<br/>
       <a href="https://github.com/blw-ofag-ufag/data-catalog">GitHub Repository</a> |
       <a href="#">Legal Information</a> | <a href="#">Contact</a>
     </p>
@@ -117,13 +155,17 @@
   <!-- JavaScript Libraries -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Bootstrap Bundle JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- DataTables JS -->
-  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+  </script>
   <!-- Tagify JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
-  <!-- twbs-pagination -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+  <script 
+    src="https://cdn.jsdelivr.net/npm/@yaireo/tagify">
+  </script>
+  <!-- twbs-pagination JS -->
+  <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js">
+  </script>
   <!-- Custom JS -->
   <script src="assets/js/main.js"></script>
 </body>
