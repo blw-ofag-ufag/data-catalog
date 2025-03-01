@@ -62,6 +62,42 @@ footer a:hover {
   height: 180px;
   object-fit: cover;
 }
+
+.card:hover {
+  border: 1px solid #000; 
+  box-shadow: none; /* or any shadow you'd prefer */
+}
+
+/* Title: clamp to 1 line */
+.tile-title-ellipsis {
+  font-size: 1.125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block; /* ensure ellipse can appear */
+  margin-bottom: 0.5rem;
+}
+
+/* Description: clamp to 3 lines */
+.tile-desc-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+/* For the date, we do italic. We might set a small style. */
+.tile-date-italic {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Keywords styling */
 .keywords span {
   display: inline-block;
   background: #e5e5e5;
@@ -82,4 +118,21 @@ footer a:hover {
 #pagination-container {
   margin-top: 1rem;
   text-align: center;
+}
+
+
+.table-fixed {
+  table-layout: fixed;  /* ensures columns don’t resize dynamically */
+  width: 100%;          /* take up full width */
+}
+
+/* Then set widths for each column by index */
+.table-fixed th:nth-child(1) { width: 10%; }
+.table-fixed th:nth-child(2) { width: 30%; }
+.table-fixed th:nth-child(3) { width: 15%; }
+.table-fixed th:nth-child(4) { width: 15%; }
+.table-fixed th:nth-child(5) { width: 30%; }
+
+.table-hover tbody tr:hover {
+  background-color: #2892d4; /* or any color you like */
 }

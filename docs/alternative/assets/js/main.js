@@ -112,7 +112,7 @@ function filterDatasets(dataArray, textTokens, tagValues) {
       });
     }
 
-    // Tag: exact match (i.e., user typed "milk", dataset must have "milk" as a keyword)
+    // Tag: exact match
     let tagMatch = true;
     if (tagValues.length) {
       const datasetKeywords = (d["dcat:keyword"] || []).map(k => k.toLowerCase());
@@ -165,12 +165,6 @@ function sortDatasets(dataArray, sortOption, lang) {
 /********************************************
  * PAGINATION LOGIC (twbs)
  ********************************************/
-/**
- * Initializes or re-initializes the twbs-pagination plugin.
- * @param {number} totalItems 
- * @param {number} itemsPerPage 
- * @param {function} onPageChangeCb callback when page changes
- */
 function initPagination(totalItems, itemsPerPage, onPageChangeCb) {
   const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
   if (currentPage > totalPages) currentPage = totalPages;
@@ -214,6 +208,15 @@ function renderTileView(filtered) {
   renderTilePage(sorted);
 }
 
+/**
+ * Build the tile HTML for the current page.
+ * - No "owner" shown
+ * - If date is not "N/A", show it italic
+ * - Omit date field entirely if "N/A"
+ * - No lines between attribute types
+ * - Title: 1 line clamp
+ * - Desc: 3 line clamp
+ */
 function renderTilePage(dataArray) {
   const startIdx = (currentPage - 1) * TILE_PAGE_SIZE;
   const endIdx = startIdx + TILE_PAGE_SIZE;
@@ -223,12 +226,16 @@ function renderTilePage(dataArray) {
   pageData.forEach(d => {
     const title = getDisplayTitle(d);
     const desc = d["dcterms:description"]?.[currentLanguage] || "";
-    const truncatedDesc = truncate(desc, 80);
     const issued = formatDate(d["dcterms:issued"]);
-    const owner = getDataOwnerName(d);
     const keywords = d["dcat:keyword"] || [];
     const imageSrc = d["schema:image"] || 
       "https://via.placeholder.com/300x180?text=No+Image";
+
+    // If date is not "N/A", we display it in italics. Otherwise, omit.
+    let dateHTML = "";
+    if (issued !== "N/A" && issued !== "Invalid Date") {
+      dateHTML = `<p><em class="tile-date-italic">${issued}</em></p>`;
+    }
 
     let keywordsHTML = "";
     keywords.forEach(kw => {
@@ -240,20 +247,23 @@ function renderTilePage(dataArray) {
         <div class="card h-100 dataset-card" data-id="${d["dcterms:identifier"]}">
           <img src="${imageSrc}" class="card-img-top" alt="${title}" />
           <div class="card-body">
-            <h5 class="card-title">${title}</h5>
-            <p class="card-text text-muted">${truncatedDesc}</p>
+            <!-- Title clamped to 1 line -->
+            <h5 class="tile-title-ellipsis">${title}</h5>
+
+            <!-- Description clamped to 3 lines -->
+            <p class="tile-desc-ellipsis">${desc}</p>
+
+            <!-- Date (italic) only if not N/A -->
+            ${dateHTML}
+
+            <!-- Keywords at the bottom -->
+            <div class="keywords">${keywordsHTML}</div>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><strong>Issued:</strong> ${issued}</li>
-            <li class="list-group-item"><strong>Owner:</strong> ${owner}</li>
-            <li class="list-group-item keywords">${keywordsHTML}</li>
-          </ul>
         </div>
       </div>
     `;
   });
 
-  // Insert into DOM
   $("#tile-view-container").html(html);
 
   // Show/hide relevant containers
@@ -283,14 +293,16 @@ function renderTablePage(dataArray) {
   const endIdx = startIdx + TABLE_PAGE_SIZE;
   const pageData = dataArray.slice(startIdx, endIdx);
 
-  // Build rows
   let rows = "";
   pageData.forEach(d => {
     const identifier = d["dcterms:identifier"] || "";
     const title = getDisplayTitle(d);
     const issued = formatDate(d["dcterms:issued"]);
     const owner = getDataOwnerName(d);
-    const keywords = (d["dcat:keyword"] || []).join(", ");
+    const keywordsArr = d["dcat:keyword"] || [];
+    const keywordsHTML = keywordsArr
+      .map(kw => `<span class="keyword" data-key="${kw}">${kw}</span>`)
+      .join(" ");
 
     rows += `
       <tr class="dataset-row" data-id="${identifier}">
@@ -298,9 +310,11 @@ function renderTablePage(dataArray) {
         <td>${title}</td>
         <td>${issued}</td>
         <td>${owner}</td>
-        <td>${keywords}</td>
+        <td>
+          <div class="keywords">${keywordsHTML}</div>
+        </td>
       </tr>
-    `;
+    `;    
   });
 
   $("#dataset-table tbody").html(rows);
@@ -327,12 +341,11 @@ function applyFiltersAndRender() {
   // Update URL
   updateUrlParams();
 
-  // Show or hide the sort dropdown (you could show it for both if you want)
   if (viewMode === "tile") {
     $("#sort-container").show();
     renderTileView(filtered);
   } else {
-    $("#sort-container").show(); // or hide if you prefer
+    $("#sort-container").show();
     renderTableView(filtered);
   }
 }
@@ -405,7 +418,7 @@ $(document).ready(function () {
       applyFiltersAndRender();
     }
   });
-  // h) On window resize, re-render tile if needed
+  // h) On window resize, re-render if needed (for tile layout)
   $(window).on("resize", function () {
     if (viewMode === "tile") {
       currentPage = 1;
