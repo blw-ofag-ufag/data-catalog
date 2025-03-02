@@ -801,11 +801,12 @@
         },
         "dcterms:issued": "2025-02-20",
         "dcat:keyword": [
-            "variety",
+            "plant-variety",
+            "plant-breeding",
+            "botany",
             "PVR",
-            "NLI",
-            "National listing",
-            "Variety protection"
+            "variety-protection",
+            "UPOV"
         ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/sortenliste.png",
         "dataOwner": "p-0711690"
