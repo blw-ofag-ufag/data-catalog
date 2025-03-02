@@ -20,7 +20,11 @@
     "email": "alessandro.rossi@blw.admin.ch"
   },
   "dcterms:issued": "2016-11-08",
-  "dcat:keyword": [],
+  "dcat:keyword": [
+    "milk",
+    "eggs",
+    "consumption"
+  ],
   "dcterms:accrualPeriodicity": "ANNUAL",
   "dcterms:modified": "2025-01-15",
   "adms:status": "published",

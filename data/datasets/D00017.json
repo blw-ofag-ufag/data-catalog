@@ -22,7 +22,8 @@
   "dcterms:issued": "2025-01-16",
   "dcat:keyword": [
     "market-data",
-    "price"
+    "price",
+    "milk"
   ],
   "dcterms:accrualPeriodicity": "ANNUAL",
   "dcterms:modified": "2025-01-15",
