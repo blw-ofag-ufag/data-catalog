@@ -16,11 +16,12 @@
   "dcterms:accessRights": "PUBLIC",
   "dcterms:issued": "2025-02-20",
   "dcat:keyword": [
-    "variety",
+    "plant-variety",
+    "plant-breeding",
+    "botany",
     "PVR",
-    "NLI",
-    "National listing",
-    "Variety protection"
+    "variety-protection",
+    "UPOV"
   ],
   "dcterms:accrualPeriodicity": "MONTHLY",
   "dcterms:modified": "2025-02-20",
