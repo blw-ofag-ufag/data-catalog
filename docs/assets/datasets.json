@@ -61,7 +61,11 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": [],
+        "dcat:keyword": [
+            "animal-breeding",
+            "animal-production",
+            "diary-farming"
+        ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
@@ -251,7 +255,8 @@
         "dcterms:issued": "2025-01-16",
         "dcat:keyword": [
             "market-data",
-            "quantity"
+            "quantity",
+            "milk"
         ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
@@ -338,7 +343,8 @@
         "dcterms:issued": "2025-01-16",
         "dcat:keyword": [
             "price",
-            "market-data"
+            "market-data",
+            "milk"
         ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
@@ -714,7 +720,8 @@
         "dcterms:issued": "2025-01-16",
         "dcat:keyword": [
             "market-data",
-            "price"
+            "price",
+            "milk"
         ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
@@ -919,7 +926,8 @@
         "dcterms:issued": "2025-01-16",
         "dcat:keyword": [
             "price",
-            "market-data"
+            "market-data",
+            "milk"
         ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
@@ -1080,7 +1088,8 @@
         "dcterms:issued": "2025-01-16",
         "dcat:keyword": [
             "market-data",
-            "price"
+            "price",
+            "milk"
         ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
@@ -1147,7 +1156,11 @@
             "en": ""
         },
         "dcterms:issued": "2016-11-08",
-        "dcat:keyword": [],
+        "dcat:keyword": [
+            "milk",
+            "eggs",
+            "consumption"
+        ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
