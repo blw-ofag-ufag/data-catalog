@@ -7,12 +7,13 @@ const dataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/re
 // Master data
 let datasets = [];
 // UI state
-let currentLanguage = "en"; // Default
+let currentLanguage = "en";
+let currentSort = "issued-desc"; // or whichever default you want
 let viewMode = "tile";      // "tile" or "table"
 let currentPage = 1;
 // Page sizes
 const TILE_PAGE_SIZE = 9;   // 3×3 layout
-const TABLE_PAGE_SIZE = 10; // 10 rows per table page
+const TABLE_PAGE_SIZE = 20; // 10 rows per table page
 // Tagify instance
 let tagify;
 
@@ -51,14 +52,14 @@ function getDisplayTitle(dataset) {
 /********************************************
  * URL PARAMS: READ / UPDATE
  ********************************************/
+
 function readUrlParams() {
   const params = new URLSearchParams(window.location.search);
   if (params.has("lang")) {
     currentLanguage = params.get("lang");
-    $("#language-select").val(currentLanguage);
   }
   if (params.has("sort")) {
-    $("#sort-options").val(params.get("sort"));
+    currentSort = params.get("sort");
   }
   if (params.has("text")) {
     $("#search").val(params.get("text"));
@@ -71,14 +72,52 @@ function readUrlParams() {
     currentPage = parseInt(params.get("page"), 10) || 1;
   }
 }
+
 function updateUrlParams() {
-  const lang = $("#language-select").val();
-  const sort = $("#sort-options").val();
+  const params = new URLSearchParams();
+  params.set("lang", currentLanguage);
+  params.set("sort", currentSort);
+  params.set("view", viewMode);
+  params.set("page", currentPage);
+
+  // If there's text in search, set it
   const text = $("#search").val().trim();
-  const params = new URLSearchParams({ lang, sort, view: viewMode, page: currentPage });
   if (text) params.set("text", text);
+
   window.history.replaceState({}, "", "?" + params.toString());
 }
+
+function setLanguageDropdownLabel(lang) {
+  // Switch or if/else to pick the text to show
+  let label = "English";
+  if (lang === "de") label = "Deutsch";
+  else if (lang === "fr") label = "Français";
+  else if (lang === "it") label = "Italiano";
+  else if (lang === "en") label = "English";
+  $("#language-dropdown-button").text(label);
+}
+
+function setSortDropdownLabel(sortValue) {
+  let label = "";
+  switch(sortValue) {
+    case "title":
+      label = "Sort by Title";
+      break;
+    case "issued-asc":
+      label = "Sort by Issued Date (Asc)";
+      break;
+    case "issued-desc":
+      label = "Sort by Issued Date (Desc)";
+      break;
+    case "owner":
+      label = "Sort by Data Owner";
+      break;
+    default:
+      label = "Sort by Title";
+  }
+  $("#sort-dropdown-button").text(label);
+}
+
 
 /********************************************
  * FILTER & SORT
@@ -178,16 +217,20 @@ function initPagination(totalItems, itemsPerPage, onPageChangeCb) {
       visiblePages: 5,
       startPage: currentPage,
       onPageClick: function (event, page) {
-        if (page !== currentPage) {
-          currentPage = page;
-          updateUrlParams();
-          onPageChangeCb(page);
-        }
+        // Update "Page X of Y" text
+        $("#page-indicator").text(`Page ${page} of ${totalPages}`);
+
+        // Update currentPage, re-render
+        currentPage = page;
+        onPageChangeCb(page);
       }
     });
+    // Also show the initial "Page X of Y" text
+    $("#page-indicator").text(`Page ${currentPage} of ${totalPages}`);
   } else {
     // No pagination needed
     $("#pagination-container").empty();
+    $("#page-indicator").empty(); // or show "Page 1 of 1" if you prefer
   }
 }
 
@@ -196,7 +239,7 @@ function initPagination(totalItems, itemsPerPage, onPageChangeCb) {
  ********************************************/
 function renderTileView(filtered) {
   // 1. Sort
-  const sortOption = $("#sort-options").val();
+  const sortOption = currentSort;
   const sorted = sortDatasets(filtered, sortOption, currentLanguage);
 
   // 2. Initialize pagination for tile view
@@ -276,7 +319,7 @@ function renderTilePage(dataArray) {
  ********************************************/
 function renderTableView(filtered) {
   // 1. Sort
-  const sortOption = $("#sort-options").val();
+  const sortOption = currentSort;
   const sorted = sortDatasets(filtered, sortOption, currentLanguage);
 
   // 2. Initialize pagination for table view
@@ -354,8 +397,11 @@ function applyFiltersAndRender() {
  * DOCUMENT READY
  ********************************************/
 $(document).ready(function () {
+
   // 1. Read initial URL params
   readUrlParams();
+  setLanguageDropdownLabel(currentLanguage);
+  setSortDropdownLabel(currentSort);
 
   // 2. Initialize Tagify
   const input = document.getElementById('tag-input');
@@ -385,17 +431,24 @@ $(document).ready(function () {
     currentPage = 1;
     applyFiltersAndRender();
   });
-  // c) Language select
-  $("#language-select").on("change", function () {
-    currentLanguage = $(this).val();
+  // When user clicks a language option
+  $(document).on("click", ".dropdown-item.lang-option", function(e) {
+    e.preventDefault(); // don't follow href
+    currentLanguage = $(this).data("lang"); 
+    setLanguageDropdownLabel(currentLanguage);
     currentPage = 1;
     applyFiltersAndRender();
   });
-  // d) Sort dropdown
-  $("#sort-options").on("change", function () {
+
+  // When user clicks a sort option
+  $(document).on("click", ".dropdown-item.sort-option", function(e) {
+    e.preventDefault();
+    currentSort = $(this).data("sort");
+    setSortDropdownLabel(currentSort);
     currentPage = 1;
     applyFiltersAndRender();
   });
+
   // e) View mode toggle
   $("input[name='viewMode']").on("change", function () {
     viewMode = $(this).val();

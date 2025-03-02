@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dataset Details</title>
+  <!-- Reuse your existing stylesheet -->
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    #heroBanner {
+      width: 100%;
+      height: 300px; /* pick your height */
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 30px;
+    }
+    #detailsMain {
+      display: block;
+      max-width: 1200px; /* or your preference */
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .dataset-id {
+      font-family: monospace;
+      font-size: 14px;
+      color: var(--secondary-text-color);
+      margin-bottom: 5px;
+    }
+
+    .dataset-title {
+      margin: 0;
+      font-size: 2rem;
+      color: var(--primary-text-color);
+    }
+    .dataset-description {
+      font-size: 18px; /* or 15–18 as you prefer */
+      line-height: 1.4;
+      margin: 15px 0 20px; 
+      color: var(--secondary-text-color);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="heroBanner"></div>
+
+  <main id="detailsMain">
+    <p class="dataset-id" id="datasetID"></p>
+    <h1 class="dataset-title" id="datasetTitle"></h1>
+    <p class="dataset-description" id="datasetDescription"></p>
+    <div class="keywords" id="keywordsContainer"></div>
+    <section id="metadataSection"></section>
+    <section id="distributionsSection"></section>
+    <section id="editHistorySection"></section>
+  </main>
+
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/details.js"></script>
+</body>
+</html>

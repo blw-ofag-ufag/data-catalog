@@ -1,7 +1,17 @@
+:root {
+  /* A compact 7-color palette */
+  --color-background:       #ffffff;
+  --color-foreground:       #000000;
+  --color-foreground-faded: #888888;
+  --color-primary:          #203139;
+  --color-primary-faded:    #fefefe;
+  --color-accent:           #203139;
+}
+
 /* General styling */
 body {
-  background-color: #f8f9fa;
-  color: #212529;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
@@ -9,13 +19,13 @@ body {
 
 /* Navigation */
 nav.navbar {
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Hero Banner */
 .hero-banner {
-  background: #455b65;
-  color: #fff;
+  background: var(--color-accent);
+  color: var(--color-background);
   padding: 2rem 1rem;
   text-align: center;
 }
@@ -36,13 +46,12 @@ nav.navbar {
 
 /* Footer */
 footer {
-  background: #212529;
-  color: #fff;
+  background: var(--color-accent);
+  color: var(--color-background);
   padding: 2rem 1rem;
   text-align: center;
 }
 footer a {
-  color: #0d6efd;
   text-decoration: none;
 }
 footer a:hover {
@@ -63,9 +72,14 @@ footer a:hover {
   object-fit: cover;
 }
 
+.card {
+  border: 1px solid var(--color-primary);
+}
+
 .card:hover {
-  border: 1px solid #000; 
-  box-shadow: none; /* or any shadow you'd prefer */
+  border: 1px solid var(--color-primary);
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px; /* adjusts the outline to overlap the border */
 }
 
 /* Title: clamp to 1 line */
@@ -75,14 +89,14 @@ footer a:hover {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  display: block; /* ensure ellipse can appear */
+  display: block;
   margin-bottom: 0.5rem;
 }
 
 /* Description: clamp to 3 lines */
 .tile-desc-ellipsis {
   display: -webkit-box;
-  -webkit-line-clamp: 3; 
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -90,7 +104,7 @@ footer a:hover {
   margin-bottom: 0.75rem;
 }
 
-/* For the date, we do italic. We might set a small style. */
+/* Date styling (using literal as it’s a one-off) */
 .tile-date-italic {
   font-style: italic;
   font-size: 0.9rem;
@@ -106,7 +120,7 @@ footer a:hover {
   border-radius: 3px;
   margin-right: 0.25rem;
   cursor: pointer;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 .keywords span:hover {
@@ -120,77 +134,148 @@ footer a:hover {
   text-align: center;
 }
 
+/* Basic table reset */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+  color: inherit;
+}
 
+/* Optional: If you want a distinct header with no background, just a thicker bottom line: */
+.table thead {
+  border-top: 2px solid var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.table th,
+.table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-primary); /* Use primary color as separators */
+  vertical-align: middle; /* “align-middle” effect */
+}
+
+/* Slightly bolder header text for contrast */
+.table thead th {
+  font-weight: 600;
+}
+
+/* Hover effect: fill row with primary color, invert text to white */
+.table-hover tbody tr:hover,
+.table-hover tbody tr:hover td {
+  background-color: var(--color-primary-faded) !important;
+}
+
+/* Fixed Table Layout */
 .table-fixed {
-  table-layout: fixed;  /* ensures columns don’t resize dynamically */
-  width: 100%;          /* take up full width */
+  table-layout: fixed;
+  width: 100%;
 }
-
-/* Then set widths for each column by index */
-.table-fixed th:nth-child(1) { width: 10%; }
-.table-fixed th:nth-child(2) { width: 30%; }
-.table-fixed th:nth-child(3) { width: 15%; }
-.table-fixed th:nth-child(4) { width: 15%; }
+.table-fixed th:nth-child(1) { width: 8%; }
+.table-fixed th:nth-child(2) { width: 32%; }
+.table-fixed th:nth-child(3) { width: 12%; }
+.table-fixed th:nth-child(4) { width: 10%; }
 .table-fixed th:nth-child(5) { width: 30%; }
-
-.table-hover tbody tr:hover {
-  background-color: #2892d4; /* or any color you like */
-}
 
 /* Universal "unified-control" class for consistent styling */
 .unified-control {
-  background-color: transparent; /* or #000 if you want a black fill */
-  color: #000000;                  /* text color */
-  border: 1px solid #000000;       /* outline color */
-  border-radius: 4px;           /* consistent corner rounding */
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
 }
-
-/* Remove default focus glow from Bootstrap */
 .unified-control:focus {
-  box-shadow: none !important;  /* kill default BS focus shadow */
-  outline: none;                /* remove any default outline */
-  border-color: #000000;           /* or keep it white; up to you */
+  box-shadow: none !important;
+  outline: none;
+  border-color: var(--color-primary);
 }
-
-/* For placeholders (search bar, etc.) */
 .unified-control::placeholder {
-  color: #aeaeae;
-  opacity: 1; /* if you want it fully opaque */
+  color: var(--color-foreground-faded);
 }
-
 .unified-control:active {
-  background-color: #e6e6e6;
-  color: #000;
-  border-color: #000000;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
-
-/* If you want the label to invert on hover/active: */
 .btn.unified-control:hover {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--color-primary);
+  color: var(--color-background);
 }
 .btn-check:checked + .unified-control {
-  background-color: #000000;
-  color: #ffffff;
-  border-color: #000000;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  border-color: var(--color-primary);
 }
 
 /* Tagify main wrapper */
 .tagify {
-  background-color: transparent; /* or #000 if you want */
-  border: 1px solid #000000;        /* match your outline color */
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
   border-radius: 4px;
-  color: #000000;
+  color: var(--color-primary);
 }
-
-/* The actual input inside Tagify */
 .tagify__input {
   background-color: transparent;
-  color: #000000;
-  border: none !important; /* remove default Tagify or browser border */
+  color: var(--color-foreground);
+  border: none !important;
+}
+.tagify__input::placeholder {
+  color: var(--color-foreground-faded);
 }
 
-/* If you want the placeholder in Tagify to match */
-.tagify__input::placeholder {
-  color: #ccc;
+/* Pagination styling */
+.pagination li {
+  margin: 0;
+}
+.page-link {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.page-item:first-child .page-link {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.page-item:last-child .page-link {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.page-item.active .page-link {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  border-color: var(--color-primary);
+}
+.page-link:hover {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: var(--color-background);
+  text-decoration: none;
+}
+.page-item.disabled .page-link {
+  background-color: var(--color-background);
+  color: var(--color-foreground-faded);
+  pointer-events: none;
+  border: 1px solid var(--color-primary);
+}
+
+/* Dropdown menu container */
+.dropdown-menu {
+  background-color: var(--color-background) !important;
+  border: 1px solid var(--color-primary) !important; /* optional border */
+}
+
+/* Dropdown items */
+.dropdown-item {
+  color: var(--color-foreground) !important;
+  background-color: transparent !important;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Hover/Focus/Active states */
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-item:active {
+  background-color: var(--color-primary) !important;
+  color: var(--color-background) !important;
+  text-decoration: none; /* remove underline */
 }

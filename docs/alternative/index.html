@@ -1,175 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FOAG Data Catalog – Unified Pagination</title>
-  <!-- Bootstrap CSS -->
-  <link 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-  />
-  <!-- Tagify CSS -->
-  <link 
-    rel="stylesheet" 
-    href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" 
-  />
-  <!-- twbs-pagination CSS (optional; typically the .pagination class is enough) -->
-  <!-- Custom CSS -->
-  <link 
-    rel="stylesheet" 
-    href="assets/css/style.css" 
-  />
-</head>
-<body data-page="index.html">
-
-  <!-- Top Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">DigiAgriCat</a>
-      <div class="d-flex ms-auto align-items-center">
-        <!-- Example navigation links -->
-        <ul class="navbar-nav me-3">
-          <li class="nav-item"><a class="nav-link" href="#">Organizations</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Stories</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Handbook</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-        </ul>
-        <!-- Language selection (applied globally) -->
-        <select id="language-select" class="form-select form-select-sm unified-control">
-          <option value="de">Deutsch</option>
-          <option value="fr">Français</option>
-          <option value="it">Italiano</option>
-          <option value="en" selected>English</option>
-        </select>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Banner -->
-  <section class="hero-banner">
-      <h1>Willkommen zum Datenkatalog des Bundesamts für Landwirtschaft</h1>
-      <p class="lead">
-        Hier finden Sie alle vom Bundesamt für Landwirtschaft (BLW) gesammelten Datensätze. Die Daten selbst werden in diesem GitHub-Repository veröffentlicht und gepflegt. Wenn Sie zu dieser Sammlung beitragen möchten, wenden Sie sich bitte an das Kompetenzzentrum für die digitale Transformation.
-      </p>
-    <div class="hero-stats" id="hero-dataset-count">100 Datensätze</div>
-  </section>
-
-  <!-- Search & Controls -->
-  <section class="search-section">
-    <div class="container">
-      <div class="row align-items-center">
-        <!-- Search bar (full left aligned) -->
-        <div class="col-sm-4">
-          <input 
-            type="text" 
-            id="search" 
-            class="form-control unified-control" 
-            placeholder="Search text..."
-          />
-        </div>
-        <!-- Tag input (a bit wider) -->
-        <div class="col-sm-3">
-          <input 
-            type="text" 
-            id="tag-input" 
-            class="form-control unified-control" 
-            placeholder="Add tags..."
-          />
-        </div>
-        <!-- Sort by dropdown (visible for both views in this example) -->
-        <div class="col-sm-3" id="sort-container">
-          <select id="sort-options" class="form-select unified-control">
-            <option value="title">Sort by Title</option>
-            <option value="issued-asc">Sort by Issued Date (Asc)</option>
-            <option value="issued-desc" selected>Sort by Issued Date (Desc)</option>
-            <option value="owner">Sort by Data Owner</option>
-          </select>
-        </div>
-        <!-- Grid/Table toggle always right aligned -->
-        <div class="col-sm-2 text-end">
-          <div class="btn-group" role="group">
-            <input 
-              type="radio" 
-              class="btn-check" 
-              name="viewMode" 
-              id="tile-view" 
-              value="tile" 
-              checked
-            />
-            <label class="btn unified-control" for="tile-view">Tile</label>
-            <input 
-              type="radio" 
-              class="btn-check" 
-              name="viewMode" 
-              id="table-view" 
-              value="table"
-            />
-            <label class="btn unified-control" for="table-view">Table</label>
-          </div>
-        </div>
-      </div>
-      <div id="search-chips-container" class="mt-2"></div>
-    </div>
-  </section>
-
-  <!-- Main Content Area -->
-  <main class="container my-3">
-    <!-- Tile view container (Bootstrap row for cards) -->
-    <div id="tile-view-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
-
-    <!-- Table view container (hidden by default) -->
-    <div id="table-container" style="display:none;">
-      <table class="table table-striped table-hover table-fixed align-middle" id="dataset-table">
-        <thead>
-          <tr>
-            <th>Identifier</th>
-            <th>Title</th>
-            <th>Issued</th>
-            <th>Owner</th>
-            <th>Keywords</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Rows appended dynamically -->
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Shared Pagination for both views -->
-    <ul id="pagination-container" class="pagination justify-content-center"></ul>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-      <section class="bg-dark py-2">
-      <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-center">
-        <div class="footer-links mb-2 mb-lg-0">
-          <a href="#" class="text-light me-3">Über diesen Datenkatalog</a>
-          <a href="#" class="text-light me-3">Kontakt</a>
-          <a href="#" class="text-light me-3">Rechtliche Hinweise</a>
-          <a href="#" class="text-light me-3">Quellcode</a>
-        </div>
-      </div>
-    </section>
-  </footer>  
-
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- Bootstrap Bundle JS -->
-  <script 
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
-  </script>
-  <!-- Tagify JS -->
-  <script 
-    src="https://cdn.jsdelivr.net/npm/@yaireo/tagify">
-  </script>
-  <!-- twbs-pagination JS -->
-  <script 
-    src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js">
-  </script>
-  <!-- Custom JS -->
-  <script src="assets/js/main.js"></script>
-</body>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>FOAG data catalog</title>
+      <!-- Bootstrap CSS -->
+      <link 
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+         rel="stylesheet" 
+         />
+      <!-- Tagify CSS -->
+      <link 
+         rel="stylesheet" 
+         href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" 
+         />
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="assets/css/style.css" />
+   </head>
+   <body data-page="index.html">
+      <!-- Navbar Placeholder -->
+      <div id="navbar-placeholder"></div>
+      <!-- Hero Banner -->
+      <section class="hero-banner">
+         <h1>Willkommen zum Datenkatalog des Bundesamts für Landwirtschaft</h1>
+         <p class="lead">
+            Hier finden Sie alle vom Bundesamt für Landwirtschaft (BLW) gesammelten Datensätze. 
+            Die Daten selbst werden in diesem GitHub-Repository veröffentlicht und gepflegt. 
+            Wenn Sie zu dieser Sammlung beitragen möchten, wenden Sie sich bitte an das Kompetenzzentrum für die digitale Transformation.
+         </p>
+      </section>
+      <!-- Search & Controls -->
+      <section class="search-section">
+         <div class="container">
+            <div class="row align-items-center">
+               <!-- Search bar (full left aligned) -->
+               <div class="col-sm-3">
+                  <input 
+                     type="text" 
+                     id="search" 
+                     class="form-control unified-control" 
+                     placeholder="Search text..."
+                     />
+               </div>
+               <!-- Tag input (a bit wider) -->
+               <div class="col-sm-4">
+                  <input 
+                     type="text" 
+                     id="tag-input" 
+                     class="form-control unified-control" 
+                     placeholder="Add tags..."
+                     />
+               </div>
+               <!-- Sort by dropdown (visible for both views in this example) -->
+               <div class="col-sm-3" id="sort-container">
+                  <div class="dropdown">
+                     <button 
+                        class="btn unified-control dropdown-toggle" 
+                        type="button" 
+                        id="sort-dropdown-button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        >
+                     Sort by Title
+                     </button>
+                     <ul class="dropdown-menu" aria-labelledby="sort-dropdown-button">
+                        <li><a class="dropdown-item sort-option" data-sort="title" href="#">Sort by Title</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="issued-asc" href="#">Sort by Issued Date (Asc)</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="issued-desc" href="#">Sort by Issued Date (Desc)</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="owner" href="#">Sort by Data Owner</a></li>
+                     </ul>
+                  </div>
+               </div>
+               <!-- Grid/Table toggle always right aligned -->
+               <div class="col-sm-2 text-end">
+                  <div class="btn-group" role="group">
+                     <input 
+                        type="radio" 
+                        class="btn-check" 
+                        name="viewMode" 
+                        id="tile-view" 
+                        value="tile" 
+                        checked
+                        />
+                     <label class="btn unified-control" for="tile-view">Tile</label>
+                     <input 
+                        type="radio" 
+                        class="btn-check" 
+                        name="viewMode" 
+                        id="table-view" 
+                        value="table"
+                        />
+                     <label class="btn unified-control" for="table-view">Table</label>
+                  </div>
+               </div>
+            </div>
+            <div id="search-chips-container" class="mt-2"></div>
+         </div>
+      </section>
+      <!-- Main Content Area -->
+      <main class="container my-3">
+         <!-- Tile view container (Bootstrap row for cards) -->
+         <div id="tile-view-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
+         <!-- Table view container (hidden by default) -->
+         <div id="table-container" style="display:none;">
+            <table class="table table-hover table-fixed align-middle" id="dataset-table">
+               <thead>
+                  <tr>
+                     <th>Identifier</th>
+                     <th>Title</th>
+                     <th>Issued</th>
+                     <th>Owner</th>
+                     <th>Keywords</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <!-- Rows appended dynamically -->
+               </tbody>
+            </table>
+         </div>
+         <div class="row align-items-center my-3">
+            <!-- Left side: page indicator text -->
+            <div class="col text-start" id="page-indicator"></div>
+            <!-- Right side: pagination -->
+            <div class="col text-end">
+               <ul id="pagination-container" class="pagination justify-content-end"></ul>
+            </div>
+         </div>
+      </main>
+      <!-- Footer Placeholder -->
+      <div id="footer-placeholder"></div>
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <!-- Bootstrap Bundle JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Tagify JS -->
+      <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+      <!-- twbs-pagination JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+      <!-- Custom JS -->
+      <script src="assets/js/main.js"></script>
+      <!-- AJAX/Fetch to Load Fragments -->
+      <script>
+         $(document).ready(function() {
+           // Load navbar
+           $("#navbar-placeholder").load("navbar.html", function() {
+             // Optional: Add any additional initialization code for navbar here.
+           });
+         
+           // Load footer
+           $("#footer-placeholder").load("footer.html", function() {
+             // Optional: Add any additional initialization code for footer here.
+           });
+         });
+      </script>
+   </body>
 </html>
