@@ -3,9 +3,9 @@
   --color-background:       #ffffff;
   --color-foreground:       #000000;
   --color-foreground-faded: #888888;
-  --color-primary:          #203139;
-  --color-primary-faded:    #fefefe;
-  --color-accent:           #203139;
+  --color-primary:          #2c3a3f;
+  --color-primary-faded:    #2c3a3f20;
+  --color-accent:           #2c3a3f;
 }
 
 /* General styling */
@@ -278,4 +278,23 @@ footer a:hover {
   background-color: var(--color-primary) !important;
   color: var(--color-background) !important;
   text-decoration: none; /* remove underline */
+}
+
+.enumeration-chip {
+  display: inline-block;
+  border: 1px solid var(--primary-text-color);
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 12px;
+  color: var(--primary-text-color);
+  font-weight: 400;
+  margin: 2px 4px 2px 0;
+  text-transform: capitalize; /* Ensure each word starts with uppercase */
+}
+
+.keyword-chip.more-keywords {
+  background-color: var(--border-color); /* Adjust as needed */
+  color: var(--secondary-text-color);
+  cursor: default; /* Disable pointer interactions */
 }
