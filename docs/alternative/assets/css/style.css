@@ -14,7 +14,7 @@ nav.navbar {
 
 /* Hero Banner */
 .hero-banner {
-  background: #008080;
+  background: #455b65;
   color: #fff;
   padding: 2rem 1rem;
   text-align: center;
@@ -24,9 +24,9 @@ nav.navbar {
   font-weight: 600;
 }
 .hero-banner p.lead {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   margin: 1rem auto 2rem;
-  max-width: 650px;
+  max-width: 80%;
 }
 .hero-stats {
   font-size: 3rem;
@@ -135,4 +135,62 @@ footer a:hover {
 
 .table-hover tbody tr:hover {
   background-color: #2892d4; /* or any color you like */
+}
+
+/* Universal "unified-control" class for consistent styling */
+.unified-control {
+  background-color: transparent; /* or #000 if you want a black fill */
+  color: #000000;                  /* text color */
+  border: 1px solid #000000;       /* outline color */
+  border-radius: 4px;           /* consistent corner rounding */
+}
+
+/* Remove default focus glow from Bootstrap */
+.unified-control:focus {
+  box-shadow: none !important;  /* kill default BS focus shadow */
+  outline: none;                /* remove any default outline */
+  border-color: #000000;           /* or keep it white; up to you */
+}
+
+/* For placeholders (search bar, etc.) */
+.unified-control::placeholder {
+  color: #aeaeae;
+  opacity: 1; /* if you want it fully opaque */
+}
+
+.unified-control:active {
+  background-color: #e6e6e6;
+  color: #000;
+  border-color: #000000;
+}
+
+/* If you want the label to invert on hover/active: */
+.btn.unified-control:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+.btn-check:checked + .unified-control {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+/* Tagify main wrapper */
+.tagify {
+  background-color: transparent; /* or #000 if you want */
+  border: 1px solid #000000;        /* match your outline color */
+  border-radius: 4px;
+  color: #000000;
+}
+
+/* The actual input inside Tagify */
+.tagify__input {
+  background-color: transparent;
+  color: #000000;
+  border: none !important; /* remove default Tagify or browser border */
+}
+
+/* If you want the placeholder in Tagify to match */
+.tagify__input::placeholder {
+  color: #ccc;
 }

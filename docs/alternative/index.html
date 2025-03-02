@@ -37,7 +37,7 @@
           <li class="nav-item"><a class="nav-link" href="#">About</a></li>
         </ul>
         <!-- Language selection (applied globally) -->
-        <select id="language-select" class="form-select form-select-sm">
+        <select id="language-select" class="form-select form-select-sm unified-control">
           <option value="de">Deutsch</option>
           <option value="fr">Français</option>
           <option value="it">Italiano</option>
@@ -49,24 +49,24 @@
 
   <!-- Hero Banner -->
   <section class="hero-banner">
-    <h1>Willkommen zum Datenkatalog des Bundesamts für Landwirtschaft</h1>
-    <p class="lead">
-      Hier finden Sie alle vom Bundesamt für Landwirtschaft (BLW) gesammelten Datensätze. Die Daten selbst werden in diesem GitHub-Repository veröffentlicht und gepflegt. Wenn Sie zu dieser Sammlung beitragen möchten, wenden Sie sich bitte an das Kompetenzzentrum für die digitale Transformation.
-    </p>
+      <h1>Willkommen zum Datenkatalog des Bundesamts für Landwirtschaft</h1>
+      <p class="lead">
+        Hier finden Sie alle vom Bundesamt für Landwirtschaft (BLW) gesammelten Datensätze. Die Daten selbst werden in diesem GitHub-Repository veröffentlicht und gepflegt. Wenn Sie zu dieser Sammlung beitragen möchten, wenden Sie sich bitte an das Kompetenzzentrum für die digitale Transformation.
+      </p>
     <div class="hero-stats" id="hero-dataset-count">100 Datensätze</div>
   </section>
 
   <!-- Search & Controls -->
   <section class="search-section">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row align-items-center">
         <!-- Search bar (full left aligned) -->
         <div class="col-sm-4">
           <input 
             type="text" 
             id="search" 
-            class="form-control" 
-            placeholder="Search text..." 
+            class="form-control unified-control" 
+            placeholder="Search text..."
           />
         </div>
         <!-- Tag input (a bit wider) -->
@@ -74,13 +74,13 @@
           <input 
             type="text" 
             id="tag-input" 
-            class="form-control" 
-            placeholder="Add tags..." 
+            class="form-control unified-control" 
+            placeholder="Add tags..."
           />
         </div>
         <!-- Sort by dropdown (visible for both views in this example) -->
         <div class="col-sm-3" id="sort-container">
-          <select id="sort-options" class="form-select">
+          <select id="sort-options" class="form-select unified-control">
             <option value="title">Sort by Title</option>
             <option value="issued-asc">Sort by Issued Date (Asc)</option>
             <option value="issued-desc" selected>Sort by Issued Date (Desc)</option>
@@ -95,20 +95,18 @@
               class="btn-check" 
               name="viewMode" 
               id="tile-view" 
-              autocomplete="off" 
               value="tile" 
               checked
             />
-            <label class="btn btn-outline-primary" for="tile-view">Tile</label>
+            <label class="btn unified-control" for="tile-view">Tile</label>
             <input 
               type="radio" 
               class="btn-check" 
               name="viewMode" 
               id="table-view" 
-              autocomplete="off" 
-              value="table" 
+              value="table"
             />
-            <label class="btn btn-outline-primary" for="table-view">Table</label>
+            <label class="btn unified-control" for="table-view">Table</label>
           </div>
         </div>
       </div>
