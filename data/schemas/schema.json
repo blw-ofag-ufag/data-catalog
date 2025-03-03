@@ -161,15 +161,18 @@
                         "title": "Accrual periodicity",
                         "description": "Frequency with which dataset is updated (e.g., 'Annual').",
                         "enum": [
-                            "OTHER",
-                            "HOURLY",
-                            "UNKNOWN",
-                            "QUARTERLY",
-                            "NEVER",
-                            "MONTHLY",
-                            "ANNUAL",
-                            "DAILY",
-                            "AS_NEEDED"
+                            "http://publications.europa.eu/resource/authority/frequency/OTHER",
+                            "http://publications.europa.eu/resource/authority/frequency/HOURLY",
+                            "http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
+                            "http://publications.europa.eu/resource/authority/frequency/QUARTERLY",
+                            "http://publications.europa.eu/resource/authority/frequency/NEVER",
+                            "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+                            "http://publications.europa.eu/resource/authority/frequency/ANNUAL",
+                            "http://publications.europa.eu/resource/authority/frequency/DAILY",
+                            "http://publications.europa.eu/resource/authority/frequency/AS_NEEDED",
+                            "http://publications.europa.eu/resource/authority/frequency/WEEKLY",
+                            "http://publications.europa.eu/resource/authority/frequency/IRREG",
+                            "http://publications.europa.eu/resource/authority/frequency/CONT"
                         ]
                     },
                     "dct:modified": {
