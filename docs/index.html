@@ -1,41 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FOAG Data Catalog</title>
-  <link rel="stylesheet" href="assets/styles.css">
-</head>
-<body data-page="index.html">
-    <header>
-      <h1 data-i18n="index.title">Welcome to the data catalog of the Federal Office for Agriculture</h1>
-      <p data-i18n="index.subtitle">
-        Here, you'll be able to find any data set collected by the Federal Office for Agriculture (FOAG). The data itself is published and maintained on <a href="https://github.com/blw-ofag-ufag/data-catalog/blob/main/data/dataCatalog.json">this GitHub repository</a>.
-      </p>
-      <div class="controls">
-        <input
-          type="text"
-          id="search"
-          placeholder="Search in the title, description, dates, owners or keywords..."
-          data-i18n="index.searchPlaceholder"
-        />
-        <select id="sort-options">
-          <option value="title" data-i18n="index.sortTitle">Sort by Title</option>
-          <option value="issued-asc" data-i18n="index.sortIssuedAscending">Sort by Issued Date (Ascending)</option>
-          <option value="issued-desc" data-i18n="index.sortIssuedDescending" selected>Sort by Issued Date (Descending)</option>
-          <option value="owner" data-i18n="index.sortOwner">Sort by Data Owner</option>
-        </select>
-        <select id="language-select">
-          <option value="de">Deutsch</option>
-          <option value="fr">Français</option>
-          <option value="it">Italiano</option>
-          <option value="en" selected>English</option>
-        </select>
-      </div>
-      <div id="search-chips-container"></div>
-    </header>
-  <main id="dataset-container"></main>
-  <script src="assets/js/translations.js"></script>
-  <script src="assets/js/main.js"></script>
-</body>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>FOAG data catalog</title>
+      <!-- Bootstrap CSS -->
+      <link 
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+         rel="stylesheet" 
+         />
+      <!-- Tagify CSS -->
+      <link 
+         rel="stylesheet" 
+         href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" 
+         />
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="assets/css/style.css" />
+   </head>
+   <body data-page="index.html">
+      <!-- Navbar Placeholder -->
+      <div id="navbar-placeholder"></div>
+      <!-- Hero Banner -->
+      <section class="hero-banner">
+         <h1>Willkommen zum Datenkatalog des Bundesamts für Landwirtschaft</h1>
+         <p class="lead">
+            Hier finden Sie alle vom Bundesamt für Landwirtschaft (BLW) gesammelten Datensätze. 
+            Die Daten selbst werden in diesem GitHub-Repository veröffentlicht und gepflegt. 
+            Wenn Sie zu dieser Sammlung beitragen möchten, wenden Sie sich bitte an das Kompetenzzentrum für die digitale Transformation.
+         </p>
+      </section>
+      <!-- Search & Controls -->
+      <section class="search-section">
+         <div class="container">
+            <div class="row align-items-center">
+               <!-- Search bar (full left aligned) -->
+               <div class="col-sm-3">
+                  <input 
+                     type="text" 
+                     id="search" 
+                     class="form-control unified-control" 
+                     placeholder="Search text..."
+                     />
+               </div>
+               <!-- Tag input (a bit wider) -->
+               <div class="col-sm-4">
+                  <input 
+                     type="text" 
+                     id="tag-input" 
+                     class="form-control unified-control" 
+                     placeholder="Add tags..."
+                     />
+               </div>
+               <!-- Sort by dropdown (visible for both views in this example) -->
+               <div class="col-sm-3" id="sort-container">
+                  <div class="dropdown">
+                     <button 
+                        class="btn unified-control dropdown-toggle" 
+                        type="button" 
+                        id="sort-dropdown-button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        >
+                     Sort by Title
+                     </button>
+                     <ul class="dropdown-menu" aria-labelledby="sort-dropdown-button">
+                        <li><a class="dropdown-item sort-option" data-sort="title" href="#">Sort by Title</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="issued-asc" href="#">Sort by Issued Date (Asc)</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="issued-desc" href="#">Sort by Issued Date (Desc)</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="owner" href="#">Sort by Data Owner</a></li>
+                     </ul>
+                  </div>
+               </div>
+               <!-- Grid/Table toggle always right aligned -->
+               <div class="col-sm-2 text-end">
+                  <div class="btn-group" role="group">
+                     <input 
+                        type="radio" 
+                        class="btn-check" 
+                        name="viewMode" 
+                        id="tile-view" 
+                        value="tile" 
+                        checked
+                        />
+                     <label class="btn unified-control" for="tile-view">Tile</label>
+                     <input 
+                        type="radio" 
+                        class="btn-check" 
+                        name="viewMode" 
+                        id="table-view" 
+                        value="table"
+                        />
+                     <label class="btn unified-control" for="table-view">Table</label>
+                  </div>
+               </div>
+            </div>
+            <div id="search-chips-container" class="mt-2"></div>
+         </div>
+      </section>
+      <!-- Main Content Area -->
+      <main class="container my-3">
+         <!-- Tile view container (Bootstrap row for cards) -->
+         <div id="tile-view-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
+         <!-- Table view container (hidden by default) -->
+         <div id="table-container" style="display:none;">
+            <table class="table table-hover table-fixed align-middle" id="dataset-table">
+               <thead>
+                  <tr>
+                     <th>Identifier</th>
+                     <th>Title</th>
+                     <th>Issued</th>
+                     <th>Owner</th>
+                     <th>Keywords</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <!-- Rows appended dynamically -->
+               </tbody>
+            </table>
+         </div>
+         <div class="row align-items-center my-3">
+            <!-- Left side: page indicator text -->
+            <div class="col text-start" id="page-indicator"></div>
+            <!-- Right side: pagination -->
+            <div class="col text-end">
+               <ul id="pagination-container" class="pagination justify-content-end"></ul>
+            </div>
+         </div>
+      </main>
+      <!-- Footer Placeholder -->
+      <div id="footer-placeholder"></div>
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <!-- Bootstrap Bundle JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Tagify JS -->
+      <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+      <!-- twbs-pagination JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+      <!-- Custom JS -->
+      <script src="assets/js/main.js"></script>
+      <!-- AJAX/Fetch to Load Fragments -->
+      <script>
+         $(document).ready(function() {
+           // Load navbar
+           $("#navbar-placeholder").load("navbar.html", function() {
+             // Optional: Add any additional initialization code for navbar here.
+           });
+         
+           // Load footer
+           $("#footer-placeholder").load("footer.html", function() {
+             // Optional: Add any additional initialization code for footer here.
+           });
+         });
+      </script>
+   </body>
 </html>
