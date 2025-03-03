@@ -1,40 +1,46 @@
-/********************************************
- * GLOBAL VARIABLES & CONFIG
- ********************************************/
-const branch = "main";
-const dataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/docs/assets/datasets.json`;
+"use strict";
 
-// Master data
-let datasets = [];
-// UI state
-let currentLanguage = "en";
-let currentSort = "issued-desc"; // or whichever default you want
-let viewMode = "tile";      // "tile" or "table"
-let currentPage = 1;
-// Page sizes
-const TILE_PAGE_SIZE = 9;   // 3×3 layout
-const TABLE_PAGE_SIZE = 20; // 10 rows per table page
-// Tagify instance
-let tagify;
+/********************************************
+ * CONFIG & STATE
+ ********************************************/
+const config = {
+  branch: "main",
+  dataUrl: `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/datasets.json`,
+  TILE_PAGE_SIZE: 6,   // 3×3 layout
+  TABLE_PAGE_SIZE: 12, // 12 rows per page
+};
+
+const state = {
+  datasets: [],
+  lang: "en",
+  sort: "issued-desc", // default sort option
+  viewMode: "tile",    // "tile" or "table"
+  currentPage: 1,
+  searchText: "",
+  tags: [],            // <-- NEW: holds array of selected tag keywords
+};
+
+let tagify = null; // Assigned to our Tagify instance
 
 /********************************************
  * HELPER FUNCTIONS
  ********************************************/
+// Data helpers
 function getDataOwnerName(data) {
   return data.dataOwner || "N/A";
 }
 function parseTokens(str) {
   if (!str) return [];
-  return str.split(/\s+/).map(s => s.trim().toLowerCase()).filter(s => s);
+  return str.split(/\s+/).map(s => s.trim().toLowerCase()).filter(Boolean);
 }
 function formatDate(dStr) {
   if (!dStr) return "N/A";
   try {
     const d = new Date(dStr);
-    return new Intl.DateTimeFormat(currentLanguage, {
+    return new Intl.DateTimeFormat(state.lang, {
       day: "numeric",
       month: "long",
-      year: "numeric"
+      year: "numeric",
     }).format(d);
   } catch (e) {
     return "Invalid Date";
@@ -45,86 +51,20 @@ function truncate(str, length = 50) {
   return str.length > length ? str.slice(0, length) + "..." : str;
 }
 function getDisplayTitle(dataset) {
-  const rawTitle = dataset["dcterms:title"]?.[currentLanguage] || "Untitled";
+  const rawTitle = dataset["dcterms:title"]?.[state.lang] || "Untitled";
   return truncate(rawTitle, 50);
 }
 
 /********************************************
- * URL PARAMS: READ / UPDATE
+ * FILTER & SORT FUNCTIONS
  ********************************************/
+function filterDatasets(dataArray) {
+  const textTokens = parseTokens(state.searchText);
+  // We compare tags in lower-case for searching
+  const tagValues = state.tags.map(tag => tag.toLowerCase());
 
-function readUrlParams() {
-  const params = new URLSearchParams(window.location.search);
-  if (params.has("lang")) {
-    currentLanguage = params.get("lang");
-  }
-  if (params.has("sort")) {
-    currentSort = params.get("sort");
-  }
-  if (params.has("text")) {
-    $("#search").val(params.get("text"));
-  }
-  if (params.has("view")) {
-    viewMode = params.get("view");
-    $("input[name='viewMode'][value='" + viewMode + "']").prop("checked", true);
-  }
-  if (params.has("page")) {
-    currentPage = parseInt(params.get("page"), 10) || 1;
-  }
-}
-
-function updateUrlParams() {
-  const params = new URLSearchParams();
-  params.set("lang", currentLanguage);
-  params.set("sort", currentSort);
-  params.set("view", viewMode);
-  params.set("page", currentPage);
-
-  // If there's text in search, set it
-  const text = $("#search").val().trim();
-  if (text) params.set("text", text);
-
-  window.history.replaceState({}, "", "?" + params.toString());
-}
-
-function setLanguageDropdownLabel(lang) {
-  // Switch or if/else to pick the text to show
-  let label = "English";
-  if (lang === "de") label = "Deutsch";
-  else if (lang === "fr") label = "Français";
-  else if (lang === "it") label = "Italiano";
-  else if (lang === "en") label = "English";
-  $("#language-dropdown-button").text(label);
-}
-
-function setSortDropdownLabel(sortValue) {
-  let label = "";
-  switch(sortValue) {
-    case "title":
-      label = "Sort by Title";
-      break;
-    case "issued-asc":
-      label = "Sort by Issued Date (Asc)";
-      break;
-    case "issued-desc":
-      label = "Sort by Issued Date (Desc)";
-      break;
-    case "owner":
-      label = "Sort by Data Owner";
-      break;
-    default:
-      label = "Sort by Title";
-  }
-  $("#sort-dropdown-button").text(label);
-}
-
-
-/********************************************
- * FILTER & SORT
- ********************************************/
-function filterDatasets(dataArray, textTokens, tagValues) {
   return dataArray.filter(d => {
-    // Text: partial match if ANY token is found in ANY relevant field
+    // Text filtering: match any token in any of the fields.
     let textMatch = true;
     if (textTokens.length) {
       textMatch = textTokens.some(tok => {
@@ -143,7 +83,6 @@ function filterDatasets(dataArray, textTokens, tagValues) {
             return val.some(k => k.toLowerCase().includes(tok));
           }
           if (typeof val === "object") {
-            // Possibly multi-lang map
             return Object.values(val).some(v => v.toLowerCase().includes(tok));
           }
           return String(val).toLowerCase().includes(tok);
@@ -151,7 +90,7 @@ function filterDatasets(dataArray, textTokens, tagValues) {
       });
     }
 
-    // Tag: exact match
+    // Tag filtering: every tag must be present in the dataset keywords
     let tagMatch = true;
     if (tagValues.length) {
       const datasetKeywords = (d["dcat:keyword"] || []).map(k => k.toLowerCase());
@@ -162,30 +101,21 @@ function filterDatasets(dataArray, textTokens, tagValues) {
   });
 }
 
-function sortDatasets(dataArray, sortOption, lang) {
-  // Shallow copy so we don't mutate original
+function sortDatasets(dataArray) {
   const sorted = [...dataArray];
-  switch (sortOption) {
+  switch (state.sort) {
     case "title":
       sorted.sort((a, b) => {
-        const aTitle = (a["dcterms:title"]?.[lang] || "").toLowerCase();
-        const bTitle = (b["dcterms:title"]?.[lang] || "").toLowerCase();
+        const aTitle = (a["dcterms:title"]?.[state.lang] || "").toLowerCase();
+        const bTitle = (b["dcterms:title"]?.[state.lang] || "").toLowerCase();
         return aTitle.localeCompare(bTitle);
       });
       break;
     case "issued-asc":
-      sorted.sort((a, b) => {
-        const aDate = new Date(a["dcterms:issued"]);
-        const bDate = new Date(b["dcterms:issued"]);
-        return aDate - bDate;
-      });
+      sorted.sort((a, b) => new Date(a["dcterms:issued"]) - new Date(b["dcterms:issued"]));
       break;
     case "issued-desc":
-      sorted.sort((a, b) => {
-        const aDate = new Date(a["dcterms:issued"]);
-        const bDate = new Date(b["dcterms:issued"]);
-        return bDate - aDate;
-      });
+      sorted.sort((a, b) => new Date(b["dcterms:issued"]) - new Date(a["dcterms:issued"]));
       break;
     case "owner":
       sorted.sort((a, b) => {
@@ -195,196 +125,250 @@ function sortDatasets(dataArray, sortOption, lang) {
       });
       break;
     default:
-      // do nothing (no sort)
       break;
   }
   return sorted;
 }
 
 /********************************************
- * PAGINATION LOGIC (twbs)
+ * URL PARAM HANDLING (TWO-WAY BINDING)
  ********************************************/
-function initPagination(totalItems, itemsPerPage, onPageChangeCb) {
-  const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
-  if (currentPage > totalPages) currentPage = totalPages;
+function syncStateFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.has("lang")) state.lang = params.get("lang");
+  if (params.has("sort")) state.sort = params.get("sort");
+  if (params.has("view")) state.viewMode = params.get("view");
+  if (params.has("page")) state.currentPage = parseInt(params.get("page"), 10) || state.currentPage;
+  if (params.has("text")) state.searchText = params.get("text");
 
-  // Destroy any existing pagination
-  $("#pagination-container").twbsPagination("destroy");
-
-  if (totalPages > 1) {
-    $("#pagination-container").twbsPagination({
-      totalPages: totalPages,
-      visiblePages: 5,
-      startPage: currentPage,
-      onPageClick: function (event, page) {
-        // Update "Page X of Y" text
-        $("#page-indicator").text(`Page ${page} of ${totalPages}`);
-
-        // Update currentPage, re-render
-        currentPage = page;
-        onPageChangeCb(page);
-      }
-    });
-    // Also show the initial "Page X of Y" text
-    $("#page-indicator").text(`Page ${currentPage} of ${totalPages}`);
+  // NEW: parse "tags" parameter (comma-separated)
+  if (params.has("tags")) {
+    // e.g. tags=milk,bread,grain
+    const raw = params.get("tags");
+    // We store them as an array of strings
+    state.tags = raw.split(",").map(t => t.trim()).filter(Boolean);
   } else {
-    // No pagination needed
-    $("#pagination-container").empty();
-    $("#page-indicator").empty(); // or show "Page 1 of 1" if you prefer
+    state.tags = [];
+  }
+}
+
+function syncURLFromState() {
+  const params = new URLSearchParams();
+  params.set("lang", state.lang);
+  params.set("sort", state.sort);
+  params.set("view", state.viewMode);
+  params.set("page", state.currentPage);
+
+  if (state.searchText.trim()) {
+    params.set("text", state.searchText.trim());
+  }
+
+  // NEW: if we have tags, join them with commas
+  if (state.tags.length > 0) {
+    params.set("tags", state.tags.join(","));
+  }
+
+  const newUrl = "?" + params.toString();
+  history.pushState(null, "", newUrl);
+}
+
+// Listen for browser back/forward
+window.addEventListener("popstate", () => {
+  syncStateFromURL();
+  reflectStateInUI();   // Re-sync UI
+  applyFiltersAndRender();
+});
+
+/********************************************
+ * REFLECT STATE IN UI ELEMENTS
+ ********************************************/
+function setLanguageDropdownLabel(lang) {
+  let label = "English";
+  if (lang === "de") label = "Deutsch";
+  else if (lang === "fr") label = "Français";
+  else if (lang === "it") label = "Italiano";
+  $("#language-dropdown-button").text(label);
+}
+
+function setSortDropdownLabel(sortValue) {
+  let label = "";
+  switch (sortValue) {
+    case "title":
+      label = "Sort by Title";
+      break;
+    case "issued-asc":
+      label = "Sort by Issued Date (Asc)";
+      break;
+    case "issued-desc":
+      label = "Sort by Issued Date (Desc)";
+      break;
+    case "owner":
+      label = "Sort by Data Owner";
+      break;
+    default:
+      label = "Sort by Title";
+  }
+  $("#sort-dropdown-button").text(label);
+}
+
+/**
+ * Apply current state to form controls (search, view mode, etc.)
+ */
+function reflectStateInUI() {
+  // If navbar is dynamically loaded, ensure we do these calls
+  // *after* the navbar is ready in the DOM.
+
+  // 1. Text search
+  $("#search").val(state.searchText);
+
+  // 2. View mode
+  $("input[name='viewMode'][value='" + state.viewMode + "']").prop("checked", true);
+
+  // 3. Language
+  setLanguageDropdownLabel(state.lang);
+
+  // 4. Sort
+  setSortDropdownLabel(state.sort);
+
+  // 5. Tagify: clear and re-add tags
+  tagify.removeAllTags();
+  if (state.tags.length) {
+    // Tagify automatically calls 'change' event when adding tags,
+    // so we might want to temporarily disable the event or set
+    // a silent flag. But let's keep it straightforward for now.
+    tagify.addTags(state.tags);
   }
 }
 
 /********************************************
- * RENDER: TILE VIEW
+ * RENDERING TEMPLATES
  ********************************************/
-function renderTileView(filtered) {
-  // 1. Sort
-  const sortOption = currentSort;
-  const sorted = sortDatasets(filtered, sortOption, currentLanguage);
+function tileCardTemplate(dataset) {
+  const title = getDisplayTitle(dataset);
+  const desc = dataset["dcterms:description"]?.[state.lang] || "";
+  const issued = formatDate(dataset["dcterms:issued"]);
+  const keywords = dataset["dcat:keyword"] || [];
+  const imageSrc = dataset["schema:image"] || "https://via.placeholder.com/300x180?text=No+Image";
 
-  // 2. Initialize pagination for tile view
-  initPagination(sorted.length, TILE_PAGE_SIZE, () => {
-    renderTilePage(sorted);
-  });
+  const dateHTML =
+    issued !== "N/A" && issued !== "Invalid Date"
+      ? `<p><em class="tile-date-italic">${issued}</em></p>`
+      : "";
+  const keywordsHTML = keywords
+    .map((kw) => `<span class="keyword" data-key="${kw}">${kw}</span>`)
+    .join(" ");
 
-  // 3. Render the appropriate page
-  renderTilePage(sorted);
-}
-
-/**
- * Build the tile HTML for the current page.
- * - No "owner" shown
- * - If date is not "N/A", show it italic
- * - Omit date field entirely if "N/A"
- * - No lines between attribute types
- * - Title: 1 line clamp
- * - Desc: 3 line clamp
- */
-function renderTilePage(dataArray) {
-  const startIdx = (currentPage - 1) * TILE_PAGE_SIZE;
-  const endIdx = startIdx + TILE_PAGE_SIZE;
-  const pageData = dataArray.slice(startIdx, endIdx);
-
-  let html = "";
-  pageData.forEach(d => {
-    const title = getDisplayTitle(d);
-    const desc = d["dcterms:description"]?.[currentLanguage] || "";
-    const issued = formatDate(d["dcterms:issued"]);
-    const keywords = d["dcat:keyword"] || [];
-    const imageSrc = d["schema:image"] || 
-      "https://via.placeholder.com/300x180?text=No+Image";
-
-    // If date is not "N/A", we display it in italics. Otherwise, omit.
-    let dateHTML = "";
-    if (issued !== "N/A" && issued !== "Invalid Date") {
-      dateHTML = `<p><em class="tile-date-italic">${issued}</em></p>`;
-    }
-
-    let keywordsHTML = "";
-    keywords.forEach(kw => {
-      keywordsHTML += `<span class="keyword" data-key="${kw}">${kw}</span> `;
-    });
-
-    html += `
-      <div class="col">
-        <div class="card h-100 dataset-card" data-id="${d["dcterms:identifier"]}">
-          <img src="${imageSrc}" class="card-img-top" alt="${title}" />
-          <div class="card-body">
-            <!-- Title clamped to 1 line -->
-            <h5 class="tile-title-ellipsis">${title}</h5>
-
-            <!-- Description clamped to 3 lines -->
-            <p class="tile-desc-ellipsis">${desc}</p>
-
-            <!-- Date (italic) only if not N/A -->
-            ${dateHTML}
-
-            <!-- Keywords at the bottom -->
-            <div class="keywords">${keywordsHTML}</div>
-          </div>
+  return `
+    <div class="col">
+      <div class="card h-100 dataset-card" data-id="${dataset["dcterms:identifier"]}">
+        <img src="${imageSrc}" class="card-img-top" alt="${title}" />
+        <div class="card-body">
+          <h5 class="tile-title-ellipsis">${title}</h5>
+          <p class="tile-desc-ellipsis">${desc}</p>
+          ${dateHTML}
+          <div class="keywords">${keywordsHTML}</div>
         </div>
       </div>
-    `;
-  });
+    </div>
+  `;
+}
 
+function tableRowTemplate(dataset) {
+  const identifier = dataset["dcterms:identifier"] || "";
+  const title = getDisplayTitle(dataset);
+  const issued = formatDate(dataset["dcterms:issued"]);
+  const owner = getDataOwnerName(dataset);
+  const keywordsArr = dataset["dcat:keyword"] || [];
+  const keywordsHTML = keywordsArr
+    .map((kw) => `<span class="keyword" data-key="${kw}">${kw}</span>`)
+    .join(" ");
+
+  return `
+    <tr class="dataset-row" data-id="${identifier}">
+      <td>${identifier}</td>
+      <td>${title}</td>
+      <td>${issued}</td>
+      <td>${owner}</td>
+      <td><div class="keywords">${keywordsHTML}</div></td>
+    </tr>
+  `;
+}
+
+/********************************************
+ * RENDERING FUNCTIONS
+ ********************************************/
+function renderTilePage(sortedData) {
+  const startIdx = (state.currentPage - 1) * config.TILE_PAGE_SIZE;
+  const pageData = sortedData.slice(startIdx, startIdx + config.TILE_PAGE_SIZE);
+  const html = pageData.map(tileCardTemplate).join("");
   $("#tile-view-container").html(html);
-
-  // Show/hide relevant containers
   $("#tile-view-container").show();
   $("#table-container").hide();
 }
 
-/********************************************
- * RENDER: TABLE VIEW
- ********************************************/
-function renderTableView(filtered) {
-  // 1. Sort
-  const sortOption = currentSort;
-  const sorted = sortDatasets(filtered, sortOption, currentLanguage);
-
-  // 2. Initialize pagination for table view
-  initPagination(sorted.length, TABLE_PAGE_SIZE, () => {
-    renderTablePage(sorted);
-  });
-
-  // 3. Render the appropriate page
-  renderTablePage(sorted);
-}
-
-function renderTablePage(dataArray) {
-  const startIdx = (currentPage - 1) * TABLE_PAGE_SIZE;
-  const endIdx = startIdx + TABLE_PAGE_SIZE;
-  const pageData = dataArray.slice(startIdx, endIdx);
-
-  let rows = "";
-  pageData.forEach(d => {
-    const identifier = d["dcterms:identifier"] || "";
-    const title = getDisplayTitle(d);
-    const issued = formatDate(d["dcterms:issued"]);
-    const owner = getDataOwnerName(d);
-    const keywordsArr = d["dcat:keyword"] || [];
-    const keywordsHTML = keywordsArr
-      .map(kw => `<span class="keyword" data-key="${kw}">${kw}</span>`)
-      .join(" ");
-
-    rows += `
-      <tr class="dataset-row" data-id="${identifier}">
-        <td>${identifier}</td>
-        <td>${title}</td>
-        <td>${issued}</td>
-        <td>${owner}</td>
-        <td>
-          <div class="keywords">${keywordsHTML}</div>
-        </td>
-      </tr>
-    `;    
-  });
-
-  $("#dataset-table tbody").html(rows);
-
-  // Show/hide containers
+function renderTablePage(sortedData) {
+  const startIdx = (state.currentPage - 1) * config.TABLE_PAGE_SIZE;
+  const pageData = sortedData.slice(startIdx, startIdx + config.TABLE_PAGE_SIZE);
+  const rowsHtml = pageData.map(tableRowTemplate).join("");
+  $("#dataset-table tbody").html(rowsHtml);
   $("#table-container").show();
   $("#tile-view-container").hide();
+}
+
+function initPagination(totalItems, itemsPerPage, renderPageCb) {
+  const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+  if (state.currentPage > totalPages) state.currentPage = totalPages;
+  
+  $("#pagination-container").twbsPagination("destroy");
+  if (totalPages > 1) {
+    $("#pagination-container").twbsPagination({
+      totalPages: totalPages,
+      visiblePages: 5,
+      startPage: state.currentPage,
+      onPageClick: function (event, page) {
+        $("#page-indicator").text(`Page ${page} of ${totalPages}`);
+        state.currentPage = page;
+        syncURLFromState();
+        renderPageCb();
+      }
+    });
+    $("#page-indicator").text(`Page ${state.currentPage} of ${totalPages}`);
+  } else {
+    $("#pagination-container").empty();
+    $("#page-indicator").empty();
+  }
+}
+
+function renderTileView(filtered) {
+  const sorted = sortDatasets(filtered);
+  initPagination(sorted.length, config.TILE_PAGE_SIZE, () => renderTilePage(sorted));
+  renderTilePage(sorted);
+}
+
+function renderTableView(filtered) {
+  const sorted = sortDatasets(filtered);
+  initPagination(sorted.length, config.TABLE_PAGE_SIZE, () => renderTablePage(sorted));
+  renderTablePage(sorted);
 }
 
 /********************************************
  * APPLY FILTERS & RENDER
  ********************************************/
 function applyFiltersAndRender() {
-  const text = $("#search").val().trim().toLowerCase();
-  const textTokens = parseTokens(text);
-  const tagValues = tagify.value.map(item => item.value.toLowerCase());
+  // Make sure we have fresh search text and tags from the UI
+  state.searchText = $("#search").val().trim().toLowerCase();
+  // We already track tags in state.tags, updated in the Tagify 'change' event
 
-  // Filter
-  const filtered = filterDatasets(datasets, textTokens, tagValues);
+  const filtered = filterDatasets(state.datasets);
 
-  // Update dataset count in hero banner
+  // Update dataset count in the hero banner if used
   $("#hero-dataset-count").text(`${filtered.length} Datensätze`);
 
-  // Update URL
-  updateUrlParams();
+  // Update URL to reflect the latest state
+  syncURLFromState();
 
-  if (viewMode === "tile") {
+  // Render based on current view mode
+  if (state.viewMode === "tile") {
     $("#sort-container").show();
     renderTileView(filtered);
   } else {
@@ -394,88 +378,114 @@ function applyFiltersAndRender() {
 }
 
 /********************************************
- * DOCUMENT READY
+ * EVENT LISTENERS
  ********************************************/
-$(document).ready(function () {
+function setupEventListeners() {
+  // Text search input
+  $("#search").on("input", function () {
+    state.currentPage = 1;
+    applyFiltersAndRender();
+  });
+  
+  // Tagify change event
+  tagify.on("change", function () {
+    // On every Tagify change, update state.tags
+    state.tags = tagify.value.map(item => item.value);
+    state.currentPage = 1;
+    applyFiltersAndRender();
+  });
+  
+  // Because the navbar is loaded separately, 
+  // we attach events AFTER it's loaded in the callback:
+  $("#navbar-placeholder").load("navbar.html", () => {
+    // Now the elements exist, reflect current state in the UI
+    setLanguageDropdownLabel(state.lang);
+    setSortDropdownLabel(state.sort);
 
-  // 1. Read initial URL params
-  readUrlParams();
-  setLanguageDropdownLabel(currentLanguage);
-  setSortDropdownLabel(currentSort);
+    // Language dropdown
+    $(document).on("click", ".dropdown-item.lang-option", function (e) {
+      e.preventDefault();
+      state.lang = $(this).data("lang");
+      setLanguageDropdownLabel(state.lang);
+      state.currentPage = 1;
+      applyFiltersAndRender();
+    });
 
-  // 2. Initialize Tagify
-  const input = document.getElementById('tag-input');
-  tagify = new Tagify(input, {
-    whitelist: [],
-    dropdown: { enabled: 0 }
+    // Sort dropdown
+    $(document).on("click", ".dropdown-item.sort-option", function (e) {
+      e.preventDefault();
+      state.sort = $(this).data("sort");
+      setSortDropdownLabel(state.sort);
+      state.currentPage = 1;
+      applyFiltersAndRender();
+    });
   });
 
-  // 3. Fetch Data
-  $.getJSON(dataUrl)
+  // View mode toggle
+  $("input[name='viewMode']").on("change", function () {
+    state.viewMode = $(this).val();
+    state.currentPage = 1;
+    applyFiltersAndRender();
+  });
+  
+  // Click on a dataset tile or row => details page
+  $(document).on("click", ".dataset-card, .dataset-row", function () {
+    const id = $(this).data("id");
+    window.location.href = `details.html?dataset=${id}&lang=${state.lang}`;
+  });
+  
+  // Click on a keyword => add to Tagify
+  $(document).on("click", ".keywords .keyword", function (e) {
+    e.stopPropagation();
+    const tag = $(this).data("key") || $(this).text();
+    // Avoid duplicates
+    if (!state.tags.includes(tag)) {
+      tagify.addTags([tag]);
+      // The 'change' event updates state & re-renders
+    }
+  });
+  
+  // Re-render on window resize (if tile view)
+  $(window).on("resize", function () {
+    if (state.viewMode === "tile") {
+      state.currentPage = 1;
+      applyFiltersAndRender();
+    }
+  });
+}
+
+/********************************************
+ * INITIALIZATION
+ ********************************************/
+$(document).ready(function () {
+  // 1) Synchronize state from URL
+  syncStateFromURL();
+
+  // 2) Set up Tagify
+  const tagInput = document.getElementById("tag-input");
+  tagify = new Tagify(tagInput, {
+    whitelist: [],
+    dropdown: { enabled: 0 },
+  });
+
+  // 3) Reflect state into the UI (after Tagify is ready)
+  //    This sets up search text, view mode, etc.
+  reflectStateInUI();
+
+  // 4) Fetch datasets
+  $.getJSON(config.dataUrl)
     .done(function (data) {
-      datasets = data;
+      state.datasets = data;
+      // Render for the first time
       applyFiltersAndRender();
     })
     .fail(function (err) {
       console.error("Error fetching data:", err);
     });
 
-  // 4. Event listeners
-  // a) Text search
-  $("#search").on("input", function () {
-    currentPage = 1;
-    applyFiltersAndRender();
-  });
-  // b) Tagify
-  tagify.on('change', function () {
-    currentPage = 1;
-    applyFiltersAndRender();
-  });
-  // When user clicks a language option
-  $(document).on("click", ".dropdown-item.lang-option", function(e) {
-    e.preventDefault(); // don't follow href
-    currentLanguage = $(this).data("lang"); 
-    setLanguageDropdownLabel(currentLanguage);
-    currentPage = 1;
-    applyFiltersAndRender();
-  });
+  // 5) Attach event listeners
+  setupEventListeners();
 
-  // When user clicks a sort option
-  $(document).on("click", ".dropdown-item.sort-option", function(e) {
-    e.preventDefault();
-    currentSort = $(this).data("sort");
-    setSortDropdownLabel(currentSort);
-    currentPage = 1;
-    applyFiltersAndRender();
-  });
-
-  // e) View mode toggle
-  $("input[name='viewMode']").on("change", function () {
-    viewMode = $(this).val();
-    currentPage = 1;
-    applyFiltersAndRender();
-  });
-  // f) Click on tile or row => go to details
-  $(document).on("click", ".dataset-card, .dataset-row", function () {
-    const id = $(this).data("id");
-    window.location.href = `details.html?dataset=${id}&lang=${currentLanguage}`;
-  });
-  // g) Click on a keyword => add tag
-  $(document).on("click", ".keywords .keyword", function (e) {
-    e.stopPropagation();
-    const tag = $(this).data("key") || $(this).text();
-    const lowerTag = tag.toLowerCase();
-    if (!tagify.value.some(item => item.value.toLowerCase() === lowerTag)) {
-      tagify.addTags([tag]);
-      currentPage = 1;
-      applyFiltersAndRender();
-    }
-  });
-  // h) On window resize, re-render if needed (for tile layout)
-  $(window).on("resize", function () {
-    if (viewMode === "tile") {
-      currentPage = 1;
-      applyFiltersAndRender();
-    }
-  });
+  // 6) Load footer in the same manner, if needed
+  $("#footer-placeholder").load("footer.html");
 });
