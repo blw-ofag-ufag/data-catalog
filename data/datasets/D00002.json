@@ -29,6 +29,10 @@
     {
       "schema:name": "p-0711690",
       "schema:roleName": "dataOwner"
+    },
+    {
+      "schema:name": "p-1ZPP7KQSW",
+      "schema:roleName": "dataSteward"
     }
   ],
   "adms:status": "published",
