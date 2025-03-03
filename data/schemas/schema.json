@@ -188,11 +188,14 @@
                         "items": {
                             "type": "object",
                             "required": [
-                                "schema:name",
-                                "schema:email",
-                                "schema:roleName"
+                                "schema:roleName",
+                                "dcterms:identifier"
                             ],
                             "properties": {
+                                "dcterms:identifier": {
+                                    "type": "string",
+                                    "title": "Personal ID from AdminDir"
+                                },
                                 "schema:name": {
                                     "type": "string",
                                     "title": "Name"
