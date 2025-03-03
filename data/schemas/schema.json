@@ -614,11 +614,13 @@
                                     "type": "string",
                                     "description": "License under which this distribution is released. This is mandatory for opendata.swiss publications.",
                                     "enum": [
-                                        "terms_open",
-                                        "terms_by",
-                                        "terms_ask",
-                                        "terms_by_ask",
-                                        "cc-zero"
+                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#terms_open",
+                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#terms_by",
+                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#terms_ask",
+                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#terms_by_ask",
+                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#cc-zero",
+                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#cc-by/4.0",
+                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#cc-by-sa/4.0"
                                     ]
                                 },
                                 "schema:comment": {
