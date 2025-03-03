@@ -474,6 +474,9 @@ $(document).ready(function () {
     whitelist: [],
     dropdown: { enabled: 0 },
   });
+  
+  // Apply your custom styling to Tagify's container
+  tagify.DOM.scope.classList.add('customLook');
 
   // 3) Reflect state into the UI (after Tagify is ready)
   //    This sets up search text, view mode, etc.
