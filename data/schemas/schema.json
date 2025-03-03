@@ -105,11 +105,11 @@
                         "title": "Access rights",
                         "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
-                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
-                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
-                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
+                            "CONFIDENTIAL",
+                            "NON_PUBLIC",
+                            "PUBLIC",
+                            "RESTRICTED",
+                            "SENSITIVE"
                         ]
                     },
                     "dct:publisher": {
@@ -161,18 +161,18 @@
                         "title": "Accrual periodicity",
                         "description": "Frequency with which dataset is updated (e.g., 'Annual'). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-frequency .",
                         "enum": [
-                            "http://publications.europa.eu/resource/authority/frequency/OTHER",
-                            "http://publications.europa.eu/resource/authority/frequency/HOURLY",
-                            "http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
-                            "http://publications.europa.eu/resource/authority/frequency/QUARTERLY",
-                            "http://publications.europa.eu/resource/authority/frequency/NEVER",
-                            "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
-                            "http://publications.europa.eu/resource/authority/frequency/ANNUAL",
-                            "http://publications.europa.eu/resource/authority/frequency/DAILY",
-                            "http://publications.europa.eu/resource/authority/frequency/AS_NEEDED",
-                            "http://publications.europa.eu/resource/authority/frequency/WEEKLY",
-                            "http://publications.europa.eu/resource/authority/frequency/IRREG",
-                            "http://publications.europa.eu/resource/authority/frequency/CONT"
+                            "OTHER",
+                            "HOURLY",
+                            "UNKNOWN",
+                            "QUARTERLY",
+                            "NEVER",
+                            "MONTHLY",
+                            "ANNUAL",
+                            "DAILY",
+                            "AS_NEEDED",
+                            "WEEKLY",
+                            "IRREG",
+                            "CONT"
                         ]
                     },
                     "dct:modified": {
@@ -341,30 +341,30 @@
                         "items": {
                             "type": "string",
                             "enum": [
-                                "http://dcat-ap.ch/vocabulary/themes/work",
-                                "http://dcat-ap.ch/vocabulary/themes/construction",
-                                "http://dcat-ap.ch/vocabulary/themes/population",
-                                "http://dcat-ap.ch/vocabulary/themes/education",
-                                "http://dcat-ap.ch/vocabulary/themes/energy",
-                                "http://dcat-ap.ch/vocabulary/themes/finances",
-                                "http://dcat-ap.ch/vocabulary/themes/geography",
-                                "http://dcat-ap.ch/vocabulary/themes/legislation",
-                                "http://dcat-ap.ch/vocabulary/themes/health",
-                                "http://dcat-ap.ch/vocabulary/themes/trade",
-                                "http://dcat-ap.ch/vocabulary/themes/industry",
-                                "http://dcat-ap.ch/vocabulary/themes/crime",
-                                "http://dcat-ap.ch/vocabulary/themes/culture",
-                                "http://dcat-ap.ch/vocabulary/themes/agriculture",
-                                "http://dcat-ap.ch/vocabulary/themes/mobility",
-                                "http://dcat-ap.ch/vocabulary/themes/public-order",
-                                "http://dcat-ap.ch/vocabulary/themes/politics",
-                                "http://dcat-ap.ch/vocabulary/themes/prices",
-                                "http://dcat-ap.ch/vocabulary/themes/territory",
-                                "http://dcat-ap.ch/vocabulary/themes/social-security",
-                                "http://dcat-ap.ch/vocabulary/themes/statistical-basis",
-                                "http://dcat-ap.ch/vocabulary/themes/tourism",
-                                "http://dcat-ap.ch/vocabulary/themes/administration",
-                                "http://dcat-ap.ch/vocabulary/themes/national-economy"
+                                "work",
+                                "construction",
+                                "population",
+                                "education",
+                                "energy",
+                                "finances",
+                                "geography",
+                                "legislation",
+                                "health",
+                                "trade",
+                                "industry",
+                                "crime",
+                                "culture",
+                                "agriculture",
+                                "mobility",
+                                "public-order",
+                                "politics",
+                                "prices",
+                                "territory",
+                                "social-security",
+                                "statistical-basis",
+                                "tourism",
+                                "administration",
+                                "national-economy"
                             ]
                         }
                     },
@@ -634,13 +634,13 @@
                                     "type": "string",
                                     "description": "License under which this distribution is released. This is mandatory for opendata.swiss publications.",
                                     "enum": [
-                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#terms_open",
-                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#terms_by",
-                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#terms_ask",
-                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#terms_by_ask",
-                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#cc-zero",
-                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#cc-by/4.0",
-                                        "https://dcat-ap.ch/vocabulary/licenses/20240716.html#cc-by-sa/4.0"
+                                        "terms_open",
+                                        "terms_by",
+                                        "terms_ask",
+                                        "terms_by_ask",
+                                        "cc-zero",
+                                        "cc-by/4.0",
+                                        "cc-by-sa/4.0"
                                     ]
                                 },
                                 "schema:comment": {
@@ -978,11 +978,11 @@
                         "title": "Access rights",
                         "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
-                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
-                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
-                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
+                            "CONFIDENTIAL",
+                            "NON_PUBLIC",
+                            "PUBLIC",
+                            "RESTRICTED",
+                            "SENSITIVE"
                         ]
                     },
                     "dcat:endopointURL": {
@@ -1205,11 +1205,11 @@
                         "type": "string",
                         "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
-                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
-                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
-                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
+                            "CONFIDENTIAL",
+                            "NON_PUBLIC",
+                            "PUBLIC",
+                            "RESTRICTED",
+                            "SENSITIVE"
                         ]
                     },
                     "foaf:homepage": {
