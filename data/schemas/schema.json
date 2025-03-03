@@ -103,7 +103,7 @@
                     "dct:accessRights": {
                         "type": "string",
                         "title": "Access rights",
-                        "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
+                        "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
                             "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
                             "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
@@ -159,7 +159,7 @@
                     "dct:accrualPeriodicity": {
                         "type": "string",
                         "title": "Accrual periodicity",
-                        "description": "Frequency with which dataset is updated (e.g., 'Annual').",
+                        "description": "Frequency with which dataset is updated (e.g., 'Annual'). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-frequency .",
                         "enum": [
                             "http://publications.europa.eu/resource/authority/frequency/OTHER",
                             "http://publications.europa.eu/resource/authority/frequency/HOURLY",
@@ -951,7 +951,7 @@
                     "dct:accessRights": {
                         "type": "string",
                         "title": "Access rights",
-                        "description": "Defines the accessibility of the DataService (e.g., public, internal, etc.).",
+                        "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
                             "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
                             "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
@@ -1178,7 +1178,7 @@
                     "dct:accessRights": {
                         "title": "Access rights",
                         "type": "string",
-                        "description": "Defines the accessibility of the Catalog (e.g., public, internal, etc.).",
+                        "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
                             "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
                             "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
