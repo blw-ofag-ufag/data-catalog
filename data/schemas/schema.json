@@ -331,20 +331,40 @@
                             }
                         }
                     },
-                    "dcat:themeTaxonomy": {
+                    "dcat:theme": {
                         "type": [
                             "array",
                             "null"
                         ],
                         "title": "Dataset themes",
-                        "description": "This attribute classifies the dataset into one or more broad thematics. Proper classification allow other users interested in the topic to find the dataset without knowing its name or description.",
+                        "description": "This attribute classifies the dataset into one or more broad thematics. Proper classification allow other users interested in the topic to find the dataset without knowing its name or description. Those are opendata.swiss themes, which are then mapped to EU themes thanks to https://dcat-ap.ch/vocabulary/themes/20231122.html .",
                         "items": {
                             "type": "string",
                             "enum": [
-                                "populationAndSociety",
-                                "agricultureFisheriesForestryFood",
-                                "internationalTopics",
-                                "environment"
+                                "http://dcat-ap.ch/vocabulary/themes/work",
+                                "http://dcat-ap.ch/vocabulary/themes/construction",
+                                "http://dcat-ap.ch/vocabulary/themes/population",
+                                "http://dcat-ap.ch/vocabulary/themes/education",
+                                "http://dcat-ap.ch/vocabulary/themes/energy",
+                                "http://dcat-ap.ch/vocabulary/themes/finances",
+                                "http://dcat-ap.ch/vocabulary/themes/geography",
+                                "http://dcat-ap.ch/vocabulary/themes/legislation",
+                                "http://dcat-ap.ch/vocabulary/themes/health",
+                                "http://dcat-ap.ch/vocabulary/themes/trade",
+                                "http://dcat-ap.ch/vocabulary/themes/industry",
+                                "http://dcat-ap.ch/vocabulary/themes/crime",
+                                "http://dcat-ap.ch/vocabulary/themes/culture",
+                                "http://dcat-ap.ch/vocabulary/themes/agriculture",
+                                "http://dcat-ap.ch/vocabulary/themes/mobility",
+                                "http://dcat-ap.ch/vocabulary/themes/public-order",
+                                "http://dcat-ap.ch/vocabulary/themes/politics",
+                                "http://dcat-ap.ch/vocabulary/themes/prices",
+                                "http://dcat-ap.ch/vocabulary/themes/territory",
+                                "http://dcat-ap.ch/vocabulary/themes/social-security",
+                                "http://dcat-ap.ch/vocabulary/themes/statistical-basis",
+                                "http://dcat-ap.ch/vocabulary/themes/tourism",
+                                "http://dcat-ap.ch/vocabulary/themes/administration",
+                                "http://dcat-ap.ch/vocabulary/themes/national-economy"
                             ]
                         }
                     },
