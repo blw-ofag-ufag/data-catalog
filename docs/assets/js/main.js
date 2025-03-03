@@ -191,22 +191,27 @@ function setLanguageDropdownLabel(lang) {
 }
 
 function setSortDropdownLabel(sortValue) {
-  let label = "";
+  let key = "";
   switch (sortValue) {
     case "title":
-      label = "Sort by Title";
+      key = "sortTitle";
       break;
     case "issued-asc":
-      label = "Sort by Issued Date (Asc)";
+      key = "sortIssuedAsc";
       break;
     case "issued-desc":
-      label = "Sort by Issued Date (Desc)";
+      key = "sortIssuedDesc";
       break;
     case "owner":
-      label = "Sort by Data Owner";
+      key = "sortOwner";
       break;
     default:
-      label = "Sort by Title";
+      key = "sortTitle";
+  }
+  // Look up the translation based on the current language stored in state.lang.
+  let label = key;
+  if (translations && translations[key] && translations[key][state.lang]) {
+    label = translations[key][state.lang];
   }
   $("#sort-dropdown-button").text(label);
 }
@@ -402,13 +407,14 @@ function setupEventListeners() {
     setLanguageDropdownLabel(state.lang);
     setSortDropdownLabel(state.sort);
 
-    // Language dropdown
+    // Existing language dropdown event (within navbar load callback)
     $(document).on("click", ".dropdown-item.lang-option", function (e) {
       e.preventDefault();
       state.lang = $(this).data("lang");
       setLanguageDropdownLabel(state.lang);
       state.currentPage = 1;
       applyFiltersAndRender();
+      applyTranslations(state.lang); // Update all translatable UI elements when the language changes
     });
 
     // Sort dropdown
@@ -458,6 +464,7 @@ function setupEventListeners() {
  * INITIALIZATION
  ********************************************/
 $(document).ready(function () {
+  
   // 1) Synchronize state from URL
   syncStateFromURL();
 
@@ -472,7 +479,10 @@ $(document).ready(function () {
   //    This sets up search text, view mode, etc.
   reflectStateInUI();
 
-  // 4) Fetch datasets
+  // 4) Initialize translations based on the current language**
+  initI18n(state.lang);
+
+  // 5) Fetch datasets
   $.getJSON(config.dataUrl)
     .done(function (data) {
       state.datasets = data;
@@ -483,9 +493,9 @@ $(document).ready(function () {
       console.error("Error fetching data:", err);
     });
 
-  // 5) Attach event listeners
+  // 6) Attach event listeners
   setupEventListeners();
 
-  // 6) Load footer in the same manner, if needed
+  // 7) Load footer in the same manner, if needed
   $("#footer-placeholder").load("footer.html");
 });

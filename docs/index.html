@@ -3,7 +3,7 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>FOAG data catalog</title>
+      <title data-i18n="title">FOAG data catalog</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"  rel="stylesheet" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" />
       <link rel="stylesheet" href="assets/css/style.css" />
@@ -11,41 +11,39 @@
    <body data-page="index.html">
       <div id="navbar-placeholder"></div>
       <section class="hero-banner">
-         <h1>Willkommen zum Datenkatalog des Bundesamts für Landwirtschaft</h1>
-         <p class="lead">
+         <h1 data-i18n="heroBannerHeading">Willkommen zum Datenkatalog des Bundesamts für Landwirtschaft</h1>
+         <p class="lead" data-i18n="heroBannerText">
             Hier finden Sie alle vom Bundesamt für Landwirtschaft (BLW) gesammelten Datensätze. 
-            Die Daten selbst werden in diesem GitHub-Repository veröffentlicht und gepflegt. 
-            Wenn Sie zu dieser Sammlung beitragen möchten, wenden Sie sich bitte an das Kompetenzzentrum für die digitale Transformation.
          </p>
       </section>
       <section class="search-section">
          <div class="container">
             <div class="row align-items-center">
                <div class="col-sm-3">
-                  <input type="text" id="search" class="form-control unified-control" placeholder="Search text..." />
+                  <input type="text" id="search" class="form-control unified-control" data-i18n-placeholder="searchPlaceholder" placeholder="Search text..." />
                </div>
                <div class="col-sm-4">
-                  <input type="text" id="tag-input" class="form-control unified-control" placeholder="Add tags..." />
+                  <input type="text" id="tag-input" class="form-control unified-control" data-i18n-placeholder="tagInputPlaceholder" placeholder="Tags..." />
                </div>
                <div class="col-sm-3" id="sort-container">
                   <div class="dropdown">
-                     <button class="btn unified-control dropdown-toggle" type="button" id="sort-dropdown-button" data-bs-toggle="dropdown" aria-expanded="false">
+                     <button class="btn unified-control dropdown-toggle" type="button" id="sort-dropdown-button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="sortTitle">
                      Sort by Title
                      </button>
                      <ul class="dropdown-menu" aria-labelledby="sort-dropdown-button">
-                        <li><a class="dropdown-item sort-option" data-sort="title" href="#">Sort by Title</a></li>
-                        <li><a class="dropdown-item sort-option" data-sort="issued-asc" href="#">Sort by Issued Date (Asc)</a></li>
-                        <li><a class="dropdown-item sort-option" data-sort="issued-desc" href="#">Sort by Issued Date (Desc)</a></li>
-                        <li><a class="dropdown-item sort-option" data-sort="owner" href="#">Sort by Data Owner</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="title" href="#" data-i18n="sortTitle">Sort by Title</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="issued-asc" href="#" data-i18n="sortIssuedAsc">Sort by Issued Date (Asc)</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="issued-desc" href="#" data-i18n="sortIssuedDesc">Sort by Issued Date (Desc)</a></li>
+                        <li><a class="dropdown-item sort-option" data-sort="owner" href="#" data-i18n="sortOwner">Sort by Data Owner</a></li>
                      </ul>
                   </div>
                </div>
                <div class="col-sm-2 text-end">
                   <div class="btn-group" role="group">
                      <input type="radio" class="btn-check" name="viewMode" id="tile-view" value="tile" checked/>
-                     <label class="btn unified-control" for="tile-view">Tile</label>
+                     <label data-i18n="viewTile" class="btn unified-control" for="tile-view">Tile</label>
                      <input type="radio" class="btn-check" name="viewMode" id="table-view" value="table"/>
-                     <label class="btn unified-control" for="table-view">Table</label>
+                     <label data-i18n="viewTable" class="btn unified-control" for="table-view">Table</label>
                   </div>
                </div>
             </div>
@@ -59,11 +57,11 @@
             <table class="table table-hover table-fixed align-middle" id="dataset-table">
                <thead>
                   <tr>
-                     <th>Identifier</th>
-                     <th>Title</th>
-                     <th>Issued</th>
-                     <th>Owner</th>
-                     <th>Keywords</th>
+                     <th>ID</th>
+                     <th data-i18n="tableHeaderTitle">Title</th>
+                     <th data-i18n="tableHeaderIssued">Issued</th>
+                     <th data-i18n="tableHeaderOwner">Owner</th>
+                     <th data-i18n="tableHeaderKeywords">Keywords</th>
                   </tr>
                </thead>
                <tbody>
@@ -79,20 +77,23 @@
          </div>
       </main>
 
-      <!-- Footer Placeholder -->
+      <!-- Footer placeholder -->
       <div id="footer-placeholder"></div>
 
-      <!-- JavaScript Libraries -->
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-      <script src="assets/js/main.js"></script>
+      <!-- Insert and navbar and footer -->
       <script>
          $(document).ready(function() {
            $("#navbar-placeholder").load("navbar.html", function() {});
            $("#footer-placeholder").load("footer.html", function() {});
          });
       </script>
+
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+      <script src="assets/js/i18n.js"></script>
+      <script src="assets/js/main.js"></script>
    </body>
 </html>
