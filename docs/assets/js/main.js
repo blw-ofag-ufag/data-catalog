@@ -1,426 +1,481 @@
-/******************************************************
- *  Global configuration & variables
- *****************************************************/
+/********************************************
+ * GLOBAL VARIABLES & CONFIG
+ ********************************************/
 const branch = "main";
 const dataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/docs/assets/datasets.json`;
+
+// Master data
 let datasets = [];
+// UI state
 let currentLanguage = "en";
+let currentSort = "issued-desc"; // or whichever default you want
+let viewMode = "tile";      // "tile" or "table"
+let currentPage = 1;
+// Page sizes
+const TILE_PAGE_SIZE = 9;   // 3×3 layout
+const TABLE_PAGE_SIZE = 20; // 10 rows per table page
+// Tagify instance
+let tagify;
 
-// The normal text the user typed is shown in #search.
-// The recognized hashtag chips (without "#") live here.
-let keywordChips = [];
-
-/**
- * Returns the name of the person whose role is "dataOwner", or "N/A" if none.
- */
-function getDataOwnerName(attributes) {
-  return attributes["dataOwner"] || "N/A";
+/********************************************
+ * HELPER FUNCTIONS
+ ********************************************/
+function getDataOwnerName(data) {
+  return data.dataOwner || "N/A";
+}
+function parseTokens(str) {
+  if (!str) return [];
+  return str.split(/\s+/).map(s => s.trim().toLowerCase()).filter(s => s);
+}
+function formatDate(dStr) {
+  if (!dStr) return "N/A";
+  try {
+    const d = new Date(dStr);
+    return new Intl.DateTimeFormat(currentLanguage, {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    }).format(d);
+  } catch (e) {
+    return "Invalid Date";
+  }
+}
+function truncate(str, length = 50) {
+  if (!str) return "";
+  return str.length > length ? str.slice(0, length) + "..." : str;
+}
+function getDisplayTitle(dataset) {
+  const rawTitle = dataset["dcterms:title"]?.[currentLanguage] || "Untitled";
+  return truncate(rawTitle, 50);
 }
 
-/******************************************************
- *  1) Reading & Writing URL parameters
- *****************************************************/
-/**
- * Reads ?text=..., ?tags=..., ?lang=..., ?sort=...
- * and sets up the page accordingly.
- */
+/********************************************
+ * URL PARAMS: READ / UPDATE
+ ********************************************/
+
 function readUrlParams() {
   const params = new URLSearchParams(window.location.search);
-
-  // 1) Language
   if (params.has("lang")) {
     currentLanguage = params.get("lang");
-    document.getElementById("language-select").value = currentLanguage;
   }
-
-  // 2) Sort
   if (params.has("sort")) {
-    document.getElementById("sort-options").value = params.get("sort");
+    currentSort = params.get("sort");
   }
-
-  // 3) Text param => put directly into #search
   if (params.has("text")) {
-    const textParam = params.get("text");
-    document.getElementById("search").value = textParam;
+    $("#search").val(params.get("text"));
   }
-
-  // 4) Tags param => split by commas => put into keywordChips
-  if (params.has("tags")) {
-    const tagsString = params.get("tags");
-    // e.g. "milk,soil, environment"
-    const tagsArray = tagsString
-      .split(",")
-      .map(t => t.trim().toLowerCase())
-      .filter(t => t.length > 0);
-
-    // Overwrite any existing chips with these
-    keywordChips = [...new Set(tagsArray)]; // unique
+  if (params.has("view")) {
+    viewMode = params.get("view");
+    $("input[name='viewMode'][value='" + viewMode + "']").prop("checked", true);
+  }
+  if (params.has("page")) {
+    currentPage = parseInt(params.get("page"), 10) || 1;
   }
 }
 
-/**
- * Writes the current text + chips + language + sort to the URL.
- * Example: ?text=my milk&tags=soil,environment&lang=en&sort=title
- */
 function updateUrlParams() {
-  const lang = document.getElementById("language-select").value;
-  const sortVal = document.getElementById("sort-options").value;
-
-  // Normal text from the #search input
-  const normalText = document.getElementById("search").value.trim();
-
-  // Build "tags" from the chips array
-  // e.g. ["milk","soil"] => "milk,soil"
-  const tagsParam = keywordChips.join(",");
-
-  // Create URLSearchParams
   const params = new URLSearchParams();
-  params.set("lang", lang);
-  params.set("sort", sortVal);
+  params.set("lang", currentLanguage);
+  params.set("sort", currentSort);
+  params.set("view", viewMode);
+  params.set("page", currentPage);
 
-  if (normalText) {
-    params.set("text", normalText);
-  }
-  if (tagsParam) {
-    params.set("tags", tagsParam);
-  }
+  // If there's text in search, set it
+  const text = $("#search").val().trim();
+  if (text) params.set("text", text);
 
-  // Update URL without reloading
-  window.history.replaceState({}, "", `?${params.toString()}`);
+  window.history.replaceState({}, "", "?" + params.toString());
 }
 
-/******************************************************
- *  2) Hashtag Extraction from the #search input
- *****************************************************/
-/**
- * If the user typed `#milk` and pressed space/Enter/tab/comma,
- * we extract the last token as a hashtag => store it in keywordChips.
- */
-function extractHashtagIfFinished() {
-  const inputEl = document.getElementById("search");
-  let val = inputEl.value;
-
-  if (!val) return;
-
-  // Split by whitespace
-  let tokens = val.split(/\s+/);
-  const lastToken = tokens[tokens.length - 1];
-  if (!lastToken || !lastToken.startsWith("#")) return;
-
-  // E.g. "#milk," => remove trailing punctuation
-  let cleaned = lastToken.replace(/[.,|]+$/, "");
-  if (cleaned.length < 2) return; // means it was just "#"
-
-  // remove the "#"
-  const chipWord = cleaned.slice(1).toLowerCase();
-
-  // Add to chips if not already there
-  if (!keywordChips.includes(chipWord)) {
-    keywordChips.push(chipWord);
-  }
-
-  // Remove the last token from leftover text
-  tokens.pop();
-  // Rebuild the leftover text
-  inputEl.value = tokens.join(" ");
-
-  // Re-render chips
-  updateSearchChips();
+function setLanguageDropdownLabel(lang) {
+  // Switch or if/else to pick the text to show
+  let label = "English";
+  if (lang === "de") label = "Deutsch";
+  else if (lang === "fr") label = "Français";
+  else if (lang === "it") label = "Italiano";
+  else if (lang === "en") label = "English";
+  $("#language-dropdown-button").text(label);
 }
 
-/******************************************************
- *  3) Updating & Removing "Chips"
- *****************************************************/
-function updateSearchChips() {
-  const container = document.getElementById("search-chips-container");
-  container.innerHTML = "";
+function setSortDropdownLabel(sortValue) {
+  let label = "";
+  switch(sortValue) {
+    case "title":
+      label = "Sort by Title";
+      break;
+    case "issued-asc":
+      label = "Sort by Issued Date (Asc)";
+      break;
+    case "issued-desc":
+      label = "Sort by Issued Date (Desc)";
+      break;
+    case "owner":
+      label = "Sort by Data Owner";
+      break;
+    default:
+      label = "Sort by Title";
+  }
+  $("#sort-dropdown-button").text(label);
+}
 
-  keywordChips.forEach(chipWord => {
-    const chipEl = document.createElement("span");
-    chipEl.classList.add("search-chip", "keyword-chip");
-    chipEl.textContent = `${chipWord}`;
 
-    const removeBtn = document.createElement("button");
-    removeBtn.classList.add("remove-btn");
-    removeBtn.textContent = "×";
-    removeBtn.onclick = () => removeChip(chipWord);
+/********************************************
+ * FILTER & SORT
+ ********************************************/
+function filterDatasets(dataArray, textTokens, tagValues) {
+  return dataArray.filter(d => {
+    // Text: partial match if ANY token is found in ANY relevant field
+    let textMatch = true;
+    if (textTokens.length) {
+      textMatch = textTokens.some(tok => {
+        const fields = [
+          "dcterms:identifier", 
+          "dcterms:title", 
+          "dcterms:description", 
+          "dcat:keyword",
+          "dcterms:issued", 
+          "dataOwner"
+        ];
+        return fields.some(f => {
+          const val = d[f];
+          if (!val) return false;
+          if (f === "dcat:keyword" && Array.isArray(val)) {
+            return val.some(k => k.toLowerCase().includes(tok));
+          }
+          if (typeof val === "object") {
+            // Possibly multi-lang map
+            return Object.values(val).some(v => v.toLowerCase().includes(tok));
+          }
+          return String(val).toLowerCase().includes(tok);
+        });
+      });
+    }
 
-    chipEl.appendChild(removeBtn);
-    container.appendChild(chipEl);
+    // Tag: exact match
+    let tagMatch = true;
+    if (tagValues.length) {
+      const datasetKeywords = (d["dcat:keyword"] || []).map(k => k.toLowerCase());
+      tagMatch = tagValues.every(tag => datasetKeywords.includes(tag));
+    }
+
+    return textMatch && tagMatch;
   });
 }
 
-function removeChip(chipWord) {
-  // filter out that chip
-  keywordChips = keywordChips.filter(w => w !== chipWord);
-  updateSearchChips();
-  applySearchLangSort();
-  updateUrlParams();
+function sortDatasets(dataArray, sortOption, lang) {
+  // Shallow copy so we don't mutate original
+  const sorted = [...dataArray];
+  switch (sortOption) {
+    case "title":
+      sorted.sort((a, b) => {
+        const aTitle = (a["dcterms:title"]?.[lang] || "").toLowerCase();
+        const bTitle = (b["dcterms:title"]?.[lang] || "").toLowerCase();
+        return aTitle.localeCompare(bTitle);
+      });
+      break;
+    case "issued-asc":
+      sorted.sort((a, b) => {
+        const aDate = new Date(a["dcterms:issued"]);
+        const bDate = new Date(b["dcterms:issued"]);
+        return aDate - bDate;
+      });
+      break;
+    case "issued-desc":
+      sorted.sort((a, b) => {
+        const aDate = new Date(a["dcterms:issued"]);
+        const bDate = new Date(b["dcterms:issued"]);
+        return bDate - aDate;
+      });
+      break;
+    case "owner":
+      sorted.sort((a, b) => {
+        const aOwner = getDataOwnerName(a).toLowerCase();
+        const bOwner = getDataOwnerName(b).toLowerCase();
+        return aOwner.localeCompare(bOwner);
+      });
+      break;
+    default:
+      // do nothing (no sort)
+      break;
+  }
+  return sorted;
 }
 
-/******************************************************
- *  4) Search & Filter Logic (AND for chips, OR for text)
- *****************************************************/
-function applySearchLangSort() {
-  // Filter
-  const filtered = getFilteredDatasets(datasets);
-  // Sort
-  const sorted = getSortedDatasets(filtered);
-  // Render
-  renderDatasets(sorted);
-}
+/********************************************
+ * PAGINATION LOGIC (twbs)
+ ********************************************/
+function initPagination(totalItems, itemsPerPage, onPageChangeCb) {
+  const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+  if (currentPage > totalPages) currentPage = totalPages;
 
-/**
- * We combine two filters:
- *  1) All chips => a dataset must have **all** of these in `dcat:keyword` (AND).
- *  2) The normal text => we parse tokens by commas/OR/| => OR logic among them.
- *     If there are no text tokens, we skip text filtering entirely.
- *  Then final => dataset must pass chip filter AND text filter.
- */
-function getFilteredDatasets(sourceData) {
-  // 1) parse normal text tokens (OR among them)
-  const normalText = document.getElementById("search").value.trim();
-  const textTokens = parseNormalTokens(normalText);
+  // Destroy any existing pagination
+  $("#pagination-container").twbsPagination("destroy");
 
-  // 2) "chips" => must match all
-  // i.e. for each chip in keywordChips => dataset has that chip in dcat:keyword
-  return sourceData.filter(dataset => {
-    // A) Check chips => AND logic
-    const hasAllChips = keywordChips.every(chip => {
-      const keywords = dataset["dcat:keyword"] || [];
-      return keywords.some(k => k.toLowerCase().includes(chip));
+  if (totalPages > 1) {
+    $("#pagination-container").twbsPagination({
+      totalPages: totalPages,
+      visiblePages: 5,
+      startPage: currentPage,
+      onPageClick: function (event, page) {
+        // Update "Page X of Y" text
+        $("#page-indicator").text(`Page ${page} of ${totalPages}`);
+
+        // Update currentPage, re-render
+        currentPage = page;
+        onPageChangeCb(page);
+      }
     });
-    if (!hasAllChips) return false;
+    // Also show the initial "Page X of Y" text
+    $("#page-indicator").text(`Page ${currentPage} of ${totalPages}`);
+  } else {
+    // No pagination needed
+    $("#pagination-container").empty();
+    $("#page-indicator").empty(); // or show "Page 1 of 1" if you prefer
+  }
+}
 
-    // B) If no text tokens => automatically pass text filter
-    if (textTokens.length === 0) {
-      return true;
-    }
+/********************************************
+ * RENDER: TILE VIEW
+ ********************************************/
+function renderTileView(filtered) {
+  // 1. Sort
+  const sortOption = currentSort;
+  const sorted = sortDatasets(filtered, sortOption, currentLanguage);
 
-    // If we do have text tokens => need to pass OR among them
-    const matchesSomeText = textTokens.some(tok => matchFullText(tok, dataset));
-    return matchesSomeText;
+  // 2. Initialize pagination for tile view
+  initPagination(sorted.length, TILE_PAGE_SIZE, () => {
+    renderTilePage(sorted);
   });
+
+  // 3. Render the appropriate page
+  renderTilePage(sorted);
 }
 
 /**
- * Splits "milk, environment" or "milk OR environment" or "milk|env"
- * into multiple tokens for OR logic.  E.g. => ["milk","environment"].
+ * Build the tile HTML for the current page.
+ * - No "owner" shown
+ * - If date is not "N/A", show it italic
+ * - Omit date field entirely if "N/A"
+ * - No lines between attribute types
+ * - Title: 1 line clamp
+ * - Desc: 3 line clamp
  */
-function parseNormalTokens(str) {
-  if (!str) return [];
-  return str
-    .split(/\s*(?:,|OR|\|)\s*/i)
-    .map(x => x.trim().toLowerCase())
-    .filter(x => x.length > 0);
-}
+function renderTilePage(dataArray) {
+  const startIdx = (currentPage - 1) * TILE_PAGE_SIZE;
+  const endIdx = startIdx + TILE_PAGE_SIZE;
+  const pageData = dataArray.slice(startIdx, endIdx);
 
-/** Checks if 'term' is found in normal text fields: title, desc, owner, etc. */
-function matchFullText(term, dataset) {
-  const fields = [
-    "dcterms:identifier",
-    "dcterms:title",
-    "dcterms:description",
-    "dcat:keyword",
-    "dcterms:issued",
-    "dataOwner"
-  ];
-  return fields.some(field => {
-    const value = dataset[field];
-    if (!value) return false;
+  let html = "";
+  pageData.forEach(d => {
+    const title = getDisplayTitle(d);
+    const desc = d["dcterms:description"]?.[currentLanguage] || "";
+    const issued = formatDate(d["dcterms:issued"]);
+    const keywords = d["dcat:keyword"] || [];
+    const imageSrc = d["schema:image"] || 
+      "https://via.placeholder.com/300x180?text=No+Image";
 
-    if (field === "dcat:keyword") {
-      return value.some(k => k.toLowerCase().includes(term));
+    // If date is not "N/A", we display it in italics. Otherwise, omit.
+    let dateHTML = "";
+    if (issued !== "N/A" && issued !== "Invalid Date") {
+      dateHTML = `<p><em class="tile-date-italic">${issued}</em></p>`;
     }
-    if (field === "dcterms:title" || field === "dcterms:description") {
-      // Localized object: e.g. { en: "...", de: "...", ... }
-      return Object.values(value).some(v => v.toLowerCase().includes(term));
-    }
-    if (field === "dcterms:issued") {
-      return value.toLowerCase().includes(term);
-    }
-    if (field === "dataOwner") {
-      return value.toLowerCase().includes(term);
-    }
-    
-    // Fallback: Just convert to string and search
-    return String(value).toLowerCase().includes(term);
-  });
-}
 
-/******************************************************
- *  5) Sorting
- *****************************************************/
-function getSortedDatasets(sourceData) {
-  const sortBy = document.getElementById("sort-options").value;
-  return [...sourceData].sort((a, b) => {
-    let fieldA, fieldB;
+    let keywordsHTML = "";
+    keywords.forEach(kw => {
+      keywordsHTML += `<span class="keyword" data-key="${kw}">${kw}</span> `;
+    });
 
-    if (sortBy === "title") {
-      fieldA = a["dcterms:title"][currentLanguage] || "";
-      fieldB = b["dcterms:title"][currentLanguage] || "";
-      return fieldA.localeCompare(fieldB, undefined, { numeric: true });
-    } else if (sortBy === "issued-asc" || sortBy === "issued-desc") {
-      fieldA = a["dcterms:issued"] || "";
-      fieldB = b["dcterms:issued"] || "";
-      if (!fieldA) return 1;
-      if (!fieldB) return -1;
+    html += `
+      <div class="col">
+        <div class="card h-100 dataset-card" data-id="${d["dcterms:identifier"]}">
+          <img src="${imageSrc}" class="card-img-top" alt="${title}" />
+          <div class="card-body">
+            <!-- Title clamped to 1 line -->
+            <h5 class="tile-title-ellipsis">${title}</h5>
 
-      const dateA = new Date(fieldA);
-      const dateB = new Date(fieldB);
-      if (sortBy === "issued-asc") return dateA - dateB;
-      return dateB - dateA;
-    } else if (sortBy === "owner") {
-      const aOwner = getDataOwnerName(a);
-      const bOwner = getDataOwnerName(b);
-      return aOwner.localeCompare(bOwner, undefined, { numeric: true });
-    }    
-    return 0;
-  });
-}
+            <!-- Description clamped to 3 lines -->
+            <p class="tile-desc-ellipsis">${desc}</p>
 
-/******************************************************
- *  6) Rendering the Dataset Tiles
- *****************************************************/
-function renderDatasets(data) {
-  const container = document.getElementById("dataset-container");
+            <!-- Date (italic) only if not N/A -->
+            ${dateHTML}
 
-  // Helper function to format the date
-  const formatDate = (dateString) => {
-    if (!dateString) return "N/A";
-    try {
-      const date = new Date(dateString);
-      return new Intl.DateTimeFormat(currentLanguage, { 
-        day: 'numeric', 
-        month: 'long', 
-        year: 'numeric' 
-      }).format(date);
-    } catch (error) {
-      return "Invalid Date";
-    }
-  };
-
-  container.innerHTML = data
-    .map(dataset => {
-      // Use dataset directly as attributes
-      const attributes = dataset;
-
-      // Provide a default for metadata if not available
-      const imageURL = attributes["schema:image"]
-      const datasetId = attributes["dcterms:identifier"];
-      const keywords = attributes["dcat:keyword"] || [];
-      const maxTitleLength = 50; // Limit title to 50 characters
-      const maxKeywords = 5; // Display only a limited number of keywords
-
-      // Truncate title if too long
-      let title = attributes["dcterms:title"][currentLanguage] || "Untitled";
-      if (title.length > maxTitleLength) {
-        title = title.slice(0, maxTitleLength) + "...";
-      }
-
-      // Build keywords HTML
-      let keywordsHTML = keywords
-        .slice(0, maxKeywords)
-        .map(kw => `
-          <span
-            class="keyword-chip"
-            onclick="addKeywordChip('${kw}'); event.stopPropagation();"
-          >
-            ${kw}
-          </span>
-        `)
-        .join("");
-      
-      if (keywords.length > maxKeywords) {
-        const remaining = keywords.length - maxKeywords;
-        keywordsHTML += `<span class="keyword-chip more-keywords">+${remaining} more</span>`;
-      }
-
-      return `
-        <div
-          class="dataset-tile"
-          onclick="redirectToDetails('${datasetId}', '${currentLanguage}')"
-        >
-          <img 
-            src="${imageURL}" 
-            alt="${title}" 
-          />
-          <div class="dataset-info">
-            <h3>${title}</h3>
-            <p>${attributes["dcterms:description"][currentLanguage]}</p>
-            <p><strong>${translations["dcterms:issued"]?.[currentLanguage] || "Issued"}:</strong> ${formatDate(attributes["dcterms:issued"])}</p>
-            <p><strong>${translations["index.owner"]?.[currentLanguage] || "Owner"}:</strong> ${getDataOwnerName(attributes)}</p>
+            <!-- Keywords at the bottom -->
             <div class="keywords">${keywordsHTML}</div>
           </div>
         </div>
-      `;
-    })
-    .join("");
+      </div>
+    `;
+  });
+
+  $("#tile-view-container").html(html);
+
+  // Show/hide relevant containers
+  $("#tile-view-container").show();
+  $("#table-container").hide();
 }
 
-// redirect to the details.html page
-function redirectToDetails(datasetId, lang) {
-  // Build the details URL
-  const url = `details.html?dataset=${datasetId}&lang=${lang}`;
-  window.location.href = url;
+/********************************************
+ * RENDER: TABLE VIEW
+ ********************************************/
+function renderTableView(filtered) {
+  // 1. Sort
+  const sortOption = currentSort;
+  const sorted = sortDatasets(filtered, sortOption, currentLanguage);
+
+  // 2. Initialize pagination for table view
+  initPagination(sorted.length, TABLE_PAGE_SIZE, () => {
+    renderTablePage(sorted);
+  });
+
+  // 3. Render the appropriate page
+  renderTablePage(sorted);
 }
 
+function renderTablePage(dataArray) {
+  const startIdx = (currentPage - 1) * TABLE_PAGE_SIZE;
+  const endIdx = startIdx + TABLE_PAGE_SIZE;
+  const pageData = dataArray.slice(startIdx, endIdx);
 
-/******************************************************
- *  7) Clickable Keyword in Tiles => add as Chip
- *****************************************************/
-function addKeywordChip(keyword) {
-  const normalized = keyword.trim().toLowerCase();  
-  if (!keywordChips.includes(normalized)) {
-    keywordChips.push(normalized);
-    updateSearchChips();
-    applySearchLangSort();
-    updateUrlParams();
+  let rows = "";
+  pageData.forEach(d => {
+    const identifier = d["dcterms:identifier"] || "";
+    const title = getDisplayTitle(d);
+    const issued = formatDate(d["dcterms:issued"]);
+    const owner = getDataOwnerName(d);
+    const keywordsArr = d["dcat:keyword"] || [];
+    const keywordsHTML = keywordsArr
+      .map(kw => `<span class="keyword" data-key="${kw}">${kw}</span>`)
+      .join(" ");
+
+    rows += `
+      <tr class="dataset-row" data-id="${identifier}">
+        <td>${identifier}</td>
+        <td>${title}</td>
+        <td>${issued}</td>
+        <td>${owner}</td>
+        <td>
+          <div class="keywords">${keywordsHTML}</div>
+        </td>
+      </tr>
+    `;    
+  });
+
+  $("#dataset-table tbody").html(rows);
+
+  // Show/hide containers
+  $("#table-container").show();
+  $("#tile-view-container").hide();
+}
+
+/********************************************
+ * APPLY FILTERS & RENDER
+ ********************************************/
+function applyFiltersAndRender() {
+  const text = $("#search").val().trim().toLowerCase();
+  const textTokens = parseTokens(text);
+  const tagValues = tagify.value.map(item => item.value.toLowerCase());
+
+  // Filter
+  const filtered = filterDatasets(datasets, textTokens, tagValues);
+
+  // Update dataset count in hero banner
+  $("#hero-dataset-count").text(`${filtered.length} Datensätze`);
+
+  // Update URL
+  updateUrlParams();
+
+  if (viewMode === "tile") {
+    $("#sort-container").show();
+    renderTileView(filtered);
+  } else {
+    $("#sort-container").show();
+    renderTableView(filtered);
   }
 }
 
-/******************************************************
- *  8) Main Initialization
- *****************************************************/
-document.addEventListener("DOMContentLoaded", () => {
-  // 1) Read separate URL params: text=..., tags=..., lang=..., sort=...
+/********************************************
+ * DOCUMENT READY
+ ********************************************/
+$(document).ready(function () {
+
+  // 1. Read initial URL params
   readUrlParams();
+  setLanguageDropdownLabel(currentLanguage);
+  setSortDropdownLabel(currentSort);
 
-  // 2) Fetch data
-  fetch(dataUrl)
-    .then(res => res.json())
-    .then(data => {
-      datasets = data;
-      applySearchLangSort();
-      updateSearchChips();
-    })
-    .catch(err => console.error("Error fetching data:", err));
-
-  // Partial text search on input
-  document.getElementById("search").addEventListener("input", () => {
-    applySearchLangSort();
-    updateUrlParams();
+  // 2. Initialize Tagify
+  const input = document.getElementById('tag-input');
+  tagify = new Tagify(input, {
+    whitelist: [],
+    dropdown: { enabled: 0 }
   });
 
-  // Hashtag detection on keyup
-  document.getElementById("search").addEventListener("keyup", e => {
-    if ([" ", ",", "Enter", "Tab"].includes(e.key)) {
-      extractHashtagIfFinished();
-      applySearchLangSort();
-      updateUrlParams();
+  // 3. Fetch Data
+  $.getJSON(dataUrl)
+    .done(function (data) {
+      datasets = data;
+      applyFiltersAndRender();
+    })
+    .fail(function (err) {
+      console.error("Error fetching data:", err);
+    });
+
+  // 4. Event listeners
+  // a) Text search
+  $("#search").on("input", function () {
+    currentPage = 1;
+    applyFiltersAndRender();
+  });
+  // b) Tagify
+  tagify.on('change', function () {
+    currentPage = 1;
+    applyFiltersAndRender();
+  });
+  // When user clicks a language option
+  $(document).on("click", ".dropdown-item.lang-option", function(e) {
+    e.preventDefault(); // don't follow href
+    currentLanguage = $(this).data("lang"); 
+    setLanguageDropdownLabel(currentLanguage);
+    currentPage = 1;
+    applyFiltersAndRender();
+  });
+
+  // When user clicks a sort option
+  $(document).on("click", ".dropdown-item.sort-option", function(e) {
+    e.preventDefault();
+    currentSort = $(this).data("sort");
+    setSortDropdownLabel(currentSort);
+    currentPage = 1;
+    applyFiltersAndRender();
+  });
+
+  // e) View mode toggle
+  $("input[name='viewMode']").on("change", function () {
+    viewMode = $(this).val();
+    currentPage = 1;
+    applyFiltersAndRender();
+  });
+  // f) Click on tile or row => go to details
+  $(document).on("click", ".dataset-card, .dataset-row", function () {
+    const id = $(this).data("id");
+    window.location.href = `details.html?dataset=${id}&lang=${currentLanguage}`;
+  });
+  // g) Click on a keyword => add tag
+  $(document).on("click", ".keywords .keyword", function (e) {
+    e.stopPropagation();
+    const tag = $(this).data("key") || $(this).text();
+    const lowerTag = tag.toLowerCase();
+    if (!tagify.value.some(item => item.value.toLowerCase() === lowerTag)) {
+      tagify.addTags([tag]);
+      currentPage = 1;
+      applyFiltersAndRender();
     }
   });
-
-  // Language
-  document.getElementById("language-select").addEventListener("change", () => {
-    currentLanguage = document.getElementById("language-select").value;
-    applySearchLangSort();
-    updateUrlParams();
-  });
-
-  // Sorting
-  document.getElementById("sort-options").addEventListener("change", () => {
-    applySearchLangSort();
-    updateUrlParams();
+  // h) On window resize, re-render if needed (for tile layout)
+  $(window).on("resize", function () {
+    if (viewMode === "tile") {
+      currentPage = 1;
+      applyFiltersAndRender();
+    }
   });
 });
