@@ -105,11 +105,11 @@
                         "title": "Access rights",
                         "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
-                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
-                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
-                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
+                            "CONFIDENTIAL",
+                            "NON_PUBLIC",
+                            "PUBLIC",
+                            "RESTRICTED",
+                            "SENSITIVE"
                         ]
                     },
                     "dct:publisher": {
@@ -161,18 +161,18 @@
                         "title": "Accrual periodicity",
                         "description": "Frequency with which dataset is updated (e.g., 'Annual'). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-frequency .",
                         "enum": [
-                            "http://publications.europa.eu/resource/authority/frequency/OTHER",
-                            "http://publications.europa.eu/resource/authority/frequency/HOURLY",
-                            "http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
-                            "http://publications.europa.eu/resource/authority/frequency/QUARTERLY",
-                            "http://publications.europa.eu/resource/authority/frequency/NEVER",
-                            "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
-                            "http://publications.europa.eu/resource/authority/frequency/ANNUAL",
-                            "http://publications.europa.eu/resource/authority/frequency/DAILY",
-                            "http://publications.europa.eu/resource/authority/frequency/AS_NEEDED",
-                            "http://publications.europa.eu/resource/authority/frequency/WEEKLY",
-                            "http://publications.europa.eu/resource/authority/frequency/IRREG",
-                            "http://publications.europa.eu/resource/authority/frequency/CONT"
+                            "OTHER",
+                            "HOURLY",
+                            "UNKNOWN",
+                            "QUARTERLY",
+                            "NEVER",
+                            "MONTHLY",
+                            "ANNUAL",
+                            "DAILY",
+                            "AS_NEEDED",
+                            "WEEKLY",
+                            "IRREG",
+                            "CONT"
                         ]
                     },
                     "dct:modified": {
@@ -331,20 +331,40 @@
                             }
                         }
                     },
-                    "dcat:themeTaxonomy": {
+                    "dcat:theme": {
                         "type": [
                             "array",
                             "null"
                         ],
                         "title": "Dataset themes",
-                        "description": "This attribute classifies the dataset into one or more broad thematics. Proper classification allow other users interested in the topic to find the dataset without knowing its name or description.",
+                        "description": "This attribute classifies the dataset into one or more broad thematics. Proper classification allow other users interested in the topic to find the dataset without knowing its name or description. Those are opendata.swiss themes, which are then mapped to EU themes thanks to https://dcat-ap.ch/vocabulary/themes/20231122.html .",
                         "items": {
                             "type": "string",
                             "enum": [
-                                "populationAndSociety",
-                                "agricultureFisheriesForestryFood",
-                                "internationalTopics",
-                                "environment"
+                                "work",
+                                "construction",
+                                "population",
+                                "education",
+                                "energy",
+                                "finances",
+                                "geography",
+                                "legislation",
+                                "health",
+                                "trade",
+                                "industry",
+                                "crime",
+                                "culture",
+                                "agriculture",
+                                "mobility",
+                                "public-order",
+                                "politics",
+                                "prices",
+                                "territory",
+                                "social-security",
+                                "statistical-basis",
+                                "tourism",
+                                "administration",
+                                "national-economy"
                             ]
                         }
                     },
@@ -618,7 +638,9 @@
                                         "terms_by",
                                         "terms_ask",
                                         "terms_by_ask",
-                                        "cc-zero"
+                                        "cc-zero",
+                                        "cc-by/4.0",
+                                        "cc-by-sa/4.0"
                                     ]
                                 },
                                 "schema:comment": {
@@ -956,11 +978,11 @@
                         "title": "Access rights",
                         "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
-                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
-                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
-                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
+                            "CONFIDENTIAL",
+                            "NON_PUBLIC",
+                            "PUBLIC",
+                            "RESTRICTED",
+                            "SENSITIVE"
                         ]
                     },
                     "dcat:endopointURL": {
@@ -1183,11 +1205,11 @@
                         "type": "string",
                         "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
-                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
-                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
-                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
-                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
+                            "CONFIDENTIAL",
+                            "NON_PUBLIC",
+                            "PUBLIC",
+                            "RESTRICTED",
+                            "SENSITIVE"
                         ]
                     },
                     "foaf:homepage": {
