@@ -15,7 +15,7 @@
                     "dcterms:identifier",
                     "dcterms:title",
                     "dcterms:description",
-                    "dcterms:accessRights",
+                    "dct:accessRights",
                     "dcterms:publisher",
                     "dcat:contactPoint",
                     "dcterms:issued",
@@ -100,16 +100,16 @@
                             }
                         }
                     },
-                    "dcterms:accessRights": {
+                    "dct:accessRights": {
                         "type": "string",
                         "title": "Access rights",
                         "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
                         "enum": [
-                            "CONFIDENTIAL",
-                            "NON_PUBLIC",
-                            "PUBLIC",
-                            "RESTRICTED",
-                            "SENSITIVE"
+                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
+                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
                         ]
                     },
                     "dcterms:publisher": {
@@ -846,7 +846,7 @@
                     "dcterms:description",
                     "dcterms:publisher",
                     "dcat:contactPoint",
-                    "dcterms:accessRights",
+                    "dct:accessRights",
                     "dcat:endopointURL",
                     "adms:status"
                 ],
@@ -945,16 +945,16 @@
                             }
                         }
                     },
-                    "dcterms:accessRights": {
+                    "dct:accessRights": {
                         "type": "string",
                         "title": "Access rights",
                         "description": "Defines the accessibility of the DataService (e.g., public, internal, etc.).",
                         "enum": [
-                            "CONFIDENTIAL",
-                            "NON_PUBLIC",
-                            "PUBLIC",
-                            "RESTRICTED",
-                            "SENSITIVE"
+                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
+                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
                         ]
                     },
                     "dcat:endopointURL": {
@@ -1075,7 +1075,7 @@
                     "dcterms:description",
                     "dcterms:publisher",
                     "dcat:contactPoint",
-                    "dcterms:accessRights"
+                    "dct:accessRights"
                 ],
                 "title": "Catalog objects",
                 "description": "Structure of Catalog. A catalog is a loose collection of Datasets, DatasetSeries and DataServices such as, for example, opendata.swiss or I14Y.",
@@ -1172,16 +1172,16 @@
                             }
                         }
                     },
-                    "dcterms:accessRights": {
+                    "dct:accessRights": {
                         "title": "Access rights",
                         "type": "string",
                         "description": "Defines the accessibility of the Catalog (e.g., public, internal, etc.).",
                         "enum": [
-                            "CONFIDENTIAL",
-                            "NON_PUBLIC",
-                            "PUBLIC",
-                            "RESTRICTED",
-                            "SENSITIVE"
+                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
+                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
                         ]
                     },
                     "foaf:homepage": {
