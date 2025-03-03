@@ -12,15 +12,15 @@
             "items": {
                 "type": "object",
                 "required": [
-                    "dcterms:identifier",
-                    "dcterms:title",
-                    "dcterms:description",
-                    "dcterms:accessRights",
-                    "dcterms:publisher",
+                    "dct:identifier",
+                    "dct:title",
+                    "dct:description",
+                    "dct:accessRights",
+                    "dct:publisher",
                     "dcat:contactPoint",
-                    "dcterms:issued",
-                    "dcterms:accrualPeriodicity",
-                    "dcterms:modified",
+                    "dct:issued",
+                    "dct:accrualPeriodicity",
+                    "dct:modified",
                     "schema:OrganizationRole",
                     "adms:status",
                     "bv:classification",
@@ -41,12 +41,12 @@
                         "title": "Image URL",
                         "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the dataset's content."
                     },
-                    "dcterms:identifier": {
+                    "dct:identifier": {
                         "type": "string",
                         "title": "Dataset identifier",
                         "description": "Unique identifier for the dataset. If left empty, it is automatically assigned."
                     },
-                    "dcterms:title": {
+                    "dct:title": {
                         "type": "object",
                         "required": [
                             "de",
@@ -73,7 +73,7 @@
                             }
                         }
                     },
-                    "dcterms:description": {
+                    "dct:description": {
                         "type": "object",
                         "required": [
                             "de",
@@ -100,19 +100,19 @@
                             }
                         }
                     },
-                    "dcterms:accessRights": {
+                    "dct:accessRights": {
                         "type": "string",
                         "title": "Access rights",
-                        "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.).",
+                        "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
-                            "CONFIDENTIAL",
-                            "NON_PUBLIC",
-                            "PUBLIC",
-                            "RESTRICTED",
-                            "SENSITIVE"
+                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
+                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
                         ]
                     },
-                    "dcterms:publisher": {
+                    "dct:publisher": {
                         "type": "string",
                         "title": "Publisher",
                         "description": "Entity (person or organization) who published the dataset."
@@ -136,7 +136,7 @@
                             }
                         }
                     },
-                    "dcterms:issued": {
+                    "dct:issued": {
                         "title": "Issued date",
                         "description": "Date when the dataset was formally issued for the first time. If unknown, you may select the date of the first publication of this metadata.",
                         "type": [
@@ -156,23 +156,26 @@
                             "type": "string"
                         }
                     },
-                    "dcterms:accrualPeriodicity": {
+                    "dct:accrualPeriodicity": {
                         "type": "string",
                         "title": "Accrual periodicity",
-                        "description": "Frequency with which dataset is updated (e.g., 'Annual').",
+                        "description": "Frequency with which dataset is updated (e.g., 'Annual'). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-frequency .",
                         "enum": [
-                            "OTHER",
-                            "HOURLY",
-                            "UNKNOWN",
-                            "QUARTERLY",
-                            "NEVER",
-                            "MONTHLY",
-                            "ANNUAL",
-                            "DAILY",
-                            "AS_NEEDED"
+                            "http://publications.europa.eu/resource/authority/frequency/OTHER",
+                            "http://publications.europa.eu/resource/authority/frequency/HOURLY",
+                            "http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
+                            "http://publications.europa.eu/resource/authority/frequency/QUARTERLY",
+                            "http://publications.europa.eu/resource/authority/frequency/NEVER",
+                            "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+                            "http://publications.europa.eu/resource/authority/frequency/ANNUAL",
+                            "http://publications.europa.eu/resource/authority/frequency/DAILY",
+                            "http://publications.europa.eu/resource/authority/frequency/AS_NEEDED",
+                            "http://publications.europa.eu/resource/authority/frequency/WEEKLY",
+                            "http://publications.europa.eu/resource/authority/frequency/IRREG",
+                            "http://publications.europa.eu/resource/authority/frequency/CONT"
                         ]
                     },
-                    "dcterms:modified": {
+                    "dct:modified": {
                         "type": [
                             "string",
                             "null"
@@ -288,7 +291,7 @@
                                 "description": "Indicates if the dataset must be published on opendata.swiss. May be used by harvesters or automatic metadata publication.",
                                 "type": "boolean"
                             },
-                            "dcterms:identifier": {
+                            "dct:identifier": {
                                 "title": "opendataswiss id",
                                 "type": "string",
                                 "description": "Identifier for the dataset on opendata.swiss."
@@ -315,7 +318,7 @@
                                 "type": "boolean",
                                 "default": true
                             },
-                            "dcterms:identifier": {
+                            "dct:identifier": {
                                 "title": "i14y id",
                                 "type": "string",
                                 "description": "Identifier for the dataset on I14Y."
@@ -354,12 +357,12 @@
                         "format": "uri",
                         "description": "Landing page or homepage for the dataset."
                     },
-                    "dcterms:spatial": {
+                    "dct:spatial": {
                         "title": "Spatial coverage",
                         "type": "string",
                         "description": "Spatial/geographical coverage of the dataset."
                     },
-                    "dcterms:temporal": {
+                    "dct:temporal": {
                         "title": "Temporal coverage",
                         "type": "string",
                         "description": "Temporal coverage of the dataset. For example, the first and last measurement years for a timeseries."
@@ -472,7 +475,7 @@
                         "type": "string",
                         "description": "Reference to the series this dataset belongs to."
                     },
-                    "dcterms:replaces": {
+                    "dct:replaces": {
                         "title": "replaces",
                         "type": [
                             "array",
@@ -493,15 +496,15 @@
                         "items": {
                             "type": "object",
                             "required": [
-                                "dcterms:identifier",
+                                "dct:identifier",
                                 "dcat:accessURL",
                                 "adms:status",
-                                "dcterms:format",
-                                "dcterms:modified"
+                                "dct:format",
+                                "dct:modified"
                             ],
                             "additionalProperties": false,
                             "properties": {
-                                "dcterms:identifier": {
+                                "dct:identifier": {
                                     "title": "Distribution id",
                                     "type": "string",
                                     "description": "Identifier for this distribution. If left empty, it will be automatically assigned."
@@ -524,12 +527,12 @@
                                         "archived"
                                     ]
                                 },
-                                "dcterms:format": {
+                                "dct:format": {
                                     "title": "format",
                                     "type": "string",
                                     "description": "File format for this distribution (e.g., CSV, JSON)."
                                 },
-                                "dcterms:modified": {
+                                "dct:modified": {
                                     "title": "Last modification date",
                                     "type": [
                                         "string",
@@ -547,7 +550,7 @@
                                     "format": "uri",
                                     "description": "Direct download URL of the distribution file. This link must directly point to the file."
                                 },
-                                "dcterms:title": {
+                                "dct:title": {
                                     "title": "Distribution title",
                                     "type": "object",
                                     "required": [
@@ -574,7 +577,7 @@
                                         }
                                     }
                                 },
-                                "dcterms:description": {
+                                "dct:description": {
                                     "title": "Distribution description",
                                     "type": "object",
                                     "required": [
@@ -601,12 +604,12 @@
                                         }
                                     }
                                 },
-                                "dcterms:conformsTo": {
+                                "dct:conformsTo": {
                                     "title": "Conforms to",
                                     "type": "string",
                                     "description": "Reference to a standard or specification the distribution conforms to."
                                 },
-                                "dcterms:license": {
+                                "dct:license": {
                                     "title": "license",
                                     "type": "string",
                                     "description": "License under which this distribution is released. This is mandatory for opendata.swiss publications.",
@@ -640,11 +643,11 @@
             "items": {
                 "type": "object",
                 "required": [
-                    "dcterms:identifier",
-                    "dcterms:title",
-                    "dcterms:description",
+                    "dct:identifier",
+                    "dct:title",
+                    "dct:description",
                     "dcat:contactPoint",
-                    "dcterms:publisher",
+                    "dct:publisher",
                     "adms:status",
                     "bv:classification",
                     "bv:personalData"
@@ -661,12 +664,12 @@
                         "title": "Image URL",
                         "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the series content."
                     },
-                    "dcterms:identifier": {
+                    "dct:identifier": {
                         "title": "Series id",
                         "type": "string",
                         "description": "Identifier for this DatasetSeries. If left empty, it will be automatically assigned."
                     },
-                    "dcterms:title": {
+                    "dct:title": {
                         "title": "Series title",
                         "type": "object",
                         "required": [
@@ -693,7 +696,7 @@
                             }
                         }
                     },
-                    "dcterms:description": {
+                    "dct:description": {
                         "title": "Series description",
                         "type": "object",
                         "required": [
@@ -739,7 +742,7 @@
                             }
                         }
                     },
-                    "dcterms:publisher": {
+                    "dct:publisher": {
                         "type": "string",
                         "title": "Publisher",
                         "description": "Publisher or organization responsible for the series."
@@ -844,12 +847,12 @@
             "items": {
                 "type": "object",
                 "required": [
-                    "dcterms:identifier",
-                    "dcterms:title",
-                    "dcterms:description",
-                    "dcterms:publisher",
+                    "dct:identifier",
+                    "dct:title",
+                    "dct:description",
+                    "dct:publisher",
                     "dcat:contactPoint",
-                    "dcterms:accessRights",
+                    "dct:accessRights",
                     "dcat:endopointURL",
                     "adms:status"
                 ],
@@ -865,12 +868,12 @@
                         "title": "Image URL",
                         "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
                     },
-                    "dcterms:identifier": {
+                    "dct:identifier": {
                         "title": "Service id",
                         "type": "string",
                         "description": "Identifier for this DataService. If left empty, it will be automatically assigned."
                     },
-                    "dcterms:title": {
+                    "dct:title": {
                         "title": "DataService title",
                         "type": "object",
                         "required": [
@@ -897,7 +900,7 @@
                             }
                         }
                     },
-                    "dcterms:description": {
+                    "dct:description": {
                         "title": "DataService description",
                         "type": "object",
                         "required": [
@@ -924,7 +927,7 @@
                             }
                         }
                     },
-                    "dcterms:publisher": {
+                    "dct:publisher": {
                         "type": "string",
                         "title": "Publisher",
                         "description": "Publisher or organization responsible for the DataService."
@@ -948,16 +951,16 @@
                             }
                         }
                     },
-                    "dcterms:accessRights": {
+                    "dct:accessRights": {
                         "type": "string",
                         "title": "Access rights",
-                        "description": "Defines the accessibility of the DataService (e.g., public, internal, etc.).",
+                        "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
-                            "CONFIDENTIAL",
-                            "NON_PUBLIC",
-                            "PUBLIC",
-                            "RESTRICTED",
-                            "SENSITIVE"
+                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
+                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
                         ]
                     },
                     "dcat:endopointURL": {
@@ -1051,7 +1054,7 @@
                                 "type": "boolean",
                                 "default": true
                             },
-                            "dcterms:identifier": {
+                            "dct:identifier": {
                                 "title": "I14Y id",
                                 "type": "string",
                                 "description": "Identifier for the DataService on I14Y."
@@ -1073,12 +1076,12 @@
             "items": {
                 "type": "object",
                 "required": [
-                    "dcterms:identifier",
-                    "dcterms:title",
-                    "dcterms:description",
-                    "dcterms:publisher",
+                    "dct:identifier",
+                    "dct:title",
+                    "dct:description",
+                    "dct:publisher",
                     "dcat:contactPoint",
-                    "dcterms:accessRights"
+                    "dct:accessRights"
                 ],
                 "title": "Catalog objects",
                 "description": "Structure of Catalog. A catalog is a loose collection of Datasets, DatasetSeries and DataServices such as, for example, opendata.swiss or I14Y.",
@@ -1092,12 +1095,12 @@
                         "title": "Image URL",
                         "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
                     },
-                    "dcterms:identifier": {
+                    "dct:identifier": {
                         "title": "Catalog id",
                         "type": "string",
                         "description": "Identifier for this Catalog. If left empty, it will be automatically assigned."
                     },
-                    "dcterms:title": {
+                    "dct:title": {
                         "title": "Catalog title",
                         "type": "object",
                         "required": [
@@ -1124,7 +1127,7 @@
                             }
                         }
                     },
-                    "dcterms:description": {
+                    "dct:description": {
                         "title": "Catalog description",
                         "type": "object",
                         "required": [
@@ -1151,7 +1154,7 @@
                             }
                         }
                     },
-                    "dcterms:publisher": {
+                    "dct:publisher": {
                         "title": "Publisher",
                         "type": "string",
                         "description": "Publisher or organization responsible for the Catalog."
@@ -1175,16 +1178,16 @@
                             }
                         }
                     },
-                    "dcterms:accessRights": {
+                    "dct:accessRights": {
                         "title": "Access rights",
                         "type": "string",
-                        "description": "Defines the accessibility of the Catalog (e.g., public, internal, etc.).",
+                        "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
                         "enum": [
-                            "CONFIDENTIAL",
-                            "NON_PUBLIC",
-                            "PUBLIC",
-                            "RESTRICTED",
-                            "SENSITIVE"
+                            "http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL",
+                            "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+                            "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+                            "http://publications.europa.eu/resource/authority/access-right/SENSITIVE"
                         ]
                     },
                     "foaf:homepage": {
