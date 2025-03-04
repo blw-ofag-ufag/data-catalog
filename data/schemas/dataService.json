@@ -1,0 +1,227 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/dataCatalogSchema.json",
+    "title": "Data Service Schema",
+    "description": "A JSON schema for a data service file in the data catalog.",
+    "type": "object",
+    "required": [
+        "dct:identifier",
+        "dct:title",
+        "dct:description",
+        "dct:publisher",
+        "dcat:contactPoint",
+        "dct:accessRights",
+        "dcat:endopointURL",
+        "adms:status"
+    ],
+    "properties": {
+        "schema:image": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "uri",
+            "title": "Image URL",
+            "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the datasets content."
+        },
+        "dct:identifier": {
+            "title": "Service id",
+            "type": "string",
+            "description": "Identifier for this DataService. If left empty, it will be automatically assigned."
+        },
+        "dct:title": {
+            "title": "DataService title",
+            "type": "object",
+            "required": [
+                "de",
+                "fr"
+            ],
+            "description": "Title for the DataService in multiple languages.",
+            "properties": {
+                "de": {
+                    "type": "string",
+                    "title": "Deutsch"
+                },
+                "fr": {
+                    "type": "string",
+                    "title": "Français"
+                },
+                "it": {
+                    "type": "string",
+                    "title": "Italiano"
+                },
+                "en": {
+                    "type": "string",
+                    "title": "English"
+                }
+            }
+        },
+        "dct:description": {
+            "title": "DataService description",
+            "type": "object",
+            "required": [
+                "de",
+                "fr"
+            ],
+            "description": "Description for the series in multiple languages.",
+            "properties": {
+                "de": {
+                    "type": "string",
+                    "title": "Deutsch"
+                },
+                "fr": {
+                    "type": "string",
+                    "title": "Français"
+                },
+                "it": {
+                    "type": "string",
+                    "title": "Italiano"
+                },
+                "en": {
+                    "type": "string",
+                    "title": "English"
+                }
+            }
+        },
+        "dct:publisher": {
+            "type": "string",
+            "title": "Publisher",
+            "description": "Publisher or organization responsible for the DataService."
+        },
+        "dcat:contactPoint": {
+            "title": "Contact point",
+            "description": "Contact information for potential inquiries about the DataService.",
+            "type": "object",
+            "required": [
+                "schema:name",
+                "schema:email"
+            ],
+            "properties": {
+                "schema:name": {
+                    "type": "string",
+                    "title": "Name"
+                },
+                "schema:email": {
+                    "type": "string",
+                    "title": "email"
+                }
+            }
+        },
+        "dct:accessRights": {
+            "type": "string",
+            "title": "Access rights",
+            "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
+            "enum": [
+                "CONFIDENTIAL",
+                "NON_PUBLIC",
+                "PUBLIC",
+                "RESTRICTED",
+                "SENSITIVE"
+            ]
+        },
+        "dcat:endopointURL": {
+            "title": "Endpoint URL",
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "uri",
+            "description": "URL of the technical endpoint of the DataService."
+        },
+        "adms:status": {
+            "title": "Status",
+            "type": "string",
+            "description": "Current status of the DataService.",
+            "enum": [
+                "workInProgress",
+                "validated",
+                "published",
+                "deleted",
+                "archived"
+            ]
+        },
+        "dcat:servesDataset": {
+            "title": "Serves dataset",
+            "type": [
+                "array",
+                "null"
+            ],
+            "description": "IDs of the datasets served by this DataService",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dcat:endpointDescription": {
+            "title": "Endpoint description",
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "uri",
+            "description": "URL of technical documentation of the DataService, such as for example a Swagger documentation."
+        },
+        "foaf:page": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "title": "Related resources",
+            "description": "Any related page, document or resource.",
+            "items": {
+                "type": "object",
+                "required": [
+                    "uri"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "alias": {
+                        "title": "Page alias",
+                        "description": "Alias to be showed in the interface for this link.",
+                        "type": "string"
+                    },
+                    "uri": {
+                        "title": "url",
+                        "description": "URL for the page, document or resource",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uri"
+                    }
+                }
+            }
+        },
+        "schema:comment": {
+            "title": "comments",
+            "type": "string",
+            "description": "Additional comments about the DataService."
+        },
+        "bv:i14y": {
+            "type": "object",
+            "required": [
+                "bv:mustBePublished"
+            ],
+            "title": "I14Y publication",
+            "description": "Indicates if the DataService metadata must be made available via the interoperability platform I14Y. Optionally references the I14Y publication ID.",
+            "properties": {
+                "bv:mustBePublished": {
+                    "title": "I14Y publication flag",
+                    "description": "Indicates if the DataService must be published on I14Y. May be used by harvesters or automatic metadata publication. This is true by default.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "dct:identifier": {
+                    "title": "I14Y id",
+                    "type": "string",
+                    "description": "Identifier for the DataService on I14Y."
+                },
+                "dcat:accessURL": {
+                    "title": "I14Y URL",
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL for the DataService on I14Y"
+                }
+            }
+        }
+    }
+}
