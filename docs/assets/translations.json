@@ -65,6 +65,12 @@
        "fr":"Tableau",
        "it":"Tabella"
     },
+    "tableHeaderTitle":{
+      "de":"Titel",
+      "en":"Title",
+      "fr":"Titre",
+      "it":"Titolo"
+   },
     "tableHeaderIssued":{
        "de":"Datum",
        "en":"Issued",
