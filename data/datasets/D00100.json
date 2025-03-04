@@ -3,9 +3,9 @@
   "dcterms:identifier": "D00100",
   "dcterms:title": {
     "de": "DigiAgriFoodCH Systemlandkarte",
-    "fr": "Variétés végétales en Suisse",
-    "it": "Varietà vegetali in Svizzera",
-    "en": "Plant varieties in Switzerland"
+    "fr": "Carte du système DigiAgriFoodCH",
+    "it": "Mappa del sistema DigiAgriFoodCH",
+    "en": "DigiAgriFoodCH System Map"
   },
   "dcterms:description": {
     "de": "Strukturierte Informationen über IT-Systeme, die darin enthaltenen Daten und deren betreibende Organisationen im Schweizer Agrar- und Ernährungssektor.",
