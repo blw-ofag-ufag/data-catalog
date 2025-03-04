@@ -1,0 +1,201 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Dataset Series Schema",
+    "description": "A JSON schema for a dataset series file in the data catalog.",
+    "type": "object",
+    "required": [
+        "dct:identifier",
+        "dct:title",
+        "dct:description",
+        "dcat:contactPoint",
+        "dct:publisher",
+        "adms:status",
+        "bv:classification",
+        "bv:personalData"
+    ],
+    "properties": {
+        "schema:image": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "uri",
+            "title": "Image URL",
+            "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the series content."
+        },
+        "dct:identifier": {
+            "title": "Series id",
+            "type": "string",
+            "description": "Identifier for this DatasetSeries. If left empty, it will be automatically assigned."
+        },
+        "dct:title": {
+            "title": "Series title",
+            "type": "object",
+            "required": [
+                "de",
+                "fr"
+            ],
+            "description": "Title for the series in multiple languages.",
+            "properties": {
+                "de": {
+                    "type": "string",
+                    "title": "Deutsch"
+                },
+                "fr": {
+                    "type": "string",
+                    "title": "Français"
+                },
+                "it": {
+                    "type": "string",
+                    "title": "Italiano"
+                },
+                "en": {
+                    "type": "string",
+                    "title": "English"
+                }
+            }
+        },
+        "dct:description": {
+            "title": "Series description",
+            "type": "object",
+            "required": [
+                "de",
+                "fr"
+            ],
+            "description": "Description for the series in multiple languages.",
+            "properties": {
+                "de": {
+                    "type": "string",
+                    "title": "Deutsch"
+                },
+                "fr": {
+                    "type": "string",
+                    "title": "Français"
+                },
+                "it": {
+                    "type": "string",
+                    "title": "Italiano"
+                },
+                "en": {
+                    "type": "string",
+                    "title": "English"
+                }
+            }
+        },
+        "dcat:contactPoint": {
+            "title": "Contact point",
+            "description": "Contact information for potential inquiries about the DatasetSeries.",
+            "type": "object",
+            "required": [
+                "schema:name",
+                "schema:email"
+            ],
+            "properties": {
+                "schema:name": {
+                    "type": "string",
+                    "title": "Name"
+                },
+                "schema:email": {
+                    "type": "string",
+                    "title": "email"
+                }
+            }
+        },
+        "dct:publisher": {
+            "type": "string",
+            "title": "Publisher",
+            "description": "Publisher or organization responsible for the series."
+        },
+        "adms:status": {
+            "title": "Status",
+            "type": "string",
+            "description": "Current status of the DatasetSeries.",
+            "enum": [
+                "workInProgress",
+                "validated",
+                "published",
+                "deleted",
+                "archived"
+            ]
+        },
+        "dcat:dataset": {
+            "title": "Series dataset",
+            "type": [
+                "array",
+                "null"
+            ],
+            "description": "References which dataset(s) are grouped within this DatasetSeries. Please note that a Dataset may be referenced by multiple DatasetSeries.",
+            "items": {
+                "type": "string"
+            }
+        },
+        "foaf:page": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "title": "Related resources",
+            "description": "Any related page, document or resource.",
+            "items": {
+                "type": "object",
+                "required": [
+                    "uri"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "alias": {
+                        "title": "Page alias",
+                        "description": "Alias to be showed in the interface for this link.",
+                        "type": "string"
+                    },
+                    "uri": {
+                        "title": "url",
+                        "description": "URL for the page, document or resource",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uri"
+                    }
+                }
+            }
+        },
+        "schema:comment": {
+            "title": "comments",
+            "type": "string",
+            "description": "Additional comments or notes about the DatasetSeries."
+        },
+        "dcat:keyword": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "title": "Keywords",
+            "description": "Keywords describing the DatasetSeries.",
+            "items": {
+                "type": "string"
+            }
+        },
+        "bv:classification": {
+            "type": "string",
+            "title": "Classification level",
+            "description": "Classification level of the dataset according to the Swiss Informationssicherheitsgesetz, ISG. For information regarding the categorization, consult <a https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_13'>the Swiss Informationssicherheitsgesetz article 13</a>",
+            "enum": [
+                "none",
+                "internal",
+                "confidential",
+                "secret"
+            ]
+        },
+        "bv:personalData": {
+            "type": "string",
+            "title": "Categorization DSG",
+            "description": "Categorization regarding the Swiss data protection act. For information regarding the categorization, consult <a href='https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5'>the Swiss data protection act article 5</a>.",
+            "enum": [
+                "none",
+                "personalData",
+                "sensitivePersonalData"
+            ]
+        }
+    }
+}
