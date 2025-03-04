@@ -19,6 +19,10 @@ body {
   padding: 0;
 }
 
+a {
+  color: var(--color-foreground); /* Change this to your desired color */
+}
+
 /* Navigation */
 nav.navbar {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -156,11 +160,18 @@ footer a:hover {
   table-layout: fixed;
   width: 100%;
 }
-.table-fixed th:nth-child(1) { width: 8%; }
-.table-fixed th:nth-child(2) { width: 32%; }
+.table-fixed td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.table-fixed th:nth-child(1) { width: 35%; }
+.table-fixed th:nth-child(2) { width: 15%; }
 .table-fixed th:nth-child(3) { width: 12%; }
-.table-fixed th:nth-child(4) { width: 10%; }
-.table-fixed th:nth-child(5) { width: 30%; }
+.table-fixed th:nth-child(4), .table-fixed td:nth-child(4) { 
+  width: auto;  /* Let it take up remaining space */
+  white-space: normal;  /* Allow wrapping */
+}
 
 /* Universal "unified-control" class for consistent styling */
 .unified-control {

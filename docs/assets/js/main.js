@@ -27,7 +27,7 @@ let tagify = null; // Assigned to our Tagify instance
  ********************************************/
 // Data helpers
 function getDataOwnerName(data) {
-  return data.dataOwner || "N/A";
+  return data.dataOwner || "";
 }
 function parseTokens(str) {
   if (!str) return [];
@@ -108,19 +108,37 @@ function sortDatasets(dataArray) {
       sorted.sort((a, b) => {
         const aTitle = (a["dcterms:title"]?.[state.lang] || "").toLowerCase();
         const bTitle = (b["dcterms:title"]?.[state.lang] || "").toLowerCase();
+        if (!aTitle && bTitle) return 1;
+        if (aTitle && !bTitle) return -1;
         return aTitle.localeCompare(bTitle);
       });
       break;
     case "issued-asc":
-      sorted.sort((a, b) => new Date(a["dcterms:issued"]) - new Date(b["dcterms:issued"]));
+      sorted.sort((a, b) => {
+        const aDate = a["dcterms:issued"] ? new Date(a["dcterms:issued"]) : null;
+        const bDate = b["dcterms:issued"] ? new Date(b["dcterms:issued"]) : null;
+        if (!aDate && bDate) return 1;
+        if (aDate && !bDate) return -1;
+        if (!aDate && !bDate) return 0;
+        return aDate - bDate;
+      });
       break;
     case "issued-desc":
-      sorted.sort((a, b) => new Date(b["dcterms:issued"]) - new Date(a["dcterms:issued"]));
+      sorted.sort((a, b) => {
+        const aDate = a["dcterms:issued"] ? new Date(a["dcterms:issued"]) : null;
+        const bDate = b["dcterms:issued"] ? new Date(b["dcterms:issued"]) : null;
+        if (!aDate && bDate) return 1;
+        if (aDate && !bDate) return -1;
+        if (!aDate && !bDate) return 0;
+        return bDate - aDate;
+      });
       break;
     case "owner":
       sorted.sort((a, b) => {
         const aOwner = getDataOwnerName(a).toLowerCase();
         const bOwner = getDataOwnerName(b).toLowerCase();
+        if (!aOwner && bOwner) return 1;
+        if (aOwner && !bOwner) return -1;
         return aOwner.localeCompare(bOwner);
       });
       break;
@@ -280,20 +298,25 @@ function tileCardTemplate(dataset) {
 
 function tableRowTemplate(dataset) {
   const identifier = dataset["dcterms:identifier"] || "";
-  const title = getDisplayTitle(dataset);
+  const title = dataset["dcterms:title"]?.[state.lang] || "";
   const issued = formatDate(dataset["dcterms:issued"]);
   const owner = getDataOwnerName(dataset);
   const keywordsArr = dataset["dcat:keyword"] || [];
   const keywordsHTML = keywordsArr
     .map((kw) => `<span class="keyword" data-key="${kw}">${kw}</span>`)
     .join(" ");
-
   return `
     <tr class="dataset-row" data-id="${identifier}">
-      <td>${identifier}</td>
       <td>${title}</td>
       <td>${issued}</td>
-      <td>${owner}</td>
+      <td>
+        <a href="https://admindir.verzeichnisse.admin.ch/person/${owner}" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          onclick="event.stopPropagation();">
+          ${owner}
+        </a>
+      </td>
       <td><div class="keywords">${keywordsHTML}</div></td>
     </tr>
   `;
