@@ -19,6 +19,10 @@ body {
   padding: 0;
 }
 
+h1 {
+  margin-top: 1.5em;
+}
+
 a {
   color: var(--color-foreground); /* Change this to your desired color */
 }
@@ -149,7 +153,7 @@ footer a:hover {
   font-weight: 600;
 }
 
-/* Hover effect: fill row with primary color, invert text to white */
+/* Hover effect for table */
 .table-hover tbody tr:hover,
 .table-hover tbody tr:hover td {
   background-color: var(--color-primary-faded) !important;
@@ -301,4 +305,18 @@ footer a:hover {
   --tag-remove-btn: var(--color-background);
   --tag-remove-btn-color: var(--color-background);
   --tag-remove-btn-bg--hover: var(--color-danger);
+}
+
+
+.enumeration-chip {
+  display: inline-block;
+  border: 1px solid var(--color-accent);
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 12px;
+  color: var(--color-accent);
+  font-weight: 400;
+  margin: 2px 4px 2px 0;
+  text-transform: capitalize; /* Ensure each word starts with uppercase */
 }
