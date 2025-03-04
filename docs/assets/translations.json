@@ -49,7 +49,7 @@
     },
     "sortOwner":{
        "de":"Nach Dateninhaber",
-       "en":"Sort by data dwner",
+       "en":"Sort by data owner",
        "fr":"Trier par propriétaire des données",
        "it":"Ordina per proprietario dei dati"
     },
