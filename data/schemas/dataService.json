@@ -1,6 +1,5 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://example.com/dataCatalogSchema.json",
     "title": "Data Service Schema",
     "description": "A JSON schema for a data service file in the data catalog.",
     "type": "object",
