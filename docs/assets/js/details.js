@@ -174,15 +174,6 @@ function renderNotFound(datasetId) {
 }
 
 function renderHeroBanner(data, lang) {
-  // Select the hero banner using the class selector since there's no id now
-  const heroBanner = document.querySelector(".hero-banner");
-
-  // (Remove background image setting)
-  // if (data["schema:image"]) {
-  //   heroBanner.style.backgroundImage = `url('${data["schema:image"]}')`;
-  // }
-
-  // Update text elements (they have specific IDs, so they’re unaffected)
   document.getElementById("datasetID").textContent =
     data["dcterms:identifier"] || "";
   const datasetTitle =
@@ -207,40 +198,20 @@ function renderAffiliatedPersons(data, lang) {
     return;
   }
 
-  html += `
-    <table class="table">
-      <thead>
-        <tr>
-          <th>${translations["details.name"]?.[lang] || "Name"}</th>
-          <th>${translations["details.role"]?.[lang] || "Role"}</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
+  html += `<table class="table"><tbody>`;
   persons.forEach((p) => {
-    const name =
-      p["schema:name"] || translations["details.unknown"]?.[lang] || "Unknown";
-    const role =
-      p["schema:roleName"] ||
-      translations["details.unknownRole"]?.[lang] ||
-      "Unknown Role";
+    const name = p["schema:name"] || translations["details.unknown"]?.[lang] || "Unknown";
+    const role = p["schema:roleName"] || translations["details.unknownRole"]?.[lang] || "Unknown Role";
     html += `
       <tr>
         <td>
-          <a href="https://admindir.verzeichnisse.admin.ch/person/${encodeURIComponent(
-            name
-          )}" target="_blank" rel="noopener noreferrer">
-            ${name}
-          </a>
+          <a href="https://admindir.verzeichnisse.admin.ch/person/${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer">${name}</a>
         </td>
         <td>${Utils.formatEnumerationString(role)}</td>
       </tr>
     `;
   });
-  html += `
-      </tbody>
-    </table>
-  `;
+  html += `</tbody></table>`;
   section.innerHTML = html;
 }
 
@@ -294,25 +265,14 @@ function renderMetadata(data, lang) {
   section.innerHTML += html;
 }
 
+
 function renderDistributions(data, lang) {
   const section = document.getElementById("distributionsSection");
   const distributions = data["dcat:distribution"] || [];
   let html = `<h1>${
     translations["dcat:distribution"]?.[lang] || "Distributions"
   }</h1>`;
-  html += `<table class="table">
-             <thead>
-               <tr>
-                 <th>${translations["details.title"]?.[lang] || "Title"}</th>
-                 <th>${
-                   translations["details.description"]?.[lang] || "Description"
-                 }</th>
-                 <th class="text-end">${
-                   translations["details.format"]?.[lang] || "Format"
-                 }</th>
-               </tr>
-             </thead>
-             <tbody>`;
+  html += `<table class="table"><tbody>`;
   distributions.forEach((dist) => {
     const title = Utils.getLocalized(dist["dcterms:title"], lang) || "";
     const description = Utils.getLocalized(
@@ -368,9 +328,6 @@ async function renderEditHistory(datasetId, branch, lang) {
                   <th>${
                     translations["details.message"]?.[lang] || "Message"
                   }</th>
-                  <th class="text-end">${
-                    translations["details.commit"]?.[lang] || "Commit"
-                  }</th>
                 </tr>
               </thead>
               <tbody>`;
@@ -391,13 +348,9 @@ async function renderEditHistory(datasetId, branch, lang) {
                      ? `<img src="${authorAvatar}" alt="${authorLogin}" style="width:24px;height:24px;border-radius:50%;">`
                      : ""
                  }</td>
-                 <td>${authorLogin}</td>
+                 <td><a href="https://github.com/${authorLogin}" target="_blank">${authorLogin}<a></td>
                  <td>${formattedDate}</td>
-                 <td>${message}</td>
-                 <td class="text-end"><a href="${commitUrl}" target="_blank"><code>${sha.substring(
-        0,
-        20
-      )}</code></a></td>
+                 <td><a href="${commitUrl}" target="_blank">${message}</a></td>
                </tr>`;
     });
     html += `</tbody></table>`;

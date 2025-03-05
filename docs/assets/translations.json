@@ -106,5 +106,11 @@
        "en":"Contact",
        "fr":"Contact",
        "it":"Contatto"
+    },
+    "dcterms:accessRights": {
+      "de": "Zugriffsrechte",
+      "en": "Access rights",
+      "fr": "",
+      "it": ""
     }
  }
