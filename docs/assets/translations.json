@@ -1,116 +1,284 @@
 {
-    "title":{
-       "de":"Datenkatalog",
-       "en":"Data Catalog",
-       "fr":"Catalogue de données",
-       "it":"Catalogo dei dati"
-    },
-    "heroBannerHeading":{
-       "de":"Willkommen zum Datenkatalog des Bundesamts für Landwirtschaft",
-       "en":"Welcome to the Federal Office for Agriculture Data Catalog",
-       "fr":"Bienvenue dans le catalogue de données de l'Office fédéral de l'agriculture",
-       "it":"Benvenuti al Catalogo Dati dell'Ufficio Federale dell'Agricoltura"
-    },
-    "heroBannerText":{
-       "de":"Hier finden Sie die vom Bundesamt für Landwirtschaft (BLW) gesammelten Datensätze.",
-       "en":"Here you will find the datasets collected by the Federal Office for Agriculture (FOAG).",
-       "fr":"Ici, vous trouverez les jeux de données collectés par l'Office fédéral de l'agriculture (OFAG).",
-       "it":"Qui troverete i dataset raccolti dall'Ufficio Federale dell'Agricoltura (UFAG)."
-    },
-    "searchPlaceholder":{
-       "de":"Suche Text...",
-       "en":"Search text...",
-       "fr":"Rechercher...",
-       "it":"Cerca testo..."
-    },
-    "tagInputPlaceholder":{
-       "de":"Tags hinzufügen...",
-       "en":"Add tags...",
-       "fr":"Ajouter des tags...",
-       "it":"Aggiungi tag..."
-    },
-    "sortTitle":{
-       "de":"Nach Titel sortieren",
-       "en":"Sort by title",
-       "fr":"Trier par titre",
-       "it":"Ordina per titolo"
-    },
-    "sortIssuedAsc":{
-       "de":"Nach Datum (aufsteigend)",
-       "en":"Sort by date (ascending)",
-       "fr":"Trier par date (asc)",
-       "it":"Ordina per data (asc)"
-    },
-    "sortIssuedDesc":{
-       "de":"Nach Datum (absteigend)",
-       "en":"Sort by date (descending)",
-       "fr":"Trier par date (desc)",
-       "it":"Ordina per data (desc)"
-    },
-    "sortOwner":{
-       "de":"Nach Dateninhaber",
-       "en":"Sort by data owner",
-       "fr":"Trier par propriétaire des données",
-       "it":"Ordina per proprietario dei dati"
-    },
-    "viewTile":{
-       "de":"Kachel",
-       "en":"Tile",
-       "fr":"Tuile",
-       "it":"Piastrella"
-    },
-    "viewTable":{
-       "de":"Tabelle",
-       "en":"Table",
-       "fr":"Tableau",
-       "it":"Tabella"
-    },
-    "tableHeaderTitle":{
+   "title":{
+      "de":"Datenkatalog",
+      "en":"Data Catalog",
+      "fr":"Catalogue de données",
+      "it":"Catalogo dei dati"
+   },
+   "heroBannerHeading":{
+      "de":"Willkommen zum Datenkatalog des Bundesamts für Landwirtschaft",
+      "en":"Welcome to the Federal Office for Agriculture Data Catalog",
+      "fr":"Bienvenue dans le catalogue de données de l'Office fédéral de l'agriculture",
+      "it":"Benvenuti al Catalogo Dati dell'Ufficio Federale dell'Agricoltura"
+   },
+   "heroBannerText":{
+      "de":"Hier finden Sie die vom Bundesamt für Landwirtschaft (BLW) gesammelten Datensätze.",
+      "en":"Here you will find the datasets collected by the Federal Office for Agriculture (FOAG).",
+      "fr":"Ici, vous trouverez les jeux de données collectés par l'Office fédéral de l'agriculture (OFAG).",
+      "it":"Qui troverete i dataset raccolti dall'Ufficio Federale dell'Agricoltura (UFAG)."
+   },
+   "searchPlaceholder":{
+      "de":"Suche Text...",
+      "en":"Search text...",
+      "fr":"Rechercher...",
+      "it":"Cerca testo..."
+   },
+   "tagInputPlaceholder":{
+      "de":"Tags hinzufügen...",
+      "en":"Add tags...",
+      "fr":"Ajouter des tags...",
+      "it":"Aggiungi tag..."
+   },
+   "sortTitle":{
+      "de":"Nach Titel sortieren",
+      "en":"Sort by title",
+      "fr":"Trier par titre",
+      "it":"Ordina per titolo"
+   },
+   "sortIssuedAsc":{
+      "de":"Nach Datum (aufsteigend)",
+      "en":"Sort by date (ascending)",
+      "fr":"Trier par date (asc)",
+      "it":"Ordina per data (asc)"
+   },
+   "sortIssuedDesc":{
+      "de":"Nach Datum (absteigend)",
+      "en":"Sort by date (descending)",
+      "fr":"Trier par date (desc)",
+      "it":"Ordina per data (desc)"
+   },
+   "sortOwner":{
+      "de":"Nach Dateninhaber",
+      "en":"Sort by data owner",
+      "fr":"Trier par propriétaire des données",
+      "it":"Ordina per proprietario dei dati"
+   },
+   "viewTile":{
+      "de":"Kachel",
+      "en":"Tile",
+      "fr":"Tuile",
+      "it":"Piastrella"
+   },
+   "viewTable":{
+      "de":"Tabelle",
+      "en":"Table",
+      "fr":"Tableau",
+      "it":"Tabella"
+   },
+   "tableHeaderTitle":{
       "de":"Titel",
       "en":"Title",
       "fr":"Titre",
       "it":"Titolo"
    },
-    "tableHeaderIssued":{
-       "de":"Datum",
-       "en":"Issued",
-       "fr":"Date d'émission",
-       "it":"Data di emissione"
-    },
-    "tableHeaderOwner":{
-       "de":"Verantwortlich",
-       "en":"Owner",
-       "fr":"Responsable",
-       "it":"Responsabile"
-    },
-    "tableHeaderKeywords":{
-       "de":"Schlüsselbegriffe",
-       "en":"Keywords",
-       "fr":"Mots-clés",
-       "it":"Parole chiave"
-    },
-    "navbarAbout":{
-       "de":"Über diesen Datenkatalog",
-       "en":"About this data catalog",
-       "fr":"À propos de ce catalogue de données",
-       "it":"Informazioni su questo catalogo dati"
-    },
-    "navbarHandbook":{
-       "de":"Handbuch",
-       "en":"Handbook",
-       "fr":"Manuel",
-       "it":"Manuale"
-    },
-    "navbarContact":{
-       "de":"Kontakt",
-       "en":"Contact",
-       "fr":"Contact",
-       "it":"Contatto"
-    },
-    "dcterms:accessRights": {
-      "de": "Zugriffsrechte",
-      "en": "Access rights",
-      "fr": "",
-      "it": ""
-    }
- }
+   "tableHeaderIssued":{
+      "de":"Datum",
+      "en":"Issued",
+      "fr":"Date d'émission",
+      "it":"Data di emissione"
+   },
+   "tableHeaderOwner":{
+      "de":"Verantwortlich",
+      "en":"Owner",
+      "fr":"Responsable",
+      "it":"Responsabile"
+   },
+   "tableHeaderKeywords":{
+      "de":"Schlüsselbegriffe",
+      "en":"Keywords",
+      "fr":"Mots-clés",
+      "it":"Parole chiave"
+   },
+   "navbarAbout":{
+      "de":"Über diesen Datenkatalog",
+      "en":"About this data catalog",
+      "fr":"À propos de ce catalogue de données",
+      "it":"Informazioni su questo catalogo dati"
+   },
+   "navbarHandbook":{
+      "de":"Handbuch",
+      "en":"Handbook",
+      "fr":"Manuel",
+      "it":"Manuale"
+   },
+   "navbarContact":{
+      "de":"Kontakt",
+      "en":"Contact",
+      "fr":"Contact",
+      "it":"Contatto"
+   },
+   "dcterms:identifier":{
+      "en":"Identifier",
+      "de":"Identifikator",
+      "fr":"Identifiant",
+      "it":"Identificatore"
+   },
+   "dcterms:title":{
+      "en":"Title",
+      "de":"Titel",
+      "fr":"Titre",
+      "it":"Titolo"
+   },
+   "dcterms:description":{
+      "en":"Description",
+      "de":"Beschreibung",
+      "fr":"Description",
+      "it":"Descrizione"
+   },
+   "dcterms:accessRights":{
+      "en":"Access Rights",
+      "de":"Zugriffsrechte",
+      "fr":"Droits d'accès",
+      "it":"Diritti di accesso"
+   },
+   "dcterms:publisher":{
+      "en":"Publisher",
+      "de":"Herausgeber",
+      "fr":"Éditeur",
+      "it":"Editore"
+   },
+   "dcterms:issued":{
+      "en":"Issue date",
+      "de":"Ausgabedatum",
+      "fr":"Date de publication",
+      "it":"Data di emissione"
+   },
+   "dcterms:modified":{
+      "en":"Modification Date",
+      "de":"Änderungsdatum",
+      "fr":"Date de modification",
+      "it":"Data di modifica"
+   },
+   "dcterms:spatial":{
+      "en":"Spatial Coverage",
+      "de":"Räumliche Abdeckung",
+      "fr":"Couverture spatiale",
+      "it":"Copertura spaziale"
+   },
+   "dcterms:temporal":{
+      "en":"Temporal Coverage",
+      "de":"Zeitliche Abdeckung",
+      "fr":"Couverture temporelle",
+      "it":"Copertura temporale"
+   },
+   "dcterms:replaces":{
+      "en":"Replaces",
+      "de":"Ersetzt",
+      "fr":"Remplace",
+      "it":"Sostituisce"
+   },
+   "dcat:contactPoint":{
+      "en":"Contact Point",
+      "de":"Kontaktstelle",
+      "fr":"Point de contact",
+      "it":"Punto di contatto"
+   },
+   "dcat:keyword":{
+      "en":"Keywords",
+      "de":"Schlüsselwörter",
+      "fr":"Mots-clés",
+      "it":"Parole chiave"
+   },
+   "dcat:themeTaxonomy":{
+      "en":"Theme Taxonomy",
+      "de":"Thementaxonomie",
+      "fr":"Taxonomie des thèmes",
+      "it":"Tassonomia dei temi"
+   },
+   "dcat:landingPage":{
+      "en":"Landing Page",
+      "de":"Landingpage",
+      "fr":"Page d'accueil",
+      "it":"Pagina di destinazione"
+   },
+   "dcat:distribution":{
+      "en":"Distribution",
+      "de":"Verteilung",
+      "fr":"Distribution",
+      "it":"Distribuzione"
+   },
+   "dcat:catalog":{
+      "en":"Catalog",
+      "de":"Katalog",
+      "fr":"Catalogue",
+      "it":"Catalogo"
+   },
+   "bv:affiliatedPersons":{
+      "en":"Affiliated Persons",
+      "de":"Zugehörige Personen",
+      "fr":"Personnes affiliées",
+      "it":"Persone affiliate"
+   },
+   "dcterms:accrualPeriodicity":{
+      "en":"Accrual periodicity",
+      "de":"Erfassungsperiodizität",
+      "fr":"Périodicité d'acquisition",
+      "it":"Periodicità di acquisizione"
+   },
+   "bv:classification":{
+      "en":"Classification",
+      "de":"Klassifikation",
+      "fr":"Classification",
+      "it":"Classificazione"
+   },
+   "bv:personalData":{
+      "en":"Personal Data",
+      "de":"Personenbezogene Daten",
+      "fr":"Données personnelles",
+      "it":"Dati personali"
+   },
+   "bv:typeOfData":{
+      "en":"Type of Data",
+      "de":"Datentyp",
+      "fr":"Type de données",
+      "it":"Tipo di dati"
+   },
+   "bv:archivalValue":{
+      "en":"Archival Value",
+      "de":"Archivwert",
+      "fr":"Valeur archivistique",
+      "it":"Valore archivistico"
+   },
+   "bv:opendata.swiss":{
+      "en":"opendata.swiss publication",
+      "de":"opendata.swiss Publikation",
+      "fr":"Publication opendata.swiss",
+      "it":"Pubblicazione opendata.swiss"
+   },
+   "bv:itSystem":{
+      "en":"IT System",
+      "de":"IT-System",
+      "fr":"Système informatique",
+      "it":"Sistema IT"
+   },
+   "foaf:page":{
+      "en":"Related Pages",
+      "de":"Zugehörige Seiten",
+      "fr":"Pages associées",
+      "it":"Pagine correlate"
+   },
+   "foaf:homepage":{
+      "en":"Homepage",
+      "de":"Startseite",
+      "fr":"Page d'accueil",
+      "it":"Homepage"
+   },
+   "adms:status":{
+      "en":"Status",
+      "de":"Status",
+      "fr":"Statut",
+      "it":"Stato"
+   },
+   "prov:wasDerivedFrom":{
+      "en":"Derived From",
+      "de":"Abgeleitet von",
+      "fr":"Dérivé de",
+      "it":"Derivato da"
+   },
+   "dpv:hasLegalBasis": {
+      "en": "Legal Basis",
+      "de": "Rechtsgrundlage",
+      "fr": "Base légale",
+      "it": "Base giuridica"
+  }
+}

@@ -265,7 +265,6 @@ function renderMetadata(data, lang) {
   section.innerHTML += html;
 }
 
-
 function renderDistributions(data, lang) {
   const section = document.getElementById("distributionsSection");
   const distributions = data["dcat:distribution"] || [];
@@ -375,11 +374,22 @@ function renderDatasetDetails(data, lang) {
 /******************************************************
  * Main Initialization
  ******************************************************/
-document.addEventListener("DOMContentLoaded", async () => {
-  // Load navbar and footer
-  $("#navbar-placeholder").load("navbar.html");
+document.addEventListener("DOMContentLoaded", () => {
+  // Load navbar and footer, and attach language dropdown listener after navbar loads.
+  $("#navbar-placeholder").load("navbar.html", function () {
+    // Attach language selector event listener for details page.
+    $(document).on("click", ".dropdown-item.lang-option", function (e) {
+      e.preventDefault();
+      const newLang = $(this).data("lang");
+      const urlParams = new URLSearchParams(window.location.search);
+      urlParams.set("lang", newLang);
+      // Reload the page with the new language parameter.
+      window.location.search = urlParams.toString();
+    });
+  });
   $("#footer-placeholder").load("footer.html");
 
+  // Get URL parameters: dataset ID and language.
   const params = new URLSearchParams(window.location.search);
   const datasetId = params.get("dataset");
   const lang = params.get("lang") || "en";
@@ -389,16 +399,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  const datasetUrl = `${baseDataUrl}${datasetId}.json`;
-  try {
-    const data = await fetchDataset(datasetUrl);
-    if (!data || data["dcterms:identifier"] !== datasetId) {
-      renderNotFound(datasetId);
-    } else {
-      renderDatasetDetails(data, lang);
-    }
-  } catch (error) {
-    console.error("Error fetching dataset:", error);
-    renderError("Could not load dataset. Check console for more information.");
-  }
+  // Load translations first. When loaded, apply static translations and then fetch the dataset.
+  loadTranslations(() => {
+    translatePage(lang); // Applies translations to page elements like title, hero banner, etc.
+
+    const datasetUrl = `${baseDataUrl}${datasetId}.json`;
+    fetchDataset(datasetUrl)
+      .then((data) => {
+        if (!data || data["dcterms:identifier"] !== datasetId) {
+          renderNotFound(datasetId);
+        } else {
+          renderDatasetDetails(data, lang);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching dataset:", error);
+        renderError("Could not load dataset. Check console for more information.");
+      });
+  });
 });
