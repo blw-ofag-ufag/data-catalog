@@ -195,6 +195,22 @@
             "type": "string",
             "description": "Additional comments about the DataService."
         },
+        "dcatap:applicableLegislation": {
+            "title": "Applicable legislation",
+            "description": "The legislation that mandates the creation or management of the Data Service.",
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "title": "URI",
+              "type": [
+                  "string",
+                  "null"
+              ],
+              "format": "uri"
+            }
+        },
         "bv:i14y": {
             "type": "object",
             "required": [
