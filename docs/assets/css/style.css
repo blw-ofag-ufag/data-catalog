@@ -285,6 +285,10 @@ footer a:hover {
   background: var(--color-accent);
   transform: scale(1.1);
 }
+.keywords a {
+  text-decoration: none;
+  color: inherit;
+}
 
 /* Tagify main wrapper */
 .tagify {

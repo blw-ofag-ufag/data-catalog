@@ -168,8 +168,6 @@ function renderNotFound(datasetId) {
 }
 
 function renderHeroBanner(data, lang) {
-  document.getElementById("datasetID").textContent =
-    data["dcterms:identifier"] || "";
   const datasetTitle =
     Utils.getLocalized(data["dcterms:title"], lang) || "Untitled Dataset";
   document.getElementById("datasetTitle").textContent = datasetTitle;
@@ -206,10 +204,8 @@ function renderAffiliatedPersons(data, lang) {
 function renderMetadata(data, lang) {
   const section = document.getElementById("metadataSection");
   const displayedKeys = [
-    "dcterms:identifier",
     "dcterms:title",
     "dcterms:description",
-    "dcat:keyword",
     "schema:OrganizationRole",
     "dcat:distribution",
     "schema:image"
@@ -220,7 +216,19 @@ function renderMetadata(data, lang) {
     if (displayedKeys.includes(key)) return;
     let label = i18next.t(key, { defaultValue: key });
     let val = data[key];
-    if (key === "dcat:contactPoint") {
+
+    if (key === "dcterms:identifier") {
+      val = `<a href="https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/data/datasets/${val}.json" target="_blank">${val}</a>`;
+    } else if (key === "dcat:keyword" && Array.isArray(val)) {
+      // Wrap all keywords in a container with class "keywords"
+      val = `<div class="keywords">` +
+        val.map((item) => 
+          `<a href="index.html?lang=${lang}&tags=${encodeURIComponent(item)}" data-key="${item}">
+             <span>${item}</span>
+           </a>`
+        ).join(" ") +
+        `</div>`;
+    } else if (key === "dcat:contactPoint") {
       val = Utils.formatContactPoint(val);
     } else if (key === "bv:opendata.swiss" || key === "bv:i14y") {
       val = Utils.formatPublicationMetadata(val);
@@ -231,6 +239,7 @@ function renderMetadata(data, lang) {
     } else if (typeof val === "string") {
       val = Utils.formatDateIfPossible(val, lang);
     } else if (Array.isArray(val)) {
+      // For other arrays, format each item (e.g. for dates)
       val = val.map((item) => Utils.formatDateIfPossible(item, lang)).join(", ");
     }
     if (enumeratedFields.includes(key)) {
@@ -334,13 +343,14 @@ function renderDatasetDetails(data, lang) {
  * Main Initialization
  ******************************************************/
 document.addEventListener("DOMContentLoaded", () => {
+  
   // Load navbar and footer, and attach language dropdown listener.
   $("#navbar-placeholder").load("navbar.html", function () {
     const params = new URLSearchParams(window.location.search);
     const lang = params.get("lang") || "en";
+    $(".navbar-brand").attr("href", `index.html?lang=${lang}`);
     setLanguageDropdownLabel(lang);   // Set the dropdown label
     updatePageTranslations();           // Update any data-i18n elements in the navbar
-  
     // Attach language dropdown event listener:
     $(document).on("click", ".dropdown-item.lang-option", function (e) {
       e.preventDefault();
@@ -349,7 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
       urlParams.set("lang", newLang);
       window.location.search = urlParams.toString();
     });
-  });  
+  });
   $("#footer-placeholder").load("footer.html");
 
   // Get URL parameters: dataset ID and language.
