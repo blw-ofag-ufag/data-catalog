@@ -226,11 +226,7 @@ function setSortDropdownLabel(sortValue) {
     default:
       key = "sortTitle";
   }
-  // Look up the translation based on the current language stored in state.lang.
-  let label = key;
-  if (translations && translations[key] && translations[key][state.lang]) {
-    label = translations[key][state.lang];
-  }
+  const label = i18next.t(key);
   $("#sort-dropdown-button").text(label);
 }
 
@@ -238,27 +234,12 @@ function setSortDropdownLabel(sortValue) {
  * Apply current state to form controls (search, view mode, etc.)
  */
 function reflectStateInUI() {
-  // If navbar is dynamically loaded, ensure we do these calls
-  // *after* the navbar is ready in the DOM.
-
-  // 1. Text search
   $("#search").val(state.searchText);
-
-  // 2. View mode
   $("input[name='viewMode'][value='" + state.viewMode + "']").prop("checked", true);
-
-  // 3. Language
   setLanguageDropdownLabel(state.lang);
-
-  // 4. Sort
   setSortDropdownLabel(state.sort);
-
-  // 5. Tagify: clear and re-add tags
   tagify.removeAllTags();
   if (state.tags.length) {
-    // Tagify automatically calls 'change' event when adding tags,
-    // so we might want to temporarily disable the event or set
-    // a silent flag. But let's keep it straightforward for now.
     tagify.addTags(state.tags);
   }
 }
@@ -423,8 +404,7 @@ function setupEventListeners() {
     applyFiltersAndRender();
   });
   
-  // Because the navbar is loaded separately, 
-  // we attach events AFTER it's loaded in the callback:
+  // Because the navbar is loaded separately, we attach events AFTER it's loaded in the callback:
   $("#navbar-placeholder").load("navbar.html", () => {
     // Now the elements exist, reflect current state in the UI
     setLanguageDropdownLabel(state.lang);
@@ -434,11 +414,12 @@ function setupEventListeners() {
     $(document).on("click", ".dropdown-item.lang-option", function (e) {
       e.preventDefault();
       state.lang = $(this).data("lang");
-      setLanguageDropdownLabel(state.lang);
+      setLanguageDropdownLabel(state.lang); // if you have custom code for the dropdown label
       state.currentPage = 1;
       applyFiltersAndRender();
-      applyTranslations(state.lang); // Update all translatable UI elements when the language changes
-    });
+      // Change language using our new i18next-based method
+      changeLanguage(state.lang);
+    });    
 
     // Sort dropdown
     $(document).on("click", ".dropdown-item.sort-option", function (e) {
@@ -487,11 +468,14 @@ function setupEventListeners() {
  * INITIALIZATION
  ********************************************/
 $(document).ready(function () {
+
+  // Set the language based on URL parameters or default state (state.lang)
+  initI18n(state.lang);
   
-  // 1) Synchronize state from URL
+  // Synchronize state from URL
   syncStateFromURL();
 
-  // 2) Set up Tagify
+  // Set up Tagify
   const tagInput = document.getElementById("tag-input");
   tagify = new Tagify(tagInput, {
     whitelist: [],
@@ -501,14 +485,13 @@ $(document).ready(function () {
   // Apply your custom styling to Tagify's container
   tagify.DOM.scope.classList.add('customLook');
 
-  // 3) Reflect state into the UI (after Tagify is ready)
-  //    This sets up search text, view mode, etc.
+  // Reflect state into the UI (after Tagify is ready). This sets up search text, view mode, etc.
   reflectStateInUI();
 
-  // 4) Initialize translations based on the current language**
+  // Initialize translations based on the current language
   initI18n(state.lang);
 
-  // 5) Fetch datasets
+  // Fetch datasets
   $.getJSON(config.dataUrl)
     .done(function (data) {
       state.datasets = data;
@@ -519,9 +502,9 @@ $(document).ready(function () {
       console.error("Error fetching data:", err);
     });
 
-  // 6) Attach event listeners
+  // Attach event listeners
   setupEventListeners();
 
-  // 7) Load footer in the same manner, if needed
+  // Load footer in the same manner, if needed
   $("#footer-placeholder").load("footer.html");
 });

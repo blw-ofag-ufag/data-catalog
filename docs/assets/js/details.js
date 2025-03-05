@@ -1,3 +1,5 @@
+"use strict";
+
 // Configuration
 const branch = "main";
 const baseDataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/data/datasets/`;
@@ -15,7 +17,7 @@ const enumeratedFields = [
 ];
 
 /******************************************************
- * Utility Functions
+ * Utility Functions (unchanged)
  ******************************************************/
 const Utils = {
   formatEnumerationString(input) {
@@ -29,14 +31,12 @@ const Utils = {
     let formatted = input.replace(/([a-z])([A-Z])/g, "$1 $2").toUpperCase();
     return formatted.replace(/_/g, " ");
   },
-
   formatDateIfPossible(val, lang) {
     if (typeof val !== "string" || !val) return val;
     const d = new Date(val);
     if (isNaN(d.getTime())) return val;
     return new Intl.DateTimeFormat(lang, { dateStyle: "long" }).format(d);
   },
-
   formatDateTimeIfPossible(val, lang) {
     let d = val instanceof Date ? val : new Date(val);
     if (isNaN(d.getTime())) return val;
@@ -46,7 +46,6 @@ const Utils = {
       : { dateStyle: "long" };
     return new Intl.DateTimeFormat(lang, options).format(d);
   },
-
   formatContactPoint(contact) {
     if (!contact || typeof contact !== "object") return "";
     const name = contact.name || "Unknown";
@@ -55,7 +54,6 @@ const Utils = {
       ? `${name} (<a href="mailto:${email}">${email}</a>)`
       : name;
   },
-
   formatPublicationMetadata(publication) {
     if (!publication || typeof publication !== "object") {
       console.warn("Invalid publication object:", publication);
@@ -65,10 +63,8 @@ const Utils = {
     const id = publication["dcterms:identifier"] || "";
     const accessUrl = publication["dcat:accessURL"] || "";
     const publicationRow = `<tr>
-      <td>Publication:</td>
-      <td><span class="enumeration-chip">${Utils.formatEnumerationString(
-        mustBePublished
-      )}</span></td>
+      <td>${i18next.t("details.publication")}:</td>
+      <td><span class="enumeration-chip">${Utils.formatEnumerationString(mustBePublished)}</span></td>
     </tr>`;
     const idRow = mustBePublished
       ? `<tr>
@@ -78,11 +74,9 @@ const Utils = {
       : "";
     const accessUrlRow = mustBePublished
       ? `<tr>
-          <td>Access URL:</td>
+          <td>${i18next.t("details.accessURL")}:</td>
           <td>
-            <a href="${accessUrl}" target="_blank">${
-          accessUrl !== "N/A" ? accessUrl : ""
-        }</a>
+            <a href="${accessUrl}" target="_blank">${ accessUrl !== "N/A" ? accessUrl : ""}</a>
           </td>
         </tr>`
       : "";
@@ -96,12 +90,10 @@ const Utils = {
       </table>
     `;
   },
-
   formatSingleUrl(url) {
     if (!url || typeof url !== "string") return "N/A";
     return `<a href="${url}" target="_blank">${url}</a>`;
   },
-
   formatUrlArray(urlArray) {
     if (!Array.isArray(urlArray) || urlArray.length === 0) return "N/A";
     return urlArray
@@ -112,29 +104,22 @@ const Utils = {
       )
       .join("<br>");
   },
-
   getLocalized(fieldObj, lang) {
     if (!fieldObj) return "";
     return fieldObj[lang] || fieldObj["en"] || "";
   },
-
   highlightEnumeratedValues(val) {
     if (val === undefined || val === null) return "";
     if (Array.isArray(val)) {
       return val
         .map(
           (item) =>
-            `<span class="enumeration-chip">${Utils.formatEnumerationString(
-              item
-            )}</span>`
+            `<span class="enumeration-chip">${Utils.formatEnumerationString(item)}</span>`
         )
         .join(" ");
     }
-    return `<span class="enumeration-chip">${Utils.formatEnumerationString(
-      val
-    )}</span>`;
+    return `<span class="enumeration-chip">${Utils.formatEnumerationString(val)}</span>`;
   },
-
   stringifyIfNeeded(val) {
     if (val === null || val === undefined) return "";
     if (Array.isArray(val)) return val.join(", ");
@@ -142,6 +127,15 @@ const Utils = {
     return String(val);
   }
 };
+
+function setLanguageDropdownLabel(lang) {
+  let label = "English";
+  if (lang === "de") label = "Deutsch";
+  else if (lang === "fr") label = "Français";
+  else if (lang === "it") label = "Italiano";
+  $("#language-dropdown-button").text(label);
+}
+
 
 /******************************************************
  * Data Fetching
@@ -153,7 +147,7 @@ async function fetchDataset(url) {
 }
 
 /******************************************************
- * Rendering Functions
+ * Rendering Functions (using i18next.t instead of translations)
  ******************************************************/
 function renderError(message) {
   const heroBanner = document.getElementById("heroBanner");
@@ -186,22 +180,16 @@ function renderHeroBanner(data, lang) {
 function renderAffiliatedPersons(data, lang) {
   const section = document.getElementById("metadataSection");
   const persons = data["schema:OrganizationRole"] || [];
-  let html = `<h1>${
-    translations["details.affiliatedRoles"]?.[lang] || "Affiliated Roles"
-  }</h1>`;
-
+  let html = `<h1>${i18next.t("details.affiliatedRoles")}</h1>`;
   if (!Array.isArray(persons) || persons.length === 0) {
-    html += `<p>${
-      translations["details.noAffiliatedPersons"]?.[lang] || "No affiliated persons."
-    }</p>`;
+    html += `<p>${i18next.t("details.noAffiliatedPersons")}</p>`;
     section.innerHTML = html;
     return;
   }
-
   html += `<table class="table"><tbody>`;
   persons.forEach((p) => {
-    const name = p["schema:name"] || translations["details.unknown"]?.[lang] || "Unknown";
-    const role = p["schema:roleName"] || translations["details.unknownRole"]?.[lang] || "Unknown Role";
+    const name = p["schema:name"] || i18next.t("details.unknown");
+    const role = p["schema:roleName"] || i18next.t("details.unknownRole");
     html += `
       <tr>
         <td>
@@ -226,16 +214,12 @@ function renderMetadata(data, lang) {
     "dcat:distribution",
     "schema:image"
   ];
-  let html = `<h1>${
-    translations["details.metadata"]?.[lang] || "Metadata"
-  }</h1>`;
+  let html = `<h1>${i18next.t("details.metadata")}</h1>`;
   html += `<table class="table"><tbody>`;
-
   Object.keys(data).forEach((key) => {
     if (displayedKeys.includes(key)) return;
-    let label = translations[key]?.[lang] || key;
+    let label = i18next.t(key, { defaultValue: key });
     let val = data[key];
-
     if (key === "dcat:contactPoint") {
       val = Utils.formatContactPoint(val);
     } else if (key === "bv:opendata.swiss" || key === "bv:i14y") {
@@ -260,7 +244,6 @@ function renderMetadata(data, lang) {
                <td>${val}</td>
              </tr>`;
   });
-
   html += `</tbody></table>`;
   section.innerHTML += html;
 }
@@ -268,22 +251,14 @@ function renderMetadata(data, lang) {
 function renderDistributions(data, lang) {
   const section = document.getElementById("distributionsSection");
   const distributions = data["dcat:distribution"] || [];
-  let html = `<h1>${
-    translations["dcat:distribution"]?.[lang] || "Distributions"
-  }</h1>`;
+  let html = `<h1>${i18next.t("details.distribution")}</h1>`;
   html += `<table class="table"><tbody>`;
   distributions.forEach((dist) => {
     const title = Utils.getLocalized(dist["dcterms:title"], lang) || "";
-    const description = Utils.getLocalized(
-      dist["dcterms:description"],
-      lang
-    ) || "";
+    const description = Utils.getLocalized(dist["dcterms:description"], lang) || "";
     const format = dist["dcterms:format"] || "N/A";
     if (dist["dcterms:modified"]) {
-      dist["dcterms:modified"] = Utils.formatDateIfPossible(
-        dist["dcterms:modified"],
-        lang
-      );
+      dist["dcterms:modified"] = Utils.formatDateIfPossible(dist["dcterms:modified"], lang);
     }
     const url = dist["dcat:downloadURL"] || dist["dcat:accessURL"] || "#";
     html += `<tr>
@@ -305,37 +280,24 @@ async function renderEditHistory(datasetId, branch, lang) {
     const response = await fetch(commitsApiUrl);
     const commits = await response.json();
     if (!Array.isArray(commits) || commits.length === 0) {
-      section.innerHTML = `<p>${
-        translations["details.noEditHistory"]?.[lang] ||
-        "No edit history available."
-      }</p>`;
+      section.innerHTML = `<p>${i18next.t("details.noEditHistory")}</p>`;
       return;
     }
-    let html = `<h1>${
-      translations["details.editHistory"]?.[lang] || "Edit history"
-    }</h1>`;
+    let html = `<h1>${i18next.t("details.editHistory")}</h1>`;
     html += `<table class="table">
               <thead>
                 <tr>
                   <th></th>
-                  <th>${
-                    translations["details.author"]?.[lang] || "Author"
-                  }</th>
-                  <th>${
-                    translations["details.date"]?.[lang] || "Date"
-                  }</th>
-                  <th>${
-                    translations["details.message"]?.[lang] || "Message"
-                  }</th>
+                  <th>${i18next.t("details.author")}</th>
+                  <th>${i18next.t("details.date")}</th>
+                  <th>${i18next.t("details.message")}</th>
                 </tr>
               </thead>
               <tbody>`;
     commits.forEach((commitData) => {
       const commit = commitData.commit;
       const sha = commitData.sha;
-      const datetime = commit.author
-        ? commit.author.date
-        : commit.committer.date;
+      const datetime = commit.author ? commit.author.date : commit.committer.date;
       const message = commit.message.split("\n")[0];
       const authorLogin = commitData.author ? commitData.author.login : "Unknown";
       const authorAvatar = commitData.author ? commitData.author.avatar_url : "";
@@ -347,7 +309,7 @@ async function renderEditHistory(datasetId, branch, lang) {
                      ? `<img src="${authorAvatar}" alt="${authorLogin}" style="width:24px;height:24px;border-radius:50%;">`
                      : ""
                  }</td>
-                 <td><a href="https://github.com/${authorLogin}" target="_blank">${authorLogin}<a></td>
+                 <td><a href="https://github.com/${authorLogin}" target="_blank">${authorLogin}</a></td>
                  <td>${formattedDate}</td>
                  <td><a href="${commitUrl}" target="_blank">${message}</a></td>
                </tr>`;
@@ -356,10 +318,7 @@ async function renderEditHistory(datasetId, branch, lang) {
     section.innerHTML = html;
   } catch (error) {
     console.error("Error fetching commit history:", error);
-    section.innerHTML = `<p>${
-      translations["details.errorEditHistory"]?.[lang] ||
-      "Error loading edit history."
-    }</p>`;
+    section.innerHTML = `<p>${i18next.t("details.errorEditHistory")}</p>`;
   }
 }
 
@@ -375,18 +334,22 @@ function renderDatasetDetails(data, lang) {
  * Main Initialization
  ******************************************************/
 document.addEventListener("DOMContentLoaded", () => {
-  // Load navbar and footer, and attach language dropdown listener after navbar loads.
+  // Load navbar and footer, and attach language dropdown listener.
   $("#navbar-placeholder").load("navbar.html", function () {
-    // Attach language selector event listener for details page.
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get("lang") || "en";
+    setLanguageDropdownLabel(lang);   // Set the dropdown label
+    updatePageTranslations();           // Update any data-i18n elements in the navbar
+  
+    // Attach language dropdown event listener:
     $(document).on("click", ".dropdown-item.lang-option", function (e) {
       e.preventDefault();
       const newLang = $(this).data("lang");
       const urlParams = new URLSearchParams(window.location.search);
       urlParams.set("lang", newLang);
-      // Reload the page with the new language parameter.
       window.location.search = urlParams.toString();
     });
-  });
+  });  
   $("#footer-placeholder").load("footer.html");
 
   // Get URL parameters: dataset ID and language.
@@ -399,9 +362,10 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Load translations first. When loaded, apply static translations and then fetch the dataset.
-  loadTranslations(() => {
-    translatePage(lang); // Applies translations to page elements like title, hero banner, etc.
+  // Initialize i18next for the details page then fetch and render dataset details.
+  initI18n(lang, function() {
+    // Optionally update any static elements with data-i18n attributes:
+    updatePageTranslations();
 
     const datasetUrl = `${baseDataUrl}${datasetId}.json`;
     fetchDataset(datasetUrl)

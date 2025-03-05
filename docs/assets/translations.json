@@ -203,12 +203,6 @@
       "fr":"Catalogue",
       "it":"Catalogo"
    },
-   "bv:affiliatedPersons":{
-      "en":"Affiliated Persons",
-      "de":"Zugehörige Personen",
-      "fr":"Personnes affiliées",
-      "it":"Persone affiliate"
-   },
    "dcterms:accrualPeriodicity":{
       "en":"Accrual periodicity",
       "de":"Erfassungsperiodizität",
@@ -280,5 +274,71 @@
       "de": "Rechtsgrundlage",
       "fr": "Base légale",
       "it": "Base giuridica"
-  }
+  },
+  "details.affiliatedRoles":{
+      "en":"Affiliated Persons",
+      "de":"Zugehörige Personen",
+      "fr":"Personnes affiliées",
+      "it":"Persone affiliate"
+   },
+   "details.metadata": {
+      "en": "Metadata",
+      "de": "Metadaten",
+      "fr": "Métadonnées",
+      "it": "Metadati"
+   },
+   "details.author": {
+      "en": "Author",
+      "de": "Autor",
+      "fr": "Auteur",
+      "it": "Autore"
+   },
+   "details.date": {
+      "en": "Date",
+      "de": "Datum",
+      "fr": "Date",
+      "it": "Data"
+   },
+   "details.message": {
+      "en": "Message",
+      "de": "Nachricht",
+      "fr": "Message",
+      "it": "Messaggio"
+   },
+   "details.distribution":{
+      "en":"Distribution",
+      "de":"Verteilung",
+      "fr":"Distribution",
+      "it":"Distribuzione"
+   },
+   "details.noAffiliatedPersons": {
+      "en": "This dataset has no affiliated person...",
+      "de": "Dieses Datenset hat keine zugehörige Person...",
+      "fr": "Cet ensemble de données n'a aucune personne affiliée...",
+      "it": "Questo dataset non ha persone affiliate..."
+   },
+   "details.unknown": {
+      "en": "Details unknown",
+      "de": "Details unbekannt",
+      "fr": "Détails inconnus",
+      "it": "Dettagli sconosciuti"
+   },
+   "details.unknownRole": {
+      "en": "Role unknown",
+      "de": "Rolle unbekannt",
+      "fr": "Rôle inconnu",
+      "it": "Ruolo sconosciuto"
+   },
+   "details.noEditHistory": {
+      "en": "No edit history",
+      "de": "Kein Bearbeitungsverlauf",
+      "fr": "Aucun historique des modifications",
+      "it": "Nessuna cronologia delle modifiche"
+   },
+   "details.editHistory": {
+      "en": "Edit history",
+      "de": "Editierverlauf",
+      "fr": "Historique des modifications",
+      "it": "Cronologia delle modifiche"
+   }
 }
