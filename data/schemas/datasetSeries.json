@@ -176,6 +176,22 @@
                 "type": "string"
             }
         },
+        "dcatap:applicableLegislation": {
+            "title": "Applicable legislation",
+            "description": "The legislation that mandates the creation or management of the Dataset Series.",
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "title": "URI",
+              "type": [
+                  "string",
+                  "null"
+              ],
+              "format": "uri"
+            }
+        },
         "bv:classification": {
             "type": "string",
             "title": "Classification level",
