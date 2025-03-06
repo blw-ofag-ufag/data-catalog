@@ -809,13 +809,11 @@
         "dcterms:issued": "2025-02-20",
         "dcat:keyword": [
             "plant-variety",
-            "plant-breeding",
+            "breeding",
             "botany",
-            "PVR",
-            "variety-protection",
             "UPOV"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/sortenliste.png",
+        "schema:image": "https://fal.media/files/rabbit/b-j9zxhlLzInwz4JQyCFU_b4014cdc2ebc4f92b293153dc4917f95.jpg",
         "dataOwner": "p-0711690"
     },
     {
@@ -1695,7 +1693,7 @@
             "network",
             "organization"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/network.jpg",
+        "schema:image": "https://fal.media/files/penguin/zLmfGWbw9SuNH9pYHqE7Y_454ce31f6849495cb14b7a083875b676.jpg",
         "dataOwner": "p-1ZFWFFNP6"
     },
     {
