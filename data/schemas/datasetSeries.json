@@ -106,6 +106,28 @@
             "title": "Publisher",
             "description": "Publisher or organization responsible for the series."
         },
+        "dct:creator": {
+            "title": "Curator of the series",
+            "description": "Person responsible for the curation of the series (not the content of the datasets in it).",
+            "type": "object",
+              "required": [
+                  "prov:agent"
+              ],
+              "properties": {
+                  "prov:agent": {
+                      "type": "string",
+                      "title": "Personal ID from AdminDir"
+                  },
+                  "schema:name": {
+                      "type": "string",
+                      "title": "Name"
+                  },
+                  "schema:email": {
+                      "type": "string",
+                      "title": "email"
+                  }
+              }
+        },
         "adms:status": {
             "title": "Status",
             "type": "string",
