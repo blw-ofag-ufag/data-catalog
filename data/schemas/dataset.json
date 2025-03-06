@@ -393,7 +393,7 @@
               "format": "uri"
             }
         },
-      "bv:businessProcess": {
+      "prov:wasGeneratedBy": {
           "title": "Business process",
           "type": [
               "array",
