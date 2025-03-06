@@ -1,20 +1,20 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-001.jpg",
-  "dcterms:identifier": "D00001",
-  "dcterms:title": {
+  "dct:identifier": "D00001",
+  "dct:title": {
     "de": "Massnahmenmonitoring Klimastrategie Landwirtschaft und Ernährung",
     "fr": "Suivi des mesures Stratégie Climat pour l'agriculture et l'alimentation",
     "it": "Monitoraggio delle misure Strategia Climatica per l'Agricoltura e l'Alimentazione",
     "en": "Monitoring Measures Climate Strategy for Agriculture and Food"
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Daten zur Massnahmenumsetzung geben einen Überblick zum Umsetzungsstand der 42 Massnahmen bezüglich Klimastrategie Landwirtschaft und Ernährung. Dieser Massnahmenplan läuft bis 2030.",
     "fr": "Les données relatives à la mise en œuvre des mesures donnent un aperçu de l'état de mise en œuvre des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation. Ce plan de mesures court jusqu'en 2030.",
     "it": "I dati sull'attuazione delle misure forniscono una panoramica dello stato di attuazione delle 42 misure relative alla Strategia Climatica per l'Agricoltura e l'Alimentazione. Questo piano d'azione è valido fino al 2030.",
     "en": "Data on the implementation of measures provide an overview of the implementation status of the 42 measures related to the Climate Strategy for Agriculture and Food. This action plan runs until 2030."
   },
-  "dcterms:accessRights": "NON_PUBLIC",
-  "dcterms:issued": "2024-12-04",
+  "dct:accessRights": "NON_PUBLIC",
+  "dct:issued": "2024-12-04",
   "dcat:keyword": [
     "environment",
     "sustainability",
@@ -22,8 +22,8 @@
     "monitoring",
     "food"
   ],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-22",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-22",
   "schema:OrganizationRole": [
     {
       "schema:name": "p-1Y4L0Y450",
@@ -38,36 +38,38 @@
   ],
   "dcat:distribution": [
     {
-      "dcterms:title": {
+      "dct:identifier": "B00001",
+      "dct:title": {
         "de": "Tabelle Massnahmenmonitoring",
         "fr": "Tableau de suivi des mesures",
         "it": "Tabella monitoraggio delle misure",
         "en": "Monitoring Measures Table"
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "Excel-Tabelle mit den eigentlichen Daten zum Umsetzungsstand der 42 Massnahmen bezüglich Klimastrategie Landwirtschaft und Ernährung.",
         "fr": "Tableau Excel contenant les données réelles sur l'état d'avancement des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation.",
         "it": "Tabella Excel con i dati effettivi sullo stato di attuazione delle 42 misure relative alla Strategia Climatica per l'Agricoltura e l'Alimentazione.",
         "en": "Excel table with the actual data on the implementation status of the 42 measures related to the Climate Strategy for Agriculture and Food."
       },
       "dcat:accessURL": "https://object.gever.admin.ch:443/web/?ObjectToOpenID=%24ActaNovaDocument%7C574FDB97-8106-4294-94C3-8A121A593B9E&TenantID=123",
-      "dcterms:format": "XSLX"
+      "dct:format": "XSLX"
     },
     {
-      "dcterms:title": {
+      "dct:identifier": "B00002",
+      "dct:title": {
         "de": "PowerBI Report für das Massnahmenmonitoring",
         "fr": "Rapport PowerBI pour le suivi des mesures",
         "it": "Report PowerBI per il monitoraggio delle misure",
         "en": "PowerBI Report for Monitoring Measures"
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "Interaktiver PowerBI-Report, welcher einen Überblick zum Umsetzungsstand der 42 Massnahmen bezüglich Klimastrategie Landwirtschaft und Ernährung gibt.",
         "fr": "Rapport PowerBI interactif donnant un aperçu de l'état d'avancement des 42 mesures relatives à la stratégie climat pour l'agriculture et l'alimentation.",
         "it": "Report PowerBI interattivo che fornisce una panoramica dello stato di attuazione delle 42 misure relative alla Strategia Climatica per l'Agricoltura e l'Alimentazione.",
         "en": "Interactive PowerBI report providing an overview of the implementation status of the 42 measures related to the Climate Strategy for Agriculture and Food."
       },
       "dcat:accessURL": "https://www.blw.admin.ch/de/klimastrategie-landwirtschaft-und-ernaehrung-2050#%C3%9Cberpr%C3%BCfung-der-Massnahmen-und-Zielerreichung",
-      "dcterms:format": "PowerBI Report"
+      "dct:format": "PowerBI Report"
     }
   ]
 }

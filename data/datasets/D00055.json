@@ -1,28 +1,28 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00055",
-  "dcterms:title": {
+  "dct:identifier": "D00055",
+  "dct:title": {
     "de": "Beschaeftigte in der Landwirtschaft 1990-2015",
     "fr": "Personnes occupées dans l'agriculture 1990-2015",
     "it": "Lavoratori nell'agricoltura 1990-2015",
     "en": ""
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Anzahl Beschäftigte in der Landwirtschaft nach Kategorien (Männer, Frauen, Vollzeitbeschäftigte, Teilzeitbeschäftigte, Familieneigene, Familienfremde)",
     "fr": "",
     "it": "",
     "en": ""
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft",
-    "email": "alessandro.rossi@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft",
+    "schema:email": "alessandro.rossi@blw.admin.ch"
   },
-  "dcterms:issued": "2016-11-08",
+  "dct:issued": "2016-11-08",
   "dcat:keyword": [],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -32,74 +32,74 @@
     "internationalTopics"
   ],
   "dcat:landingPage": "https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/landwirtschaft/strukturen.html",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "1990-01-01 - 2015-12-31",
+  "dct:spatial": "",
+  "dct:temporal": "1990-01-01 - 2015-12-31",
   "dpv:hasLegalBasis": [
     "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "0f512900-043f-42c9-899d-9df534bcb519",
+      "dct:identifier": "B00106",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/0b/fzb1vjiw71bt60zkl5u5pijblw0dul/beschaeftigte_in_der_landwirtschaft_1990-2015_datenreihe_d.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/0b/fzb1vjiw71bt60zkl5u5pijblw0dul/beschaeftigte_in_der_landwirtschaft_1990-2015_datenreihe_d.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Beschäftigte in der Landwirtschaft",
         "fr": "Personnes occupées dans l'agriculture",
         "it": "Lavoratori nell'agricoltura",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "e4371796-6d53-4d10-8b27-a9546bf74b15",
+      "dct:identifier": "B00107",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/a9/vg7mee20m3mchdsdvveinssn9djbfv/beschaeftigte_in_der_landwirtschaft_1990-2015_datenreihe_f.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/a9/vg7mee20m3mchdsdvveinssn9djbfv/beschaeftigte_in_der_landwirtschaft_1990-2015_datenreihe_f.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "67e60b76-d68a-488b-a81f-58a514e4dafa",
+      "dct:identifier": "B00108",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/90/ijbv2rom3llxzad8cb7fb0bklgobnr/beschaeftigte_in_der_landwirtschaft_1990-2015_datenreihe_i.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/90/ijbv2rom3llxzad8cb7fb0bklgobnr/beschaeftigte_in_der_landwirtschaft_1990-2015_datenreihe_i.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

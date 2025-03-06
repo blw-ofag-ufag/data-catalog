@@ -1,28 +1,28 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00041",
-  "dcterms:title": {
+  "dct:identifier": "D00041",
+  "dct:title": {
     "de": "Selbstversorgungsgrad 2007-2014",
     "fr": "Taux d'auto-approvisionnement 2007-2014",
     "it": "Grado di autoapprovvigionamento 2007-2014",
     "en": ""
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Selbstversorgungsgrad von pflanzlichen und tierischen Produkten sowie Brutto- und Nettoselbstversorgungsgrad",
     "fr": "",
     "it": "",
     "en": ""
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft",
-    "email": "alessandro.rossi@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft",
+    "schema:email": "alessandro.rossi@blw.admin.ch"
   },
-  "dcterms:issued": "2016-11-08",
+  "dct:issued": "2016-11-08",
   "dcat:keyword": [],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -32,74 +32,74 @@
     "agricultureFisheriesForestryFood"
   ],
   "dcat:landingPage": "https://www.sbv-usp.ch/de/statistik/statistiken/ernaehrung/",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "2007-01-01 - 2014-12-31",
+  "dct:spatial": "",
+  "dct:temporal": "2007-01-01 - 2014-12-31",
   "dpv:hasLegalBasis": [
     "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "a9a31acf-65ff-4af3-a444-fc1da4dfa6c6",
+      "dct:identifier": "B00064",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/4e/4o2dfedzepam492csgzdrrlvms0v6d/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_d.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/4e/4o2dfedzepam492csgzdrrlvms0v6d/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_d.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Selbstversorgungsgrad 2007-2014",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "97c5057d-b381-4641-b7d2-ac31f8cf06f5",
+      "dct:identifier": "B00065",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/25/xjs2h7rdwr9nodzalbb1hl66gkx9tg/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_f.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/25/xjs2h7rdwr9nodzalbb1hl66gkx9tg/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_f.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "Taux d'auto-approvisionnement 2007-2014",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "81330a18-045c-4108-95fa-5a7a682ad1ae",
+      "dct:identifier": "B00066",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/33/qc27cnt43icplr3edjk90i2ww9azir/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_i.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/33/qc27cnt43icplr3edjk90i2ww9azir/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_i.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "Grado di autoapprovvigionamento 2007-2014",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

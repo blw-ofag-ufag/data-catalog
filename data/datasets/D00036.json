@@ -1,28 +1,28 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00036",
-  "dcterms:title": {
+  "dct:identifier": "D00036",
+  "dct:title": {
     "de": "Ressourceneffizienzbeiträge 2014-2015",
     "fr": "Contributions à l'utilisation efficiente des ressources 2014-2015",
     "it": "Contributi per l'efficienza delle risorse 2014-2015",
     "en": ""
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Beiträge zur effizienteren Nutzung der Ressourcen (emissionsmindernde Ausbringverfahren, schonende Bodenbearbeitung, Einsatz von präzisen Applikationstechniken) nach Kantonen und Zonen (Anzahl Betriebe, Fläche in Hektaren, Beitrag in CHF)",
     "fr": "",
     "it": "",
     "en": ""
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft",
-    "email": "alessandro.rossi@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft",
+    "schema:email": "alessandro.rossi@blw.admin.ch"
   },
-  "dcterms:issued": "2016-11-08",
+  "dct:issued": "2016-11-08",
   "dcat:keyword": [],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -32,74 +32,74 @@
     "internationalTopics"
   ],
   "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/direktzahlungen.html",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "2014-01-01 - 2015-12-31",
+  "dct:spatial": "",
+  "dct:temporal": "2014-01-01 - 2015-12-31",
   "dpv:hasLegalBasis": [
     "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "b3d12604-b921-4b21-bde3-f570c7b31e13",
+      "dct:identifier": "B00049",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/59/kx4t9dohmeqvh1oa88qcye0vcdxvuf/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_d_ok.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/59/kx4t9dohmeqvh1oa88qcye0vcdxvuf/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_d_ok.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Ressourceneffizienzbeiträge 2014-2015",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "06a5847b-3ff4-4f86-b00f-32e0293ab561",
+      "dct:identifier": "B00050",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/95/chm48gs0ryar8l7rlc2hl9bg8126qr/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_f_ok.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/95/chm48gs0ryar8l7rlc2hl9bg8126qr/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_f_ok.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "Contributions à l'utilisation efficiente des ressources 2014-2015",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "0be3a266-75be-4af5-9a79-3c4583166bd8",
+      "dct:identifier": "B00051",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/b4/czitrqsrjf9p2d8x1gi5qmfqr4f3u5/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_i_ok.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/b4/czitrqsrjf9p2d8x1gi5qmfqr4f3u5/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_i_ok.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "Contributi per l'efficienza delle risorse 2014-2015",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

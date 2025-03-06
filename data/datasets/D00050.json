@@ -1,28 +1,28 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00050",
-  "dcterms:title": {
+  "dct:identifier": "D00050",
+  "dct:title": {
     "de": "Landschaftsqualitätsbeiträge 2014-2015",
     "fr": "Contributions à la qualité du paysage 2014-2015",
     "it": "Contributi per la qualità del paesaggio 2014-2015",
     "en": ""
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Landschaftsqualitätsbeiträge nach Kantonen (Anzahl Betriebe, durchschnittlicher Beitrag pro Betrieb in CHF)",
     "fr": "",
     "it": "",
     "en": ""
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft",
-    "email": "alessandro.rossi@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft",
+    "schema:email": "alessandro.rossi@blw.admin.ch"
   },
-  "dcterms:issued": "2016-11-08",
+  "dct:issued": "2016-11-08",
   "dcat:keyword": [],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -32,74 +32,74 @@
     "environment"
   ],
   "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/direktzahlungen.html",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "2014-01-01 - 2015-12-31",
+  "dct:spatial": "",
+  "dct:temporal": "2014-01-01 - 2015-12-31",
   "dpv:hasLegalBasis": [
     "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "eb8ef68a-7abe-445f-8fe8-f5507f40cf65",
+      "dct:identifier": "B00091",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/c2/tdvs9ttmjza2nr789nkvsmakf43ayu/13_ab16_statdz2015_anhaenge_tab_lq_beitraege_datenreihe_d_ok.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/c2/tdvs9ttmjza2nr789nkvsmakf43ayu/13_ab16_statdz2015_anhaenge_tab_lq_beitraege_datenreihe_d_ok.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Landschaftsqualitätsbeiträge 2014-2015",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "cd26fb4a-eb66-42a2-b5c5-da0d6a1a8834",
+      "dct:identifier": "B00092",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/4a/6lrwr2801e6snn1xv3538o4x5yjz9c/13_ab16_statdz2015_anhaenge_tab_lq_beitraege_datenreihe_f_ok.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/4a/6lrwr2801e6snn1xv3538o4x5yjz9c/13_ab16_statdz2015_anhaenge_tab_lq_beitraege_datenreihe_f_ok.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "Contributions à la qualité du paysage 2014-2015",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "40a3c3ea-02e3-4ddc-be88-7b59fe5b56ea",
+      "dct:identifier": "B00093",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/0a/khw6x6rvj3lgqrt8mi482n3hg0waio/13_ab16_statdz2015_anhaenge_tab_lq_beitraege_datenreihe_i_ok.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/0a/khw6x6rvj3lgqrt8mi482n3hg0waio/13_ab16_statdz2015_anhaenge_tab_lq_beitraege_datenreihe_i_ok.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "Contributi per la qualità del paesaggio 2014-2015",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

@@ -1,28 +1,28 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00031",
-  "dcterms:title": {
+  "dct:identifier": "D00031",
+  "dct:title": {
     "de": "Landwirtschaftsbetriebe 1990-2015",
     "fr": "Exploitations agricoles 1990-2015",
     "it": "Aziende agricole 1990-2015",
     "en": ""
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Anzahl Landwirtschaftsbetriebe nach Grössenklassen",
     "fr": "",
     "it": "",
     "en": ""
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft",
-    "email": "alessandro.rossi@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft",
+    "schema:email": "alessandro.rossi@blw.admin.ch"
   },
-  "dcterms:issued": "2016-11-08",
+  "dct:issued": "2016-11-08",
   "dcat:keyword": [],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -32,74 +32,74 @@
     "agricultureFisheriesForestryFood"
   ],
   "dcat:landingPage": "https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/landwirtschaft/strukturen.html",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "1990-01-01 - 2015-12-31",
+  "dct:spatial": "",
+  "dct:temporal": "1990-01-01 - 2015-12-31",
   "dpv:hasLegalBasis": [
     "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "1554c000-1bed-4acc-b88c-ea7ce39d39e2",
+      "dct:identifier": "B00034",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/68/t3dif1ozl54dnkrk4szmqmxh6fzag6/landwirtschaftsbetriebe_1990-2015_datenreihe_d.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/68/t3dif1ozl54dnkrk4szmqmxh6fzag6/landwirtschaftsbetriebe_1990-2015_datenreihe_d.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Landwirtschaftsbetriebe",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "e1c433fb-ec3e-40f5-8418-9324d8064df9",
+      "dct:identifier": "B00035",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/90/x5yo57b71j7f93n5drmkyq47vysa2j/landwirtschaftsbetriebe_1990-2015_datenreihe_f.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/90/x5yo57b71j7f93n5drmkyq47vysa2j/landwirtschaftsbetriebe_1990-2015_datenreihe_f.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "Exploitations agricoles",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "7c1730ba-6c50-4974-b175-6dd59ec951df",
+      "dct:identifier": "B00036",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/1c/8qm09yi3p5e3tgt1cs1e4y2k8qjjk9/landwirtschaftsbetriebe_1990-2015_datenreihe_i.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/1c/8qm09yi3p5e3tgt1cs1e4y2k8qjjk9/landwirtschaftsbetriebe_1990-2015_datenreihe_i.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "Aziende agricole",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

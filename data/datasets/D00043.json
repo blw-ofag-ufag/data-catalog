@@ -1,28 +1,28 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00043",
-  "dcterms:title": {
+  "dct:identifier": "D00043",
+  "dct:title": {
     "de": "Produktion Milchprodukte 1990/92-2015",
     "fr": "Production de produits laitiers 1990/92-2015",
     "it": "Produzione di latticini 1990/92-2015",
     "en": ""
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Produktion von Käse (Frischkäse, Weichkäse, Halbhartkäse, Hartkäse), Konsummilch, Butter, Rahm, Milchpulver und Milchkondensat in Tonnen",
     "fr": "",
     "it": "",
     "en": ""
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft",
-    "email": "alessandro.rossi@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft",
+    "schema:email": "alessandro.rossi@blw.admin.ch"
   },
-  "dcterms:issued": "2016-11-08",
+  "dct:issued": "2016-11-08",
   "dcat:keyword": [],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -32,74 +32,74 @@
     "environment"
   ],
   "dcat:landingPage": "http://www.tsmtreuhand.ch/index.php?id=milchstatistik",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "1990-01-01 - 2015-12-31",
+  "dct:spatial": "",
+  "dct:temporal": "1990-01-01 - 2015-12-31",
   "dpv:hasLegalBasis": [
     "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "083be5a0-131d-4424-96e0-e61653d3c1ab",
+      "dct:identifier": "B00070",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/c9/h6a6zm9o6hobbt2p4i73m2ijgr5mn6/produktion_milchprodukte_datenreihe_d.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/c9/h6a6zm9o6hobbt2p4i73m2ijgr5mn6/produktion_milchprodukte_datenreihe_d.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Produktion Milchprodukte 1990/92-2015",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "cfad6148-254c-44fa-a7f6-75a44fdcba67",
+      "dct:identifier": "B00071",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9c/ioo7duk8lnzoq2i3r4bs5vqbzrr969/produktion_milchprodukte_datenreihe_f.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9c/ioo7duk8lnzoq2i3r4bs5vqbzrr969/produktion_milchprodukte_datenreihe_f.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "Production de produits laitiers 1990/92-2015",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "0e135b09-249f-4645-af3e-ffaa87b07f8b",
+      "dct:identifier": "B00072",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/12/p3ev7y61yzj6jbga6cv1oap75nc9vw/produktion_milchprodukte_datenreihe_i.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/12/p3ev7y61yzj6jbga6cv1oap75nc9vw/produktion_milchprodukte_datenreihe_i.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "Produzione di latticini 1990/92-2015",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

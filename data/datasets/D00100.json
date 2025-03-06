@@ -1,20 +1,20 @@
 {
   "schema:image": "https://fal.media/files/penguin/zLmfGWbw9SuNH9pYHqE7Y_454ce31f6849495cb14b7a083875b676.jpg",
-  "dcterms:identifier": "D00100",
-  "dcterms:title": {
+  "dct:identifier": "D00100",
+  "dct:title": {
     "de": "DigiAgriFoodCH Systemlandkarte",
     "fr": "Carte du système DigiAgriFoodCH",
     "it": "Mappa del sistema DigiAgriFoodCH",
     "en": "DigiAgriFoodCH System Map"
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Strukturierte Informationen über IT-Systeme, die darin enthaltenen Daten und deren betreibende Organisationen im Schweizer Agrar- und Ernährungssektor.",
     "fr": "Informations structurées sur les systèmes informatiques, les données qu'ils contiennent et les organisations qui les gèrent dans le secteur agricole et alimentaire suisse.",
     "it": "Informazioni strutturate sui sistemi IT, i dati in essi contenuti e le organizzazioni che li gestiscono nel settore agricolo e alimentare svizzero.",
     "en": "Structured information about IT systems, the data they contain, and the organizations that manage them in the Swiss agriculture and food sector."
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:issued": "2025-01-29",
+  "dct:accessRights": "PUBLIC",
+  "dct:issued": "2025-01-29",
   "dcat:keyword": [
     "software",
     "data",
@@ -22,7 +22,7 @@
     "network",
     "organization"
   ],
-  "dcterms:modified": "2025-02-24",
+  "dct:modified": "2025-02-24",
   "schema:OrganizationRole": [
     {
       "schema:name": "p-1ZFWFFNP6",
@@ -40,13 +40,14 @@
   "bv:itSystem": "https://agriculture.ld.admin.ch/system-map/SYS042",
   "dcat:distribution": [
     {
-      "dcterms:title": {
+      "dct:identifier": "B00299",
+      "dct:title": {
         "de": "RDF-Graph-File",
         "fr": "Fichier de graphe RDF",
         "it": "File di grafo RDF",
         "en": "RDF graph file"
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "Ein Turtle-File (.ttl) mit allen Informationen der DigiAgriFoodCH Systemlandkarte.",
         "fr": "Un fichier Turtle (.ttl) contenant toutes les informations de la carte système DigiAgriFoodCH.",
         "it": "Un file Turtle (.ttl) con tutte le informazioni della mappa di sistema DigiAgriFoodCH.",
@@ -54,16 +55,17 @@
       },
       "dcat:accessURL": "https://github.com/blw-ofag-ufag/system-map/blob/main/graph.ttl",
       "dcat:downloadURL": "https://raw.githubusercontent.com/blw-ofag-ufag/system-map/refs/heads/main/graph.ttl",
-      "dcterms:format": "RDF"
+      "dct:format": "RDF"
     },
     {
-      "dcterms:title": {
+      "dct:identifier": "B00300",
+      "dct:title": {
         "de": "SPARQL Endpunkt für Datenabfrage",
         "fr": "Point d'accès SPARQL pour les requêtes sur le graphe",
         "it": "Endpoint SPARQL per interrogazioni sul grafo",
         "en": "SPARQL endpoint for graph queries"
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "Ein YASGUI-SPARQL-Endpunkt für eine direkte Abfrage von Daten bei LINDAS, dem Linked Data Service des Bundesarchives.",
         "fr": "Un point d'accès YASGUI-SPARQL pour interroger directement les données de LINDAS, le service de données liées des Archives fédérales.",
         "it": "Un endpoint YASGUI-SPARQL per interrogare direttamente i dati di LINDAS, il servizio di dati collegati dell'Archivio federale.",
@@ -71,7 +73,7 @@
       },
       "dcat:accessURL": "https://s.zazuko.com/3sAp7YF",
       "dcat:downloadURL": "https://s.zazuko.com/3sAp7YF",
-      "dcterms:format": "SPARQL-Service"
+      "dct:format": "SPARQL-Service"
     }
   ]  
 }
