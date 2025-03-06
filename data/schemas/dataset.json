@@ -390,7 +390,7 @@
       },
         "dcatap:applicableLegislation": {
             "title": "Applicable legislation",
-            "description": "The legislation that mandates the creation or management of the Dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
+            "description": "The legislation that mandates or allows the creation or management of the dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
             "type": [
               "array",
               "null"
