@@ -135,6 +135,17 @@
           ],
           "format": "date"
       },
+      "dcatap:availability": {
+          "title": "Dataset availability",
+          "description": "This property indicates how long it is planned to keep the Dataset available. See http://publications.europa.eu/resource/authority/planned-availability for the controlled vocabulary.",
+          "type": "string",
+          "enum": [
+              "AVAILABLE",
+              "EXPERIMENTAL",
+              "STABLE",
+              "TEMPORARY"
+          ]
+      },
       "dcat:keyword": {
           "type": [
               "array",
@@ -535,6 +546,17 @@
                           "published",
                           "deleted",
                           "archived"
+                      ]
+                  },
+                  "dcatap:availability": {
+                      "title": "Dataset availability",
+                      "description": "This property indicates how long it is planned to keep the Distribution available. See http://publications.europa.eu/resource/authority/planned-availability for the controlled vocabulary.",
+                      "type": "string",
+                      "enum": [
+                        "AVAILABLE",
+                        "EXPERIMENTAL",
+                        "STABLE",
+                        "TEMPORARY"
                       ]
                   },
                   "dct:format": {
