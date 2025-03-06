@@ -243,7 +243,7 @@
         },
         "dcatap:applicableLegislation": {
             "title": "Applicable legislation",
-            "description": "The legislation that mandates the creation or management of the Data Service.",
+            "description": "The legislation that mandates or allows the creation or management of the dataService.",
             "type": [
               "array",
               "null"
