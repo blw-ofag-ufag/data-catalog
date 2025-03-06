@@ -127,6 +127,15 @@
             "format": "uri",
             "description": "URL of the technical endpoint of the DataService."
         },
+        "dcat:landingPage": {
+          "title": "Landing page",
+          "type": [
+              "string",
+              "null"
+          ],
+          "format": "uri",
+          "description": "Landing page or homepage for the API."
+      },
         "adms:status": {
             "title": "Status",
             "type": "string",
@@ -194,6 +203,43 @@
             "title": "comments",
             "type": "string",
             "description": "Additional comments about the DataService."
+        },
+        "dcat:version": {
+            "title": "Service Version",
+            "description": "Full service version number, e.g. 1.4.2",
+            "type": "string"
+        },
+        "adms:versionNotes": {
+            "title": "Version notes",
+            "description": "A description of the differences between this version and a previous version of the Dataset.",
+            "type": "object",
+            "required": [
+                "de",
+                "fr"
+            ],
+            "properties": {
+                "de": {
+                    "type": "string",
+                    "title": "Deutsch"
+                },
+                "fr": {
+                    "type": "string",
+                    "title": "Français"
+                },
+                "it": {
+                    "type": "string",
+                    "title": "Italiano"
+                },
+                "en": {
+                    "type": "string",
+                    "title": "English"
+                }
+            }
+        },
+        "dct:conformsTo": {
+            "title": "Conforms to",
+            "type": "string",
+            "description": "Reference to a standard or specification the Service conforms to."
         },
         "dcatap:applicableLegislation": {
             "title": "Applicable legislation",
