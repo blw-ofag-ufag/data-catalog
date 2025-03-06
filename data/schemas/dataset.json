@@ -13,7 +13,7 @@
       "dct:issued",
       "dct:accrualPeriodicity",
       "dct:modified",
-      "schema:OrganizationRole",
+      "prov:qualifiedAttribution",
       "adms:status",
       "bv:classification",
       "bv:personalData",
@@ -174,18 +174,18 @@
           "title": "Last modification date",
           "description": "Last modification date of the data in the dataset."
       },
-      "schema:OrganizationRole": {
+      "prov:qualifiedAttribution": {
           "type": "array",
           "title": "Affiliated persons",
           "description": "List of affiliated people, their contact address and respective roles.",
           "items": {
               "type": "object",
               "required": [
-                  "schema:roleName",
-                  "dct:identifier"
+                  "dcat:hadRole",
+                  "prov:agent"
               ],
               "properties": {
-                  "dct:identifier": {
+                  "prov:agent": {
                       "type": "string",
                       "title": "Personal ID from AdminDir"
                   },
@@ -197,12 +197,12 @@
                       "type": "string",
                       "title": "email"
                   },
-                  "schema:roleName": {
+                  "dcat:hadRole": {
                       "type": "string",
                       "title": "Role",
                       "description": "Role this person has for this dataset.",
                       "enum": [
-                          "dataOwner",
+                          "businessDataOwner",
                           "dataSteward",
                           "dataCustodian"
                       ]
@@ -213,7 +213,7 @@
           "contains": {
               "type": "object",
               "properties": {
-                  "schema:roleName": {
+                  "dcat:hadRole": {
                       "const": "dataOwner"
                   }
               }
