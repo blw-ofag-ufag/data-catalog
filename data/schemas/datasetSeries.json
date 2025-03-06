@@ -201,7 +201,7 @@
         },
         "dcatap:applicableLegislation": {
             "title": "Applicable legislation",
-            "description": "The legislation that mandates the creation or management of the Dataset Series.",
+            "description": "The legislation that mandates or allows the creation or management of the datasetSeries.",
             "type": [
               "array",
               "null"
