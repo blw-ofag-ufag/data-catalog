@@ -1,28 +1,28 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00054",
-  "dcterms:title": {
+  "dct:identifier": "D00054",
+  "dct:title": {
     "de": "Erzeugung landwirtschaftliche Wirtschaftsbereich 2000/02-2016",
     "fr": "Production branche agricole 2000/02-2016",
     "it": "Produzione del settore primario 2000/02-2016",
     "en": ""
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Pflanzliche und tierische Erzeugung, Erzeugung landwirtschaftlicher Dienstleistungen (in 1000 Fr.)",
     "fr": "",
     "it": "",
     "en": ""
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft",
-    "email": "alessandro.rossi@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft",
+    "schema:email": "alessandro.rossi@blw.admin.ch"
   },
-  "dcterms:issued": "2016-11-08",
+  "dct:issued": "2016-11-08",
   "dcat:keyword": [],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -33,74 +33,74 @@
     "populationAndSociety"
   ],
   "dcat:landingPage": "https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/gesamtrechnung-satellitenkonto/landwirtschaft.html",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "2000-01-01 - 2016-12-31",
+  "dct:spatial": "",
+  "dct:temporal": "2000-01-01 - 2016-12-31",
   "dpv:hasLegalBasis": [
     "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "905152fe-0016-424b-b6eb-e5f54c8d7f49",
+      "dct:identifier": "B00103",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/3e/suk3lh9caztnzdftucchh50tqehs9x/erzeugung_landwirtschaftliche_wirtschaftsbereich_2000_02_2016_datenreihe_d.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/3e/suk3lh9caztnzdftucchh50tqehs9x/erzeugung_landwirtschaftliche_wirtschaftsbereich_2000_02_2016_datenreihe_d.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Erzeugung landwirtschaftliche Wirtschaftsbereich",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "1b7503a5-59b7-4207-b00f-384874223f52",
+      "dct:identifier": "B00104",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/c3/jusb5vwfv9qe3lsyx34vx3wswaeuzb/erzeugung_landwirtschaftliche_wirtschaftsbereich_2000_02_2016_datenreihe_f.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/c3/jusb5vwfv9qe3lsyx34vx3wswaeuzb/erzeugung_landwirtschaftliche_wirtschaftsbereich_2000_02_2016_datenreihe_f.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "Production branche agricole",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "2a7dc845-a45c-4039-8494-9cd84a6ef5c5",
+      "dct:identifier": "B00105",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/45/98bs0q0nphkepnf7wkzeh9x62opln4/erzeugung_landwirtschaftliche_wirtschaftsbereich_2000_02_2016_datenreihe_i.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/45/98bs0q0nphkepnf7wkzeh9x62opln4/erzeugung_landwirtschaftliche_wirtschaftsbereich_2000_02_2016_datenreihe_i.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "Produzione del settore primario",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

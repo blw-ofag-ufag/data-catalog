@@ -6,8 +6,8 @@ const baseDataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalo
 
 // List of enumerated fields to highlight
 const enumeratedFields = [
-  "dcterms:accessRights",
-  "dcterms:accrualPeriodicity",
+  "dct:accessRights",
+  "dct:accrualPeriodicity",
   "adms:status",
   "bv:classification",
   "bv:personalData",
@@ -60,7 +60,7 @@ const Utils = {
       return "";
     }
     const mustBePublished = !!publication["bv:mustBePublished"];
-    const id = publication["dcterms:identifier"] || "";
+    const id = publication["dct:identifier"] || "";
     const accessUrl = publication["dcat:accessURL"] || "";
     const publicationRow = `<tr>
       <td>${i18next.t("details.publication")}:</td>
@@ -169,10 +169,10 @@ function renderNotFound(datasetId) {
 
 function renderHeroBanner(data, lang) {
   const datasetTitle =
-    Utils.getLocalized(data["dcterms:title"], lang) || "Untitled Dataset";
+    Utils.getLocalized(data["dct:title"], lang) || "Untitled Dataset";
   document.getElementById("datasetTitle").textContent = datasetTitle;
   document.getElementById("datasetDescription").textContent =
-    Utils.getLocalized(data["dcterms:description"], lang);
+    Utils.getLocalized(data["dct:description"], lang);
 }
 
 function renderActionButtons(datasetId, lang) {
@@ -212,8 +212,8 @@ function renderAffiliatedPersons(data, lang) {
 function renderMetadata(data, lang) {
   const section = document.getElementById("metadataSection");
   const displayedKeys = [
-    "dcterms:title",
-    "dcterms:description",
+    "dct:title",
+    "dct:description",
     "schema:OrganizationRole",
     "dcat:distribution",
     "schema:image"
@@ -269,11 +269,11 @@ function renderDistributions(data, lang) {
   let html = `<h1>${i18next.t("details.distribution")}</h1>`;
   html += `<table class="table"><tbody>`;
   distributions.forEach((dist) => {
-    const title = Utils.getLocalized(dist["dcterms:title"], lang) || "";
-    const description = Utils.getLocalized(dist["dcterms:description"], lang) || "";
-    const format = dist["dcterms:format"] || "N/A";
-    if (dist["dcterms:modified"]) {
-      dist["dcterms:modified"] = Utils.formatDateIfPossible(dist["dcterms:modified"], lang);
+    const title = Utils.getLocalized(dist["dct:title"], lang) || "";
+    const description = Utils.getLocalized(dist["dct:description"], lang) || "";
+    const format = dist["dct:format"] || "N/A";
+    if (dist["dct:modified"]) {
+      dist["dct:modified"] = Utils.formatDateIfPossible(dist["dct:modified"], lang);
     }
     const url = dist["dcat:downloadURL"] || dist["dcat:accessURL"] || "#";
     html += `<tr>
@@ -342,7 +342,7 @@ function renderDatasetDetails(data, lang) {
   renderAffiliatedPersons(data, lang);
   renderMetadata(data, lang);
   renderDistributions(data, lang);
-  renderEditHistory(data["dcterms:identifier"], branch, lang);
+  renderEditHistory(data["dct:identifier"], branch, lang);
 }
 
 /******************************************************
@@ -394,7 +394,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const datasetUrl = `${baseDataUrl}${datasetId}.json`;
     fetchDataset(datasetUrl)
       .then((data) => {
-        if (!data || data["dcterms:identifier"] !== datasetId) {
+        if (!data || data["dct:identifier"] !== datasetId) {
           renderNotFound(datasetId);
         } else {
           renderDatasetDetails(data, lang);

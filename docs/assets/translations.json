@@ -107,61 +107,61 @@
       "fr":"Contact",
       "it":"Contatto"
    },
-   "dcterms:identifier":{
+   "dct:identifier":{
       "en":"Identifier",
       "de":"Identifikator",
       "fr":"Identifiant",
       "it":"Identificatore"
    },
-   "dcterms:title":{
+   "dct:title":{
       "en":"Title",
       "de":"Titel",
       "fr":"Titre",
       "it":"Titolo"
    },
-   "dcterms:description":{
+   "dct:description":{
       "en":"Description",
       "de":"Beschreibung",
       "fr":"Description",
       "it":"Descrizione"
    },
-   "dcterms:accessRights":{
+   "dct:accessRights":{
       "en":"Access Rights",
       "de":"Zugriffsrechte",
       "fr":"Droits d'accès",
       "it":"Diritti di accesso"
    },
-   "dcterms:publisher":{
+   "dct:publisher":{
       "en":"Publisher",
       "de":"Herausgeber",
       "fr":"Éditeur",
       "it":"Editore"
    },
-   "dcterms:issued":{
+   "dct:issued":{
       "en":"Issue date",
       "de":"Ausgabedatum",
       "fr":"Date de publication",
       "it":"Data di emissione"
    },
-   "dcterms:modified":{
+   "dct:modified":{
       "en":"Modification Date",
       "de":"Änderungsdatum",
       "fr":"Date de modification",
       "it":"Data di modifica"
    },
-   "dcterms:spatial":{
+   "dct:spatial":{
       "en":"Spatial Coverage",
       "de":"Räumliche Abdeckung",
       "fr":"Couverture spatiale",
       "it":"Copertura spaziale"
    },
-   "dcterms:temporal":{
+   "dct:temporal":{
       "en":"Temporal Coverage",
       "de":"Zeitliche Abdeckung",
       "fr":"Couverture temporelle",
       "it":"Copertura temporale"
    },
-   "dcterms:replaces":{
+   "dct:replaces":{
       "en":"Replaces",
       "de":"Ersetzt",
       "fr":"Remplace",
@@ -203,7 +203,7 @@
       "fr":"Catalogue",
       "it":"Catalogo"
    },
-   "dcterms:accrualPeriodicity":{
+   "dct:accrualPeriodicity":{
       "en":"Accrual periodicity",
       "de":"Erfassungsperiodizität",
       "fr":"Périodicité d'acquisition",

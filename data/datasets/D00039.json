@@ -1,28 +1,28 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00039",
-  "dcterms:title": {
+  "dct:identifier": "D00039",
+  "dct:title": {
     "de": "Versorgungssicherheitsbeiträge 2014-2015",
     "fr": "Contributions à la sécurité de l'approvisionnement 2014-2015",
     "it": "Contributi per la sicurezza dell'approvvigionamento 2014-2015",
     "en": ""
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Versorgungssicherheitsbeiträge nach Kantonen und Zonen (Anzahl Betriebe, Fläche in Hektaren, Beitrag in CHF)",
     "fr": "",
     "it": "",
     "en": ""
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft",
-    "email": "alessandro.rossi@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft",
+    "schema:email": "alessandro.rossi@blw.admin.ch"
   },
-  "dcterms:issued": "2016-11-08",
+  "dct:issued": "2016-11-08",
   "dcat:keyword": [],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -32,74 +32,74 @@
     "environment"
   ],
   "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/direktzahlungen.html",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "2014-01-01 - 2015-12-31",
+  "dct:spatial": "",
+  "dct:temporal": "2014-01-01 - 2015-12-31",
   "dpv:hasLegalBasis": [
     "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "26136999-c88f-41ad-97bc-03d4aaca3311",
+      "dct:identifier": "B00058",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/c9/3k8k62nsdhr43wfhznoeycnoi9f31b/10_ab16_statdz2015_anhaenge_tab_versorgungsicherheit_datenreihe_d_ok.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/c9/3k8k62nsdhr43wfhznoeycnoi9f31b/10_ab16_statdz2015_anhaenge_tab_versorgungsicherheit_datenreihe_d_ok.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Versorgungssicherheitsbeiträge 2014-2015",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "bd18fd26-9755-4ec9-94a9-a4fad9f211f7",
+      "dct:identifier": "B00059",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/ab/sb4yuj6vjemqktfpzshu2syobgzqfw/9_ab16_statdz2015_anhaenge_tab_kulturlandii_soemmerungiii_datenreihe_f_ok.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/ab/sb4yuj6vjemqktfpzshu2syobgzqfw/9_ab16_statdz2015_anhaenge_tab_kulturlandii_soemmerungiii_datenreihe_f_ok.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "Contributions à la sécurité de l'approvisionnement 2014-2015",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "567b98c8-c134-4ac9-ab15-e7a064156231",
+      "dct:identifier": "B00060",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/d1/snia6vpvy1o2jx2tss8oc97t7159fw/10_ab16_statdz2015_anhaenge_tab_versorgungsicherheit_datenreihe_i_ok.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/authenticated/download/documents/d1/snia6vpvy1o2jx2tss8oc97t7159fw/10_ab16_statdz2015_anhaenge_tab_versorgungsicherheit_datenreihe_i_ok.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "Contributi per la sicurezza dell'approvvigionamento 2014-2015",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

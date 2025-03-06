@@ -1,31 +1,31 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00068",
-  "dcterms:title": {
+  "dct:identifier": "D00068",
+  "dct:title": {
     "de": "Bewässerungsbedürftigkeit",
     "fr": "Besoins en irrigation",
     "it": "Fabbisogno irriguo",
     "en": "Demand for irrigation"
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Langjähriges 33 % Quantil der relativen Evapotranspiration (Verhältnis von aktueller zu potenzieller Evapotranspiration, ET/ETP) für die landwirtschaftliche Nutzfläche der Schweiz; Berechnung für die Vegetationsperioden des Zeitraumes 1980-2006 im 500m x 500m Raster.",
     "fr": "Langjähriges 33 % Quantil der relativen Evapotranspiration (Ver-hältnis von aktueller zu potenzieller Evapotranspiration, ET/ETP) für die landwirtschaftliche Nutzfläche der Schweiz; Berechnung für die Vegetationsperioden des Zeitraumes 1980-2006 im500m x 500m Raster.",
     "it": "Quantile del 33 per cento a lungo termine dell'evapotraspirazione relativa (rapporto tra evapotraspirazione attuale e potenziale, ET/ETP) per la superficie agricola utile svizzera; calcolo per i periodi di vegetazione nel periodo 1980-2006 nel reticolo a celle di 500x500m.",
     "en": "Long-term 33% quantile of relative evapotranspiration (ratio of current to potential evapotranspiration ET/ETp) for agriculturally productive areas of Switzerland. Calculation for the growing seasons of the period 1980-2006 in a 500m x 500m grid."
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "info@blw.admin.ch",
-    "email": "info@blw.admin.ch"
+    "schema:name": "info@blw.admin.ch",
+    "schema:email": "info@blw.admin.ch"
   },
-  "dcterms:issued": "2009-11-10",
+  "dct:issued": "2009-11-10",
   "dcat:keyword": [
     "meteorology",
     "FSDI"
   ],
-  "dcterms:accrualPeriodicity": "OTHER",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "OTHER",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -36,93 +36,93 @@
     "populationAndSociety"
   ],
   "dcat:landingPage": "https://www.blw.admin.ch/",
-  "dcterms:spatial": "Schweiz",
-  "dcterms:temporal": "",
+  "dct:spatial": "Schweiz",
+  "dct:temporal": "",
   "dpv:hasLegalBasis": [],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "91f87417-29e7-40ba-baf5-f0e4aaaceeb1",
+      "dct:identifier": "B00152",
       "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.bewaesserungsbeduerftigkeit",
       "adms:status": "published",
-      "dcterms:format": "SERVICE",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "SERVICE",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "https://map.geo.admin.ch/?layers=ch.blw.bewaesserungsbeduerftigkeit",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Map (Preview) Vorschau map.geo.admin.ch",
         "fr": "Map (Preview) Aperçu map.geo.admin.ch",
         "it": "Map (Preview) Previsione map.geo.admin.ch",
         "en": "Map (Preview)  map.geo.admin.ch"
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "Vorschau map.geo.admin.ch",
         "fr": "Aperçu map.geo.admin.ch",
         "it": "Previsione map.geo.admin.ch",
         "en": "Preview map.geo.admin.ch"
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "039a6f85-9f6f-4683-becb-452982f7f099",
+      "dct:identifier": "B00153",
       "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
       "adms:status": "published",
-      "dcterms:format": "WMS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "WMS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
-      "dcterms:title": {
+      "dct:title": {
         "de": "ch.blw.bewaesserungsbeduerftigkeit",
         "fr": "ch.blw.bewaesserungsbeduerftigkeit",
         "it": "ch.blw.bewaesserungsbeduerftigkeit",
         "en": "ch.blw.bewaesserungsbeduerftigkeit"
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "WMS-BGDI Dienst, Layer \"Bewässerungsbedürftigkeit\"",
         "fr": "Service WMS-IFDG, couche \"Besoins en irrigation\"",
         "it": "Servizio WMS-IFDG, strato \"Fabbisogno irriguo\"",
         "en": "WMS-FSDI service, layer \"Demand for irrigation\""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "56437919-209f-4f52-bd0a-34557ae2ddaa",
+      "dct:identifier": "B00154",
       "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
       "adms:status": "published",
-      "dcterms:format": "WMTS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "WMTS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
-      "dcterms:title": {
+      "dct:title": {
         "de": "ch.blw.bewaesserungsbeduerftigkeit",
         "fr": "ch.blw.bewaesserungsbeduerftigkeit",
         "it": "ch.blw.bewaesserungsbeduerftigkeit",
         "en": "ch.blw.bewaesserungsbeduerftigkeit"
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "WMTS-BGDI Dienst, Layer \"Bewässerungsbedürftigkeit\"",
         "fr": "Service WMTS-IFDG, couche , Layer \"Besoins en irrigation\"",
         "it": "Servizio WMTS-IFDG, strato \"Fabbisogno irriguo\"",
         "en": "WMTS-FSDI service, layer \"Demand for irrigation\""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "f2b32b34-8375-47ab-bef3-c428598808f7",
+      "dct:identifier": "B00155",
       "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bewaesserungsbeduerftigkeit",
       "adms:status": "published",
-      "dcterms:format": "HTML",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "HTML",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bewaesserungsbeduerftigkeit",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "Download von data.geo.admin.ch",
         "fr": "Serveur de téléchargement de geo.admin.ch",
         "it": "Server di download di geo.admin.ch",
         "en": "Download server from geo.admin.ch"
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

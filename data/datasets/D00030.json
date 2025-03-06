@@ -1,28 +1,28 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00030",
-  "dcterms:title": {
+  "dct:identifier": "D00030",
+  "dct:title": {
     "de": "Produzentenpreise konventionell 2002/04-2015",
     "fr": "Prix à la production sans le bio 2002/04-2015",
     "it": "Prezzi alla produzione (Bio escluso) 2002/04-2015",
     "en": ""
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Produzentenpreise für verschiedene konventionelle (ohne Bio) Produkte (Milch, Schlachtvieh, Eier, Getreide, Hackfrüchte, Ölsaaten, Gemüse) in CHF",
     "fr": "",
     "it": "",
     "en": ""
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft",
-    "email": "alessandro.rossi@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft",
+    "schema:email": "alessandro.rossi@blw.admin.ch"
   },
-  "dcterms:issued": "2016-11-08",
+  "dct:issued": "2016-11-08",
   "dcat:keyword": [],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -33,74 +33,74 @@
     "internationalTopics"
   ],
   "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/markt/marktbeobachtung.html",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "2002-01-01 - 2015-12-31",
+  "dct:spatial": "",
+  "dct:temporal": "2002-01-01 - 2015-12-31",
   "dpv:hasLegalBasis": [
     "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "3e01ccab-3077-421d-a92b-058d44dc0d73",
+      "dct:identifier": "B00031",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/76/n0fh2ncv0uio3dwyt12jysn87st8bj/ppreise_konv_datenreihe_d.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/76/n0fh2ncv0uio3dwyt12jysn87st8bj/ppreise_konv_datenreihe_d.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Produzentenpreise konventionell 2002/04-2015",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "591423c8-504b-4377-b4d9-f356b3efae5c",
+      "dct:identifier": "B00032",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/77/pckl80crdxx1ptp63ma8loqhn84i1r/ppreise_konv_datenreihe_f.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/77/pckl80crdxx1ptp63ma8loqhn84i1r/ppreise_konv_datenreihe_f.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "Prix à la production sans le bio 2002/04-2015",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "0602b1a0-a9ea-4dcf-8675-f27dad94f134",
+      "dct:identifier": "B00033",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/11/plb3odngmob4wx4ugam1ryc9w6v1o3/ppreise_konv_datenreihe_i.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/11/plb3odngmob4wx4ugam1ryc9w6v1o3/ppreise_konv_datenreihe_i.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "Prezzi alla produzione (Bio escluso) 2002/04-2015",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

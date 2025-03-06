@@ -1,32 +1,32 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-003.jpg",
-  "dcterms:identifier": "D00007",
-  "dcterms:title": {
+  "dct:identifier": "D00007",
+  "dct:title": {
     "de": "Marktzahlen Eier - Jährliche Exportmengen",
     "fr": "Chiffres du marché des œufs - Quantités exportées annuelles",
     "it": "Cifre del mercato delle uova - Volumi d'esportazioni annuali",
     "en": "Market figures eggs - Annual export quantities "
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Jährliche Mengenangaben für exportierte Eiprodukte und Eier auf Wertschöpfungsstufe Verarbeitung und Konsum",
     "fr": "Quantités annuelles en millions d'œufs exportés à l’échelon de création de valeur transformation et consommation",
     "it": "Volumi annuali di uova esportate e di una selezione di prodotti importati a base di uovai a livello di creazione di valore transformazione e consumi",
     "en": "Annual quantities of eggs exported at the tranformation or consumption stage of the value chain"
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
-    "email": "marktanalysen@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen",
+    "schema:email": "marktanalysen@blw.admin.ch"
   },
-  "dcterms:issued": "2025-01-16",
+  "dct:issued": "2025-01-16",
   "dcat:keyword": [
     "market-data",
     "quantity",
     "eggs"
   ],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -37,32 +37,32 @@
     "agricultureFisheriesForestryFood"
   ],
   "dcat:landingPage": "https://www.agrarmarktdaten.ch",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "2002-01-01 - 2023-01-01T23:59:59.999999",
+  "dct:spatial": "",
+  "dct:temporal": "2002-01-01 - 2023-01-01T23:59:59.999999",
   "dpv:hasLegalBasis": [
     "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "cfebe679-705e-429d-a743-b4e50b291798",
+      "dct:identifier": "B00008",
       "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FEggs%2FExport_Quantity_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
       "adms:status": "published",
-      "dcterms:format": "SPARQL",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "SPARQL",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FEggs%2FExport_Quantity_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
-      "dcterms:title": {
+      "dct:title": {
         "de": "SPARQL Endpoint mit Vorauswahl des Graph",
         "fr": "SPARQL Endpoint avec présélection du graphe",
         "it": "",
         "en": "SPARQL Endpoint with graph preselection"
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }
