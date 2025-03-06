@@ -32,6 +32,12 @@ a {
 nav.navbar {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+a.nav-link {
+  color: var(--color-accent) ;
+}
+a.nav-link:hover {
+  text-decoration: underline; /* Adds underline on hover */
+}
 
 /* Hero Banner */
 .hero-banner {
