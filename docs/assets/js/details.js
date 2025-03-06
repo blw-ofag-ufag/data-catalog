@@ -175,6 +175,14 @@ function renderHeroBanner(data, lang) {
     Utils.getLocalized(data["dcterms:description"], lang);
 }
 
+function renderActionButtons(datasetId, lang) {
+  const gitHubUrl = `https://github.com/blw-ofag-ufag/data-catalog/blob/main/data/datasets/${datasetId}.json`
+  const rawUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/main/data/datasets/${datasetId}.json`;
+  document.getElementById("downloadBtn").setAttribute("href", rawUrl);
+  document.getElementById("viewOnGithubBtn").setAttribute("href", gitHubUrl);
+  document.getElementById("editBtn").setAttribute("href", `modify.html?id=${datasetId}&lang=${lang}`);
+}
+
 function renderAffiliatedPersons(data, lang) {
   const section = document.getElementById("metadataSection");
   const persons = data["schema:OrganizationRole"] || [];
@@ -217,9 +225,7 @@ function renderMetadata(data, lang) {
     let label = i18next.t(key, { defaultValue: key });
     let val = data[key];
 
-    if (key === "dcterms:identifier") {
-      val = `<a href="https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/data/datasets/${val}.json" target="_blank">${val}</a>`;
-    } else if (key === "dcat:keyword" && Array.isArray(val)) {
+    if (key === "dcat:keyword" && Array.isArray(val)) {
       // Wrap all keywords in a container with class "keywords"
       val = `<div class="keywords">` +
         val.map((item) => 
@@ -366,6 +372,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const datasetId = params.get("dataset");
   const lang = params.get("lang") || "en";
+
+  // Render action buttons if dataset ID exists
+  if (datasetId) {
+    renderActionButtons(datasetId, lang);
+  } else {
+    renderError("Dataset ID missing in URL parameters.");
+    return;
+  }
 
   if (!datasetId) {
     renderError("Dataset ID missing in URL parameters.");
