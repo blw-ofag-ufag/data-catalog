@@ -11,7 +11,8 @@
         "dct:publisher",
         "adms:status",
         "bv:classification",
-        "bv:personalData"
+        "bv:personalData",
+        "dct:creator"
     ],
     "properties": {
         "schema:image": {
