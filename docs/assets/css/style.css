@@ -6,6 +6,8 @@
   --color-primary:          #2c3a3f;
   --color-primary-faded:    #2c3a3f20;
   --color-accent:           #2c3a3f;
+  --color-accent-faded:     #8f9a9e;
+  --color-danger:           #804646;
 }
 
 /* General styling */
@@ -15,6 +17,15 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+a {
+  color: var(--color-foreground); /* Change this to your desired color */
 }
 
 /* Navigation */
@@ -111,23 +122,6 @@ footer a:hover {
   color: #555;
 }
 
-/* Keywords styling */
-.keywords span {
-  display: inline-block;
-  background: #e5e5e5;
-  padding: 0 0.4rem;
-  font-size: 0.8rem;
-  border-radius: 3px;
-  margin-right: 0.25rem;
-  cursor: pointer;
-  /* text-transform: capitalize; */
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-.keywords span:hover {
-  background: #d3e2e2;
-  transform: scale(1.1);
-}
-
 /* Pagination container for twbs-pagination */
 #pagination-container {
   margin-top: 1rem;
@@ -154,13 +148,16 @@ footer a:hover {
   border-bottom: 1px solid var(--color-primary); /* Use primary color as separators */
   vertical-align: middle; /* “align-middle” effect */
 }
+.table tbody tr:first-child td {
+  border-top: 1px solid var(--color-primary); /* Use primary color as separators */
+}
 
 /* Slightly bolder header text for contrast */
 .table thead th {
   font-weight: 600;
 }
 
-/* Hover effect: fill row with primary color, invert text to white */
+/* Hover effect for table */
 .table-hover tbody tr:hover,
 .table-hover tbody tr:hover td {
   background-color: var(--color-primary-faded) !important;
@@ -171,11 +168,18 @@ footer a:hover {
   table-layout: fixed;
   width: 100%;
 }
-.table-fixed th:nth-child(1) { width: 8%; }
-.table-fixed th:nth-child(2) { width: 32%; }
+.table-fixed td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.table-fixed th:nth-child(1) { width: 35%; }
+.table-fixed th:nth-child(2) { width: 15%; }
 .table-fixed th:nth-child(3) { width: 12%; }
-.table-fixed th:nth-child(4) { width: 10%; }
-.table-fixed th:nth-child(5) { width: 30%; }
+.table-fixed th:nth-child(4), .table-fixed td:nth-child(4) { 
+  width: auto;  /* Let it take up remaining space */
+  white-space: normal;  /* Allow wrapping */
+}
 
 /* Universal "unified-control" class for consistent styling */
 .unified-control {
@@ -204,22 +208,6 @@ footer a:hover {
   background-color: var(--color-primary);
   color: var(--color-background);
   border-color: var(--color-primary);
-}
-
-/* Tagify main wrapper */
-.tagify {
-  background-color: transparent;
-  border: 1px solid var(--color-primary);
-  border-radius: 4px;
-  color: var(--color-primary);
-}
-.tagify__input {
-  background-color: transparent;
-  color: var(--color-foreground);
-  border: none !important;
-}
-.tagify__input::placeholder {
-  color: var(--color-foreground-faded);
 }
 
 /* Pagination styling */
@@ -280,21 +268,63 @@ footer a:hover {
   text-decoration: none; /* remove underline */
 }
 
+/* Keywords (analog to tags) */
+.keywords span {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-background);
+  padding: 0 0.4rem;
+  font-size: 0.8rem;
+  border-radius: 3px;
+  margin-right: 0.25rem;
+  cursor: pointer;
+  /* text-transform: capitalize; */
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.keywords span:hover {
+  background: var(--color-accent);
+  transform: scale(1.1);
+}
+.keywords a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Tagify main wrapper */
+.tagify {
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  color: var(--color-primary);
+}
+.tagify__input {
+  background-color: transparent;
+  color: var(--color-foreground);
+  border: none !important;
+}
+.tagify__input::placeholder {
+  color: var(--color-foreground-faded);
+}
+
+.customLook {
+  --tag-bg: var(--color-accent);
+  --tag-hover: var(--color-accent);
+  --tag-text-color: var(--color-background);
+  --tag-remove-bg: var(--color-danger);
+  --tag-remove-btn: var(--color-background);
+  --tag-remove-btn-color: var(--color-background);
+  --tag-remove-btn-bg--hover: var(--color-danger);
+}
+
+
 .enumeration-chip {
   display: inline-block;
-  border: 1px solid var(--primary-text-color);
+  border: 1px solid var(--color-accent);
   background-color: transparent;
   border-radius: 4px;
   padding: 3px 6px;
   font-size: 12px;
-  color: var(--primary-text-color);
+  color: var(--color-accent);
   font-weight: 400;
   margin: 2px 4px 2px 0;
   text-transform: capitalize; /* Ensure each word starts with uppercase */
-}
-
-.keyword-chip.more-keywords {
-  background-color: var(--border-color); /* Adjust as needed */
-  color: var(--secondary-text-color);
-  cursor: default; /* Disable pointer interactions */
 }
