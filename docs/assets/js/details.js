@@ -103,7 +103,12 @@ function renderAffiliatedPersons(data, lang) {
     section.innerHTML = html;
     return;
   }
-  html += `<table class="table"><tbody>`;
+  html += `<table class="table">
+        <colgroup>
+          <col style="width: 25%;">
+          <col style="width: 75%;">
+        </colgroup>
+    <tbody>`;
   persons.forEach((p) => {
     const name = p["prov:agent"] || i18next.t("details.unknown");
     const role = p["dcat:hadRole"] || i18next.t("details.unknownRole");
@@ -132,7 +137,12 @@ function renderMetadata(data, lang) {
     "schema:image"
   ];
   let html = `<h1>${i18next.t("details.metadata")}</h1>`;
-  html += `<table class="table"><tbody>`;
+  html += `<table class="table">
+          <colgroup>
+            <col style="width: 25%;">
+            <col style="width: 75%;">
+          </colgroup>
+      <tbody>`;
   Object.keys(data).forEach((key) => {
     if (displayedKeys.includes(key)) return;
     let label = i18next.t(key, { defaultValue: key });
@@ -157,8 +167,6 @@ function renderMetadata(data, lang) {
       val = Utils.formatSingleUrl(val);
     } else if (enumeratedFields.includes(key)) {
       val = Utils.highlightEnumeratedValues(val);
-    } else if (typeof val === "string") {
-      val = Utils.formatDate(val, lang);
     } else if (Array.isArray(val)) {
       val = val.map((item) => Utils.formatDate(item, lang)).join(", ");
     } else {
@@ -186,7 +194,13 @@ function renderDistributions(data, lang) {
   }
   
   let html = `<h1>${i18next.t("details.distribution")}</h1>`;
-  html += `<table class="table"><tbody>`;
+  html += `<table class="table">
+        <colgroup>
+          <col style="width: 25%;">
+          <col style="width: 50%;">
+          <col style="width: 25%;">
+        </colgroup>
+  <tbody>`;
   
   distributions.forEach((dist) => {
     const title = Utils.getLocalized(dist["dct:title"], lang) || "";
@@ -230,6 +244,11 @@ function renderPublications(data, lang) {
   let html = `<h1>${i18next.t("details.publications", { defaultValue: "Publications" })}</h1>`;
   html += `<table class="table">
     <thead>
+      <colgroup>
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+        <col style="width: 50%;">
+      </colgroup>
       <tr>
         <th>${i18next.t("dcat:catalog")}</th>
         <th>${i18next.t("details.publication")}</th>
@@ -271,6 +290,12 @@ async function renderEditHistory(datasetId, branch, lang) {
     }
     let html = `<h1>${i18next.t("details.editHistory")}</h1>`;
     html += `<table class="table">
+            <colgroup>
+              <col style="width: 5%;">
+              <col style="width: 20%;">
+              <col style="width: 25%;">
+              <col style="width: 50%;">
+            </colgroup>
               <thead>
                 <tr>
                   <th></th>
