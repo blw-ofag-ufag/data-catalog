@@ -305,6 +305,18 @@
       "fr": "Message",
       "it": "Messaggio"
    },
+   "details.publications": {
+      "en":"Publications",
+      "de":"Publikationen",
+      "fr":"Publications",
+      "it":"Pubblicazioni"
+   },
+   "details.publication": {
+      "en": "Publication",
+      "de": "Publikation",
+      "fr": "Publication",
+      "it": "Pubblicazione"
+   },
    "details.distribution":{
       "en":"Distribution",
       "de":"Verteilung",

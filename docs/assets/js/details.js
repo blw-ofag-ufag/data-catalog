@@ -64,7 +64,7 @@ const Utils = {
     const accessUrl = publication["dcat:accessURL"] || "";
     const publicationRow = `<tr>
       <td>${i18next.t("details.publication")}:</td>
-      <td><span class="enumeration-chip">${Utils.formatEnumerationString(mustBePublished)}</span></td>
+      <td>${Utils.formatEnumerationString(mustBePublished)}</td>
     </tr>`;
     const idRow = mustBePublished
       ? `<tr>
@@ -201,7 +201,7 @@ function renderAffiliatedPersons(data, lang) {
         <td>
           <a href="https://admindir.verzeichnisse.admin.ch/person/${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer">${name}</a>
         </td>
-        <td>${Utils.formatEnumerationString(role)}</td>
+        <td>${Utils.highlightEnumeratedValues(role)}</td>
       </tr>
     `;
   });
@@ -293,6 +293,51 @@ function renderDistributions(data, lang) {
   section.innerHTML = html;
 }
 
+function renderPublications(data, lang) {
+  // Get the publications section element.
+  const section = document.getElementById("publicationsSection");
+  if (!section) return;
+  
+  let html = `<h1>${i18next.t("details.publications", { defaultValue: "Publications" })}</h1>`;
+  html += `<table class="table">
+    <thead>
+      <tr>
+        <th>${i18next.t("dcat:catalog")}</th>
+        <th>${i18next.t("details.publication")}</th>
+        <th>${i18next.t("dct:identifier")}</th>
+      </tr>
+    </thead>
+    <tbody>`;
+  
+  // List of publication types with their display names.
+  const publications = [
+    { key: "bv:opendata_swiss", catalog: "opendata.swiss" },
+    { key: "bv:i14y", catalog: "I14Y" }
+  ];
+  
+  publications.forEach(pub => {
+    if (data[pub.key]) {
+      const pubData = data[pub.key];
+      // Format the publication flag.
+      const publication = Utils.highlightEnumeratedValues(pubData["bv:mustBePublished"]);
+      // Read identifier and accessURL if available.
+      let identifier = pubData["dct:identifier"] || "";
+      const accessURL = pubData["dcat:accessURL"] || "";
+      if (identifier && accessURL && accessURL !== "N/A") {
+        identifier = `<a href="${accessURL}" target="_blank">${identifier}</a>`;
+      }
+      html += `<tr>
+        <td>${pub.catalog}</td>
+        <td>${publication}</td>
+        <td>${identifier}</td>
+      </tr>`;
+    }
+  });
+  
+  html += `</tbody></table>`;
+  section.innerHTML = html;
+}
+
 async function renderEditHistory(datasetId, branch, lang) {
   const section = document.getElementById("editHistorySection");
   const commitsApiUrl = `https://api.github.com/repos/blw-ofag-ufag/data-catalog/commits?path=data/datasets/${datasetId}.json&sha=${branch}`;
@@ -347,6 +392,7 @@ function renderDatasetDetails(data, lang) {
   renderAffiliatedPersons(data, lang);
   renderMetadata(data, lang);
   renderDistributions(data, lang);
+  renderPublications(data, lang);  // New call for publications
   renderEditHistory(data["dct:identifier"], branch, lang);
 }
 
