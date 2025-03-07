@@ -23,7 +23,13 @@
             "subsidy",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00028",
@@ -44,7 +50,13 @@
             "market-data",
             "price"
         ],
-        "schema:image": "https://fal.media/files/zebra/uMItgIOn8rkH0Vc3otYHJ_9f949a95322348d4b283948df942164b.jpg"
+        "schema:image": "https://fal.media/files/zebra/uMItgIOn8rkH0Vc3otYHJ_9f949a95322348d4b283948df942164b.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00059",
@@ -66,7 +78,13 @@
             "animal-production",
             "diary-farming"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00056",
@@ -84,7 +102,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00063",
@@ -109,7 +133,13 @@
             "subsidy",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00037",
@@ -127,7 +157,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00092",
@@ -150,7 +186,13 @@
             "meteorology",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00066",
@@ -173,7 +215,13 @@
             "meteorology",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00058",
@@ -196,7 +244,13 @@
             "animals",
             "meat"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00048",
@@ -214,7 +268,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00069",
@@ -236,7 +296,13 @@
             "natural-risk-zones",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00010",
@@ -258,7 +324,13 @@
             "quantity",
             "milk"
         ],
-        "schema:image": "https://fal.media/files/tiger/bZwRhpRhc84HfyrV1VF9c_b97dde5a800a4aa29127cda08b54de21.jpg"
+        "schema:image": "https://fal.media/files/tiger/bZwRhpRhc84HfyrV1VF9c_b97dde5a800a4aa29127cda08b54de21.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00096",
@@ -282,7 +354,13 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00053",
@@ -300,7 +378,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00072",
@@ -324,7 +408,13 @@
             "erosion",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00016",
@@ -346,7 +436,13 @@
             "market-data",
             "milk"
         ],
-        "schema:image": "https://fal.media/files/tiger/bZwRhpRhc84HfyrV1VF9c_b97dde5a800a4aa29127cda08b54de21.jpg"
+        "schema:image": "https://fal.media/files/tiger/bZwRhpRhc84HfyrV1VF9c_b97dde5a800a4aa29127cda08b54de21.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00076",
@@ -368,7 +464,13 @@
             "FSDI",
             "milk"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/rural-002.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/rural-002.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00082",
@@ -394,7 +496,13 @@
             "regulation-zones",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00025",
@@ -415,7 +523,13 @@
             "market-data",
             "quantity"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/meat-002.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/meat-002.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00008",
@@ -437,7 +551,13 @@
             "market-data",
             "meat"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/meat-001.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/meat-001.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00033",
@@ -455,7 +575,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00088",
@@ -479,7 +605,13 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00032",
@@ -497,7 +629,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00090",
@@ -521,7 +659,13 @@
             "e-geoch",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00006",
@@ -542,7 +686,13 @@
             "market-data",
             "price"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-002.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-002.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00091",
@@ -565,7 +715,13 @@
             "e-geoch",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00089",
@@ -588,7 +744,13 @@
             "meteorology",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00071",
@@ -612,7 +774,13 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00057",
@@ -639,7 +807,13 @@
             "import",
             "export"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00031",
@@ -657,7 +831,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00098",
@@ -683,7 +863,13 @@
             "regulation-zones",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00050",
@@ -701,7 +887,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00017",
@@ -723,7 +915,13 @@
             "price",
             "milk"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00080",
@@ -748,7 +946,13 @@
             "cheese",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/alps-002.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/alps-002.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00093",
@@ -772,7 +976,13 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00034",
@@ -790,7 +1000,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00002",
@@ -814,7 +1030,15 @@
             "UPOV"
         ],
         "schema:image": "https://fal.media/files/rabbit/b-j9zxhlLzInwz4JQyCFU_b4014cdc2ebc4f92b293153dc4917f95.jpg",
-        "businessDataOwner": "p-0711690"
+        "businessDataOwner": "p-0711690",
+        "schemaViolations": 5,
+        "schemaViolationMessages": [
+            "'dct:publisher' is a required property",
+            "'dcat:contactPoint' is a required property",
+            "'bv:archivalValue' is a required property",
+            "'adms:status' is a required property",
+            "'dct:modified' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00051",
@@ -832,7 +1056,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00097",
@@ -859,7 +1089,13 @@
             "regulation-zones",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00099",
@@ -884,7 +1120,13 @@
             "biodiversity",
             "soil"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-003.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-003.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00011",
@@ -905,7 +1147,13 @@
             "market-data",
             "price"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00020",
@@ -927,7 +1175,13 @@
             "market-data",
             "milk"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00065",
@@ -950,7 +1204,13 @@
             "meteorology",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00077",
@@ -974,7 +1234,13 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00004",
@@ -997,7 +1263,13 @@
             "milk",
             "dairy-products"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-001.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-001.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00068",
@@ -1018,7 +1290,13 @@
             "meteorology",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00035",
@@ -1043,7 +1321,13 @@
             "regional-funding",
             "subsidies"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/rural-003.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/rural-003.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00084",
@@ -1067,7 +1351,13 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00014",
@@ -1089,7 +1379,13 @@
             "price",
             "milk"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00070",
@@ -1116,7 +1412,13 @@
             "regulation-zones",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00027",
@@ -1137,7 +1439,13 @@
             "price",
             "market-data"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00045",
@@ -1159,7 +1467,13 @@
             "eggs",
             "consumption"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00015",
@@ -1180,7 +1494,13 @@
             "quantity",
             "market-data"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00086",
@@ -1204,7 +1524,13 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00085",
@@ -1228,7 +1554,13 @@
             "utility-and-governmental-services",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00041",
@@ -1246,7 +1578,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00024",
@@ -1267,7 +1605,13 @@
             "price",
             "market-data"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00026",
@@ -1288,7 +1632,13 @@
             "price",
             "market-data"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00064",
@@ -1311,7 +1661,13 @@
             "meteorology",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00023",
@@ -1332,7 +1688,13 @@
             "price",
             "market-data"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00018",
@@ -1354,7 +1716,13 @@
             "market-data",
             "milk"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00003",
@@ -1376,7 +1744,13 @@
             "quantity",
             "eggs"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-001.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-001.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00061",
@@ -1398,7 +1772,13 @@
             "budget",
             "expenditure"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-002.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-002.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00067",
@@ -1422,7 +1802,13 @@
             "regulation-zones",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00021",
@@ -1443,7 +1829,13 @@
             "price",
             "market-data"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00047",
@@ -1461,7 +1853,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00049",
@@ -1479,7 +1877,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00040",
@@ -1497,7 +1901,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00013",
@@ -1518,7 +1928,13 @@
             "market-data",
             "quantity"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00074",
@@ -1541,7 +1957,13 @@
             "meteorology",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00029",
@@ -1562,7 +1984,13 @@
             "market-data",
             "price"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00030",
@@ -1580,7 +2008,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00094",
@@ -1604,7 +2038,13 @@
             "erosion",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00046",
@@ -1622,7 +2062,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00009",
@@ -1645,7 +2091,13 @@
             "eggs",
             "time-series"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-001.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-001.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00095",
@@ -1669,7 +2121,13 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00100",
@@ -1694,7 +2152,9 @@
             "organization"
         ],
         "schema:image": "https://fal.media/files/penguin/zLmfGWbw9SuNH9pYHqE7Y_454ce31f6849495cb14b7a083875b676.jpg",
-        "businessDataOwner": "p-1ZFWFFNP6"
+        "businessDataOwner": "p-1ZFWFFNP6",
+        "schemaViolations": 0,
+        "schemaViolationMessages": []
     },
     {
         "dct:identifier": "D00038",
@@ -1712,7 +2172,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00005",
@@ -1735,7 +2201,13 @@
             "milk",
             "dairy-product"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-002.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-002.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00054",
@@ -1753,7 +2225,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00042",
@@ -1771,7 +2249,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00012",
@@ -1792,7 +2276,13 @@
             "price",
             "market-data"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00044",
@@ -1810,7 +2300,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00073",
@@ -1832,7 +2328,13 @@
             "agriculture",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00081",
@@ -1855,7 +2357,13 @@
             "meteorology",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00043",
@@ -1873,7 +2381,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00001",
@@ -1898,7 +2412,20 @@
             "food"
         ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-001.jpg",
-        "businessDataOwner": "p-1Y4L0Y450"
+        "businessDataOwner": "p-1Y4L0Y450",
+        "schemaViolations": 10,
+        "schemaViolationMessages": [
+            "'dct:publisher' is a required property",
+            "'dcat:contactPoint' is a required property",
+            "'bv:classification' is a required property",
+            "'bv:archivalValue' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property",
+            "'adms:status' is a required property",
+            "'dct:modified' is a required property",
+            "'adms:status' is a required property",
+            "'dct:modified' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00055",
@@ -1916,7 +2443,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00062",
@@ -1938,7 +2471,13 @@
             "agriculture",
             "budget"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/agriculture-001.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/agriculture-001.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00075",
@@ -1962,7 +2501,13 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00078",
@@ -1989,7 +2534,13 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00022",
@@ -2010,7 +2561,13 @@
             "price",
             "market-data"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00079",
@@ -2033,7 +2590,13 @@
             "meteorology",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00083",
@@ -2057,7 +2620,13 @@
             "soil",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00007",
@@ -2079,7 +2648,13 @@
             "quantity",
             "eggs"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-003.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-003.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00052",
@@ -2097,7 +2672,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00036",
@@ -2115,7 +2696,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00039",
@@ -2133,7 +2720,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00060",
@@ -2151,7 +2744,13 @@
         },
         "dct:issued": "2016-11-08",
         "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     },
     {
         "dct:identifier": "D00019",
@@ -2172,6 +2771,12 @@
             "market-data",
             "price"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
+        "schemaViolations": 3,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property",
+            "'bv:opendata_swiss' is a required property",
+            "'bv:i14y' is a required property"
+        ]
     }
 ]
