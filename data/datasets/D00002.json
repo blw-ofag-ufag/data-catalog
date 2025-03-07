@@ -37,6 +37,14 @@
   "bv:classification": "none",
   "bv:personalData": "personalData",
   "bv:typeOfData": "thematicData",
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": false,
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "BLW_DS_VARIETIES",
+    "dcat:accessURL": "https://www.i14y.admin.ch/catalog/datasets/BLW_DS_VARIETIES"
+  },
   "dcat:themeTaxonomy": [
     "environment",
     "agricultureFisheriesForestryFood"
