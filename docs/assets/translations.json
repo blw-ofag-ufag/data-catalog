@@ -312,10 +312,10 @@
       "it":"Distribuzione"
    },
    "details.noAffiliatedPersons": {
-      "en": "This dataset has no affiliated person...",
-      "de": "Dieses Datenset hat keine zugehörige Person...",
-      "fr": "Cet ensemble de données n'a aucune personne affiliée...",
-      "it": "Questo dataset non ha persone affiliate..."
+      "en": "Nobody's claiming this dataset yet—how about giving it some love by assigning a responsible human?",
+      "de": "Niemand fühlt sich für diesen Datensatz zuständig – höchste Zeit, jemandem diese Ehre zu erteilen!",
+      "fr": "Personne ne revendique ce jeu de données – pourquoi ne pas lui trouver quelqu'un à qui il tient à cœur ?",
+      "it": "Nessuno si prende cura di questo dataset: perché non affidi questa responsabilità a qualcuno?"
    },
    "details.unknown": {
       "en": "Details unknown",
