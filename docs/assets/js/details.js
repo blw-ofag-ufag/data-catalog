@@ -226,11 +226,11 @@ function renderMetadata(data, lang) {
     if (displayedKeys.includes(key)) return;
     let label = i18next.t(key, { defaultValue: key });
     let val = data[key];
-
+  
     if (key === "dcat:keyword" && Array.isArray(val)) {
-      // Wrap all keywords in a container with class "keywords"
+      // Special handling for keywords
       val = `<div class="keywords">` +
-        val.map((item) => 
+        val.map((item) =>
           `<a href="index.html?lang=${lang}&tags=${encodeURIComponent(item)}" data-key="${item}">
              <span>${item}</span>
            </a>`
@@ -244,23 +244,26 @@ function renderMetadata(data, lang) {
       val = Utils.formatUrlArray(val);
     } else if (key === "dcat:landingPage" || key === "bv:itSystem") {
       val = Utils.formatSingleUrl(val);
+    }
+    
+    // Handle enumerated fields before generic array/string formatting
+    else if (enumeratedFields.includes(key)) {
+      val = Utils.highlightEnumeratedValues(val);
     } else if (typeof val === "string") {
       val = Utils.formatDateIfPossible(val, lang);
     } else if (Array.isArray(val)) {
-      // For other arrays, format each item (e.g. for dates)
+      // For non-enumerated arrays, format each item (e.g. for dates)
       val = val.map((item) => Utils.formatDateIfPossible(item, lang)).join(", ");
-    }
-    if (enumeratedFields.includes(key)) {
-      val = Utils.highlightEnumeratedValues(val);
     } else {
       val = Utils.stringifyIfNeeded(val);
     }
+  
     if (!val) return;
     html += `<tr>
                <td><strong>${label}</strong></td>
                <td>${val}</td>
              </tr>`;
-  });
+  });  
   html += `</tbody></table>`;
   section.innerHTML += html;
 }
