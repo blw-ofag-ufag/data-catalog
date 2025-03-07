@@ -23,13 +23,19 @@
     "organization"
   ],
   "dct:modified": "2025-02-24",
+  "dct:accrualPeriodicity": "IRREG",
   "prov:qualifiedAttribution": [
     {
       "prov:agent": "p-1ZFWFFNP6",
       "dcat:hadRole": "businessDataOwner"
     }
   ],
-  "adms:status": "published",
+  "dct:publisher": "Federal Office for Agriculture",
+  "dcat:contactPoint": {
+    "schema:name": "DigiAgriFoodCH",
+    "schema:email": "info@digiagrifood.ch"
+  },
+  "adms:status": "workInProgress",
   "bv:classification": "none",
   "bv:personalData": "none",
   "bv:typeOfData": "thematicData",
@@ -38,6 +44,13 @@
     "agricultureFisheriesForestryFood"
   ],
   "bv:itSystem": "https://agriculture.ld.admin.ch/system-map/SYS042",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": false
+  },
   "dcat:distribution": [
     {
       "dct:identifier": "B00299",
@@ -53,6 +66,8 @@
         "it": "Un file Turtle (.ttl) con tutte le informazioni della mappa di sistema DigiAgriFoodCH.",
         "en": "A Turtle file (.ttl) containing all the information of the DigiAgriFoodCH system map."
       },
+      "adms:status": "workInProgress",
+      "dct:modified": "2025-02-24",
       "dcat:accessURL": "https://github.com/blw-ofag-ufag/system-map/blob/main/graph.ttl",
       "dcat:downloadURL": "https://raw.githubusercontent.com/blw-ofag-ufag/system-map/refs/heads/main/graph.ttl",
       "dct:format": "RDF"
@@ -71,6 +86,8 @@
         "it": "Un endpoint YASGUI-SPARQL per interrogare direttamente i dati di LINDAS, il servizio di dati collegati dell'Archivio federale.",
         "en": "A YASGUI-SPARQL endpoint for directly querying data from LINDAS, the Linked Data Service of the Federal Archives."
       },
+      "adms:status": "workInProgress",
+      "dct:modified": "2025-02-24",
       "dcat:accessURL": "https://s.zazuko.com/3sAp7YF",
       "dcat:downloadURL": "https://s.zazuko.com/3sAp7YF",
       "dct:format": "SPARQL-Service"
