@@ -353,9 +353,9 @@ async function renderEditHistory(datasetId, branch, lang) {
               <thead>
                 <tr>
                   <th></th>
-                  <th>${i18next.t("details.author")}</th>
-                  <th>${i18next.t("details.date")}</th>
-                  <th>${i18next.t("details.message")}</th>
+                  <th><small>${i18next.t("details.author")}</small></th>
+                  <th><small>${i18next.t("details.date")}</small></th>
+                  <th><small>${i18next.t("details.message")}</small></th>
                 </tr>
               </thead>
               <tbody>`;
@@ -369,14 +369,10 @@ async function renderEditHistory(datasetId, branch, lang) {
       const formattedDate = Utils.formatDateTimeIfPossible(datetime, lang);
       const commitUrl = `https://github.com/blw-ofag-ufag/data-catalog/commit/${sha}`;
       html += `<tr>
-                 <td>${
-                   authorAvatar
-                     ? `<img src="${authorAvatar}" alt="${authorLogin}" style="width:24px;height:24px;border-radius:50%;">`
-                     : ""
-                 }</td>
-                 <td><a href="https://github.com/${authorLogin}" target="_blank">${authorLogin}</a></td>
-                 <td>${formattedDate}</td>
-                 <td><a href="${commitUrl}" target="_blank">${message}</a></td>
+                 <td><small>${authorAvatar ? `<img src="${authorAvatar}" alt="${authorLogin}" style="width:24px;height:24px;border-radius:50%;">` : "" }</small></td>
+                 <td><small><a href="https://github.com/${authorLogin}" target="_blank">${authorLogin}</a></small></td>
+                 <td><small>${formattedDate}</small></td>
+                 <td><small><a href="${commitUrl}" target="_blank">${message}</a></small></td>
                </tr>`;
     });
     html += `</tbody></table>`;
