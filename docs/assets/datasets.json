@@ -74,13 +74,7 @@
             "animals",
             "meat"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://fal.media/files/zebra/uMItgIOn8rkH0Vc3otYHJ_9f949a95322348d4b283948df942164b.jpg"
     },
     {
         "dct:identifier": "D00030",
@@ -337,10 +331,28 @@
             "en": "Climate suitability map for agriculture - Cultivated land"
         },
         "dct:description": {
-            "de": "Auf den vier Blättern der Karte im Massstab 1:200 000 ist eine Gesamtbeurteilung der klimatischen Voraussetzungen und Einschränkungen für die Landwirtschaft, in 20 Kategorien, wiedergegeben. Die Karte will auf die erheblichen Unterschiede in den Anbaumöglichkeiten der einzelnen Regionen hinweisen.",
-            "fr": "La carte établie à l'échelle 1:200 000 reflète, une appréciation générale des conditions climatiques et des restrictions à l'égard de l'agriculture, subdivisées en vingt catégories d'aptitudes. Son but est de souligner les différences sensibles relatives aux possibilités de culture propres aux diverses régions.",
-            "it": "I quattro fogli della carta in scala 1:200 000 forniscono una valutazione d'insieme delle condizioni climatiche e delle restrizioni relative all'agricoltura, suddivise in 20 categorie. La carta intende sottolineare le differenze di rilievo relative alle possibilità di coltivazione esistenti nelle singole regioni.",
-            "en": "The four sheets of the map, which has a scale of 1:200,000, show an overall evaluation of the climatic conditions and restrictions for agriculture, broken down into 20 categories. The map aims to highlight the significant differences in the cultivation options available in the individual regions."
+            "de": "Landwirtschaftliche Nutzfläche nach Grössenklassen (in ha)",
+            "fr": "",
+            "it": "",
+            "en": ""
+        },
+        "dct:issued": "2016-11-08",
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+    },
+    {
+        "dct:identifier": "D00069",
+        "dct:title": {
+            "de": "Hanglagen Abschwemmung",
+            "fr": "Terrains en pente et ruissellement",
+            "it": "Zone declive Dilavamento",
+            "en": ""
+        },
+        "dct:description": {
+            "de": "Der Datensatz Hanglagen Abschwemmung dient dazu, die Flächen zu bestimmen, auf welchen Massnahmen gegen Abschwemmung zu ergreifen sind. Die Massnahmen gegen Abschwemmung richten sich nach dem ÖLN gemäss DZV Anhang 1 Ziffer 6.1a.4 und nach den Weisungen der Zulassungsstelle Pflanzenschutzmittel des Bundesamtes für Lebensmittelsicherheit und Veterinärwese betreffend die Massnahmen zur Reduktion der Risiken bei der Anwendung von Pflanzenschutzmitteln. Der Datensatz wurde gesamtschweizerisch einheitlich berechnet. Die Produktion beruht auf dem digitalen Höhenmodell DHM25 (Maschenweite 25m) von swisstopo. Folgende Hangneigungsklassen wurden unterschieden: <=2 Prozent; >2 Prozent.",
+            "fr": "Le jeu de données « Terrains en pente et ruissellement » sert à déterminer les surfaces sur lesquelles des mesures contre le ruissellement doivent être prises. Les prescriptions concernant les mesures contre le ruissellement se fondent sur les PER, conformément à l’annexe 1, ch. 6.1a.4, de l’OPD et aux instructions du service d’homologation des produits phytosanitaires de l’Office fédéral de la sécurité alimentaire et des affaires vétérinaires relatives aux mesures de réduction des risques lors de l’application de produits phytosanitaires. Ce jeu de données a été élaboré selon une méthode homogène à l’échelle nationale. La production se base sur le modèle numérique d'altitude MNT25 (maille de 25m) de swisstopo. Les classes de pente suivantes ont été distinguées : <=2 pour cent ; >2 pour cent.",
+            "it": "Il set di dati «Zone declive Dilavamento» serve per determinare le superfici su cui vanno adottate misure per la riduzione del dilavamento. Le prescrizioni concernenti le misure per la riduzione del dilavamento si basano sulle esigenze relative alla PER secondo l’allegato 1 numero 6.1a.4 OPD e sulle istruzioni del servizio d’omologazione dei prodotti fitosanitari dell’Ufficio federale della sicurezza alimentare e di veterinaria concernenti misure per la riduzione dei rischi nell’utilizzo di prodotti fitosanitari. I calcoli sono stati effettuati secondo criteri unitari per tutta la Svizzera. La produzione si basa sul modello digitale di elevazione DHM25 (dimensione maglia 25m) di swisstopo. Sono state distinte le seguenti classi di inclinazione del pendio: <=2 per cento; >2 per cento.",
+            "en": ""
         },
         "dct:issued": "2007-06-28",
         "dcat:keyword": [
@@ -378,13 +390,7 @@
             "market-data",
             "milk"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://fal.media/files/tiger/bZwRhpRhc84HfyrV1VF9c_b97dde5a800a4aa29127cda08b54de21.jpg"
     },
     {
         "dct:identifier": "D00067",
@@ -513,10 +519,34 @@
         },
         "dct:issued": "2019-03-30",
         "dcat:keyword": [
-            "soil",
-            "erosion",
-            "soil-erosion",
-            "e-geoch",
+            "statistical-units",
+            "FSDI",
+            "milk"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/rural-002.jpg"
+    },
+    {
+        "dct:identifier": "D00082",
+        "dct:title": {
+            "de": "Register Ursprungsbezeichnungen (GUB) und geografische Angaben (GGA) Fleischware",
+            "fr": "Registre des appellations d'origine (AOP) et des indications géographiques (IGP) produits à base de viande",
+            "it": "Registro delle denominazioni di origine (DOP) e delle indicazioni geografiche (IGP) Prodotti carnei",
+            "en": "Register of designations of origin (PDO) and geographical indications (PGI) - meat products"
+        },
+        "dct:description": {
+            "de": "Mit dem Register Ursprungsbezeichnungen (GUB) und geografischen Angaben (GGA) lassen sich die Gebietsnamen und traditionellen Bezeichnungen von landwirtschaftlichen Erzeugnissen schützen (Wein ausgenommen), deren Qualität und Haupteigenschaften durch ihre geografische Herkunft bestimmt werden. Ist ein Name geschützt, darf er nur von den Produzentinnen und Produzenten des entsprechend definierten geografischen Gebiets benutzt werden, die sich an ein detailliertes Pflichtenheft halten.Der Schutz bestimmter Bezeichnungen für Landwirtschaftsprodukte bezweckt, die Konsumentinnen und Konsumenten vor Täuschung zu schützen und - im Interesse der Bäuerinnen und Bauern - den unlauteren Wettbewerb in der Verwendung dieser Begriffe zu verhindern. Die Regelungen in diesem Bereich ermöglichen, die gegenseitige Anerkennung von Qualitätsprodukten zwischen der Schweiz und der Europäischen Union. Es wird zwischen den vier Kategorien Käse, Fleischwaren, pflanzliche Produkte und Spirituosen unterschieden. Aktuell sind gegen 30 verschiedene Erzeugnisse im Register Ursprungsbezeichnungen eingetragen und es kommen laufend neue dazu.",
+            "fr": "Le registre des appellations d’origine (AOP) et des indications géographiques (IGP) sert à protéger les noms géographiques et les dénominations traditionnelles qui désignent des produits agricoles (autres que le vin) dont l’identité et les principales caractéristiques sont déterminées par leur origine. Lorsqu’un nom est protégé, son utilisation est réservée aux producteurs de l’aire géographique définie, pour autant qu’ils respectent un cahier des charges détaillé. La protection de certaines désignations de produits agricoles vise à défendre les consommateurs contre la tromperie et à protéger les paysans contre la concurrence déloyale quant à l’utilisation de ces désignations. La réglementation applicable dans ce domaine permet la reconnaissance réciproque des produits de qualité entre la Suisse et l’Union européenne.Les AOP/IGP sont réparties en quatre catégories : fromages, produits à base de viande, produits végétaux et spiritueux. Environ 30 produits sont aujourd’hui inscrits au registre des appellations d’origine, qui en accueille en permanence de nouveaux.",
+            "it": "Il Registro delle denominazioni di origine (DOP) e delle indicazioni geografiche (IGP) consente di tutelare i nomi geografici e tradizionali che designano prodotti agricoli (ad eccezione del vino) la cui qualità e le cui caratteristiche principali sono determinate dalla loro origine. L'utilizzo di un nome protetto è appannaggio dei produttori della zona geografica definita che ottemperano ad un dettagliato elenco degli obblighi. La protezione di determinate denominazioni di prodotti agricoli è finalizzata a tutelare i consumatori dalle frodi e a proteggere i contadini dalla concorrenza sleale dovuta all'abuso delle denominazioni. La regolamentazione applicabile in questo settore permette il reciproco riconoscimento dei prodotti di qualità tra Svizzera e UE. Le DOP/IGP sono suddivise in quattro categorie: formaggi, prodotti carnei, prodotti vegetali e distillati. Attualmente il registro delle DOP/IGP conta 30 prodotti e il numero di registrazioni è in costante aumento.",
+            "en": "The register of designations of origin (PDO) and geographical indications (PGI) allows the region names and traditional designations of agricultural products to be protected (with the exception of wine), where the quality and the main characteristics of the products are determined by their geographical origin. If a name is protected, it can only be used by producers in the specified geographical region, who must comply with a detailed requirements specification. The purpose of protecting certain designations of agricultural products is to prevent consumers from being exposed to fraud and, in the interests of farmers, to stop unfair competition relating to the use of the designations. The rules in this area allow for the mutual recognition of quality products by Switzerland and the European Union. There are four categories: cheese, meat products, products of plant origin and spirits. The register of designations of origin currently contains around 30 different products and new ones are frequently being added."
+        },
+        "dct:issued": "2011-12-14",
+        "dcat:keyword": [
+            "protected-geographical-indication",
+            "protected-designation-of-origin",
+            "processed-agricultural-produce",
+            "meat",
+            "land-use",
+            "regulation-zones",
             "FSDI"
         ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
@@ -546,13 +576,7 @@
             "market-data",
             "price"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/meat-002.jpg"
     },
     {
         "dct:identifier": "D00080",
@@ -577,13 +601,7 @@
             "cheese",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/alps-002.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/meat-001.jpg"
     },
     {
         "dct:identifier": "D00099",
@@ -600,21 +618,8 @@
             "en": "Development of agri-environmental indicators and indices (nitrogen, phosphorus, climate and energy, biodiversity, land use, means of production)"
         },
         "dct:issued": "2016-11-08",
-        "dcat:keyword": [
-            "environment",
-            "nutrients",
-            "nitrogen",
-            "phosphorus",
-            "biodiversity",
-            "soil"
-        ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-003.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00071",
@@ -655,10 +660,28 @@
             "en": "Erosion risk map for arable land – qualitative classification"
         },
         "dct:description": {
-            "de": "Erosionsrisikokarte des Ackerlandes, qualitative Einstufung (Bundesamt für Landwirtschaft) Erosionsrisikokarte des Ackerlandes der Schweiz im 2x2-Meter-Raster auf der Basis von SwissALTI3D und kantonalen Flächendaten zum Ackerland (Stand 2021). Gezeigt wird das potentielle, qualitative Erosionsrisiko. Die Gesamtwertung wird einer von drei Gefährdungsstufen (keine Gefährdung, Gefährdung, hohe Gefährdung) zugeordnet, ohne dabei die Nutzung oder die Bewirtschaftungsweise des Bodens zu berücksichtigen. Berechnet wird der langjährige mittlere Bodenabtrag auf der Grundlage der Universal Soil Loss Equation (USLE).",
-            "fr": "Carte des risques d’érosion des terres arables, classification qualitative (Office fédéral de l'agriculture) Carte des risques d’érosion des terres arables de la Suisse au raster 2x2 m, sur la base du modèle swissALTI3D et des données cantonales sur les terres arables (situation en 2021). La carte indique le risque d’érosion qualitatif potentiel. L’attribution à l’un des trois niveaux de risque (pas de risque, risque avéré, risque élevé) est évaluée globalement, sans tenir compte de l’utilisation ou du mode d’exploitation du sol. Les pertes de sol moyennes sur le long terme sont calculées sur la base du modèle Universal Soil Loss Equation (USLE).",
-            "it": "Carta del rischio di erosione dei terreni coltivi, categorizzazione qualitativa (Ufficio federale dell’agricoltura) Carta del rischio di erosione dei terreni coltivi della Svizzera realizzata con un reticolo a celle di 2x2 metri sulla base di SwissALTI3D e dei dati cantonali sulle superfici riguardanti i terreni coltivi (stato 2021). È riportato il potenziale rischio di erosione qualitativo. La valutazione complessiva viene classificata in uno dei tre livelli di pericolo (nessun pericolo, pericolo, pericolo elevato), senza considerare l’utilizzo o il tipo di gestione del suolo. La perdita di suolo media pluriennale è calcolata basandosi sulla Universal Soil Loss Equation (USLE).",
-            "en": "Erosion risk map for arable land – qualitative classification (Federal Office for Agriculture) Erosion risk map for arable land in Switzerland in a 2x2-metre grid based on SwissALTI3D and cantonal surface-area data on arable land (status 2021). The map shows the potential qualitative erosion risk. The overall rating is allocated to one of three risk levels (no risk; risk; high risk) without taking account of soil use or management method. The long-term mean soil erosion is calculated on the basis of the universal soil loss equation (USLE)."
+            "de": "Verwertung von Kartoffeln, Mostäpfel und -birnen, Spirituosenerzeugung, Frischgemüse zur Verarbeitung in Tonnen",
+            "fr": "",
+            "it": "",
+            "en": ""
+        },
+        "dct:issued": "2016-11-08",
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+    },
+    {
+        "dct:identifier": "D00090",
+        "dct:title": {
+            "de": "Fliesswegkarte zum Erosionsrisiko",
+            "fr": "Carte des écoulements pour le risque d’érosion",
+            "it": "Carta delle vie di deflusso idrico per il rischio di erosione",
+            "en": "Flow-path map for erosion risk"
+        },
+        "dct:description": {
+            "de": "Die Fliesswegkarte zeigt die neu berechneten Fliesswege für Oberflächenabfluss (L-Faktor der Universal Soil Loss Equation bzw. der Erosionsrisikokarte) auf der landwirtschaftlich genutzten Fläche innerhalb der Feldblöcke. Die Fliesswege basieren auf dem Geländemodell SwissALTI3D und Multiple-Flow-Algorithmen. Sie bilden die Bereiche ab, an denen sich aufgrund der Topographie das Wasser sammeln und abfliessen würde. Je dunkler die Farbe, desto grösser die mögliche Abflussmenge und damit auch das Erosionsrisiko. Das Erosionsrisiko für lineare Erosion in Tiefenlinien (Talwegerosion) und mögliche Schäden ausserhalb des Feldblocks (Off-Site-Schäden) z.B. an Strassen und Gewässern können mit dieser Karte gut sichtbar gemacht werden.",
+            "fr": "La carte des écoulements montre les chemins d’écoulement du ruissellement de surface nouvellement calculés (facteur L du modèle Universal Soil Loss Equation, resp. de la carte des risques d’érosion), dans la surface utilisée par l’agriculture à l’intérieur des blocs de parcelles. Les chemins d’écoulement se basent sur le modèle de terrain swissALTI3D et sur des algorithmes multi-flux. Ils représentent les secteurs où les eaux devraient se concentrer et s’écouler en raison de la topographie. Plus la couleur est sombre, plus le débit possible et, par conséquent, le risque d’érosion sont élevés. Cette carte permet de mieux visualiser le risque d’érosion linéaire dans les isobathes (érosion de talweg) et les possibles dommages en dehors des blocs de parcelles (dommages hors site), p. ex. aux routes et aux cours d’eau.",
+            "it": "La carta delle vie di deflusso idrico riporta le nuove vie di deflusso idrico calcolate per il ruscellamento superficiale (coefficiente L dell’Universal Soil Loss Equation o della carta del rischio di erosione) sulle superfici agricole all’interno dei blocchi di particelle. Le vie di deflusso si basano sul modello del terreno SwissALTI3D e su algoritmi a flusso multiplo e raffigurano le aree in cui l’acqua si raccoglie e defluisce a causa della topografia. Più il colore è scuro, maggiore è la portata possibile e quindi il rischio di erosione. Con questa carta è possibile raffigurare chiaramente il rischio di erosione talweg e i possibili danni al di fuori del blocco di particelle (danni off-site), per esempio a strade e corsi d’acqua.",
+            "en": "The flow-path map shows the new calculated flow paths for surface runoff (L-factor of the universal soil loss equation or of the erosion risk map) on the agriculturally productive areas within the field blocks. The flow paths are based on theSwissALTI3D terrain model and multiple-flow algorithms. They illustrate the areas where the topography would cause the water to collect and run off. The darker the colour, the greater the possible runoff levels, and hence also the erosion risk. This map does a good job of illustrating the erosion risk for linear erosion in slope depressions (thalweg erosion) and possible damage outside of the field block (off-site damage), e.g. on roads and in bodies of water."
         },
         "dct:issued": "2019-03-30",
         "dcat:keyword": [
@@ -695,13 +718,7 @@
             "quantity",
             "market-data"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-002.jpg"
     },
     {
         "dct:identifier": "D00091",
@@ -807,13 +824,7 @@
             "milk",
             "dairy-products"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-001.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00076",
@@ -835,13 +846,7 @@
             "FSDI",
             "milk"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/rural-002.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00036",
@@ -996,13 +1001,7 @@
             "regional-funding",
             "subsidies"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/rural-003.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/alps-002.jpg"
     },
     {
         "dct:identifier": "D00033",
@@ -1013,20 +1012,20 @@
             "en": ""
         },
         "dct:description": {
-            "de": "Beitrag zur Sicherstellung einer sozialverträglichen Entwicklung, nach Kantonen und Zonen (Anzahl Betriebe, Beitrag in CHF). ",
-            "fr": "",
-            "it": "",
-            "en": ""
+            "de": "Auf den vier Blättern der Karte im Massstab 1:200 000 ist eine Gesamtbeurteilung der klimatischen Voraussetzungen und Einschränkungen für die Landwirtschaft, in 20 Kategorien, wiedergegeben. Die Karte will auf die erheblichen Unterschiede in den Anbaumöglichkeiten der einzelnen Regionen hinweisen.",
+            "fr": "La carte établie à l'échelle 1:200 000 reflète, une appréciation générale des conditions climatiques et des restrictions à l'égard de l'agriculture, subdivisées en vingt catégories d'aptitudes. Son but est de souligner les différences sensibles relatives aux possibilités de culture propres aux diverses régions.",
+            "it": "I quattro fogli della carta in scala 1:200 000 forniscono una valutazione d'insieme delle condizioni climatiche e delle restrizioni relative all'agricoltura, suddivise in 20 categorie. La carta intende sottolineare le differenze di rilievo relative alle possibilità di coltivazione esistenti nelle singole regioni.",
+            "en": "The four sheets of the map, which has a scale of 1:200,000, show an overall evaluation of the climatic conditions and restrictions for agriculture, broken down into 20 categories. The map aims to highlight the significant differences in the cultivation options available in the individual regions."
         },
-        "dct:issued": "2016-11-08",
-        "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "dct:issued": "2007-06-28",
+        "dcat:keyword": [
+            "suitability",
+            "climatic-effect",
+            "meteorology",
+            "land-use",
+            "FSDI"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00055",
@@ -1061,20 +1060,20 @@
             "en": ""
         },
         "dct:description": {
-            "de": "Produktion von Käse (Frischkäse, Weichkäse, Halbhartkäse, Hartkäse), Konsummilch, Butter, Rahm, Milchpulver und Milchkondensat in Tonnen",
-            "fr": "",
-            "it": "",
-            "en": ""
+            "de": "«Der Begriff „Art“ ist eine gebräuchlich Einheit der botanischen Klassifizierung innerhalb des Pflanzenreichs. Innerhalb einer Art gibt es jedoch natürlich zahlreiche unterschiedliche Pflanzensorten. Landwirte und Pflanzer brauchen Pflanzen mit besonderen Merkmalen, die an deren Umweltbedingungen und Anbauverfahren angepasst sind. Eine Pflanzensorte stellt eine genauer bestimmte Gruppe von Pflanzen mit gemeinsamen Merkmalen innerhalb einer Art dar.» Quelle: UPOV https://www.upov.int/overview/de/variety.html\n\nEine Pflanzensorte kann den Sortenschutz (PVR) und/oder im Sortenkatalog (NLI) eingetragen sein. Die Sortenbezeichnung ist identisch und auch die Sortenprüfung ist für beide (PVR und NLI) gleich.\n\nSortenschutz gehört wie Patente und Marken zur Familie des Geistigen Eigentums. Das Sortenschutzrecht regelt den gewerblichen Schutz neuer Pflanzenzüchtungen. Die Person, welche den Sortenschutztitel innehat, hat das Recht, ihre Sorte vor unerwünschter gewerbsmässiger Nutzung zu schützen. Dauer Sortenschutz 25 - 30 Jahre.\n\nIm Sortenkatalog werden landwirtschaftlich genutzte Pflanzenarten erfasst. Man spricht von einer Zulassung, die durch eine Verordnung (Sortenverordnung) über Kataloge und Listen geregelt wird. Agroscope sowie Branchenverbände erstellen empfohlene Sortenlisten.\n\nDie hier veröffentlichten Sorten im Sortenschutz sowie im nationalen Sortenkatalog sind derzeit unvollständig. Die Liste wird jedoch laufend aktualisiert mit neu validierten Daten.",
+            "fr": "«L’éspèce est l’une des unités les plus connues de la classification botanique dans le règne végétal. Toutefois, il est évident qu’au sein d’une même espèce peut exister un large éventail de plantes très différentes. Les agriculteurs et les producteurs ont besoin de végétaux présentant des caractères précis, qui soient adaptés à l'environnement dans lequel ils sont cultivés ainsi qu’aux méthodes de culture employées. Une variété végétale représente donc un groupe de plantes défini de façon plus précise, sélectionné à partir d'une espèce et doté d’un ensemble de caractères communs.» Source: UPOV https://www.upov.int/overview/fr/variety.html\n\nUne variété végétale peut bénéficier de la protection des obtentions végétales (PVR) et/ou être inscrite au catalogue des variétés (NLI). La dénomination de la variété est identique et l'examen de la variété est également identique pour les deux (PVR et NLI).\n\nLa protection des variétés végétales fait partie de la famille de la propriété intellectuelle, tout comme les brevets et les marques. Le droit de la protection des variétés végétales régit la protection commerciale des nouvelles obtentions végétales. La personne qui détient le titre de protection de la variété a le droit de la protéger contre une utilisation commerciale indésirable. Durée de la protection des variétés : 25 à 30 ans.\n\nLes espèces végétales utilisées en agriculture sont répertoriées dans le catalogue des variétés. On parle d'homologation. Celle-ci est régie par une ordonnance (ordonnance sur les variétés), via des catalogues et des listes. Agroscope ainsi que les associations professionnelles établissent des listes de variétés recommandées.\n\nLes variétés dans le registre et répertoriées dans le catalogue national publiées ici sont actuellement incomplètes. La liste est toutefois mise à jour en permanence avec les données nouvellement validées.",
+            "it": "«Il termine “specie” è una familiare unità di classificazione botanica all'interno del regno vegetale. Tuttavia, è chiaro che all'interno di una specie può esserci una vasta gamma di diversi tipi di piante. Gli agricoltori e i coltivatori hanno bisogno di piante con caratteristiche particolari e che siano adattate al loro ambiente e alle loro pratiche di coltivazione. Una varietà vegetale rappresenta un gruppo di piante definito in modo più preciso, selezionato all'interno di una specie, con un insieme comune di caratteristiche.» Fonte: UPOV https://www.upov.int/overview/en/variety.html\n\nUna varietà vegetale può essere protetta dal diritto di varietà vegetale (PVR) e/o registrata nel catalogo delle varietà (National Listing, NLI). La denominazione della varietà è la stessa sia per il PVR che per l'NLI, e anche l'esame della varietà è lo stesso per entrambi.\n\nLa protezione delle varietà vegetali appartiene alla stessa famiglia dei brevetti e dei marchi, il diritto di proprietà intellettuale. Il diritto di protezione delle varietà vegetali regola la protezione commerciale delle nuove varietà. La persona che detiene il titolo di protezione ha il diritto di proteggere la propria varietà da un uso commerciale indesiderato. Durata della protezione delle varietà vegetali: 25-30 anni.\n\nL'elenco nazionale (NLI) comprende le specie vegetali utilizzate in agricoltura. Esse necessitano di un'autorizzazione, che è regolata da un'ordinanza (Ordinanza sulle varietà) tramite cataloghi ed elenchi. Agroscope e le associazioni professionali stabiliscono elenchi raccomandati di varietà.\n\nLe varietà qui pubblicate sono attualmente incomplete. Tuttavia, l'elenco viene costantemente aggiornato con i dati appena convalidati.",
+            "en": "«The term \"species\" is a familiar unit of botanical classification within the plant kingdom. However, it is clear that within a species there can be a wide range of different types of plant. Farmers and growers need plants with particular characteristics and that are adapted to their environment and their cultivation practices. A plant variety represents a more precisely defined group of plants, selected from within a species, with a common set of characteristics.» Source: UPOV https://www.upov.int/overview/en/variety.html\n\nA plant variety can be protected by the plant variety right (PVR) and/or registered in the catalogue of varieties (National Listing, NLI). The variety denomination is the same for both PVR and NLI, and the variety examination is the same for both as well.\n\nPlant variety protection belongs to the same family than patents and trademarks, the intellectual property right. The plant variety protection right regulates the commercial protection of new varieties. The person who holds the protection title has the right to protect their variety from undesired commercial use. Duration of plant variety protection: 25–30 years.\n\nThe national listing (NLI) includes plant species used for agriculture. They need an authorization, which is regulated by an ordinance (Plant Variety Ordinance) via catalogues and lists. Agroscope and professional associations establish recommended lists of varieties.\n\nThe varieties published here in the plant variety protection and in the national catalogue of varieties are currently incomplete. However, the list is continuously updated with newly validated data."
         },
-        "dct:issued": "2016-11-08",
-        "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "dct:issued": "2025-02-20",
+        "dcat:keyword": [
+            "plant-variety",
+            "breeding",
+            "botany",
+            "UPOV"
+        ],
+        "schema:image": "https://fal.media/files/rabbit/b-j9zxhlLzInwz4JQyCFU_b4014cdc2ebc4f92b293153dc4917f95.jpg",
+        "businessDataOwner": "p-0711690"
     },
     {
         "dct:identifier": "D00037",
@@ -1109,20 +1108,48 @@
             "en": ""
         },
         "dct:description": {
-            "de": "Anzahl Nutztierhalter nach Kategorie und Anzahl Nutztierbestände (Rindvieh, Pferde, Schweine Schafe, Ziegen, Geflügel)",
-            "fr": "",
-            "it": "",
-            "en": ""
+            "de": "Mit dem Register Ursprungsbezeichnungen (GUB) und geografischen Angaben (GGA) lassen sich die Gebietsnamen und traditionellen Bezeichnungen von landwirtschaftlichen Erzeugnissen schützen (Wein ausgenommen), deren Qualität und Haupteigenschaften durch ihre geografische Herkunft bestimmt werden. Ist ein Name geschützt, darf er nur von den Produzentinnen und Produzenten des entsprechend definierten geografischen Gebiets benutzt werden, die sich an ein detailliertes Pflichtenheft halten.Der Schutz bestimmter Bezeichnungen für Landwirtschaftsprodukte bezweckt, die Konsumentinnen und Konsumenten vor Täuschung zu schützen und - im Interesse der Bäuerinnen und Bauern - den unlauteren Wettbewerb in der Verwendung dieser Begriffe zu verhindern. Die Regelungen in diesem Bereich ermöglichen, die gegenseitige Anerkennung von Qualitätsprodukten zwischen der Schweiz und der Europäischen Union. Es wird zwischen den vier Kategorien Käse, Fleischwaren, pflanzliche Produkte und Spirituosen unterschieden. Aktuell sind gegen 30 verschiedene Erzeugnisse im Register Ursprungsbezeichnungen eingetragen und es kommen laufend neue dazu.",
+            "fr": "Le registre des appellations d’origine (AOP) et des indications géographiques (IGP) sert à protéger les noms géographiques et les dénominations traditionnelles qui désignent des produits agricoles (autres que le vin) dont l’identité et les principales caractéristiques sont déterminées par leur origine. Lorsqu’un nom est protégé, son utilisation est réservée aux producteurs de l’aire géographique définie, pour autant qu’ils respectent un cahier des charges détaillé. La protection de certaines désignations de produits agricoles vise à défendre les consommateurs contre la tromperie et à protéger les paysans contre la concurrence déloyale quant à l’utilisation de ces désignations. La réglementation applicable dans ce domaine permet la reconnaissance réciproque des produits de qualité entre la Suisse et l’Union européenne.Les AOP/IGP sont réparties en quatre catégories : fromages, produits à base de viande, produits végétaux et spiritueux. Environ 30 produits sont aujourd’hui inscrits au registre des appellations d’origine, qui en accueille en permanence de nouveaux.",
+            "it": "Il Registro delle denominazioni di origine (DOP) e delle indicazioni geografiche (IGP) consente di tutelare i nomi geografici e tradizionali che designano prodotti agricoli (ad eccezione del vino) la cui qualità e le cui caratteristiche principali sono determinate dalla loro origine. L'utilizzo di un nome protetto è appannaggio dei produttori della zona geografica definita che ottemperano ad un dettagliato elenco degli obblighi. La protezione di determinate denominazioni di prodotti agricoli è finalizzata a tutelare i consumatori dalle frodi e a proteggere i contadini dalla concorrenza sleale dovuta all'abuso delle denominazioni. La regolamentazione applicabile in questo settore permette il reciproco riconoscimento dei prodotti di qualità tra Svizzera e UE. Le DOP/IGP sono suddivise in quattro categorie: formaggi, prodotti carnei, prodotti vegetali e distillati. Attualmente il registro delle DOP/IGP conta 30 prodotti e il numero di registrazioni è in costante aumento.",
+            "en": "The register of designations of origin (PDO) and geographical indications (PGI) allows the region names and traditional designations of agricultural products to be protected (with the exception of wine), where the quality and the main characteristics of the products are determined by their geographical origin. If a name is protected, it can only be used by producers in the specified geographical region, who must comply with a detailed requirements specification. The purpose of protecting certain designations of agricultural products is to prevent consumers from being exposed to fraud and, in the interests of farmers, to stop unfair competition relating to the use of the designations. The rules in this area allow for the mutual recognition of quality products by Switzerland and the European Union. There are four categories: cheese, meat products, products of plant origin and spirits. The register of designations of origin currently contains around 30 different products and new ones are frequently being added."
+        },
+        "dct:issued": "2009-12-16",
+        "dcat:keyword": [
+            "protected-geographical-indication",
+            "protected-designation-of-origin",
+            "crop-production",
+            "plant-resource",
+            "processed-agricultural-produce",
+            "land-use",
+            "regulation-zones",
+            "FSDI"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+    },
+    {
+        "dct:identifier": "D00099",
+        "dct:title": {
+            "de": "Agrarumweltindikatoren und -kennzahlen auf nationaler Ebene 1990-2015",
+            "fr": "Données et indicateurs agro-environnementaux au niveau national 1990-2015",
+            "it": "Indicatori agro-ambientali e dati agroambientali a livello nazionale 1990-2015",
+            "en": "Agri-environmental indicators and key figures at national level 1990-2015"
+        },
+        "dct:description": {
+            "de": "Entwicklung von Agrarumweltindikatoren und -kennzahlen (Stickstoff, Phosphor, Klima und Energie, Biodiversität, Bodennutzung, Produktionsmittel)",
+            "fr": "Développement d'indicateurs et de ratios agro-environnementaux (azote, phosphore, climat et énergie, biodiversité, utilisation des sols, moyens de production)",
+            "it": "Sviluppo di indicatori agroambientali e cifre chiave (azoto, fosforo, clima ed energie, biodiversità, uso del suolo, mezzi di produzione).",
+            "en": "Development of agri-environmental indicators and indices (nitrogen, phosphorus, climate and energy, biodiversity, land use, means of production)"
         },
         "dct:issued": "2016-11-08",
-        "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "dcat:keyword": [
+            "environment",
+            "nutrients",
+            "nitrogen",
+            "phosphorus",
+            "biodiversity",
+            "soil"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-003.jpg"
     },
     {
         "dct:identifier": "D00077",
@@ -1146,13 +1173,29 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+    },
+    {
+        "dct:identifier": "D00020",
+        "dct:title": {
+            "de": "Marktzahlen Milch und Milchprodukte - Jährlicher Index (Produktion)",
+            "fr": "Chiffres du marché du lait et des produits laitiers - Indicateur annuel (production)",
+            "it": "Cifre di mercato latte e latticini - Indice annuali (produzione)",
+            "en": "Market figures milk and dairy products - Annual index (production)"
+        },
+        "dct:description": {
+            "de": "Jährlicher Preis-Index zum Milchmarkt",
+            "fr": "Indice de prix annuel du marché du lait",
+            "it": "Indice dei prezzi annuo sul mercato lattiero",
+            "en": "Annual price index for the milk market"
+        },
+        "dct:issued": "2025-01-16",
+        "dcat:keyword": [
+            "price",
+            "market-data",
+            "milk"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00065",
@@ -1228,10 +1271,30 @@
         },
         "dct:issued": "2012-05-11",
         "dcat:keyword": [
-            "mountain-management",
-            "alpine-economy",
-            "regulation-zones",
-            "utility-and-governmental-services",
+            "market-data",
+            "price",
+            "milk",
+            "dairy-products"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-001.jpg"
+    },
+    {
+        "dct:identifier": "D00068",
+        "dct:title": {
+            "de": "Bewässerungsbedürftigkeit",
+            "fr": "Besoins en irrigation",
+            "it": "Fabbisogno irriguo",
+            "en": "Demand for irrigation"
+        },
+        "dct:description": {
+            "de": "Langjähriges 33 % Quantil der relativen Evapotranspiration (Verhältnis von aktueller zu potenzieller Evapotranspiration, ET/ETP) für die landwirtschaftliche Nutzfläche der Schweiz; Berechnung für die Vegetationsperioden des Zeitraumes 1980-2006 im 500m x 500m Raster.",
+            "fr": "Langjähriges 33 % Quantil der relativen Evapotranspiration (Ver-hältnis von aktueller zu potenzieller Evapotranspiration, ET/ETP) für die landwirtschaftliche Nutzfläche der Schweiz; Berechnung für die Vegetationsperioden des Zeitraumes 1980-2006 im500m x 500m Raster.",
+            "it": "Quantile del 33 per cento a lungo termine dell'evapotraspirazione relativa (rapporto tra evapotraspirazione attuale e potenziale, ET/ETP) per la superficie agricola utile svizzera; calcolo per i periodi di vegetazione nel periodo 1980-2006 nel reticolo a celle di 500x500m.",
+            "en": "Long-term 33% quantile of relative evapotranspiration (ratio of current to potential evapotranspiration ET/ETp) for agriculturally productive areas of Switzerland. Calculation for the growing seasons of the period 1980-2006 in a 500m x 500m grid."
+        },
+        "dct:issued": "2009-11-10",
+        "dcat:keyword": [
+            "meteorology",
             "FSDI"
         ],
         "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
@@ -1258,21 +1321,60 @@
         },
         "dct:issued": "2010-01-01",
         "dcat:keyword": [
-            "gradient",
-            "e-geoch",
-            "vineyard-zone",
-            "official-geodata",
-            "archiving",
-            "subsidy",
+            "cantons",
+            "land-improvements",
+            "buildings",
+            "financial-support",
+            "regional-funding",
+            "subsidies"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/rural-003.jpg"
+    },
+    {
+        "dct:identifier": "D00084",
+        "dct:title": {
+            "de": "Klimaeignungskarte für die Landwirtschaft - Körnermais",
+            "fr": "Cartes des aptitudes climatiques pour l'agriculture en Suisse - maïs grain",
+            "it": "Carta delle attitudini climatiche per l'agricoltura in Svizzera - Mais da granella",
+            "en": "Climate suitability map for agriculture - Maize"
+        },
+        "dct:description": {
+            "de": "Auf den vier Blättern der Karte im Massstab 1:200 000 ist eine Gesamtbeurteilung der klimatischen Voraussetzungen und Einschränkungen für die Landwirtschaft, in 20 Kategorien, wiedergegeben. Die Karte will auf die erheblichen Unterschiede in den Anbaumöglichkeiten der einzelnen Regionen hinweisen.",
+            "fr": "La carte établie à l'échelle 1:200 000 reflète, une appréciation générale des conditions climatiques et des restrictions à l'égard de l'agriculture, subdivisées en vingt catégories d'aptitudes. Son but est de souligner les différences sensibles relatives aux possibilités de culture propres aux diverses régions.",
+            "it": "I quattro fogli della carta in scala 1:200 000 forniscono una valutazione d'insieme delle condizioni climatiche e delle restrizioni relative all'agricoltura, suddivise in 20 categorie. La carta intende sottolineare le differenze di rilievo relative alle possibilità di coltivazione esistenti nelle singole regioni.",
+            "en": "The four sheets of the map, which has a scale of 1:200,000, show an overall evaluation of the climatic conditions and restrictions for agriculture, broken down into 20 categories. The map aims to highlight the significant differences in the cultivation options available in the individual regions."
+        },
+        "dct:issued": "2007-06-28",
+        "dcat:keyword": [
+            "suitability",
+            "climatic-effect",
+            "meteorology",
+            "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+    },
+    {
+        "dct:identifier": "D00014",
+        "dct:title": {
+            "de": "Marktzahlen Milch und Milchprodukte - Monatlicher Index (Produktion)",
+            "fr": "Chiffres du marché du lait et des produits laitiers - Indicateur mensuel (production)",
+            "it": "Cifre di mercato latte e latticini - Indice mensili (produzione)",
+            "en": "Market figures milk and dairy products - Monthly index (production)"
+        },
+        "dct:description": {
+            "de": "Monatlicher Preis-Index zum Milchmarkt",
+            "fr": "Indice de prix mensuel du marché du lait",
+            "it": "Indice di prezzo mensile sul mercato lattiero",
+            "en": "Monthly price index for the milk market"
+        },
+        "dct:issued": "2025-01-16",
+        "dcat:keyword": [
+            "market-data",
+            "price",
+            "milk"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00070",
@@ -1327,13 +1429,7 @@
             "agriculture",
             "budget"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/agriculture-001.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00045",
@@ -1438,13 +1534,7 @@
             "budget",
             "expenditure"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-002.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00079",
@@ -1684,15 +1774,13 @@
             "it": "",
             "en": ""
         },
-        "dct:issued": "2016-11-08",
-        "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "dct:issued": "2025-01-16",
+        "dcat:keyword": [
+            "market-data",
+            "quantity",
+            "eggs"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-001.jpg"
     },
     {
         "dct:identifier": "D00057",
@@ -1719,13 +1807,7 @@
             "import",
             "export"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/cows-002.jpg"
     },
     {
         "dct:identifier": "D00056",
@@ -1770,13 +1852,7 @@
             "market-data",
             "price"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-002.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00017",
@@ -1844,18 +1920,9 @@
             "it": "Volumi annuali di carne, pordotti carnei e insaccati commercializzati a livello della catena del valore consumo",
             "en": "Annual quantities of meat, meat products, and sausages at the consumption stage of the value chain"
         },
-        "dct:issued": "2025-01-16",
-        "dcat:keyword": [
-            "market-data",
-            "quantity"
-        ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/meat-002.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "dct:issued": "2016-11-08",
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00041",
@@ -1901,13 +1968,7 @@
             "market-data",
             "milk"
         ],
-        "schema:image": "https://fal.media/files/tiger/bZwRhpRhc84HfyrV1VF9c_b97dde5a800a4aa29127cda08b54de21.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00050",
@@ -1918,20 +1979,19 @@
             "en": ""
         },
         "dct:description": {
-            "de": "Landschaftsqualitätsbeiträge nach Kantonen (Anzahl Betriebe, durchschnittlicher Beitrag pro Betrieb in CHF)",
-            "fr": "",
-            "it": "",
-            "en": ""
+            "de": "In der Bodeneignungskarte ist jede Kartierungseinheit mit einem Code aus einem Grossbuchstaben und einer Zahl versehen. Die Buchstaben stehen für 25 verschiedene physiographische Einheiten. Die Zahlen geben verschiedene Formelemente der Landschaften wieder, geordnet nach Muttergestein, Hanglage und Hangneigung. Jede Kartierungseinheit entspricht zudem einem oder mehreren Bodentypen. Die insgesamt 144 Kartierungseinheiten sind in der Karte nach dem Gesichtspunkt der Bodeneignung in 18 unterschiedlich eingefärbten Gruppen zusammengefasst. Für diese Klassierung wurden in erster Linie landwirtschaftliche Kriterien verwendet.",
+            "fr": "Sur la carte, chaque unité cartographique est assortie d'un code composé d'une lettre majuscule et d'un chiffre. Les majuscules représentent 25 différentes unités géologiques et géomorphologiques. Les lettres sont subdvisées en divers éléments du paysage, ordonnés selon le type de roche-mère, l'exposition et la pente. En outre, à chaque unité cartographique correspond un ou plusieurs types de sol. Les 144 unités cartographiques sont réparties sur la carte en 18 groupes de couleur différente, en fonction de l'aptitude des sols. Cette classification repose essentiellement sur des critères agricoles.",
+            "it": "Sulla carta delle attitudini dei suoli ogni unità cartografica è dotata di un codice composto da una lettera maiuscola e da un numero. Le lettere rappresentano 25 unità fisiografiche differenti. Il numero indica diversi elementi formali dei paesaggi, ordinati in base a roccia madre, esposizione e declività. Inoltre, ogni unità cartografica contiene una o più tipologie di suolo. Le 144 unità cartografiche totali sono classificate, secondo l'attitudine del suolo, in 18 gruppi caratterizzati da colori differenti. Questa classificazione si basa essenzialmente su criteri di tipo agricolo.",
+            "en": "On the soil suitability map, each mapping unit has a code consisting of an uppercase letter and a number. The letters stand for 25 different physiographical units. The numbers represent different elements of the landscape, categorised by bedrock, slope and gradient. Each mapping unit also corresponds to one or more soil types. There are 144 mapping units in total. They are grouped together into 18 different coloured categories on the map from the perspective of soil suitability. Agricultural criteria have primarily been used for this classification."
         },
-        "dct:issued": "2016-11-08",
-        "dcat:keyword": [],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "dct:issued": "2000-12-31",
+        "dcat:keyword": [
+            "suitability",
+            "soil",
+            "meteorology",
+            "FSDI"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00008",
@@ -1953,13 +2013,7 @@
             "market-data",
             "meat"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/meat-001.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00038",
@@ -2048,10 +2102,33 @@
             "en": "Digital soil suitability map of Switzerland - Crop type"
         },
         "dct:description": {
-            "de": "In der Bodeneignungskarte ist jede Kartierungseinheit mit einem Code aus einem Grossbuchstaben und einer Zahl versehen. Die Buchstaben stehen für 25 verschiedene physiographische Einheiten. Die Zahlen geben verschiedene Formelemente der Landschaften wieder, geordnet nach Muttergestein, Hanglage und Hangneigung. Jede Kartierungseinheit entspricht zudem einem oder mehreren Bodentypen. Die insgesamt 144 Kartierungseinheiten sind in der Karte nach dem Gesichtspunkt der Bodeneignung in 18 unterschiedlich eingefärbten Gruppen zusammengefasst. Für diese Klassierung wurden in erster Linie landwirtschaftliche Kriterien verwendet.",
-            "fr": "Sur la carte, chaque unité cartographique est assortie d'un code composé d'une lettre majuscule et d'un chiffre. Les majuscules représentent 25 différentes unités géologiques et géomorphologiques. Les lettres sont subdvisées en divers éléments du paysage, ordonnés selon le type de roche-mère, l'exposition et la pente. En outre, à chaque unité cartographique correspond un ou plusieurs types de sol. Les 144 unités cartographiques sont réparties sur la carte en 18 groupes de couleur différente, en fonction de l'aptitude des sols. Cette classification repose essentiellement sur des critères agricoles.",
-            "it": "Sulla carta delle attitudini dei suoli ogni unità cartografica è dotata di un codice composto da una lettera maiuscola e da un numero. Le lettere rappresentano 25 unità fisiografiche differenti. Il numero indica diversi elementi formali dei paesaggi, ordinati in base a roccia madre, esposizione e declività. Inoltre, ogni unità cartografica contiene una o più tipologie di suolo. Le 144 unità cartografiche totali sono classificate, secondo l'attitudine del suolo, in 18 gruppi caratterizzati da colori differenti. Questa classificazione si basa essenzialmente su criteri di tipo agricolo.",
-            "en": "On the soil suitability map, each mapping unit has a code consisting of an uppercase letter and a number. The letters stand for 25 different physiographical units. The numbers represent different elements of the landscape, categorised by bedrock, slope and gradient. Each mapping unit also corresponds to one or more soil types. There are 144 mapping units in total. They are grouped together into 18 different coloured categories on the map from the perspective of soil suitability. Agricultural criteria have primarily been used for this classification."
+            "de": "Monatliche Durchschnittspreise für Eier auf der Wertschöpfungsstufe Produktion",
+            "fr": "Prix moyens mensuels des œufs à l’échelon de création de valeur production",
+            "it": "Prezzi medi mensili delle uova nella fase di produzione della catena di valore",
+            "en": "Monthly average prices for eggs at the production stage of the value chain"
+        },
+        "dct:issued": "2025-01-16",
+        "dcat:keyword": [
+            "market-data",
+            "price",
+            "eggs",
+            "time-series"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-001.jpg"
+    },
+    {
+        "dct:identifier": "D00095",
+        "dct:title": {
+            "de": "Klimaeignungskarte für die Landwirtschaft - Sommer-Zwischenfruchtbau",
+            "fr": "Cartes des aptitudes climatiques pour l'agriculture en Suisse - culture dérobées",
+            "it": "Carta delle attitudini climatiche per l'agricoltura in Svizzera - Colture intercalari",
+            "en": "Climate suitability map for agriculture - Summer catch crops"
+        },
+        "dct:description": {
+            "de": "Auf den vier Blättern der Karte im Massstab 1:200 000 ist eine Gesamtbeurteilung der klimatischen Voraussetzungen und Einschränkungen für die Landwirtschaft, in 20 Kategorien, wiedergegeben. Die Karte will auf die erheblichen Unterschiede in den Anbaumöglichkeiten der einzelnen Regionen hinweisen.",
+            "fr": "La carte établie à l'échelle 1:200 000 reflète, une appréciation générale des conditions climatiques et des restrictions à l'égard de l'agriculture, subdivisées en vingt catégories d'aptitudes. Son but est de souligner les différences sensibles relatives aux possibilités de culture propres aux diverses régions.",
+            "it": "I quattro fogli della carta in scala 1:200 000 forniscono una valutazione d'insieme delle condizioni climatiche e delle restrizioni relative all'agricoltura, suddivise in 20 categorie. La carta intende sottolineare le differenze di rilievo relative alle possibilità di coltivazione esistenti nelle singole regioni.",
+            "en": "The four sheets of the map, which has a scale of 1:200,000, show an overall evaluation of the climatic conditions and restrictions for agriculture, broken down into 20 categories. The map aims to highlight the significant differences in the cultivation options available in the individual regions."
         },
         "dct:issued": "2000-12-31",
         "dcat:keyword": [
@@ -2089,16 +2166,26 @@
             "botany",
             "UPOV"
         ],
-        "schema:image": "https://fal.media/files/rabbit/b-j9zxhlLzInwz4JQyCFU_b4014cdc2ebc4f92b293153dc4917f95.jpg",
-        "businessDataOwner": "p-0711690",
-        "schemaViolations": 5,
-        "schemaViolationMessages": [
-            "'dct:publisher' is a required property",
-            "'dcat:contactPoint' is a required property",
-            "'bv:archivalValue' is a required property",
-            "'adms:status' is a required property",
-            "'dct:modified' is a required property"
-        ]
+        "schema:image": "https://fal.media/files/penguin/zLmfGWbw9SuNH9pYHqE7Y_454ce31f6849495cb14b7a083875b676.jpg",
+        "businessDataOwner": "p-1ZFWFFNP6"
+    },
+    {
+        "dct:identifier": "D00038",
+        "dct:title": {
+            "de": "Biodiversitätsbeiträge 2014-2015",
+            "fr": "Contributions à la biodiversité 2014-2015",
+            "it": "Contributi per la biodiversità 2014-2015",
+            "en": ""
+        },
+        "dct:description": {
+            "de": "Biodiversitätsbeiträge nach Kantonen und Zonen (Anzahl Betriebe und Beitrag in CHF)",
+            "fr": "",
+            "it": "",
+            "en": ""
+        },
+        "dct:issued": "2016-11-08",
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00005",
@@ -2360,23 +2447,9 @@
             "it": "Il Registro delle denominazioni di origine (DOP) e delle indicazioni geografiche (IGP) consente di tutelare i nomi geografici e tradizionali che designano prodotti agricoli (ad eccezione del vino) la cui qualità e le cui caratteristiche principali sono determinate dalla loro origine. L'utilizzo di un nome protetto è appannaggio dei produttori della zona geografica definita che ottemperano ad un dettagliato elenco degli obblighi. La protezione di determinate denominazioni di prodotti agricoli è finalizzata a tutelare i consumatori dalle frodi e a proteggere i contadini dalla concorrenza sleale dovuta all'abuso delle denominazioni. La regolamentazione applicabile in questo settore permette il reciproco riconoscimento dei prodotti di qualità tra Svizzera e UE. Le DOP/IGP sono suddivise in quattro categorie: formaggi, prodotti carnei, prodotti vegetali e distillati. Attualmente il registro delle DOP/IGP conta 30 prodotti e il numero di registrazioni è in costante aumento.",
             "en": "The register of designations of origin (PDO) and geographical indications (PGI) allows the region names and traditional designations of agricultural products to be protected (with the exception of wine), where the quality and the main characteristics of the products are determined by their geographical origin. If a name is protected, it can only be used by producers in the specified geographical region, who must comply with a detailed requirements specification. The purpose of protecting certain designations of agricultural products is to prevent consumers from being exposed to fraud and, in the interests of farmers, to stop unfair competition relating to the use of the designations. The rules in this area allow for the mutual recognition of quality products by Switzerland and the European Union. There are four categories: cheese, meat products, products of plant origin and spirits. The register of designations of origin currently contains around 30 different products and new ones are frequently being added."
         },
-        "dct:issued": "2011-12-14",
-        "dcat:keyword": [
-            "protected-geographical-indication",
-            "protected-designation-of-origin",
-            "processed-agricultural-produce",
-            "meat",
-            "land-use",
-            "regulation-zones",
-            "FSDI"
-        ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "dct:issued": "2016-11-08",
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00084",
@@ -2400,13 +2473,8 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-001.jpg",
+        "businessDataOwner": "p-1Y4L0Y450"
     },
     {
         "dct:identifier": "D00027",
@@ -2417,23 +2485,35 @@
             "en": "Market figures eggs - Annual  catering wholesale prices "
         },
         "dct:description": {
-            "de": "Jährliche Durchschnittspreise ausgewählter Eiprodukte oder Eier auf der Wertschöpfungsstufe Gastrogrosshandel",
-            "fr": "Prix moyens annuels des œufs et d’une sélection de divers produits à base d'oeufs à l’échelon de création de valeur grossiste en restauration",
-            "it": "Prezzi medi mensili delle uova e di una selezione di prodotti a base di uova a livello della catena di valore ingrosso per la restorazione",
-            "en": "Annual average prices for a selection of different egg products or eggs at the catering wholesale value-added stage"
+            "de": "Anzahl Beschäftigte in der Landwirtschaft nach Kategorien (Männer, Frauen, Vollzeitbeschäftigte, Teilzeitbeschäftigte, Familieneigene, Familienfremde)",
+            "fr": "",
+            "it": "",
+            "en": ""
+        },
+        "dct:issued": "2016-11-08",
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+    },
+    {
+        "dct:identifier": "D00062",
+        "dct:title": {
+            "de": "Ausgaben Bund Landwirtschaft und Ernährung 2004-2015",
+            "fr": "Dépenses de la Confédération pour l'agriculture et l'alimentation 2004-2015",
+            "it": "Spese della Confederazione per l'agricoltura e l'alimentazione 2004-2015",
+            "en": "Federal expenditures for agriculture and food 2004-2015"
+        },
+        "dct:description": {
+            "de": "Ausgaben des Bundes für Landwirtschaft und Ernährung in den Bereichen Produktion und Absatz, Direktzahlungen, Grundlagenverbesserung in 1000 CHF",
+            "fr": "Dépenses de la Confédération pour l'agriculture et l'alimentation dans les domaines de la production et de la commercialisation, des paiements directs, et de l'amélioration des infrastructures de base en 1000 CHF",
+            "it": "Spese della Confederazione per l'agricoltura e l'alimentazione nei settori della produzione e della commercializzazione, dei pagamenti diretti e del miglioramento delle infrastrutture di base in 1000 CHF",
+            "en": "Federal expenditures for agriculture and food in the areas of production and marketing, direct payments, and infrastructure improvement in 1000 CHF"
         },
         "dct:issued": "2025-01-16",
         "dcat:keyword": [
             "price",
             "market-data"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/agriculture-001.jpg"
     },
     {
         "dct:identifier": "D00003",
@@ -2455,13 +2535,7 @@
             "quantity",
             "eggs"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/eggs-001.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00001",
@@ -2479,27 +2553,16 @@
         },
         "dct:issued": "2024-12-04",
         "dcat:keyword": [
-            "environment",
-            "sustainability",
-            "climate",
-            "monitoring",
-            "food"
+            "protected-designation-of-origin",
+            "protected-geographical-indication",
+            "processed-agricultural-produce",
+            "alcohol",
+            "distillation",
+            "regulation-zones",
+            "land-use",
+            "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/wetland-001.jpg",
-        "businessDataOwner": "p-1Y4L0Y450",
-        "schemaViolations": 10,
-        "schemaViolationMessages": [
-            "'dct:publisher' is a required property",
-            "'dcat:contactPoint' is a required property",
-            "'bv:classification' is a required property",
-            "'bv:archivalValue' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property",
-            "'adms:status' is a required property",
-            "'dct:modified' is a required property",
-            "'adms:status' is a required property",
-            "'dct:modified' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00022",
@@ -2550,13 +2613,31 @@
             "land-use",
             "FSDI"
         ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
+    },
+    {
+        "dct:identifier": "D00083",
+        "dct:title": {
+            "de": "Erosionsrisikokarte des Ackerlandes, qualitative Einstufung",
+            "fr": "Carte des risques d'érosion des terres arables, classification qualitative",
+            "it": "Carta del rischio di erosione dei terreni coltivi, categorizzazione qualitativa",
+            "en": "Erosion risk map for arable land – qualitative classification"
+        },
+        "dct:description": {
+            "de": "Erosionsrisikokarte des Ackerlandes, qualitative Einstufung (Bundesamt für Landwirtschaft) Erosionsrisikokarte des Ackerlandes der Schweiz im 2x2-Meter-Raster auf der Basis von SwissALTI3D und kantonalen Flächendaten zum Ackerland (Stand 2021). Gezeigt wird das potentielle, qualitative Erosionsrisiko. Die Gesamtwertung wird einer von drei Gefährdungsstufen (keine Gefährdung, Gefährdung, hohe Gefährdung) zugeordnet, ohne dabei die Nutzung oder die Bewirtschaftungsweise des Bodens zu berücksichtigen. Berechnet wird der langjährige mittlere Bodenabtrag auf der Grundlage der Universal Soil Loss Equation (USLE).",
+            "fr": "Carte des risques d’érosion des terres arables, classification qualitative (Office fédéral de l'agriculture) Carte des risques d’érosion des terres arables de la Suisse au raster 2x2 m, sur la base du modèle swissALTI3D et des données cantonales sur les terres arables (situation en 2021). La carte indique le risque d’érosion qualitatif potentiel. L’attribution à l’un des trois niveaux de risque (pas de risque, risque avéré, risque élevé) est évaluée globalement, sans tenir compte de l’utilisation ou du mode d’exploitation du sol. Les pertes de sol moyennes sur le long terme sont calculées sur la base du modèle Universal Soil Loss Equation (USLE).",
+            "it": "Carta del rischio di erosione dei terreni coltivi, categorizzazione qualitativa (Ufficio federale dell’agricoltura) Carta del rischio di erosione dei terreni coltivi della Svizzera realizzata con un reticolo a celle di 2x2 metri sulla base di SwissALTI3D e dei dati cantonali sulle superfici riguardanti i terreni coltivi (stato 2021). È riportato il potenziale rischio di erosione qualitativo. La valutazione complessiva viene classificata in uno dei tre livelli di pericolo (nessun pericolo, pericolo, pericolo elevato), senza considerare l’utilizzo o il tipo di gestione del suolo. La perdita di suolo media pluriennale è calcolata basandosi sulla Universal Soil Loss Equation (USLE).",
+            "en": "Erosion risk map for arable land – qualitative classification (Federal Office for Agriculture) Erosion risk map for arable land in Switzerland in a 2x2-metre grid based on SwissALTI3D and cantonal surface-area data on arable land (status 2021). The map shows the potential qualitative erosion risk. The overall rating is allocated to one of three risk levels (no risk; risk; high risk) without taking account of soil use or management method. The long-term mean soil erosion is calculated on the basis of the universal soil loss equation (USLE)."
+        },
+        "dct:issued": "2019-03-30",
+        "dcat:keyword": [
+            "erosion",
+            "soil-erosion",
+            "e-geoch",
+            "soil",
+            "FSDI"
+        ],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00007",
@@ -2624,21 +2705,9 @@
             "it": "I quattro fogli della carta in scala 1:200 000 forniscono una valutazione d'insieme delle condizioni climatiche e delle restrizioni relative all'agricoltura, suddivise in 20 categorie. La carta intende sottolineare le differenze di rilievo relative alle possibilità di coltivazione esistenti nelle singole regioni.",
             "en": "The four sheets of the map, which has a scale of 1:200,000, show an overall evaluation of the climatic conditions and restrictions for agriculture, broken down into 20 categories. The map aims to highlight the significant differences in the cultivation options available in the individual regions."
         },
-        "dct:issued": "2007-06-28",
-        "dcat:keyword": [
-            "suitability",
-            "climatic-effect",
-            "meteorology",
-            "land-use",
-            "FSDI"
-        ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "dct:issued": "2016-11-08",
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00093",
@@ -2654,21 +2723,9 @@
             "it": "I quattro fogli della carta in scala 1:200 000 forniscono una valutazione d'insieme delle condizioni climatiche e delle restrizioni relative all'agricoltura, suddivise in 20 categorie. La carta intende sottolineare le differenze di rilievo relative alle possibilità di coltivazione esistenti nelle singole regioni.",
             "en": "The four sheets of the map, which has a scale of 1:200,000, show an overall evaluation of the climatic conditions and restrictions for agriculture, broken down into 20 categories. The map aims to highlight the significant differences in the cultivation options available in the individual regions."
         },
-        "dct:issued": "2007-06-28",
-        "dcat:keyword": [
-            "suitability",
-            "climatic-effect",
-            "meteorology",
-            "land-use",
-            "FSDI"
-        ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "dct:issued": "2016-11-08",
+        "dcat:keyword": [],
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     },
     {
         "dct:identifier": "D00052",
@@ -2713,70 +2770,6 @@
             "market-data",
             "price"
         ],
-        "schema:image": "https://fal.media/files/zebra/uMItgIOn8rkH0Vc3otYHJ_9f949a95322348d4b283948df942164b.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
-    },
-    {
-        "dct:identifier": "D00073",
-        "dct:title": {
-            "de": "Feldblockkarte zum Erosionsrisiko",
-            "fr": "Carte de blocs de parcelles pour le risque d'erosion",
-            "it": "Carta dei blocchi di particelle per il rischio di erosione",
-            "en": "Field block map for erosion risk"
-        },
-        "dct:description": {
-            "de": "Feldblöcke sind zusammenhängende landwirtschaftlich nutzbare Flächen, die von relativ stabilen, im Feld erkennbaren Aussengrenzen (z. B. Wald, Strassen, bebaute Flächen, Gewässer, Gräben) umgeben werden. Berechnungsgrundlage bildet das topographische Landschaftsmodell TLM3D. Ein Feldblock stellt somit ein geschlossenes hydrologisches Einzugsgebiet dar, in dem alle Pixel hydrologisch verbunden sein können und sich somit bezüglich Erosion beeinflussen können. Andere Feldblöcke oder Flächen ausserhalb eines Feldblocks können Wasserflüsse und Erosion innerhalb eines Feldblocks im Modell nicht beeinflussen. Fremdwasserzufluss ist im Modell also nicht möglich. Als Mindestgrösse für einen Feldblock wurden 25 Aren festgelegt. Die Überwachung von Erosion auf Ackerflächen durch die zuständigen Behörden erfolgt am besten über die Überprüfung von Feldblöcken in den Vorrangregionen. Eine Neuberechnung des Erosionsrisikos ist nötig, wenn sich die Feldblockgrösse ändert, z. B. wenn neue Wege gebaut oder Hecken gepflanzt oder beseitigt werden.",
-            "fr": "Un bloc de parcelles est une surface d’un seul tenant, utilisable par l’agriculture, définie par des limites extérieures relativement stables et identifiables sur le terrain (par exemple forêt, routes, surfaces construites, cours d’eau, fossés). Le modèle topographique du paysage TLM3D sert de base de calcul. Un bloc de parcelles constitue ainsi une sorte de bassin hydrologique fermé, dans lequel tous les pixels sont liés sur le plan hydrologique et peuvent donc s’influencer mutuellement du point de vue de l’érosion. Les autres blocs ou surfaces en dehors d’un bloc de parcelles ne peuvent pas influencer les flux hydriques et l’érosion à l’intérieur du bloc de parcelles dans le modèle. Les apports d’eau parasite ne sont donc pas possibles dans le modèle. La taille minimale d’un bloc de parcelles a été fixée à 25 ares. Le contrôle des blocs de parcelles dans les régions prioritaires permet d’optimiser la surveillance, par les autorités compétentes, de l’érosion sur les terres arables. Une nouvelle estimation du risque d’érosion est nécessaire, lorsque la taille des blocs de parcelles est modifiée, p. ex. lorsque de nouveaux chemins sont construits ou que des haies sont plantées ou supprimées.",
-            "it": "I blocchi di particelle sono superfici contigue utilizzabili a scopo agricolo circondate da confini relativamente stabili e visibili sul campo (p.es. foresta, strade, superfici edificate, corsi d’acqua, fossati). Il modello topografico del paesaggio (MTP3D) costituisce la base di calcolo. Un blocco di particelle rappresenta pertanto un comprensorio idrologico chiuso, in cui tutti i pixel possono essere collegati dal profilo idrologico e di conseguenza influenzarsi a vicenda per quanto riguarda l’erosione. Nel modello, altri blocchi di particelle o superfici al di fuori di un blocco di particelle non possono influenzare i flussi d’acqua e l’erosione all’interno di un blocco di particelle. Secondo il modello, quindi, non può esserci afflusso di acque estranee. La dimensione minima di un blocco di particelle è stata fissata a 25 are. Il monitoraggio dell’erosione sulle superfici coltive da parte delle autorità competenti avviene preferibilmente verificando i blocchi di particelle nelle zone agricole prioritarie. È necessario rivedere il calcolo del rischio di erosione in caso di variazione della dimensione del blocco di particelle, per esempio in seguito alla costruzione di nuove strade oppure all’impianto o alla rimozione di siepi.",
-            "en": "Field blocks are coherent, agriculturally productive areas surrounded by relatively stable external boundaries that can be identified in the field (e.g. forest, roads, built-up areas, bodies of water, ditches). The topographic landscape model TLM3D forms the basis for their calculation. A field block therefore constitutes a closed hydrological catchment area in which all of the pixels can be hydrologically connected, and can thus have an influence on one another in terms of erosion. Other field blocks or areas outside of a field block cannot influence water flows or erosion within a field block in the model. The inflow of water from outside is therefore not possible in the model. The minimum size of a field block is set at 2500 square metres. The best way for the responsible authorities to monitor erosion on arable land is to inspect field blocks in the priority regions. The erosion risk must be recalculated if the size of the field block changes, e.g. if new tracks are built or hedges are planted or removed."
-        },
-        "dct:issued": "2019-03-30",
-        "dcat:keyword": [
-            "soil",
-            "agriculture",
-            "FSDI"
-        ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
-    },
-    {
-        "dct:identifier": "D00096",
-        "dct:title": {
-            "de": "Klimaeignungskarte für die Landwirtschaft - Übersicht",
-            "fr": "Cartes des aptitudes climatiques pour l'agriculture en Suisse - vue d'ensemble",
-            "it": "Carta delle attitudini climatiche per l'agricoltura in Svizzera - Visione d'insieme",
-            "en": "Climate suitability map for agriculture - Overview"
-        },
-        "dct:description": {
-            "de": "Auf den vier Blättern der Karte im Massstab 1:200 000 ist eine Gesamtbeurteilung der klimatischen Voraussetzungen und Einschränkungen für die Landwirtschaft, in 20 Kategorien, wiedergegeben. Die Karte will auf die erheblichen Unterschiede in den Anbaumöglichkeiten der einzelnen Regionen hinweisen.",
-            "fr": "La carte établie à l'échelle 1:200 000 reflète, une appréciation générale des conditions climatiques et des restrictions à l'égard de l'agriculture, subdivisées en vingt catégories d'aptitudes. Son but est de souligner les différences sensibles relatives aux possibilités de culture propres aux diverses régions.",
-            "it": "I quattro fogli della carta in scala 1:200 000 forniscono una valutazione d'insieme delle condizioni climatiche e delle restrizioni relative all'agricoltura, suddivise in 20 categorie. La carta intende sottolineare le differenze di rilievo relative alle possibilità di coltivazione esistenti nelle singole regioni.",
-            "en": "The four sheets of the map, which has a scale of 1:200,000, show an overall evaluation of the climatic conditions and restrictions for agriculture, broken down into 20 categories. The map aims to highlight the significant differences in the cultivation options available in the individual regions."
-        },
-        "dct:issued": "2007-06-28",
-        "dcat:keyword": [
-            "suitability",
-            "climatic-effect",
-            "meteorology",
-            "land-use",
-            "FSDI"
-        ],
-        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-        "schemaViolations": 3,
-        "schemaViolationMessages": [
-            "'prov:qualifiedAttribution' is a required property",
-            "'bv:opendata_swiss' is a required property",
-            "'bv:i14y' is a required property"
-        ]
+        "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg"
     }
 ]
