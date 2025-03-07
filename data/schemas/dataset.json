@@ -198,7 +198,7 @@
               "properties": {
                   "prov:agent": {
                       "type": "string",
-                      "title": "Personal ID from AdminDir"
+                      "title": "Personal ID from AdminDir. The AdminDir ID is shown as the URL slug of a person's AdminDir page. For example, on the page <https://admindir.verzeichnisse.admin.ch/person/p-2959456>, the AdminDir ID is `p-2959456`."
                   },
                   "schema:name": {
                       "type": "string",
@@ -225,7 +225,7 @@
               "type": "object",
               "properties": {
                   "dcat:hadRole": {
-                      "const": "dataOwner"
+                      "const": "businessDataOwner"
                   }
               }
           }
@@ -288,17 +288,17 @@
           "description": "Indicates if the dataset must be published as Open Government Data (OGD) via the opendata.swiss portal. Optionally references the opendata.swiss publication ID.",
           "properties": {
               "bv:mustBePublished": {
-                  "title": "opendataswiss publication flag",
+                  "title": "opendata.swiss publication flag",
                   "description": "Indicates if the dataset must be published on opendata.swiss. May be used by harvesters or automatic metadata publication.",
                   "type": "boolean"
               },
               "dct:identifier": {
-                  "title": "opendataswiss id",
+                  "title": "opendata.swiss ID",
                   "type": "string",
                   "description": "Identifier for the dataset on opendata.swiss."
               },
               "dcat:accessURL": {
-                  "title": "opendataswiss url",
+                  "title": "opendata.swiss URL",
                   "type": "string",
                   "format": "uri",
                   "description": "URL for the dataset on opendata.swiss"
