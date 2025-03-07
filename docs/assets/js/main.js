@@ -488,9 +488,6 @@ $(document).ready(function () {
   // Reflect state into the UI (after Tagify is ready). This sets up search text, view mode, etc.
   reflectStateInUI();
 
-  // Initialize translations based on the current language
-  initI18n(state.lang);
-
   // Fetch datasets
   $.getJSON(config.dataUrl)
     .done(function (data) {
