@@ -137,6 +137,7 @@ function renderMetadata(data, lang) {
     if (displayedKeys.includes(key)) return;
     let label = i18next.t(key, { defaultValue: key });
     let val = data[key];
+  
     if (key === "dcat:keyword" && Array.isArray(val)) {
       val = `<div class="keywords">` +
         val.map((item) =>
@@ -148,6 +149,7 @@ function renderMetadata(data, lang) {
     } else if (key === "dcat:contactPoint") {
       val = Utils.formatContactPoint(val);
     } else if (key === "bv:opendata.swiss" || key === "bv:i14y") {
+      // Use the local publication formatting function
       val = formatPublicationMetadata(val, lang);
     } else if (key === "dpv:hasLegalBasis") {
       val = Utils.formatUrlArray(val);
@@ -155,7 +157,9 @@ function renderMetadata(data, lang) {
       val = Utils.formatSingleUrl(val);
     } else if (enumeratedFields.includes(key)) {
       val = Utils.highlightEnumeratedValues(val);
-    } if (Array.isArray(val)) {
+    } else if (typeof val === "string") {
+      val = Utils.formatDate(val, lang);
+    } else if (Array.isArray(val)) {
       val = val.map((item) => Utils.formatDate(item, lang)).join(", ");
     } else {
       val = Utils.stringifyIfNeeded(val);
@@ -174,8 +178,16 @@ function renderMetadata(data, lang) {
 function renderDistributions(data, lang) {
   const section = document.getElementById("distributionsSection");
   const distributions = data["dcat:distribution"] || [];
+  
+  // If there are no distribution entries, clear the section.
+  if (distributions.length === 0) {
+    section.innerHTML = "";
+    return;
+  }
+  
   let html = `<h1>${i18next.t("details.distribution")}</h1>`;
   html += `<table class="table"><tbody>`;
+  
   distributions.forEach((dist) => {
     const title = Utils.getLocalized(dist["dct:title"], lang) || "";
     const description = Utils.getLocalized(dist["dct:description"], lang) || "";
@@ -192,6 +204,7 @@ function renderDistributions(data, lang) {
                </td>
              </tr>`;
   });
+  
   html += `</tbody></table>`;
   section.innerHTML = html;
 }
@@ -199,6 +212,20 @@ function renderDistributions(data, lang) {
 function renderPublications(data, lang) {
   const section = document.getElementById("publicationsSection");
   if (!section) return;
+  
+  const publications = [
+    { key: "bv:opendata_swiss", catalog: "opendata.swiss" },
+    { key: "bv:i14y", catalog: "I14Y" }
+  ];
+  
+  // Check if any publication information is available.
+  const hasPublicationInfo = publications.some(pub => data[pub.key]);
+  
+  if (!hasPublicationInfo) {
+    // If no publication info, clear the section (or you can remove it)
+    section.innerHTML = "";
+    return;
+  }
   
   let html = `<h1>${i18next.t("details.publications", { defaultValue: "Publications" })}</h1>`;
   html += `<table class="table">
@@ -210,11 +237,6 @@ function renderPublications(data, lang) {
       </tr>
     </thead>
     <tbody>`;
-  
-  const publications = [
-    { key: "bv:opendata_swiss", catalog: "opendata.swiss" },
-    { key: "bv:i14y", catalog: "I14Y" }
-  ];
   
   publications.forEach(pub => {
     if (data[pub.key]) {
@@ -295,6 +317,25 @@ function renderDatasetDetails(data, lang) {
   renderEditHistory(data["dct:identifier"], branch, lang);
 }
 
+// --- Language Switch Handler ---
+// Instead of reloading the page, we update the URL, change the language, update the dropdown label,
+// and re-render the details page using a cached dataset.
+$(document).on("click", ".dropdown-item.lang-option", function (e) {
+  e.preventDefault();
+  const newLang = $(this).data("lang");
+  const urlParams = new URLSearchParams(window.location.search);
+  urlParams.set("lang", newLang);
+  history.pushState(null, "", "?" + urlParams.toString());
+  // Update language without page reload
+  changeLanguage(newLang);
+  Utils.setLanguageDropdownLabel(newLang);
+  updatePageTranslations();
+  // Re-render details using the cached dataset (if available)
+  if (window.cachedDataset) {
+    renderDatasetDetails(window.cachedDataset, newLang);
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   $("#navbar-placeholder").load("navbar.html", function () {
     const params = new URLSearchParams(window.location.search);
@@ -302,13 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $(".navbar-brand").attr("href", `index.html?lang=${lang}`);
     Utils.setLanguageDropdownLabel(lang);
     updatePageTranslations();
-    $(document).on("click", ".dropdown-item.lang-option", function (e) {
-      e.preventDefault();
-      const newLang = $(this).data("lang");
-      const urlParams = new URLSearchParams(window.location.search);
-      urlParams.set("lang", newLang);
-      window.location.search = urlParams.toString();
-    });
+    // The language dropdown handler is now defined globally above
   });
   $("#footer-placeholder").load("footer.html");
 
@@ -331,6 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!data || data["dct:identifier"] !== datasetId) {
           renderNotFound(datasetId);
         } else {
+          window.cachedDataset = data; // Cache for language re-rendering
           renderDatasetDetails(data, lang);
         }
       })
