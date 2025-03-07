@@ -24,6 +24,19 @@ h1 {
   margin-bottom: 0.5em;
 }
 
+h5.tile-title-ellipsis {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+p {
+  margin-bottom: 8px;
+}
+
+p.tile-desc-ellipsis {
+  margin-bottom: 4px;
+}
+
 a {
   color: var(--color-foreground); /* Change this to your desired color */
 }
@@ -334,7 +347,6 @@ footer a:hover {
   --tag-remove-btn-color: var(--color-background);
   --tag-remove-btn-bg--hover: var(--color-danger);
 }
-
 
 .enumeration-chip {
   display: inline-block;
