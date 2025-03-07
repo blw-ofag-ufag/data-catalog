@@ -1,28 +1,28 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00049",
-  "dcterms:title": {
+  "dct:identifier": "D00049",
+  "dct:title": {
     "de": "Landwirtschaftliche Gesamtrechnung 2000/02-2016",
     "fr": "Comptes économiques de l'agriculture 2000/02-2016",
     "it": "Conto economico dell'agricoltura 2000/02-2016",
     "en": ""
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Erzeugung des landwirtschaftlichen Wirtschaftsbereichs, Vorleistungen, Bruttowertschöpfung, Nettowertschöpfung, Nettounternehmenseinkommen (zu laufenden Preisen, in 1000 Fr.)",
     "fr": "",
     "it": "",
     "en": ""
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft",
-    "email": "alessandro.rossi@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft",
+    "schema:email": "alessandro.rossi@blw.admin.ch"
   },
-  "dcterms:issued": "2016-11-08",
+  "dct:issued": "2016-11-08",
   "dcat:keyword": [],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -32,74 +32,74 @@
     "environment"
   ],
   "dcat:landingPage": "https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/gesamtrechnung-satellitenkonto/landwirtschaft.html",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "2000-01-01 - 2016-12-31",
+  "dct:spatial": "",
+  "dct:temporal": "2000-01-01 - 2016-12-31",
   "dpv:hasLegalBasis": [
     "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "78d0510d-5582-4ba2-8fca-524c970d2a61",
+      "dct:identifier": "B00088",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d7/lkhk2zn5xcxdt5cdzc2310w1fg2v6f/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_d.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d7/lkhk2zn5xcxdt5cdzc2310w1fg2v6f/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_d.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Landwirtschaftliche Gesamtrechnung",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "9daabe77-242b-44dc-94c6-50b954ab3c9f",
+      "dct:identifier": "B00089",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9d/nior5cgz4nrq7ac9q81up91ozkwbrh/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_f.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9d/nior5cgz4nrq7ac9q81up91ozkwbrh/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_f.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "Comptes économiques de l'agriculture",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "e81c1bfc-dfcb-4f74-9553-42983f7fee88",
+      "dct:identifier": "B00090",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/21/wtygkbunvulxq4wtctu7rqsab3kavc/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_i.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/21/wtygkbunvulxq4wtctu7rqsab3kavc/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_i.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "Conto economico dell'agricoltura",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

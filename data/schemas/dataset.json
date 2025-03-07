@@ -13,7 +13,7 @@
       "dct:issued",
       "dct:accrualPeriodicity",
       "dct:modified",
-      "schema:OrganizationRole",
+      "prov:qualifiedAttribution",
       "adms:status",
       "bv:classification",
       "bv:personalData",
@@ -135,6 +135,17 @@
           ],
           "format": "date"
       },
+      "dcatap:availability": {
+          "title": "Dataset availability",
+          "description": "This property indicates how long it is planned to keep the Dataset available. See http://publications.europa.eu/resource/authority/planned-availability for the controlled vocabulary.",
+          "type": "string",
+          "enum": [
+              "AVAILABLE",
+              "EXPERIMENTAL",
+              "STABLE",
+              "TEMPORARY"
+          ]
+      },
       "dcat:keyword": {
           "type": [
               "array",
@@ -174,18 +185,18 @@
           "title": "Last modification date",
           "description": "Last modification date of the data in the dataset."
       },
-      "schema:OrganizationRole": {
+      "prov:qualifiedAttribution": {
           "type": "array",
           "title": "Affiliated persons",
           "description": "List of affiliated people, their contact address and respective roles.",
           "items": {
               "type": "object",
               "required": [
-                  "schema:roleName",
-                  "dct:identifier"
+                  "dcat:hadRole",
+                  "prov:agent"
               ],
               "properties": {
-                  "dct:identifier": {
+                  "prov:agent": {
                       "type": "string",
                       "title": "Personal ID from AdminDir"
                   },
@@ -197,12 +208,12 @@
                       "type": "string",
                       "title": "email"
                   },
-                  "schema:roleName": {
+                  "dcat:hadRole": {
                       "type": "string",
                       "title": "Role",
                       "description": "Role this person has for this dataset.",
                       "enum": [
-                          "dataOwner",
+                          "businessDataOwner",
                           "dataSteward",
                           "dataCustodian"
                       ]
@@ -213,7 +224,7 @@
           "contains": {
               "type": "object",
               "properties": {
-                  "schema:roleName": {
+                  "dcat:hadRole": {
                       "const": "dataOwner"
                   }
               }
@@ -377,23 +388,23 @@
           "type": "string",
           "description": "Temporal coverage of the dataset. For example, the first and last measurement years for a timeseries."
       },
-      "dpv:hasLegalBasis": {
-          "title": "Legal basis",
-          "description": "Legal basis for the dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
-          "type": [
+        "dcatap:applicableLegislation": {
+            "title": "Applicable legislation",
+            "description": "The legislation that mandates or allows the creation or management of the dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
+            "type": [
               "array",
               "null"
-          ],
-          "items": {
+            ],
+            "items": {
               "title": "URI",
               "type": [
                   "string",
                   "null"
               ],
               "format": "uri"
-          }
-      },
-      "bv:businessProcess": {
+            }
+        },
+      "prov:wasGeneratedBy": {
           "title": "Business process",
           "type": [
               "array",
@@ -535,6 +546,17 @@
                           "published",
                           "deleted",
                           "archived"
+                      ]
+                  },
+                  "dcatap:availability": {
+                      "title": "Dataset availability",
+                      "description": "This property indicates how long it is planned to keep the Distribution available. See http://publications.europa.eu/resource/authority/planned-availability for the controlled vocabulary.",
+                      "type": "string",
+                      "enum": [
+                        "AVAILABLE",
+                        "EXPERIMENTAL",
+                        "STABLE",
+                        "TEMPORARY"
                       ]
                   },
                   "dct:format": {

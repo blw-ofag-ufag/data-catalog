@@ -51,7 +51,7 @@ function truncate(str, length = 50) {
   return str.length > length ? str.slice(0, length) + "..." : str;
 }
 function getDisplayTitle(dataset) {
-  const rawTitle = dataset["dcterms:title"]?.[state.lang] || "Untitled";
+  const rawTitle = dataset["dct:title"]?.[state.lang] || "Untitled";
   return truncate(rawTitle, 50);
 }
 
@@ -69,11 +69,11 @@ function filterDatasets(dataArray) {
     if (textTokens.length) {
       textMatch = textTokens.some(tok => {
         const fields = [
-          "dcterms:identifier", 
-          "dcterms:title", 
-          "dcterms:description", 
+          "dct:identifier", 
+          "dct:title", 
+          "dct:description", 
           "dcat:keyword",
-          "dcterms:issued", 
+          "dct:issued", 
           "dataOwner"
         ];
         return fields.some(f => {
@@ -106,8 +106,8 @@ function sortDatasets(dataArray) {
   switch (state.sort) {
     case "title":
       sorted.sort((a, b) => {
-        const aTitle = (a["dcterms:title"]?.[state.lang] || "").toLowerCase();
-        const bTitle = (b["dcterms:title"]?.[state.lang] || "").toLowerCase();
+        const aTitle = (a["dct:title"]?.[state.lang] || "").toLowerCase();
+        const bTitle = (b["dct:title"]?.[state.lang] || "").toLowerCase();
         if (!aTitle && bTitle) return 1;
         if (aTitle && !bTitle) return -1;
         return aTitle.localeCompare(bTitle);
@@ -115,8 +115,8 @@ function sortDatasets(dataArray) {
       break;
     case "issued-asc":
       sorted.sort((a, b) => {
-        const aDate = a["dcterms:issued"] ? new Date(a["dcterms:issued"]) : null;
-        const bDate = b["dcterms:issued"] ? new Date(b["dcterms:issued"]) : null;
+        const aDate = a["dct:issued"] ? new Date(a["dct:issued"]) : null;
+        const bDate = b["dct:issued"] ? new Date(b["dct:issued"]) : null;
         if (!aDate && bDate) return 1;
         if (aDate && !bDate) return -1;
         if (!aDate && !bDate) return 0;
@@ -125,8 +125,8 @@ function sortDatasets(dataArray) {
       break;
     case "issued-desc":
       sorted.sort((a, b) => {
-        const aDate = a["dcterms:issued"] ? new Date(a["dcterms:issued"]) : null;
-        const bDate = b["dcterms:issued"] ? new Date(b["dcterms:issued"]) : null;
+        const aDate = a["dct:issued"] ? new Date(a["dct:issued"]) : null;
+        const bDate = b["dct:issued"] ? new Date(b["dct:issued"]) : null;
         if (!aDate && bDate) return 1;
         if (aDate && !bDate) return -1;
         if (!aDate && !bDate) return 0;
@@ -249,8 +249,8 @@ function reflectStateInUI() {
  ********************************************/
 function tileCardTemplate(dataset) {
   const title = getDisplayTitle(dataset);
-  const desc = dataset["dcterms:description"]?.[state.lang] || "";
-  const issued = formatDate(dataset["dcterms:issued"]);
+  const desc = dataset["dct:description"]?.[state.lang] || "";
+  const issued = formatDate(dataset["dct:issued"]);
   const keywords = dataset["dcat:keyword"] || [];
   const imageSrc = dataset["schema:image"] || "https://via.placeholder.com/300x180?text=No+Image";
 
@@ -264,7 +264,7 @@ function tileCardTemplate(dataset) {
 
   return `
     <div class="col">
-      <div class="card h-100 dataset-card" data-id="${dataset["dcterms:identifier"]}">
+      <div class="card h-100 dataset-card" data-id="${dataset["dct:identifier"]}">
         <img src="${imageSrc}" class="card-img-top" alt="${title}" />
         <div class="card-body">
           <h5 class="tile-title-ellipsis">${title}</h5>
@@ -278,9 +278,9 @@ function tileCardTemplate(dataset) {
 }
 
 function tableRowTemplate(dataset) {
-  const identifier = dataset["dcterms:identifier"] || "";
-  const title = dataset["dcterms:title"]?.[state.lang] || "";
-  const issued = formatDate(dataset["dcterms:issued"]);
+  const identifier = dataset["dct:identifier"] || "";
+  const title = dataset["dct:title"]?.[state.lang] || "";
+  const issued = formatDate(dataset["dct:issued"]);
   const owner = getDataOwnerName(dataset);
   const keywordsArr = dataset["dcat:keyword"] || [];
   const keywordsHTML = keywordsArr

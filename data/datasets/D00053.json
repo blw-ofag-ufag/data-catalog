@@ -1,28 +1,28 @@
 {
   "schema:image": "https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/images/default.jpg",
-  "dcterms:identifier": "D00053",
-  "dcterms:title": {
+  "dct:identifier": "D00053",
+  "dct:title": {
     "de": "Grossvieheinheiten 1990-2015",
     "fr": "Unités de gros bétail 1990-2015",
     "it": "Unità di bestiame grosso 1990-2015",
     "en": ""
   },
-  "dcterms:description": {
+  "dct:description": {
     "de": "Anzahl Grossvieheinheiten nach Grössenklassen (in ha)",
     "fr": "",
     "it": "",
     "en": ""
   },
-  "dcterms:accessRights": "PUBLIC",
-  "dcterms:publisher": "BLW-OFAG-UFAG",
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "BLW-OFAG-UFAG",
   "dcat:contactPoint": {
-    "name": "Bundesamt für Landwirtschaft",
-    "email": "alessandro.rossi@blw.admin.ch"
+    "schema:name": "Bundesamt für Landwirtschaft",
+    "schema:email": "alessandro.rossi@blw.admin.ch"
   },
-  "dcterms:issued": "2016-11-08",
+  "dct:issued": "2016-11-08",
   "dcat:keyword": [],
-  "dcterms:accrualPeriodicity": "ANNUAL",
-  "dcterms:modified": "2025-01-15",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-01-15",
   "adms:status": "published",
   "bv:classification": "none",
   "bv:personalData": "none",
@@ -32,74 +32,74 @@
     "populationAndSociety"
   ],
   "dcat:landingPage": "https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/landwirtschaft/strukturen.html",
-  "dcterms:spatial": "",
-  "dcterms:temporal": "1990-01-01 - 2015-12-31",
+  "dct:spatial": "",
+  "dct:temporal": "1990-01-01 - 2015-12-31",
   "dpv:hasLegalBasis": [
     "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
   ],
   "dcat:distribution": [
     {
-      "dcterms:identifier": "3899132f-5d0f-437a-9f80-eb3beb97020d",
+      "dct:identifier": "B00100",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/97/ehi2gllksyjmm95bi08n7h0llqpcy5/grossvieheinheiten_1990-2015_datenreihe_d.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/97/ehi2gllksyjmm95bi08n7h0llqpcy5/grossvieheinheiten_1990-2015_datenreihe_d.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "Grossvieheinheiten",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "dfbf2970-a1e1-4070-a01b-dfc73d68dbd7",
+      "dct:identifier": "B00101",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/3c/ct225goo9syp4zj7xn50utyk9rii9o/grossvieheinheiten_1990-2015_datenreihe_f.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/3c/ct225goo9syp4zj7xn50utyk9rii9o/grossvieheinheiten_1990-2015_datenreihe_f.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "Unités de gros bétail",
         "it": "",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     },
     {
-      "dcterms:identifier": "c462d136-ed2b-4595-bd3d-fc9e9ce43535",
+      "dct:identifier": "B00102",
       "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/23/q0gcoa7v020x3cft5w9zosb6bc9a4r/grossvieheinheiten_1990-2015_datenreihe_i.xlsx",
       "adms:status": "published",
-      "dcterms:format": "XLS",
-      "dcterms:modified": "2025-01-15",
+      "dct:format": "XLS",
+      "dct:modified": "2025-01-15",
       "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/23/q0gcoa7v020x3cft5w9zosb6bc9a4r/grossvieheinheiten_1990-2015_datenreihe_i.xlsx",
-      "dcterms:title": {
+      "dct:title": {
         "de": "",
         "fr": "",
         "it": "Unità di bestiame grosso",
         "en": ""
       },
-      "dcterms:description": {
+      "dct:description": {
         "de": "",
         "fr": "",
         "it": "",
         "en": ""
       },
-      "dcterms:license": "terms_by"
+      "dct:license": "terms_by"
     }
   ]
 }

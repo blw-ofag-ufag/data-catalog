@@ -7,10 +7,10 @@ OUTPUT_FILE = os.path.expanduser("docs/assets/datasets.json")
 
 # Attributes to extract (note: schema:OrganizationRole will be used only to extract dataOwner)
 ATTRIBUTES = [
-    "dcterms:identifier",
-    "dcterms:title",
-    "dcterms:description",
-    "dcterms:issued",
+    "dct:identifier",
+    "dct:title",
+    "dct:description",
+    "dct:issued",
     "dcat:keyword",
     "schema:OrganizationRole",
     "schema:image"
