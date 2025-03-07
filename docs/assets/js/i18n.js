@@ -20,7 +20,7 @@ function transformTranslations(data) {
 }
 
 function updatePageTranslations() {
-  // Elements with data-i18n attributes (update innerHTML)
+  // Update innerHTML for elements with data-i18n attributes
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     el.innerHTML = i18next.t(key);
@@ -46,8 +46,8 @@ function initI18n(initialLang, callback) {
         lng: initialLang,
         resources: resources,
         debug: false,
-        keySeparator: false, // treat keys as literal strings, not paths
-        nsSeparator: false   // disable namespace separation if needed
+        keySeparator: false,
+        nsSeparator: false
       }, function(err, t) {
         updatePageTranslations();
         if (callback) callback();
