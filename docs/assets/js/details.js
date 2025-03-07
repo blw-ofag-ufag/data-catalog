@@ -2,7 +2,7 @@
 
 // Configuration
 const branch = "main";
-const baseDataUrl = `../data/datasets/`;
+const baseDataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/docs/data/datasets/`;
 
 // List of enumerated fields to highlight
 const enumeratedFields = [
