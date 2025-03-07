@@ -225,7 +225,7 @@
               "type": "object",
               "properties": {
                   "dcat:hadRole": {
-                      "const": "dataOwner"
+                      "const": "businessDataOwner"
                   }
               }
           }
