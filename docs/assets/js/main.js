@@ -5,7 +5,7 @@
  ********************************************/
 const config = {
   branch: "main",
-  dataUrl: `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/datasets.json`,
+  dataUrl: "assets/datasets.json", // can be relative or absolute
   TILE_PAGE_SIZE: 6,   // 3×3 layout
   TABLE_PAGE_SIZE: 12, // 12 rows per page
 };
@@ -74,7 +74,7 @@ function filterDatasets(dataArray) {
           "dct:description", 
           "dcat:keyword",
           "dct:issued", 
-          "dataOwner"
+          "businessDataOwner"
         ];
         return fields.some(f => {
           const val = d[f];

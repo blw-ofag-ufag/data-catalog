@@ -23,14 +23,14 @@
   ],
   "dct:accrualPeriodicity": "MONTHLY",
   "dct:modified": "2025-02-20",
-  "schema:OrganizationRole": [
+  "prov:qualifiedAttribution": [
     {
-      "schema:name": "p-0711690",
-      "schema:roleName": "dataOwner"
+      "prov:agent": "p-0711690",
+      "dcat:hadRole": "businessDataOwner"
     },
     {
-      "schema:name": "p-1ZPP7KQSW",
-      "schema:roleName": "dataSteward"
+      "prov:agent": "p-1ZPP7KQSW",
+      "dcat:hadRole": "dataSteward"
     }
   ],
   "adms:status": "published",
@@ -38,7 +38,7 @@
   "bv:personalData": "personalData",
   "bv:typeOfData": "thematicData",
   "bv:opendata_swiss": {
-    "bv:mustBePublished": false,
+    "bv:mustBePublished": false
   },
   "bv:i14y": {
     "bv:mustBePublished": true,

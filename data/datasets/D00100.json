@@ -23,10 +23,10 @@
     "organization"
   ],
   "dct:modified": "2025-02-24",
-  "schema:OrganizationRole": [
+  "prov:qualifiedAttribution": [
     {
-      "schema:name": "p-1ZFWFFNP6",
-      "schema:roleName": "dataOwner"
+      "prov:agent": "p-1ZFWFFNP6",
+      "dcat:hadRole": "businessDataOwner"
     }
   ],
   "adms:status": "published",

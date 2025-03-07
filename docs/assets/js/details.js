@@ -2,7 +2,7 @@
 
 // Configuration
 const branch = "main";
-const baseDataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/data/datasets/`;
+const baseDataUrl = `../data/datasets/`;
 
 // List of enumerated fields to highlight
 const enumeratedFields = [
@@ -185,7 +185,7 @@ function renderActionButtons(datasetId, lang) {
 
 function renderAffiliatedPersons(data, lang) {
   const section = document.getElementById("metadataSection");
-  const persons = data["schema:OrganizationRole"] || [];
+  const persons = data["prov:qualifiedAttribution"] || [];
   let html = `<h1>${i18next.t("details.affiliatedRoles")}</h1>`;
   if (!Array.isArray(persons) || persons.length === 0) {
     html += `<p>${i18next.t("details.noAffiliatedPersons")}</p>`;
@@ -194,8 +194,8 @@ function renderAffiliatedPersons(data, lang) {
   }
   html += `<table class="table"><tbody>`;
   persons.forEach((p) => {
-    const name = p["schema:name"] || i18next.t("details.unknown");
-    const role = p["schema:roleName"] || i18next.t("details.unknownRole");
+    const name = p["prov:agent"] || i18next.t("details.unknown");
+    const role = p["dcat:hadRole"] || i18next.t("details.unknownRole");
     html += `
       <tr>
         <td>
@@ -214,8 +214,10 @@ function renderMetadata(data, lang) {
   const displayedKeys = [
     "dct:title",
     "dct:description",
-    "schema:OrganizationRole",
+    "prov:qualifiedAttribution",
     "dcat:distribution",
+    "bv:i14y",
+    "bv:opendata_swiss",
     "schema:image"
   ];
   let html = `<h1>${i18next.t("details.metadata")}</h1>`;

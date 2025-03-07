@@ -5,33 +5,33 @@ import json
 DATASET_DIR = os.path.expanduser("data/datasets")
 OUTPUT_FILE = os.path.expanduser("docs/assets/datasets.json")
 
-# Attributes to extract (note: schema:OrganizationRole will be used only to extract dataOwner)
+# Attributes to extract (note: prov:qualifiedAttribution will be used only to extract dataOwner)
 ATTRIBUTES = [
     "dct:identifier",
     "dct:title",
     "dct:description",
     "dct:issued",
     "dcat:keyword",
-    "schema:OrganizationRole",
+    "prov:qualifiedAttribution",
     "schema:image"
 ]
 
 def extract_relevant_data(file_path):
-    """Extract relevant attributes from a JSON file, add dataOwner if exists, and remove schema:OrganizationRole."""
+    """Extract relevant attributes from a JSON file, add dataOwner if exists, and remove prov:qualifiedAttribution."""
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             data = json.load(f)
         
         extracted_data = {key: data[key] for key in ATTRIBUTES if key in data}
         
-        # Extract the dataOwner if exists from schema:OrganizationRole
-        if "schema:OrganizationRole" in extracted_data:
-            for role in extracted_data["schema:OrganizationRole"]:
-                if role.get("schema:roleName") == "dataOwner":
-                    extracted_data["dataOwner"] = role.get("schema:name")
+        # Extract the dataOwner if exists from prov:qualifiedAttribution
+        if "prov:qualifiedAttribution" in extracted_data:
+            for role in extracted_data["prov:qualifiedAttribution"]:
+                if role.get("dcat:hadRole") == "businessDataOwner":
+                    extracted_data["businessDataOwner"] = role.get("prov:agent")
                     break
-            # Remove schema:OrganizationRole from the output
-            extracted_data.pop("schema:OrganizationRole", None)
+            # Remove prov:qualifiedAttribution from the output
+            extracted_data.pop("prov:qualifiedAttribution", None)
         
         return extracted_data
     except Exception as e:

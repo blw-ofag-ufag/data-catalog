@@ -24,10 +24,10 @@
   ],
   "dct:accrualPeriodicity": "ANNUAL",
   "dct:modified": "2025-01-22",
-  "schema:OrganizationRole": [
+  "prov:qualifiedAttribution": [
     {
-      "schema:name": "p-1Y4L0Y450",
-      "schema:roleName": "dataOwner"
+      "prov:agent": "p-1Y4L0Y450",
+      "dcat:hadRole": "businessDataOwner"
     }
   ],
   "adms:status": "workInProgress",
