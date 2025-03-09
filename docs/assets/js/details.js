@@ -161,14 +161,12 @@ function renderMetadata(data, lang) {
     } else if (key === "bv:opendata.swiss" || key === "bv:i14y") {
       // Use the local publication formatting function
       val = formatPublicationMetadata(val, lang);
-    } else if (key === "dpv:hasLegalBasis") {
+    } else if (key === "dcatap:applicableLegislation" ) {
       val = Utils.formatUrlArray(val);
     } else if (key === "dcat:landingPage" || key === "bv:itSystem") {
       val = Utils.formatSingleUrl(val);
     } else if (enumeratedFields.includes(key)) {
       val = Utils.highlightEnumeratedValues(val);
-    } else if (Array.isArray(val)) {
-      val = val.map((item) => Utils.formatDate(item, lang)).join(", ");
     } else {
       val = Utils.stringifyIfNeeded(val);
     }
@@ -393,6 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           window.cachedDataset = data; // Cache for language re-rendering
           renderDatasetDetails(data, lang);
+          Utils.verifyUrls();
         }
       })
       .catch((error) => {

@@ -57,18 +57,48 @@ const Utils = {
   },  
   formatSingleUrl(url) {
     if (!url || typeof url !== "string") return "N/A";
-    return `<a href="${url}" target="_blank">${url}</a>`;
+    return `<a href="${url}" target="_blank" class="check-url">${url}</a>`;
   },
   formatUrlArray(urlArray) {
     if (!Array.isArray(urlArray) || urlArray.length === 0) return "N/A";
     return urlArray
       .map((url) =>
         url && typeof url === "string"
-          ? `<a href="${url}" target="_blank">${url}</a>`
+          ? `<a href="${url}" target="_blank" class="check-url">${url}</a>`
           : "N/A"
       )
       .join("<br>");
   },
+  verifyUrls() {
+    // Select all anchors rendered by formatSingleUrl
+    const links = document.querySelectorAll('.check-url');
+    links.forEach(link => {
+      const url = link.href;
+      // Use a HEAD request to check if the URL works
+      fetch(url, { method: 'HEAD' })
+        .then(response => {
+          if (!response.ok) {
+            // Create a warning icon using the Bootstrap exclamation-circle icon
+            const warning = document.createElement('span');
+            warning.innerHTML = '<i class="bi bi-exclamation-circle-fill"></i>';
+            warning.style.marginLeft = "5px";
+            warning.style.color = "red";
+            warning.title = `URL returned status: ${response.status}`;
+            // Insert the warning icon after the link so it doesn't inherit underline
+            link.insertAdjacentElement('afterend', warning);
+          }
+        })
+        .catch(error => {
+          // If the fetch fails entirely, also show the warning icon
+          const warning = document.createElement('span');
+          warning.innerHTML = '<i class="bi bi-exclamation-circle-fill"></i>';
+          warning.style.marginLeft = "5px";
+          warning.style.color = "red";
+          warning.title = "URL could not be reached.";
+          link.insertAdjacentElement('afterend', warning);
+        });
+    });
+  },  
   getLocalized(fieldObj, lang) {
     if (!fieldObj) return "";
     return fieldObj[lang] || fieldObj["en"] || "";
