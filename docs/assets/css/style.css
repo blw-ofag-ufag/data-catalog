@@ -231,6 +231,11 @@ footer a:hover {
 
 /* Action buttons */
 .action-btn {
+  width: 2.6rem;
+  height: 2.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 100%;
   background-color: var(--color-background);
   color: var(--color-accent);
