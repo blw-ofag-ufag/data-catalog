@@ -3,10 +3,7 @@ name: Combine Datasets
 on:
   push:
     branches:
-      - main  # Runs only on pushes to the 'main' branch; to be changed!
-  pull_request:
-    branches:
-      - main  # Runs on PRs targeting the 'main' branch; to be changed!
+      - main
 
 jobs:
   process_datasets:
