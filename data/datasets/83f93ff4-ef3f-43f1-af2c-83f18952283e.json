@@ -39,7 +39,7 @@
   "bv:classification": "none",
   "bv:personalData": "none",
   "bv:typeOfData": "thematicData",
-  "dcat:themeTaxonomy": [
+  "dcat:theme": [
     "environment",
     "agricultureFisheriesForestryFood"
   ],

@@ -32,7 +32,7 @@
   ],
   "adms:status": "workInProgress",
   "bv:personalData": "none",
-  "dcat:themeTaxonomy": [
+  "dcat:theme": [
     "environment",
     "agricultureFisheriesForestryFood"
   ],

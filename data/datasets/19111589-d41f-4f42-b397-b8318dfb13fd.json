@@ -45,11 +45,11 @@
     "dct:identifier": "BLW_DS_VARIETIES",
     "dcat:accessURL": "https://www.i14y.admin.ch/catalog/datasets/BLW_DS_VARIETIES"
   },
-  "dcat:themeTaxonomy": [
+  "dcat:theme": [
     "environment",
     "agricultureFisheriesForestryFood"
   ],
-  "dpv:hasLegalBasis": [
+  "dcatap:applicableLegislation": [
     "https://www.fedlex.admin.ch/eli/cc/2013/417/"
   ],
   "bv:itSystem": "https://agriculture.ld.admin.ch/system-map/SYS011",
