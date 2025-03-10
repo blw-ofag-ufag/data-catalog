@@ -246,23 +246,36 @@ function renderTablePage(sortedData) {
 }
 
 function initPagination(totalItems, itemsPerPage, renderPageCb) {
+  const paginationLabels = {
+    en: { pageIndicator: "Page",   of: "of",  first: "First",    prev: "Previous",   next: "Next",       last: "Last" },
+    de: { pageIndicator: "Seite",  of: "von", first: "Erste",    prev: "Zurück",     next: "Weiter",     last: "Letzte" },
+    fr: { pageIndicator: "Page",   of: "de",  first: "Première", prev: "Précédent",  next: "Suivant",    last: "Dernière" },
+    it: { pageIndicator: "Pagina", of: "di",  first: "Prima",    prev: "Precedente", next: "Successivo", last: "Ultima" }
+  };  
   const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
   if (state.currentPage > totalPages) state.currentPage = totalPages;
-  
   $("#pagination-container").twbsPagination("destroy");
   if (totalPages > 1) {
     $("#pagination-container").twbsPagination({
       totalPages: totalPages,
       visiblePages: 5,
       startPage: state.currentPage,
+      first: paginationLabels[state.lang].first,
+      prev: paginationLabels[state.lang].prev,
+      next: paginationLabels[state.lang].next,
+      last: paginationLabels[state.lang].last,
       onPageClick: function (event, page) {
-        $("#page-indicator").text(`Page ${page} of ${totalPages}`);
+        $("#page-indicator").text(
+          `${paginationLabels[state.lang].pageIndicator} ${page} ${paginationLabels[state.lang].of} ${totalPages}`
+        );
         state.currentPage = page;
         syncURLFromState();
         renderPageCb();
       }
     });
-    $("#page-indicator").text(`Page ${state.currentPage} of ${totalPages}`);
+    $("#page-indicator").text(
+      `${paginationLabels[state.lang].pageIndicator} ${state.currentPage} ${paginationLabels[state.lang].of} ${totalPages}`
+    );
   } else {
     $("#pagination-container").empty();
     $("#page-indicator").empty();
