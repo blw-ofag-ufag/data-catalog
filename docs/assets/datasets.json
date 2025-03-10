@@ -2337,6 +2337,31 @@
         ]
     },
     {
+        "dct:identifier": "b5be6ebc-5b78-42e9-949a-a83c7c9960f4",
+        "dct:title": {
+            "fr": "Chiffres du marché des aliments pour animaux - Prix de transformation annuels",
+            "en": "Market figures for feedstuffs - Annual processing prices",
+            "de": "Marktzahlen Futtermittel - Jährliche Verarbeitungspreise",
+            "it": "Dati di mercato dei mangimi - Prezzi di trasformazione annui"
+        },
+        "dct:description": {
+            "fr": "Prix annuels des aliments pour animaux au niveau du commerce de gros/transformation",
+            "en": "Annual prices for feedstuffs at the wholesale/processing level",
+            "de": "Jährliche Preise für Futtermittel auf der Wertschöpfungsstufe Grosshandel/Verarbeitung",
+            "it": "Prezzi annui dei mangimi al livello del commercio all’ingrosso/trasformazione"
+        },
+        "dct:issued": "2025-03-09",
+        "dcat:keyword": [
+            "market-data",
+            "price",
+            "TEST"
+        ],
+        "schemaViolations": 1,
+        "schemaViolationMessages": [
+            "'prov:qualifiedAttribution' is a required property"
+        ]
+    },
+    {
         "dct:identifier": "D00012",
         "dct:title": {
             "de": "Marktzahlen Milch und Milchprodukte - Jährliche Grosshandelspreise",
