@@ -28,6 +28,14 @@ const Utils = {
     const opts = options || (hasTime ? { dateStyle: "long", timeStyle: "short" } : { dateStyle: "long" });
     return new Intl.DateTimeFormat(lang, opts).format(d);
   },
+  formatTemporal(temporalObj, lang, options) {
+    if (!temporalObj || typeof temporalObj !== "object") return "";
+    const startDate = temporalObj["dcat:start_date"];
+    const endDate = temporalObj["dcat:end_date"];
+    const formattedStart = this.formatDate(startDate, lang, options);
+    const formattedEnd = this.formatDate(endDate, lang, options);
+    return `${formattedStart} - ${formattedEnd}`;
+  },  
   truncate(str, length = 50) {
     if (!str) return "";
     return str.length > length ? str.slice(0, length) + "..." : str;

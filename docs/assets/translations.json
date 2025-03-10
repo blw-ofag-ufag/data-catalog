@@ -36,16 +36,16 @@
       "it":"Ordina per titolo"
    },
    "sortIssuedAsc":{
-      "de":"Nach Datum (aufsteigend)",
-      "en":"Sort by date (ascending)",
-      "fr":"Trier par date (asc)",
-      "it":"Ordina per data (asc)"
+      "de":"Älteste zuerst",
+      "en":"Oldest first",
+      "fr":"Les plus anciens en premier",
+      "it":"Prima i più vecchi"
    },
    "sortIssuedDesc":{
-      "de":"Nach Datum (absteigend)",
-      "en":"Sort by date (descending)",
-      "fr":"Trier par date (desc)",
-      "it":"Ordina per data (desc)"
+      "de":"Neueste zuerst",
+      "en":"Newest first",
+      "fr":"Les plus récents en premier",
+      "it":"Prima i più recenti"
    },
    "sortOwner":{
       "de":"Nach Dateninhaber",
@@ -179,11 +179,11 @@
       "fr":"Mots-clés",
       "it":"Parole chiave"
    },
-   "dcat:themeTaxonomy":{
-      "en":"Theme Taxonomy",
-      "de":"Thementaxonomie",
-      "fr":"Taxonomie des thèmes",
-      "it":"Tassonomia dei temi"
+   "dcat:theme":{
+      "en":"Theme",
+      "de":"Thema",
+      "fr":"Thème",
+      "it":"Tema"
    },
    "dcat:landingPage":{
       "en":"Landing Page",
@@ -246,7 +246,7 @@
       "it":"Sistema IT"
    },
    "foaf:page":{
-      "en":"Related Pages",
+      "en":"Related pages",
       "de":"Zugehörige Seiten",
       "fr":"Pages associées",
       "it":"Pagine correlate"
@@ -264,10 +264,22 @@
       "it":"Stato"
    },
    "prov:wasDerivedFrom":{
-      "en":"Derived From",
+      "en":"Derived from",
       "de":"Abgeleitet von",
       "fr":"Dérivé de",
       "it":"Derivato da"
+   },
+   "bv:geoIdentifier": {
+      "en": "Geo identifier",
+      "de": "Geo-Kennzeichen",
+      "fr": "Identifiant géographique",
+      "it": "Identificatore geografico"
+   },
+   "dcatap:availability":{
+      "en":"Dataset availability",
+      "de":"Datensatzverfügbarkeit",
+      "fr":"Disponibilité du jeu de données",
+      "it":"Disponibilità del set di dati"
    },
    "dcatap:applicableLegislation": {
       "en": "Legal Basis",
@@ -275,11 +287,23 @@
       "fr": "Base légale",
       "it": "Base giuridica"
   },
-  "details.affiliatedRoles":{
+  "prov:qualifiedAttribution": {
       "en":"Affiliated Persons",
       "de":"Zugehörige Personen",
       "fr":"Personnes affiliées",
       "it":"Persone affiliate"
+   },
+   "prov:wasGeneratedBy": {
+      "en": "Business process",
+      "de": "Geschäftsprozess",
+      "fr": "Processus métier",
+      "it": "Processo aziendale"
+   },
+   "bv:retentionPeriod": {
+      "en": "Retention period",
+      "de": "Aufbewahrungsfrist",
+      "fr": "Période de rétention",
+      "it": "Periodo di conservazione"
    },
    "details.metadata": {
       "en": "Metadata",
@@ -352,5 +376,23 @@
       "de": "Editierverlauf",
       "fr": "Historique des modifications",
       "it": "Cronologia delle modifiche"
+   },
+   "schema:comment": {
+      "en": "Comment",
+      "de": "Kommentar",
+      "fr": "Commentaire",
+      "it": "Commento"
+   },
+   "bv:abrogation": {
+      "en": "Abrogation",
+      "de": "Aufhebung",
+      "fr": "Abrogation",
+      "it": "Abrogazione"
+   },
+   "dcat:inSeries": {
+      "en": "In Series",
+      "de": "In Serie",
+      "fr": "En série",
+      "it": "In serie"
    }
 }

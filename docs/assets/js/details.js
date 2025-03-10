@@ -4,18 +4,6 @@
 const branch = "main";
 const baseDataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/data/datasets/`;
 
-// Enumerated fields to highlight
-const enumeratedFields = [
-  "dct:accessRights",
-  "dct:accrualPeriodicity",
-  "adms:status",
-  "bv:classification",
-  "bv:personalData",
-  "bv:typeOfData",
-  "bv:archivalValue",
-  "dcat:themeTaxonomy"
-];
-
 // --- Local Function: formatPublicationMetadata ---
 // This function builds a table for publication metadata and is specific to the details page.
 function formatPublicationMetadata(publication, lang) {
@@ -97,7 +85,7 @@ function renderActionButtons(datasetId, lang) {
 function renderAffiliatedPersons(data, lang) {
   const section = document.getElementById("metadataSection");
   const persons = data["prov:qualifiedAttribution"] || [];
-  let html = `<h1>${i18next.t("details.affiliatedRoles")}</h1>`;
+  let html = `<h1>${i18next.t("prov:qualifiedAttribution")}</h1>`;
   if (!Array.isArray(persons) || persons.length === 0) {
     html += `<p>${i18next.t("details.noAffiliatedPersons")}</p>`;
     section.innerHTML = html;
@@ -127,14 +115,32 @@ function renderAffiliatedPersons(data, lang) {
 
 function renderMetadata(data, lang) {
   const section = document.getElementById("metadataSection");
-  const displayedKeys = [
+  const ignoreTheseKeys = [
     "dct:title",
     "dct:description",
     "prov:qualifiedAttribution",
     "dcat:distribution",
     "bv:i14y",
     "bv:opendata_swiss",
-    "schema:image"
+    "schema:image",
+    "dct:identifier"
+  ];
+  const enumeratedFields = [
+    "dct:accessRights",
+    "dct:accrualPeriodicity",
+    "adms:status",
+    "bv:classification",
+    "bv:personalData",
+    "bv:typeOfData",
+    "bv:archivalValue",
+    "dcat:theme"
+  ];
+  const dateFields = [
+    "dct:issued",
+    "dct:modified",
+    "bv:abrogation",
+    "dct:issued",
+    "dct:issued"
   ];
   let html = `<h1>${i18next.t("details.metadata")}</h1>`;
   html += `<table class="table">
@@ -144,7 +150,7 @@ function renderMetadata(data, lang) {
           </colgroup>
       <tbody>`;
   Object.keys(data).forEach((key) => {
-    if (displayedKeys.includes(key)) return;
+    if (ignoreTheseKeys.includes(key)) return;
     let label = i18next.t(key, { defaultValue: key });
     let val = data[key];
   
@@ -165,8 +171,13 @@ function renderMetadata(data, lang) {
       val = Utils.formatUrlArray(val);
     } else if (key === "dcat:landingPage" || key === "bv:itSystem") {
       val = Utils.formatSingleUrl(val);
+    } else if (key === "dct:temporal") {
+      // Use the new temporal formatting function
+      val = Utils.formatTemporal(val, lang);
     } else if (enumeratedFields.includes(key)) {
       val = Utils.highlightEnumeratedValues(val);
+    } else if (dateFields.includes(key)) {
+      val = Utils.formatDate(val)
     } else {
       val = Utils.stringifyIfNeeded(val);
     }
