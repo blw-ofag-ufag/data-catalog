@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "b732392b-e688-4ed5-9d5c-4399461e9259",
+  "dct:title": {
+    "fr": "Production de produits laitiers 1990/92-2015",
+    "de": "Produktion Milchprodukte 1990/92-2015",
+    "en": "",
+    "it": "Produzione di latticini 1990/92-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Produktion von Käse (Frischkäse, Weichkäse, Halbhartkäse, Hartkäse), Konsummilch, Butter, Rahm, Milchpulver und Milchkondensat in Tonnen",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "01678041-4c8d-47c9-8a9b-a83153947dfe"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "http://www.tsmtreuhand.ch/index.php?id=milchstatistik",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "077aa833-f4af-469e-8048-9567a6e3f527",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/c9/h6a6zm9o6hobbt2p4i73m2ijgr5mn6/produktion_milchprodukte_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/c9/h6a6zm9o6hobbt2p4i73m2ijgr5mn6/produktion_milchprodukte_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Produktion Milchprodukte 1990/92-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 083be5a0-131d-4424-96e0-e61653d3c1ab"
+    },
+    {
+      "dct:identifier": "81b390ed-184a-42f4-996e-116ca9865de3",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9c/ioo7duk8lnzoq2i3r4bs5vqbzrr969/produktion_milchprodukte_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9c/ioo7duk8lnzoq2i3r4bs5vqbzrr969/produktion_milchprodukte_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Production de produits laitiers 1990/92-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: cfad6148-254c-44fa-a7f6-75a44fdcba67"
+    },
+    {
+      "dct:identifier": "f82660ea-5d57-439c-b744-8f4d74a3824e",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/12/p3ev7y61yzj6jbga6cv1oap75nc9vw/produktion_milchprodukte_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/12/p3ev7y61yzj6jbga6cv1oap75nc9vw/produktion_milchprodukte_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Produzione di latticini 1990/92-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 0e135b09-249f-4645-af3e-ffaa87b07f8b"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "1990-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

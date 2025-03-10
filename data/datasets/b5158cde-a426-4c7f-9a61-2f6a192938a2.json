@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "b5158cde-a426-4c7f-9a61-2f6a192938a2",
+  "dct:title": {
+    "fr": "Commerce extérieur 1990/92-2015",
+    "de": "Aussenhandel 1990/92-2015",
+    "en": "",
+    "it": "Commercio estero 1990/92-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Ein- und Ausfuhren von landwirtschaftlichen Produkten (Milch und Milchprodukte, Fleisch, Eier und Fische, Getreide, Hackfrüchte, Ölsaaten, Früchte, Gemüse, Wein) in Tonnen",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "821dc562-2643-4b74-a69d-e532d8b4f6f9"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.ezv.admin.ch/ezv/de/home/themen/schweizerische-aussenhandelsstatistik/datenbank-swiss-impex.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "58fb589b-81d2-4622-8ccf-a67a6149588f",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/05/42b67e1a2xm7swnt1et18cn8qhpb2g/aussenhandel_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/05/42b67e1a2xm7swnt1et18cn8qhpb2g/aussenhandel_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Aussenhandel 1990/92-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: e4051314-7791-42c9-8062-11d4156b81db"
+    },
+    {
+      "dct:identifier": "fefa0fb3-a520-4c52-8120-172b189ae924",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/44/pn33gyni8s4gkmc98f8ub1srv8m4uv/aussenhandel_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/44/pn33gyni8s4gkmc98f8ub1srv8m4uv/aussenhandel_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Commerce extérieur 1990/92-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: d2e60fb0-3f47-4e7d-aff4-5e597a928d8e"
+    },
+    {
+      "dct:identifier": "5043ee1b-5d75-4cee-9834-e075fb09b62d",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9e/k10zdlez7wiamzk19rl3m4lrpfbq9j/aussenhandel_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9e/k10zdlez7wiamzk19rl3m4lrpfbq9j/aussenhandel_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Commercio estero 1990/92-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 5ef368c3-6563-4f1a-a230-cde0ac1b3a23"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "1990-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

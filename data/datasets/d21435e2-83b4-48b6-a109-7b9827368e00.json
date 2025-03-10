@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "d21435e2-83b4-48b6-a109-7b9827368e00",
+  "dct:title": {
+    "fr": "Chiffres du marché des céréales panifiables - Prix bruts annuels des producteurs, prix indicatifs",
+    "en": "Market figures for bread cereals - Annual gross producer prices, reference prices",
+    "de": "Marktzahlen Brotgetreide - Jährliche Bruttoproduzentenpreise, Richtpreise",
+    "it": "Dati di mercato dei cereali panificabili - Prezzi annui lordi dei produttori, prezzi indicativi"
+  },
+  "dct:description": {
+    "fr": "Prix moyens annuels et prix indicatifs pour les céréales panifiables, la farine et les produits de boulangerie au niveau de la production",
+    "en": "Annual average prices and reference prices for bread cereals, flour, and bakery products at the production level",
+    "de": "Jährliche Durchschnittspreise und Richtpreise für Brotgetreide, Mehl und Backwaren auf der Wertschöpfungsstufe Produktion",
+    "it": "Prezzi medi annui e prezzi indicativi per cereali panificabili, farina e prodotti da forno al livello di produzione"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-02-18",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "9beadde3-caa0-4e39-9676-357d375d79ab"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "price",
+    "market-data"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-brotgetreide"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "b0c66012-4357-4ef4-88e7-91646a61f06b",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FBreadCerealsFlourBakedGoods%2FProduction_Price_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "en": "SPARQL Endpoint with graph preselection",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 5a887147-6870-49dc-a291-e4759c2318fc"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2010-07-01",
+    "dcat:end_date": "2023-07-01"
+  }
+}

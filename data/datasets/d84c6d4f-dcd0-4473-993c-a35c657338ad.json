@@ -1,0 +1,167 @@
+{
+  "dct:identifier": "d84c6d4f-dcd0-4473-993c-a35c657338ad",
+  "dct:title": {
+    "fr": "Cartes des aptitudes climatiques pour l'agriculture en Suisse - Précipitations",
+    "de": "Klimaeignungskarte für die Landwirtschaft - Niederschläge",
+    "en": "Climate suitability map for agriculture - Precipitation",
+    "it": "Carta delle attitudini climatiche per l'agricoltura in Svizzera - Precipitazioni"
+  },
+  "dct:description": {
+    "fr": "La carte établie à l'échelle 1:200 000 reflète, une appréciation générale des conditions climatiques et des restrictions à l'égard de l'agriculture, subdivisées en vingt catégories d'aptitudes. Son but est de souligner les différences sensibles relatives aux possibilités de culture propres aux diverses régions.",
+    "de": "Auf den vier Blättern der Karte im Massstab 1:200 000 ist eine Gesamtbeurteilung der klimatischen Voraussetzungen und Einschränkungen für die Landwirtschaft, in 20 Kategorien, wiedergegeben. Die Karte will auf die erheblichen Unterschiede in den Anbaumöglichkeiten der einzelnen Regionen hinweisen.",
+    "en": "The four sheets of the map, which has a scale of 1:200,000, show an overall evaluation of the climatic conditions and restrictions for agriculture, broken down into 20 categories. The map aims to highlight the significant differences in the cultivation options available in the individual regions.",
+    "it": "I quattro fogli della carta in scala 1:200 000 forniscono una valutazione d'insieme delle condizioni climatiche e delle restrizioni relative all'agricoltura, suddivise in 20 categorie. La carta intende sottolineare le differenze di rilievo relative alle possibilità di coltivazione esistenti nelle singole regioni."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "info@blw.admin.ch",
+    "schema:name": "info@blw.admin.ch"
+  },
+  "dct:issued": "2007-06-28",
+  "dct:accrualPeriodicity": "NEVER",
+  "dct:modified": "2007-06-28",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "f22ad686-5387-4410-900c-8eb763dd16ce"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "cultivation-suitability",
+    "climatic-effect",
+    "meteorological-geographical-features",
+    "land-use",
+    "fsdi-federal-spatial-data-infrastructure"
+  ],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/geografisches-informationssystem-gis/klimaeignungskarte.html",
+  "foaf:page": [
+    {
+      "uri": "http://map.blw.admin.ch/",
+      "alias": "Link zum Fachportal"
+    },
+    {
+      "uri": "https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/0335f9f0-b0b1-4925-9c9d-d530ed2dd1cf",
+      "alias": "geocat.ch permalink"
+    }
+  ],
+  "dcatap:applicableLegislation": [],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "2f89a6a4-8dcf-446e-9a25-1da3373a600f",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.niederschlagshaushalt",
+      "adms:status": "published",
+      "dct:format": "SERVICE",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "Aperçu map.geo.admin.ch",
+        "de": "Vorschau map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 96f79faa-b286-4f62-8e48-99a6c053d4f4"
+    },
+    {
+      "dct:identifier": "b1d8c606-f2e2-4b79-b158-a9e138c157f8",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dct:format": "WMS",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "ch.blw.niederschlagshaushalt",
+        "de": "ch.blw.niederschlagshaushalt",
+        "en": "ch.blw.niederschlagshaushalt",
+        "it": "ch.blw.niederschlagshaushalt"
+      },
+      "dct:description": {
+        "fr": "Service WMS-IFDG, couche \"Régime pluviométrique\"",
+        "de": "WMS-BGDI Dienst, Layer \"Niederschlagshaushalt\"",
+        "en": "WMS-FSDI service, layer \"Rainfall\"",
+        "it": "Servizio WMS-IFDG, strato \"Andamento delle precipitazioni\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 12d1e5c1-8629-4774-9034-2a9f9477b396"
+    },
+    {
+      "dct:identifier": "5963ad33-42a3-4aa9-a46d-c6a7d4dea764",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dct:format": "WMTS",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "ch.blw.niederschlagshaushalt",
+        "de": "ch.blw.niederschlagshaushalt",
+        "en": "ch.blw.niederschlagshaushalt",
+        "it": "ch.blw.niederschlagshaushalt"
+      },
+      "dct:description": {
+        "fr": "Service WMTS-IFDG, couche , Layer \"Régime pluviométrique\"",
+        "de": "WMTS-BGDI Dienst, Layer \"Niederschlagshaushalt\"",
+        "en": "WMTS-FSDI service, layer \"Rainfall\"",
+        "it": "Servizio WMTS-IFDG, strato \"Andamento delle precipitazioni\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 0383ddbe-a5f7-40a6-995c-23748c28f8a3"
+    },
+    {
+      "dct:identifier": "9af9a4f4-763c-4100-b46f-bfce096b1611",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.niederschlagshaushalt",
+      "adms:status": "published",
+      "dct:format": "HTML",
+      "dct:modified": "2007-06-28",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.niederschlagshaushalt",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "de": "Download Server von geo.admin.ch",
+        "en": "Download server from geo.admin.ch",
+        "it": "Server di download di geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 238e0cc4-2db2-4cf2-934b-5b11184fbcd1"
+    },
+    {
+      "dct:identifier": "2467033b-1848-48bc-a6a0-a0671a5b4f70",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.niederschlagshaushalt",
+      "adms:status": "published",
+      "dct:format": "API",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: bad68ff6-5c90-46e1-b5ee-feba44f0520a"
+    }
+  ]
+}

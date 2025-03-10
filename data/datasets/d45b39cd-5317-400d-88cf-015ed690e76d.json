@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "d45b39cd-5317-400d-88cf-015ed690e76d",
+  "dct:title": {
+    "fr": "Chiffres du marché des œufs - Structure annuelle du marché (production)",
+    "en": "Market figures eggs - Annual market structure (production)",
+    "de": "Marktzahlen Eier - Jährliche Marktstruktur (Produktion)",
+    "it": "Cifre del mercato delle uova -Fonti e contributi versati annuali disponibili"
+  },
+  "dct:description": {
+    "fr": "Structure du marché annuel des œufs en pourcentage au niveau de la chaîne de valeur ajoutée production",
+    "de": "Struktur des jährlichen Eiermarktes in Prozent auf der Wertschöpfungsstufe Produktion",
+    "en": "Structure of the annual egg market in per cent at the production value chain level",
+    "it": "Struttura del mercato annuale delle uova in percentuale a livello della catena del valore produzione"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-02-12",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "c49e3861-9b41-4e77-878e-1cead201bf9c"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "price",
+    "market-data"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-eier"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "059286d3-3868-47d2-bf54-a651bb1c5d52",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FEggs%2FProduction_Percentage_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "en": "SPARQL Endpoint with graph preselection",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 568b8706-047d-4d78-9e7f-dfd76bcaa235"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2007-01-01",
+    "dcat:end_date": "2024-01-01"
+  }
+}

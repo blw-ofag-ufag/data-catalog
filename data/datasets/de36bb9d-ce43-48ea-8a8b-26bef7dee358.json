@@ -1,0 +1,145 @@
+{
+  "dct:identifier": "de36bb9d-ce43-48ea-8a8b-26bef7dee358",
+  "dct:title": {
+    "fr": "Surfaces d'utilisation agricole Suisse",
+    "de": "Landwirtschaftliche Nutzungsflächen Schweiz",
+    "en": "",
+    "it": "Superfici d'utilizzazione agricole Svizzera"
+  },
+  "dct:description": {
+    "fr": "Le jeu de géodonnées \"surfaces d'utilisation agricole\" représente la situation spatiale des surfaces cultivées telles que les prairies, les pâturages et les terres arables de la Suisse. Il contient les surfaces utilisées à des fins agricoles selon l'ordonnance sur la terminologie agricole (OTerm), l'ordonnance sur les paiements directs (OPD) et les définitions qui en découlent (y compris la codification) des utilisations par la Confédération et les cantons. Le jeu de données se base sur les jeux de géodonnées de base du droit fédéral \"Surfaces agricoles cultivées\" établis sous la responsabilité des cantons (OGéo, annexe 1, identifiant 153). L'ensemble des données est mis à jour une fois par an.",
+    "de": "Der Geodatensatz «landwirtschaftliche Nutzungsflächen» stellt die räumliche Lage der Kulturflächen wie Wiesen, Weiden und Ackerflächen der Schweiz dar. Er beinhaltet die landwirtschaftlich genutzten Flächen gemäss landwirtschaftlicher Begriffsverordnung (LBV), Direktzahlungsverordnung (DZV) und der daraus abgeleiteten Definitionen (inkl. Codierung) der Nutzungen durch den Bund und die Kantone. Der Datensatz basiert auf den in Zuständigkeit der Kantone erstellten Geobasisdatensätzen des Bundesrechts «Landwirtschaftliche Kulturflächen» (GeoIV, Anhang 1, Identifikator 153). Der Datensatz wird einmal jährlich aktualisiert.",
+    "en": "Der Geodatensatz «landwirtschaftliche Nutzungsflächen» stellt die räumliche Lage der Kulturflächen wie Wiesen, Weiden und Ackerflächen der Schweiz dar und wird jährlich aktualisiert. Er beinhaltet die landwirtschaftlich genutzten Flächen gemäss landwirtschaftlicher Begriffsverordnung (LBV), Direktzahlungsverordnung (DZV) und der daraus abgeleiteten Definitionen (inkl. Codierung) der Nutzungen durch den Bund und die Kantone. Der Datensatz basiert auf den in Zuständigkeit der Kantone erstellten Geobasisdatensätze des Bundesrechts «Landwirtschaftliche Kulturflächen» (GeoIV, Anhang 1, Identifikator 153). Die Originaldaten befinden sich auf geodienste.ch. Die Verfügbarkeit der Daten beruht auf den kantonalen Nutzungsbedingungen.",
+    "it": "Il set di geodati \"Superfici d’utilizzazione agricole\" mostra la localizzazione spaziale delle superfici coltivate come prati, pascoli e seminativi in Svizzera. Contiene le superfici utilizzate per l'agricoltura secondo l'Ordinanza sulla terminologia agricola (LBV), l'Ordinanza sui pagamenti diretti (DZV) e le definizioni (compresa la codifica) dell'uso del suolo derivate da queste dalla Confederazione e dai Cantoni. Il set di dati si basa sui geodati ufficiali della legislazione federale \"Superfici agricole coltivate\" (GeoIV, Allegato 1, identificatore 153), che sono di competenza dei Cantoni. Il set di dati viene aggiornato una volta all'anno."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "info@blw.admin.ch",
+    "schema:name": "info@blw.admin.ch"
+  },
+  "dct:issued": "2024-05-14",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "ccd6ff9b-b1e0-4328-acbc-dd139a79522d"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "land-use",
+    "area-managementrestrictionregulation-zones-and-reporting-units",
+    "land-cover",
+    "fsdi-federal-spatial-data-infrastructure"
+  ],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": null,
+  "foaf:page": [
+    {
+      "uri": "https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/geografisches-informationssystem-gis/landwirtschaftliche-kulturflaechen.html",
+      "alias": "https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/geografisches-informationssystem-gis/landwirtschaftliche-kulturflaechen.html"
+    },
+    {
+      "uri": "https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/ae183bc4-5c91-467e-89bc-85f390340efb",
+      "alias": "geocat.ch permalink"
+    }
+  ],
+  "dcatap:applicableLegislation": [],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "70e5a3fa-f89d-4167-9659-a2d81628b52d",
+      "dcat:accessURL": "https://www.geodienste.ch/",
+      "adms:status": "published",
+      "dct:format": "",
+      "dct:modified": null,
+      "dcat:downloadURL": "https://www.geodienste.ch/",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: f4349d82-0f08-4c79-a4ba-4e254df498e6"
+    },
+    {
+      "dct:identifier": "11557f79-7d4b-4f7c-99c4-bf8196ce5a31",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dct:format": "WMS",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "ch.blw.landwirtschaftliche-nutzungsflaechen",
+        "de": "ch.blw.landwirtschaftliche-nutzungsflaechen",
+        "en": "ch.blw.landwirtschaftliche-nutzungsflaechen",
+        "it": "ch.blw.landwirtschaftliche-nutzungsflaechen"
+      },
+      "dct:description": {
+        "fr": "Service WMS-IFDG, couche \"Surfaces d`utilisation\"",
+        "de": "WMS-BGDI Dienst, Layer \"Nutzungsflächen\"",
+        "en": "WMS-FSDI service, layer \"Nutzungsflächen\"",
+        "it": "Servizio WMS-IFDG, strato \"Superfici d`utilizzazione\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: ab8886f6-24c0-483f-b254-6fecddcc62c5"
+    },
+    {
+      "dct:identifier": "64f18afb-f449-48c2-9018-e4f2addc9278",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dct:format": "WMTS",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "ch.blw.landwirtschaftliche-nutzungsflaechen",
+        "de": "ch.blw.landwirtschaftliche-nutzungsflaechen",
+        "en": "ch.blw.landwirtschaftliche-nutzungsflaechen",
+        "it": "ch.blw.landwirtschaftliche-nutzungsflaechen"
+      },
+      "dct:description": {
+        "fr": "Service WMTS-IFDG, couche \"Surfaces d'utilisation\"",
+        "de": "WMTS-BGDI Dienst, Layer \"Nutzungsflächen\"",
+        "en": "WMTS-FSDI service, layer \"-\"",
+        "it": "Servizio WMTS-IFDG, strato \"Superfici d'utilizzazione\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: f4846eaf-a1f2-4d97-b78c-e80c65d21d7b"
+    },
+    {
+      "dct:identifier": "79dc715f-bc47-43b2-ba27-732744805724",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.landwirtschaftliche-nutzungsflaechen",
+      "adms:status": "published",
+      "dct:format": "API",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 82539356-f071-44db-929f-afa9cfefe87a"
+    }
+  ]
+}

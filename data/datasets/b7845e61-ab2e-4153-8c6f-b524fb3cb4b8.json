@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "b7845e61-ab2e-4153-8c6f-b524fb3cb4b8",
+  "dct:title": {
+    "fr": "Comptes économiques de l'agriculture 2000/02-2016",
+    "de": "Landwirtschaftliche Gesamtrechnung 2000/02-2016",
+    "en": "",
+    "it": "Conto economico dell'agricoltura 2000/02-2016"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Erzeugung des landwirtschaftlichen Wirtschaftsbereichs, Vorleistungen, Bruttowertschöpfung, Nettowertschöpfung, Nettounternehmenseinkommen (zu laufenden Preisen, in 1000 Fr.)",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "0b2046ac-dbc6-467c-8456-898c8b8862f0"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/gesamtrechnung-satellitenkonto/landwirtschaft.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "353aa2ec-ef0d-40db-aa23-e723fd3a8101",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d7/lkhk2zn5xcxdt5cdzc2310w1fg2v6f/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d7/lkhk2zn5xcxdt5cdzc2310w1fg2v6f/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Landwirtschaftliche Gesamtrechnung",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 78d0510d-5582-4ba2-8fca-524c970d2a61"
+    },
+    {
+      "dct:identifier": "b2057a6c-b551-49d2-96e4-a95c3645ab77",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9d/nior5cgz4nrq7ac9q81up91ozkwbrh/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/9d/nior5cgz4nrq7ac9q81up91ozkwbrh/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Comptes économiques de l'agriculture",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 9daabe77-242b-44dc-94c6-50b954ab3c9f"
+    },
+    {
+      "dct:identifier": "a4fe7f94-44aa-41d0-8e52-6ba0a7236e45",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/21/wtygkbunvulxq4wtctu7rqsab3kavc/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/21/wtygkbunvulxq4wtctu7rqsab3kavc/landwirtschaftliche_gesamtrechung_2000_02__2016_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Conto economico dell'agricoltura"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: e81c1bfc-dfcb-4f74-9553-42983f7fee88"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2000-01-01",
+    "dcat:end_date": "2016-12-31"
+  }
+}

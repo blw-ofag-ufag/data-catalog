@@ -1,0 +1,167 @@
+{
+  "dct:identifier": "18291692-b713-4bed-9bf5-f3294edc6e54",
+  "dct:title": {
+    "fr": "Cartes des aptitudes climatiques pour l'agriculture en Suisse - Terres cultivées",
+    "de": "Klimaeignungskarte für die Landwirtschaft - Kulturland",
+    "en": "Climate suitability map for agriculture - Cultivated land",
+    "it": "Carta delle attitudini climatiche per l'agricoltura in Svizzera - Terreni coltivi"
+  },
+  "dct:description": {
+    "fr": "La carte établie à l'échelle 1:200 000 reflète, une appréciation générale des conditions climatiques et des restrictions à l'égard de l'agriculture, subdivisées en vingt catégories d'aptitudes. Son but est de souligner les différences sensibles relatives aux possibilités de culture propres aux diverses régions.",
+    "de": "Auf den vier Blättern der Karte im Massstab 1:200 000 ist eine Gesamtbeurteilung der klimatischen Voraussetzungen und Einschränkungen für die Landwirtschaft, in 20 Kategorien, wiedergegeben. Die Karte will auf die erheblichen Unterschiede in den Anbaumöglichkeiten der einzelnen Regionen hinweisen.",
+    "en": "The four sheets of the map, which has a scale of 1:200,000, show an overall evaluation of the climatic conditions and restrictions for agriculture, broken down into 20 categories. The map aims to highlight the significant differences in the cultivation options available in the individual regions.",
+    "it": "I quattro fogli della carta in scala 1:200 000 forniscono una valutazione d'insieme delle condizioni climatiche e delle restrizioni relative all'agricoltura, suddivise in 20 categorie. La carta intende sottolineare le differenze di rilievo relative alle possibilità di coltivazione esistenti nelle singole regioni."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "info@blw.admin.ch",
+    "schema:name": "info@blw.admin.ch"
+  },
+  "dct:issued": "2007-06-28",
+  "dct:accrualPeriodicity": "NEVER",
+  "dct:modified": "2007-06-28",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "c69ff9d4-991c-40f3-9078-ffb9f135666d"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "cultivation-suitability",
+    "climatic-effect",
+    "meteorological-geographical-features",
+    "land-use",
+    "fsdi-federal-spatial-data-infrastructure"
+  ],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/geografisches-informationssystem-gis/klimaeignungskarte.html",
+  "foaf:page": [
+    {
+      "uri": "http://map.blw.admin.ch/",
+      "alias": "Link zum Fachportal"
+    },
+    {
+      "uri": "https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/8148d26b-7aae-48b1-8c02-a391c33f59a7",
+      "alias": "geocat.ch permalink"
+    }
+  ],
+  "dcatap:applicableLegislation": [],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "d5b6d242-f491-476e-9fec-0413b4eb85ea",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.klimaeignung-kulturland",
+      "adms:status": "published",
+      "dct:format": "SERVICE",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "Aperçu map.geo.admin.ch",
+        "de": "Vorschau map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 6c4381f1-9854-4173-a79f-e99b31ab9987"
+    },
+    {
+      "dct:identifier": "1f3bd41b-a630-43f0-8b7d-8ee28d3847fe",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dct:format": "WMS",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "ch.blw.klimaeignung-kulturland",
+        "de": "ch.blw.klimaeignung-kulturland",
+        "en": "ch.blw.klimaeignung-kulturland",
+        "it": "ch.blw.klimaeignung-kulturland"
+      },
+      "dct:description": {
+        "fr": "Service WMS-IFDG, couche \"Climat - terres cultivées\"",
+        "de": "WMS-BGDI Dienst, Layer \"Klimaeignung Kulturland\"",
+        "en": "WMS-FSDI service, layer \"Climate - cultivated land\"",
+        "it": "Servizio WMS-IFDG, strato \"Clima - Terreni coltivi\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: bd54efab-ecfe-4c6f-91c1-972d069113fa"
+    },
+    {
+      "dct:identifier": "f3c2ac34-f09c-4a55-a393-bbfccbac6b69",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dct:format": "WMTS",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "ch.blw.klimaeignung-kulturland",
+        "de": "ch.blw.klimaeignung-kulturland",
+        "en": "ch.blw.klimaeignung-kulturland",
+        "it": "ch.blw.klimaeignung-kulturland"
+      },
+      "dct:description": {
+        "fr": "Service WMTS-IFDG, couche , Layer \"Climat - terres cultivées\"",
+        "de": "WMTS-BGDI Dienst, Layer \"Klimaeignung Kulturland\"",
+        "en": "WMTS-FSDI service, layer \"Climate - cultivated land\"",
+        "it": "Servizio WMTS-IFDG, strato \"Clima - Terreni coltivi\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 3eea7d24-db61-4b19-abe9-59fd1fd63c7a"
+    },
+    {
+      "dct:identifier": "02bcca7b-1f18-42f7-b88e-9b2ddd09b677",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.klimaeignung-kulturland",
+      "adms:status": "published",
+      "dct:format": "HTML",
+      "dct:modified": "2007-06-28",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.klimaeignung-kulturland",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "de": "Download Server von geo.admin.ch",
+        "en": "Download server from geo.admin.ch",
+        "it": "Server di download di geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: e198a19c-69bd-4245-bba2-97c33ef2f118"
+    },
+    {
+      "dct:identifier": "086a1e8f-568a-413d-b423-1c1875ad2e2f",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.klimaeignung-kulturland",
+      "adms:status": "published",
+      "dct:format": "API",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 9089df4a-e2cd-41cf-92c3-a2935fb646c2"
+    }
+  ]
+}
