@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "0ad233c4-e3e0-4533-9143-e4e2305de0fd",
+  "dct:title": {
+    "fr": "Chiffres du marché des oeufs - Prix de gros annuels ",
+    "de": "Marktzahlen Eier - Jährliche Grosshandelspreise ",
+    "en": "Market figures eggs - Annual  catering wholesale prices ",
+    "it": "Cifre del mercato delle uova - Prezzi annuali all'ingrosso "
+  },
+  "dct:description": {
+    "fr": "Prix moyens annuels des œufs et d’une sélection de divers produits à base d'oeufs à l’échelon de création de valeur grossiste en restauration",
+    "de": "Jährliche Durchschnittspreise ausgewählter Eiprodukte oder Eier auf der Wertschöpfungsstufe Gastrogrosshandel",
+    "en": "Annual average prices for a selection of different egg products or eggs at the catering wholesale value-added stage",
+    "it": "Prezzi medi mensili delle uova e di una selezione di prodotti a base di uova a livello della catena di valore ingrosso per la restorazione"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-02-18",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "f619166d-c5c5-47ba-86a0-352235e81249"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "price",
+    "market-data"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-eier"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "94d98b82-6f02-43a2-9cae-019405f638a2",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FEggs%2FGastronomyWholesale_Price_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "en": "SPARQL Endpoint with graph preselection",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 75ccdad7-78e8-4ec4-8b80-85149e6a1ab5"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2013-01-01",
+    "dcat:end_date": "2024-01-01"
+  }
+}

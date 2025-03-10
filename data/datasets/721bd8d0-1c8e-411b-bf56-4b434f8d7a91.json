@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "721bd8d0-1c8e-411b-bf56-4b434f8d7a91",
+  "dct:title": {
+    "fr": "Détenteurs et effectifs des animaux 2000/02-2015",
+    "de": "Nutztierhalter und Nutztierbestände 2000/02-2015",
+    "en": "",
+    "it": "Detentori ed effettivi di animali 2000/02-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Anzahl Nutztierhalter nach Kategorie und Anzahl Nutztierbestände (Rindvieh, Pferde, Schweine Schafe, Ziegen, Geflügel)",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "234d2568-4fb1-4624-872b-ee5e35c83955"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/landwirtschaft/strukturen.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "663ff64f-a568-4c06-a272-f163f5ae7172",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/8f/t27700o6ckavt8855r625o7ew14otl/nutztierhalter_und_nutztierbestaende_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/8f/t27700o6ckavt8855r625o7ew14otl/nutztierhalter_und_nutztierbestaende_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Nutztierhalter und Nutztierbestände 2000/02-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 6d68de93-d861-4739-b0ad-ad5ddf7f85f0"
+    },
+    {
+      "dct:identifier": "81b0f808-2c9e-44b7-b4b5-63295f1633a7",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/a2/6vk5n4edkk0kwah69ue3l4z030r6gf/nutztierhalter_und_nutztierbestaende_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/a2/6vk5n4edkk0kwah69ue3l4z030r6gf/nutztierhalter_und_nutztierbestaende_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Détenteurs et effectifs des animaux 2000/02-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: cd8c900a-0838-4142-8b1f-4bed2a081ada"
+    },
+    {
+      "dct:identifier": "5b9903af-347b-4640-b4c0-f07d04703e7d",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/83/izqb7ex5edfxmtmhibkqg1e0pjdmiy/nutztierhalter_und_nutztierbestaende_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/83/izqb7ex5edfxmtmhibkqg1e0pjdmiy/nutztierhalter_und_nutztierbestaende_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Detentori ed effettivi di animali 2000/02-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 1f0625af-3e08-440c-a4ae-90ad6a3ebc65"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2000-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

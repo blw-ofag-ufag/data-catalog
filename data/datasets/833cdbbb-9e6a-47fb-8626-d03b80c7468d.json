@@ -1,0 +1,144 @@
+{
+  "dct:identifier": "833cdbbb-9e6a-47fb-8626-d03b80c7468d",
+  "dct:title": {
+    "fr": "Carte de blocs de parcelles pour le risque d'erosion",
+    "de": "Feldblockkarte zum Erosionsrisiko",
+    "en": "Field block map for erosion risk",
+    "it": "Carta dei blocchi di particelle per il rischio di erosione"
+  },
+  "dct:description": {
+    "fr": "Un bloc de parcelles est une surface d’un seul tenant, utilisable par l’agriculture, définie par des limites extérieures relativement stables et identifiables sur le terrain (par exemple forêt, routes, surfaces construites, cours d’eau, fossés). Le modèle topographique du paysage TLM3D sert de base de calcul. Un bloc de parcelles constitue ainsi une sorte de bassin hydrologique fermé, dans lequel tous les pixels sont liés sur le plan hydrologique et peuvent donc s’influencer mutuellement du point de vue de l’érosion. Les autres blocs ou surfaces en dehors d’un bloc de parcelles ne peuvent pas influencer les flux hydriques et l’érosion à l’intérieur du bloc de parcelles dans le modèle. Les apports d’eau parasite ne sont donc pas possibles dans le modèle. La taille minimale d’un bloc de parcelles a été fixée à 25 ares. Le contrôle des blocs de parcelles dans les régions prioritaires permet d’optimiser la surveillance, par les autorités compétentes, de l’érosion sur les terres arables. Une nouvelle estimation du risque d’érosion est nécessaire, lorsque la taille des blocs de parcelles est modifiée, p. ex. lorsque de nouveaux chemins sont construits ou que des haies sont plantées ou supprimées.",
+    "de": "Feldblöcke sind zusammenhängende landwirtschaftlich nutzbare Flächen, die von relativ stabilen, im Feld erkennbaren Aussengrenzen (z. B. Wald, Strassen, bebaute Flächen, Gewässer, Gräben) umgeben werden. Berechnungsgrundlage bildet das topographische Landschaftsmodell TLM3D. Ein Feldblock stellt somit ein geschlossenes hydrologisches Einzugsgebiet dar, in dem alle Pixel hydrologisch verbunden sein können und sich somit bezüglich Erosion beeinflussen können. Andere Feldblöcke oder Flächen ausserhalb eines Feldblocks können Wasserflüsse und Erosion innerhalb eines Feldblocks im Modell nicht beeinflussen. Fremdwasserzufluss ist im Modell also nicht möglich. Als Mindestgrösse für einen Feldblock wurden 25 Aren festgelegt. Die Überwachung von Erosion auf Ackerflächen durch die zuständigen Behörden erfolgt am besten über die Überprüfung von Feldblöcken in den Vorrangregionen. Eine Neuberechnung des Erosionsrisikos ist nötig, wenn sich die Feldblockgrösse ändert, z. B. wenn neue Wege gebaut oder Hecken gepflanzt oder beseitigt werden.",
+    "en": "Field blocks are coherent, agriculturally productive areas surrounded by relatively stable external boundaries that can be identified in the field (e.g. forest, roads, built-up areas, bodies of water, ditches). The topographic landscape model TLM3D forms the basis for their calculation. A field block therefore constitutes a closed hydrological catchment area in which all of the pixels can be hydrologically connected, and can thus have an influence on one another in terms of erosion. Other field blocks or areas outside of a field block cannot influence water flows or erosion within a field block in the model. The inflow of water from outside is therefore not possible in the model. The minimum size of a field block is set at 2500 square metres. The best way for the responsible authorities to monitor erosion on arable land is to inspect field blocks in the priority regions. The erosion risk must be recalculated if the size of the field block changes, e.g. if new tracks are built or hedges are planted or removed.",
+    "it": "I blocchi di particelle sono superfici contigue utilizzabili a scopo agricolo circondate da confini relativamente stabili e visibili sul campo (p.es. foresta, strade, superfici edificate, corsi d’acqua, fossati). Il modello topografico del paesaggio (MTP3D) costituisce la base di calcolo. Un blocco di particelle rappresenta pertanto un comprensorio idrologico chiuso, in cui tutti i pixel possono essere collegati dal profilo idrologico e di conseguenza influenzarsi a vicenda per quanto riguarda l’erosione. Nel modello, altri blocchi di particelle o superfici al di fuori di un blocco di particelle non possono influenzare i flussi d’acqua e l’erosione all’interno di un blocco di particelle. Secondo il modello, quindi, non può esserci afflusso di acque estranee. La dimensione minima di un blocco di particelle è stata fissata a 25 are. Il monitoraggio dell’erosione sulle superfici coltive da parte delle autorità competenti avviene preferibilmente verificando i blocchi di particelle nelle zone agricole prioritarie. È necessario rivedere il calcolo del rischio di erosione in caso di variazione della dimensione del blocco di particelle, per esempio in seguito alla costruzione di nuove strade oppure all’impianto o alla rimozione di siepi."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "info@blw.admin.ch",
+    "schema:name": "info@blw.admin.ch"
+  },
+  "dct:issued": "2019-03-30",
+  "dct:accrualPeriodicity": "IRREG",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "79a82202-4743-4f99-92a6-eb42b365b19f"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "soil",
+    "agriculture",
+    "fsdi-federal-spatial-data-infrastructure"
+  ],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/nachhaltige-produktion/umwelt/boden.html",
+  "foaf:page": [
+    {
+      "uri": "http://map.blw.admin.ch/",
+      "alias": "Link zum Fachportal"
+    },
+    {
+      "uri": "https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/9d673266-aed0-46f3-a536-4eb7d57582e9",
+      "alias": "geocat.ch permalink"
+    }
+  ],
+  "dcatap:applicableLegislation": [],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "fd63c09a-77d6-4986-bc8a-ff13bbc6eed4",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.feldblockkarte",
+      "adms:status": "published",
+      "dct:format": "SERVICE",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "Aperçu map.geo.admin.ch",
+        "de": "Vorschau map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 922b897d-1f90-4e18-963e-09e7bc322dd3"
+    },
+    {
+      "dct:identifier": "817d3c35-27b0-49e2-a845-dfd45e797b07",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dct:format": "WMS",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "ch.blw.feldblockkarte",
+        "de": "ch.blw.feldblockkarte",
+        "en": "ch.blw.feldblockkarte",
+        "it": "ch.blw.feldblockkarte"
+      },
+      "dct:description": {
+        "fr": "Service WMS-IFDG, couche \"Carte de blocs de parcelles\"",
+        "de": "WMS-BGDI Dienst, Layer \"Feldblockkarte\"",
+        "en": "WMS-FSDI service, layer \"Field block map\"",
+        "it": "Servizio WMS-IFDG, strato \"Carta dei blocchi di particelle\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: e95d1345-c3fb-4bdc-8c7a-8e7ce843b09e"
+    },
+    {
+      "dct:identifier": "b5ea72be-26e8-41dd-989d-69b9ce9788ce",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dct:format": "WMTS",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "ch.blw.feldblockkarte",
+        "de": "ch.blw.feldblockkarte",
+        "en": "ch.blw.feldblockkarte",
+        "it": "ch.blw.feldblockkarte"
+      },
+      "dct:description": {
+        "fr": "Service WMTS-IFDG, couche , Layer \"Carte de blocs de parcelles\"",
+        "de": "WMTS-BGDI Dienst, Layer \"Feldblockkarte\"",
+        "en": "WMTS-FSDI service, layer \"Field block map\"",
+        "it": "Servizio WMTS-IFDG, strato \"Carta dei blocchi di particelle\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: a6fed326-242a-4e47-924a-e739820bafdb"
+    },
+    {
+      "dct:identifier": "da291c9f-850d-41ce-8e9c-42b24d81fb7b",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.feldblockkarte",
+      "adms:status": "published",
+      "dct:format": "HTML",
+      "dct:modified": null,
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.feldblockkarte",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "de": "Download Server von geo.admin.ch",
+        "en": "Download server from geo.admin.ch",
+        "it": "Server di download di geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: b7a2ed9c-77d6-4e15-93dd-a38cb3a4d8cc"
+    }
+  ]
+}

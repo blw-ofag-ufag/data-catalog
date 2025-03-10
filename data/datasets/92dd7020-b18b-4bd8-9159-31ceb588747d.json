@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "92dd7020-b18b-4bd8-9159-31ceb588747d",
+  "dct:title": {
+    "fr": "Surface agricole utile en fonction des modes d'utilisation 1990/92-2015",
+    "de": "Landwirtschaftliche Nutzfläche nach Nutzungsarten 1990/92-2015",
+    "en": "",
+    "it": "Superficie agricola utile secondo le forme di utilizzazione 1990/92-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Landwirtschaftliche Nutzfläche in Hektaren nach Kulturen",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "3fc01587-2de5-4fc8-a1dd-8c6f4aaefd4e"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/landwirtschaft/strukturen.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "081acd2c-da8e-4fcb-8c3e-ef5e9a7983d3",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/98/eakeg0jthapzdz10rnrv5b2vefzsfc/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/98/eakeg0jthapzdz10rnrv5b2vefzsfc/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Landwirtschaftliche Nutzfläche nach Nutzungsarten 1990/92-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 51678cb5-ca82-4770-a1b2-3df096e405d0"
+    },
+    {
+      "dct:identifier": "f88fbd3d-dfa5-4387-8525-af40408f0fe7",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/14/50vi8k8rj48xula3kt2xpdjg5t86i4/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/14/50vi8k8rj48xula3kt2xpdjg5t86i4/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Surface agricole utile en fonction des modes d'utilisation 1990/92-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 5728dffe-e4e5-4d85-aeea-32bc35626a94"
+    },
+    {
+      "dct:identifier": "dd7fd764-b2d1-4d23-bda2-6a31c0a267cf",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d5/eb0e422basbpysg29kq0g66yxq5f64/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d5/eb0e422basbpysg29kq0g66yxq5f64/landwirtschaftliche_nutzflaeche_nach_nutzungsarten_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Superficie agricola utile secondo le forme di utilizzazione 1990/92-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: b9f8bd39-db22-41b5-9a0c-c7470beb2f5a"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "1990-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

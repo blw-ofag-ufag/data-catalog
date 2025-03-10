@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "884d2c24-6d25-4d73-9ad9-18a85b83c4b9",
+  "dct:title": {
+    "fr": "Contributions à la biodiversité 2014-2015",
+    "de": "Biodiversitätsbeiträge 2014-2015",
+    "en": "",
+    "it": "Contributi per la biodiversità 2014-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Biodiversitätsbeiträge nach Kantonen und Zonen (Anzahl Betriebe und Beitrag in CHF)",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "a439114f-7fda-4a22-a486-bee05ec03984"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/direktzahlungen.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "347699f6-4f02-4662-8c51-6033a023dc02",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ce/askwckku1mcxvigvrqzz0uklu7ruqz/17_ab16_statdz2015_anhaenge_tab_biodiversitaet_datenreihe_d_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ce/askwckku1mcxvigvrqzz0uklu7ruqz/17_ab16_statdz2015_anhaenge_tab_biodiversitaet_datenreihe_d_ok.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Biodiversitätsbeiträge 2014-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 43fa4865-33aa-43b1-9640-d3ad7c233e37"
+    },
+    {
+      "dct:identifier": "3878cbdd-2206-448c-a5f5-7fb1f4374395",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/08/ozomp9lksr4ntzbjsn1mvyertozmxq/17_ab16_statdz2015_anhaenge_tab_biodiversitaet_datenreihe_f_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/08/ozomp9lksr4ntzbjsn1mvyertozmxq/17_ab16_statdz2015_anhaenge_tab_biodiversitaet_datenreihe_f_ok.xlsx",
+      "dct:title": {
+        "fr": "Contributions à la biodiversité 2014-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: cd1ca488-06c5-4d15-9e50-3aa9652f29d0"
+    },
+    {
+      "dct:identifier": "6a8b2f99-1c3f-4feb-9e88-37dc023366f6",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d2/fexdqvrf3eh9xy562qa0ogd65yytki/17_ab16_statdz2015_anhaenge_tab_biodiversitaet_datenreihe_i_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d2/fexdqvrf3eh9xy562qa0ogd65yytki/17_ab16_statdz2015_anhaenge_tab_biodiversitaet_datenreihe_i_ok.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Contributi per la biodiversità 2014-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: f6607bab-3456-40c1-b6bd-26901f3932d1"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2014-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

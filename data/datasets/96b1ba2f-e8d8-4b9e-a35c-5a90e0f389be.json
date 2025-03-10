@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "96b1ba2f-e8d8-4b9e-a35c-5a90e0f389be",
+  "dct:title": {
+    "fr": "Chiffres du marché du lait et des produits laitiers - Indicateur annuel (production)",
+    "de": "Marktzahlen Milch und Milchprodukte - Jährlicher Index (Produktion)",
+    "en": "Market figures milk and dairy products - Annual index (production)",
+    "it": "Cifre di mercato latte e latticini - Indice annuali (produzione)"
+  },
+  "dct:description": {
+    "fr": "Indice de prix annuel du marché du lait",
+    "en": "Annual price index for the milk market",
+    "de": "Jährlicher Preis-Index zum Milchmarkt",
+    "it": "Indice dei prezzi annuo sul mercato lattiero"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-02-17",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "11fce6a7-6f94-4500-85dd-5b33eda6d9dc"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "price",
+    "market-data"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-milch-und-milchprodukte"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "e53c99be-28c5-4942-8e59-da6eb8b6dfcf",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FMilkDairyProducts%2FProduction_Index_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "en": "SPARQL Endpoint with graph preselection",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 0171a876-8296-4a87-b9de-6e82db601f53"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2010-01-01",
+    "dcat:end_date": "2024-01-01"
+  }
+}

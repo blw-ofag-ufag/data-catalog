@@ -1,0 +1,170 @@
+{
+  "dct:identifier": "9416a47b-b7e2-4fca-ad5f-1f64fb230362",
+  "dct:title": {
+    "fr": "Registre des appellations d'origine (AOP) et des indications géographiques (IGP) spiritueux",
+    "de": "Register Ursprungsbezeichnungen (GUB) und geografische Angaben (GGA) Spirituosen",
+    "en": "Register of designations of origin (PDO) and geographical indications (PGI) - spirits",
+    "it": "Registro delle denominazioni di origine (DOP) e delle indicazioni geografiche (IGP) Distillati"
+  },
+  "dct:description": {
+    "fr": "Le registre des appellations d’origine (AOP) et des indications géographiques (IGP) sert à protéger les noms géographiques et les dénominations traditionnelles qui désignent des produits agricoles (autres que le vin) dont l’identité et les principales caractéristiques sont déterminées par leur origine. Lorsqu’un nom est protégé, son utilisation est réservée aux producteurs de l’aire géographique définie, pour autant qu’ils respectent un cahier des charges détaillé. La protection de certaines désignations de produits agricoles vise à défendre les consommateurs contre la tromperie et à protéger les paysans contre la concurrence déloyale quant à l’utilisation de ces désignations. La réglementation applicable dans ce domaine permet la reconnaissance réciproque des produits de qualité entre la Suisse et l’Union européenne.Les AOP/IGP sont réparties en quatre catégories : fromages, produits à base de viande, produits végétaux et spiritueux. Environ 30 produits sont aujourd’hui inscrits au registre des appellations d’origine, qui en accueille en permanence de nouveaux.",
+    "de": "Mit dem Register Ursprungsbezeichnungen (GUB) und geografischen Angaben (GGA) lassen sich die Gebietsnamen und traditionellen Bezeichnungen von landwirtschaftlichen Erzeugnissen schützen (Wein ausgenommen), deren Qualität und Haupteigenschaften durch ihre geografische Herkunft bestimmt werden. Ist ein Name geschützt, darf er nur von den Produzentinnen und Produzenten des entsprechend definierten geografischen Gebiets benutzt werden, die sich an ein detailliertes Pflichtenheft halten.Der Schutz bestimmter Bezeichnungen für Landwirtschaftsprodukte bezweckt, die Konsumentinnen und Konsumenten vor Täuschung zu schützen und - im Interesse der Bäuerinnen und Bauern - den unlauteren Wettbewerb in der Verwendung dieser Begriffe zu verhindern. Die Regelungen in diesem Bereich ermöglichen, die gegenseitige Anerkennung von Qualitätsprodukten zwischen der Schweiz und der Europäischen Union. Es wird zwischen den vier Kategorien Käse, Fleischwaren, pflanzliche Produkte und Spirituosen unterschieden. Aktuell sind gegen 30 verschiedene Erzeugnisse im Register Ursprungsbezeichnungen eingetragen und es kommen laufend neue dazu.",
+    "en": "The register of designations of origin (PDO) and geographical indications (PGI) allows the region names and traditional designations of agricultural products to be protected (with the exception of wine), where the quality and the main characteristics of the products are determined by their geographical origin. If a name is protected, it can only be used by producers in the specified geographical region, who must comply with a detailed requirements specification. The purpose of protecting certain designations of agricultural products is to prevent consumers from being exposed to fraud and, in the interests of farmers, to stop unfair competition relating to the use of the designations. The rules in this area allow for the mutual recognition of quality products by Switzerland and the European Union. There are four categories: cheese, meat products, products of plant origin and spirits. The register of designations of origin currently contains around 30 different products and new ones are frequently being added.",
+    "it": "Il Registro delle denominazioni di origine (DOP) e delle indicazioni geografiche (IGP) consente di tutelare i nomi geografici e tradizionali che designano prodotti agricoli (ad eccezione del vino) la cui qualità e le cui caratteristiche principali sono determinate dalla loro origine. L'utilizzo di un nome protetto è appannaggio dei produttori della zona geografica definita che ottemperano ad un dettagliato elenco degli obblighi. La protezione di determinate denominazioni di prodotti agricoli è finalizzata a tutelare i consumatori dalle frodi e a proteggere i contadini dalla concorrenza sleale dovuta all'abuso delle denominazioni. La regolamentazione applicabile in questo settore permette il reciproco riconoscimento dei prodotti di qualità tra Svizzera e UE. Le DOP/IGP sono suddivise in quattro categorie: formaggi, prodotti carnei, prodotti vegetali e distillati. Attualmente il registro delle DOP/IGP conta 30 prodotti e il numero di registrazioni è in costante aumento."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "info@blw.admin.ch",
+    "schema:name": "info@blw.admin.ch"
+  },
+  "dct:issued": "2009-12-16",
+  "dct:accrualPeriodicity": "UNKNOWN",
+  "dct:modified": "2009-12-16",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "c11df334-e906-44b8-8fab-22fed980958c"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "protected-designation-of-origin-pdo",
+    "protected-geographical-indication-pgi",
+    "processed-agricultural-produce",
+    "alcohol",
+    "distillation",
+    "area-managementrestrictionregulation-zones-and-reporting-units",
+    "land-use",
+    "fsdi-federal-spatial-data-infrastructure"
+  ],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/kennzeichnung/ursprungsbezeichungen-und-geografische-angaben.html",
+  "foaf:page": [
+    {
+      "uri": "https://map.geo.admin.ch/?topic=blw&lang=de&bgLayer=ch.swisstopo.pixelkarte-farbe",
+      "alias": "Link zum Fachportal"
+    },
+    {
+      "uri": "https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/bc34236a-ffe9-40af-9eae-d2cf1e0e96e6",
+      "alias": "geocat.ch permalink"
+    }
+  ],
+  "dcatap:applicableLegislation": [],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "8ecf24cb-824c-47de-8881-e1f437806f17",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.ursprungsbezeichnungen-spirituosen",
+      "adms:status": "published",
+      "dct:format": "SERVICE",
+      "dct:modified": "2009-12-16",
+      "dct:title": {
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "Aperçu map.geo.admin.ch",
+        "de": "Vorschau map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 557de072-983b-4821-a140-6c605d99a381"
+    },
+    {
+      "dct:identifier": "9cacb24d-e2de-4c0c-a362-911fde3c647d",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dct:format": "WMS",
+      "dct:modified": "2009-12-16",
+      "dct:title": {
+        "fr": "ch.blw.ursprungsbezeichnungen-spirituosen",
+        "de": "ch.blw.ursprungsbezeichnungen-spirituosen",
+        "en": "ch.blw.ursprungsbezeichnungen-spirituosen",
+        "it": "ch.blw.ursprungsbezeichnungen-spirituosen"
+      },
+      "dct:description": {
+        "fr": "Service WMS-IFDG, couche \"Spiritueux\"",
+        "de": "WMS-BGDI Dienst, Layer \"Spirituosen\"",
+        "en": "WMS-FSDI service, layer \"Spirits\"",
+        "it": "Servizio WMS-IFDG, strato \"Distillati\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 0770f39c-2442-45ed-b8ac-d4c8066e3cb4"
+    },
+    {
+      "dct:identifier": "54cfba82-194a-4403-bb01-6971c9af35d8",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dct:format": "WMTS",
+      "dct:modified": "2009-12-16",
+      "dct:title": {
+        "fr": "ch.blw.ursprungsbezeichnungen-spirituosen",
+        "de": "ch.blw.ursprungsbezeichnungen-spirituosen",
+        "en": "ch.blw.ursprungsbezeichnungen-spirituosen",
+        "it": "ch.blw.ursprungsbezeichnungen-spirituosen"
+      },
+      "dct:description": {
+        "fr": "Service WMTS-IFDG, couche , Layer \"Spiritueux\"",
+        "de": "WMTS-BGDI Dienst, Layer \"Spirituosen\"",
+        "en": "WMTS-FSDI service, layer \"Spirits\"",
+        "it": "Servizio WMTS-IFDG, strato \"Distillati\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: fa46a4cd-ba82-455a-8a75-97b9873d5105"
+    },
+    {
+      "dct:identifier": "640f3753-5d34-4a83-abb1-3e256f237c96",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.ursprungsbezeichnungen-spirituosen",
+      "adms:status": "published",
+      "dct:format": "HTML",
+      "dct:modified": "2009-12-16",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.ursprungsbezeichnungen-spirituosen",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "de": "Download von data.geo.admin.ch",
+        "en": "Download server from geo.admin.ch",
+        "it": "Server di download di geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 7ce42c25-b11d-4107-ade9-30a011b1b74f"
+    },
+    {
+      "dct:identifier": "bb4a10e8-0b7d-4cb2-808f-ccedd6d710b6",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.ursprungsbezeichnungen-spirituosen",
+      "adms:status": "published",
+      "dct:format": "API",
+      "dct:modified": "2009-12-16",
+      "dct:title": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 648eed79-5257-4203-9c1f-bd1e7f95f04a"
+    }
+  ]
+}

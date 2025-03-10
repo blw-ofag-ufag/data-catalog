@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "6ef9cb6b-8af5-409a-a195-93126a224ba7",
+  "dct:title": {
+    "fr": "Consommation par habitant 1990/92-2015",
+    "de": "Pro-Kopf-Konsum 1990/92-2015",
+    "en": "",
+    "it": "Consumo pro capite 1990/92-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Pro-Kopf-Konsum (Milch und Milchprodukte, Fleisch und Eier, Getreide, Hackfrüchte, Ölsaaten, Obst, Gemüse, Wein) in Kilogramm",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "35f63f53-db5b-4dbd-8655-b1c864bf6c6b"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/nachhaltige-produktion/pflanzliche-produktion.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "1f4777ca-a6f8-41c5-9584-93abf35dd9f2",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/e0/2055l7gtshz53dq8daut8n6drptn3d/pro-kopf-konsum_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/e0/2055l7gtshz53dq8daut8n6drptn3d/pro-kopf-konsum_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Pro-Kopf-Konsum 1990/92-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: cd6abb18-50bb-4355-93b1-562902b6ff01"
+    },
+    {
+      "dct:identifier": "22d18246-c19a-4d06-a840-f9ed67395567",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/f7/kjk8becyfhtlaalobiqfm37p89nk87/pro-kopf-konsum_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/f7/kjk8becyfhtlaalobiqfm37p89nk87/pro-kopf-konsum_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Consommation par habitant 1990/92-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 32fffc47-c4e9-4946-a947-0976bcc7845f"
+    },
+    {
+      "dct:identifier": "8ef51d6f-3549-490f-88ea-bc6b210edb7b",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/a9/buvct75qdg1f1gcslopkkrz1a470tr/pro-kopf-konsum_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/a9/buvct75qdg1f1gcslopkkrz1a470tr/pro-kopf-konsum_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Consumo pro capite 1990/92-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 10510a8f-f6cf-4644-8690-c26a8f598040"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "1990-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "8c8fffb8-c9a0-43cc-83c7-e046b76d82b2",
+  "dct:title": {
+    "fr": "Dépenses économie laitière 1999-2015",
+    "de": "Ausgaben Milchwirtschaft 1999-2015",
+    "en": "",
+    "it": "Uscite economia lattiera 1999-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Ausgaben des Bundes im Bereich Milch (z.B. Zulage für verkäste Milch, Zulage für Fütterung ohne Silage, ...)",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "9d72dd2a-0d32-464f-ad2b-4ad82af111d6"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.efv.admin.ch/efv/de/home/finanzberichterstattung/finanzberichte/staatsrechnung.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "34cf7699-ab5a-4c97-b887-fd0d877b5f3f",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d4/kjoriwrpnugm81s066eeiqfyhxgpwv/ausgaben_milchwirtschaft_1999-2015_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/d4/kjoriwrpnugm81s066eeiqfyhxgpwv/ausgaben_milchwirtschaft_1999-2015_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Ausgaben Milchwirtschaft 1999-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 7ee04dd4-63c1-498b-9b02-3bd5cc157eb2"
+    },
+    {
+      "dct:identifier": "4fd0bc0c-6eff-408e-af9c-041c15bbd0b0",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/1f/1fybysudtgjvdaj8s9x4oe0odztivy/ausgaben_milchwirtschaft_1999-2015_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/1f/1fybysudtgjvdaj8s9x4oe0odztivy/ausgaben_milchwirtschaft_1999-2015_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Dépenses économie laitière 1999-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 6646c742-adb2-40d1-a5fd-1d2cf6b7772c"
+    },
+    {
+      "dct:identifier": "17896dc5-3e6b-4f95-bfe4-96fe415920c7",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/36/r6philnbgb6ai5bz7a2slv03rf1060/ausgaben_milchwirtschaft_1999-2015_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/36/r6philnbgb6ai5bz7a2slv03rf1060/ausgaben_milchwirtschaft_1999-2015_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Uscite economia lattiera 1999-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: ca41f2a2-0bce-4d78-b259-2670a141b952"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "1999-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

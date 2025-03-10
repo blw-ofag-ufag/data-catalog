@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "3749fc93-56b7-439d-a198-cc185e53278b",
+  "dct:title": {
+    "fr": "Taux d'auto-approvisionnement 2007-2014",
+    "de": "Selbstversorgungsgrad 2007-2014",
+    "en": "",
+    "it": "Grado di autoapprovvigionamento 2007-2014"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Selbstversorgungsgrad von pflanzlichen und tierischen Produkten sowie Brutto- und Nettoselbstversorgungsgrad",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "bf61558b-0a54-4f22-9d58-ed4325f9007b"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.sbv-usp.ch/de/statistik/statistiken/ernaehrung/",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "a49e9e3c-e335-4f25-9370-fd793441c87c",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/4e/4o2dfedzepam492csgzdrrlvms0v6d/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/4e/4o2dfedzepam492csgzdrrlvms0v6d/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Selbstversorgungsgrad 2007-2014",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: a9a31acf-65ff-4af3-a444-fc1da4dfa6c6"
+    },
+    {
+      "dct:identifier": "6f6e09f8-6012-4fc8-839a-951409e8e292",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/25/xjs2h7rdwr9nodzalbb1hl66gkx9tg/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/25/xjs2h7rdwr9nodzalbb1hl66gkx9tg/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Taux d'auto-approvisionnement 2007-2014",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 97c5057d-b381-4641-b7d2-ac31f8cf06f5"
+    },
+    {
+      "dct:identifier": "1f1e611b-d1d1-429b-8ad6-e91140aad949",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/33/qc27cnt43icplr3edjk90i2ww9azir/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/33/qc27cnt43icplr3edjk90i2ww9azir/selbstversorgungsgrad_neue_methode_nahrungsgsmittelbilanz_ab_2007_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Grado di autoapprovvigionamento 2007-2014"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 81330a18-045c-4108-95fa-5a7a682ad1ae"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2007-01-01",
+    "dcat:end_date": "2014-12-31"
+  }
+}

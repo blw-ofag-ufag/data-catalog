@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "60d72f56-5d43-451a-bdbb-f585ee9b1fd5",
+  "dct:title": {
+    "fr": "Surface agricole utile 1990-2015",
+    "de": "Landwirtschaftliche Nutzfläche 1990-2015",
+    "en": "",
+    "it": "Superficie agricola utile 1990-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Landwirtschaftliche Nutzfläche nach Grössenklassen (in ha)",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "dcbbfce9-e2e1-4b20-9a5b-b07cc6ecca14"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.bfs.admin.ch/bfs/de/home/statistiken/land-forstwirtschaft/landwirtschaft/strukturen.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "b04d466d-8909-445c-872f-9f1582caaabe",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/2a/po3w02zxj25e8b50j07w07a23l1gfo/landwirtschaftliche_nutzflaeche_1990-2015_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/2a/po3w02zxj25e8b50j07w07a23l1gfo/landwirtschaftliche_nutzflaeche_1990-2015_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Landwirtschaftliche Nutzfläche",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 7cfc045a-847f-4c9a-93b2-2c196b26d3ab"
+    },
+    {
+      "dct:identifier": "7d080bbd-8b76-4de4-8540-1984d24d711a",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/eb/gfzt3asmg68au9ldneirdvmm7g0nv5/landwirtschaftliche_nutzflaeche_1990-2015_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/eb/gfzt3asmg68au9ldneirdvmm7g0nv5/landwirtschaftliche_nutzflaeche_1990-2015_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Surface agricole utile",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: dcd853b0-5620-443c-ac42-c4b38b970b5f"
+    },
+    {
+      "dct:identifier": "284d9995-b102-4522-bbc6-86d4a52224f7",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/c5/0n6lcpamjiwnx4qmbxw4o6pyc3hrjs/landwirtschaftliche_nutzflaeche_1990-2015_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/c5/0n6lcpamjiwnx4qmbxw4o6pyc3hrjs/landwirtschaftliche_nutzflaeche_1990-2015_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Superficie agricola utile"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 0e4740e8-0193-4574-bf8d-bbf7da3cfede"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "1990-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

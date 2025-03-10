@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "6cfb283f-7173-4bfd-8028-f944f153de41",
+  "dct:title": {
+    "fr": "Chiffres du marché du lait et des produits laitiers - Indice des prix annuels (commerce de gros/transformation)",
+    "de": "Marktzahlen Milch und Milchprodukte - Jährlicher Preis-Index (Grosshandel/Verarbeitung)",
+    "en": "Market figures milk and dairy products - Annual price indices (wholesale/processing)",
+    "it": "Cifre di mercato latte e latticini - Indice dei prezzi annuali (commercio all'ingrosso/trasformazione)"
+  },
+  "dct:description": {
+    "fr": "Indice de prix annuel d’une sélection de produits laitiers à l’échelon de création de valeur Commerce de gros/transformation",
+    "de": "Jährliche Preis-Indizes von ausgewählten Milchprodukten auf der Wertschöpfungsstufe Grosshandel/Verarbeitung",
+    "en": "Annual price indices of selected dairy products at the wholesale/processing stage of the value chain",
+    "it": "Indice dei prezzi annuo di latticini selezionati a livello della catena del valore commercio all'ingrosso/trasformazione"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-02-12",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "55f48530-8f03-4058-b26e-387c23c5a48e"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "price",
+    "market-data"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-milch-und-milchprodukte"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "962ba2b1-839f-4564-a523-142ef4a060dd",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FMilkDairyProducts%2FWholesaleProcessing_Index_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "en": "SPARQL Endpoint with graph preselection",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 9be4b01d-50ce-4b9b-8f2a-bd55ab3b1e16"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2010-01-01",
+    "dcat:end_date": "2024-01-01"
+  }
+}

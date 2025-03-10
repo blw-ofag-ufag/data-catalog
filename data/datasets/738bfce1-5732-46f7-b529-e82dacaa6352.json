@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "738bfce1-5732-46f7-b529-e82dacaa6352",
+  "dct:title": {
+    "fr": "Chiffres du marché des céréales panifiables - Prix de transformation annuels",
+    "de": "Marktzahlen Brotgetreide - Jährliche Verarbeitungspreise",
+    "en": "Market figures for bread cereals - Annual processing prices",
+    "it": "Dati di mercato dei cereali panificabili - Prezzi di trasformazione annui"
+  },
+  "dct:description": {
+    "fr": "Prix annuels pour les céréales panifiables, la farine et les produits de boulangerie au niveau du commerce de gros/transformation",
+    "en": "Annual prices for bread cereals, flour, and bakery products at the wholesale/processing level",
+    "de": "Jährliche Preise für Brotgetreide, Mehl und Backwaren auf der Wertschöpfungsstufe Grosshandel/Verarbeitung",
+    "it": "Prezzi annui per cereali panificabili, farina e prodotti da forno al livello del commercio all’ingrosso/trasformazione"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-03-07",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "4a778f45-2b65-4883-a1aa-6573de189c39"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "market-data",
+    "price"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-brotgetreide"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "a3749a94-def1-4602-a7cd-4c7aed400dc8",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FBreadCerealsFlourBakedGoods%2FWholesaleProcessing_Price_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "en": "SPARQL Endpoint with graph preselection",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 38fd6a7c-e6e3-4373-a0ab-80cd3e503887"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2016-01-01",
+    "dcat:end_date": "2024-01-01"
+  }
+}

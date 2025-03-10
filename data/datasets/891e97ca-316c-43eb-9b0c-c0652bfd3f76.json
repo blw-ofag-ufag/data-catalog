@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "891e97ca-316c-43eb-9b0c-c0652bfd3f76",
+  "dct:title": {
+    "fr": "Dépenses économie animale 1999-2015",
+    "de": "Ausgaben Viehwirtschaft 1999-2015",
+    "en": "",
+    "it": "Uscite produzione animale 1999-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Ausgaben des Bundes im Bereich Viehwirtschaft (z.B. Marktstützung Fleisch, Eier, Ausfuhrbeihilfen Zucht- und Nutzvieh, Verwertung der Schafwolle, Entsorgungsbeiträge) in CHF",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "30981f07-dc91-4df5-9001-f008223a5524"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.efv.admin.ch/efv/de/home/finanzberichterstattung/finanzberichte/staatsrechnung.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "a305bc2c-0acc-42d4-bcb8-cea8483c3a98",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ca/bielmn763zkntp6ramdyxa76ywt9e6/ausgaben_viehwirtschaft_1999-2015_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ca/bielmn763zkntp6ramdyxa76ywt9e6/ausgaben_viehwirtschaft_1999-2015_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Ausgaben Viehwirtschaft 1999-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 6fd6f56d-3f23-49bd-8668-79e9d5b64bf2"
+    },
+    {
+      "dct:identifier": "7a258c4d-43a0-4b23-bca2-8fb1e28f0c0f",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/7b/3cq2zo6g372n3b7id85gi30k6j7v6c/ausgaben_viehwirtschaft_1999-2015_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/7b/3cq2zo6g372n3b7id85gi30k6j7v6c/ausgaben_viehwirtschaft_1999-2015_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Dépenses économie animale 1999-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 3a13b28b-a519-439f-a49a-2cf28724f660"
+    },
+    {
+      "dct:identifier": "75b0f623-57ac-4abb-840d-add66dd670ca",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/3b/g9062mq2b33eezmxqm3n81g0yq6i1k/ausgaben_viehwirtschaft_1999-2015_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/3b/g9062mq2b33eezmxqm3n81g0yq6i1k/ausgaben_viehwirtschaft_1999-2015_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Uscite produzione animale 1999-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: a72e9031-3262-4612-add8-04c97ca57077"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "1999-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}
