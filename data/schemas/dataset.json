@@ -1,672 +1,693 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Dataset Schema",
-  "description": "A JSON schema for a dataset file in the data catalog.",
-  "type": "object",
-  "required": [
-      "dct:identifier",
-      "dct:title",
-      "dct:description",
-      "dct:accessRights",
-      "dct:publisher",
-      "dcat:contactPoint",
-      "dct:issued",
-      "dct:accrualPeriodicity",
-      "dct:modified",
-      "prov:qualifiedAttribution",
-      "adms:status",
-      "bv:classification",
-      "bv:personalData",
-      "bv:archivalValue",
-      "bv:opendata_swiss",
-      "bv:i14y"
-  ],
-  "properties": {
-      "schema:image": {
-          "type": [
-              "string",
-              "null"
-          ],
-          "format": "uri",
-          "title": "Image URL",
-          "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the dataset's content."
-      },
-      "dct:identifier": {
-          "type": "string",
-          "title": "Dataset identifier",
-          "description": "Unique identifier for the dataset. If left empty, it is automatically assigned."
-      },
-      "dct:title": {
-          "type": "object",
-          "required": [
-              "de",
-              "fr"
-          ],
-          "title": "Dataset title",
-          "description": "Title of the dataset.",
-          "properties": {
-              "de": {
-                  "type": "string",
-                  "title": "Deutsch"
-              },
-              "fr": {
-                  "type": "string",
-                  "title": "Français"
-              },
-              "it": {
-                  "type": "string",
-                  "title": "Italiano"
-              },
-              "en": {
-                  "type": "string",
-                  "title": "English"
-              }
-          }
-      },
-      "dct:description": {
-          "type": "object",
-          "required": [
-              "de",
-              "fr"
-          ],
-          "title": "Dataset description",
-          "description": "Description of the dataset. Should go into details about the dataset content and help a non-specialist to understand what is the dataset about.",
-          "properties": {
-              "de": {
-                  "type": "string",
-                  "title": "Deutsch"
-              },
-              "fr": {
-                  "type": "string",
-                  "title": "Français"
-              },
-              "it": {
-                  "type": "string",
-                  "title": "Italiano"
-              },
-              "en": {
-                  "type": "string",
-                  "title": "English"
-              }
-          }
-      },
-      "dct:accessRights": {
-          "type": "string",
-          "title": "Access rights",
-          "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
-          "enum": [
-              "CONFIDENTIAL",
-              "NON_PUBLIC",
-              "PUBLIC",
-              "RESTRICTED",
-              "SENSITIVE"
-          ]
-      },
-      "dct:publisher": {
-          "type": "string",
-          "title": "Publisher",
-          "description": "Entity (person or organization) who published the dataset."
-      },
-      "dcat:contactPoint": {
-          "type": "object",
-          "required": [
-              "schema:name",
-              "schema:email"
-          ],
-          "title": "Contact point",
-          "description": "Contact information for potential inquiries about the dataset.",
-          "properties": {
-              "schema:name": {
-                  "type": "string",
-                  "title": "Name"
-              },
-              "schema:email": {
-                  "type": "string",
-                  "title": "email"
-              }
-          }
-      },
-      "dct:issued": {
-          "title": "Issued date",
-          "description": "Date when the dataset was formally issued for the first time. If unknown, you may select the date of the first publication of this metadata.",
-          "type": [
-              "string",
-              "null"
-          ],
-          "format": "date"
-      },
-      "dcatap:availability": {
-          "title": "Dataset availability",
-          "description": "This property indicates how long it is planned to keep the Dataset available. See http://publications.europa.eu/resource/authority/planned-availability for the controlled vocabulary.",
-          "type": "string",
-          "enum": [
-              "AVAILABLE",
-              "EXPERIMENTAL",
-              "STABLE",
-              "TEMPORARY"
-          ]
-      },
-      "dcat:keyword": {
-          "type": [
-              "array",
-              "null"
-          ],
-          "title": "Keywords",
-          "description": "Keywords describing the dataset.",
-          "items": {
-              "type": "string"
-          }
-      },
-      "dct:accrualPeriodicity": {
-          "type": "string",
-          "title": "Accrual periodicity",
-          "description": "Frequency with which dataset is updated (e.g., 'Annual'). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-frequency .",
-          "enum": [
-              "OTHER",
-              "HOURLY",
-              "UNKNOWN",
-              "QUARTERLY",
-              "NEVER",
-              "MONTHLY",
-              "ANNUAL",
-              "DAILY",
-              "AS_NEEDED",
-              "WEEKLY",
-              "IRREG",
-              "CONT"
-          ]
-      },
-      "dct:modified": {
-          "type": [
-              "string",
-              "null"
-          ],
-          "format": "date",
-          "title": "Last modification date",
-          "description": "Last modification date of the data in the dataset."
-      },
-      "prov:qualifiedAttribution": {
-          "type": "array",
-          "title": "Affiliated persons",
-          "description": "List of affiliated people, their contact address and respective roles.",
-          "items": {
-              "type": "object",
-              "required": [
-                  "dcat:hadRole",
-                  "prov:agent"
-              ],
-              "properties": {
-                  "prov:agent": {
-                      "type": "string",
-                      "title": "Personal ID from AdminDir. The AdminDir ID is shown as the URL slug of a person's AdminDir page. For example, on the page <https://admindir.verzeichnisse.admin.ch/person/p-2959456>, the AdminDir ID is `p-2959456`."
-                  },
-                  "schema:name": {
-                      "type": "string",
-                      "title": "Name"
-                  },
-                  "schema:email": {
-                      "type": "string",
-                      "title": "email"
-                  },
-                  "dcat:hadRole": {
-                      "type": "string",
-                      "title": "Role",
-                      "description": "Role this person has for this dataset.",
-                      "enum": [
-                          "businessDataOwner",
-                          "dataSteward",
-                          "dataCustodian"
-                      ]
-                  }
-              }
-          },
-          "minItems": 1,
-          "contains": {
-              "type": "object",
-              "properties": {
-                  "dcat:hadRole": {
-                      "const": "businessDataOwner"
-                  }
-              }
-          }
-      },
-      "adms:status": {
-          "type": "string",
-          "title": "Status",
-          "description": "Current status of the dataset.",
-          "enum": [
-              "workInProgress",
-              "validated",
-              "published",
-              "deleted",
-              "archived"
-          ]
-      },
-      "bv:classification": {
-          "type": "string",
-          "title": "Classification level",
-          "description": "Classification level of the dataset according to the Swiss Informationssicherheitsgesetz, ISG. For information regarding the categorization, consult <a https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_13'>the Swiss Informationssicherheitsgesetz article 13</a>",
-          "enum": [
-              "none",
-              "internal",
-              "confidential",
-              "secret"
-          ]
-      },
-      "bv:personalData": {
-          "type": "string",
-          "title": "Categorization DSG",
-          "description": "Categorization regarding the Swiss data protection act. For information regarding the categorization, consult <a href='https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5'>the Swiss data protection act article 5</a>.",
-          "enum": [
-              "none",
-              "personalData",
-              "sensitivePersonalData"
-          ]
-      },
-      "bv:typeOfData": {
-          "type": "string",
-          "title": "Data type",
-          "description": "Specifies the type of data in the dataset (master data, reference data, thematic data or unstructured data).",
-          "enum": [
-              "thematicData",
-              "referenceData",
-              "masterData",
-              "unstructuredData"
-          ]
-      },
-      "bv:archivalValue": {
-          "type": "boolean",
-          "title": "Archival value",
-          "description": "Indicates if this dataset has archival value and must be sent to the BAR."
-      },
-      "bv:opendata_swiss": {
-          "type": "object",
-          "required": [
-              "bv:mustBePublished"
-          ],
-          "title": "opendataswiss publication",
-          "description": "Indicates if the dataset must be published as Open Government Data (OGD) via the opendata.swiss portal. Optionally references the opendata.swiss publication ID.",
-          "properties": {
-              "bv:mustBePublished": {
-                  "title": "opendata.swiss publication flag",
-                  "description": "Indicates if the dataset must be published on opendata.swiss. May be used by harvesters or automatic metadata publication.",
-                  "type": "boolean"
-              },
-              "dct:identifier": {
-                  "title": "opendata.swiss ID",
-                  "type": "string",
-                  "description": "Identifier for the dataset on opendata.swiss."
-              },
-              "dcat:accessURL": {
-                  "title": "opendata.swiss URL",
-                  "type": "string",
-                  "format": "uri",
-                  "description": "URL for the dataset on opendata.swiss"
-              }
-          }
-      },
-      "bv:i14y": {
-          "type": "object",
-          "required": [
-              "bv:mustBePublished"
-          ],
-          "title": "i14y publication",
-          "description": "Indicates if the dataset metadata must be made available via the interoperability platform I14Y. Optionally references the I14Y publication ID.",
-          "properties": {
-              "bv:mustBePublished": {
-                  "title": "i14y publication flag",
-                  "description": "Indicates if the dataset must be published on I14Y. May be used by harvesters or automatic metadata publication. This is true by default.",
-                  "type": "boolean",
-                  "default": true
-              },
-              "dct:identifier": {
-                  "title": "i14y id",
-                  "type": "string",
-                  "description": "Identifier for the dataset on I14Y."
-              },
-              "dcat:accessURL": {
-                  "title": "i14y url",
-                  "type": "string",
-                  "format": "uri",
-                  "description": "URL for the dataset on I14Y"
-              }
-          }
-      },
-      "dcat:theme": {
-          "type": [
-              "array",
-              "null"
-          ],
-          "title": "Dataset themes",
-          "description": "This attribute classifies the dataset into one or more broad thematics. Proper classification allow other users interested in the topic to find the dataset without knowing its name or description. Those are opendata.swiss themes, which are then mapped to EU themes thanks to https://dcat-ap.ch/vocabulary/themes/20231122.html .",
-          "items": {
-              "type": "string",
-              "enum": [
-                  "work",
-                  "construction",
-                  "population",
-                  "education",
-                  "energy",
-                  "finances",
-                  "geography",
-                  "legislation",
-                  "health",
-                  "trade",
-                  "industry",
-                  "crime",
-                  "culture",
-                  "agriculture",
-                  "mobility",
-                  "public-order",
-                  "politics",
-                  "prices",
-                  "territory",
-                  "social-security",
-                  "statistical-basis",
-                  "tourism",
-                  "administration",
-                  "national-economy"
-              ]
-          }
-      },
-      "dcat:landingPage": {
-          "title": "Landing page",
-          "type": [
-              "string",
-              "null"
-          ],
-          "format": "uri",
-          "description": "Landing page or homepage for the dataset."
-      },
-      "dct:spatial": {
-          "title": "Spatial coverage",
-          "type": "string",
-          "description": "Spatial/geographical coverage of the dataset."
-      },
-      "dct:temporal": {
-          "title": "Temporal coverage",
-          "type": "string",
-          "description": "Temporal coverage of the dataset. For example, the first and last measurement years for a timeseries."
-      },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Dataset Schema",
+    "description": "A JSON schema for a dataset file in the data catalog.",
+    "type": "object",
+    "required": [
+        "dct:identifier",
+        "dct:title",
+        "dct:description",
+        "dct:accessRights",
+        "dct:publisher",
+        "dcat:contactPoint",
+        "dct:issued",
+        "dct:accrualPeriodicity",
+        "dct:modified",
+        "prov:qualifiedAttribution",
+        "adms:status",
+        "bv:classification",
+        "bv:personalData",
+        "bv:archivalValue",
+        "bv:opendata_swiss",
+        "bv:i14y"
+    ],
+    "properties": {
+        "schema:image": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "uri",
+            "title": "Image URL",
+            "description": "URL for an image to be displayed in the data catalog. Choose an image that is related to the dataset's content."
+        },
+        "dct:identifier": {
+            "type": "string",
+            "title": "Dataset identifier",
+            "description": "Unique identifier for the dataset. If left empty, it is automatically assigned."
+        },
+        "dct:title": {
+            "type": "object",
+            "required": [
+                "de",
+                "fr"
+            ],
+            "title": "Dataset title",
+            "description": "Title of the dataset.",
+            "properties": {
+                "de": {
+                    "type": "string",
+                    "title": "Deutsch"
+                },
+                "fr": {
+                    "type": "string",
+                    "title": "Français"
+                },
+                "it": {
+                    "type": "string",
+                    "title": "Italiano"
+                },
+                "en": {
+                    "type": "string",
+                    "title": "English"
+                }
+            }
+        },
+        "dct:description": {
+            "type": "object",
+            "required": [
+                "de",
+                "fr"
+            ],
+            "title": "Dataset description",
+            "description": "Description of the dataset. Should go into details about the dataset content and help a non-specialist to understand what is the dataset about.",
+            "properties": {
+                "de": {
+                    "type": "string",
+                    "title": "Deutsch"
+                },
+                "fr": {
+                    "type": "string",
+                    "title": "Français"
+                },
+                "it": {
+                    "type": "string",
+                    "title": "Italiano"
+                },
+                "en": {
+                    "type": "string",
+                    "title": "English"
+                }
+            }
+        },
+        "dct:accessRights": {
+            "type": "string",
+            "title": "Access rights",
+            "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right .",
+            "enum": [
+                "CONFIDENTIAL",
+                "NON_PUBLIC",
+                "PUBLIC",
+                "RESTRICTED",
+                "SENSITIVE"
+            ]
+        },
+        "dct:publisher": {
+            "type": "string",
+            "title": "Publisher",
+            "description": "Entity (person or organization) who published the dataset."
+        },
+        "dcat:contactPoint": {
+            "type": "object",
+            "required": [
+                "schema:name",
+                "schema:email"
+            ],
+            "title": "Contact point",
+            "description": "Contact information for potential inquiries about the dataset.",
+            "properties": {
+                "schema:name": {
+                    "type": "string",
+                    "title": "Name"
+                },
+                "schema:email": {
+                    "type": "string",
+                    "title": "email"
+                }
+            }
+        },
+        "dct:issued": {
+            "title": "Issued date",
+            "description": "Date when the dataset was formally issued for the first time. If unknown, you may select the date of the first publication of this metadata.",
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "date"
+        },
+        "dcatap:availability": {
+            "title": "Dataset availability",
+            "description": "This property indicates how long it is planned to keep the Dataset available. See http://publications.europa.eu/resource/authority/planned-availability for the controlled vocabulary.",
+            "type": "string",
+            "enum": [
+                "AVAILABLE",
+                "EXPERIMENTAL",
+                "STABLE",
+                "TEMPORARY"
+            ]
+        },
+        "dcat:keyword": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "title": "Keywords",
+            "description": "Keywords describing the dataset.",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dct:accrualPeriodicity": {
+            "type": "string",
+            "title": "Accrual periodicity",
+            "description": "Frequency with which dataset is updated (e.g., 'Annual'). See https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-frequency .",
+            "enum": [
+                "OTHER",
+                "HOURLY",
+                "UNKNOWN",
+                "QUARTERLY",
+                "NEVER",
+                "MONTHLY",
+                "ANNUAL",
+                "DAILY",
+                "AS_NEEDED",
+                "WEEKLY",
+                "IRREG",
+                "CONT"
+            ]
+        },
+        "dct:modified": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "date",
+            "title": "Last modification date",
+            "description": "Last modification date of the data in the dataset."
+        },
+        "prov:qualifiedAttribution": {
+            "type": "array",
+            "title": "Affiliated persons",
+            "description": "List of affiliated people, their contact address and respective roles.",
+            "items": {
+                "type": "object",
+                "required": [
+                    "dcat:hadRole",
+                    "prov:agent"
+                ],
+                "properties": {
+                    "prov:agent": {
+                        "type": "string",
+                        "title": "Personal ID from AdminDir. The AdminDir ID is shown as the URL slug of a person's AdminDir page. For example, on the page <https://admindir.verzeichnisse.admin.ch/person/p-2959456>, the AdminDir ID is `p-2959456`."
+                    },
+                    "schema:name": {
+                        "type": "string",
+                        "title": "Name"
+                    },
+                    "schema:email": {
+                        "type": "string",
+                        "title": "email"
+                    },
+                    "dcat:hadRole": {
+                        "type": "string",
+                        "title": "Role",
+                        "description": "Role this person has for this dataset.",
+                        "enum": [
+                            "businessDataOwner",
+                            "dataSteward",
+                            "dataCustodian"
+                        ]
+                    }
+                }
+            },
+            "minItems": 1,
+            "contains": {
+                "type": "object",
+                "properties": {
+                    "dcat:hadRole": {
+                        "const": "businessDataOwner"
+                    }
+                }
+            }
+        },
+        "adms:status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Current status of the dataset.",
+            "enum": [
+                "workInProgress",
+                "validated",
+                "published",
+                "deleted",
+                "archived"
+            ]
+        },
+        "bv:classification": {
+            "type": "string",
+            "title": "Classification level",
+            "description": "Classification level of the dataset according to the Swiss Informationssicherheitsgesetz, ISG. For information regarding the categorization, consult <a https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_13'>the Swiss Informationssicherheitsgesetz article 13</a>",
+            "enum": [
+                "none",
+                "internal",
+                "confidential",
+                "secret"
+            ]
+        },
+        "bv:personalData": {
+            "type": "string",
+            "title": "Categorization DSG",
+            "description": "Categorization regarding the Swiss data protection act. For information regarding the categorization, consult <a href='https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5'>the Swiss data protection act article 5</a>.",
+            "enum": [
+                "none",
+                "personalData",
+                "sensitivePersonalData"
+            ]
+        },
+        "bv:typeOfData": {
+            "type": "string",
+            "title": "Data type",
+            "description": "Specifies the type of data in the dataset (master data, reference data, thematic data or unstructured data).",
+            "enum": [
+                "thematicData",
+                "referenceData",
+                "masterData",
+                "unstructuredData"
+            ]
+        },
+        "bv:archivalValue": {
+            "type": "boolean",
+            "title": "Archival value",
+            "description": "Indicates if this dataset has archival value and must be sent to the BAR."
+        },
+        "bv:opendata_swiss": {
+            "type": "object",
+            "required": [
+                "bv:mustBePublished"
+            ],
+            "title": "opendataswiss publication",
+            "description": "Indicates if the dataset must be published as Open Government Data (OGD) via the opendata.swiss portal. Optionally references the opendata.swiss publication ID.",
+            "properties": {
+                "bv:mustBePublished": {
+                    "title": "opendata.swiss publication flag",
+                    "description": "Indicates if the dataset must be published on opendata.swiss. May be used by harvesters or automatic metadata publication.",
+                    "type": "boolean"
+                },
+                "dct:identifier": {
+                    "title": "opendata.swiss ID",
+                    "type": "string",
+                    "description": "Identifier for the dataset on opendata.swiss."
+                },
+                "dcat:accessURL": {
+                    "title": "opendata.swiss URL",
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL for the dataset on opendata.swiss"
+                }
+            }
+        },
+        "bv:i14y": {
+            "type": "object",
+            "required": [
+                "bv:mustBePublished"
+            ],
+            "title": "i14y publication",
+            "description": "Indicates if the dataset metadata must be made available via the interoperability platform I14Y. Optionally references the I14Y publication ID.",
+            "properties": {
+                "bv:mustBePublished": {
+                    "title": "i14y publication flag",
+                    "description": "Indicates if the dataset must be published on I14Y. May be used by harvesters or automatic metadata publication. This is true by default.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "dct:identifier": {
+                    "title": "i14y id",
+                    "type": "string",
+                    "description": "Identifier for the dataset on I14Y."
+                },
+                "dcat:accessURL": {
+                    "title": "i14y url",
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL for the dataset on I14Y"
+                }
+            }
+        },
+        "dcat:theme": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "title": "Dataset themes",
+            "description": "This attribute classifies the dataset into one or more broad thematics. Proper classification allow other users interested in the topic to find the dataset without knowing its name or description. Those are opendata.swiss themes, which are then mapped to EU themes thanks to https://dcat-ap.ch/vocabulary/themes/20231122.html .",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "work",
+                    "construction",
+                    "population",
+                    "education",
+                    "energy",
+                    "finances",
+                    "geography",
+                    "legislation",
+                    "health",
+                    "trade",
+                    "industry",
+                    "crime",
+                    "culture",
+                    "agriculture",
+                    "mobility",
+                    "public-order",
+                    "politics",
+                    "prices",
+                    "territory",
+                    "social-security",
+                    "statistical-basis",
+                    "tourism",
+                    "administration",
+                    "national-economy"
+                ]
+            }
+        },
+        "dcat:landingPage": {
+            "title": "Landing page",
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "uri",
+            "description": "Landing page or homepage for the dataset."
+        },
+        "dct:spatial": {
+            "title": "Spatial coverage",
+            "type": "string",
+            "description": "Spatial/geographical coverage of the dataset."
+        },
+        "dct:temporal": {
+            "title": "Temporal coverage",
+            "type": "object",
+            "description": "Temporal coverage of the dataset. For example, the first and last measurement years for a timeseries.",
+            "additionalProperties": false,
+            "properties": {
+                "dcat:start_date": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "format": "date",
+                    "title": "Start date",
+                    "description": "Start date of the temporal coverage for the dataset."
+                },
+                "dcat:end_date": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "format": "date",
+                    "title": "End date",
+                    "description": "End date of the temporal coverage for the dataset."
+                }
+            }
+        },
         "dcatap:applicableLegislation": {
             "title": "Applicable legislation",
             "description": "The legislation that mandates or allows the creation or management of the dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
             "type": [
-              "array",
-              "null"
+                "array",
+                "null"
             ],
             "items": {
-              "title": "URI",
-              "type": [
-                  "string",
-                  "null"
-              ],
-              "format": "uri"
+                "title": "URI",
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "format": "uri"
             }
         },
-      "prov:wasGeneratedBy": {
-          "title": "Business process",
-          "type": [
-              "array",
-              "null"
-          ],
-          "description": "Related business process or context.",
-          "items": {
-              "type": "string"
-          }
-      },
-      "bv:retentionPeriod": {
-          "title": "Retention period",
-          "type": "integer",
-          "description": "Retention period for the dataset. That is, the time that the dataset must legally be available after the end of its active use."
-      },
-      "dcat:catalog": {
-          "title": "catalog",
-          "type": "string",
-          "description": "Indicates in which catalog this dataset is available."
-      },
-      "prov:wasDerivedFrom": {
-          "title": "Derived from",
-          "type": [
-              "array",
-              "null"
-          ],
-          "description": "Links to other datasets from which this dataset was derived.",
-          "items": {
-              "type": "string"
-          }
-      },
-      "bv:geoIdentifier": {
-          "title": "Geo identifier",
-          "type": "string",
-          "description": "Identifier for the dataset according to the GeoIV."
-      },
-      "foaf:page": {
-          "type": [
-              "array",
-              "null"
-          ],
-          "title": "Related resources",
-          "description": "Any related page, document or resource.",
-          "items": {
-              "type": "object",
-              "required": [
-                  "uri"
-              ],
-              "additionalProperties": false,
-              "properties": {
-                  "alias": {
-                      "title": "Page alias",
-                      "description": "Alias to be showed in the interface for this link.",
-                      "type": "string"
-                  },
-                  "uri": {
-                      "title": "url",
-                      "description": "URL for the page, document or resource",
-                      "type": [
-                          "string",
-                          "null"
-                      ],
-                      "format": "uri"
-                  }
-              }
-          }
-      },
-      "schema:comment": {
-          "title": "comments",
-          "type": "string",
-          "description": "Additional comments about the dataset."
-      },
-      "bv:abrogation": {
-          "title": "abrogation",
-          "type": [
-              "string",
-              "null"
-          ],
-          "format": "date",
-          "description": "Indicates when the dataset was abrogated or replaced."
-      },
-      "bv:itSystem": {
-          "title": "IT system",
-          "type": "string",
-          "description": "Name of the IT system managing this dataset."
-      },
-      "dcat:inSeries": {
-          "title": "In Series",
-          "type": "string",
-          "description": "Reference to the series this dataset belongs to."
-      },
-      "dct:replaces": {
-          "title": "replaces",
-          "type": [
-              "array",
-              "null"
-          ],
-          "description": "ID of datasets replaced by this one",
-          "items": {
-              "type": "string"
-          }
-      },
-      "dcat:distribution": {
-          "type": [
-              "array",
-              "null"
-          ],
-          "title": "Distribution",
-          "description": "Distribution info describing how and where to access the dataset. This class describes a specific, final, and ready-to-use format in which a dataset is made available to users. For example, the same data may be available as both a CSV file and an Excel file, each representing a separate distribution of the same dataset. Each distribution must be part of a dataset and should point to a reachable source (e.g. an URL for download). All distributions within a dataset must maintain the same level of timeliness across all channels. This means, for instance, that the 2021 CSV file should be published simultaneously with the Excel file, and vice versa.",
-          "items": {
-              "type": "object",
-              "required": [
-                  "dct:identifier",
-                  "dcat:accessURL",
-                  "adms:status",
-                  "dct:format",
-                  "dct:modified"
-              ],
-              "additionalProperties": false,
-              "properties": {
-                  "dct:identifier": {
-                      "title": "Distribution id",
-                      "type": "string",
-                      "description": "Identifier for this distribution. If left empty, it will be automatically assigned."
-                  },
-                  "dcat:accessURL": {
-                      "title": "Access URL",
-                      "type": "string",
-                      "format": "uri",
-                      "description": "URL to a page for accessing this distribution. This must not be a direct download URL but, for example, a link to a webpage containing download links."
-                  },
-                  "adms:status": {
-                      "title": "Status",
-                      "type": "string",
-                      "description": "Current status of the distribution.",
-                      "enum": [
-                          "workInProgress",
-                          "validated",
-                          "published",
-                          "deleted",
-                          "archived"
-                      ]
-                  },
-                  "dcatap:availability": {
-                      "title": "Dataset availability",
-                      "description": "This property indicates how long it is planned to keep the Distribution available. See http://publications.europa.eu/resource/authority/planned-availability for the controlled vocabulary.",
-                      "type": "string",
-                      "enum": [
-                        "AVAILABLE",
-                        "EXPERIMENTAL",
-                        "STABLE",
-                        "TEMPORARY"
-                      ]
-                  },
-                  "dct:format": {
-                      "title": "format",
-                      "type": "string",
-                      "description": "File format for this distribution (e.g., CSV, JSON)."
-                  },
-                  "dct:modified": {
-                      "title": "Last modification date",
-                      "type": [
-                          "string",
-                          "null"
-                      ],
-                      "format": "date",
-                      "description": "Last modification date of the data in this distribution."
-                  },
-                  "dcat:downloadURL": {
-                      "title": "Download URL",
-                      "type": [
-                          "string",
-                          "null"
-                      ],
-                      "format": "uri",
-                      "description": "Direct download URL of the distribution file. This link must directly point to the file."
-                  },
-                  "dct:title": {
-                      "title": "Distribution title",
-                      "type": "object",
-                      "required": [
-                          "de",
-                          "fr"
-                      ],
-                      "description": "Title for the distribution, in multiple languages.",
-                      "properties": {
-                          "de": {
-                              "type": "string",
-                              "title": "Deutsch"
-                          },
-                          "fr": {
-                              "type": "string",
-                              "title": "Français"
-                          },
-                          "it": {
-                              "type": "string",
-                              "title": "Italiano"
-                          },
-                          "en": {
-                              "type": "string",
-                              "title": "English"
-                          }
-                      }
-                  },
-                  "dct:description": {
-                      "title": "Distribution description",
-                      "type": "object",
-                      "required": [
-                          "de",
-                          "fr"
-                      ],
-                      "description": "Description for the distribution, in multiple languages.",
-                      "properties": {
-                          "de": {
-                              "type": "string",
-                              "title": "Deutsch"
-                          },
-                          "fr": {
-                              "type": "string",
-                              "title": "Français"
-                          },
-                          "it": {
-                              "type": "string",
-                              "title": "Italiano"
-                          },
-                          "en": {
-                              "type": "string",
-                              "title": "English"
-                          }
-                      }
-                  },
-                  "dct:conformsTo": {
-                      "title": "Conforms to",
-                      "type": "string",
-                      "description": "Reference to a standard or specification the distribution conforms to."
-                  },
-                  "dct:license": {
-                      "title": "license",
-                      "type": "string",
-                      "description": "License under which this distribution is released. This is mandatory for opendata.swiss publications.",
-                      "enum": [
-                          "terms_open",
-                          "terms_by",
-                          "terms_ask",
-                          "terms_by_ask",
-                          "cc-zero",
-                          "cc-by/4.0",
-                          "cc-by-sa/4.0"
-                      ]
-                  },
-                  "schema:comment": {
-                      "title": "comments",
-                      "type": "string",
-                      "description": "Additional comments about the distribution."
-                  },
-                  "dcat:accessService": {
-                      "title": "Access service",
-                      "type": "string",
-                      "description": "Reference to a service used to provide access to the data."
-                  }
-              }
-          }
-      }
-  }
+        "prov:wasGeneratedBy": {
+            "title": "Business process",
+            "type": [
+                "array",
+                "null"
+            ],
+            "description": "Related business process or context.",
+            "items": {
+                "type": "string"
+            }
+        },
+        "bv:retentionPeriod": {
+            "title": "Retention period",
+            "type": "integer",
+            "description": "Retention period for the dataset. That is, the time that the dataset must legally be available after the end of its active use."
+        },
+        "dcat:catalog": {
+            "title": "catalog",
+            "type": "string",
+            "description": "Indicates in which catalog this dataset is available."
+        },
+        "prov:wasDerivedFrom": {
+            "title": "Derived from",
+            "type": [
+                "array",
+                "null"
+            ],
+            "description": "Links to other datasets from which this dataset was derived.",
+            "items": {
+                "type": "string"
+            }
+        },
+        "bv:geoIdentifier": {
+            "title": "Geo identifier",
+            "type": "string",
+            "description": "Identifier for the dataset according to the GeoIV."
+        },
+        "foaf:page": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "title": "Related resources",
+            "description": "Any related page, document or resource.",
+            "items": {
+                "type": "object",
+                "required": [
+                    "uri"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "alias": {
+                        "title": "Page alias",
+                        "description": "Alias to be showed in the interface for this link.",
+                        "type": "string"
+                    },
+                    "uri": {
+                        "title": "url",
+                        "description": "URL for the page, document or resource",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uri"
+                    }
+                }
+            }
+        },
+        "schema:comment": {
+            "title": "comments",
+            "type": "string",
+            "description": "Additional comments about the dataset."
+        },
+        "bv:abrogation": {
+            "title": "abrogation",
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "date",
+            "description": "Indicates when the dataset was abrogated or replaced."
+        },
+        "bv:itSystem": {
+            "title": "IT system",
+            "type": "string",
+            "description": "Name of the IT system managing this dataset."
+        },
+        "dcat:inSeries": {
+            "title": "In Series",
+            "type": "string",
+            "description": "Reference to the series this dataset belongs to."
+        },
+        "dct:replaces": {
+            "title": "replaces",
+            "type": [
+                "array",
+                "null"
+            ],
+            "description": "ID of datasets replaced by this one",
+            "items": {
+                "type": "string"
+            }
+        },
+        "dcat:distribution": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "title": "Distribution",
+            "description": "Distribution info describing how and where to access the dataset. This class describes a specific, final, and ready-to-use format in which a dataset is made available to users. For example, the same data may be available as both a CSV file and an Excel file, each representing a separate distribution of the same dataset. Each distribution must be part of a dataset and should point to a reachable source (e.g. an URL for download). All distributions within a dataset must maintain the same level of timeliness across all channels. This means, for instance, that the 2021 CSV file should be published simultaneously with the Excel file, and vice versa.",
+            "items": {
+                "type": "object",
+                "required": [
+                    "dct:identifier",
+                    "dcat:accessURL",
+                    "adms:status",
+                    "dct:format",
+                    "dct:modified"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "dct:identifier": {
+                        "title": "Distribution id",
+                        "type": "string",
+                        "description": "Identifier for this distribution. If left empty, it will be automatically assigned."
+                    },
+                    "dcat:accessURL": {
+                        "title": "Access URL",
+                        "type": "string",
+                        "format": "uri",
+                        "description": "URL to a page for accessing this distribution. This must not be a direct download URL but, for example, a link to a webpage containing download links."
+                    },
+                    "adms:status": {
+                        "title": "Status",
+                        "type": "string",
+                        "description": "Current status of the distribution.",
+                        "enum": [
+                            "workInProgress",
+                            "validated",
+                            "published",
+                            "deleted",
+                            "archived"
+                        ]
+                    },
+                    "dcatap:availability": {
+                        "title": "Dataset availability",
+                        "description": "This property indicates how long it is planned to keep the Distribution available. See http://publications.europa.eu/resource/authority/planned-availability for the controlled vocabulary.",
+                        "type": "string",
+                        "enum": [
+                            "AVAILABLE",
+                            "EXPERIMENTAL",
+                            "STABLE",
+                            "TEMPORARY"
+                        ]
+                    },
+                    "dct:format": {
+                        "title": "format",
+                        "type": "string",
+                        "description": "File format for this distribution (e.g., CSV, JSON)."
+                    },
+                    "dct:modified": {
+                        "title": "Last modification date",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date",
+                        "description": "Last modification date of the data in this distribution."
+                    },
+                    "dcat:downloadURL": {
+                        "title": "Download URL",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "uri",
+                        "description": "Direct download URL of the distribution file. This link must directly point to the file."
+                    },
+                    "dct:title": {
+                        "title": "Distribution title",
+                        "type": "object",
+                        "required": [
+                            "de",
+                            "fr"
+                        ],
+                        "description": "Title for the distribution, in multiple languages.",
+                        "properties": {
+                            "de": {
+                                "type": "string",
+                                "title": "Deutsch"
+                            },
+                            "fr": {
+                                "type": "string",
+                                "title": "Français"
+                            },
+                            "it": {
+                                "type": "string",
+                                "title": "Italiano"
+                            },
+                            "en": {
+                                "type": "string",
+                                "title": "English"
+                            }
+                        }
+                    },
+                    "dct:description": {
+                        "title": "Distribution description",
+                        "type": "object",
+                        "required": [
+                            "de",
+                            "fr"
+                        ],
+                        "description": "Description for the distribution, in multiple languages.",
+                        "properties": {
+                            "de": {
+                                "type": "string",
+                                "title": "Deutsch"
+                            },
+                            "fr": {
+                                "type": "string",
+                                "title": "Français"
+                            },
+                            "it": {
+                                "type": "string",
+                                "title": "Italiano"
+                            },
+                            "en": {
+                                "type": "string",
+                                "title": "English"
+                            }
+                        }
+                    },
+                    "dct:conformsTo": {
+                        "title": "Conforms to",
+                        "type": "string",
+                        "description": "Reference to a standard or specification the distribution conforms to."
+                    },
+                    "dct:license": {
+                        "title": "license",
+                        "type": "string",
+                        "description": "License under which this distribution is released. This is mandatory for opendata.swiss publications.",
+                        "enum": [
+                            "terms_open",
+                            "terms_by",
+                            "terms_ask",
+                            "terms_by_ask",
+                            "cc-zero",
+                            "cc-by/4.0",
+                            "cc-by-sa/4.0"
+                        ]
+                    },
+                    "schema:comment": {
+                        "title": "comments",
+                        "type": "string",
+                        "description": "Additional comments about the distribution."
+                    },
+                    "dcat:accessService": {
+                        "title": "Access service",
+                        "type": "string",
+                        "description": "Reference to a service used to provide access to the data."
+                    }
+                }
+            }
+        }
+    }
 }
