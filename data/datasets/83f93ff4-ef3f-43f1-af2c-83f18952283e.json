@@ -43,6 +43,16 @@
     "environment",
     "agricultureFisheriesForestryFood"
   ],
+  "foaf:page": [
+    {
+      "alias": "GitHub Repository",
+      "uri": "https://github.com/blw-ofag-ufag/system-map"
+    },
+    {
+      "alias": "Interactive visualization of the system map",
+      "uri": "https://blw-ofag-ufag.github.io/system-map/"
+    }
+  ],
   "bv:itSystem": "https://agriculture.ld.admin.ch/system-map/SYS042",
   "dcatap:applicableLegislation": ["https://raw.githubusercontent.com/aNotWorkingRequest"],
   "bv:archivalValue": false,
