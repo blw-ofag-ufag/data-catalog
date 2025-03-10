@@ -77,6 +77,16 @@ const Utils = {
       )
       .join("<br>");
   },
+  formatAliasURL(aliasURLobject) {
+    if (!aliasURLobject || !Array.isArray(aliasURLobject) || aliasURLobject.length === 0) return "";
+    return aliasURLobject.map(page => {
+      const uri = page.uri || "";
+      const alias = page.alias;
+      return alias
+        ? `<a href="${uri}" target="_blank">${alias}</a>`
+        : uri;
+    }).join("<br>");
+  },  
   verifyUrls() {
     // Select all anchors rendered by formatSingleUrl
     const links = document.querySelectorAll('.check-url');

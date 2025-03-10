@@ -171,8 +171,9 @@ function renderMetadata(data, lang) {
       val = Utils.formatUrlArray(val);
     } else if (key === "dcat:landingPage" || key === "bv:itSystem") {
       val = Utils.formatSingleUrl(val);
+    } else if (key === "foaf:page" ) {
+      val = Utils.formatAliasURL(val);
     } else if (key === "dct:temporal") {
-      // Use the new temporal formatting function
       val = Utils.formatTemporal(val, lang);
     } else if (enumeratedFields.includes(key)) {
       val = Utils.highlightEnumeratedValues(val);
