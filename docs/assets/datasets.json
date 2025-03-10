@@ -18,6 +18,7 @@
             "price",
             "market-data"
         ],
+        "schema:image": "https://fal.media/files/monkey/LvaEBkMYay8mV564By9D-_75dcc4e1bc5a459aab15b9a80399ba6a.jpg",
         "schemaViolations": 1,
         "schemaViolationMessages": [
             "'prov:qualifiedAttribution' is a required property"
