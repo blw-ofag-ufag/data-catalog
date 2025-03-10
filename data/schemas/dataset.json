@@ -383,11 +383,32 @@
           "type": "string",
           "description": "Spatial/geographical coverage of the dataset."
       },
-      "dct:temporal": {
-          "title": "Temporal coverage",
-          "type": "string",
-          "description": "Temporal coverage of the dataset. For example, the first and last measurement years for a timeseries."
-      },
+	    "dct:temporal": {
+		    "title": "Temporal coverage",
+		    "type": "object",
+		    "description": "Temporal coverage of the dataset. For example, the first and last measurement years for a timeseries.",
+		    "additionalProperties": false,
+		    "properties": {
+			    "start_date": {
+				    "type": [
+					    "string",
+					    "null"
+				    ],
+				    "format": "date",
+            "title": "Start date",
+            "description": "Start date of the temporal coverage for the dataset."
+			    },
+			    "end_date": {
+				    "type": [
+					    "string",
+					    "null"
+				    ],
+				    "format": "date",
+            "title": "End date",
+            "description": "End date of the temporal coverage for the dataset."
+			    }
+		    }
+	    },
         "dcatap:applicableLegislation": {
             "title": "Applicable legislation",
             "description": "The legislation that mandates or allows the creation or management of the dataset (as URI, e.g. 'https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5').",
