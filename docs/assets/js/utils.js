@@ -88,31 +88,31 @@ const Utils = {
     }).join("<br>");
   },  
   verifyUrls() {
-    // Select all anchors rendered by formatSingleUrl
+    // Select all anchor elements with the 'check-url' class
     const links = document.querySelectorAll('.check-url');
     links.forEach(link => {
       const url = link.href;
-      // Use a HEAD request to check if the URL works
+      // Use a HEAD request to check if the URL is accessible
       fetch(url, { method: 'HEAD' })
         .then(response => {
           if (!response.ok) {
-            // Create a warning icon using the Bootstrap exclamation-circle icon
+            // If the response isn't OK, show a warning icon with the status code
             const warning = document.createElement('span');
             warning.innerHTML = '<i class="bi bi-exclamation-circle-fill"></i>';
             warning.style.marginLeft = "5px";
-            warning.style.color = "red";
+            warning.style.color = "var(--color-danger)";
             warning.title = `URL returned status: ${response.status}`;
-            // Insert the warning icon after the link so it doesn't inherit underline
             link.insertAdjacentElement('afterend', warning);
           }
         })
         .catch(error => {
-          // If the fetch fails entirely, also show the warning icon
+          // If an error occurs (e.g., CORS issues), mark the URL as unverified
           const warning = document.createElement('span');
-          warning.innerHTML = '<i class="bi bi-exclamation-circle-fill"></i>';
+          warning.innerHTML = '<i class="bi bi-question-circle-fill"></i>';
           warning.style.marginLeft = "5px";
-          warning.style.color = "red";
-          warning.title = "URL could not be reached.";
+          warning.style.color = "var(--color-accent)";
+          // Provide a fallback message to the user
+          warning.title = "URL could not be verified (possibly due to CORS restrictions or other errors).";
           link.insertAdjacentElement('afterend', warning);
         });
     });
