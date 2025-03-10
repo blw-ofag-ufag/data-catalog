@@ -377,7 +377,6 @@ function setupEventListeners() {
  * INITIALIZATION
  ********************************************/
 $(document).ready(function () {
-  initI18n(state.lang);
   syncStateFromURL();
   const tagInput = document.getElementById("tag-input");
   tagify = new Tagify(tagInput, {
@@ -386,7 +385,6 @@ $(document).ready(function () {
   });
   tagify.DOM.scope.classList.add('customLook');
   reflectStateInUI();
-  initI18n(state.lang);
   $.getJSON(config.dataUrl)
     .done(function (data) {
       state.datasets = data;
@@ -397,4 +395,5 @@ $(document).ready(function () {
     });
   setupEventListeners();
   $("#footer-placeholder").load("footer.html");
+  initI18n(state.lang);
 });
