@@ -91,7 +91,7 @@ function renderActionButtons(datasetId, lang) {
   const rawUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/main/data/datasets/${datasetId}.json`;
   document.getElementById("downloadBtn").setAttribute("href", rawUrl);
   document.getElementById("viewOnGithubBtn").setAttribute("href", gitHubUrl);
-  document.getElementById("editBtn").setAttribute("href", `modify.html?id=${datasetId}&lang=${lang}`);
+  // document.getElementById("editBtn").setAttribute("href", `modify.html?id=${datasetId}&lang=${lang}`);
 }
 
 function renderAffiliatedPersons(data, lang) {
