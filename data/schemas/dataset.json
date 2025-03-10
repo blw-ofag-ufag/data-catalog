@@ -389,7 +389,7 @@
 		    "description": "Temporal coverage of the dataset. For example, the first and last measurement years for a timeseries.",
 		    "additionalProperties": false,
 		    "properties": {
-			    "start_date": {
+			    "dcat:start_date": {
 				    "type": [
 					    "string",
 					    "null"
@@ -398,7 +398,7 @@
             "title": "Start date",
             "description": "Start date of the temporal coverage for the dataset."
 			    },
-			    "end_date": {
+			    "dcat:end_date": {
 				    "type": [
 					    "string",
 					    "null"
