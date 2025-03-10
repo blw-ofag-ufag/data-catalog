@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "fc928f44-f690-4280-ad53-d14bf5f80138",
+  "dct:title": {
+    "fr": "Mise en valeur de la récolte en production végétale 1990/92-2015",
+    "de": "Verwertung der Ernte im Pflanzenbau 1990/92-2015",
+    "en": "",
+    "it": "Valorizzazione del raccolto della produzione vegetale 1990/92-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Verwertung von Kartoffeln, Mostäpfel und -birnen, Spirituosenerzeugung, Frischgemüse zur Verarbeitung in Tonnen",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "b37cdbf6-8c04-4c7b-a2b8-7c85b6c07993"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/nachhaltige-produktion/pflanzliche-produktion.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "77f776a4-012a-46e0-a39b-ad0bddc10e4c",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/7b/tihijwtv7hcukxaludgglucghihage/verwertung_pflanzenbau_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/7b/tihijwtv7hcukxaludgglucghihage/verwertung_pflanzenbau_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Verwertung der Ernte im Pflanzenbau 1990/92-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 26827c4a-75d1-402f-8979-6729491e2759"
+    },
+    {
+      "dct:identifier": "2f7719ac-41df-4718-bde0-520aeb715b0a",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/38/7zpxmkyam4fgxvrh5divyvntfueztf/verwertung_pflanzenbau_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/38/7zpxmkyam4fgxvrh5divyvntfueztf/verwertung_pflanzenbau_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Mise en valeur de la récolte en production végétale 1990/92-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 99a9d17f-d5ab-464d-8ef0-c55cbae64469"
+    },
+    {
+      "dct:identifier": "70fabf02-795e-45e2-9425-24666d412dcf",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ec/70t4fw03qw1bflr58q048mnw1gev88/verwertung_pflanzenbau_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ec/70t4fw03qw1bflr58q048mnw1gev88/verwertung_pflanzenbau_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Valorizzazione del raccolto della produzione vegetale 1990/92-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 7e899513-3b0a-4d74-a4cb-48fa2016cf85"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "1990-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

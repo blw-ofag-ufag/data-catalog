@@ -1,0 +1,167 @@
+{
+  "dct:identifier": "b8cb3b68-0fb4-46d1-a309-23e4e3bbc856",
+  "dct:title": {
+    "fr": "Cartes des aptitudes climatiques pour l'agriculture en Suisse - vue d'ensemble",
+    "de": "Klimaeignungskarte für die Landwirtschaft - Übersicht",
+    "en": "Climate suitability map for agriculture - Overview",
+    "it": "Carta delle attitudini climatiche per l'agricoltura in Svizzera - Visione d'insieme"
+  },
+  "dct:description": {
+    "fr": "La carte établie à l'échelle 1:200 000 reflète, une appréciation générale des conditions climatiques et des restrictions à l'égard de l'agriculture, subdivisées en vingt catégories d'aptitudes. Son but est de souligner les différences sensibles relatives aux possibilités de culture propres aux diverses régions.",
+    "de": "Auf den vier Blättern der Karte im Massstab 1:200 000 ist eine Gesamtbeurteilung der klimatischen Voraussetzungen und Einschränkungen für die Landwirtschaft, in 20 Kategorien, wiedergegeben. Die Karte will auf die erheblichen Unterschiede in den Anbaumöglichkeiten der einzelnen Regionen hinweisen.",
+    "en": "The four sheets of the map, which has a scale of 1:200,000, show an overall evaluation of the climatic conditions and restrictions for agriculture, broken down into 20 categories. The map aims to highlight the significant differences in the cultivation options available in the individual regions.",
+    "it": "I quattro fogli della carta in scala 1:200 000 forniscono una valutazione d'insieme delle condizioni climatiche e delle restrizioni relative all'agricoltura, suddivise in 20 categorie. La carta intende sottolineare le differenze di rilievo relative alle possibilità di coltivazione esistenti nelle singole regioni."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "info@blw.admin.ch",
+    "schema:name": "info@blw.admin.ch"
+  },
+  "dct:issued": "2007-06-28",
+  "dct:accrualPeriodicity": "NEVER",
+  "dct:modified": "2007-06-28",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "201f5121-9f69-48e0-bd7f-c22d7b9fd272"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "cultivation-suitability",
+    "climatic-effect",
+    "meteorological-geographical-features",
+    "land-use",
+    "fsdi-federal-spatial-data-infrastructure"
+  ],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/geografisches-informationssystem-gis/klimaeignungskarte.html",
+  "foaf:page": [
+    {
+      "uri": "http://map.blw.admin.ch/",
+      "alias": "Link zum Fachportal"
+    },
+    {
+      "uri": "https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/f743a51c-7487-46a5-af16-5bf031edc417",
+      "alias": "geocat.ch permalink"
+    }
+  ],
+  "dcatap:applicableLegislation": [],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "93a8e25c-7ab7-4c6c-83b9-a726f298cb19",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.klimaeignung-typ",
+      "adms:status": "published",
+      "dct:format": "SERVICE",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "Aperçu map.geo.admin.ch",
+        "de": "Vorschau map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: c8d7715a-96ea-4e6e-ad02-2accf6346a3e"
+    },
+    {
+      "dct:identifier": "bb0522d0-df34-41bc-a6ba-b3ae24296c0a",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dct:format": "WMS",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "ch.blw.klimaeignung-typ",
+        "de": "ch.blw.klimaeignung-typ",
+        "en": "ch.blw.klimaeignung-typ",
+        "it": "ch.blw.klimaeignung-typ"
+      },
+      "dct:description": {
+        "fr": "Service WMS-IFDG, couche \"Climat - vue d`ensemble\"",
+        "de": "WMS-BGDI Dienst, Layer \"Klimaeignung Übersicht\"",
+        "en": "WMS-FSDI service, layer \"Climate - overview\"",
+        "it": "Servizio WMS-IFDG, strato \"Clima - Visione d`insieme\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 54fe6d0c-f19f-433c-85da-a306b62ef547"
+    },
+    {
+      "dct:identifier": "3ee37a4e-3a31-45fb-a188-b8d9c2694be1",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dct:format": "WMTS",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "ch.blw.klimaeignung-typ",
+        "de": "ch.blw.klimaeignung-typ",
+        "en": "ch.blw.klimaeignung-typ",
+        "it": "ch.blw.klimaeignung-typ"
+      },
+      "dct:description": {
+        "fr": "Service WMTS-IFDG, couche , Layer \"Climat - vue d'ensemble\"",
+        "de": "WMTS-BGDI Dienst, Layer \"Klimaeignung Übersicht\"",
+        "en": "WMTS-FSDI service, layer \"Climate - overview\"",
+        "it": "Servizio WMTS-IFDG, strato \"Clima - Visione d'insieme\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: b222fb5f-0b6b-4e83-9448-dde63024a11e"
+    },
+    {
+      "dct:identifier": "5c0d1749-16e6-413e-9d8d-7f4ad07396ab",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.klimaeignung-typ",
+      "adms:status": "published",
+      "dct:format": "HTML",
+      "dct:modified": "2007-06-28",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.klimaeignung-typ",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "de": "Download Server von geo.admin.ch",
+        "en": "Download server from geo.admin.ch",
+        "it": "Server di download di geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 977fa9c0-faac-4f7d-bac0-10c03405ea00"
+    },
+    {
+      "dct:identifier": "e93a387f-8b3d-41f0-8367-178288746d49",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.klimaeignung-typ",
+      "adms:status": "published",
+      "dct:format": "API",
+      "dct:modified": "2007-06-28",
+      "dct:title": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 9627a176-c167-4488-9cbf-66b2b233eb9b"
+    }
+  ]
+}

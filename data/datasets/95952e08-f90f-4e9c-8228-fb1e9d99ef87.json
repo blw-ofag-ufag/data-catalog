@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "95952e08-f90f-4e9c-8228-fb1e9d99ef87",
+  "dct:title": {
+    "fr": "Contributions versées aux cantons 1999-2015",
+    "de": "An die Kantone ausbezahlte Beiträge 1999-2015",
+    "en": "",
+    "it": "Contributi versati ai cantoni 1999-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "An die Kantone ausbezahlte Beiträge für Bodenverbesserungen und landwirtschaftliche Gebäude, nach Kanton in CHF",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "48415b81-f623-469a-8473-c62964f53fbb"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/laendliche-entwicklung-und-strukturverbesserungen.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "611a50ad-0d4b-4b0f-81e0-9753cd1e0854",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/18/ha2rqb5yjze1un7d4xq31nn5uhwno6/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/18/ha2rqb5yjze1un7d4xq31nn5uhwno6/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "An die Kantone ausbezahlte Beiträge 1999-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: cf485d0d-b751-490d-ae9c-5fb2c3e804d6"
+    },
+    {
+      "dct:identifier": "4b522bb7-e0df-4659-af22-9e924e0fa468",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ae/uhd6hgrn5g05fgmyrv6wi3gvwwnwy2/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ae/uhd6hgrn5g05fgmyrv6wi3gvwwnwy2/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Contributions versées aux cantons 1999-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 9857d27e-c31c-4f30-a899-903cfdcc7767"
+    },
+    {
+      "dct:identifier": "ac2dfdc9-3dfa-483f-9db1-b929e21cfdc1",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/37/cs26uscosusgo2xpw1u4ln3vyd72mh/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/37/cs26uscosusgo2xpw1u4ln3vyd72mh/ausbezahlte_beitraege_an_kantone_1999-2015_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Contributi versati ai cantoni 1999-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 4265f8a9-c743-4ce8-889e-b3a3fcaafdd9"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "1999-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

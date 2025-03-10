@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "53cc632e-8ef0-490e-aa8d-8c88968f40c8",
+  "dct:title": {
+    "fr": "Contributions de transition 2014-2015",
+    "de": "Übergangsbeitrag 2014-2015",
+    "en": "",
+    "it": "Contributi di transizione 2014-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Beitrag zur Sicherstellung einer sozialverträglichen Entwicklung, nach Kantonen und Zonen (Anzahl Betriebe, Beitrag in CHF). ",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "47f95729-05ce-4a37-9e63-fefa9bd87f9c"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/direktzahlungen.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "fdd452e9-ddf4-44b8-891a-8de2ea11e9b3",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/57/zbuykwp2gpxk2upcr18fm3uwglhhhp/42_ab16_statdz2015_anhaenge_tab_uebergangsbeitrag_datenreihe_d_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/57/zbuykwp2gpxk2upcr18fm3uwglhhhp/42_ab16_statdz2015_anhaenge_tab_uebergangsbeitrag_datenreihe_d_ok.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Übergangsbeitrag 2014-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: dece04a8-37c2-4d18-ba28-f7f3cc90a06c"
+    },
+    {
+      "dct:identifier": "b0bc19d3-4e45-486e-8e78-dd955a56cb43",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/e2/v4ogorc4yv2yrufhkcgzhoykz06u1i/42_ab16_statdz2015_anhaenge_tab_uebergangsbeitrag_datenreihe_f_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/e2/v4ogorc4yv2yrufhkcgzhoykz06u1i/42_ab16_statdz2015_anhaenge_tab_uebergangsbeitrag_datenreihe_f_ok.xlsx",
+      "dct:title": {
+        "fr": "Contributions de transition 2014-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: a3d625a7-46cd-43dd-a0ef-1d69de7e7517"
+    },
+    {
+      "dct:identifier": "2687bdb4-8c87-4e66-aaff-fd3c7701d4ce",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/12/ptlhrc1ls2cjyrvlscl7qd8yz82lbt/42_ab16_statdz2015_anhaenge_tab_uebergangsbeitrag_datenreihe_i_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/12/ptlhrc1ls2cjyrvlscl7qd8yz82lbt/42_ab16_statdz2015_anhaenge_tab_uebergangsbeitrag_datenreihe_i_ok.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Contributi di transizione 2014-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: e5974d01-574a-40f7-b12c-fe74887006dc"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2014-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

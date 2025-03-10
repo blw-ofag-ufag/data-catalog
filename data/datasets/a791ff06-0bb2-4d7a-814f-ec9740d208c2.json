@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "a791ff06-0bb2-4d7a-814f-ec9740d208c2",
+  "dct:title": {
+    "fr": "Contributions à l'utilisation efficiente des ressources 2014-2015",
+    "de": "Ressourceneffizienzbeiträge 2014-2015",
+    "en": "",
+    "it": "Contributi per l'efficienza delle risorse 2014-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Beiträge zur effizienteren Nutzung der Ressourcen (emissionsmindernde Ausbringverfahren, schonende Bodenbearbeitung, Einsatz von präzisen Applikationstechniken) nach Kantonen und Zonen (Anzahl Betriebe, Fläche in Hektaren, Beitrag in CHF)",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "e70d7954-d897-44d5-be15-54b05720f89c"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/direktzahlungen.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "aca936ab-4027-4f18-b1c0-4293fb607c16",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/59/kx4t9dohmeqvh1oa88qcye0vcdxvuf/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_d_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/59/kx4t9dohmeqvh1oa88qcye0vcdxvuf/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_d_ok.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Ressourceneffizienzbeiträge 2014-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: b3d12604-b921-4b21-bde3-f570c7b31e13"
+    },
+    {
+      "dct:identifier": "cf726ef1-ea12-46c9-999c-e7df624069b2",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/95/chm48gs0ryar8l7rlc2hl9bg8126qr/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_f_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/95/chm48gs0ryar8l7rlc2hl9bg8126qr/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_f_ok.xlsx",
+      "dct:title": {
+        "fr": "Contributions à l'utilisation efficiente des ressources 2014-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 06a5847b-3ff4-4f86-b00f-32e0293ab561"
+    },
+    {
+      "dct:identifier": "543bc13a-9a7c-4bfc-9730-7ccba8ab1d35",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/b4/czitrqsrjf9p2d8x1gi5qmfqr4f3u5/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_i_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/b4/czitrqsrjf9p2d8x1gi5qmfqr4f3u5/41_ab16_statdz2015_anhaenge_tab_ressourceneffizienz_datenreihe_i_ok.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Contributi per l'efficienza delle risorse 2014-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 0be3a266-75be-4af5-9a79-3c4583166bd8"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2014-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

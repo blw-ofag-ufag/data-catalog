@@ -1,0 +1,166 @@
+{
+  "dct:identifier": "1b460b8f-ddca-4069-b744-89798658f1fd",
+  "dct:title": {
+    "fr": "Carte digitale des aptitudes des sols de la Suisse - Mouillure",
+    "de": "Digitale Bodeneignungskarte der Schweiz - Vernässung",
+    "en": "Digital soil suitability map of Switzerland - Waterlogging",
+    "it": "Carta digitale delle attitudini dei suoli svizzeri - Saturazione idrica"
+  },
+  "dct:description": {
+    "fr": "La mouillure est le fait d'une nappe phréatique (de pente ou de fond).",
+    "de": "Wenn ausser dem Niederschlagswasser noch Fremdwasser (Hang- oder Grundwasser) im Boden vorhanden ist, so spricht man von Fremdvernässung.(Details: Bodeneignungskarte der Schweiz, März 1980)",
+    "en": "If external water (runoff from slopes and groundwater) is present in the soil as well as precipitation, this is described as external waterlogging. (Details: Soil suitability map of Switzerland, March 1980).",
+    "it": "Per saturazione idrica s'intende la presenza, oltre alle acque meteoriche, di acque estranee (di pendio o di falda). (Dettagli: carta delle attitudini dei suoli svizzeri, marzo 1980)."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "info@blw.admin.ch",
+    "schema:name": "info@blw.admin.ch"
+  },
+  "dct:issued": "2012-07-01",
+  "dct:accrualPeriodicity": "NEVER",
+  "dct:modified": "2012-07-01",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "1122ee8a-03c9-4007-9236-74cc2e2f5ee7"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "cultivation-suitability",
+    "soil",
+    "meteorological-geographical-features",
+    "fsdi-federal-spatial-data-infrastructure"
+  ],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/geografisches-informationssystem-gis/bodeneignungskarte.html",
+  "foaf:page": [
+    {
+      "uri": "http://map.blw.admin.ch/",
+      "alias": "Link zum Fachportal"
+    },
+    {
+      "uri": "https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/ace71da1-bfd1-4745-a2f1-40b4567f4907",
+      "alias": "geocat.ch permalink"
+    }
+  ],
+  "dcatap:applicableLegislation": [],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "bd8fd701-99b5-4290-ada8-152a514f32c6",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.bodeneignung-vernaessung",
+      "adms:status": "published",
+      "dct:format": "SERVICE",
+      "dct:modified": "2012-07-01",
+      "dct:title": {
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "Aperçu map.geo.admin.ch",
+        "de": "Vorschau map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 9d557dfd-9bc6-40a1-b2d3-fa5d02899f8a"
+    },
+    {
+      "dct:identifier": "0c84e8a4-71a0-402f-ae3a-eed6bf4fc42c",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dct:format": "WMS",
+      "dct:modified": "2012-07-01",
+      "dct:title": {
+        "fr": "ch.blw.bodeneignung-vernaessung",
+        "de": "ch.blw.bodeneignung-vernaessung",
+        "en": "ch.blw.bodeneignung-vernaessung",
+        "it": "ch.blw.bodeneignung-vernaessung"
+      },
+      "dct:description": {
+        "fr": "Service WMS-IFDG, couche \"Mouillure\"",
+        "de": "WMS-BGDI Dienst, Layer \"Vernässung\"",
+        "en": "WMS-FSDI service, layer \"Waterlogging\"",
+        "it": "Servizio WMS-IFDG, strato \"Saturazione idrica\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: e7cd1e7b-794d-49c6-87ce-eb7b10223a75"
+    },
+    {
+      "dct:identifier": "17b802a8-1cc7-4ff3-a969-259e964145d1",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dct:format": "WMTS",
+      "dct:modified": "2012-07-01",
+      "dct:title": {
+        "fr": "ch.blw.bodeneignung-vernaessung",
+        "de": "ch.blw.bodeneignung-vernaessung",
+        "en": "ch.blw.bodeneignung-vernaessung",
+        "it": "ch.blw.bodeneignung-vernaessung"
+      },
+      "dct:description": {
+        "fr": "Service WMTS-IFDG, couche , Layer \"Mouillure\"",
+        "de": "WMTS-BGDI Dienst, Layer \"Vernässung\"",
+        "en": "WMTS-FSDI service, layer \"Waterlogging\"",
+        "it": "Servizio WMTS-IFDG, strato \"Saturazione idrica\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: deb96ae4-f463-468b-916c-fa8fbfaa9419"
+    },
+    {
+      "dct:identifier": "958121f9-eb9a-49dc-b4d7-81b08c70fa13",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bodeneignung-vernaessung",
+      "adms:status": "published",
+      "dct:format": "HTML",
+      "dct:modified": "2012-07-01",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bodeneignung-vernaessung",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "de": "Download Server von geo.admin.ch",
+        "en": "Download server from geo.admin.ch",
+        "it": "Server di download di geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: dcafcceb-1d77-4c0a-9f3a-fdd4ced33be6"
+    },
+    {
+      "dct:identifier": "62089985-831d-4502-a516-9190e36a899d",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.bodeneignung-vernaessung",
+      "adms:status": "published",
+      "dct:format": "API",
+      "dct:modified": "2012-07-01",
+      "dct:title": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: ceecb2af-712e-453b-becf-5ff0d4b53c0c"
+    }
+  ]
+}

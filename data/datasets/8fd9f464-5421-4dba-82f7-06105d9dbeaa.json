@@ -1,0 +1,146 @@
+{
+  "dct:identifier": "8fd9f464-5421-4dba-82f7-06105d9dbeaa",
+  "dct:title": {
+    "fr": "Produits d'alpage",
+    "de": "Alpprodukte",
+    "en": "Alpine products",
+    "it": "Prodotti dell'alpe"
+  },
+  "dct:description": {
+    "fr": "Exigences SRPA spécifiques aux bovins, aux buffles d'Asie, aux équidés, aux chèvres et aux moutons, en fonction de la région. Dans les situations suivantes, les sorties au pâturage peuvent être remplacées par des sorties dans l'aire d'exercice : Au printemps aussi longtemps que la végétation, compte tenu des conditions locales, ne permet pas encore de sorties au pâturage et si une exploitation située dans la région de montagne ne dispose pas d'une surface appropriée où sortir les animaux, le canton peut prescrire pour cette période une réglementation spéciale pour les sorties, tenant compte de l'infrastructure de l'exploitation.Le canton peut, en dérogation aux exigences et pour une durée maximale de 5 ans, accorder une autorisation spéciale à une exploitation en particulier, en justifiant sa décision (RS 910.19).",
+    "de": "Um die Bezeichnung „Alpprodukt“ (z.B. Alpkäse) verwenden zu können, müssen die Rohstoffe aus dem Söm-merungsgebiet stammen und auch dort verarbeitet werden.Die Verarbeitung folgender Produkte darf auch ausserhalb des Sömmerungsgebiets stattfinden: genussfertige Milch; genussfertiger Rahm; Reifung der Käse sowie die Schlachtung und Zerlegung der Tiere. Die Bezeichnung „Alp“ darf auch in der Kennzeichnung eines aus mehreren Zutaten zusammengesetzten Lebensmittels verwendet werden, auch wenn das Lebensmittel selbst die Anforderungen für die Verwendung der Bezeichnung „Alp“ nicht erfüllt. Die Bezeichnung „Alp“ darf sich ausschliesslich auf die betreffenden Zutaten beziehen (z.B. „Jogurt aus Alpmilch“) (SR 910.19).",
+    "en": "Um die Bezeichnung „Alpprodukt“ (z.B. Alpkäse) verwenden zu können, müssen die Rohstoffe aus dem Sömmerungsgebiet stammen und auch dort verarbeitet werden. Die Verarbeitung folgender Produkte darf auch ausserhalb des Sömmerungsgebiets stattfinden: genussfertige Milch; genussfertiger Rahm; Reifung der Käse sowie die Schlachtung und Zerlegung der Tiere. Die Bezeichnung „Alp“ darf auch in der Kennzeichnung eines aus mehreren Zutaten zusammengesetzten Lebensmittels verwendet werden, auch wenn das Lebensmittel selbst die Anforderungen für die Verwendung der Bezeichnung „Alp“ nicht erfüllt. Die Bezeichnung „Alp“ darf sich ausschliesslich auf die betreffenden Zutaten beziehen (z.B. „Jogurt aus Alpmilch“) (SR 910.19).",
+    "it": "La designazione “alpe” (p.es. formaggio d'alpe) può essere impiegata se le materie prime provengono dalla regione d'estivazione e se lì sono trasformate.La trasformazione dei seguenti prodotti può avvenire anche al di fuori della regione d'estivazione: latte pronto al consumo, panna pronta al consumo, maturazione del formaggio, nonché macellazione e sezionamento degli animali. La designazione «alpe» può essere utilizzata anche nella caratterizzazione di una derrata alimentare composta da più ingredienti anche se la derrata alimentare in sé non adempie le esigenze per l'impiego della designazione «alpe». La designazione «alpe» può riferirsi esclusivamente agli ingredienti in questione (p.es. «yogurt con latte dell'alpe») (RS 910.19)."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "info@blw.admin.ch",
+    "schema:name": "info@blw.admin.ch"
+  },
+  "dct:issued": "2012-05-11",
+  "dct:accrualPeriodicity": "UNKNOWN",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "3d44c5fb-eb7f-4c9e-9422-88868f7fe60c"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "alpine-economy",
+    "mountain-management",
+    "area-managementrestrictionregulation-zones-and-reporting-units",
+    "utility-and-governmental-services",
+    "fsdi-federal-spatial-data-infrastructure"
+  ],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/kennzeichnung/berg-und-alp.html",
+  "foaf:page": [
+    {
+      "uri": "https://map.geo.admin.ch/?topic=blw&lang=de&bgLayer=ch.swisstopo.pixelkarte-farbehttp://map.blw.admin.ch/",
+      "alias": "Link zu Fachportal"
+    },
+    {
+      "uri": "https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/843b3f48-ec98-4143-b9e6-1db1ad6ddac0",
+      "alias": "geocat.ch permalink"
+    }
+  ],
+  "dcatap:applicableLegislation": [],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "2044b070-be09-4025-9f4e-2b2e284f65f3",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.alpprodukte",
+      "adms:status": "published",
+      "dct:format": "SERVICE",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "Aperçu map.geo.admin.ch",
+        "de": "Vorschau map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: a5338c9d-54d0-4343-ad24-f1f105780406"
+    },
+    {
+      "dct:identifier": "630e67b5-ce8c-4f33-88cb-291cfb47ad69",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.alpprodukte",
+      "adms:status": "published",
+      "dct:format": "HTML",
+      "dct:modified": null,
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.alpprodukte",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 338dd35f-8e4f-40ed-b89c-aa38174cc21c"
+    },
+    {
+      "dct:identifier": "9787f19b-7b9b-4b95-8997-f0591905deaf",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dct:format": "WMS",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "ch.blw.alpprodukte",
+        "de": "ch.blw.alpprodukte",
+        "en": "ch.blw.alpprodukte",
+        "it": "ch.blw.alpprodukte"
+      },
+      "dct:description": {
+        "fr": "Service WMS-IFDG, couche \"Produits d`alpage\"",
+        "de": "WMS-BGDI Dienst, Layer \"Alpprodukte\"",
+        "en": "WMS-FSDI service, layer \"Alpine products\"",
+        "it": "Servizio WMS-IFDG, strato \"Prodotti dell`alpe\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: a43e2c94-f789-4b26-a25a-93674e0d3272"
+    },
+    {
+      "dct:identifier": "0232afc5-f028-4387-8bbc-e700f88c3272",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dct:format": "WMTS",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "ch.blw.alpprodukte",
+        "de": "ch.blw.alpprodukte",
+        "en": "ch.blw.alpprodukte",
+        "it": "ch.blw.alpprodukte"
+      },
+      "dct:description": {
+        "fr": "Service WMTS-IFDG, couche , Layer \"Produits d'alpage\"",
+        "de": "WMTS-BGDI Dienst, Layer \"Alpprodukte\"",
+        "en": "WMTS-FSDI service, layer \"Alpine products\"",
+        "it": "Servizio WMTS-IFDG, strato \"Prodotti dell'alpe\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: b11116ce-f6b1-48fc-971a-73b36c0286c5"
+    }
+  ]
+}

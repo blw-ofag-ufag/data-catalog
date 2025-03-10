@@ -1,0 +1,97 @@
+{
+  "schema:image": "https://fal.media/files/penguin/zLmfGWbw9SuNH9pYHqE7Y_454ce31f6849495cb14b7a083875b676.jpg",
+  "dct:identifier": "83f93ff4-ef3f-43f1-af2c-83f18952283e",
+  "dct:title": {
+    "de": "DigiAgriFoodCH Systemlandkarte",
+    "fr": "Carte du système DigiAgriFoodCH",
+    "it": "Mappa del sistema DigiAgriFoodCH",
+    "en": "DigiAgriFoodCH System Map"
+  },
+  "dct:description": {
+    "de": "Strukturierte Informationen über IT-Systeme, die darin enthaltenen Daten und deren betreibende Organisationen im Schweizer Agrar- und Ernährungssektor.",
+    "fr": "Informations structurées sur les systèmes informatiques, les données qu'ils contiennent et les organisations qui les gèrent dans le secteur agricole et alimentaire suisse.",
+    "it": "Informazioni strutturate sui sistemi IT, i dati in essi contenuti e le organizzazioni che li gestiscono nel settore agricolo e alimentare svizzero.",
+    "en": "Structured information about IT systems, the data they contain, and the organizations that manage them in the Swiss agriculture and food sector."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:issued": "2025-01-29",
+  "dcat:keyword": [
+    "software",
+    "data",
+    "systems",
+    "network",
+    "organization"
+  ],
+  "dct:modified": "2025-02-24",
+  "dct:accrualPeriodicity": "IRREG",
+  "prov:qualifiedAttribution": [
+    {
+      "prov:agent": "p-1ZFWFFNP6",
+      "dcat:hadRole": "businessDataOwner"
+    }
+  ],
+  "dct:publisher": "Federal Office for Agriculture",
+  "dcat:contactPoint": {
+    "schema:name": "DigiAgriFoodCH",
+    "schema:email": "info@digiagrifood.ch"
+  },
+  "adms:status": "workInProgress",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:typeOfData": "thematicData",
+  "dcat:themeTaxonomy": [
+    "environment",
+    "agricultureFisheriesForestryFood"
+  ],
+  "bv:itSystem": "https://agriculture.ld.admin.ch/system-map/SYS042",
+  "dcatap:applicableLegislation": ["https://raw.githubusercontent.com/aNotWorkingRequest"],
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": false
+  },
+  "dcat:distribution": [
+    {
+      "dct:identifier": "bdd9a81c-c3f0-4696-8cb7-594bbf4e972e",
+      "dct:title": {
+        "de": "RDF-Graph-File",
+        "fr": "Fichier de graphe RDF",
+        "it": "File di grafo RDF",
+        "en": "RDF graph file"
+      },
+      "dct:description": {
+        "de": "Ein Turtle-File (.ttl) mit allen Informationen der DigiAgriFoodCH Systemlandkarte.",
+        "fr": "Un fichier Turtle (.ttl) contenant toutes les informations de la carte système DigiAgriFoodCH.",
+        "it": "Un file Turtle (.ttl) con tutte le informazioni della mappa di sistema DigiAgriFoodCH.",
+        "en": "A Turtle file (.ttl) containing all the information of the DigiAgriFoodCH system map."
+      },
+      "adms:status": "workInProgress",
+      "dct:modified": "2025-02-24",
+      "dcat:accessURL": "https://github.com/blw-ofag-ufag/system-map/blob/main/graph.ttl",
+      "dcat:downloadURL": "https://raw.githubusercontent.com/blw-ofag-ufag/system-map/refs/heads/main/graph.ttl",
+      "dct:format": "RDF"
+    },
+    {
+      "dct:identifier": "6e76d236-93b4-4409-9dcb-4adce1949bb9",
+      "dct:title": {
+        "de": "SPARQL Endpunkt für Datenabfrage",
+        "fr": "Point d'accès SPARQL pour les requêtes sur le graphe",
+        "it": "Endpoint SPARQL per interrogazioni sul grafo",
+        "en": "SPARQL endpoint for graph queries"
+      },
+      "dct:description": {
+        "de": "Ein YASGUI-SPARQL-Endpunkt für eine direkte Abfrage von Daten bei LINDAS, dem Linked Data Service des Bundesarchives.",
+        "fr": "Un point d'accès YASGUI-SPARQL pour interroger directement les données de LINDAS, le service de données liées des Archives fédérales.",
+        "it": "Un endpoint YASGUI-SPARQL per interrogare direttamente i dati di LINDAS, il servizio di dati collegati dell'Archivio federale.",
+        "en": "A YASGUI-SPARQL endpoint for directly querying data from LINDAS, the Linked Data Service of the Federal Archives."
+      },
+      "adms:status": "workInProgress",
+      "dct:modified": "2025-02-24",
+      "dcat:accessURL": "https://s.zazuko.com/3sAp7YF",
+      "dcat:downloadURL": "https://s.zazuko.com/3sAp7YF",
+      "dct:format": "SPARQL-Service"
+    }
+  ]  
+}

@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "fca78318-4077-480b-977f-beea2d6732fd",
+  "dct:title": {
+    "fr": "Chiffres du marché des plantes protéagineuses - Quantités de production annuelles",
+    "de": "Marktzahlen Eiweisspflanzen - Jährliche Produktionsmengen",
+    "en": "Market figures for protein crops - Annual production quantities",
+    "it": "Dati di mercato delle piante proteiche - Quantità di produzione annue"
+  },
+  "dct:description": {
+    "fr": "Quantités annuelles des plantes protéagineuses au niveau de la production",
+    "de": "Jährliche Mengenangaben für Eiweisspflanzen auf der Wertschöpfungsstufe Produktion",
+    "en": "Annual quantities for protein crops at the production level",
+    "it": "Quantità annue delle piante proteiche al livello della produzione"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-02-18",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "9569ebd8-9611-4276-91d0-c3c872fe3c7f"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "quantity",
+    "market-data"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-olsaaten"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "b1b1df03-1e9f-4bda-92f3-791348f96aaf",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FProteinCrops%2FProduction_Quantity_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "en": "SPARQL Endpoint with graph preselection",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 77caed7f-05f6-4174-b0c5-45cc95f9d852"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2014-07-01",
+    "dcat:end_date": "2023-07-01"
+  }
+}

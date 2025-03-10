@@ -1,0 +1,169 @@
+{
+  "dct:identifier": "8884a856-8647-4943-b511-1636f27f7604",
+  "dct:title": {
+    "fr": "Registre des appellations d'origine (AOP) et des indications géographiques (IGP) produits à base de viande",
+    "de": "Register Ursprungsbezeichnungen (GUB) und geografische Angaben (GGA) Fleischware",
+    "en": "Register of designations of origin (PDO) and geographical indications (PGI) - meat products",
+    "it": "Registro delle denominazioni di origine (DOP) e delle indicazioni geografiche (IGP) Prodotti carnei"
+  },
+  "dct:description": {
+    "fr": "Le registre des appellations d’origine (AOP) et des indications géographiques (IGP) sert à protéger les noms géographiques et les dénominations traditionnelles qui désignent des produits agricoles (autres que le vin) dont l’identité et les principales caractéristiques sont déterminées par leur origine. Lorsqu’un nom est protégé, son utilisation est réservée aux producteurs de l’aire géographique définie, pour autant qu’ils respectent un cahier des charges détaillé. La protection de certaines désignations de produits agricoles vise à défendre les consommateurs contre la tromperie et à protéger les paysans contre la concurrence déloyale quant à l’utilisation de ces désignations. La réglementation applicable dans ce domaine permet la reconnaissance réciproque des produits de qualité entre la Suisse et l’Union européenne.Les AOP/IGP sont réparties en quatre catégories : fromages, produits à base de viande, produits végétaux et spiritueux. Environ 30 produits sont aujourd’hui inscrits au registre des appellations d’origine, qui en accueille en permanence de nouveaux.",
+    "de": "Mit dem Register Ursprungsbezeichnungen (GUB) und geografischen Angaben (GGA) lassen sich die Gebietsnamen und traditionellen Bezeichnungen von landwirtschaftlichen Erzeugnissen schützen (Wein ausgenommen), deren Qualität und Haupteigenschaften durch ihre geografische Herkunft bestimmt werden. Ist ein Name geschützt, darf er nur von den Produzentinnen und Produzenten des entsprechend definierten geografischen Gebiets benutzt werden, die sich an ein detailliertes Pflichtenheft halten.Der Schutz bestimmter Bezeichnungen für Landwirtschaftsprodukte bezweckt, die Konsumentinnen und Konsumenten vor Täuschung zu schützen und - im Interesse der Bäuerinnen und Bauern - den unlauteren Wettbewerb in der Verwendung dieser Begriffe zu verhindern. Die Regelungen in diesem Bereich ermöglichen, die gegenseitige Anerkennung von Qualitätsprodukten zwischen der Schweiz und der Europäischen Union. Es wird zwischen den vier Kategorien Käse, Fleischwaren, pflanzliche Produkte und Spirituosen unterschieden. Aktuell sind gegen 30 verschiedene Erzeugnisse im Register Ursprungsbezeichnungen eingetragen und es kommen laufend neue dazu.",
+    "en": "The register of designations of origin (PDO) and geographical indications (PGI) allows the region names and traditional designations of agricultural products to be protected (with the exception of wine), where the quality and the main characteristics of the products are determined by their geographical origin. If a name is protected, it can only be used by producers in the specified geographical region, who must comply with a detailed requirements specification. The purpose of protecting certain designations of agricultural products is to prevent consumers from being exposed to fraud and, in the interests of farmers, to stop unfair competition relating to the use of the designations. The rules in this area allow for the mutual recognition of quality products by Switzerland and the European Union. There are four categories: cheese, meat products, products of plant origin and spirits. The register of designations of origin currently contains around 30 different products and new ones are frequently being added.",
+    "it": "Il Registro delle denominazioni di origine (DOP) e delle indicazioni geografiche (IGP) consente di tutelare i nomi geografici e tradizionali che designano prodotti agricoli (ad eccezione del vino) la cui qualità e le cui caratteristiche principali sono determinate dalla loro origine. L'utilizzo di un nome protetto è appannaggio dei produttori della zona geografica definita che ottemperano ad un dettagliato elenco degli obblighi. La protezione di determinate denominazioni di prodotti agricoli è finalizzata a tutelare i consumatori dalle frodi e a proteggere i contadini dalla concorrenza sleale dovuta all'abuso delle denominazioni. La regolamentazione applicabile in questo settore permette il reciproco riconoscimento dei prodotti di qualità tra Svizzera e UE. Le DOP/IGP sono suddivise in quattro categorie: formaggi, prodotti carnei, prodotti vegetali e distillati. Attualmente il registro delle DOP/IGP conta 30 prodotti e il numero di registrazioni è in costante aumento."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "info@blw.admin.ch",
+    "schema:name": "info@blw.admin.ch"
+  },
+  "dct:issued": "2011-12-14",
+  "dct:accrualPeriodicity": "UNKNOWN",
+  "dct:modified": "2011-12-14",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "55d1451b-9d9a-4e88-921d-b901f5b2de17"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "protected-geographical-indication-pgi",
+    "protected-designation-of-origin-pdo",
+    "processed-agricultural-produce",
+    "meat",
+    "land-use",
+    "area-managementrestrictionregulation-zones-and-reporting-units",
+    "fsdi-federal-spatial-data-infrastructure"
+  ],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/kennzeichnung/ursprungsbezeichungen-und-geografische-angaben.html",
+  "foaf:page": [
+    {
+      "uri": "https://map.geo.admin.ch/?topic=blw&lang=de&bgLayer=ch.swisstopo.pixelkarte-farbe",
+      "alias": "Link zum Fachportal"
+    },
+    {
+      "uri": "https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/d8a34a75-b1c3-4387-8b03-63dd150f529b",
+      "alias": "geocat.ch permalink"
+    }
+  ],
+  "dcatap:applicableLegislation": [],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "24342392-1833-433e-9a69-5bc1bd54a07a",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.ursprungsbezeichnungen-fleisch",
+      "adms:status": "published",
+      "dct:format": "SERVICE",
+      "dct:modified": "2011-12-14",
+      "dct:title": {
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "Aperçu map.geo.admin.ch",
+        "de": "Vorschau map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 843f7014-50b0-418c-b832-a22e2c6b790a"
+    },
+    {
+      "dct:identifier": "b529ba5b-3e87-4959-96c8-1b4459b873b7",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dct:format": "WMS",
+      "dct:modified": "2011-12-14",
+      "dct:title": {
+        "fr": "ch.blw.ursprungsbezeichnungen-fleisch",
+        "de": "ch.blw.ursprungsbezeichnungen-fleisch",
+        "en": "ch.blw.ursprungsbezeichnungen-fleisch",
+        "it": "ch.blw.ursprungsbezeichnungen-fleisch"
+      },
+      "dct:description": {
+        "fr": "Service WMS-IFDG, couche \"Produits à base de viande\"",
+        "de": "WMS-BGDI Dienst, Layer \"Fleischware\"",
+        "en": "WMS-FSDI service, layer \"meat products\"",
+        "it": "Servizio WMS-IFDG, strato \"Prodotti carnei\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: aba881cd-1374-4c19-872b-f54aa3485abf"
+    },
+    {
+      "dct:identifier": "b696f58d-e39e-4c2d-8a91-661050b65e57",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dct:format": "WMTS",
+      "dct:modified": "2011-12-14",
+      "dct:title": {
+        "fr": "ch.blw.ursprungsbezeichnungen-fleisch",
+        "de": "ch.blw.ursprungsbezeichnungen-fleisch",
+        "en": "ch.blw.ursprungsbezeichnungen-fleisch",
+        "it": "ch.blw.ursprungsbezeichnungen-fleisch"
+      },
+      "dct:description": {
+        "fr": "Service WMTS-IFDG, couche , Layer \"Produits à base de viande\"",
+        "de": "WMTS-BGDI Dienst, Layer \"Fleischware\"",
+        "en": "WMTS-FSDI service, layer \"meat products\"",
+        "it": "Servizio WMTS-IFDG, strato \"Prodotti carnei\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 2e65ebfd-0001-494a-a542-bd1cf1be17f7"
+    },
+    {
+      "dct:identifier": "36a2c831-7f6e-4422-b6ba-01867107c0d0",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.ursprungsbezeichnungen-fleisch",
+      "adms:status": "published",
+      "dct:format": "HTML",
+      "dct:modified": "2011-12-14",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.ursprungsbezeichnungen-fleisch",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "de": "Download von data.geo.admin.ch",
+        "en": "Download server from geo.admin.ch",
+        "it": "Server di download di geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: ecaf6146-a98e-4ada-b77a-c0024ffb6630"
+    },
+    {
+      "dct:identifier": "b124b3ba-05c9-4010-bb0d-501a862eecf7",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.ursprungsbezeichnungen-fleisch",
+      "adms:status": "published",
+      "dct:format": "API",
+      "dct:modified": "2011-12-14",
+      "dct:title": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 35f8a5a7-20e2-4898-bba0-bfac90f3147d"
+    }
+  ]
+}

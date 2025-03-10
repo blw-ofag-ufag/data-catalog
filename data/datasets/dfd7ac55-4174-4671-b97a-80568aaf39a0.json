@@ -1,0 +1,125 @@
+{
+  "dct:identifier": "dfd7ac55-4174-4671-b97a-80568aaf39a0",
+  "dct:title": {
+    "fr": "Limites des zones agricoles de la Suisse",
+    "de": "Landwirtschaftliche Zonengrenzen der Schweiz",
+    "en": "Boundaries of agricultural zones in Switzerland",
+    "it": "Limiti delle zone agricole della Svizzera"
+  },
+  "dct:description": {
+    "fr": "Le jeu de géodonnées de base des zones et des régions agricoles, qui comprend six zones de production agricole et la région d'estivage, constitue le cadastre de la production agricole. Ce cadastre recense les conditions de production et de vie difficiles, qui doivent être dûment prises en considération lors de l’application de la loi sur l'agriculture. Les bases juridiques sont réglées à l'art. 4 de la loi sur l'agriculture (RS 910.1) ainsi que dans l'ordonnance sur le cadastre de la production agricole et la délimitation de zones (RS 912.1). Diverses mesures relevant de la loi sur l'agriculture s'appuient sur cette délimitation des zones. Ainsi, une partie des paiements directs affectés à l'agriculture sont versés de manière différenciée selon la zone.",
+    "de": "Der Geobasisdatensatz der landwirtschaftlichen Zonen und Gebiete besteht aus sechs landwirtschaftlichen Produktionszonen und dem Sömmerungsgebiet und bildet den landwirtschaftlichen Produktionskataster. Der landwirtschaftliche Produktionskataster erfasst erschwerende Produktionsverhältnisse und Lebensbedingungen, die bei der Anwendung des Landwirtschaftsgesetzes angemessen zu berücksichtigen sind. Die Rechtsgrundlagen sind in Artikel 4 des Landwirtschaftsgesetzes (SR 910.1) sowie in der Verordnung über den landwirtschaftlichen Produktionskataster und die Ausscheidung von Zonen (SR 912.1) geregelt. Verschiedene Massnahmen im Bereich des Landwirtschaftsgesetzes sind auf die Zoneneinteilung abgestützt. Ein Teil der Direktzahlungen an die Landwirtschaft beispielsweise wird differenziert nach Zonenzugehörigkeit ausgerichtet.",
+    "en": "The official geodatabase of the agricultural zones and regions consists of six agricultural production zones and the summer pasture region and forms the agricultural production register. The register records difficult production and living conditions, which must be taken adequately into consideration in the application of the Agriculture Act. The legal basis can be found in Article 4 of the Agriculture Act (SR 910.1) and in the Ordinance on the agricultural production register and the definition of zones (SR 912.1). Various measures relating to the Agriculture Act are based on the division into zones. For example, some of the direct payments to the agricultural industry differ depending on the zone.",
+    "it": "La raccolta di geodati di base delle zone e regioni agricole consiste in sei zone di produzione agricola e dalla regione d'estivazione e costituisce il catasto della produzione agricola. Questo rileva le condizioni di produzione e di vita difficili che occorre considerare opportunamente nell'applicazione della legge sull'agricoltura. Le basi giuridiche sono disciplinate dall'articolo 4 della legge sull'agricoltura (RS 910.1) nonché dall'ordinanza concernente il catasto della produzione agricola e la delimitazione di zone (RS 912.1). Diverse misure nel campo della legge sull'agricoltura si basano sulla suddivisone per zone. Una parte dei pagamenti diretti a favore dell'agricoltura, ad esempio, è differenziata in funzione dell'appartenenza a una determinata zona."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "info@blw.admin.ch",
+    "schema:name": "info@blw.admin.ch"
+  },
+  "dct:issued": "1997-01-01",
+  "dct:accrualPeriodicity": "CONT",
+  "dct:modified": "2018-12-14",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "704b25c2-1140-4bee-9df6-11901492232a"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "official-geodata",
+    "conservation-and-archiving-planning-aap---confederation",
+    "land-use",
+    "area-managementrestrictionregulation-zones-and-reporting-units",
+    "fsdi-federal-spatial-data-infrastructure"
+  ],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/grundlagen-und-querschnittsthemen/landwirtschaftliche-zonen.html",
+  "foaf:page": [
+    {
+      "uri": "http://map.blw.admin.ch/",
+      "alias": "Link zum Fachportal"
+    },
+    {
+      "uri": "https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/6e4544bc-55f4-4aef-b36a-e36fe376eaf8",
+      "alias": "geocat.ch permalink"
+    }
+  ],
+  "dcatap:applicableLegislation": [],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "fa3e8477-3f56-49e1-85e5-c2e4cb6fcf23",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.landwirtschaftliche-zonengrenzen",
+      "adms:status": "published",
+      "dct:format": "SERVICE",
+      "dct:modified": "2018-12-14",
+      "dct:title": {
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "Aperçu map.geo.admin.ch",
+        "de": "Vorschau map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 84edc5d8-02b2-4476-a934-becd562e41b7"
+    },
+    {
+      "dct:identifier": "d9176b8e-1499-4b69-8340-e958c2d1edba",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dct:format": "WMS",
+      "dct:modified": "2018-12-14",
+      "dct:title": {
+        "fr": "ch.blw.landwirtschaftliche-zonengrenzen",
+        "de": "ch.blw.landwirtschaftliche-zonengrenzen",
+        "en": "ch.blw.landwirtschaftliche-zonengrenzen",
+        "it": "ch.blw.landwirtschaftliche-zonengrenzen"
+      },
+      "dct:description": {
+        "fr": "Service WMS-IFDG, couche \"Limites des zones agricoles\"",
+        "de": "WMS-BGDI Dienst, Layer \"Landwirtschaftliche Zonengrenzen\"",
+        "en": "WMS-FSDI service, layer \"Agricultural zones boundaries\"",
+        "it": "Servizio WMS-IFDG, strato \"Limiti delle zone agricole\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 81e3f9ec-452c-41f7-b45c-c20938bafd57"
+    },
+    {
+      "dct:identifier": "579fa438-9d4e-481f-91a7-b5c74cc3dee4",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.landwirtschaftliche-zonengrenzen",
+      "adms:status": "published",
+      "dct:format": "HTML",
+      "dct:modified": "2018-12-14",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.landwirtschaftliche-zonengrenzen",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "Serveur de téléchargement de geo.admin.ch",
+        "de": "Download Server von geo.admin.ch",
+        "en": "Download server from geo.admin.ch",
+        "it": "Server di download di geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: d2f7c148-8338-4fa0-8475-8ee9fc8811f6"
+    }
+  ]
+}

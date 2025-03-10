@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "b2bbf16b-744d-4554-bc39-5528a7d59002",
+  "dct:title": {
+    "fr": "Chiffres du marché des oeufs - Prix mensuels à la production",
+    "de": "Marktzahlen Eier - Monatliche Produzentenpreise",
+    "en": "Market figures eggs - Monthly producer prices ",
+    "it": "Cifre del mercato delle uova - Prezzi mensili alla produzione"
+  },
+  "dct:description": {
+    "fr": "Prix moyens mensuels des œufs à l’échelon de création de valeur production",
+    "en": "Monthly average prices for eggs at the production stage of the value chain",
+    "de": "Monatliche Durchschnittspreise für Eier auf der Wertschöpfungsstufe Produktion",
+    "it": "Prezzi medi mensili delle uova nella fase di produzione della catena di valore"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "MONTHLY",
+  "dct:modified": "2025-03-06",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "0c5885ce-c147-4cfd-85cb-1279298860b0"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "market-data",
+    "price"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-eier"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "68d0edbf-6714-4c40-8ec2-b8b732f90362",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FEggs%2FProduction_Price_Month%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "en": "SPARQL Endpoint with graph preselection",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 89e086f0-d564-4c62-821a-4875c190386e"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2016-01-01",
+    "dcat:end_date": "2025-01-01"
+  }
+}

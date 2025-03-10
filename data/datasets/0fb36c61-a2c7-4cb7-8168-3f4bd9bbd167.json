@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "0fb36c61-a2c7-4cb7-8168-3f4bd9bbd167",
+  "dct:title": {
+    "fr": "Crédits d'investissements par catégorie de mesures 1999-2015",
+    "de": "Investitionskredite nach Massnahmenkategorien 1999-2015",
+    "en": "",
+    "it": "Crediti d'investimento per categorie di provvedimenti 1999-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Investitionskredite nach Kanton und Massnahmenkategorien (Starthilfe, Kauf des Betriebs durch den Pächter, Wohngebäude, Ökonomiegebäude, Diversifizierung, Gartenbau, gewerbliche Kleinbetriebe, erneurbare Energien, gemeinschaftliche Massnahmen, Bodenverbesserungen)",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "d5122fa9-d100-4d60-b204-95742718b3ce"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/laendliche-entwicklung-und-strukturverbesserungen.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "dd550417-4dff-4354-af19-f95fcd9b239f",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/0d/o6rvb1ksq1c0mb3l6ha51etx1c0d5x/investitionskredite_nach_massnahmenkategorie_1999-2015_datenreihe_d.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/0d/o6rvb1ksq1c0mb3l6ha51etx1c0d5x/investitionskredite_nach_massnahmenkategorie_1999-2015_datenreihe_d.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Investitionskredite nach Massnahmenkategorien 1999-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 58e247cd-13f2-4eac-a89c-03f67d97e6c8"
+    },
+    {
+      "dct:identifier": "8a2e7d2f-e3d1-45e4-bfc9-3605eb30e0ee",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/99/d843bxr5fzdnj1rzw237r00x0xkffo/investitionskredite_nach_massnahmenkategorie_1999-2015_datenreihe_f.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/99/d843bxr5fzdnj1rzw237r00x0xkffo/investitionskredite_nach_massnahmenkategorie_1999-2015_datenreihe_f.xlsx",
+      "dct:title": {
+        "fr": "Crédits d'investissements par catégorie de mesures 1999-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: d3f3a33b-c4f4-4f28-833d-9f4031774f9c"
+    },
+    {
+      "dct:identifier": "9b26b508-4b78-4797-b263-e333775ab12b",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/1c/o30rbsdp7c2038uvyqjaa4zi58f1i1/investitionskredite_nach_massnahmenkategorie_1999-2015_datenreihe_i.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/1c/o30rbsdp7c2038uvyqjaa4zi58f1i1/investitionskredite_nach_massnahmenkategorie_1999-2015_datenreihe_i.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Crediti d'investimento per categorie di provvedimenti 1999-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 2ba55d2c-828e-4942-8d11-78a62732a530"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "1999-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

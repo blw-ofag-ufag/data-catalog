@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "12faeb21-1ea3-45d7-a1bf-1aee6dbb8249",
+  "dct:title": {
+    "fr": "Chiffres du marché des œufs - Quantités exportées annuelles",
+    "en": "Market figures eggs - Annual export quantities ",
+    "de": "Marktzahlen Eier - Jährliche Exportmengen",
+    "it": "Cifre del mercato delle uova - Volumi d'esportazioni annuali"
+  },
+  "dct:description": {
+    "fr": "Quantités annuelles en millions d'œufs exportés à l’échelon de création de valeur transformation et consommation",
+    "de": "Jährliche Mengenangaben für exportierte Eiprodukte und Eier auf Wertschöpfungsstufe Verarbeitung und Konsum",
+    "en": "Annual quantities of eggs exported at the tranformation or consumption stage of the value chain",
+    "it": "Volumi annuali di uova esportate e di una selezione di prodotti importati a base di uovai a livello di creazione di valore transformazione e consumi"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-02-19",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "5ba84e07-f6dd-454b-bf8a-68dfad9c5fa1"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "quantity",
+    "market-data"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-eier"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "29e2a8d9-542e-4443-9ae7-9c4f95a6b7cc",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FEggs%2FExport_Quantity_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "en": "SPARQL Endpoint with graph preselection",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: cfebe679-705e-429d-a743-b4e50b291798"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2002-01-01",
+    "dcat:end_date": "2024-01-01"
+  }
+}

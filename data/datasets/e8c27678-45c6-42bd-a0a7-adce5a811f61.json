@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "e8c27678-45c6-42bd-a0a7-adce5a811f61",
+  "dct:title": {
+    "fr": "Chiffres du marché des oléagineux - Quantités de production annuelles",
+    "de": "Marktzahlen Ölsaaten - Jährliche Produktionsmengen",
+    "en": "Market figures for oilseeds - Annual production quantities",
+    "it": "Dati di mercato delle oleaginose - Quantità di produzione annue"
+  },
+  "dct:description": {
+    "fr": "Quantités annuelles des oléagineux au niveau de la production",
+    "en": "Annual quantities for oilseeds at the production level",
+    "de": "Jährliche Mengenangaben für Ölsaaten auf der Wertschöpfungsstufe Produktion",
+    "it": "Quantità annue delle oleaginose al livello della produzione"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "7f60af24-5112-4f2a-b702-4ca70eb48865"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "quantity",
+    "market-data"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-olsaaten"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "dfdc2153-ddeb-42d9-8d8f-fa398fa376c3",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FOilseeds%2FProduction_Quantity_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "en": "SPARQL Endpoint with graph preselection",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 430ba06a-13f8-4578-8854-fae83f9ac984"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2014-07-01",
+    "dcat:end_date": "2023-07-01"
+  }
+}

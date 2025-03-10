@@ -1,0 +1,166 @@
+{
+  "dct:identifier": "f65f56fe-d007-4b28-b3eb-2da01cbb733b",
+  "dct:title": {
+    "fr": "Carte digitale des aptitudes des sols de la Suisse - Pierrosité",
+    "de": "Digitale Bodeneignungskarte der Schweiz - Skelettgehalt",
+    "en": "Digital soil suitability map of Switzerland - Stone content",
+    "it": "Carta digitale delle attitudini dei suoli svizzeri - Scheletro"
+  },
+  "dct:description": {
+    "fr": "On entend par pierrosité l'ensemble des fragments minéraux plus gros que 2 mm (refus du tamis). Envisagés principalement dans les 50 cm supérieurs du profil du sol.",
+    "de": "Als Skelett bezeichnet man die mineralischen Bodeneinzelteile, die grösser als 2 mm sind (Siebrückstand). Es wurden vorwiegend die obersten 50 cm des Bodenprofils berücksichtigt.(Details: Bodeneignungskarte der Schweiz, März 1980)",
+    "en": "The stone content refers to the individual mineral components of the soil which are larger than 2 mm (sieve residue). In most cases the top 50 cm of the soil was evaluated. (Details: Soil suitability map of Switzerland, March 1980).",
+    "it": "Per scheletro s'intende l'insieme dei frammenti minerali più grandi di 2 mm (resti nel setaccio). Individuati principalmente nei 50 cm superiori del profilo del suolo. (Dettagli: carta delle attitudini dei suoli svizzeri, marzo 1980)."
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "info@blw.admin.ch",
+    "schema:name": "info@blw.admin.ch"
+  },
+  "dct:issued": "2012-07-01",
+  "dct:accrualPeriodicity": "NEVER",
+  "dct:modified": "2012-07-01",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "d18a25f8-6967-41d7-8813-c4b1e486f54a"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "cultivation-suitability",
+    "soil",
+    "meteorological-geographical-features",
+    "fsdi-federal-spatial-data-infrastructure"
+  ],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/politik/datenmanagement/geografisches-informationssystem-gis/bodeneignungskarte.html",
+  "foaf:page": [
+    {
+      "uri": "http://map.blw.admin.ch/",
+      "alias": "Link zum Fachportal"
+    },
+    {
+      "uri": "https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/b07f2385-ee3d-4dae-aac2-3fce678ead33",
+      "alias": "geocat.ch permalink"
+    }
+  ],
+  "dcatap:applicableLegislation": [],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "b560e2ed-0067-41a4-a6bf-97c11e4b3ca0",
+      "dcat:accessURL": "https://map.geo.admin.ch/?layers=ch.blw.bodeneignung-skelettgehalt",
+      "adms:status": "published",
+      "dct:format": "SERVICE",
+      "dct:modified": "2012-07-01",
+      "dct:title": {
+        "fr": "Map (Preview) Aperçu map.geo.admin.ch",
+        "de": "Map (Preview) Vorschau map.geo.admin.ch",
+        "en": "Map (Preview)  map.geo.admin.ch",
+        "it": "Map (Preview) Previsione map.geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "Aperçu map.geo.admin.ch",
+        "de": "Vorschau map.geo.admin.ch",
+        "en": "Preview map.geo.admin.ch",
+        "it": "Previsione map.geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: e7763b67-829a-4150-b8ab-30cefbd4cfff"
+    },
+    {
+      "dct:identifier": "09ecd76b-b295-4247-a757-39de7ab0e22d",
+      "dcat:accessURL": "https://wms.geo.admin.ch/?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities&lang=de",
+      "adms:status": "published",
+      "dct:format": "WMS",
+      "dct:modified": "2012-07-01",
+      "dct:title": {
+        "fr": "ch.blw.bodeneignung-skelettgehalt",
+        "de": "ch.blw.bodeneignung-skelettgehalt",
+        "en": "ch.blw.bodeneignung-skelettgehalt",
+        "it": "ch.blw.bodeneignung-skelettgehalt"
+      },
+      "dct:description": {
+        "fr": "Service WMS-IFDG, couche \"Pierrosité\"",
+        "de": "WMS-BGDI Dienst, Layer \"Skelettgehalt\"",
+        "en": "WMS-FSDI service, layer \"Stone content\"",
+        "it": "Servizio WMS-IFDG, strato \"Scheletro\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: c22fd907-e49b-4367-99ca-4aa2b1a22cd3"
+    },
+    {
+      "dct:identifier": "62cebc1c-808f-412a-b56d-312ef65eb1f0",
+      "dcat:accessURL": "https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml?lang=de",
+      "adms:status": "published",
+      "dct:format": "WMTS",
+      "dct:modified": "2012-07-01",
+      "dct:title": {
+        "fr": "ch.blw.bodeneignung-skelettgehalt",
+        "de": "ch.blw.bodeneignung-skelettgehalt",
+        "en": "ch.blw.bodeneignung-skelettgehalt",
+        "it": "ch.blw.bodeneignung-skelettgehalt"
+      },
+      "dct:description": {
+        "fr": "Service WMTS-IFDG, couche , Layer \"Pierrosité\"",
+        "de": "WMTS-BGDI Dienst, Layer \"Skelettgehalt\"",
+        "en": "WMTS-FSDI service, layer \"Stone content\"",
+        "it": "Servizio WMTS-IFDG, strato \"Scheletro\""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 7db29ac5-c256-4997-8b2b-0b24cc146a20"
+    },
+    {
+      "dct:identifier": "bfebf967-ef14-4f0e-8c48-38ea1f6a8bbf",
+      "dcat:accessURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bodeneignung-skelettgehalt",
+      "adms:status": "published",
+      "dct:format": "HTML",
+      "dct:modified": "2012-07-01",
+      "dcat:downloadURL": "https://data.geo.admin.ch/browser/index.html#/collections/ch.blw.bodeneignung-skelettgehalt",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "Plus d'information et téléchargement des données (uniquement en allemand)",
+        "de": "Weitere Infos und Datendownload",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 945f2ed3-e873-442c-8ffb-3e806248a5bf"
+    },
+    {
+      "dct:identifier": "19e42b81-c33a-46b9-a408-911b5e603d19",
+      "dcat:accessURL": "https://api3.geo.admin.ch/rest/services/api/MapServer/ch.blw.bodeneignung-skelettgehalt",
+      "adms:status": "published",
+      "dct:format": "API",
+      "dct:modified": "2012-07-01",
+      "dct:title": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:description": {
+        "fr": "RESTful API de geo.admin.ch",
+        "de": "RESTful API von geo.admin.ch",
+        "en": "RESTful API from geo.admin.ch",
+        "it": "RESTful API da geo.admin.ch"
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: ecdeca9d-c614-4a72-94ee-3541c45a044a"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "242eb58f-bd2f-45ef-9c93-cfa70bb86aaf",
+  "dct:title": {
+    "fr": "Contributions au système de production 2014-2015",
+    "de": "Produktionssystembeiträge 2014-2015",
+    "en": "",
+    "it": "Contributi per i sistemi di produzione 2014-2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Beiträge für Produktionssysteme (Biologischer Landbau, extensive Produktion von Getreide und Raps, Graslandbasierte Milch- und Fleischproduktion) nach Kantonen und Zonen (Anzahl Betriebe, Fläche in Hektaren, Beitrag in CHF)",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "944a7136-0ee7-4bcf-b7a6-e69ae62767d5"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/direktzahlungen.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "adc5e356-3fd3-4044-90cd-091097f0ffb1",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/49/ozq85jiokzlrtyq2dgju9kjb7l0urk/35_ab16_statdz2015_anhaenge_tab_produktionssys_i_datenreihe_d_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/49/ozq85jiokzlrtyq2dgju9kjb7l0urk/35_ab16_statdz2015_anhaenge_tab_produktionssys_i_datenreihe_d_ok.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Produktionssystembeiträge 2014-2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: bd112795-5a88-4ab8-be06-221c777455c2"
+    },
+    {
+      "dct:identifier": "5f5d6ca5-8dda-4a15-8afc-8f5388931553",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/20/dbt09f8xc8tvan36g6c2fd9fhg1mwd/35_ab16_statdz2015_anhaenge_tab_produktionssysi_datenreihe_f_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/20/dbt09f8xc8tvan36g6c2fd9fhg1mwd/35_ab16_statdz2015_anhaenge_tab_produktionssysi_datenreihe_f_ok.xlsx",
+      "dct:title": {
+        "fr": "Contributions au système de production 2014-2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: c9ebd389-bddd-4d22-8814-76e532f6b800"
+    },
+    {
+      "dct:identifier": "f0f8df6e-9eb7-4e62-b3f0-ad25d7e6fea3",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ac/x5v9coz9lzuwm6c232hkwjatovyyk7/35_ab16_statdz2015_anhaenge_tab_produktionssysi_datenreihe_i_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/ac/x5v9coz9lzuwm6c232hkwjatovyyk7/35_ab16_statdz2015_anhaenge_tab_produktionssysi_datenreihe_i_ok.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Contributi per i sistemi di produzione 2014-2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 76c3f49f-8c1d-4e6d-a455-5843e2f4dc97"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2014-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "dct:identifier": "6e679770-5782-4e28-9987-f82f3c677ab4",
+  "dct:title": {
+    "fr": "Aperçu paiements directs par type et canton 2015",
+    "de": "Übersicht Direktzahlungen alle Arten nach Kantonen 2015",
+    "en": "",
+    "it": "Sintesi pagamenti diretti secondo i tipi e per cantoni 2015"
+  },
+  "dct:description": {
+    "fr": "",
+    "en": "",
+    "de": "Übersicht aller Direktzahlungsarten (Kulturlandschaftsbeiträge, Versorgungssicherheitsbeiträge, Biodiversitätsbeiträge, Landschaftsqualitätsbeitrag, Produktionssystembeiträge, Ressourceneffizienzbeiträge, Übergangsbeitrag) nach Kantonen in CHF",
+    "it": ""
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "alessandro.rossi@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft"
+  },
+  "dct:issued": "2016-11-08",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "c9406d6b-a108-42a2-a22b-cf8b03e95d70"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [],
+  "dcat:theme": [
+    "agriculture"
+  ],
+  "dcat:landingPage": "https://www.blw.admin.ch/blw/de/home/instrumente/direktzahlungen.html",
+  "foaf:page": [],
+  "dcatap:applicableLegislation": [
+    "https://www.admin.ch/opc/de/classified-compilation/19983446/index.html#a11"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "c939e09b-430b-45f1-a6c7-1e8cb4bb2ec4",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/e6/yn5g9sr6wmi0wv3s7s4bk20oaijx3t/1_ab15_16_statdz2015_uebersicht_alle_dz_kt_einfach_neu_ehemals_33a_datenreihe_nur_2015_d_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/e6/yn5g9sr6wmi0wv3s7s4bk20oaijx3t/1_ab15_16_statdz2015_uebersicht_alle_dz_kt_einfach_neu_ehemals_33a_datenreihe_nur_2015_d_ok.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "Übersicht Direktzahlungen alle Arten nach Kantonen 2015",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 4105b1bd-473d-48ca-a73a-38b7c3661bcc"
+    },
+    {
+      "dct:identifier": "5e371896-fe30-4cd5-9512-d90b8fd9e505",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/28/wltyw028nqfq0zng7isdlzopx36emb/1_ab15_16_statdz2015_uebersicht_alle_dz_kt_einfach_neu_ehemals_3a_datenreihe_nur_2015_f_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/28/wltyw028nqfq0zng7isdlzopx36emb/1_ab15_16_statdz2015_uebersicht_alle_dz_kt_einfach_neu_ehemals_3a_datenreihe_nur_2015_f_ok.xlsx",
+      "dct:title": {
+        "fr": "Aperçu paiements directs par type et canton 2015",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 911583db-3ccc-4d0c-a62d-ed2a86600981"
+    },
+    {
+      "dct:identifier": "9fdc4584-8ee8-4a59-9105-07f6d5da852e",
+      "dcat:accessURL": "http://agrarbericht-2016.cmsbox.com/download/documents/de/4kl76qvuagyqeajbiglwhy5sj845bw/1_ab15_16_statdz2015_uebersicht_alle_dz_kt_einfach_neu_ehemals_33a_datenreihe_nur_2015_i_ok.xlsx",
+      "adms:status": "published",
+      "dct:format": "XLS",
+      "dct:modified": null,
+      "dcat:downloadURL": "http://agrarbericht-2016.cmsbox.com/download/documents/de/4kl76qvuagyqeajbiglwhy5sj845bw/1_ab15_16_statdz2015_uebersicht_alle_dz_kt_einfach_neu_ehemals_33a_datenreihe_nur_2015_i_ok.xlsx",
+      "dct:title": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": "Sintesi pagamenti diretti secondo i tipi e per cantoni 2015"
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: ea5f0173-53cc-46a2-8ef6-cc9618d87eef"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2015-01-01",
+    "dcat:end_date": "2015-12-31"
+  }
+}

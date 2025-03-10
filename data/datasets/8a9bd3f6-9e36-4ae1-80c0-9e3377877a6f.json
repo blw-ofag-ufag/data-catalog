@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "8a9bd3f6-9e36-4ae1-80c0-9e3377877a6f",
+  "dct:title": {
+    "fr": "Chiffres du marché des oléagineux - Prix de consommation mensuels",
+    "de": "Marktzahlen Ölsaaten - Monatliche Konsumentenpreise",
+    "en": "Market figures for oilseeds - Monthly consumer prices",
+    "it": "Dati di mercato delle oleaginose - Prezzi di consumo mensili"
+  },
+  "dct:description": {
+    "fr": "Prix moyens mensuels des oléagineux au niveau de la consommation",
+    "en": "Monthly average prices for oilseeds at the consumer level",
+    "de": "Monatliche Durchschnittspreise für Ölsaaten auf der Wertschöpfungsstufe Konsum.",
+    "it": "Prezzi medi mensili delle oleaginose al livello del consumo"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "MONTHLY",
+  "dct:modified": null,
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "889b2128-a9f9-449e-9218-3c289bbd8faa"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "market-data",
+    "price"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-olsaaten"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "73f1b102-8509-4298-a0b6-afb4f55067aa",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FOilseeds%2FConsumption_Price_Month%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "en": "SPARQL Endpoint with graph preselection",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: b6d2bb57-f400-4064-bbfe-22641901f3b0"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2020-01-01",
+    "dcat:end_date": "2024-10-01"
+  }
+}

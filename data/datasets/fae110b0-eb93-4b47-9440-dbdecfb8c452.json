@@ -1,0 +1,82 @@
+{
+  "dct:identifier": "fae110b0-eb93-4b47-9440-dbdecfb8c452",
+  "dct:title": {
+    "fr": "Chiffres du marché des oléagineux - Prix de transformation annuels",
+    "en": "Market figures for oilseeds - Annual processing prices",
+    "de": "Marktzahlen Ölsaaten - Jährliche Verarbeitungspreise",
+    "it": "Dati di mercato delle oleaginose - Prezzi di trasformazione annui"
+  },
+  "dct:description": {
+    "fr": "Prix moyens annuels et prix indicatifs des oléagineux au niveau de la production",
+    "de": "Jährliche Durchschnittspreise und Richtpreise für Ölsaaten auf der Wertschöpfungsstufe Produktion",
+    "en": "Annual average prices and reference prices for oilseeds at the production level",
+    "it": "Prezzi medi annui e prezzi indicativi delle oleaginose al livello della produzione"
+  },
+  "dct:accessRights": "PUBLIC",
+  "dct:publisher": "Bundesamt für Landwirtschaft BLW",
+  "dcat:contactPoint": {
+    "schema:email": "marktanalysen@blw.admin.ch",
+    "schema:name": "Bundesamt für Landwirtschaft, Fachbereich Marktanalysen"
+  },
+  "dct:issued": "2025-03-09",
+  "dct:accrualPeriodicity": "ANNUAL",
+  "dct:modified": "2025-02-21",
+  "adms:status": "published",
+  "bv:classification": "none",
+  "bv:personalData": "none",
+  "bv:archivalValue": false,
+  "bv:opendata_swiss": {
+    "bv:mustBePublished": true,
+    "dct:identifier": "985819da-067a-4d87-a0d9-861f75655ced"
+  },
+  "bv:i14y": {
+    "bv:mustBePublished": true
+  },
+  "bv:typeOfData": "thematicData",
+  "dcat:keyword": [
+    "price",
+    "market-data"
+  ],
+  "dcat:theme": [
+    "agriculture",
+    "administration",
+    "finances"
+  ],
+  "dcat:landingPage": "https://www.agrarmarktdaten.ch",
+  "foaf:page": [
+    {
+      "uri": "https://www.agrarmarktdaten.ch/methoden/methoden-olsaaten"
+    }
+  ],
+  "dcatap:applicableLegislation": [
+    "https://www.fedlex.admin.ch/eli/cc/1998/3033_3033_3033/de#art_27"
+  ],
+  "schema:comment": "Imported from opendata.swiss on 2025-03-10",
+  "dcat:distribution": [
+    {
+      "dct:identifier": "22551096-c162-48cb-96f0-bf10c73f9ae7",
+      "dcat:accessURL": "https://lindas.admin.ch/sparql#query=DESCRIBE+%3Chttps%3A%2F%2Fagriculture.ld.admin.ch%2Ffoag%2Fcube%2FOilseeds%2FProduction_Price_Year%3E%0A%0AFROM+%3Chttps%3A%2F%2Flindas.admin.ch%2Ffoag%2Fagricultural-market-data%3E%0A%0A%0A&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery",
+      "adms:status": "published",
+      "dct:format": "SPARQL",
+      "dct:modified": null,
+      "dct:title": {
+        "fr": "SPARQL Endpoint avec présélection du graphe",
+        "en": "SPARQL Endpoint with graph preselection",
+        "de": "SPARQL Endpoint mit Vorauswahl des Graph",
+        "it": ""
+      },
+      "dct:description": {
+        "fr": "",
+        "de": "",
+        "en": "",
+        "it": ""
+      },
+      "dct:license": "terms_by",
+      "schema:comment": "ID for this distribution on opendata.swiss: 49068d25-1a9b-4141-b4df-af177dd1f3a5"
+    }
+  ],
+  "dct:temporal": {
+    "dcat:start_date": "2017-07-01",
+    "dcat:end_date": "2023-07-01"
+  }
+}
