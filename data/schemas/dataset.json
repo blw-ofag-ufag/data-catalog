@@ -198,7 +198,8 @@
                 "properties": {
                     "prov:agent": {
                         "type": "string",
-                        "title": "Personal ID from AdminDir. The AdminDir ID is shown as the URL slug of a person's AdminDir page. For example, on the page <https://admindir.verzeichnisse.admin.ch/person/p-2959456>, the AdminDir ID is `p-2959456`."
+                        "title": "AdminDir Person ID",
+                        "description": "The AdminDir ID is shown as the URL slug of a person's AdminDir page. For example, on the page <https://admindir.verzeichnisse.admin.ch/person/p-2959456>, the AdminDir ID is `p-2959456`."
                     },
                     "schema:name": {
                         "type": "string",
