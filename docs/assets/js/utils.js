@@ -3,7 +3,7 @@
 const Utils = {
   // Data Helpers
   getDataOwnerName(data) {
-    return data.dataOwner || "";
+    return data.businessDataOwner || "";
   },
   parseTokens(str) {
     if (!str) return [];

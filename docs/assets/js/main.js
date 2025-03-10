@@ -174,7 +174,7 @@ function tileCardTemplate(dataset) {
   const desc = (dataset["dct:description"] && dataset["dct:description"][state.lang]) || "";
   const issued = Utils.formatDate(dataset["dct:issued"], state.lang);
   const keywords = dataset["dcat:keyword"] || [];
-  const imageSrc = dataset["schema:image"] || "https://via.placeholder.com/300x180?text=No+Image";
+  const imageSrc = dataset["schema:image"] || "https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg";
 
   const dateHTML = issued !== "N/A" && issued !== "Invalid Date"
     ? `<p><em class="tile-date-italic">${issued}</em></p>`
