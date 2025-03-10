@@ -269,7 +269,7 @@
       "fr":"Dérivé de",
       "it":"Derivato da"
    },
-   "dpv:hasLegalBasis": {
+   "dcatap:applicableLegislation": {
       "en": "Legal Basis",
       "de": "Rechtsgrundlage",
       "fr": "Base légale",
