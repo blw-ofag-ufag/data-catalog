@@ -107,6 +107,12 @@
       "fr":"Contact",
       "it":"Contatto"
    },
+   "sendFeedback":{
+      "de":"Feedback senden",
+      "en":"Send feedback",
+      "fr":"Envoyer un commentaire",
+      "it":"Inviare un commento"
+   },
    "dct:identifier":{
       "en":"Identifier",
       "de":"Identifikator",
