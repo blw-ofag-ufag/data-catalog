@@ -383,7 +383,15 @@ $(document).ready(function () {
     dropdown: { enabled: 0 },
   });
   tagify.DOM.scope.classList.add('customLook');
-  reflectStateInUI();
+  $.getJSON(config.dataUrl)
+    .done(function (data) {
+      state.datasets = data;
+    })
+    .fail(err => {
+      console.error("Error fetching data:", err);
+    });
+  setupEventListeners();
+  $("#footer-placeholder").load("footer.html");
   $.getJSON(config.dataUrl)
     .done(function (data) {
       state.datasets = data;
@@ -392,7 +400,8 @@ $(document).ready(function () {
     .fail(function (err) {
       console.error("Error fetching data:", err);
     });
-  setupEventListeners();
-  $("#footer-placeholder").load("footer.html");
-  initI18n(state.lang);
+  initI18n(state.lang, () => {
+    reflectStateInUI();        // Now translations exist
+    applyFiltersAndRender();   // Data is loaded, so we can render properly
+  });
 });
