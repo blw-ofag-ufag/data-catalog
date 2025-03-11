@@ -30,6 +30,11 @@ function updatePageTranslations() {
     const key = el.getAttribute('data-i18n-placeholder');
     el.setAttribute('placeholder', i18next.t(key));
   });
+  // Update href attributes for elements with data-i18n-href
+  document.querySelectorAll('[data-i18n-href]').forEach(el => {
+    const key = el.getAttribute('data-i18n-href');
+    el.setAttribute('href', i18next.t(key));
+  });
   // Optionally update the title if needed
   document.querySelectorAll('title[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
