@@ -113,6 +113,12 @@
    "fr": "mailto:kompetenzzentrumdigitaletransformation@blw.admin.ch?subject=Feedback%20concernant%20le%20DigiAgriFoodCH%20Catalog%20de%20Données",
    "it": "mailto:kompetenzzentrumdigitaletransformation@blw.admin.ch?subject=Feedback%20riguardo%20il%20DigiAgriFoodCH%20Catalogo%20Dati"
    },
+   "sendFeedback":{
+      "de":"Feedback senden",
+      "en":"Send feedback",
+      "fr":"Envoyer un commentaire",
+      "it":"Inviare un commento"
+   },
    "dct:identifier":{
       "en":"Identifier",
       "de":"Identifikator",
