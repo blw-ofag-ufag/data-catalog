@@ -333,7 +333,6 @@ function setupEventListeners() {
       e.preventDefault();
       state.lang = $(this).data("lang");
       Utils.setLanguageDropdownLabel(state.lang);
-      state.currentPage = 1;
       applyFiltersAndRender();
       changeLanguage(state.lang);
     });
