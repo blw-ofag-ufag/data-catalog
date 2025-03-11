@@ -39,6 +39,7 @@ p.tile-desc-ellipsis {
 
 a {
   color: var(--color-foreground); /* Change this to your desired color */
+  cursor: pointer;
 }
 
 /* Navigation */
@@ -110,6 +111,12 @@ footer a:hover {
   border: 1px solid var(--color-primary);
   outline: 2px solid var(--color-primary);
   outline-offset: -2px; /* adjusts the outline to overlap the border */
+}
+
+/* Tiles and rows in the main page: Show the cursor pointer on hover to indicate to the user that the thing is clickable */
+.dataset-card,
+.dataset-row {
+  cursor: pointer;
 }
 
 /* Title: clamp to 1 line */
