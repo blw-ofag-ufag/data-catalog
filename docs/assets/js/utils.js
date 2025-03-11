@@ -7,7 +7,9 @@ const Utils = {
   },
   parseTokens(str) {
     if (!str) return [];
-    return str.split(/\s+/).map(s => s.trim().toLowerCase()).filter(Boolean);
+    return str.split(/(?:,\s|\s\|\s|\sOR\s)/i)
+              .map(s => s.trim().toLowerCase())
+              .filter(Boolean);
   },
   formatDate(dateStr, lang, options) {
     if (!dateStr) return "N/A";
