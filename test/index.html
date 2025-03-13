@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Markdown with Mermaid Example</title>
+</head>
+<body>
+
+<div id="content"></div>
+
+<!-- Marked JS for parsing Markdown -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<!-- Mermaid JS for diagram rendering -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+<script>
+  // Initialize Mermaid but don't render automatically
+  mermaid.initialize({ startOnLoad: false });
+  
+  // Optionally configure Marked for GitHub Flavored Markdown
+  marked.setOptions({ gfm: true });
+  
+  // Fetch the markdown file, parse it with Marked, and insert into #content
+  fetch('example.md')
+    .then(response => response.text())
+    .then(md => {
+      // Use marked.parse() instead of marked() in Marked v4+
+      const html = marked.parse(md);
+      document.getElementById('content').innerHTML = html;
+      
+      // Now render Mermaid diagrams in the newly inserted content
+      mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+    })
+    .catch(error => console.error('Error fetching Markdown:', error));
+</script>
+
+</body>
+</html>
