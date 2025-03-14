@@ -1,19 +1,30 @@
 # Was ist ein Datenkatalog?
 
-Ein Datenkatalog funktioniert ähnlich wie ein Bibliothekskatalog, aber für digitale Informationen statt für Bücher.
-Er bietet einen zentralisierten Überblick über die Datenprodukte einer Organisation und ermöglicht es Benutzern, schnell zu erkennen, welche Daten vorhanden sind, wo sie gespeichert sind, wer dafür verantwortlich ist und wie darauf zugegriffen werden kann.
+Ein Datenkatalog funktioniert ähnlich wie ein Bibliothekskatalog, aber für digitale Informationen statt für Bücher:
+Er bietet einen zentralisierten Überblick über die Datenprodukte einer Organisation.
+Das ermöglicht den Benutzern, schnell zu erkennen, welche Daten dass es gibt, wo sie gespeichert sind, wer für sie verantwortlich ist und wie sie darauf zugreifen können.
 
-# Wieso ist es für uns relevant?
+# Wieso ist das für uns relevant?
 
-Im Fokus des BLW steht zudem die Ernährungssicherheit für die Schweizer Bevölkerung.
-Um ihre Aufgabe zu erfüllen und dem schweizerischen Agrar- und Ernährungssektor einen nachhaltigen Umgang mit Ressourcen und Lebensmitteln zu ermöglichen, erstellt, sammelt, verwaltet, verarbeitet, bewertet und veröffentlicht unser Amt *Daten*.
-Diese Daten sowie die Ergebnisse aus den Analysen dienen als Entscheidungsgrundlage für die Verwaltung z. B. der Agrarpolitik, der Direktzahlungen und der Forschung im Agrar- und Lebensmittelbereich.
+Das BLW setzt sich für eine multifunktionale, wertschöpfende Land- und Ernährungswirtschaft ein, welche zudem die Ernährungssicherheit der Schweizer Bevölkerung garantiert.
+Dabei werden viele verschiedene Daten gesammelt, erstellt, verwaltet, bearbeitet, bewertet und veröffentlicht.
+Diese Daten dienen als Entscheidungsgrundlage für unterschiedlichste Aufgaben des BLW.
 
-Daher ist es für das BLW unerlässlich, sich ein Instrument bereitzustellen, das eine effektive Verwaltung dieser Daten erlaubt.
-Ein vollständiger und aktueller Datenkatalog trägt direkt zur Einhaltung [der Prinzipien unserer Digitalisierungsstrategie](https://blw-ofag-ufag.atlassian.net/wiki/spaces/DS/pages/22479169/Prinzipien) wie Once Only, Open by Default, Security & Privacy by default und Innovation first bei.
+Dabei treten die Daten in unterschiedlichsten Formen und Farben auf: Von einfachen Excel-Tabellen zu komplexen Datenbanken.
+Manche Daten beziehen sich auf Personen und sind damit mit Sicherheitsrisiken verbunden, andere Daten müssen nicht nur nicht geschützt werden, sondern sollen sogar veröffentlicht werden.
+Gewisse Daten beziehen sich auf die Milchproduktion, andere auf die Stickstoffverluste in der Landwirtschaft.
 
-Unser Datenkatalog steigert die Effizienz, fördert die Zusammenarbeit zwischen den Teams und stellt sicher, dass alle dieselben Governance- und Compliance-Regeln befolgen.
-Wenn Daten leicht zu finden und zu verstehen sind, wird es einfacher, sie verantwortungsbewusst zu teilen und fundierte Entscheidungen zu treffen.
+Bei dieser (ständig wachsenden) Fülle an Daten ist es für das BLW unerlässlich, ein Instrument bereitzustellen, welches eine übersichtliche Verwaltung dieser Daten erlaubt.
+Das ist im Kern das Ziel eines vollständigen und aktuellen Datenkatalogs.
+Damit trägt er direkt zur Einhaltung [der Prinzipien der Digitalisierungsstrategie](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie) wie *Once Only*, *Open by Default*, *Security & Privacy by default* und *Innovation first* bei.
+
+Der Datenkatalog soll für das BLW insgesamt, aber auch für die Nutzenden sicherstellen, dass
+
+- die *Governance*- und *Compliance*-Regeln befolgt werden,
+- die Daten leicht auffindbar und inhaltlich verständlich sind und
+- die Daten mehrfach genutzt werden können und damit Doppelspurigkeiten vermieden werden.
+
+Damit kann der Datenkatalog dazu beitragen, dass die Zusammenarbeit, Effizienz und Transparenz gefördert werden.
 
 # Ziele der Datenkatalogs
 
@@ -43,6 +54,6 @@ Mit der Zeit wollen wir dieses Tool zu einer unverzichtbaren Ressource für inte
 
 # Weitere Informationen
 
-- [Metadata model - Confluence](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/403701818/Metadata+model)
-- [Zielbild Datenkatalog - Confluence](https://blw-ofag-ufag.atlassian.net/wiki/spaces/KDT/pages/342098136/Zielbild+Datenkatalog)
-- [Handbook Referenzdaten - Confluence](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/354025506/Handbook+Codelists+Reference+data)
+- [Beschreibung des Metadatenmodells (Confluence-Seite)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/403701818)
+- [Zielbild des Datenkatalogs (Confluence-Seite)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/KDT/pages/342098136)
+- [Handbuch für das Referenzdaten-Management (Confluence-Seite)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/354025506)
