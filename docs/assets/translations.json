@@ -389,6 +389,18 @@
       "fr": "Historique des modifications",
       "it": "Cronologia delle modifiche"
    },
+   "about.title": {
+      "en": "About this Data Catalog",
+      "de": "Über diesen Datenkatalog",
+      "fr": "À propos de ce catalogue de données",
+      "it": "Informazioni su questo catalogo di dati"
+   },
+   "about.description": {
+      "en": "What exactly is a data catalog? And how should it support us in digital transformation? You can find answers to these questions here.",
+      "de": "Was genau ist ein Datenkatalog? Und wie soll er uns bei der digitalen Transformation unterstützen? Antworten auf diese Fragen findest du hier.",
+      "fr": "Qu'est-ce qu'un catalogue de données ? Et comment doit-il nous aider dans la transformation numérique ? Vous trouverez ici des réponses à ces questions.",
+      "it": "Cos'è esattamente un catalogo di dati? E come dovrebbe supportarci nella trasformazione digitale? Qui puoi trovare le risposte a queste domande."
+   },
    "schema:comment": {
       "en": "Comment",
       "de": "Kommentar",

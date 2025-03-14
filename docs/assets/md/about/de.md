@@ -1,9 +1,3 @@
-# Über diesen Datenkatalog
-
-Was genau ist ein Datenkatalog?  
-Und wie soll er uns bei der digitalen Transformation unterstützen?  
-Antworten auf diese Fragen findest du hier.
-
 # Was ist ein Datenkatalog?
 
 Ein Datenkatalog funktioniert ähnlich wie ein Bibliothekskatalog, aber für digitale Informationen statt für Bücher.
