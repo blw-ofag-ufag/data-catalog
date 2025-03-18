@@ -15,6 +15,12 @@
   },
   "dct:accessRights": "PUBLIC",
   "dct:issued": "2025-02-20",
+  "dct:publisher": "BLW-OFAG-UFAG",
+  "dcat:contactPoint": {
+    "schema:name": "Büro für Sortenschutz",
+    "schema:email": "sortenadmin@blw.admin.ch"
+  },
+  "bv:archivalValue": false,
   "dcat:keyword": [
     "plant-variety",
     "breeding",
@@ -46,8 +52,8 @@
     "dcat:accessURL": "https://www.i14y.admin.ch/catalog/datasets/BLW_DS_VARIETIES"
   },
   "dcat:theme": [
-    "environment",
-    "agricultureFisheriesForestryFood"
+    "territory",
+    "agriculture"
   ],
   "dcatap:applicableLegislation": [
     "https://www.fedlex.admin.ch/eli/cc/2013/417/"
@@ -68,6 +74,8 @@
         "fr": "Ce fichier JSON fournit des données détaillées et structurées sur les variétés de plantes, englobant à la fois la classification botanique et les aspects juridiques tels que les droits des obtenteurs et les listes nationales. Il inclut des enregistrements pour chaque variété, des informations sur les espèces, les noms commerciaux et de marque, les historiques de statut ainsi que les contacts pertinents des obtenteurs et propriétaires. Issu de sources agricoles nationales et de l'UPOV, cette distribution soutient à la fois la classification scientifique et la protection de la propriété intellectuelle en sélection végétale.",
         "it": "Questo file JSON fornisce dati dettagliati e strutturati sulle varietà vegetali, comprendendo sia la classificazione botanica che gli aspetti legali, come i diritti dei costitutori e le liste nazionali. Include registri per ogni varietà, informazioni sulle specie, nomi commerciali e di marca, storici di stato e contatti pertinenti per costitutori e proprietari. Derivata da fonti agricole nazionali e dall'UPOV, questa distribuzione supporta sia la classificazione scientifica che la protezione della proprietà intellettuale nel miglioramento genetico vegetale."
       },
+      "adms:status": "published",
+      "dct:modified": "2025-02-20",
       "dcat:accessURL": "https://github.com/blw-ofag-ufag/blw-ogd-data/blob/fb1fc64d032e1f40d2d1bcf52daef1fc7eb7f177/data/plant_varieties_in_switzerland.json",
       "dcat:downloadURL": "https://github.com/blw-ofag-ufag/blw-ogd-data/blob/fb1fc64d032e1f40d2d1bcf52daef1fc7eb7f177/data/plant_varieties_in_switzerland.json",
       "dct:format": "JSON",
