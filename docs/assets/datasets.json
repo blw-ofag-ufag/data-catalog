@@ -2077,16 +2077,8 @@
         ],
         "schema:image": "https://fal.media/files/rabbit/b-j9zxhlLzInwz4JQyCFU_b4014cdc2ebc4f92b293153dc4917f95.jpg",
         "businessDataOwner": "p-0711690",
-        "schemaViolations": 7,
-        "schemaViolationMessages": [
-            "'dct:publisher' is a required property",
-            "'dcat:contactPoint' is a required property",
-            "'bv:archivalValue' is a required property",
-            "'environment' is not one of ['work', 'construction', 'population', 'education', 'energy', 'finances', 'geography', 'legislation', 'health', 'trade', 'industry', 'crime', 'culture', 'agriculture', 'mobility', 'public-order', 'politics', 'prices', 'territory', 'social-security', 'statistical-basis', 'tourism', 'administration', 'national-economy']",
-            "'agricultureFisheriesForestryFood' is not one of ['work', 'construction', 'population', 'education', 'energy', 'finances', 'geography', 'legislation', 'health', 'trade', 'industry', 'crime', 'culture', 'agriculture', 'mobility', 'public-order', 'politics', 'prices', 'territory', 'social-security', 'statistical-basis', 'tourism', 'administration', 'national-economy']",
-            "'adms:status' is a required property",
-            "'dct:modified' is a required property"
-        ]
+        "schemaViolations": 0,
+        "schemaViolationMessages": []
     },
     {
         "dct:identifier": "18291692-b713-4bed-9bf5-f3294edc6e54",
