@@ -5,7 +5,7 @@
  ********************************************/
 const config = {
   branch: "main",
-  dataUrl: "assets/datasets.json", // can be relative or absolute
+  dataUrl: "https://raw.githubusercontent.com/blw-ofag-ufag/metadata/refs/heads/main/data/processed/datasets.json", // can be relative or absolute
   TILE_PAGE_SIZE: 6,   // 3×3 layout
   TABLE_PAGE_SIZE: 12, // 12 rows per page
 };
