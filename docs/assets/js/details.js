@@ -2,7 +2,7 @@
 
 // Configuration
 const branch = "main";
-const baseDataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/${branch}/data/datasets/`;
+const baseDataUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/metadata/refs/heads/${branch}/data/raw/datasets/`;
 
 // --- Local Function: formatPublicationMetadata ---
 // This function builds a table for publication metadata and is specific to the details page.
@@ -75,8 +75,8 @@ function renderHeroBanner(data, lang) {
 }
 
 function renderActionButtons(datasetId, lang) {
-  const gitHubUrl = `https://github.com/blw-ofag-ufag/data-catalog/blob/main/data/datasets/${datasetId}.json`;
-  const rawUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/main/data/datasets/${datasetId}.json`;
+  const gitHubUrl = `https://github.com/blw-ofag-ufag/metadata/blob/main/data/raw/datasets/${datasetId}.json`;
+  const rawUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/metadata/main/data/raw/datasets/${datasetId}.json`;
   document.getElementById("downloadBtn").setAttribute("href", rawUrl);
   document.getElementById("viewOnGithubBtn").setAttribute("href", gitHubUrl);
   // document.getElementById("editBtn").setAttribute("href", `modify.html?id=${datasetId}&lang=${lang}`);
@@ -290,7 +290,7 @@ function renderPublications(data, lang) {
 
 async function renderEditHistory(datasetId, branch, lang) {
   const section = document.getElementById("editHistorySection");
-  const commitsApiUrl = `https://api.github.com/repos/blw-ofag-ufag/data-catalog/commits?path=data/datasets/${datasetId}.json&sha=${branch}`;
+  const commitsApiUrl = `https://api.github.com/repos/blw-ofag-ufag/metadata/commits?path=data/raw/datasets/${datasetId}.json&sha=${branch}`;
   try {
     const response = await fetch(commitsApiUrl);
     const commits = await response.json();
@@ -323,7 +323,7 @@ async function renderEditHistory(datasetId, branch, lang) {
       const authorLogin = commitData.author ? commitData.author.login : "Unknown";
       const authorAvatar = commitData.author ? commitData.author.avatar_url : "";
       const formattedDate = Utils.formatDateTime(datetime, lang);
-      const commitUrl = `https://github.com/blw-ofag-ufag/data-catalog/commit/${sha}`;
+      const commitUrl = `https://github.com/blw-ofag-ufag/metadata/commit/${sha}`;
       html += `<tr>
                  <td>${
                    authorAvatar
