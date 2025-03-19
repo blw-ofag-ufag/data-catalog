@@ -1,0 +1,100 @@
+{
+	"dct:identifier": "a88a2dfa-f5fb-4fe2-a1c5-af392052f6a2",
+	"dct:title": {
+		"de": "Düngerkategorien gemäss Düngerverordnung (DüV) gültig vor 2024",
+		"fr": "Catégories d’engrais selon l’ordonnance sur les engrais (OEng) valables avant 2024",
+		"it": "Categorie di concimi secondo l'Ordinanza sui concimi (OCon) valida prima del 2024",
+		"en": ""
+	},
+	"dct:description": {
+		"de": "Diese Liste enthält die Düngerkategorien nach Art. 5 der Düngerverordnung (DüV), die vor dem1. Januar 2024 in Kraft waren. Die Kategorie(n) eines Düngers basieren auf seinen Eigenschaften wie Nährstoffgehalten, Funktionen und Herkunft (mineralisch, organisch, organisch-mineralisch).",
+		"fr": "Cette liste contient les catégories d’engrais selon l’art. 5 de l’ordonnance sur les engrais (OEng) en vigueur avant le 1er janvier 2024. La ou les catégories d’un engrais se basent sur ses caractéristiques comme les teneurs en éléments fertilisants, ses fonctions et son origine (minérale, organique, organo-minérale).",
+		"it": "Questo elenco contiene le categorie di fertilizzanti in conformità all'art. 5 dell'Ordinanza sui fertilizzanti (UFV) in vigore prima del1° gennaio 2024. La categoria o le categorie di un fertilizzante si basano sulle sue caratteristiche, come il contenuto di sostanze nutritive, le sue funzioni e la sua origine (minerale, organica, organo-minerale).",
+		"en": ""
+	},
+	"dct:accessRights": "PUBLIC",
+	"dct:issued": "2001-03-01",
+	"dcat:keyword": [
+		"Data standard agricultural data",
+		"eCH-0263",
+		"fertiliserProductCatPre24"
+	],
+	"dct:accrualPeriodicity": "NEVER",
+	"dct:modified": "2023-01-01",
+	"bv:abrogation": "2023-12-31",
+	"dct:publisher": "Bundesamt für Landwirtschaft BLW",
+	"bv:archivalValue": false,
+	"prov:qualifiedAttribution": [
+		{
+			"prov:agent": "p-0170309",
+			"dcat:hadRole": "businessDataOwner"
+		},
+		{
+			"prov:agent": "p-9934253",
+			"dcat:hadRole": "dataSteward"
+		}
+	],
+	"adms:status": "archived",
+	"bv:classification": "none",
+	"bv:personalData": "none",
+	"bv:typeOfData": "referenceData",
+	"bv:opendata_swiss": {
+		"bv:mustBePublished": false
+	},
+	"bv:i14y": {
+		"bv:mustBePublished": true,
+		"dct:identifier": "BLW_CD_TDE_DueV_pre24",
+		"dcat:accessURL": "https://www.i14y.admin.ch/de/catalog/concepts/08dca65f-2d5e-9e75-8a13-48b8ecd20149"
+	},
+	"dcat:theme": [
+		"agriculture",
+		"territory"
+	],
+	"dcatap:applicableLegislation": [
+		"https://www.fedlex.admin.ch/eli/cc/2001/105/de"
+	],
+	"dcat:distribution": [
+		{
+			"dct:identifier": "2a6bb461-d19f-462a-9463-4091e18a099a",
+			"dct:title": {
+				"de": "Düngerkategorien gemäss Düngerverordnung (DüV) gültig vor 2024",
+				"fr": "Catégories d’engrais selon l’ordonnance sur les engrais (OEng) valables avant 2024",
+				"it": "Categorie di concimi secondo l'Ordinanza sui concimi (OCon) valida prima del 2024",
+				"en": ""
+			},
+			"dct:description": {
+				"de": "Diese Liste enthält die Düngerkategorien nach Art. 5 der Düngerverordnung (DüV), die vor dem1. Januar 2024 in Kraft waren. Die Kategorie(n) eines Düngers basieren auf seinen Eigenschaften wie Nährstoffgehalten, Funktionen und Herkunft (mineralisch, organisch, organisch-mineralisch).",
+				"fr": "Cette liste contient les catégories d’engrais selon l’art. 5 de l’ordonnance sur les engrais (OEng) en vigueur avant le 1er janvier 2024. La ou les catégories d’un engrais se basent sur ses caractéristiques comme les teneurs en éléments fertilisants, ses fonctions et son origine (minérale, organique, organo-minérale).",
+				"it": "Questo elenco contiene le categorie di fertilizzanti in conformità all'art. 5 dell'Ordinanza sui fertilizzanti (UFV) in vigore prima del1° gennaio 2024. La categoria o le categorie di un fertilizzante si basano sulle sue caratteristiche, come il contenuto di sostanze nutritive, le sue funzioni e la sua origine (minerale, organica, organo-minerale).",
+				"en": ""
+			},
+			"dct:modified": "2001-03-01",
+			"adms:status": "archived",
+			"dcat:accessURL": "https://input.i14y.admin.ch/api/Metadata/concepts/byId/08dca65f-2d5e-9e75-8a13-48b8ecd20149/codeListEntries/export/json",
+			"dcat:downloadURL": "https://input.i14y.admin.ch/api/Metadata/concepts/byId/08dca65f-2d5e-9e75-8a13-48b8ecd20149/codeListEntries/export/json",
+			"dct:format": "JSON",
+			"dct:license": "terms_by"
+		},
+		{
+			"dct:identifier": "5578145a-0582-4519-b505-01eb2030ad6c",
+			"dct:title": {
+				"de": "Düngerkategorien gemäss Düngerverordnung (DüV) gültig vor 2024",
+				"fr": "Catégories d’engrais selon l’ordonnance sur les engrais (OEng) valables avant 2024",
+				"it": "Categorie di concimi secondo l'Ordinanza sui concimi (OCon) valida prima del 2024",
+				"en": ""
+			},
+			"dct:description": {
+				"de": "Diese Liste enthält die Düngerkategorien nach Art. 5 der Düngerverordnung (DüV), die vor dem1. Januar 2024 in Kraft waren. Die Kategorie(n) eines Düngers basieren auf seinen Eigenschaften wie Nährstoffgehalten, Funktionen und Herkunft (mineralisch, organisch, organisch-mineralisch).",
+				"fr": "Cette liste contient les catégories d’engrais selon l’art. 5 de l’ordonnance sur les engrais (OEng) en vigueur avant le 1er janvier 2024. La ou les catégories d’un engrais se basent sur ses caractéristiques comme les teneurs en éléments fertilisants, ses fonctions et son origine (minérale, organique, organo-minérale).",
+				"it": "Questo elenco contiene le categorie di fertilizzanti in conformità all'art. 5 dell'Ordinanza sui fertilizzanti (UFV) in vigore prima del1° gennaio 2024. La categoria o le categorie di un fertilizzante si basano sulle sue caratteristiche, come il contenuto di sostanze nutritive, le sue funzioni e la sua origine (minerale, organica, organo-minerale).",
+				"en": ""
+			},
+			"dct:modified": "2001-03-01",
+			"adms:status": "archived",
+			"dcat:accessURL": "https://input.i14y.admin.ch/api/Metadata/concepts/byId/08dca65f-2d5e-9e75-8a13-48b8ecd20149/codeListEntries/export/csv",
+			"dcat:downloadURL": "https://input.i14y.admin.ch/api/Metadata/concepts/byId/08dca65f-2d5e-9e75-8a13-48b8ecd20149/codeListEntries/export/csv",
+			"dct:format": "CSV",
+			"dct:license": "terms_by"
+		}
+	]
+}

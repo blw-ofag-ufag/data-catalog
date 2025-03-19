@@ -1,0 +1,100 @@
+{
+	"dct:identifier": "c61f6636-f09f-433e-8612-4babd5a3a9f4",
+	"dct:title": {
+		"de": "Düngertypen gemäss Anhang 1 der Düngerverordnung (DüV) gültig vor 2024",
+		"fr": "Types d’engrais selon l’annexe 1 de l’ordonnance sur les engrais (OEng) valables avant 2024",
+		"it": "Tipi di fertilizzanti secondo l'Allegato 1 dell'Ordinanza sui fertilizzanti (VZV) valida prima del 2024",
+		"en": ""
+	},
+	"dct:description": {
+		"de": "Diese Liste enthält die Düngertypen gemäss Anhang 1 der Düngerverordnung (DüV), die vor dem1. Januar 2024 gültig waren. Nicht meldepflichtige und meldepflichtige Dünger entsprechen einem Düngertyp in der Liste.",
+		"fr": "Cette liste contient les type d’engrais définis à l’annexe 1 de l’ordonnance sur les engrais (OEng) en vigueur avant le 1er janvier 2024. Les engrais qui n’était pas soumis à l’annonce obligatoire et ceux soumis à annonce correspondent à un type d’engrais de la liste.",
+		"it": "Questo elenco contiene i tipi di fertilizzanti definiti nell'Allegato 1 dell'Ordinanza sui fertilizzanti (VZV) in vigore prima del1° gennaio 2024. I fertilizzanti non soggetti a notifica obbligatoria e quelli soggetti a notifica corrispondono a un tipo di fertilizzante presente nell'elenco.",
+		"en": ""
+	},
+	"dct:accessRights": "PUBLIC",
+	"dct:issued": "2023-01-01",
+	"dcat:keyword": [
+		"Data standard agricultural data",
+		"eCH-0263",
+		"TypeOfFertilizerProdPre24"
+	],
+	"dct:accrualPeriodicity": "NEVER",
+	"dct:modified": "2023-01-01",
+	"bv:abrogation": "2023-12-31",
+	"dct:publisher": "Bundesamt für Landwirtschaft BLW",
+	"bv:archivalValue": false,
+	"prov:qualifiedAttribution": [
+		{
+			"prov:agent": "p-0170309",
+			"dcat:hadRole": "businessDataOwner"
+		},
+		{
+			"prov:agent": "p-9934253",
+			"dcat:hadRole": "dataSteward"
+		}
+	],
+	"adms:status": "archived",
+	"bv:classification": "none",
+	"bv:personalData": "none",
+	"bv:typeOfData": "referenceData",
+	"bv:opendata_swiss": {
+		"bv:mustBePublished": false
+	},
+	"bv:i14y": {
+		"bv:mustBePublished": true,
+		"dct:identifier": "BLW_CD_TDE_DueV_pre24",
+		"dcat:accessURL": "https://www.i14y.admin.ch/de/catalog/concepts/08dca714-3c5e-6cb1-9f9c-1a1bd280af27"
+	},
+	"dcat:theme": [
+		"agriculture",
+		"territory"
+	],
+	"dcatap:applicableLegislation": [
+		"https://www.fedlex.admin.ch/eli/cc/2001/105/de"
+	],
+	"dcat:distribution": [
+		{
+			"dct:identifier": "ae6ec8e0-4f4e-4916-8e34-b134b40ba367",
+			"dct:title": {
+				"de": "Düngertypen gemäss Anhang 1 der Düngerverordnung (DüV) gültig vor 2024",
+				"fr": "Types d’engrais selon l’annexe 1 de l’ordonnance sur les engrais (OEng) valables avant 2024",
+				"it": "Tipi di fertilizzanti secondo l'Allegato 1 dell'Ordinanza sui fertilizzanti (VZV) valida prima del 2024",
+				"en": ""
+			},
+			"dct:description": {
+				"de": "Diese Liste enthält die Düngertypen gemäss Anhang 1 der Düngerverordnung (DüV), die vor dem1. Januar 2024 gültig waren. Nicht meldepflichtige und meldepflichtige Dünger entsprechen einem Düngertyp in der Liste.",
+				"fr": "Cette liste contient les type d’engrais définis à l’annexe 1 de l’ordonnance sur les engrais (OEng) en vigueur avant le 1er janvier 2024. Les engrais qui n’était pas soumis à l’annonce obligatoire et ceux soumis à annonce correspondent à un type d’engrais de la liste.",
+				"it": "Questo elenco contiene i tipi di fertilizzanti definiti nell'Allegato 1 dell'Ordinanza sui fertilizzanti (VZV) in vigore prima del1° gennaio 2024. I fertilizzanti non soggetti a notifica obbligatoria e quelli soggetti a notifica corrispondono a un tipo di fertilizzante presente nell'elenco.",
+				"en": ""
+			},
+			"dct:modified": "2023-01-01",
+			"adms:status": "archived",
+			"dcat:accessURL": "https://input.i14y.admin.ch/api/Metadata/concepts/byId/08dca714-3c5e-6cb1-9f9c-1a1bd280af27/codeListEntries/export/json",
+			"dcat:downloadURL": "https://input.i14y.admin.ch/api/Metadata/concepts/byId/08dca714-3c5e-6cb1-9f9c-1a1bd280af27/codeListEntries/export/json",
+			"dct:format": "JSON",
+			"dct:license": "terms_by"
+		},
+		{
+			"dct:identifier": "cc49cb84-e11e-4586-b147-c49730ebca7d",
+			"dct:title": {
+				"de": "Düngertypen gemäss Anhang 1 der Düngerverordnung (DüV) gültig vor 2024",
+				"fr": "Types d’engrais selon l’annexe 1 de l’ordonnance sur les engrais (OEng) valables avant 2024",
+				"it": "Tipi di fertilizzanti secondo l'Allegato 1 dell'Ordinanza sui fertilizzanti (VZV) valida prima del 2024",
+				"en": ""
+			},
+			"dct:description": {
+				"de": "Diese Liste enthält die Düngertypen gemäss Anhang 1 der Düngerverordnung (DüV), die vor dem1. Januar 2024 gültig waren. Nicht meldepflichtige und meldepflichtige Dünger entsprechen einem Düngertyp in der Liste.",
+				"fr": "Cette liste contient les type d’engrais définis à l’annexe 1 de l’ordonnance sur les engrais (OEng) en vigueur avant le 1er janvier 2024. Les engrais qui n’était pas soumis à l’annonce obligatoire et ceux soumis à annonce correspondent à un type d’engrais de la liste.",
+				"it": "Questo elenco contiene i tipi di fertilizzanti definiti nell'Allegato 1 dell'Ordinanza sui fertilizzanti (VZV) in vigore prima del1° gennaio 2024. I fertilizzanti non soggetti a notifica obbligatoria e quelli soggetti a notifica corrispondono a un tipo di fertilizzante presente nell'elenco.",
+				"en": ""
+			},
+			"dct:modified": "2023-01-01",
+			"adms:status": "archived",
+			"dcat:accessURL": "https://input.i14y.admin.ch/api/Metadata/concepts/byId/08dca714-3c5e-6cb1-9f9c-1a1bd280af27/codeListEntries/export/csv",
+			"dcat:downloadURL": "https://input.i14y.admin.ch/api/Metadata/concepts/byId/08dca714-3c5e-6cb1-9f9c-1a1bd280af27/codeListEntries/export/csv",
+			"dct:format": "CSV",
+			"dct:license": "terms_by"
+		}
+	]
+}
