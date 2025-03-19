@@ -98,6 +98,32 @@
         ]
     },
     {
+        "dct:identifier": "82fcca67-633d-431d-853d-1bf765a70bc6",
+        "dct:title": {
+            "de": "Produktfunktionskategorien (PFC) gemäss Düngerverordnung (DüV)",
+            "fr": "Catégories fonctionnelles de produits (PFC) selon l’ordonnance sur les engrais (OEng)",
+            "it": "Categorie di materiali costituenti (CMC) secondo l'Ordinanza sui concimi (OCon)",
+            "en": ""
+        },
+        "dct:description": {
+            "de": "Diese Liste enthält die Produktfunktionskategorien (PFC) gemäss Anhang 1 der Düngerverordnung (DüV). Jedem Düngemittel wird eine PFC in Bezug auf seine Funktion zugeordnet. Dies ist eine Angabe, die bei der Registrierung eines Düngers oder bei der Einreichung eines Zulassungsantrags erforderlich ist (vgl. Art. 19 Abs. 1 Bst. d und Art. 25 Abs. 1 Bst. d). Die PFC 1 bis 7 entsprechen den in der Verordnung (EU) 2019/1009 festgelegten PFC. Die PFC ab Ziff. 100 sind spezifisch für die Schweiz. Für die PFC gelten unterschiedliche Sicherheits- und Qualitätsanforderungen (Mindestnährstoffgehalte, Grenzwerte für Schadstoffe und Krankheitserreger).",
+            "fr": "Cette liste contient les catégories fonctionnelles de produits (PFC) selon l’annexe 1 de l’ordonnance sur les engrais (OEng). Une PFC est attribuée à chaque engrais par rapport à sa fonction. Il s’agit d’une donnée requise lors de l’enregistrement d’un engrais ou le dépôt d’une demande d’autorisation (cf. art. 19, al. 1 letr. d et art. 25, al. 1, letr. d). Les PFC 1 à 7 correspondent à celles définies dans le règlement (UE) 2019/1009. Les PFC à partir du ch. 100 sont spécifiques à la Suisse. Les PFC sont soumises à des exigences de sécurité et de qualité différentes (teneurs minimales en éléments fertilisants, valeurs limites en polluants et pathogènes).",
+            "it": "Questo elenco contiene le Categorie di materiali costituenti (CMC) in conformità all'Appendice 1 dell'Ordinanza sui concimi (OCon). A ogni fertilizzante viene assegnato un CMC in base alla sua funzione. Queste informazioni sono richieste al momento della registrazione di un fertilizzante o della presentazione di una domanda di autorizzazione (cfr. art. 19, comma 1, lettera d e art. 25, comma 1, lettera d). I PFC da 1 a 7 corrispondono a quelli definiti nel Regolamento (UE) 2019/1009. I CMC dal punto 100 in poi sono specifici per la Svizzera. I CMC sono soggetti a diversi requisiti di sicurezza e qualità (contenuto minimo di nutrienti, valori limite per inquinanti e patogeni).",
+            "en": ""
+        },
+        "dct:issued": "2024-01-01",
+        "dcat:keyword": [
+            "Data standard agricultural data",
+            "eCH-0263",
+            "fertiliserProductCategory"
+        ],
+        "businessDataOwner": "p-0170309",
+        "schemaViolations": 1,
+        "schemaViolationMessages": [
+            "'dcat:contactPoint' is a required property"
+        ]
+    },
+    {
         "dct:identifier": "e7b5cd7a-2e4f-48dd-ab78-0c4368220310",
         "dct:title": {
             "fr": "Registre des appellations d'origine (AOP) et des indications géographiques (IGP) fromage",
@@ -480,6 +506,30 @@
         "schemaViolationMessages": [
             "'prov:qualifiedAttribution' is a required property"
         ]
+    },
+    {
+        "dct:identifier": "aa213bfe-c355-4c8e-a487-924b29d97e01",
+        "dct:title": {
+            "de": "Codes für Aquakultur-Betriebe",
+            "fr": "Codes pour les exploitations aquacoles",
+            "it": "Codici per le aziende di acquacoltura",
+            "en": "Codes for aquaculture businesses"
+        },
+        "dct:description": {
+            "de": "Das Agrarpolitische Informationssystem (AGIS) führt folgende Daten über Aquakulturbetriebe in der Schweiz: Struktur- und Registerdaten des Betriebs, die Wassertierart, Jährliche Produktionsmenge in kg, Art der Haltung, Produktionsform, Art der Wasserversorgung und Abwasserentsorgung.",
+            "fr": "Le système d'information sur la politique agricole (AGIS) contient les données suivantes sur les exploitations aquaculture en Suisse : données structurelles et données d'enregistrement de l'exploitation, espèce aquatique, quantité annuelle de production en kg, type d'élevage, mode de production, type d'approvisionnement en eau et d'évacuation des eaux usées.",
+            "it": "Il sistema d'informazione sulla politica agricola (SIPA) contiene i seguenti dati sulle aziende di acquacoltura in Svizzera: dati strutturali e di registro dell'azienda, specie acquatica, quantità di produzione annuale in kg, tipo di allevamento, forma di produzione, tipo di approvvigionamento idrico e smaltimento delle acque reflue.",
+            "en": "The Agricultural Policy Information System (AGIS) contains the following data on aquaculture operations in Switzerland: structure and register data of the operation, the aquatic animal species, annual production volume in kg, type of husbandry, production form, type of water supply and wastewater disposal."
+        },
+        "dct:issued": "2025-02-01",
+        "dcat:keyword": [
+            "wastewater",
+            "aquaculture",
+            "aquatic animals"
+        ],
+        "businessDataOwner": "p-5367735",
+        "schemaViolations": 0,
+        "schemaViolationMessages": []
     },
     {
         "dct:identifier": "a5dce9aa-6eb8-430e-9126-9436f6c3aec1",
@@ -935,6 +985,32 @@
         "schemaViolations": 1,
         "schemaViolationMessages": [
             "'prov:qualifiedAttribution' is a required property"
+        ]
+    },
+    {
+        "dct:identifier": "a88a2dfa-f5fb-4fe2-a1c5-af392052f6a2",
+        "dct:title": {
+            "de": "Düngerkategorien gemäss Düngerverordnung (DüV) gültig vor 2024",
+            "fr": "Catégories d’engrais selon l’ordonnance sur les engrais (OEng) valables avant 2024",
+            "it": "Categorie di concimi secondo l'Ordinanza sui concimi (OCon) valida prima del 2024",
+            "en": ""
+        },
+        "dct:description": {
+            "de": "Diese Liste enthält die Düngerkategorien nach Art. 5 der Düngerverordnung (DüV), die vor dem1. Januar 2024 in Kraft waren. Die Kategorie(n) eines Düngers basieren auf seinen Eigenschaften wie Nährstoffgehalten, Funktionen und Herkunft (mineralisch, organisch, organisch-mineralisch).",
+            "fr": "Cette liste contient les catégories d’engrais selon l’art. 5 de l’ordonnance sur les engrais (OEng) en vigueur avant le 1er janvier 2024. La ou les catégories d’un engrais se basent sur ses caractéristiques comme les teneurs en éléments fertilisants, ses fonctions et son origine (minérale, organique, organo-minérale).",
+            "it": "Questo elenco contiene le categorie di fertilizzanti in conformità all'art. 5 dell'Ordinanza sui fertilizzanti (UFV) in vigore prima del1° gennaio 2024. La categoria o le categorie di un fertilizzante si basano sulle sue caratteristiche, come il contenuto di sostanze nutritive, le sue funzioni e la sua origine (minerale, organica, organo-minerale).",
+            "en": ""
+        },
+        "dct:issued": "2001-03-01",
+        "dcat:keyword": [
+            "Data standard agricultural data",
+            "eCH-0263",
+            "fertiliserProductCatPre24"
+        ],
+        "businessDataOwner": "p-0170309",
+        "schemaViolations": 1,
+        "schemaViolationMessages": [
+            "'dcat:contactPoint' is a required property"
         ]
     },
     {
@@ -1664,6 +1740,31 @@
         ]
     },
     {
+        "dct:identifier": "4624b7bf-40c4-4249-b25a-98ce06ffa280",
+        "dct:title": {
+            "de": "Direktzahlungsprogramme",
+            "fr": "Programme de paiements directs",
+            "it": "Programma dei pagamenti diretti",
+            "en": "Direct payments program"
+        },
+        "dct:description": {
+            "de": "Diese Liste beinhaltet Programme im Sinn von agronomischen Massnahmen, welche landwirtschaftliche Betriebe auf ihren Flächen umsetzen können. Dafür kriegen sie bei Erfüllung der Anforderungen Direktzahlungen für gemeinwirtschaftliche Leistungen. Die Massnahmen, respektive die verschiedenen Beitragstypen sind auf www.blw.admin.ch beschrieben. Die Bedingungen, Anforderungen und Höhe der Beiträge sind in der Direktzahlungsverordnung definiert.",
+            "fr": "Cette liste comprend des programmes au sens de mesures agronomiques que les exploitations agricoles peuvent mettre en œuvre sur leurs surfaces. En contrepartie, elles reçoivent des paiements directs pour des prestations d'intérêt général si elles remplissent les exigences. Les mesures, respectivement les différents types de contributions, sont décrits sur www.blw.admin.ch. Les conditions, les exigences et le montant des contributions sont définis dans l'ordonnance sur les paiements directs.",
+            "it": "Questo elenco contiene programmi nel senso di misure agronomiche che le aziende agricole possono attuare sui loro terreni. In cambio, se soddisfano i requisiti, ricevono pagamenti diretti per i servizi pubblici. Le misure e i vari tipi di contributi sono descritti nel sito www.blw.admin.ch. Le condizioni, i requisiti e l'importo dei contributi sono definiti nell'Ordinanza sui pagamenti diretti.",
+            "en": "This list contains programs in the sense of agronomic measures that farms can implement on their land. In return, they receive direct payments for public services if the requirements are met. The measures and the various types of contributions are described at www.blw.admin.ch. The conditions, requirements and amount of the contributions are defined in the Direct Payments Ordinance."
+        },
+        "dct:issued": "2024-01-01",
+        "dcat:keyword": [
+            "Data standard agricultural data",
+            "eCH-0265",
+            "AGIS",
+            "Direct Payments"
+        ],
+        "businessDataOwner": "p-5367735",
+        "schemaViolations": 0,
+        "schemaViolationMessages": []
+    },
+    {
         "dct:identifier": "96b1ba2f-e8d8-4b9e-a35c-5a90e0f389be",
         "dct:title": {
             "fr": "Chiffres du marché du lait et des produits laitiers - Indicateur annuel (production)",
@@ -1808,6 +1909,32 @@
         "schemaViolationMessages": [
             "'prov:qualifiedAttribution' is a required property"
         ]
+    },
+    {
+        "dct:identifier": "b7f151dc-8a3d-4d52-912b-6074be50fd70",
+        "dct:title": {
+            "de": "Direktzahlungskultur bzw. Hauptkulturen",
+            "fr": "Culture de paiement direct ou cultures principales",
+            "it": "Coltura a pagamento diretto o colture principali",
+            "en": "Direct payment crop or main crops"
+        },
+        "dct:description": {
+            "de": "Beschreibt eine Liste der «Kulturen», die gemäss Direktzahlungsverordnung im Bereich Landwirtschaft relevant sind. Diese «Kulturen» werden für den Direktzahlungsvollzug verwendet. Sie entsprechen den Hauptkulturen. Als Hauptkultur wird jene Kultur bezeichnet, welche während der Vegetationsperiode am längsten auf der Anbauparzelle steht.",
+            "fr": "Décrit une liste de « cultures » qui, selon l'ordonnance sur les paiements directs, sont importantes dans le domaine de l'agriculture. Ces « cultures » sont utilisées pour l'exécution des paiements directs. Elles correspondent aux cultures principales. La culture principale est celle qui est présente le plus longtemps sur la parcelle cultivée pendant la période de végétation.",
+            "it": "Descrive un elenco di “colture” rilevanti nel settore dell'agricoltura ai sensi dell'Ordinanza sui pagamenti diretti. Queste “colture” sono utilizzate per l'attuazione dei pagamenti diretti. Esse corrispondono alle colture principali. La coltura principale è quella che rimane sull'appezzamento per il periodo più lungo durante la stagione di crescita.",
+            "en": "Describes a list of “crops” that are relevant in the area of agriculture in accordance with the Direct Payments Ordinance. These “crops” are used for the implementation of direct payments. They correspond to the main crops. The main crop is the crop that remains on the plot for the longest period during the growing season."
+        },
+        "dct:issued": "2024-01-01",
+        "dcat:keyword": [
+            "Data standard agricultural data",
+            "eCH-0263",
+            "main crops",
+            "AGIS",
+            "Direct Payments"
+        ],
+        "businessDataOwner": "p-5367735",
+        "schemaViolations": 0,
+        "schemaViolationMessages": []
     },
     {
         "dct:identifier": "1bf31551-1f4d-4947-9649-8b993504bdc0",
@@ -1981,6 +2108,31 @@
         "schemaViolationMessages": [
             "'prov:qualifiedAttribution' is a required property"
         ]
+    },
+    {
+        "dct:identifier": "db3bd925-f540-4c38-9a54-fb4fbe524609",
+        "dct:title": {
+            "de": "Flächenkategorien",
+            "fr": "Catégories de surfaces",
+            "it": "Categorie di aree",
+            "en": "Area categories"
+        },
+        "dct:description": {
+            "de": "Die «Kulturen» gemäss Direktzahlungsverordnungen werden in Flächenkategorien gegliedert. Diese Liste beschreibt die Flächenkategorien.",
+            "fr": "Les « cultures » selon les ordonnances sur les paiements directs sont réparties en catégories de surface. Cette liste décrit les catégories de surfaces.",
+            "it": "Le “colture” secondo le ordinanze sui pagamenti diretti sono suddivise in categorie di superficie. Questo elenco descrive le categorie di superficie.",
+            "en": "The “crops” according to the direct payment ordinances are divided into area categories. This list describes the area categories."
+        },
+        "dct:issued": "2024-01-01",
+        "dcat:keyword": [
+            "Data standard agricultural data",
+            "eCH-0265",
+            "AGIS",
+            "Direct Payments"
+        ],
+        "businessDataOwner": "p-5367735",
+        "schemaViolations": 0,
+        "schemaViolationMessages": []
     },
     {
         "dct:identifier": "83f93ff4-ef3f-43f1-af2c-83f18952283e",
@@ -2766,6 +2918,57 @@
         "schemaViolationMessages": [
             "'prov:qualifiedAttribution' is a required property"
         ]
+    },
+    {
+        "dct:identifier": "c61f6636-f09f-433e-8612-4babd5a3a9f4",
+        "dct:title": {
+            "de": "Düngertypen gemäss Anhang 1 der Düngerverordnung (DüV) gültig vor 2024",
+            "fr": "Types d’engrais selon l’annexe 1 de l’ordonnance sur les engrais (OEng) valables avant 2024",
+            "it": "Tipi di fertilizzanti secondo l'Allegato 1 dell'Ordinanza sui fertilizzanti (VZV) valida prima del 2024",
+            "en": ""
+        },
+        "dct:description": {
+            "de": "Diese Liste enthält die Düngertypen gemäss Anhang 1 der Düngerverordnung (DüV), die vor dem1. Januar 2024 gültig waren. Nicht meldepflichtige und meldepflichtige Dünger entsprechen einem Düngertyp in der Liste.",
+            "fr": "Cette liste contient les type d’engrais définis à l’annexe 1 de l’ordonnance sur les engrais (OEng) en vigueur avant le 1er janvier 2024. Les engrais qui n’était pas soumis à l’annonce obligatoire et ceux soumis à annonce correspondent à un type d’engrais de la liste.",
+            "it": "Questo elenco contiene i tipi di fertilizzanti definiti nell'Allegato 1 dell'Ordinanza sui fertilizzanti (VZV) in vigore prima del1° gennaio 2024. I fertilizzanti non soggetti a notifica obbligatoria e quelli soggetti a notifica corrispondono a un tipo di fertilizzante presente nell'elenco.",
+            "en": ""
+        },
+        "dct:issued": "2023-01-01",
+        "dcat:keyword": [
+            "Data standard agricultural data",
+            "eCH-0263",
+            "TypeOfFertilizerProdPre24"
+        ],
+        "businessDataOwner": "p-0170309",
+        "schemaViolations": 1,
+        "schemaViolationMessages": [
+            "'dcat:contactPoint' is a required property"
+        ]
+    },
+    {
+        "dct:identifier": "5361e7d7-4ac9-43ab-bdb3-dbec0f030033",
+        "dct:title": {
+            "de": "Programme/Label",
+            "fr": "Programmes/labels",
+            "it": "Programmi/label",
+            "en": ""
+        },
+        "dct:description": {
+            "de": "Beschreibt unvollständige Liste mit privatrechtlichen Labels im Bereich Landwirtschaft und Lebensmittel. Darin enthalten sind die in der Schweiz am weitesten verbreiten Labels von Produkten, die einen Flächenbezug haben.",
+            "fr": "Décrit une liste incomplète de labels de droit privé dans le domaine de l'agriculture et des denrées alimentaires. Elle contient les labels les plus répandus en Suisse pour les produits ayant une référence à la surface.",
+            "it": "Descrive un elenco incompleto di marchi privati nel settore agricolo e alimentare. Include i marchi più utilizzati in Svizzera per i prodotti etichettati per area.",
+            "en": ""
+        },
+        "dct:issued": "2024-01-01",
+        "dcat:keyword": [
+            "Data standard agricultural data",
+            "eCH-0265",
+            "AGIS",
+            "Direct Payments"
+        ],
+        "businessDataOwner": "p-5367735",
+        "schemaViolations": 0,
+        "schemaViolationMessages": []
     },
     {
         "dct:identifier": "de36bb9d-ce43-48ea-8a8b-26bef7dee358",
