@@ -79,6 +79,15 @@ const Utils = {
       )
       .join("<br>");
   },
+  formatIdArray(val, lang) {
+    if (Array.isArray(val)) {
+      return val
+        .map(id => `<a href="details.html?dataset=${encodeURIComponent(id)}&lang=${lang}">${id}</a>`)
+        .join(", ");
+    } else {
+      return `<a href="details.html?dataset=${encodeURIComponent(val)}&lang=${lang}">${val}</a>`;
+    }
+  },
   formatAliasURL(aliasURLobject) {
     if (!aliasURLobject || !Array.isArray(aliasURLobject) || aliasURLobject.length === 0) return "";
     return aliasURLobject.map(page => {
