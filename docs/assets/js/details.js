@@ -165,7 +165,6 @@ function renderMetadata(data, lang) {
     } else if (key === "dcat:contactPoint") {
       val = Utils.formatContactPoint(val);
     } else if (key === "bv:opendata.swiss" || key === "bv:i14y") {
-      // Use the local publication formatting function
       val = formatPublicationMetadata(val, lang);
     } else if (key === "dcatap:applicableLegislation" ) {
       val = Utils.formatUrlArray(val);
@@ -175,6 +174,8 @@ function renderMetadata(data, lang) {
       val = Utils.formatAliasURL(val);
     } else if (key === "dct:temporal") {
       val = Utils.formatTemporal(val, lang);
+    } else if (key === "dct:replaces") {
+      val = Utils.formatIdArray(val, lang);
     } else if (enumeratedFields.includes(key)) {
       val = Utils.highlightEnumeratedValues(val);
     } else if (dateFields.includes(key)) {
