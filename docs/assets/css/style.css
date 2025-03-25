@@ -390,3 +390,9 @@ footer a:hover {
   margin: 2px 4px 2px 0;
   text-transform: capitalize; /* Ensure each word starts with uppercase */
 }
+
+/* Center the mermaid content */
+.language-mermaid > svg {
+  display: block;
+  margin: 0 auto;
+}
