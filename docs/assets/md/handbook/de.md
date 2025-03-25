@@ -1,3 +1,28 @@
+# Das Metadatenmodell
+
+Das Metadatenmodell, das unserem System zugrunde liegt, besteht aus vier zentralen Klassen: `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution` und `dcat:DataService`. 
+Das untenstehende Diagramm veranschaulicht die Beziehungen zwischen diesen Klassen:
+
+```mermaid
+erDiagram
+    "dcat:DatasetSeries" ||--o{ "dcat:Dataset" : "dcat:inSeries"
+    "dcat:Dataset" ||--|{ "dcat:Distribution" : "dcat:distribution"
+    "dcat:Dataservice" ||--|{ "dcat:Distribution" : "dcat:endpointURL"
+    "dcat:Dataservice" ||--o{ "dcat:Dataset" : "dcat:servesDataset"
+```
+
+Viele der Klassen und deren Attribute wurden direkt aus dem Swiss DCAT Application Profile (DCAT-AP CH) übernommen, wie auf [DCAT-AP CH](https://www.dcat-ap.ch/) detailliert beschrieben.
+Um unseren spezifischen Anforderungen besser gerecht zu werden, haben wir diese Klassen durch zusätzliche Attribute erweitert, die mit dem Präfix `bv:` gekennzeichnet sind.
+
+Insbesondere sind drei dieser Klassen — `dcat:Dataset`, `dcat:DatasetSeries` und `dcat:DataService` — in eigenen JSON-Schemata definiert. Die vierte Klasse, `dcat:Distribution`, wird im gleichen Schema wie `dcat:Dataset` beschrieben, was die strikte 1:n-Beziehung zwischen Datensätzen und Distributionen widerspiegelt.
+Die Attribute dieser Schemata können Sie über die folgenden Links einsehen:
+
+- [`dcat:Dataset` (with `dcat:Distribution`)](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2Fdataset.json)
+- [`dcat:DatasetSeries`)](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdatasetSeries.json)
+- [`dcat:Dataset`)](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdataService.json)
+
+Bitte beachten Sie, dass diese Seiten automatisch aus den tatsächlichen JSON-Schemata generiert werden, die [hier](https://github.com/blw-ofag-ufag/metadata/tree/main/data/schemas) gespeichert sind.
+
 # Tagging-Richtlinien
 
 Tags erfüllen mehrere Zwecke in unserem Datenkatalog.

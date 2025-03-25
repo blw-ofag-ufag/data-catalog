@@ -1,28 +1,24 @@
 # The metadata model
 
-The FOAG metadata model has four classes: `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution` and `dcat:DataService`.
-
+The metadata model underpinning our system is comprised of four core classes: `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution`, and `dcat:DataService`. The diagram below illustrates the relationships among these classes:
 
 ```mermaid
-classDiagram
-    direction RL
-    class Dataset {
-    }
-
-    class DatasetSeries {
-    }
-
-    class Distribution {
-    }
-
-    class DataService {
-    }
-
-    Dataset  --> DatasetSeries : dcat inSeries
-    Dataset "1" *--> "n" Distribution : dcat distribution
-    DataService "1" >-- "n" Distribution : dcat endpointURL
-    DataService --> Dataset : dcat servesDataset
+erDiagram
+    "dcat:DatasetSeries" ||--o{ "dcat:Dataset" : "dcat:inSeries"
+    "dcat:Dataset" ||--|{ "dcat:Distribution" : "dcat:distribution"
+    "dcat:Dataservice" ||--|{ "dcat:Distribution" : "dcat:endpointURL"
+    "dcat:Dataservice" ||--o{ "dcat:Dataset" : "dcat:servesDataset"
 ```
+
+Many of the classes and their attributes are directly derived from the Swiss DCAT Application Profile (DCAT-AP CH), as detailed on [DCAT-AP CH](https://www.dcat-ap.ch/). To better accommodate our specific requirements, we have further augmented these classes with additional attributes, denoted by the prefix `bv:`.
+
+In particular, three of these classes — `dcat:Dataset`, `dcat:DatasetSeries`, and `dcat:DataService` — are defined in dedicated JSON schemas. The fourth class, `dcat:Distribution`, is described within the same schema as `dcat:Dataset`, reflecting the strict 1:n relationship between datasets and distributions. You can explore the attributes of these schemas via the following links:
+
+- [`dcat:Dataset` (with `dcat:Distribution`)](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2Fdataset.json)
+- [`dcat:DatasetSeries`](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdatasetSeries.json)
+- [`dcat:Dataset`](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdataService.json)
+
+Please note that these pages are automatically generated from the actual JSON schemas stored [here](https://github.com/blw-ofag-ufag/metadata/tree/main/data/schemas).
 
 # Tagging guidelines
 
