@@ -401,6 +401,18 @@
       "fr": "Qu'est-ce qu'un catalogue de données ? Et comment doit-il nous aider dans la transformation numérique ? Vous trouverez ici des réponses à ces questions.",
       "it": "Cos'è esattamente un catalogo di dati? E come dovrebbe supportarci nella trasformazione digitale? Qui puoi trovare le risposte a queste domande."
    },
+   "handbook.title": {
+   "en": "Handbook",
+   "de": "Handbuch",
+   "fr": "Manuel",
+   "it": "Manuale"
+   },
+   "handbook.description": {
+   "en": "Learn how to use the datacatalog, about the general data model and how everything interacts.",
+   "de": "Erfahren Sie, wie Sie den Datakatalog nutzen, das allgemeine Datenmodell verstehen und wie alles zusammenwirkt.",
+   "fr": "Découvrez comment utiliser le catalogue de données, explorez le modèle de données général et comprenez comment tout interagit.",
+   "it": "Scopri come utilizzare il catalogo dei dati, il modello di dati generale e come tutto interagisce."
+   },
    "schema:comment": {
       "en": "Comment",
       "de": "Kommentar",
