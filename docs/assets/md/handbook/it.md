@@ -1,3 +1,28 @@
+# Il modello dei metadati
+
+Il modello dei metadati che sottende il nostro sistema è composto da quattro classi principali: `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution` e `dcat:DataService`.  
+Il diagramma sottostante illustra le relazioni tra queste classi:
+
+```mermaid
+erDiagram
+    "dcat:DatasetSeries" ||--o{ "dcat:Dataset" : "dcat:inSeries"
+    "dcat:Dataset" ||--|{ "dcat:Distribution" : "dcat:distribution"
+    "dcat:Dataservice" ||--|{ "dcat:Distribution" : "dcat:endpointURL"
+    "dcat:Dataservice" ||--o{ "dcat:Dataset" : "dcat:servesDataset"
+```
+
+Molte delle classi e dei loro attributi sono stati direttamente derivati dallo Swiss DCAT Application Profile (DCAT-AP CH), come descritto in dettaglio su [DCAT-AP CH](https://www.dcat-ap.ch/).  
+Per soddisfare al meglio le nostre esigenze specifiche, abbiamo arricchito queste classi con attributi aggiuntivi, indicati dal prefisso `bv:`.
+
+In particolare, tre di queste classi — `dcat:Dataset`, `dcat:DatasetSeries` e `dcat:DataService` — sono definite in schemi JSON dedicati. La quarta classe, `dcat:Distribution`, è descritta nello stesso schema di `dcat:Dataset`, il che riflette la relazione stretta 1:n tra dataset e distribuzioni.  
+Puoi consultare gli attributi di questi schemi attraverso i seguenti link:
+
+- [`dcat:Dataset` (with `dcat:Distribution`)](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2Fdataset.json)
+- [`dcat:DatasetSeries`](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdatasetSeries.json)
+- [`dcat:DataService`](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdataService.json)
+
+Si noti che queste pagine sono generate automaticamente a partire dai reali schemi JSON memorizzati [qui](https://github.com/blw-ofag-ufag/metadata/tree/main/data/schemas).
+
 # Linee guida per i tag
 
 I tag svolgono diverse funzioni nel nostro catalogo di dati.
