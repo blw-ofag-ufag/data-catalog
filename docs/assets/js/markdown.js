@@ -5,6 +5,19 @@ mermaid.initialize({ startOnLoad: false });
 
 // Document ready
 document.addEventListener("DOMContentLoaded", () => {
+
+  const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
+  const primaryTextColor = getComputedStyle(document.documentElement).getPropertyValue('--color-background').trim();
+
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: primaryColor,
+      primaryTextColor: primaryTextColor
+    }
+  });
+
   // Load navbar, then do some i18n setup
   $("#navbar-placeholder").load("navbar.html", function () {
     const params = new URLSearchParams(window.location.search);
