@@ -1,4 +1,30 @@
-# Tagging Guidelines
+# The metadata model
+
+The FOAG metadata model has four classes: `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution` and `dcat:DataService`.
+
+
+```mermaid
+classDiagram
+    direction RL
+    class Dataset {
+    }
+
+    class DatasetSeries {
+    }
+
+    class Distribution {
+    }
+
+    class DataService {
+    }
+
+    Dataset  --> DatasetSeries : dcat inSeries
+    Dataset "1" *--> "n" Distribution : dcat distribution
+    DataService "1" >-- "n" Distribution : dcat endpointURL
+    DataService --> Dataset : dcat servesDataset
+```
+
+# Tagging guidelines
 
 Tags serve multiple purposes in our data catalog.
 They help you, your colleagues, and external users quickly discover and organize datasets, as well as indicate which themes or topics a dataset covers.

@@ -8,16 +8,19 @@
   --color-accent:           #2c3a3f;
   --color-accent-faded:     #8f9a9e;
   --color-danger:           #a35757;
+  --color-light-grey:       #e5eaec;
 }
 
 /* General styling */
 html, body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif; /* Changed to a cooler font */
+  font-size: 1rem; /* Slightly larger default text size */
+  line-height: 1.5; /* More space between lines */
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensures the body covers the whole viewport */
+  min-height: 100vh;
 }
 
 main {
@@ -46,6 +49,15 @@ p.tile-desc-ellipsis {
 a {
   color: var(--color-foreground); /* Change this to your desired color */
   cursor: pointer;
+}
+
+/* Applies only to code blocks/inline code that do NOT have the .language-mermaid class */
+pre code:not(.language-mermaid),
+code:not(.language-mermaid) {
+  color: var(--color-foreground);
+  background-color: var(--color-light-grey);
+  padding: 0.1em 0.2em;
+  border-radius: 4px;
 }
 
 /* Navigation */
