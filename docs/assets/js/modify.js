@@ -1,37 +1,63 @@
 $(document).ready(function() {
-    // URL of the external JSON schema
-    var schemaUrl = 'https://raw.githubusercontent.com/blw-ofag-ufag/data-catalog/refs/heads/main/docs/assets/forms.json';
-  
-    // Fetch the external schema
-    $.getJSON(schemaUrl, function(data) {
-      // Add submit button to the form definition if not present
-      if (!data.form.some(item => item.type === 'actions')) {
-        data.form.push({
-          type: 'actions',
-          items: [
-            {
-              type: 'submit',
-              value: 'Submit'
-            }
-          ]
-        });
-      }
-  
-      // Initialize the form
-      $('#my-form').jsonForm({
-        schema: data.schema,
-        form: data.form,
-        onSubmit: function (errors, values) {
-          if (errors) {
-            alert('Please correct the errors in the form.');
-          } else {
-            // Display the generated JSON in the <pre> element
-            $('#result').text(JSON.stringify(values, null, 2));
-          }
+  // 1. Points to your local form definition (which may contain "form": [...] etc.)
+  var formUrl = 'assets/forms.json';
+
+  // 2. Points to your remote schema
+  var schemaUrl = 'https://raw.githubusercontent.com/blw-ofag-ufag/metadata/main/data/schemas/dataset.json';
+
+  // 3. Points to your existing JSON (to edit)
+  var dataUrl = 'https://raw.githubusercontent.com/blw-ofag-ufag/metadata/main/data/raw/datasets/2ea8bfa1-8bb6-45ef-bee4-3b4cba52d834.json';
+
+  // Fetch the form definition
+  $.getJSON(formUrl, function(formDefinition) {
+
+    // Fetch the remote schema
+    $.getJSON(schemaUrl, function(schemaData) {
+
+      // Fetch the existing data
+      $.getJSON(dataUrl, function(existingData) {
+
+        // Insert the schema from GitHub into your form definition
+        formDefinition.schema = schemaData;
+
+        // Insert the existing data into your form definition
+        formDefinition.value = existingData;
+
+        // Optionally ensure a submit button is in the form:
+        if (!formDefinition.form.some(item => item.type === 'actions')) {
+          formDefinition.form.push({
+            type: 'actions',
+            items: [
+              {
+                type: 'submit',
+                value: 'Submit'
+              }
+            ]
+          });
         }
+
+        // Initialize the form
+        $('#my-form').jsonForm({
+          schema: formDefinition.schema,
+          form: formDefinition.form,
+          // "value" attribute – used to pre-fill the form
+          value: formDefinition.value,
+          onSubmit: function (errors, values) {
+            if (errors) {
+              alert('Please correct the errors in the form.');
+            } else {
+              $('#result').text(JSON.stringify(values, null, 2));
+            }
+          }
+        });
+
+      }).fail(function() {
+        alert('Failed to load existing data.');
       });
     }).fail(function() {
-      alert('Failed to load the schema. Please check the URL and try again.');
+      alert('Failed to load the remote schema.');
     });
+  }).fail(function() {
+    alert('Failed to load the form definition.');
   });
-  
+});

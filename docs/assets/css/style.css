@@ -413,3 +413,8 @@ footer a:hover {
   display: block;
   margin: 0 auto;
 }
+
+/* Mofify page */
+span.help-block {
+  font-size: 0.8rem;
+}
