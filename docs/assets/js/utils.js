@@ -38,13 +38,8 @@ const Utils = {
     const formattedEnd = this.formatDate(endDate, lang, options);
     return `${formattedStart} - ${formattedEnd}`;
   },  
-  truncate(str, length = 50) {
-    if (!str) return "";
-    return str.length > length ? str.slice(0, length) + "..." : str;
-  },
   getDisplayTitle(dataset, lang) {
-    const rawTitle = (dataset["dct:title"] && dataset["dct:title"][lang]) || "Untitled";
-    return Utils.truncate(rawTitle, 50);
+    return (dataset["dct:title"] && dataset["dct:title"][lang]) || "N/A";
   },
 
   // Functions shared with details.js

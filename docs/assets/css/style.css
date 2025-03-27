@@ -33,9 +33,25 @@ h1 {
   margin-bottom: 0.5em;
 }
 
-h5.tile-title-ellipsis {
+h6.tile-title-ellipsis {
   font-weight: bold;
+  font-size: 1em;
   margin-bottom: 4px;
+  display: -webkit-box;          /* for multi-line flex-based ellipsis */
+  -webkit-box-orient: vertical;  /* vertical orientation */
+  -webkit-line-clamp: 2;         /* number of lines to allow */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;           /* must allow normal wrapping rather than nowrap */
+}
+
+.table-title-two-line {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;         /* number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;           /* must allow normal wrapping */
 }
 
 p {
@@ -44,6 +60,7 @@ p {
 
 p.tile-desc-ellipsis {
   margin-bottom: 4px;
+  line-height: 1.25;
 }
 
 a {
