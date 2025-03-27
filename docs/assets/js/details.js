@@ -174,6 +174,7 @@ function renderMetadata(data, lang) {
     "dcat:contactPoint",
     "dct:publisher",
     "adms:status",
+    "dcat:version",
     "dct:issued",
     "bv:abrogation",
     "dct:modified",
