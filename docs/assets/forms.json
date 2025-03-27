@@ -1,6 +1,7 @@
 {
     "form": [
         {
+            "title": "Aesthetics",
             "type": "fieldset",
             "items": ["schema:image"]
         },
@@ -40,6 +41,36 @@
         },
         {
             "type": "fieldset",
+            "title": "Affiliated roles",
+            "items": [
+                {
+                    "type": "tabarray",
+                    "items": [
+                      {
+                        "type": "section",
+                        "legend": "{{idx}}. {{value}}",
+                        "items": [
+                            {
+                                "key": "prov:qualifiedAttribution[].prov:agent"
+                            },
+                            {
+                                "key": "prov:qualifiedAttribution[].schema:name"
+                            },
+                            {
+                                "key": "prov:qualifiedAttribution[].schema:email"
+                            },
+                            {
+                                "key": "prov:qualifiedAttribution[].dcat:hadRole",
+                                "valueInLegend": true
+                            }
+                        ]
+                      }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "fieldset",
             "title": "Contact",
             "items": [
                 {
@@ -55,11 +86,27 @@
         },
         {
             "type": "fieldset",
-            "title": "Security and access",
+            "title": "Dataset status",
             "expandable": false,
             "items": [
                 {
+                    "key": "adms:status"
+                },
+                {
                     "key": "dct:accessRights"
+                },
+                {
+                    "key": "dcatap:availability"
+                },
+                {
+                    "key": "bv:archivalValue",
+                    "inlinetitle": "Check this box if the dataset should be archived"
+                },
+                {
+                    "key": "bv:retentionPeriod"
+                },
+                {
+                    "key": "dcatap:availability"
                 }
             ]
         },
@@ -78,6 +125,71 @@
                 },
                 {
                     "key": "dct:accrualPeriodicity"
+                }
+            ]
+        },
+        {
+            "type": "fieldset",
+            "title": "Distributions",
+            "expandable": false,
+            "items": [
+                {
+                    "type": "tabarray",
+                    "items": [
+                      {
+                        "type": "section",
+                        "legend": "{{idx}}. {{value}}",
+                        "items": [
+                            {
+                                "key": "dcat:distribution[].dct:title.de",
+                                "type": "text",
+                                "title": "Title (German)"
+                            },
+                            {
+                                "key": "dcat:distribution[].dct:title.fr",
+                                "type": "text",
+                                "title": "Title (French)"
+                            },
+                            {
+                                "key": "dcat:distribution[].dct:title.it",
+                                "type": "text",
+                                "title": "Title (Italian)"
+                            },
+                            {
+                                "key": "dcat:distribution[].dct:title.en",
+                                "type": "text",
+                                "title": "Title (English)"
+                            },
+                            {
+                                "key": "dcat:distribution[].dct:description.de",
+                                "type": "textarea",
+                                "title": "Description (German)"
+                            },
+                            {
+                                "key": "dcat:distribution[].dct:description.fr",
+                                "type": "textarea",
+                                "title": "Description (French)"
+                            },
+                            {
+                                "key": "dcat:distribution[].dct:description.it",
+                                "type": "textarea",
+                                "title": "Description (Italian)"
+                            },
+                            {
+                                "key": "dcat:distribution[].dct:description.en",
+                                "type": "textarea",
+                                "title": "Description (English)"
+                            },
+                            {
+                                "key": "dcat:distribution[].dcat:accessURL"
+                            },
+                            {
+                                "key": "dcat:distribution[].dct:format",
+                                "valueInLegend": true
+                            }
+                        ]
+                      }
+                    ]
                 }
             ]
         }

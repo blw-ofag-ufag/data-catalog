@@ -418,3 +418,8 @@ footer a:hover {
 span.help-block {
   font-size: 0.8rem;
 }
+legend {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+}

@@ -6,7 +6,7 @@ $(document).ready(function() {
   var schemaUrl = 'https://raw.githubusercontent.com/blw-ofag-ufag/metadata/main/data/schemas/dataset.json';
 
   // 3. Points to your existing JSON (to edit)
-  var dataUrl = 'https://raw.githubusercontent.com/blw-ofag-ufag/metadata/main/data/raw/datasets/2ea8bfa1-8bb6-45ef-bee4-3b4cba52d834.json';
+  var dataUrl = 'https://raw.githubusercontent.com/blw-ofag-ufag/metadata/main/data/raw/datasets/83f93ff4-ef3f-43f1-af2c-83f18952283e.json';
 
   // Fetch the form definition
   $.getJSON(formUrl, function(formDefinition) {
