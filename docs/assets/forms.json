@@ -1,197 +1,346 @@
 {
     "form": [
-        {
-            "title": "Aesthetics",
-            "type": "fieldset",
-            "items": ["schema:image"]
-        },
-        {
+      {
+        "type": "fieldset",
+        "title": "Basic Information",
+        "items": [
+          "schema:image",
+          {
+            "type": "help",
+            "helpvalue": "Give your dataset a clear, descriptive title in at least DE and FR."
+          },
+          {
             "type": "fieldset",
             "title": "Title",
-            "expandable": false,
             "items": [
-                "dct:title.de",
-                "dct:title.fr",
-                "dct:title.it",
-                "dct:title.en"
+              "dct:title.de",
+              "dct:title.fr",
+              "dct:title.it",
+              "dct:title.en"
             ]
-        },
-        {
+          },
+          {
+            "type": "help",
+            "helpvalue": "Provide a concise but sufficiently detailed description in multiple languages."
+          },
+          {
             "type": "fieldset",
             "title": "Description",
-            "expandable": false,
             "items": [
-                {
-                    "key": "dct:description.de",
-                    "type": "textarea"
-                },
-                {
-                    "key": "dct:description.fr",
-                    "type": "textarea"
-                },
-                {
-                    "key": "dct:description.it",
-                    "type": "textarea"
-                },
-                {
-                    "key": "dct:description.en",
-                    "type": "textarea"
-                }
+              {
+                "key": "dct:description.de",
+                "type": "textarea"
+              },
+              {
+                "key": "dct:description.fr",
+                "type": "textarea"
+              },
+              {
+                "key": "dct:description.it",
+                "type": "textarea"
+              },
+              {
+                "key": "dct:description.en",
+                "type": "textarea"
+              }
             ]
-        },
-        {
+          },
+          {
+            "key": "dcat:keyword",
+            "type": "array",
+            "items": {
+              "key": "dcat:keyword[]",
+              "type": "text",
+              "placeholder": "Enter a keyword"
+            }
+          },
+          {
+            "key": "dcat:theme",
+            "type": "array"
+          }
+        ]
+      },
+      {
+        "type": "fieldset",
+        "title": "Access & Classification",
+        "items": [
+          {
+            "key": "adms:status",
+            "title": "Dataset Status"
+          },
+          {
+            "key": "dct:accessRights",
+            "title": "Access Rights"
+          },
+          {
+            "key": "dcatap:availability",
+            "title": "Availability"
+          },
+          {
+            "key": "bv:classification",
+            "title": "Classification Level"
+          },
+          {
+            "key": "bv:personalData",
+            "title": "Data Protection Category"
+          }
+        ]
+      },
+      {
+        "type": "fieldset",
+        "title": "Archival & Publication",
+        "items": [
+          {
+            "key": "bv:archivalValue",
+            "inlinetitle": "Is this dataset archival?"
+          },
+          {
+            "key": "bv:retentionPeriod",
+            "title": "Retention Period"
+          },
+          {
             "type": "fieldset",
-            "title": "Affiliated roles",
+            "title": "opendata.swiss",
             "items": [
-                {
-                    "type": "tabarray",
-                    "items": [
-                      {
-                        "type": "section",
-                        "legend": "{{idx}}. {{value}}",
-                        "items": [
-                            {
-                                "key": "prov:qualifiedAttribution[].prov:agent"
-                            },
-                            {
-                                "key": "prov:qualifiedAttribution[].schema:name"
-                            },
-                            {
-                                "key": "prov:qualifiedAttribution[].schema:email"
-                            },
-                            {
-                                "key": "prov:qualifiedAttribution[].dcat:hadRole",
-                                "valueInLegend": true
-                            }
-                        ]
-                      }
-                    ]
-                }
+              "bv:opendata_swiss.bv:mustBePublished",
+              "bv:opendata_swiss.dct:identifier",
+              "bv:opendata_swiss.dcat:accessURL"
             ]
-        },
-        {
+          },
+          {
             "type": "fieldset",
-            "title": "Contact",
+            "title": "i14y",
             "items": [
-                {
-                    "key": "dct:publisher"
-                },
-                {
-                    "key": "dcat:contactPoint.schema:name"
-                },
-                {
-                    "key": "dcat:contactPoint.schema:email"
-                }
+              "bv:i14y.bv:mustBePublished",
+              "bv:i14y.dct:identifier",
+              "bv:i14y.dcat:accessURL"
             ]
-        },
-        {
-            "type": "fieldset",
-            "title": "Dataset status",
-            "expandable": false,
+          }
+        ]
+      },
+      {
+        "type": "fieldset",
+        "title": "Publisher & Contact",
+        "items": [
+          "dct:publisher",
+          "dcat:contactPoint.schema:name",
+          "dcat:contactPoint.schema:email"
+        ]
+      },
+      {
+        "type": "fieldset",
+        "title": "Affiliated Roles (Qualified Attribution)",
+        "items": [
+          {
+            "type": "tabarray",
             "items": [
-                {
-                    "key": "adms:status"
-                },
-                {
-                    "key": "dct:accessRights"
-                },
-                {
-                    "key": "dcatap:availability"
-                },
-                {
-                    "key": "bv:archivalValue",
-                    "inlinetitle": "Check this box if the dataset should be archived"
-                },
-                {
-                    "key": "bv:retentionPeriod"
-                },
-                {
-                    "key": "dcatap:availability"
-                }
+              {
+                "type": "section",
+                "legend": "{{idx}}. {{value}}",
+                "items": [
+                  "prov:qualifiedAttribution[].prov:agent",
+                  "prov:qualifiedAttribution[].schema:name",
+                  "prov:qualifiedAttribution[].schema:email",
+                  {
+                    "key": "prov:qualifiedAttribution[].dcat:hadRole",
+                    "valueInLegend": true
+                  }
+                ]
+              }
             ]
-        },
-        {
+          }
+        ]
+      },
+      {
+        "type": "fieldset",
+        "title": "Timelines",
+        "items": [
+          {
+            "key": "dct:issued",
+            "type": "date",
+            "title": "Issued Date"
+          },
+          {
+            "key": "dct:modified",
+            "type": "date",
+            "title": "Last Modified Date"
+          },
+          {
+            "key": "dct:accrualPeriodicity",
+            "title": "Accrual Periodicity"
+          },
+          {
             "type": "fieldset",
-            "title": "Dates and Periods",
-            "expandable": false,
+            "title": "Temporal Coverage",
             "items": [
-                {
-                    "key": "dct:issued",
+              {
+                "key": "dct:temporal.dcat:start_date",
+                "type": "date"
+              },
+              {
+                "key": "dct:temporal.dcat:end_date",
+                "type": "date"
+              }
+            ]
+          },
+          {
+            "key": "bv:abrogation",
+            "type": "date",
+            "title": "Abrogation Date"
+          }
+        ]
+      },
+      {
+        "type": "fieldset",
+        "title": "Spatial & References",
+        "items": [
+          "dct:spatial",
+          "dcat:landingPage",
+          "bv:geoIdentifier",
+          {
+            "type": "help",
+            "helpvalue": "Add links to relevant pages, documents or related resources."
+          },
+          {
+            "key": "foaf:page",
+            "type": "array",
+            "items": {
+              "type": "fieldset",
+              "items": [
+                "foaf:page[].alias",
+                "foaf:page[].uri"
+              ]
+            }
+          },
+          "dcat:inSeries",
+          "dcat:catalog",
+          {
+            "key": "dct:replaces",
+            "type": "array"
+          }
+        ]
+      },
+      {
+        "type": "fieldset",
+        "items": [
+          {
+            "key": "dcatap:applicableLegislation",
+            "type": "array"
+          },
+          {
+            "key": "prov:wasGeneratedBy",
+            "type": "array"
+          },
+          {
+            "key": "prov:wasDerivedFrom",
+            "type": "array"
+          }
+        ]
+      },
+      {
+        "type": "fieldset",
+        "title": "IT System & Additional Info",
+        "items": [
+          "bv:itSystem",
+          {
+            "key": "dcat:version"
+          },
+          {
+            "key": "schema:comment",
+            "type": "textarea"
+          }
+        ]
+      },
+      {
+        "type": "fieldset",
+        "title": "Distributions",
+        "items": [
+          {
+            "type": "tabarray",
+            "items": [
+              {
+                "type": "section",
+                "legend": "{{idx}}. {{value}}",
+                "items": [
+                  {
+                    "key": "dcat:distribution[].dct:title.de",
+                    "type": "text",
+                    "title": "Distribution Title (DE)"
+                  },
+                  {
+                    "key": "dcat:distribution[].dct:title.fr",
+                    "type": "text",
+                    "title": "Distribution Title (FR)"
+                  },
+                  {
+                    "key": "dcat:distribution[].dct:title.it",
+                    "type": "text",
+                    "title": "Distribution Title (IT)"
+                  },
+                  {
+                    "key": "dcat:distribution[].dct:title.en",
+                    "type": "text",
+                    "title": "Distribution Title (EN)"
+                  },
+                  {
+                    "key": "dcat:distribution[].dct:description.de",
+                    "type": "textarea",
+                    "title": "Distribution Description (DE)"
+                  },
+                  {
+                    "key": "dcat:distribution[].dct:description.fr",
+                    "type": "textarea",
+                    "title": "Distribution Description (FR)"
+                  },
+                  {
+                    "key": "dcat:distribution[].dct:description.it",
+                    "type": "textarea",
+                    "title": "Distribution Description (IT)"
+                  },
+                  {
+                    "key": "dcat:distribution[].dct:description.en",
+                    "type": "textarea",
+                    "title": "Distribution Description (EN)"
+                  },
+                  {
+                    "key": "dcat:distribution[].dcat:accessURL"
+                  },
+                  {
+                    "key": "dcat:distribution[].adms:status"
+                  },
+                  {
+                    "key": "dcat:distribution[].dcatap:availability"
+                  },
+                  {
+                    "key": "dcat:distribution[].dct:format",
+                    "valueInLegend": true
+                  },
+                  {
+                    "key": "dcat:distribution[].dct:modified",
                     "type": "date"
-                },
-                {
-                    "key": "dct:modified",
-                    "type": "date"
-                },
-                {
-                    "key": "dct:accrualPeriodicity"
-                }
+                  },
+                  {
+                    "key": "dcat:distribution[].dcat:downloadURL"
+                  },
+                  {
+                    "key": "dcat:distribution[].dct:conformsTo"
+                  },
+                  {
+                    "key": "dcat:distribution[].dct:license"
+                  },
+                  {
+                    "key": "dcat:distribution[].schema:comment",
+                    "type": "textarea"
+                  },
+                  {
+                    "key": "dcat:distribution[].dcat:accessService"
+                  }
+                ]
+              }
             ]
-        },
-        {
-            "type": "fieldset",
-            "title": "Distributions",
-            "expandable": false,
-            "items": [
-                {
-                    "type": "tabarray",
-                    "items": [
-                      {
-                        "type": "section",
-                        "legend": "{{idx}}. {{value}}",
-                        "items": [
-                            {
-                                "key": "dcat:distribution[].dct:title.de",
-                                "type": "text",
-                                "title": "Title (German)"
-                            },
-                            {
-                                "key": "dcat:distribution[].dct:title.fr",
-                                "type": "text",
-                                "title": "Title (French)"
-                            },
-                            {
-                                "key": "dcat:distribution[].dct:title.it",
-                                "type": "text",
-                                "title": "Title (Italian)"
-                            },
-                            {
-                                "key": "dcat:distribution[].dct:title.en",
-                                "type": "text",
-                                "title": "Title (English)"
-                            },
-                            {
-                                "key": "dcat:distribution[].dct:description.de",
-                                "type": "textarea",
-                                "title": "Description (German)"
-                            },
-                            {
-                                "key": "dcat:distribution[].dct:description.fr",
-                                "type": "textarea",
-                                "title": "Description (French)"
-                            },
-                            {
-                                "key": "dcat:distribution[].dct:description.it",
-                                "type": "textarea",
-                                "title": "Description (Italian)"
-                            },
-                            {
-                                "key": "dcat:distribution[].dct:description.en",
-                                "type": "textarea",
-                                "title": "Description (English)"
-                            },
-                            {
-                                "key": "dcat:distribution[].dcat:accessURL"
-                            },
-                            {
-                                "key": "dcat:distribution[].dct:format",
-                                "valueInLegend": true
-                            }
-                        ]
-                      }
-                    ]
-                }
-            ]
-        }
+          }
+        ]
+      }
     ]
-}
+  }
+  
