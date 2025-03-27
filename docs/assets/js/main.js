@@ -188,7 +188,7 @@ function tileCardTemplate(dataset) {
       <div class="card h-100 dataset-card" data-id="${dataset["dct:identifier"]}">
         <img src="${imageSrc}" class="card-img-top" alt="${title}" />
         <div class="card-body">
-          <h5 class="tile-title-ellipsis">${title}</h5>
+          <h6 class="tile-title-ellipsis">${title}</h6>
           <p class="tile-desc-ellipsis">${desc}</p>
           ${dateHTML}
           <div class="keywords">${keywordsHTML}</div>
@@ -209,7 +209,9 @@ function tableRowTemplate(dataset) {
     .join(" ");
   return `
     <tr class="dataset-row" data-id="${identifier}">
-      <td>${title}</td>
+      <td>
+        <div class="table-title-two-line">${title}</div>
+      </td>
       <td>${issued}</td>
       <td>
         <a href="https://admindir.verzeichnisse.admin.ch/person/${owner}" 
