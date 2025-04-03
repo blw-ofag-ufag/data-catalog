@@ -1,6 +1,10 @@
 {
     "form": [
       {
+        "key": "dct:identifier",
+        "type": "hidden"
+      },
+      {
         "type": "fieldset",
         "title": "Basic Information",
         "items": [
@@ -287,6 +291,10 @@
                 "type": "section",
                 "legend": "{{idx}}. {{value}}",
                 "items": [
+                  {
+                    "key": "dcat:distribution[].dct:identifier",
+                    "type": "hidden"
+                  },
                   {
                     "key": "dcat:distribution[].dct:title.de",
                     "type": "text",
