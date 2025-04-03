@@ -13,27 +13,21 @@ $(document).ready(function() {
   // Helper function to generate a UUID (version 4)
   function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+      const r = Math.random() * 16 | 0,
+            v = c === 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
     });
   }
 
-  /**
-   * Takes a JavaScript object and returns a new object
-   * with "dct:identifier" at the top if it exists. 
-   */
+  // Reorders object so that 'dct:identifier' is first (if present)
   function reorderIdentifierFirst(obj) {
     if (!obj || typeof obj !== 'object') return obj;
-
-    // Create a new object for safe reordering
     let newObj = {};
-
-    // If there's a dct:identifier, set it first
+    // Put 'dct:identifier' first, if it exists
     if (obj.hasOwnProperty('dct:identifier')) {
       newObj['dct:identifier'] = obj['dct:identifier'];
     }
-
-    // Add the remaining properties
+    // Then copy over the rest
     for (let key in obj) {
       if (key !== 'dct:identifier') {
         newObj[key] = obj[key];
@@ -83,27 +77,28 @@ $(document).ready(function() {
             if (errors) {
               alert('Please correct the errors in the form.');
             } else {
-              // 1. Ensure top-level dct:identifier
+              // 1) Generate top-level identifier if missing
               if (!values['dct:identifier']) {
                 values['dct:identifier'] = generateUUID();
               }
-
-              // 2. Ensure distribution-level dct:identifier
+              // 2) For each distribution, ensure 'dct:identifier'
               if (values['dcat:distribution'] && Array.isArray(values['dcat:distribution'])) {
-                values['dcat:distribution'].forEach(function(distribution, i) {
-                  if (!distribution['dct:identifier']) {
-                    distribution['dct:identifier'] = generateUUID();
+                values['dcat:distribution'].forEach((dist, i) => {
+                  if (!dist['dct:identifier']) {
+                    dist['dct:identifier'] = generateUUID();
                   }
-                  // Reorder each distribution so that dct:identifier is at top
-                  values['dcat:distribution'][i] = reorderIdentifierFirst(distribution);
+                  values['dcat:distribution'][i] = reorderIdentifierFirst(dist);
                 });
               }
-
-              // 3. Reorder top-level object so dct:identifier is first
+              // 3) Reorder dataset object so 'dct:identifier' is first
               values = reorderIdentifierFirst(values);
 
-              // 4. Display the resulting JSON
-              $('#result').text(JSON.stringify(values, null, 2));
+              // (A) Store the final JSON & ID in sessionStorage
+              sessionStorage.setItem('jsonData', JSON.stringify(values));
+              sessionStorage.setItem('datasetId', values['dct:identifier']);
+
+              // (B) Redirect to commit.html
+              window.location.href = 'commit.html';
             }
           }
         });
@@ -115,11 +110,12 @@ $(document).ready(function() {
         var dataUrl = 'https://raw.githubusercontent.com/blw-ofag-ufag/metadata/main/data/raw/datasets/' + datasetId + '.json';
         // Fetch the existing data
         $.getJSON(dataUrl, function(existingData) {
-          // Insert the existing data into your form definition
           formDefinition.value = existingData;
           initForm();
         }).fail(function() {
-          alert('Failed to load existing data.');
+          alert('Failed to load existing data (404?). Starting with an empty form.');
+          formDefinition.value = {};
+          initForm();
         });
       } else {
         // No ID provided, use an empty dataset

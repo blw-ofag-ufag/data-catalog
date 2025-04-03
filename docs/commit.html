@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Commit to GitHub</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Commit Dataset to GitHub</h1>
+
+    <div>
+      <label for="gh-username">GitHub Username:</label><br>
+      <input type="text" id="gh-username" class="form-control" placeholder="e.g. JohnDoe" />
+    </div>
+    <div>
+      <label for="gh-token">Personal Access Token:</label><br>
+      <input type="password" id="gh-token" class="form-control" placeholder="Your PAT" />
+    </div>
+    <div>
+      <label for="commit-message">Commit Message:</label><br>
+      <input type="text" id="commit-message" class="form-control" placeholder="Describe your changes" />
+    </div>
+    <br />
+
+    <button id="commit-btn" class="btn btn-primary">Commit to GitHub</button>
+    <button id="home-btn" class="btn btn-default" style="margin-left: 10px;">Return to Home</button>
+
+    <hr />
+    <div id="result" style="white-space: pre-wrap; margin-top:20px;"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/commit.js"></script>
+</body>
+</html>
