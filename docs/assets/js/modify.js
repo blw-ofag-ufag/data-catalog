@@ -1,12 +1,22 @@
 $(document).ready(function() {
-  // 1. Points to your local form definition (which may contain "form": [...] etc.)
+  // Helper function to extract query parameters from the URL
+  function getParameterByName(name) {
+    var url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+    var results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+  
+  // Extract dataset id from the URL parameter 'id'
+  var datasetId = getParameterByName('id');
+  
+  // Points to your local form definition
   var formUrl = 'assets/forms.json';
-
-  // 2. Points to your remote schema
+  // Points to your remote schema
   var schemaUrl = 'https://raw.githubusercontent.com/blw-ofag-ufag/metadata/main/data/schemas/dataset.json';
-
-  // 3. Points to your existing JSON (to edit)
-  var dataUrl = 'https://raw.githubusercontent.com/blw-ofag-ufag/metadata/main/data/raw/datasets/83f93ff4-ef3f-43f1-af2c-83f18952283e.json';
 
   // Fetch the form definition
   $.getJSON(formUrl, function(formDefinition) {
@@ -14,16 +24,12 @@ $(document).ready(function() {
     // Fetch the remote schema
     $.getJSON(schemaUrl, function(schemaData) {
 
-      // Fetch the existing data
-      $.getJSON(dataUrl, function(existingData) {
+      // Insert the schema into your form definition
+      formDefinition.schema = schemaData;
 
-        // Insert the schema from GitHub into your form definition
-        formDefinition.schema = schemaData;
-
-        // Insert the existing data into your form definition
-        formDefinition.value = existingData;
-
-        // Optionally ensure a submit button is in the form:
+      // Function to initialize the form
+      function initForm() {
+        // Ensure a submit button exists in the form
         if (!formDefinition.form.some(item => item.type === 'actions')) {
           formDefinition.form.push({
             type: 'actions',
@@ -36,11 +42,10 @@ $(document).ready(function() {
           });
         }
 
-        // Initialize the form
+        // Initialize the form using jsonForm plugin
         $('#my-form').jsonForm({
           schema: formDefinition.schema,
           form: formDefinition.form,
-          // "value" attribute – used to pre-fill the form
           value: formDefinition.value,
           onSubmit: function (errors, values) {
             if (errors) {
@@ -50,10 +55,25 @@ $(document).ready(function() {
             }
           }
         });
-
-      }).fail(function() {
-        alert('Failed to load existing data.');
-      });
+      }
+      
+      // Check if a dataset ID was provided in the URL
+      if (datasetId) {
+        // Construct the URL for the existing data based on the dataset ID
+        var dataUrl = 'https://raw.githubusercontent.com/blw-ofag-ufag/metadata/main/data/raw/datasets/' + datasetId + '.json';
+        // Fetch the existing data
+        $.getJSON(dataUrl, function(existingData) {
+          // Insert the existing data into your form definition
+          formDefinition.value = existingData;
+          initForm();
+        }).fail(function() {
+          alert('Failed to load existing data.');
+        });
+      } else {
+        // No ID provided, use an empty dataset
+        formDefinition.value = {};
+        initForm();
+      }
     }).fail(function() {
       alert('Failed to load the remote schema.');
     });
