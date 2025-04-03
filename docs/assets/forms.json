@@ -46,17 +46,24 @@
             ]
           },
           {
+            "key": "dcat:theme",
+            "type": "array",
+            "items": {
+              "key": "dcat:theme[]",
+              "type": "text",
+              "notitle": true,
+              "placeholder": "Enter a keyword"
+            }
+          },
+          {
             "key": "dcat:keyword",
             "type": "array",
             "items": {
               "key": "dcat:keyword[]",
               "type": "text",
+              "notitle": true,
               "placeholder": "Enter a keyword"
             }
-          },
-          {
-            "key": "dcat:theme",
-            "type": "array"
           }
         ]
       },
@@ -92,7 +99,7 @@
         "items": [
           {
             "key": "bv:archivalValue",
-            "inlinetitle": "Is this dataset archival?"
+            "inlinetitle": "Should this dataset be (eventually) archived?"
           },
           {
             "key": "bv:retentionPeriod",
@@ -225,15 +232,33 @@
         "items": [
           {
             "key": "dcatap:applicableLegislation",
-            "type": "array"
+            "type": "array",
+            "items": {
+              "key": "dcatap:applicableLegislation[]",
+              "type": "text",
+              "notitle": true,
+              "placeholder": "Enter the URL of an applicable legislation (e.g., https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5)"
+            }
           },
           {
             "key": "prov:wasGeneratedBy",
-            "type": "array"
+            "type": "array",
+            "items": {
+              "key": "prov:wasGeneratedBy[]",
+              "type": "text",
+              "notitle": true,
+              "placeholder": "<TO BE COMPLETED>"
+            }
           },
           {
             "key": "prov:wasDerivedFrom",
-            "type": "array"
+            "type": "array",
+            "items": {
+              "key": "prov:wasDerivedFrom[]",
+              "type": "text",
+              "notitle": true,
+              "placeholder": "<TO BE COMPLETED>"
+            }
           }
         ]
       },
