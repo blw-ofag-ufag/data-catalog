@@ -86,11 +86,19 @@ const Utils = {
   formatAliasURL(aliasURLobject) {
     if (!aliasURLobject || !Array.isArray(aliasURLobject) || aliasURLobject.length === 0) return "";
     return aliasURLobject.map(page => {
-      const uri = page.uri || "";
+      const uri = page.uri;
       const alias = page.alias;
-      return alias
-        ? `<a href="${uri}" target="_blank">${alias}</a>`
-        : uri;
+      if (uri && alias) {
+        // Case 1: Both uri and alias are present.
+        return `<a href="${uri}" target="_blank">${alias}</a>`;
+      } else if (uri) {
+        // Case 2: Only uri is present.
+        return `<a href="${uri}" target="_blank">${uri}</a>`;
+      } else if (alias) {
+        // Case 3: Only alias is present.
+        return alias;
+      }
+      return "";
     }).join("<br>");
   },  
   verifyUrls() {
