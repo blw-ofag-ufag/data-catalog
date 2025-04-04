@@ -95,17 +95,29 @@
       "fr":"À propos de ce catalogue de données",
       "it":"Informazioni su questo catalogo dati"
    },
+   "navbarAboutHref":{
+      "de":"about.html?lang=de",
+      "en":"about.html?lang=en",
+      "fr":"about.html?lang=fr",
+      "it":"about.html?lang=it"
+   },
    "navbarHandbook":{
       "de":"Handbuch",
       "en":"Handbook",
       "fr":"Manuel",
       "it":"Manuale"
    },
+   "navbarHandbookHref":{
+      "de":"handbook.html?lang=de",
+      "en":"handbook.html?lang=en",
+      "fr":"handbook.html?lang=fr",
+      "it":"handbook.html?lang=it"
+   },
    "navbarContact": {
-   "en": "<b>Click here to give us some feedback...</b>",
-   "de": "<b>Klicken Sie hier, um uns Ihr Feedback zu geben...</b>",
-   "fr": "<b>Cliquez ici pour nous faire part de vos commentaires...</b>",
-   "it": "<b>Clicca qui per darci il tuo feedback...</b>"
+      "en": "Give us feedback...",
+      "de": "Geben Sie uns Feedback...",
+      "fr": "Donnez-nous votre avis...",
+      "it": "Dacci feedback..."
    },
    "navbarContactHref": {
    "en": "mailto:kompetenzzentrumdigitaletransformation@blw.admin.ch?subject=Feedback%20regarding%20the%20DigiAgriFoodCH%20Data%20Catalog",
