@@ -37,7 +37,7 @@ $(document).ready(function() {
   }
 
   // Extract dataset id from the URL parameter 'id'
-  var datasetId = getParameterByName('id');
+  var datasetId = getParameterByName('dataset');
 
   // Points to your local form definition
   var formUrl = 'assets/forms.json';

@@ -10,8 +10,7 @@
         "items": [
           "schema:image",
           {
-            "type": "help",
-            "helpvalue": "Give your dataset a clear, descriptive title in at least DE and FR."
+            "type": "help"
           },
           {
             "type": "fieldset",
@@ -24,8 +23,7 @@
             ]
           },
           {
-            "type": "help",
-            "helpvalue": "Provide a concise but sufficiently detailed description in multiple languages."
+            "type": "help"
           },
           {
             "type": "fieldset",
@@ -113,7 +111,10 @@
             "type": "fieldset",
             "title": "opendata.swiss",
             "items": [
-              "bv:opendata_swiss.bv:mustBePublished",
+              {
+                "key": "bv:opendata_swiss.bv:mustBePublished",
+                "inlinetitle": "Should this dataset be published to opendata.swiss?"
+              },
               "bv:opendata_swiss.dct:identifier",
               "bv:opendata_swiss.dcat:accessURL"
             ]
@@ -122,7 +123,10 @@
             "type": "fieldset",
             "title": "i14y",
             "items": [
-              "bv:i14y.bv:mustBePublished",
+              {
+                "key": "bv:i14y.bv:mustBePublished",
+                "inlinetitle": "Should this dataset be published to i14y?"
+              },
               "bv:i14y.dct:identifier",
               "bv:i14y.dcat:accessURL"
             ]
@@ -168,21 +172,17 @@
         "items": [
           {
             "key": "dct:issued",
-            "type": "date",
-            "title": "Issued Date"
+            "type": "date"
           },
           {
             "key": "dct:modified",
-            "type": "date",
-            "title": "Last Modified Date"
+            "type": "date"
           },
           {
-            "key": "dct:accrualPeriodicity",
-            "title": "Accrual Periodicity"
+            "key": "dct:accrualPeriodicity"
           },
           {
             "type": "fieldset",
-            "title": "Temporal Coverage",
             "items": [
               {
                 "key": "dct:temporal.dcat:start_date",
@@ -196,8 +196,7 @@
           },
           {
             "key": "bv:abrogation",
-            "type": "date",
-            "title": "Abrogation Date"
+            "type": "date"
           }
         ]
       },
@@ -209,12 +208,11 @@
           "dcat:landingPage",
           "bv:geoIdentifier",
           {
-            "type": "help",
-            "helpvalue": "Add links to relevant pages, documents or related resources."
+            "type": "help"
           },
           {
             "key": "foaf:page",
-            "type": "array",
+            "type": "tabarray",
             "items": {
               "type": "fieldset",
               "items": [
@@ -227,7 +225,13 @@
           "dcat:catalog",
           {
             "key": "dct:replaces",
-            "type": "array"
+            "type": "array",
+            "items": {
+              "key": "dct:replaces[]",
+              "type": "text",
+              "notitle": true,
+              "placeholder": "Enter the dataset ID of the dataset that is replaced by this dataset."
+            }
           }
         ]
       },
@@ -251,7 +255,7 @@
               "key": "prov:wasGeneratedBy[]",
               "type": "text",
               "notitle": true,
-              "placeholder": "<TO BE COMPLETED>"
+              "placeholder": "Add a link or a name of a business process that is relevant to this dataset."
             }
           },
           {
@@ -261,7 +265,7 @@
               "key": "prov:wasDerivedFrom[]",
               "type": "text",
               "notitle": true,
-              "placeholder": "<TO BE COMPLETED>"
+              "placeholder": "Add a link or an ID to a dataset from which this dataset was derived."
             }
           }
         ]

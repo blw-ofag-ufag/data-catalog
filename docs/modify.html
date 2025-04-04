@@ -3,16 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <title>Dataset Metadata Form</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"  rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+       <a class="navbar-brand" href="index.html">
+         DigiAgriFoodCH Data Catalog
+       </a>
+       <div class="ms-auto align-items-right">
+          <div class="dropdown">
+             <button class="btn unified-control dropdown-toggle">English</button>
+          </div>
+       </div>
+    </div>
+  </nav>
+
+  <section class="hero-banner">
+     <h1 data-i18n="heroBannerHeading">Dataset Metadata Form</h1>
+     <p class="lead" data-i18n="heroBannerText">
+        In this forms, you'll be able to edit the metadata. Attention: If you don't have the necessary credentials, you won't be able to save any changes made.
+     </p>
+  </section>
+
   <div class="container">
-    <h1>Dataset Metadata Form</h1>
-    <!-- Form will be rendered here -->
+    <br>
     <form id="my-form"></form>
+    <br>
   </div>
+
+  <footer>
+    <section class="py-2">
+      <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-right">
+        <div class="footer-links mb-2 mb-lg-0 d-flex w-100 justify-content-end">
+          <a href="mailto:kompetenzzentrumdigitaletransformation@blw.admin.ch" class="text-light me-3"><i class="bi bi-envelope"></i></a>
+          <a href="https://github.com/blw-ofag-ufag/data-catalog" class="text-light me-3"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+    </section>
+  </footer>
 
   <!-- Include necessary libraries -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
