@@ -413,3 +413,13 @@ footer a:hover {
   display: block;
   margin: 0 auto;
 }
+
+/* Mofify page */
+span.help-block {
+  font-size: 0.8rem;
+}
+legend {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+}
