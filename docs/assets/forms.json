@@ -101,7 +101,7 @@
         "items": [
           {
             "key": "bv:archivalValue",
-            "inlinetitle": "Should this dataset be (eventually) archived?"
+            "inlinetitle": "This dataset must (eventually) be archived."
           },
           {
             "key": "bv:retentionPeriod",
@@ -109,26 +109,34 @@
           },
           {
             "type": "fieldset",
-            "title": "opendata.swiss",
+            "title": "Metadata publication in other data catalogs",
             "items": [
               {
                 "key": "bv:opendata_swiss.bv:mustBePublished",
-                "inlinetitle": "Should this dataset be published to opendata.swiss?"
+                "notitle": true,
+                "inlinetitle": "This dataset must be published to <a href='https://opendata.swiss' target='_blank'>opendata.swiss</a>."
               },
-              "bv:opendata_swiss.dct:identifier",
-              "bv:opendata_swiss.dcat:accessURL"
-            ]
-          },
-          {
-            "type": "fieldset",
-            "title": "i14y",
-            "items": [
+              {
+                "key": "bv:opendata_swiss.dct:identifier",
+                "type": "hidden"
+              },
+              {
+                "key": "bv:opendata_swiss.dcat:accessURL",
+                "type": "hidden"
+              },
               {
                 "key": "bv:i14y.bv:mustBePublished",
-                "inlinetitle": "Should this dataset be published to i14y?"
+                "notitle": true,
+                "inlinetitle": "This dataset must be published to <a href='https://www.i14y.admin.ch' target='_blank'>i14y</a>."
               },
-              "bv:i14y.dct:identifier",
-              "bv:i14y.dcat:accessURL"
+              {
+                "key": "bv:i14y.dct:identifier",
+                "type": "hidden"
+              },
+              {
+                "key": "bv:i14y.dcat:accessURL",
+                "type": "hidden"
+              }
             ]
           }
         ]
@@ -221,8 +229,14 @@
               ]
             }
           },
-          "dcat:inSeries",
-          "dcat:catalog",
+          {
+            "key": "dcat:inSeries",
+            "type": "hidden"
+          },
+          {
+            "key": "dcat:catalog",
+            "type": "hidden"
+          },
           {
             "key": "dct:replaces",
             "type": "array",
@@ -370,7 +384,8 @@
                     "type": "textarea"
                   },
                   {
-                    "key": "dcat:distribution[].dcat:accessService"
+                    "key": "dcat:distribution[].dcat:accessService",
+                    "type": "hidden"
                   }
                 ]
               }
