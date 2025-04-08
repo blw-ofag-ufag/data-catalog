@@ -454,5 +454,11 @@
       "de": "In Serie",
       "fr": "En série",
       "it": "In serie"
+   },
+   "footer.newDataset": {
+   "en": "Create new dataset",
+   "de": "Neuen Datensatz erfassen",
+   "fr": "Créer un nouveau jeu de données",
+   "it": "Crea un nuovo set di dati"
    }
 }
