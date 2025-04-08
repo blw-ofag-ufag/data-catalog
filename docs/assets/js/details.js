@@ -16,7 +16,7 @@ function formatPublicationMetadata(publication, lang) {
   const accessUrl = publication["dcat:accessURL"] || "";
   const publicationRow = `<tr>
     <td>${i18next.t("details.publication")}:</td>
-    <td>${Utils.formatEnumerationString(mustBePublished)}</td>
+    <td>${Utils.highlightEnumeratedValues(mustBePublished)}</td>
   </tr>`;
   const idRow = mustBePublished
     ? `<tr>
@@ -287,28 +287,40 @@ function renderDistributions(data, lang) {
   
   let html = `<h1>${i18next.t("details.distribution")}</h1>`;
   html += `<table class="table">
-        <colgroup>
-          <col style="width: 25%;">
-          <col style="width: 50%;">
-          <col style="width: 25%;">
-        </colgroup>
-  <tbody>`;
+    <colgroup>
+      <col style="width: 25%;">
+      <col style="width: 45%;">
+      <col style="width: 15%;">
+      <col style="width: 15%;">
+    </colgroup>
+    <tbody>`;
   
   distributions.forEach((dist) => {
     const title = Utils.getLocalized(dist["dct:title"], lang) || "";
     const description = Utils.getLocalized(dist["dct:description"], lang) || "";
-    const format = dist["dct:format"] || "N/A";
-    if (dist["dct:modified"]) {
-      dist["dct:modified"] = Utils.formatDate(dist["dct:modified"], lang);
+    const format = Utils.highlightEnumeratedValues(dist["dct:format"]) || "N/A";
+    const accessURL = dist["dcat:accessURL"];
+    const downloadURL = dist["dcat:downloadURL"];
+    
+    // Build the buttons HTML using the 'action-btn' CSS class.
+    let buttonHtml = "";
+    if (accessURL) {
+      buttonHtml += `<a href="${accessURL}" target="_blank" class="action-btn" title="${i18next.t('details.access')}" style="margin-right: 5px;">
+        <i class="bi bi-box-arrow-up-right"></i>
+      </a>`;
     }
-    const url = dist["dcat:downloadURL"] || dist["dcat:accessURL"] || "#";
+    if (downloadURL) {
+      buttonHtml += `<a href="${downloadURL}" target="_blank" class="action-btn" title="${i18next.t('details.download')}">
+        <i class="bi bi-download"></i>
+      </a>`;
+    }
+    
     html += `<tr>
-               <td><strong>${title}</strong></td>
-               <td>${description}</td>
-               <td class="text-end">
-                 <a href="${url}" target="_blank">${format}</a>
-               </td>
-             </tr>`;
+      <td><strong>${title}</strong></td>
+      <td>${description}</td>
+      <td>${format}</td>
+      <td class="text-end">${buttonHtml}</td>
+    </tr>`;
   });
   
   html += `</tbody></table>`;
