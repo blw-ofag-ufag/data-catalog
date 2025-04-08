@@ -401,6 +401,18 @@
       "fr": "Historique des modifications",
       "it": "Cronologia delle modifiche"
    },
+   "details.access": {
+   "en": "Access this dataset",
+   "de": "Greife auf diesen Datensatz zu",
+   "fr": "Accédez à cet ensemble de données",
+   "it": "Accedi a questo dataset"
+   },
+   "details.download": {
+   "en": "Download this dataset",
+   "de": "Lade diesen Datensatz herunter",
+   "fr": "Téléchargez cet ensemble de données",
+   "it": "Scarica questo dataset"
+   },
    "about.title": {
       "en": "About this Data Catalog",
       "de": "Über diesen Datenkatalog",
