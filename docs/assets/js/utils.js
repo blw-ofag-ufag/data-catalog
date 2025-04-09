@@ -38,13 +38,8 @@ const Utils = {
     const formattedEnd = this.formatDate(endDate, lang, options);
     return `${formattedStart} - ${formattedEnd}`;
   },  
-  truncate(str, length = 50) {
-    if (!str) return "";
-    return str.length > length ? str.slice(0, length) + "..." : str;
-  },
   getDisplayTitle(dataset, lang) {
-    const rawTitle = (dataset["dct:title"] && dataset["dct:title"][lang]) || "Untitled";
-    return Utils.truncate(rawTitle, 50);
+    return (dataset["dct:title"] && dataset["dct:title"][lang]) || "N/A";
   },
 
   // Functions shared with details.js
@@ -79,14 +74,31 @@ const Utils = {
       )
       .join("<br>");
   },
+  formatIdArray(val, lang) {
+    if (Array.isArray(val)) {
+      return val
+        .map(id => `<a href="details.html?dataset=${encodeURIComponent(id)}&lang=${lang}">${id}</a>`)
+        .join(", ");
+    } else {
+      return `<a href="details.html?dataset=${encodeURIComponent(val)}&lang=${lang}">${val}</a>`;
+    }
+  },
   formatAliasURL(aliasURLobject) {
     if (!aliasURLobject || !Array.isArray(aliasURLobject) || aliasURLobject.length === 0) return "";
     return aliasURLobject.map(page => {
-      const uri = page.uri || "";
+      const uri = page.uri;
       const alias = page.alias;
-      return alias
-        ? `<a href="${uri}" target="_blank">${alias}</a>`
-        : uri;
+      if (uri && alias) {
+        // Case 1: Both uri and alias are present.
+        return `<a href="${uri}" target="_blank">${alias}</a>`;
+      } else if (uri) {
+        // Case 2: Only uri is present.
+        return `<a href="${uri}" target="_blank">${uri}</a>`;
+      } else if (alias) {
+        // Case 3: Only alias is present.
+        return alias;
+      }
+      return "";
     }).join("<br>");
   },  
   verifyUrls() {

@@ -16,7 +16,7 @@ function formatPublicationMetadata(publication, lang) {
   const accessUrl = publication["dcat:accessURL"] || "";
   const publicationRow = `<tr>
     <td>${i18next.t("details.publication")}:</td>
-    <td>${Utils.formatEnumerationString(mustBePublished)}</td>
+    <td>${Utils.highlightEnumeratedValues(mustBePublished)}</td>
   </tr>`;
   const idRow = mustBePublished
     ? `<tr>
@@ -79,42 +79,70 @@ function renderActionButtons(datasetId, lang) {
   const rawUrl = `https://raw.githubusercontent.com/blw-ofag-ufag/metadata/main/data/raw/datasets/${datasetId}.json`;
   document.getElementById("downloadBtn").setAttribute("href", rawUrl);
   document.getElementById("viewOnGithubBtn").setAttribute("href", gitHubUrl);
-  // document.getElementById("editBtn").setAttribute("href", `modify.html?id=${datasetId}&lang=${lang}`);
+  document.getElementById("editBtn").setAttribute("href", `modify.html?dataset=${datasetId}&lang=${lang}`);
 }
 
 function renderAffiliatedPersons(data, lang) {
   const section = document.getElementById("metadataSection");
   const persons = data["prov:qualifiedAttribution"] || [];
+
   let html = `<h1>${i18next.t("prov:qualifiedAttribution")}</h1>`;
+
   if (!Array.isArray(persons) || persons.length === 0) {
     html += `<p>${i18next.t("details.noAffiliatedPersons")}</p>`;
     section.innerHTML = html;
     return;
   }
+
+  // 1) Define role priorities:
+  const rolePriorities = {
+    businessDataOwner: 1,
+    dataSteward: 2,
+    dataCustodian: 3
+  };
+
+  // 2) Create a helper to return a priority value for sorting:
+  function getRolePriority(role) {
+    return rolePriorities[role] || 99;
+  }
+
+  // 3) Sort the persons array using the above priority logic:
+  persons.sort((a, b) => {
+    const roleA = a["dcat:hadRole"] || "";
+    const roleB = b["dcat:hadRole"] || "";
+    return getRolePriority(roleA) - getRolePriority(roleB);
+  });
+
+  // 4) Generate rows in the new, sorted order:
   html += `<table class="table">
         <colgroup>
           <col style="width: 25%;">
           <col style="width: 75%;">
         </colgroup>
     <tbody>`;
+
   persons.forEach((p) => {
     const name = p["prov:agent"] || i18next.t("details.unknown");
     const role = p["dcat:hadRole"] || i18next.t("details.unknownRole");
     html += `
       <tr>
         <td>
-          <a href="https://admindir.verzeichnisse.admin.ch/person/${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer">${name}</a>
+          <a href="https://admindir.verzeichnisse.admin.ch/person/${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer">
+            ${name}
+          </a>
         </td>
         <td>${Utils.highlightEnumeratedValues(role)}</td>
       </tr>
     `;
   });
+
   html += `</tbody></table>`;
   section.innerHTML = html;
 }
 
 function renderMetadata(data, lang) {
   const section = document.getElementById("metadataSection");
+
   const ignoreTheseKeys = [
     "dct:title",
     "dct:description",
@@ -138,10 +166,57 @@ function renderMetadata(data, lang) {
   const dateFields = [
     "dct:issued",
     "dct:modified",
-    "bv:abrogation",
-    "dct:issued",
-    "dct:issued"
+    "bv:abrogation"
   ];
+
+  // 1) Define a desired ordering of keys (only list the ones you care about, in the exact order):
+  const keyOrder = [
+    "dcat:contactPoint",
+    "dct:publisher",
+    "adms:status",
+    "dcat:version",
+    "dct:issued",
+    "bv:abrogation",
+    "dct:modified",
+    "dcat:theme",
+    "dcat:keyword",
+    "dct:accrualPeriodicity",
+    "dct:temporal",
+    "dcatap:availability",
+    "bv:archivalValue",
+    "bv:retentionPeriod",
+    "dcat:landingPage",
+    "foaf:page",
+    "dct:accessRights",
+    "bv:classification",
+    "bv:personalData",
+    "bv:typeOfData",
+    "dcatap:applicableLegislation",
+    "dct:spatial",
+    "bv:geoIdentifier",
+    "bv:itSystem",
+    "prov:wasGeneratedBy",
+    "prov:wasDerivedFrom",
+    "dct:replaces",
+    "dcat:inSeries",
+    "schema:comment"
+  ];  
+
+  // 2) Create an array of the dataset’s actual keys (minus ignored ones).
+  const actualKeys = Object.keys(data).filter((k) => !ignoreTheseKeys.includes(k));
+
+  // 3) Sort those actual keys according to the keyOrder array, pushing anything not in `keyOrder` to the end.
+  const sortedKeys = actualKeys.sort((a, b) => {
+    // Where in the keyOrder array do these keys appear?
+    const indexA = keyOrder.indexOf(a);
+    const indexB = keyOrder.indexOf(b);
+    // -1 means it isn't in the order array, so treat that as “goes last”
+    return (
+      (indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA) -
+      (indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB)
+    );
+  });
+
   let html = `<h1>${i18next.t("details.metadata")}</h1>`;
   html += `<table class="table">
           <colgroup>
@@ -149,46 +224,53 @@ function renderMetadata(data, lang) {
             <col style="width: 75%;">
           </colgroup>
       <tbody>`;
-  Object.keys(data).forEach((key) => {
-    if (ignoreTheseKeys.includes(key)) return;
+
+  // 4) Now iterate over sortedKeys in the new fixed order:
+  sortedKeys.forEach((key) => {
     let label = i18next.t(key, { defaultValue: key });
     let val = data[key];
-  
+
     if (key === "dcat:keyword" && Array.isArray(val)) {
-      val = `<div class="keywords">` +
-        val.map((item) =>
-          `<a href="index.html?lang=${lang}&tags=${encodeURIComponent(item)}" data-key="${item}">
-             <span>${item}</span>
-           </a>`
-        ).join(" ") +
+      val =
+        `<div class="keywords">` +
+        val
+          .map(
+            (item) =>
+              `<a href="index.html?lang=${lang}&tags=${encodeURIComponent(item)}" data-key="${item}">
+                 <span>${item}</span>
+               </a>`
+          )
+          .join(" ") +
         `</div>`;
     } else if (key === "dcat:contactPoint") {
       val = Utils.formatContactPoint(val);
     } else if (key === "bv:opendata.swiss" || key === "bv:i14y") {
-      // Use the local publication formatting function
       val = formatPublicationMetadata(val, lang);
-    } else if (key === "dcatap:applicableLegislation" ) {
+    } else if (key === "dcatap:applicableLegislation") {
       val = Utils.formatUrlArray(val);
     } else if (key === "dcat:landingPage" || key === "bv:itSystem") {
       val = Utils.formatSingleUrl(val);
-    } else if (key === "foaf:page" ) {
+    } else if (key === "foaf:page") {
       val = Utils.formatAliasURL(val);
     } else if (key === "dct:temporal") {
       val = Utils.formatTemporal(val, lang);
+    } else if (key === "dct:replaces") {
+      val = Utils.formatIdArray(val, lang);
     } else if (enumeratedFields.includes(key)) {
       val = Utils.highlightEnumeratedValues(val);
     } else if (dateFields.includes(key)) {
-      val = Utils.formatDate(val)
+      val = Utils.formatDate(val);
     } else {
       val = Utils.stringifyIfNeeded(val);
     }
-  
+
     if (!val) return;
     html += `<tr>
                <td><strong>${label}</strong></td>
                <td>${val}</td>
              </tr>`;
-  });  
+  });
+
   html += `</tbody></table>`;
   section.innerHTML += html;
 }
@@ -205,28 +287,40 @@ function renderDistributions(data, lang) {
   
   let html = `<h1>${i18next.t("details.distribution")}</h1>`;
   html += `<table class="table">
-        <colgroup>
-          <col style="width: 25%;">
-          <col style="width: 50%;">
-          <col style="width: 25%;">
-        </colgroup>
-  <tbody>`;
+    <colgroup>
+      <col style="width: 25%;">
+      <col style="width: 45%;">
+      <col style="width: 15%;">
+      <col style="width: 15%;">
+    </colgroup>
+    <tbody>`;
   
   distributions.forEach((dist) => {
     const title = Utils.getLocalized(dist["dct:title"], lang) || "";
     const description = Utils.getLocalized(dist["dct:description"], lang) || "";
-    const format = dist["dct:format"] || "N/A";
-    if (dist["dct:modified"]) {
-      dist["dct:modified"] = Utils.formatDate(dist["dct:modified"], lang);
+    const format = Utils.highlightEnumeratedValues(dist["dct:format"]) || "N/A";
+    const accessURL = dist["dcat:accessURL"];
+    const downloadURL = dist["dcat:downloadURL"];
+    
+    // Build the buttons HTML using the 'action-btn' CSS class.
+    let buttonHtml = "";
+    if (accessURL) {
+      buttonHtml += `<a href="${accessURL}" target="_blank" class="action-btn" title="${i18next.t('details.access')}" style="margin-right: 5px;">
+        <i class="bi bi-box-arrow-up-right"></i>
+      </a>`;
     }
-    const url = dist["dcat:downloadURL"] || dist["dcat:accessURL"] || "#";
+    if (downloadURL) {
+      buttonHtml += `<a href="${downloadURL}" target="_blank" class="action-btn" title="${i18next.t('details.download')}">
+        <i class="bi bi-download"></i>
+      </a>`;
+    }
+    
     html += `<tr>
-               <td><strong>${title}</strong></td>
-               <td>${description}</td>
-               <td class="text-end">
-                 <a href="${url}" target="_blank">${format}</a>
-               </td>
-             </tr>`;
+      <td><strong>${title}</strong></td>
+      <td>${description}</td>
+      <td>${format}</td>
+      <td class="text-end">${buttonHtml}</td>
+    </tr>`;
   });
   
   html += `</tbody></table>`;
@@ -237,6 +331,7 @@ function renderPublications(data, lang) {
   const section = document.getElementById("publicationsSection");
   if (!section) return;
   
+  // Define publications in the desired order:
   const publications = [
     { key: "bv:opendata_swiss", catalog: "opendata.swiss" },
     { key: "bv:i14y", catalog: "I14Y" }
@@ -246,7 +341,6 @@ function renderPublications(data, lang) {
   const hasPublicationInfo = publications.some(pub => data[pub.key]);
   
   if (!hasPublicationInfo) {
-    // If no publication info, clear the section (or you can remove it)
     section.innerHTML = "";
     return;
   }

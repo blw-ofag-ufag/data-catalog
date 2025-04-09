@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+  <meta charset="UTF-8">
+  <title>Commit to GitHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"  rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+       <a class="navbar-brand" href="index.html">
+         DigiAgriFoodCH Data Catalog
+       </a>
+       <div class="ms-auto align-items-right">
+          <div class="dropdown">
+             <button class="btn unified-control dropdown-toggle">English</button>
+          </div>
+       </div>
+    </div>
+  </nav>
+
+  <section class="hero-banner">
+    <h1 data-i18n="heroBannerHeading">Commit Dataset to GitHub</h1>
+    <p class="lead" data-i18n="heroBannerText">
+       Final step: Enter your GitHub credentials in order to save the changes you've made.
+       If you don't have any credentials yet, try to reach out to the competence centre for digital transformation at the FOAG.
+    </p>
+ </section>
+
+  <div class="container">
+    <br>
+    <div>
+      <label for="gh-username">GitHub Username:</label><br>
+      <input type="text" id="gh-username" class="form-control" placeholder="e.g. JohnDoe" />
+    </div>
+    <br>
+    <div>
+      <label for="gh-token">Personal Access Token:</label><br>
+      <input type="password" id="gh-token" class="form-control" placeholder="Your PAT" />
+    </div>
+    <br>
+    <div>
+      <label for="commit-message">Commit Message:</label><br>
+      <input type="text" id="commit-message" class="form-control" placeholder="Describe your changes" />
+    </div>
+    <br />
+
+    <button id="commit-btn" class="btn btn-primary">Commit changes to GitHub</button>
+    <button id="home-btn" class="btn btn-default" style="margin-left: 10px;">Return to the main page</button>
+
+    <hr />
+    <div id="result" style="white-space: pre-wrap; margin-top:20px;"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="assets/js/commit.js"></script>
+</body>
+</html>

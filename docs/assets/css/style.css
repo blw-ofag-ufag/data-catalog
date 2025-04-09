@@ -8,16 +8,19 @@
   --color-accent:           #2c3a3f;
   --color-accent-faded:     #8f9a9e;
   --color-danger:           #a35757;
+  --color-light-grey:       #e5eaec;
 }
 
 /* General styling */
 html, body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif; /* Changed to a cooler font */
+  font-size: 1rem; /* Slightly larger default text size */
+  line-height: 1.5; /* More space between lines */
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensures the body covers the whole viewport */
+  min-height: 100vh;
 }
 
 main {
@@ -30,9 +33,25 @@ h1 {
   margin-bottom: 0.5em;
 }
 
-h5.tile-title-ellipsis {
+h6.tile-title-ellipsis {
   font-weight: bold;
+  font-size: 1em;
   margin-bottom: 4px;
+  display: -webkit-box;          /* for multi-line flex-based ellipsis */
+  -webkit-box-orient: vertical;  /* vertical orientation */
+  -webkit-line-clamp: 2;         /* number of lines to allow */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;           /* must allow normal wrapping rather than nowrap */
+}
+
+.table-title-two-line {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;         /* number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;           /* must allow normal wrapping */
 }
 
 p {
@@ -41,11 +60,21 @@ p {
 
 p.tile-desc-ellipsis {
   margin-bottom: 4px;
+  line-height: 1.25;
 }
 
 a {
   color: var(--color-foreground); /* Change this to your desired color */
   cursor: pointer;
+}
+
+/* Applies only to code blocks/inline code that do NOT have the .language-mermaid class */
+pre code:not(.language-mermaid),
+code:not(.language-mermaid) {
+  color: var(--color-foreground);
+  background-color: var(--color-light-grey);
+  padding: 0.1em 0.2em;
+  border-radius: 4px;
 }
 
 /* Navigation */
@@ -377,4 +406,20 @@ footer a:hover {
   font-weight: 400;
   margin: 2px 4px 2px 0;
   text-transform: capitalize; /* Ensure each word starts with uppercase */
+}
+
+/* Center the mermaid content */
+.language-mermaid > svg {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Mofify page */
+span.help-block {
+  font-size: 0.8rem;
+}
+legend {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
 }

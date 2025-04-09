@@ -1,46 +1,56 @@
-# What is a data catalog?
+# What is a Data Catalog?
 
-A data catalog works similarly to a library catalog, but for digital information instead of books.
-It provides a centralized overview of an organization's data products and allows users to quickly see what data is available, where it is stored, who is responsible for it, and how it can be accessed.
+A data catalog works similarly to a library catalog but is designed for digital information rather than books. It provides a centralized overview of an organization's data products, allowing users to quickly identify what data exists, where it is stored, who is responsible for it, and how they can access it.
 
-# Why is it relevant to us?
+# Why is this Relevant for Us?
 
-The FOAG also focuses on food security for the Swiss population.
-In order to fulfill its mission and to enable the Swiss agricultural and food sector to handle resources and food in a sustainable way, our office creates, collects, manages, processes, evaluates and publishes *data*.
-These data, along with the results of the analyses, serve as a basis for decision-making for the administration of, for example, agricultural policy, direct payments and research in the agricultural and food sectors.
-It is therefore essential for the FOAG to provide itself with a tool that allows for the effective management of this data.
-A complete and up-to-date data catalog directly contributes to compliance with the principles of our digitization strategy (https://blw-ofag-ufag.atlassian.net/wiki/spaces/DS/pages/22479169/Prinzipien) such as Once Only, Open by Default, Security & Privacy by default and Innovation first.
-Our data catalog increases efficiency, promotes collaboration between teams, and ensures that everyone follows the same governance and compliance rules.
-When data is easy to find and understand, it becomes easier to share responsibly and make informed decisions.
+The Federal Office for Agriculture (FOAG) is committed to promoting a multifunctional, value-adding agricultural and food sector that ensures food security for the Swiss population.
+In doing so, many different types of data are collected, created, managed, processed, assessed, and published. These data serve as the basis for decision-making for various FOAG tasks.
 
-# Objectives of the data catalog
+Data come in many forms: from simple Excel sheets to complex databases. Some data relate to individuals and thus carry security risks; other data don't need protection but instead are meant to be publicly available.
+Certain data might pertain to milk production, while others address nitrogen losses in agriculture.
 
-The main objectives of our data catalog are:
-Make a tangible contribution to the [digitization strategy of the Swiss agricultural and food sector](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie)
-Facilitate understanding and access to data for each member of the organization, according to their business needs and in compliance with their quality, timeliness and granularity criteria.
-Facilitate collaboration between different units and improve communication channels for data-related questions
-Improve interoperability by publishing master and reference data on national data portals ([I14Y](https://www.i14y.admin.ch/), [opendata.swiss](https://opendata.swiss/), etc.)
+With this constantly growing volume of data, it is essential for FOAG to provide a tool that allows for clear and structured data management.
+This is fundamentally the goal of a comprehensive and up-to-date data catalog.
+As a result, it directly contributes to adherence to the principles of the [digitalization strategy](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie), such as *Once Only*, *Open by Default*, *Security & Privacy by Default*, and *Innovation First*.
 
-- Enable the organization to organize and manage metadata in a structured way
-- Support the implementation of data governance
-- Ensure compliance with legal standards and help improve data quality
+For FOAG as a whole and individual users, the data catalog ensures that:
 
-# Who benefits?
+- data are easily discoverable and understandable,
+- data governance and compliance rules are followed,
+- data can be reused multiple times, thus avoiding redundancies.
 
-All employees of the Federal Office for Agriculture can benefit from the data catalog:
+Consequently, the data catalog can significantly enhance collaboration, efficiency, and transparency.
 
-- **Managers and decision-makers:** Quickly find the data they need for evidence-based strategies.
-- **Data owners and analysts:** Know exactly who is responsible for different data sets and avoid duplicating work.
-- **Technical teams:** Plan system integrations more efficiently and maintain data quality.
-- **External stakeholders:** Access published data sets as needed and use them for research or community projects.
+# What are the Objectives of this Data Catalog?
 
-# Next steps
+The data catalog aims to achieve several objectives simultaneously:
 
-We will continue to refine the catalog by reaching out to data owners, updating existing entries, and exploring integrations with other platforms.
-Over time, we aim to make this tool a go-to resource for internal and external partners, enabling data-driven innovation across the board.
+1. **Metadata Management:** Allow users to capture and edit metadata.
+2. **Centralized Data Discovery:** Facilitate understanding and access to data for all members of the organization. By examining metadata, users can determine if the data meet specific business requirements regarding quality, timeliness, and granularity.
+3. **Enhancing Collaboration:** Promote collaboration by clearly indicating who is responsible for certain data or who can answer related questions.
+4. **Improving Interoperability:** Reveal core and reference data so they can be quickly located and integrated when developing new IT systems.
+5. **Synchronization with Other Data Portals:** Serve as a unified solution for managing FOAG metadata, with certain metadata being shared on national data portals such as [i14y](https://www.i14y.admin.ch/), [opendata.swiss](https://opendata.swiss/), or [geocat](https://www.geocat.ch/datahub), thus ensuring metadata quality across all downstream catalogs.
+6. **Data Governance:** Assist in implementing FOAG's data governance practices, including assigning responsible persons for all datasets.
+7. **Compliance with Legal Regulations:** Ensure compliance with legal requirements, particularly the [Data Protection Act (DSG)](https://www.fedlex.admin.ch/eli/cc/2022/491) and the [Information Security Act (ISG)](https://www.fedlex.admin.ch/eli/cc/2022/232).
+8. **Digitalization Strategy:** Specifically contribute to the [digital transformation of the Swiss agri-food sector](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie) and support the vision of a data-driven sector.
 
-# Further information
+# Who Benefits from a Data Catalog?
 
-- [Metadata model - Confluence](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/403701818/Metadata+model)
-- [Target data catalog - Confluence](https://blw-ofag-ufag.atlassian.net/wiki/spaces/KDT/pages/342098136/Zielbild+Datenkatalog)
-- [Handbook Reference Data - Confluence](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/354025506/Handbook+Codelists+Reference+data)
+Different groups can benefit significantly from a data catalog, especially:
+
+- **Data creators and owners:** Clarifying responsibilities and avoiding duplication.
+- **Managers and decision-makers:** Quickly gaining an overview of existing data resources to support evidence-based strategies.
+- **Technical teams:** Improving the planning and assessment of system integrations.
+- **External stakeholders:** Finding publicly available data easily when needed.
+
+# Next Steps
+
+We will refine the catalog further by engaging data owners, updating existing entries, and examining integration with other platforms.
+Over time, we aim to establish this tool as an indispensable resource for internal and external partners, enabling data-driven innovation across all areas.
+
+# Additional Information
+
+- [Metadata model description (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/403701818)
+- [Data catalog vision (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/KDT/pages/342098136)
+- [Reference data management handbook (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/354025506)

@@ -5,6 +5,19 @@ mermaid.initialize({ startOnLoad: false });
 
 // Document ready
 document.addEventListener("DOMContentLoaded", () => {
+
+  const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
+  const primaryTextColor = getComputedStyle(document.documentElement).getPropertyValue('--color-background').trim();
+
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'base',
+    themeVariables: {
+      primaryColor: primaryColor,
+      primaryTextColor: primaryTextColor
+    }
+  });
+
   // Load navbar, then do some i18n setup
   $("#navbar-placeholder").load("navbar.html", function () {
     const params = new URLSearchParams(window.location.search);
@@ -35,9 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
 // Load the correct markdown file
 function loadMarkdownContent(lang) {
   const fallbackLang = "en";
-  const url = `assets/md/about/${lang}.md`;
+  // Read the markdown folder path from the data attribute
+  const mdFolder = document.body.getAttribute("data-md-folder") || "assets/md/about/";
+  const url = `${mdFolder}${lang}.md`;
 
-  // Attempt to fetch the chosen language
   fetch(url)
     .then((response) => {
       // If missing, fallback to English
@@ -45,7 +59,7 @@ function loadMarkdownContent(lang) {
         console.warn(
           `Markdown file for lang '${lang}' not found. Falling back to '${fallbackLang}'.`
         );
-        return fetch(`assets/md/about/${fallbackLang}.md`);
+        return fetch(`${mdFolder}${fallbackLang}.md`);
       }
       return response;
     })
