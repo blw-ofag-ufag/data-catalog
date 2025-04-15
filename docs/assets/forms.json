@@ -52,7 +52,6 @@
             "type": "array",
             "items": {
               "key": "dcat:theme[]",
-              "type": "text",
               "notitle": true,
               "placeholder": "Enter a keyword"
             }
