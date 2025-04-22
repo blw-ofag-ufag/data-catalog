@@ -151,7 +151,8 @@ function renderMetadata(data, lang) {
     "bv:i14y",
     "bv:opendata_swiss",
     "schema:image",
-    "dct:identifier"
+    "dct:identifier",
+    "bv:externalCatalogs"
   ];
   const enumeratedFields = [
     "dct:accessRights",
@@ -330,54 +331,57 @@ function renderDistributions(data, lang) {
 function renderPublications(data, lang) {
   const section = document.getElementById("publicationsSection");
   if (!section) return;
-  
-  // Define publications in the desired order:
-  const publications = [
-    { key: "bv:opendata_swiss", catalog: "opendata.swiss" },
-    { key: "bv:i14y", catalog: "I14Y" }
-  ];
-  
-  // Check if any publication information is available.
-  const hasPublicationInfo = publications.some(pub => data[pub.key]);
-  
-  if (!hasPublicationInfo) {
+
+  // 1) Collect and normalise the external‑catalog entries
+  const catalogs = Array.isArray(data["bv:externalCatalogs"])
+    ? data["bv:externalCatalogs"].filter((c) => !!c)
+    : [];
+
+  if (catalogs.length === 0) {
     section.innerHTML = "";
     return;
   }
-  
+
+  // Optional: keep a fixed display order for well‑known catalogues
+  const desiredOrder = ["opendata.swiss", "I14Y"];
+  catalogs.sort((a, b) => {
+    const idxA = desiredOrder.indexOf(a["dcat:catalog"]);
+    const idxB = desiredOrder.indexOf(b["dcat:catalog"]);
+    return (idxA === -1 ? Number.MAX_SAFE_INTEGER : idxA) -
+           (idxB === -1 ? Number.MAX_SAFE_INTEGER : idxB);
+  });
+
+  // 2) Build the HTML table
   let html = `<h1>${i18next.t("details.publications", { defaultValue: "Publications" })}</h1>`;
   html += `<table class="table">
     <thead>
       <colgroup>
-        <col style="width: 25%;">
-        <col style="width: 25%;">
-        <col style="width: 50%;">
+        <col style="width: 35%;">
+        <col style="width: 65%;">
       </colgroup>
       <tr>
         <th>${i18next.t("dcat:catalog")}</th>
-        <th>${i18next.t("details.publication")}</th>
         <th>${i18next.t("dct:identifier")}</th>
       </tr>
     </thead>
     <tbody>`;
-  
-  publications.forEach(pub => {
-    if (data[pub.key]) {
-      const pubData = data[pub.key];
-      const publication = Utils.highlightEnumeratedValues(pubData["bv:mustBePublished"]);
-      let identifier = pubData["dct:identifier"] || "";
-      const accessURL = pubData["dcat:accessURL"] || "";
-      if (identifier && accessURL && accessURL !== "N/A") {
-        identifier = `<a href="${accessURL}" target="_blank">${identifier}</a>`;
-      }
-      html += `<tr>
-        <td>${pub.catalog}</td>
-        <td>${publication}</td>
+
+  catalogs.forEach((cat) => {
+    const catalogName = cat["dcat:catalog"] || i18next.t("details.unknown");
+    let identifier    = cat["dct:identifier"] || "";
+    const accessURL   = cat["dcat:accessURL"] || "";
+
+    if (identifier && accessURL && accessURL !== "N/A") {
+      identifier = `<a href="${accessURL}" target="_blank" rel="noopener noreferrer">${identifier}</a>`;
+    }
+
+    html += `
+      <tr>
+        <td>${catalogName}</td>
         <td>${identifier}</td>
       </tr>`;
-    }
   });
-  
+
   html += `</tbody></table>`;
   section.innerHTML = html;
 }
