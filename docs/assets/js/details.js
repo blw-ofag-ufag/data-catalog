@@ -356,8 +356,8 @@ function renderPublications(data, lang) {
   html += `<table class="table">
     <thead>
       <colgroup>
-        <col style="width: 35%;">
-        <col style="width: 65%;">
+        <col style="width: 25%;">
+        <col style="width: 75%;">
       </colgroup>
       <tr>
         <th>${i18next.t("dcat:catalog")}</th>
