@@ -107,14 +107,21 @@
             "title": "Retention Period"
           },
           {
-            "type": "array",
-            "title": "Metadata publication in other data catalogs",
-            "key": "bv:externalCatalogs",
-            "items": {
-                "key": "bv:externalCatalogs.dcat:catalog[]",
-                "notitle": true,
-                "placeholder": "Select an external catalog where tu publish your metadata"
-            }
+            "type": "tabarray",
+            "items": [
+              {
+                "type": "section",
+                "legend": "{{idx}}. {{value}}",
+                "items": [
+                  {
+                    "key": "bv:externalCatalogs[].dcat:catalog",
+                    "valueInLegend": true,
+                    "notitle": true,
+                    "placeholder": "Select an external catalog where this metadata shall be published."
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
