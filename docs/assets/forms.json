@@ -107,34 +107,19 @@
             "title": "Retention Period"
           },
           {
-            "type": "fieldset",
-            "title": "Metadata publication in other data catalogs",
+            "type": "tabarray",
             "items": [
               {
-                "key": "bv:opendata_swiss.bv:mustBePublished",
-                "notitle": true,
-                "inlinetitle": "This dataset must be published to <a href='https://opendata.swiss' target='_blank'>opendata.swiss</a>."
-              },
-              {
-                "key": "bv:opendata_swiss.dct:identifier",
-                "type": "hidden"
-              },
-              {
-                "key": "bv:opendata_swiss.dcat:accessURL",
-                "type": "hidden"
-              },
-              {
-                "key": "bv:i14y.bv:mustBePublished",
-                "notitle": true,
-                "inlinetitle": "This dataset must be published to <a href='https://www.i14y.admin.ch' target='_blank'>i14y</a>."
-              },
-              {
-                "key": "bv:i14y.dct:identifier",
-                "type": "hidden"
-              },
-              {
-                "key": "bv:i14y.dcat:accessURL",
-                "type": "hidden"
+                "type": "section",
+                "legend": "{{idx}}. {{value}}",
+                "items": [
+                  {
+                    "key": "bv:externalCatalogs[].dcat:catalog",
+                    "valueInLegend": true,
+                    "notitle": true,
+                    "placeholder": "Select an external catalog where this metadata shall be published."
+                  }
+                ]
               }
             ]
           }
