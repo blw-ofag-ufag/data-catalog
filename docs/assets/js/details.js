@@ -501,7 +501,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           window.cachedDataset = data; // Cache for language re-rendering
           renderDatasetDetails(data, lang);
-          Utils.verifyUrls();
         }
       })
       .catch((error) => {
