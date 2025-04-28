@@ -100,37 +100,7 @@ const Utils = {
       }
       return "";
     }).join("<br>");
-  },  
-  verifyUrls() {
-    // Select all anchor elements with the 'check-url' class
-    const links = document.querySelectorAll('.check-url');
-    links.forEach(link => {
-      const url = link.href;
-      // Use a HEAD request to check if the URL is accessible
-      fetch(url, { method: 'HEAD' })
-        .then(response => {
-          if (!response.ok) {
-            // If the response isn't OK, show a warning icon with the status code
-            const warning = document.createElement('span');
-            warning.innerHTML = '<i class="bi bi-exclamation-circle-fill"></i>';
-            warning.style.marginLeft = "5px";
-            warning.style.color = "var(--color-danger)";
-            warning.title = `URL returned status: ${response.status}`;
-            link.insertAdjacentElement('afterend', warning);
-          }
-        })
-        .catch(error => {
-          // If an error occurs (e.g., CORS issues), mark the URL as unverified
-          const warning = document.createElement('span');
-          warning.innerHTML = '<i class="bi bi-question-circle-fill"></i>';
-          warning.style.marginLeft = "5px";
-          warning.style.color = "var(--color-accent)";
-          // Provide a fallback message to the user
-          warning.title = "URL could not be verified (possibly due to CORS restrictions or other errors).";
-          link.insertAdjacentElement('afterend', warning);
-        });
-    });
-  },  
+  },
   getLocalized(fieldObj, lang) {
     if (!fieldObj) return "";
     return fieldObj[lang] || fieldObj["en"] || "";
