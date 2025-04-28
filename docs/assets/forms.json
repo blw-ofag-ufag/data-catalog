@@ -91,6 +91,10 @@
           {
             "key": "bv:personalData",
             "title": "Data Protection Category"
+          },
+          {
+            "key": "bv:typeOfData",
+            "title": "Type of data"
           }
         ]
       },
