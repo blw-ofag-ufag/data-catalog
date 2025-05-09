@@ -16,7 +16,7 @@ jobs:
             -   name: Install Dependencies
                 run: npm install
             -   name: Build Angular App
-                run: npm run build
+                run: ng build --prod --base-href "https://blw-ofag-ufag.github.io/data-catalog/"
             -   name: Set Git identity
                 run: |
                     git config user.name "github-actions[bot]"
