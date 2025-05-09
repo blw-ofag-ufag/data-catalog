@@ -1,0 +1,73 @@
+<!--<index-cards *ngIf="view === 'tile'">-->
+<!--	<p>tile</p>-->
+<!--	<index-cards></index-cards>-->
+<!--</index-cards>-->
+<!--<mat-button-toggle-group obButton="secondary" name="fontStyle" aria-label="Font Style">-->
+<!--	<button mat-icon-button obButton="tertiary" type="button" matTooltip="cards">-->
+<!--		<mat-icon svgIcon="cards" />-->
+<!--	</button>-->
+<!--	<button mat-icon-button obButton="tertiary" type="button" matTooltip="list">-->
+<!--		<mat-icon svgIcon="list" />-->
+<!--	</button>-->
+<!--</mat-button-toggle-group>-->
+<div class="full-width">
+	<div class="index-head">
+		<div>
+			<h3>Data Products</h3>
+		</div>
+		<div class="pull-right">
+			<a href="/modify" mat-button obButton="primary" type="button" matTooltip="add">
+				Datensatz hinzufügen
+				<mat-icon svgIcon="plus" />
+			</a>
+		</div>
+	</div>
+
+	<hr/>
+
+	<div class="filterbar">
+		<div style="display: flex; gap: 8px;">
+			<mat-form-field appearance="outline" class="search-bar">
+				<mat-icon matPrefix svgIcon="search"/>
+				<input matInput placeholder="Search"/>
+			</mat-form-field>
+
+			<mat-form-field>
+				<mat-label>Default Select</mat-label>
+				<mat-select>
+					<mat-option [value]="1">Nach Titel sortieren</mat-option>
+					<mat-option [value]="2">Älteste zuerst</mat-option>
+					<mat-option [value]="3">Neueste zuerst</mat-option>
+					<mat-option [value]="4">Nach Dateninhaber</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+<!--			<button>Filter anzeigen</button>-->
+			<button style="width: 100%; margin-top: 5px" (click)="toggleShowFilters()" mat-button obButton="secondary" type="button"><mat-icon svgIcon="filter" /> @if (showFilters) {Filter verbergen} @else {Filter anzeigen}</button>
+
+		</div>
+		<div class="pull-right">
+			<button (click)="switchTo('tile')" mat-icon-button obButton="tertiary" type="button" matTooltip="cards">
+				<mat-icon svgIcon="cards" />
+			</button>
+			<button (click)="switchTo('table')" mat-icon-button obButton="tertiary" type="button" matTooltip="list">
+				<mat-icon svgIcon="list" />
+			</button>
+		</div>
+	</div>
+
+	<div class="ob-grid">
+		@if (showFilters) {
+			<div class="ob-quarter">
+				<index-filter-col></index-filter-col>
+			</div>
+			<div class="ob-two-thirds">
+				<index-outlet [view]="view"></index-outlet>
+			</div>
+		} @else {
+			<div class="ob-full">
+				<index-outlet [view]="view"></index-outlet>
+			</div>
+		}
+	</div>
+</div>

@@ -1,0 +1,11 @@
+@if (view === "tile") {
+	<index-cards></index-cards>
+} @else {
+	<index-list></index-list>
+}
+
+<hr/>
+
+<div class="paginator-container">
+	<mat-paginator aria-label="Select page" [length]="1000" [pageSizeOptions]="[5, 10, 25, 100]" />
+</div>

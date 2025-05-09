@@ -1,0 +1,15 @@
+.bleeding-landing-header {
+	width: 100vw; /* Make the width span the full viewport width */
+	margin-left: calc(-50vw + 50%); /* Adjust to ensure it aligns with the viewport edge */
+	background-color: #F0F4F7; /* Existing background color */
+	margin-top: -16px;
+	padding-top: 32px;
+	padding-bottom: 32px;
+}
+.landing-header-container {
+	max-width: 1440px;
+	margin: auto;
+}
+.container {
+	width: 100%;
+}

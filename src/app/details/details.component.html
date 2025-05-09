@@ -1,0 +1,143 @@
+@if (dataset$ | async; as dataset) {
+	@if (currentLang$ | async; as lang) {
+		<h2>{{ dataset["dct:title"][lang] }}</h2>
+		<div class="ob-grid">
+			<div class="ob-half">
+				<p>{{ dataset["dct:description"][lang] }}</p>
+				<div class="ob-inline-form">
+					<mat-chip> Data Set </mat-chip>
+					<mat-chip> {{ dataset["dct:publisher"] | org }}</mat-chip>
+				</div>
+			</div>
+			<div class="ob-half">
+				<img src="{{ dataset['schema:image'] }}"/>
+			</div>
+		</div>
+		<div class="ob-grid">
+			<div class="ob-span-10">
+				<h3>Affiliated Persons</h3>
+				@for (person of dataset["prov:qualifiedAttribution"]; track $index) {
+					<label for="person-{{ $index }}">-->
+						<a href="mailto:{{ person['schema:email'] }}">{{ person["schema:name"] }}</a>
+					</label>
+					<div id="person-{{ $index }}">
+						<mat-chip>{{ person["dcat:hadRole"] }}</mat-chip>
+					</div>
+				}
+
+				<br>
+				<h3>{{ "details.heading.metadata" | translate }}</h3>
+				<hr>
+				<label for="contact-point">
+					{{ "details.label.contactPoint" | translate }}
+				</label>
+				<div id="contact-point">
+					{{ dataset["dcat:contactPoint"]["schema:name"] }} <a href="mailto: {{ dataset['dcat:contactPoint']['schema:email'] }}">{{ dataset['dcat:contactPoint']['schema:email'] }}</a>
+				</div>
+				<hr>
+				<label for="status">
+					{{ "details.label.status" | translate }}
+				</label>
+				<div id="status">
+					<mat-chip mat-chip>{{ dataset["adms:status"] | status }}</mat-chip>
+				</div>
+				<hr>
+				<label for="publisher">
+					{{ "details.label.publisher" | translate }}
+				</label>
+				<div id="publisher">
+					<mat-chip>{{ dataset["dct:publisher"] | org }}</mat-chip>
+				</div>
+				<hr>
+				<label for="issued">
+					{{ "details.label.issued" | translate }}
+				</label>
+				<div id="issued">
+					{{ dataset["dct:issued"] |date:'d. MMMM yyyy' }}
+				</div>
+				<hr>
+				<label for="modified">
+					{{ "details.label.modified" | translate }}
+				</label>
+				<div id="modified">
+					{{ dataset["dct:modified"] |date:'d. MMMM yyyy' }}
+				</div>
+
+			</div>
+			<div class="span-2">
+				<pre>TBD: QuickNav (wo in Oblique)?</pre>
+			</div>
+		</div>
+
+
+	}
+	<pre>{{ dataset | json }}</pre>
+}
+
+<!--<p>details for dataset {{ dataset }}</p>-->
+<!--<pre>{{dataset$ | async | json}}</pre>-->
+<!--<div class="ob-grid">-->
+<!--  <div class="ob-span-10">-->
+<!--    <h6>Affiliated Persons</h6>-->
+<!--    <hr/>-->
+<!--    <label for="data-steward">-->
+<!--      <a href="#">Andrea Müller</a>-->
+<!--    </label>-->
+<!--    <div id="data-steward">-->
+<!--      <mat-chip>Data Steward</mat-chip>-->
+<!--    </div>-->
+<!--    <hr/>-->
+<!--    <label for="data-steward">-->
+<!--      <a href="#">Michael Gysi</a>-->
+<!--    </label>-->
+<!--    <div id="data-steward">-->
+<!--      <mat-chip>Business Data Owner</mat-chip>-->
+<!--    </div>-->
+
+
+<!--    <br>-->
+<!--    <h6>Metadata</h6>-->
+<!--    <hr/>-->
+<!--    <label for="contact-point">-->
+<!--      Contact Point-->
+<!--    </label>-->
+<!--    <div id="contact-point">-->
+<!--      Büro für Sortenschutz <a href="#">sortenadmin&#64;blw.admin.ch</a>-->
+<!--    </div>-->
+<!--    <hr/>-->
+<!--    ...-->
+
+<!--    <br>-->
+<!--    <h6>Distribution</h6>-->
+
+<!--    <br>-->
+<!--    <h6>Publications</h6>-->
+<!--    <table class="ob-table">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th scope="col">Catalog</th>-->
+<!--        <th scope="col">Publications</th>-->
+<!--        <th scope="col">Identifier</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--        <td data-title="POSITION">opendata.swiss</td>-->
+<!--        <th scope="row" data-title="NAME"><mat-chip>No</mat-chip></th>-->
+<!--        <td data-title="WEIGHT"></td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td data-title="POSITION">I14Y</td>-->
+<!--        <th scope="row" data-title="NAME"><mat-chip>Yes</mat-chip></th>-->
+<!--        <td data-title="WEIGHT"><a href="#">BLW_DS_VARIETIES</a></td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+
+<!--  </div>-->
+<!--  <div class="ob-span-2">-->
+<!--    <pre>-->
+<!--      tbd: Quicknav-->
+<!--    </pre>-->
+<!--  </div>-->
+<!--</div>-->
