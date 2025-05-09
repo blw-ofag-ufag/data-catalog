@@ -10,6 +10,9 @@ This data catalog was built in a joint effort by the Federal Office for Agricult
 It aims to showcase the offices datasets in a user-friendly way and in one place while maintaining interoperability with broader metadata platforms.
 
 > [!IMPORTANT]
+> We are currently migrating the application to angular. The current state of this is alpha, but we will be up to feature parity with the previous version in May/June 2025.
+
+> [!IMPORTANT]
 > While the code and metadata are publicly available, some dataset links point to internal FOAG services and require the right credentials to access.
 
 # ✨ Why is this data catalog special?
@@ -26,32 +29,28 @@ Ultimately, everyone benefits: managers and decision-makers make strategic calls
 4. **Open source collaboration:** We welcome pull requests and community-driven improvements. Join our open source culture by sharing your ideas, reporting issues, or enhancing features for the benefit of all users.
 
 # 🚀 Quick start
+(Github Actions are currently work in progress)
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+
+Prerequisites to run locally: node.js and globally installed angular CLI
 
 1. **Explore the data catalog online:** Head over to our [GitHub page](https://blw-ofag-ufag.github.io/data-catalog/index.html?lang=en&sort=issued-desc) to see the development version of the data catalog in action. Not that the main version is deployed on an Azure instance.
 2. **Clone & Run Locally**  
    ```bash
    git clone https://github.com/blw-ofag-ufag/data-catalog.git
    cd data-catalog
-   python3 -m http.server
+   npm install
+   ng serve
    ```
-# DigiAgriFoodDB
-
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
-
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
+   
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
 ## Useful links
-Oblique docs: https://oblique.bit.admin.ch/introductions/welcome
-Figma design: https://www.figma.com/design/Nxnu7VCDCmiGCazmu689vc/DigiAgriFoodCH-Data-Catalog?node-id=14574-13069&p=f&t=IUnnNbYTltWaVDTr-0
-Previous version: https://blw-ofag-ufag.github.io/data-catalog/index.html?lang=en&sort=issued-desc&view=tile&page=1
+* Oblique docs: https://oblique.bit.admin.ch/introductions/welcome
+* Figma design: https://www.figma.com/design/Nxnu7VCDCmiGCazmu689vc/DigiAgriFoodCH-Data-Catalog?node-id=14574-13069&p=f&t=IUnnNbYTltWaVDTr-0
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+[//]: # (Previous version: https://blw-ofag-ufag.github.io/data-catalog/index.html?lang=en&sort=issued-desc&view=tile&page=1)
+
 
 ## Code scaffolding
 
@@ -78,30 +77,10 @@ ng build
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 # 🤝 Contributing
 
-## Running unit tests
 We believe a vibrant open-source community drives creativity.
 Whether you’re a data geek or a UI/UX wizard, your input helps make agricultural data more accessible and impactful.
 Check out our issues for tasks big or small, or open your own suggestions.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 # 📜 License
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-All resources in this repository are available under the Creative Commons Attribution 4.0 License.
-Feel free to reuse and remix — just give us credit!
+All resources in this repository are available under the Creative Commons Attribution 4.0 License. Feel free to reuse and remix — just give us credit!
