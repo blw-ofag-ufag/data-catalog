@@ -1,0 +1,29 @@
+{
+  "details": {
+    "heading": {
+      "metadata": "Metadata"
+    },
+    "label": {
+      "contactPoint": "Contact Point",
+      "publisher": "Publisher",
+      "status": "Status",
+      "issued": "Issue Date",
+      "modified": "Modification Date",
+      "theme": "Theme",
+      "keywords": "Keywords",
+      "legalBasis": "Legal Basis",
+      "itSystem": "IT System"
+    }
+  },
+  "schema": {
+    "dataset": {
+      "status": {
+        "workInProgress": "Work in Progress",
+        "validated": "Validated",
+        "published": "Published",
+        "deleted": "Deleted",
+        "archived": "Archived"
+      }
+    }
+  }
+}
