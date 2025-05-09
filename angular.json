@@ -26,7 +26,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/DigiAgriFoodCH",
+            "outputPath": "dist/DigiAgriFoodDB",
             "index": "src/index.html",
             "polyfills": [
               "zone.js"
