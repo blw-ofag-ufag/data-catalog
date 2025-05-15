@@ -1,28 +1,168 @@
 {
   "details": {
     "heading": {
-      "metadata": "Metadata"
+      "affiliated": "Responsible persons",
+      "metadata": "Metadata",
+      "distributions": "Distributions",
+      "externalCatalogs": "Publication in external catalogs"
     },
     "label": {
-      "contactPoint": "Contact Point",
+      "image": "Image",
+      "identifier": "Identifier",
+      "title": "Title",
+      "description": "Description",
+      "accessRights": "Access rights",
       "publisher": "Publisher",
+      "contactPoint": "Contact Point",
+      "issued": "Issue date",
+      "availability": "Availability",
+      "keyword": "Keywords",
+      "accrualPeriodicity": "Accrual periodicity",
+      "modified": "Modification date",
+      "version": "Version",
+      "qualitifedAttribution": "Responsible persons",
       "status": "Status",
-      "issued": "Issue Date",
-      "modified": "Modification Date",
+      "classification": "Classification",
+      "personalData": "Personal data",
+      "typeOfData": "Type of data",
+      "archivalValue": "Archival value",
+      "externalCatalogs": "Publication in external catalogs"
       "theme": "Theme",
-      "keywords": "Keywords",
-      "legalBasis": "Legal Basis",
-      "itSystem": "IT System"
+      "landingPage": "Landing page",
+      "spatial": "Spatial coverage",
+      "temporal": "Temporal coverage",
+      "applicableLegislation": "Legal Basis",
+      "wasGeneratedBy": "Business Process",
+      "retentionPeriod": "Retention period",
+      "catalog": "Catalog",
+      "wasDerivedFrom": "Derived from",
+      "geoIdentifier": "Identifier GeoIV",
+      "page": "Related resources",
+      "comment": "Additional comments",
+      "abrogation": "Abrogation date",
+      "itSystem": "IT System",
+      "inSeries": "In dataset series",
+      "replaces": "Replaces",
+      "accessURL": "Access URL",
+      "format": "File format",
+      "downloadURL": "Download URL",
+      "conformsTo": "Conforms to",
+      "license": "License",
+      "accessService": "Access service"
     }
   },
   "schema": {
     "dataset": {
       "status": {
-        "workInProgress": "Work in Progress",
+        "workInProgress": "Work in progress",
         "validated": "Validated",
         "published": "Published",
         "deleted": "Deleted",
         "archived": "Archived"
+      },
+      "accessRights": {
+        "CONFIDENTIAL": "Confidential",
+        "NON_PUBLIC": "Non public",
+        "PUBLIC": "Public",
+        "RESTRICTED": "Restricted",
+        "SENSITIVE": "Sensitive"
+      },
+      "publisher": {
+        "BLW-OFAG-UFAG-FOAG": "FOAG",
+        "BLV-OSAV-USAV-FSVO": "FSVO"
+      },
+      "availability": {
+        "AVAILABLE": "Available",
+        "EXPERIMENTAL": "Experimental",
+        "STABLE": "Stable",
+        "TEMPORARY": "Temporary"
+      },
+      "accrualPeriodicity": {
+        "OTHER": "Other",
+        "HOURLY": "Hourly",
+        "UNKNOWN": "Unknown",
+        "QUARTERLY": "Quarterly",
+        "NEVER": "Never",
+        "MONTHLY": "Monthly",
+        "ANNUAL": "Annual",
+        "DAILY": "Daily",
+        "AS_NEEDED": "As needed",
+        "WEEKLY": "Weekly",
+        "IRREG": "Irregular",
+        "CONT": "Continuously (real time)"
+      },
+      "hadRole": {
+        "businessDataOwner": "Business Data Owner",
+        "dataSteward": "Data Steward",
+        "dataCustodian": "Data Custodian"
+      },
+      "classification": {
+        "none": "None",
+        "internal": "Internal",
+        "confidential": "Confidential",
+        "secret": "Secret"
+      },
+      "personalData": {
+        "none": "None",
+        "personalData": "Personal data",
+        "sensitivePersonalData": "Sensitive personal data"
+      },
+      "typeOfData": {
+        "primaryThematicData": "Primary thematic data",
+        "secondaryThematicData": "Secondary thematic data",
+        "referenceData": "Reference data",
+        "masterData": "Master data",
+        "unstucturedData": "Unstructured data"
+      },
+      "theme": {
+        "work": "Work",
+        "construction": "Construction",
+        "population": "Population",
+        "education": "Education",
+        "energy": "Energy",
+        "finances": "Finances",
+        "geography": "Geography",
+        "legislation": "Legislation",
+        "health": "Health",
+        "trade": "Trade",
+        "industry": "Industry",
+        "crime": "Crime",
+        "culture": "Culture",
+        "agriculture": "Agriculture",
+        "mobility": "Mobility",
+        "public-order": "Public order",
+        "politics": "Politics",
+        "prices": "Prices",
+        "territory": "Territory",
+        "social-security": "Social security",
+        "statistical-basis": "Statistical basis",
+        "tourism": "Tourism",
+        "administration": "Administration",
+        "national-economy": "National economy"
+      }
+    },
+    "distribution": {
+      "status": {
+        "workInProgress": "Work in progress",
+        "validated": "Validated",
+        "published": "Published",
+        "deleted": "Deleted",
+        "archived": "Archived"
+      },
+      "availability": {
+        "AVAILABLE": "Available",
+        "EXPERIMENTAL": "Experimental",
+        "STABLE": "Stable",
+        "TEMPORARY": "Temporary"
+      },
+      "license": {
+        "terms_open": "Open use",
+        "terms_by": "Open use. Must provide the source",
+        "terms_ask": "Open use. Use for commercial purposes requires permission of the data owner",
+        "terms_by_ask": "Open use. Must provide the source. Use for commercial purposes requires permission of the data owner",
+        "cc-zero": "CC0",
+        "cc-by/4.0": "CC BY 4.0",
+        "cc-by-sa/4.0": "CC BY-SA 4.0"
       }
     }
   }
