@@ -1,17 +1,20 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { JsonPipe } from "@angular/common";
-import { IndexCardsComponent } from "../index-cards/index-cards.component";
-import { IndexListComponent } from "../index-list/index-list.component";
-import { MatIcon } from "@angular/material/icon";
-import { MatAnchor, MatButton, MatIconButton } from "@angular/material/button";
-import { ObButtonDirective } from "@oblique/oblique";
-import { MatTooltip } from "@angular/material/tooltip";
-import { IndexFilterColComponent } from "../index-filter-col/index-filter-col.component";
-import { IndexOutletComponent } from "../index-outlet/index-outlet.component";
-import { MatFormField, MatInput, MatLabel, MatPrefix } from "@angular/material/input";
-import { MatOption } from "@angular/material/core";
-import { MatSelect } from "@angular/material/select";
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {JsonPipe} from '@angular/common';
+import {IndexCardsComponent} from '../index-cards/index-cards.component';
+import {IndexListComponent} from '../index-list/index-list.component';
+import {MatIcon} from '@angular/material/icon';
+import {MatAnchor, MatButton, MatIconButton} from '@angular/material/button';
+import {ObButtonDirective} from '@oblique/oblique';
+import {MatTooltip} from '@angular/material/tooltip';
+import {IndexFilterColComponent} from '../index-filter-col/index-filter-col.component';
+import {IndexOutletComponent} from '../index-outlet/index-outlet.component';
+import {MatFormField, MatInput, MatLabel, MatPrefix} from '@angular/material/input';
+import {MatOption} from '@angular/material/core';
+import {MatSelect} from '@angular/material/select';
+import {Observable} from 'rxjs';
+import {DatasetSchema} from '../models/schemas/dataset';
+import {DatasetService} from '../services/api/api.service';
 
 @Component({
 	selector: 'index-switch',
@@ -42,10 +45,12 @@ import { MatSelect } from "@angular/material/select";
 export class IndexSwitchComponent implements OnInit {
 	view: 'table' | 'tile' = 'tile';
 	showFilters = false;
+	@Input() datasets$: Observable<DatasetSchema[] | null> = new Observable();
 
 	constructor(
 		private readonly route: ActivatedRoute,
-		private readonly router: Router
+		private readonly router: Router,
+		private readonly datasetService: DatasetService
 	) {}
 
 	ngOnInit() {
@@ -60,5 +65,10 @@ export class IndexSwitchComponent implements OnInit {
 
 	toggleShowFilters() {
 		this.showFilters = !this.showFilters;
+	}
+
+	search(event: Event) {
+		// alert("shuffling");
+		this.datasetService.search((event?.target as HTMLInputElement)?.value);
 	}
 }

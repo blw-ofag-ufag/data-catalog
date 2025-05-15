@@ -1,7 +1,7 @@
 @if (view === "tile") {
-	<index-cards></index-cards>
+	<index-cards [datasets$]="dataset$"></index-cards>
 } @else {
-	<index-list></index-list>
+	<index-list [datasets$]="dataset$"></index-list>
 }
 
 <hr/>

@@ -26,6 +26,7 @@
     "@oblique/oblique": "^13.2.1",
     "@popperjs/core": "^2.0.0",
     "angular-oauth2-oidc": "^19.0.0",
+    "fuse.js": "^7.1.0",
     "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

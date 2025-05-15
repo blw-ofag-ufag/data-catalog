@@ -57,7 +57,8 @@
               "ajv",
               "ajv-formats"
             ],
-            "main": "src/main.ts"
+            "main": "src/main.ts",
+            "baseHref": "/data-catalog"
           },
           "configurations": {
             "development": {

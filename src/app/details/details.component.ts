@@ -9,12 +9,14 @@ import {map} from 'rxjs/operators';
 import {MatChip} from '@angular/material/chips';
 import { OrgPipe } from "../org.pipe";
 import { StatusPipe } from "../status.pipe";
+import { MetadataItemComponent } from "./metadata/metadata-item.component";
+import { filterAndNormalizeMetadata, NormalizedMetadataElement } from "./details.helpers";
 
 @Component({
 	selector: 'app-details',
 	standalone: true,
 	templateUrl: './details.component.html',
-	imports: [AsyncPipe, TranslatePipe, JsonPipe, MatChip, OrgPipe, StatusPipe, DatePipe],
+	imports: [AsyncPipe, TranslatePipe, JsonPipe, MatChip, OrgPipe, StatusPipe, DatePipe, MetadataItemComponent],
 	styleUrl: './details.component.scss'
 })
 export class DetailsComponent implements OnInit {
@@ -22,6 +24,7 @@ export class DetailsComponent implements OnInit {
 	dataset$: Observable<DatasetSchema | undefined> = new Observable();
 	// lang$: Observable<string> = new Observable();
 	currentLang$: Observable<string>;
+	metadata$: Observable<NormalizedMetadataElement[]> = new Observable();
 
 	constructor(
 		private readonly datasetService: DatasetService,
@@ -39,6 +42,15 @@ export class DetailsComponent implements OnInit {
 		this.route.queryParams.subscribe(params => {
 			this.dataset = params['dataset'];
 			this.dataset$ = this.datasetService.getDatasetById(this.dataset);
+
+			this.metadata$ = this.dataset$.pipe(
+				map(dataset => {
+					if (!dataset) {
+						return [];
+					}
+					return filterAndNormalizeMetadata(dataset);
+				})
+			);
 		});
 	}
 }

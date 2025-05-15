@@ -29,7 +29,7 @@
 		<div style="display: flex; gap: 8px;">
 			<mat-form-field appearance="outline" class="search-bar">
 				<mat-icon matPrefix svgIcon="search"/>
-				<input matInput placeholder="Search"/>
+				<input matInput placeholder="Search" (input)="search($event)"/>
 			</mat-form-field>
 
 			<mat-form-field>
@@ -62,11 +62,11 @@
 				<index-filter-col></index-filter-col>
 			</div>
 			<div class="ob-two-thirds">
-				<index-outlet [view]="view"></index-outlet>
+				<index-outlet [view]="view" [dataset$]="datasets$"></index-outlet>
 			</div>
 		} @else {
 			<div class="ob-full">
-				<index-outlet [view]="view"></index-outlet>
+				<index-outlet [view]="view" [dataset$]="datasets$"></index-outlet>
 			</div>
 		}
 	</div>

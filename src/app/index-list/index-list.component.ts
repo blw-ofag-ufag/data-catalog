@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from "@angular/core";
 import {MatTableModule} from '@angular/material/table';
+import { Observable } from "rxjs";
+import { DatasetSchema } from "../models/schemas/dataset";
 
 @Component({
   selector: 'index-list',
@@ -8,4 +10,5 @@ import {MatTableModule} from '@angular/material/table';
 	imports: [MatTableModule]
 })
 export class IndexListComponent {
+	@Input() datasets$!: Observable<DatasetSchema[] | null>;
 }
