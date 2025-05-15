@@ -4,41 +4,41 @@
       "affiliated": "Responsible persons",
       "metadata": "Metadata",
       "distributions": "Distributions",
-      "externalCatalogs": "Publication in external catalogs"
+      "bv:externalCatalogs": "Publication in external catalogs"
     },
     "label": {
       "image": "Image",
       "identifier": "Identifier",
       "title": "Title",
       "description": "Description",
-      "accessRights": "Access rights",
+      "dct:accessRights": "Access rights",
       "publisher": "Publisher",
-      "contactPoint": "Contact Point",
-      "issued": "Issue date",
+      "dcat:contactPoint": "Contact Point",
+      "dct:issued": "Issue date",
       "availability": "Availability",
-      "keyword": "Keywords",
-      "accrualPeriodicity": "Accrual periodicity",
-      "modified": "Modification date",
+      "dcat:keyword": "Keywords",
+      "dct:accrualPeriodicity": "Accrual periodicity",
+      "dct:modified": "Modification date",
       "version": "Version",
       "qualitifedAttribution": "Responsible persons",
-      "status": "Status",
-      "classification": "Classification",
-      "personalData": "Personal data",
-      "typeOfData": "Type of data",
-      "archivalValue": "Archival value",
-      "externalCatalogs": "Publication in external catalogs"
-      "theme": "Theme",
-      "landingPage": "Landing page",
+      "adms:status": "Status",
+      "bv:classification": "Classification",
+      "bv:personalData": "Personal data",
+      "bv:typeOfData": "Type of data",
+      "bv:archivalValue": "Archival value",
+      "bv:externalCatalogs": "Publication in external catalogs",
+      "dcat:theme": "Theme",
+      "dcat:landingPage": "Landing page",
       "spatial": "Spatial coverage",
-      "temporal": "Temporal coverage",
-      "applicableLegislation": "Legal Basis",
+      "dct:temporal": "Temporal coverage",
+      "dcatap:applicableLegislation": "Legal Basis",
       "wasGeneratedBy": "Business Process",
       "retentionPeriod": "Retention period",
       "catalog": "Catalog",
       "wasDerivedFrom": "Derived from",
       "geoIdentifier": "Identifier GeoIV",
-      "page": "Related resources",
-      "comment": "Additional comments",
+      "foaf:page": "Related resources",
+      "schema:comment": "Additional comments",
       "abrogation": "Abrogation date",
       "itSystem": "IT System",
       "inSeries": "In dataset series",
@@ -60,7 +60,7 @@
         "deleted": "Deleted",
         "archived": "Archived"
       },
-      "accessRights": {
+      "dct:accessRights": {
         "CONFIDENTIAL": "Confidential",
         "NON_PUBLIC": "Non public",
         "PUBLIC": "Public",
@@ -77,7 +77,7 @@
         "STABLE": "Stable",
         "TEMPORARY": "Temporary"
       },
-      "accrualPeriodicity": {
+      "dct:accrualPeriodicity": {
         "OTHER": "Other",
         "HOURLY": "Hourly",
         "UNKNOWN": "Unknown",
@@ -107,7 +107,7 @@
         "personalData": "Personal data",
         "sensitivePersonalData": "Sensitive personal data"
       },
-      "typeOfData": {
+      "bv:typeOfData": {
         "primaryThematicData": "Primary thematic data",
         "secondaryThematicData": "Secondary thematic data",
         "referenceData": "Reference data",
