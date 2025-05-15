@@ -3,7 +3,7 @@
 		<mat-card class="ob-span-4">
 			<mat-card-header>
 				<mat-card-title>
-					{{ dataset['dct:title']?.en }}
+					{{ dataset['dct:title']?.[ (currentLang$ | async)! ] }}
 					<!--					{{ dataset['dct:title'][ currentLang$ | async] }}-->
 				</mat-card-title>
 <!--				<mat-card-subtitle>-->

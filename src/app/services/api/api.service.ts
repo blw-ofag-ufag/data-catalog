@@ -4,6 +4,7 @@ import { BehaviorSubject, combineLatest, filter, Observable } from "rxjs";
 import {map} from 'rxjs/operators';
 import {DatasetSchema} from '../../models/schemas/dataset';
 import {ActivatedRoute} from '@angular/router';
+import { PageEvent } from "@angular/material/paginator";
 
 @Injectable({providedIn: 'root'})
 export class DatasetService {
@@ -12,10 +13,16 @@ export class DatasetService {
 	private readonly schemasSubject = new BehaviorSubject<DatasetSchema[] | null>(null);
 	private readonly filteredDatasetsSubject = new BehaviorSubject<DatasetSchema[]>([]);
 	private readonly searchTermSubject = new BehaviorSubject<string>('');
+	private readonly pageSubject = new BehaviorSubject<PageEvent>({ pageIndex: 0, pageSize: 5, length: 0 });
 	private loadingMain = false;
 	private datasetScheduledForLoad = null;
+	public filteredLength = 0;
 
 	schemas$ = this.filteredDatasetsSubject.asObservable();
+
+	get filteredLength$() {
+		return this.filteredDatasetsSubject.pipe(map(ds => ds.length));
+	}
 
 	constructor(
 		private readonly http: HttpClient,
@@ -26,12 +33,15 @@ export class DatasetService {
 			this.schemasSubject.pipe(
 				filter((schemas): schemas is DatasetSchema[] => schemas !== null)
 			),
-			this.searchTermSubject
-		]).subscribe(([schemas, searchTerm]) => {
+			this.searchTermSubject,
+			this.pageSubject
+		]).subscribe(([schemas, searchTerm, page]) => {
 			const filtered = schemas.filter(schema =>
 				JSON.stringify(schema).toLowerCase().includes(searchTerm.toLowerCase())
 			);
-			this.filteredDatasetsSubject.next(filtered);
+			this.filteredLength = filtered.length;
+			const paginated = filtered.slice(page.pageIndex * page.pageSize, (page.pageIndex + 1) * page.pageSize);
+			this.filteredDatasetsSubject.next(paginated);
 		});
 
 		this.loadDatasets();
@@ -95,5 +105,9 @@ export class DatasetService {
 		// const currentSchemas = this.schemasSubject.value;
 		// const filteredSchemas= (currentSchemas || []).filter(x => JSON.stringify(x).toLowerCase().includes(query.toLowerCase()));
 		// this.schemasSubject.next(filteredSchemas);
+	}
+
+	onPageChange(event: PageEvent) {
+		this.pageSubject.next(event);
 	}
 }

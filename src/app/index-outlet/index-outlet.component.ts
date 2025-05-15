@@ -1,9 +1,10 @@
 import { Component, Input } from "@angular/core";
 import { IndexCardsComponent } from "../index-cards/index-cards.component";
 import { IndexListComponent } from "../index-list/index-list.component";
-import { MatPaginator } from "@angular/material/paginator";
+import { MatPaginator, PageEvent } from "@angular/material/paginator";
 import { Observable } from "rxjs";
 import { DatasetSchema } from "../models/schemas/dataset";
+import { DatasetService } from "../services/api/api.service";
 
 @Component({
 	selector: 'index-outlet',
@@ -14,4 +15,10 @@ import { DatasetSchema } from "../models/schemas/dataset";
 export class IndexOutletComponent {
 	@Input() view: 'table' | 'tile' = 'tile';
 	@Input() dataset$!: Observable<DatasetSchema[] | null>;
+
+	constructor(protected readonly datasetService: DatasetService) {}
+
+	onPageChange(event: PageEvent) {
+		this.datasetService.onPageChange(event);
+	}
 }
