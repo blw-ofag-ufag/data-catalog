@@ -3,14 +3,14 @@ import {ActivatedRoute} from '@angular/router';
 import {DatasetSchema} from '../models/schemas/dataset';
 import {DatasetService} from '../services/api/api.service';
 import {BehaviorSubject, Observable, startWith} from 'rxjs';
-import { AsyncPipe, DatePipe, JsonPipe } from "@angular/common";
+import {AsyncPipe, DatePipe, JsonPipe} from '@angular/common';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {map} from 'rxjs/operators';
 import {MatChip} from '@angular/material/chips';
-import { OrgPipe } from "../org.pipe";
-import { StatusPipe } from "../status.pipe";
-import { MetadataItemComponent } from "./metadata/metadata-item.component";
-import { filterAndNormalizeMetadata, NormalizedMetadataElement } from "./details.helpers";
+import {OrgPipe} from '../org.pipe';
+import {StatusPipe} from '../status.pipe';
+import {MetadataItemComponent} from './metadata/metadata-item.component';
+import {NormalizedMetadataElement, filterAndNormalizeMetadata} from './details.helpers';
 import {
 	MatAccordion,
 	MatExpansionModule,
@@ -18,7 +18,8 @@ import {
 	MatExpansionPanelContent,
 	MatExpansionPanelDescription,
 	MatExpansionPanelHeader
-} from "@angular/material/expansion";
+} from '@angular/material/expansion';
+import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.component';
 
 @Component({
 	selector: 'app-details',
@@ -35,7 +36,8 @@ import {
 		MatExpansionModule,
 		MatAccordion,
 		TranslatePipe,
-		JsonPipe
+		JsonPipe,
+		AdmindirLookupComponent
 	],
 	styleUrl: './details.component.scss'
 })

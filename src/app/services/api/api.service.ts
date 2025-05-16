@@ -44,7 +44,7 @@ export class DatasetService {
 				return [...schemas].sort((a, b) => {
 					const titleA = (a['dct:title']?.en || '').toLowerCase();
 					const titleB = (b['dct:title']?.en || '').toLowerCase();
-					return titleA.localeCompare(titleB); // adjust based on `sort` if needed
+					return titleA && titleB ? titleA.localeCompare(titleB) : titleA ? -1 : 1;
 				});
 			})
 		);

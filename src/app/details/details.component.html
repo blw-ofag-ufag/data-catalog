@@ -18,12 +18,17 @@
 
 				<!-- persons -->
 				<h3>{{ "details.heading.affiliated" | translate }}</h3>
+				<hr>
 				<table class="ob-table ob-table-plain">
 					<tbody>
 						@for (person of dataset["prov:qualifiedAttribution"]; track $index) {
 							<tr>
 								<td>
-									<a href="mailto:{{ person['schema:email'] }}">{{ person["schema:name"] }}</a>
+									@if (person["prov:agent"]) {
+										<admindir-lookup [person]="person"></admindir-lookup>
+									} @else {
+										<a href="mailto:{{ person['schema:email'] }}">{{ person["schema:name"] }}</a>
+									}
 								</td>
 								<td>
 									<mat-chip>{{ person["dcat:hadRole"] }}</mat-chip>

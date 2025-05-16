@@ -1,0 +1,9 @@
+@if (person['prov:agent']) {
+	@if (adminDirError) {
+		<ob-alert type="warning">{{'msg.adminDirError' | translate }}: <b>{{ person['prov:agent'] }}</b></ob-alert>
+	} @else {
+		<ob-alert type="info">{{'msg.adminDirLookup' | translate }}: <b>{{ person['prov:agent'] }}</b></ob-alert>
+	}
+} @else {
+	<a href="mailto:{{ person['schema:email'] }}">{{ person["schema:name"] }}</a>
+}
