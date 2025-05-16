@@ -4,7 +4,7 @@
       "affiliated": "Responsible persons",
       "metadata": "Metadata",
       "distributions": "Distributions",
-      "bv:externalCatalogs": "Publication in external catalogs"
+      "publications": "Publication in external catalogs"
     },
     "label": {
       "image": "Image",
