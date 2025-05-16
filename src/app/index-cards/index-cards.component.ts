@@ -45,7 +45,7 @@ export class IndexCardsComponent {
 		);
 	}
 
-	async openDataset(dataset: string) {
-		await this.router.navigate(['details'], {queryParams: {dataset}, queryParamsHandling: 'replace'});
+	async openDataset(publisher: string, dataset: string) {
+		await this.router.navigate(['details'], {queryParams: {publisher, dataset}, queryParamsHandling: 'replace'});
 	}
 }

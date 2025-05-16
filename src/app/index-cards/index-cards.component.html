@@ -15,7 +15,7 @@
 <!--				<pre>{{ dataset | json }}</pre>-->
 			</mat-card-content>
 			<mat-card-actions>
-				<button mat-button obButton="primary" type="button" (click)="openDataset(dataset['dct:identifier'])">Open</button>
+				<button mat-button obButton="primary" type="button" (click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])">Open</button>
 			</mat-card-actions>
 		</mat-card>
 	}

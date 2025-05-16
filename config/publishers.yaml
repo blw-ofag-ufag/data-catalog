@@ -3,6 +3,11 @@
   githubRepo: blw-ofag-ufag/metadata
   branch: main
 
+- id: ROLAND-TEST
+  shortId: ROLAND
+  githubRepo: bar9/metadata-publisher-test
+  branch: main
+
 #- id: BLV-OSAV-USAV-FSVO
 #  shortId: BLV
 #  githubRepo: blv-osav-usav/metadata

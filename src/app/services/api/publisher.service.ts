@@ -9,12 +9,10 @@ export class PublisherService {
 	private readonly publishers: Publisher[];
 
 	constructor() {
-		this.publishers = publisherData as Publisher[];
+		this.publishers = (publisherData as any).default as Publisher[];
 		for (const publisher of this.publishers) {
-			publisher.getProcessedUrl = () =>
-				`https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.branch}/data/processed/datasets.json`;
-			publisher.getDetailUrl = (id) =>
-				`https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.branch}/data/raw/datasets/${id}.json}`;
+			publisher.getProcessedUrl = () => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.branch}/data/processed/datasets.json`;
+			publisher.getDetailUrl = id => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.branch}/data/raw/datasets/${id}.json`;
 		}
 	}
 

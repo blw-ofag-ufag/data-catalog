@@ -43,7 +43,7 @@ import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.compon
 })
 export class DetailsComponent implements OnInit {
 	dataset: string = '';
-	dataset$: Observable<DatasetSchema | undefined> = new Observable();
+	dataset$: Observable<DatasetSchema | null> = new Observable();
 	// lang$: Observable<string> = new Observable();
 	currentLang$: Observable<string>;
 	metadata$: Observable<NormalizedMetadataElement[]> = new Observable();
