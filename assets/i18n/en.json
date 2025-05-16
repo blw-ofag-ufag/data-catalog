@@ -1,4 +1,8 @@
 {
+  "msg": {
+    "adminDirError": "Could not look up on AdminDir",
+    "adminDirLookup": "Looking up on AdminDir..."
+  },
   "details": {
     "heading": {
       "affiliated": "Responsible persons",
