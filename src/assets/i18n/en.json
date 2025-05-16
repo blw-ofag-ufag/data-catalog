@@ -1,169 +1,164 @@
 {
-  "details": {
-    "heading": {
-      "affiliated": "Responsible persons",
-      "metadata": "Metadata",
-      "distributions": "Distributions",
-      "bv:externalCatalogs": "Publication in external catalogs"
-    },
-    "label": {
-      "image": "Image",
-      "identifier": "Identifier",
-      "title": "Title",
-      "description": "Description",
-      "dct:accessRights": "Access rights",
-      "publisher": "Publisher",
-      "dcat:contactPoint": "Contact Point",
-      "dct:issued": "Issue date",
-      "availability": "Availability",
-      "dcat:keyword": "Keywords",
-      "dct:accrualPeriodicity": "Accrual periodicity",
-      "dct:modified": "Modification date",
-      "version": "Version",
-      "qualitifedAttribution": "Responsible persons",
-      "adms:status": "Status",
-      "bv:classification": "Classification",
-      "bv:personalData": "Personal data",
-      "bv:typeOfData": "Type of data",
-      "bv:archivalValue": "Archival value",
-      "bv:externalCatalogs": "Publication in external catalogs",
-      "dcat:theme": "Theme",
-      "dcat:landingPage": "Landing page",
-      "spatial": "Spatial coverage",
-      "dct:temporal": "Temporal coverage",
-      "dcatap:applicableLegislation": "Legal Basis",
-      "wasGeneratedBy": "Business Process",
-      "retentionPeriod": "Retention period",
-      "catalog": "Catalog",
-      "wasDerivedFrom": "Derived from",
-      "geoIdentifier": "Identifier GeoIV",
-      "foaf:page": "Related resources",
-      "schema:comment": "Additional comments",
-      "abrogation": "Abrogation date",
-      "itSystem": "IT System",
-      "inSeries": "In dataset series",
-      "replaces": "Replaces",
-      "accessURL": "Access URL",
-      "format": "File format",
-      "downloadURL": "Download URL",
-      "conformsTo": "Conforms to",
-      "license": "License",
-      "accessService": "Access service"
-    }
-  },
-  "schema": {
-    "dataset": {
-      "status": {
-        "workInProgress": "Work in progress",
-        "validated": "Validated",
-        "published": "Published",
-        "deleted": "Deleted",
-        "archived": "Archived"
-      },
-      "dct:accessRights": {
-        "CONFIDENTIAL": "Confidential",
-        "NON_PUBLIC": "Non public",
-        "PUBLIC": "Public",
-        "RESTRICTED": "Restricted",
-        "SENSITIVE": "Sensitive"
-      },
-      "publisher": {
-        "BLW-OFAG-UFAG-FOAG": "FOAG",
-        "BLV-OSAV-USAV-FSVO": "FSVO"
-      },
-      "availability": {
-        "AVAILABLE": "Available",
-        "EXPERIMENTAL": "Experimental",
-        "STABLE": "Stable",
-        "TEMPORARY": "Temporary"
-      },
-      "dct:accrualPeriodicity": {
-        "OTHER": "Other",
-        "HOURLY": "Hourly",
-        "UNKNOWN": "Unknown",
-        "QUARTERLY": "Quarterly",
-        "NEVER": "Never",
-        "MONTHLY": "Monthly",
-        "ANNUAL": "Annual",
-        "DAILY": "Daily",
-        "AS_NEEDED": "As needed",
-        "WEEKLY": "Weekly",
-        "IRREG": "Irregular",
-        "CONT": "Continuously (real time)"
-      },
-      "hadRole": {
-        "businessDataOwner": "Business Data Owner",
-        "dataSteward": "Data Steward",
-        "dataCustodian": "Data Custodian"
-      },
-      "classification": {
-        "none": "None",
-        "internal": "Internal",
-        "confidential": "Confidential",
-        "secret": "Secret"
-      },
-      "personalData": {
-        "none": "None",
-        "personalData": "Personal data",
-        "sensitivePersonalData": "Sensitive personal data"
-      },
-      "bv:typeOfData": {
-        "primaryThematicData": "Primary thematic data",
-        "secondaryThematicData": "Secondary thematic data",
-        "referenceData": "Reference data",
-        "masterData": "Master data",
-        "unstucturedData": "Unstructured data"
-      },
-      "theme": {
-        "work": "Work",
-        "construction": "Construction",
-        "population": "Population",
-        "education": "Education",
-        "energy": "Energy",
-        "finances": "Finances",
-        "geography": "Geography",
-        "legislation": "Legislation",
-        "health": "Health",
-        "trade": "Trade",
-        "industry": "Industry",
-        "crime": "Crime",
-        "culture": "Culture",
-        "agriculture": "Agriculture",
-        "mobility": "Mobility",
-        "public-order": "Public order",
-        "politics": "Politics",
-        "prices": "Prices",
-        "territory": "Territory",
-        "social-security": "Social security",
-        "statistical-basis": "Statistical basis",
-        "tourism": "Tourism",
-        "administration": "Administration",
-        "national-economy": "National economy"
-      }
-    },
-    "distribution": {
-      "status": {
-        "workInProgress": "Work in progress",
-        "validated": "Validated",
-        "published": "Published",
-        "deleted": "Deleted",
-        "archived": "Archived"
-      },
-      "availability": {
-        "AVAILABLE": "Available",
-        "EXPERIMENTAL": "Experimental",
-        "STABLE": "Stable",
-        "TEMPORARY": "Temporary"
-      },
-      "license": {
-        "terms_open": "Open use",
-        "terms_by": "Open use. Must provide the source",
-        "terms_ask": "Open use. Use for commercial purposes requires permission of the data owner",
-        "terms_by_ask": "Open use. Must provide the source. Use for commercial purposes requires permission of the data owner",
-        "cc-zero": "CC0",
-        "cc-by/4.0": "CC BY 4.0",
-        "cc-by-sa/4.0": "CC BY-SA 4.0"
-      }
-    }
-  }
+	"pages": {
+		"details": {
+			"heading": {
+				"affiliated": "Responsible persons",
+				"metadata": "Metadata",
+				"dcat:distribution": "Distributions",
+				"bv:externalCatalogs": "Publication in external catalogs"
+			}
+		}
+	},
+	"label": {
+		"schema:image": "Image",
+		"dct:identifier": "Identifier",
+		"dct:title": "Title",
+		"dct:description": "Description",
+		"dct:accessRights": "Access rights",
+		"dct:publisher": "Publisher",
+		"dcat:contactPoint": "Contact Point",
+		"dct:issued": "Issue date",
+		"dcatap:availability": "Availability",
+		"dcat:keyword": "Keywords",
+		"dct:accrualPeriodicity": "Accrual periodicity",
+		"dct:modified": "Modification date",
+		"dcat:version": "Version",
+		"prov:qualitifedAttribution": "Responsible persons",
+		"adms:status": "Status",
+		"bv:classification": "Classification",
+		"bv:personalData": "Personal data",
+		"bv:typeOfData": "Type of data",
+		"bv:archivalValue": "Archival value",
+		"bv:externalCatalogs": "Publication in external catalogs",
+		"dcat:theme": "Theme",
+		"dcat:landingPage": "Landing page",
+		"dct:spatial": "Spatial coverage",
+		"dct:temporal": "Temporal coverage",
+		"dcatap:applicableLegislation": "Legal Basis",
+		"prov:wasGeneratedBy": "Business Process",
+		"bv:retentionPeriod": "Retention period",
+		"dcat:catalog": "Catalog",
+		"prov:wasDerivedFrom": "Derived from",
+		"bv:geoIdentifier": "Identifier GeoIV",
+		"foaf:page": "Related resources",
+		"schema:comment": "Additional comments",
+		"bv:abrogation": "Abrogation date",
+		"bv:itSystem": "IT System",
+		"dcat:inSeries": "In dataset series",
+		"dct:replaces": "Replaces",
+		"dcat:accessURL": "Access URL",
+		"dct:format": "File format",
+		"dcat:downloadURL": "Download URL",
+		"dct:conformsTo": "Conforms to",
+		"dct:license": "License",
+		"dcat:accessService": "Access service",
+		"prov:agent": "AdminDir personal ID",
+		"schema:name": "Name",
+		"schema:email": "email",
+		"dcat:hadRole": "Role",
+		"dcat:endopointURL": "Endpoint URL",
+		"dcat:servesDataset": "Serves dataset",
+		"dcat:endpointDescription": "Endpoint description",
+		"adms:versionNotes": "Version notes",
+		"dct:creator": "Curator",
+		"dcat:dataset": "Dataset"
+	},
+	"choices": {
+		"adms:status": {
+			"workInProgress": "Work in progress",
+			"validated": "Validated",
+			"published": "Published",
+			"deleted": "Deleted",
+			"archived": "Archived"
+		},
+		"dct:accessRights": {
+			"CONFIDENTIAL": "Confidential",
+			"NON_PUBLIC": "Non public",
+			"PUBLIC": "Public",
+			"RESTRICTED": "Restricted",
+			"SENSITIVE": "Sensitive"
+		},
+		"dct:publisher": {
+			"BLW-OFAG-UFAG-FOAG": "FOAG",
+			"BLV-OSAV-USAV-FSVO": "FSVO"
+		},
+		"dcatap:availability": {
+			"AVAILABLE": "Available",
+			"EXPERIMENTAL": "Experimental",
+			"STABLE": "Stable",
+			"TEMPORARY": "Temporary"
+		},
+		"dct:accrualPeriodicity": {
+			"OTHER": "Other",
+			"HOURLY": "Hourly",
+			"UNKNOWN": "Unknown",
+			"QUARTERLY": "Quarterly",
+			"NEVER": "Never",
+			"MONTHLY": "Monthly",
+			"ANNUAL": "Annual",
+			"DAILY": "Daily",
+			"AS_NEEDED": "As needed",
+			"WEEKLY": "Weekly",
+			"IRREG": "Irregular",
+			"CONT": "Continuously (real time)"
+		},
+		"dcat:hadRole": {
+			"businessDataOwner": "Business Data Owner",
+			"dataSteward": "Data Steward",
+			"dataCustodian": "Data Custodian"
+		},
+		"bv:classification": {
+			"none": "None",
+			"internal": "Internal",
+			"confidential": "Confidential",
+			"secret": "Secret"
+		},
+		"bv:personalData": {
+			"none": "None",
+			"personalData": "Personal data",
+			"sensitivePersonalData": "Sensitive personal data"
+		},
+		"bv:typeOfData": {
+			"primaryThematicData": "Primary thematic data",
+			"secondaryThematicData": "Secondary thematic data",
+			"referenceData": "Reference data",
+			"masterData": "Master data",
+			"unstucturedData": "Unstructured data"
+		},
+		"dcat:theme": {
+			"work": "Work",
+			"construction": "Construction",
+			"population": "Population",
+			"education": "Education",
+			"energy": "Energy",
+			"finances": "Finances",
+			"geography": "Geography",
+			"legislation": "Legislation",
+			"health": "Health",
+			"trade": "Trade",
+			"industry": "Industry",
+			"crime": "Crime",
+			"culture": "Culture",
+			"agriculture": "Agriculture",
+			"mobility": "Mobility",
+			"public-order": "Public order",
+			"politics": "Politics",
+			"prices": "Prices",
+			"territory": "Territory",
+			"social-security": "Social security",
+			"statistical-basis": "Statistical basis",
+			"tourism": "Tourism",
+			"administration": "Administration",
+			"national-economy": "National economy"
+		},
+		"dct:license": {
+			"terms_open": "Open use",
+			"terms_by": "Open use. Must provide the source",
+			"terms_ask": "Open use. Use for commercial purposes requires permission of the data owner",
+			"terms_by_ask": "Open use. Must provide the source. Use for commercial purposes requires permission of the data owner",
+			"cc-zero": "CC0",
+			"cc-by/4.0": "CC BY 4.0",
+			"cc-by-sa/4.0": "CC BY-SA 4.0"
+		}
+	}
 }
