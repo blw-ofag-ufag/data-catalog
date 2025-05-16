@@ -48,7 +48,6 @@ export class DatasetService {
 			} else {
 				filtered = fuse.search(searchTerm).map(result => result.item);
 			}
-			// const filtered = sortedSchemas.filter(schema => JSON.stringify(schema).toLowerCase().includes(searchTerm.toLowerCase()));
 			this.filteredLength$.next(filtered.length);
 
 			const paginated = filtered.slice(page.pageIndex * page.pageSize, (page.pageIndex + 1) * page.pageSize);
@@ -69,7 +68,6 @@ export class DatasetService {
 	}
 
 	loadDatasetById(publisher: string, id: string): void {
-		// publisher = 'BLW-OFAG-UFAG-FOAG';
 		this.multiDatasetService.loadDetail(publisher, 'dataset', id);
 	}
 
@@ -79,6 +77,10 @@ export class DatasetService {
 
 	onPageChange(event: PageEvent) {
 		this.pageSubject.next(event);
+	}
+
+	onPaginatorInitialized(pageSize: number) {
+		this.pageSubject.next({...this.pageSubject.value, pageSize});
 	}
 
 	setSort(order: 'title' | 'old' | 'new' | 'owner') {

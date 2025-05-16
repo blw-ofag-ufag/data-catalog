@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
 import { IndexCardsComponent } from "../index-cards/index-cards.component";
 import { IndexListComponent } from "../index-list/index-list.component";
 import { MatPaginator, PageEvent } from "@angular/material/paginator";
@@ -13,7 +13,7 @@ import { AsyncPipe } from "@angular/common";
 	templateUrl: './index-outlet.component.html',
 	styleUrl: './index-outlet.component.scss'
 })
-export class IndexOutletComponent {
+export class IndexOutletComponent implements OnChanges{
 	@Input() view: 'table' | 'tile' = 'tile';
 	@Input() dataset$!: Observable<DatasetSchema[] | null>;
 
@@ -21,5 +21,15 @@ export class IndexOutletComponent {
 
 	onPageChange(event: PageEvent) {
 		this.datasetService.onPageChange(event);
+	}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		if (changes['view']) {
+			if (this.view === 'table') {
+				this.datasetService.onPaginatorInitialized(10);
+			} else {
+				this.datasetService.onPaginatorInitialized(6);
+			}
+		}
 	}
 }
