@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { BehaviorSubject, combineLatest, filter, Observable } from "rxjs";
+import {BehaviorSubject, combineLatest, filter, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {DatasetSchema} from '../../models/schemas/dataset';
 import {ActivatedRoute} from '@angular/router';
-import { PageEvent } from "@angular/material/paginator";
+import {PageEvent} from '@angular/material/paginator';
 
 @Injectable({providedIn: 'root'})
 export class DatasetService {
@@ -13,33 +13,32 @@ export class DatasetService {
 	private readonly schemasSubject = new BehaviorSubject<DatasetSchema[] | null>(null);
 	private readonly filteredDatasetsSubject = new BehaviorSubject<DatasetSchema[]>([]);
 	private readonly searchTermSubject = new BehaviorSubject<string>('');
-	private readonly pageSubject = new BehaviorSubject<PageEvent>({ pageIndex: 0, pageSize: 5, length: 0 });
+	private readonly pageSubject = new BehaviorSubject<PageEvent>({pageIndex: 0, pageSize: 5, length: 0});
 	private loadingMain = false;
 	private datasetScheduledForLoad = null;
-	public filteredLength = 0;
+	public filteredLength$ = new BehaviorSubject<number>(0);
+	private sort$ = new BehaviorSubject<'title' | 'old' | 'new' | 'owner'>('title');
 
 	schemas$ = this.filteredDatasetsSubject.asObservable();
-
-	get filteredLength$() {
-		return this.filteredDatasetsSubject.pipe(map(ds => ds.length));
-	}
 
 	constructor(
 		private readonly http: HttpClient,
 		private readonly activatedRoute: ActivatedRoute
 	) {
+		const sortedSchemas$ = combineLatest([this.schemasSubject.pipe(filter((schemas): schemas is DatasetSchema[] => schemas !== null)), this.sort$]).pipe(
+			map(([schemas, sort]) => {
+				return [...schemas].sort((a, b) => {
+					const titleA = (a['dct:title']?.en || '').toLowerCase();
+					const titleB = (b['dct:title']?.en || '').toLowerCase();
+					return titleA.localeCompare(titleB); // adjust based on `sort` if needed
+				});
+			})
+		);
 
-		combineLatest([
-			this.schemasSubject.pipe(
-				filter((schemas): schemas is DatasetSchema[] => schemas !== null)
-			),
-			this.searchTermSubject,
-			this.pageSubject
-		]).subscribe(([schemas, searchTerm, page]) => {
-			const filtered = schemas.filter(schema =>
-				JSON.stringify(schema).toLowerCase().includes(searchTerm.toLowerCase())
-			);
-			this.filteredLength = filtered.length;
+		combineLatest([sortedSchemas$, this.searchTermSubject, this.pageSubject]).subscribe(([sortedSchemas, searchTerm, page]) => {
+			const filtered = sortedSchemas.filter(schema => JSON.stringify(schema).toLowerCase().includes(searchTerm.toLowerCase()));
+			this.filteredLength$.next(filtered.length);
+
 			const paginated = filtered.slice(page.pageIndex * page.pageSize, (page.pageIndex + 1) * page.pageSize);
 			this.filteredDatasetsSubject.next(paginated);
 		});
@@ -109,5 +108,9 @@ export class DatasetService {
 
 	onPageChange(event: PageEvent) {
 		this.pageSubject.next(event);
+	}
+
+	setSort(order: 'title' | 'old' | 'new' | 'owner') {
+		this.sort$.next(order);
 	}
 }

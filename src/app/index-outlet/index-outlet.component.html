@@ -11,7 +11,7 @@
 		<mat-paginator
 			(page)="onPageChange($event)"
 			aria-label="Select page"
-			[length]="datasetService.filteredLength"
+			[length]="(datasetService.filteredLength$ | async)"
 			[pageSizeOptions]="[6, 9, 18, 36]"
 		/>
 	</div>
@@ -20,7 +20,7 @@
 		<mat-paginator
 			(page)="onPageChange($event)"
 			aria-label="Select page"
-			[length]="datasetService.filteredLength"
+			[length]="(datasetService.filteredLength$ | async)"
 			[pageSizeOptions]="[10, 25, 100]"
 		/>
 	</div>
