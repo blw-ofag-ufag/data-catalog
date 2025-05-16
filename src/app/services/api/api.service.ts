@@ -5,6 +5,20 @@ import {map} from 'rxjs/operators';
 import {DatasetSchema} from '../../models/schemas/dataset';
 import {ActivatedRoute} from '@angular/router';
 import {PageEvent} from '@angular/material/paginator';
+import Fuse from "fuse.js";
+
+const fuseOptions = {
+	keys: [
+		"dct:title.de",
+		"dct:title.en",
+		"dct:title.fr",
+		"dct:title.it",
+		"dct:description.de",
+		"dct:description.en",
+		"dct:description.fr",
+		"dct:description.it"
+	]
+};
 
 @Injectable({providedIn: 'root'})
 export class DatasetService {
@@ -36,7 +50,15 @@ export class DatasetService {
 		);
 
 		combineLatest([sortedSchemas$, this.searchTermSubject, this.pageSubject]).subscribe(([sortedSchemas, searchTerm, page]) => {
-			const filtered = sortedSchemas.filter(schema => JSON.stringify(schema).toLowerCase().includes(searchTerm.toLowerCase()));
+
+			const fuse = new Fuse(sortedSchemas, fuseOptions);
+			let filtered = [];
+			if (!searchTerm) {
+				filtered = sortedSchemas;
+			} else {
+				filtered = fuse.search(searchTerm).map(result => result.item);
+			}
+			// const filtered = sortedSchemas.filter(schema => JSON.stringify(schema).toLowerCase().includes(searchTerm.toLowerCase()));
 			this.filteredLength$.next(filtered.length);
 
 			const paginated = filtered.slice(page.pageIndex * page.pageSize, (page.pageIndex + 1) * page.pageSize);

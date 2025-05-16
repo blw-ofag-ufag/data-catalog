@@ -11,12 +11,32 @@ import { OrgPipe } from "../org.pipe";
 import { StatusPipe } from "../status.pipe";
 import { MetadataItemComponent } from "./metadata/metadata-item.component";
 import { filterAndNormalizeMetadata, NormalizedMetadataElement } from "./details.helpers";
+import {
+	MatAccordion,
+	MatExpansionModule,
+	MatExpansionPanel,
+	MatExpansionPanelContent,
+	MatExpansionPanelDescription,
+	MatExpansionPanelHeader
+} from "@angular/material/expansion";
 
 @Component({
 	selector: 'app-details',
 	standalone: true,
 	templateUrl: './details.component.html',
-	imports: [AsyncPipe, TranslatePipe, JsonPipe, MatChip, OrgPipe, StatusPipe, DatePipe, MetadataItemComponent],
+	imports: [
+		AsyncPipe,
+		MatChip,
+		OrgPipe,
+		MetadataItemComponent,
+		MatExpansionPanel,
+		MatExpansionPanelHeader,
+		MatExpansionPanelDescription,
+		MatExpansionModule,
+		MatAccordion,
+		TranslatePipe,
+		JsonPipe
+	],
 	styleUrl: './details.component.scss'
 })
 export class DetailsComponent implements OnInit {

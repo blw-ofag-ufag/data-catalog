@@ -27,6 +27,14 @@ export function isKeyMetadata(key: string): boolean {
 		key.startsWith('prov:qualifiedAttribution') ||
 		key.startsWith('dcat:distribution') ||
 		key.startsWith('schemaViolations') ||
-		key.startsWith('schemaViolationMessages')
+		key.startsWith('schemaViolationMessages') ||
+		key.startsWith('bv:externalCatalogs')
+	);
+}
+
+export function isKeyInDistributionPropertyList(key: string): boolean {
+	return !(
+		key.startsWith('dct:title') ||
+		key.startsWith('dct:description')
 	);
 }

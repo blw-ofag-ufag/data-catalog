@@ -10,22 +10,30 @@
 				</div>
 			</div>
 			<div class="ob-half">
-				<img src="{{ dataset['schema:image'] }}" />
+				<img src="{{ dataset['schema:image'] || 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg' }}" width="100%" />
 			</div>
 		</div>
 		<div class="ob-grid">
 			<div class="ob-span-12">
-				<!--				<h3>Affiliated Persons</h3>-->
-				<!--				@for (person of dataset["prov:qualifiedAttribution"]; track $index) {-->
-				<!--					<label for="person-{{ $index }}">&ndash;&gt;-->
-				<!--						<a href="mailto:{{ person['schema:email'] }}">{{ person["schema:name"] }}</a>-->
-				<!--					</label>-->
-				<!--					<div id="person-{{ $index }}">-->
-				<!--						<mat-chip>{{ person["dcat:hadRole"] }}</mat-chip>-->
-				<!--					</div>-->
-				<!--				}-->
 
-				<!--				<br>-->
+				<!-- persons -->
+				<h3>{{ "details.heading.affiliated" | translate }}</h3>
+				<table class="ob-table ob-table-plain">
+					<tbody>
+						@for (person of dataset["prov:qualifiedAttribution"]; track $index) {
+							<tr>
+								<td>
+									<a href="mailto:{{ person['schema:email'] }}">{{ person["schema:name"] }}</a>
+								</td>
+								<td>
+									<mat-chip>{{ person["dcat:hadRole"] }}</mat-chip>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+
+				<!-- metadata -->
 				<h3>{{ "details.heading.metadata" | translate }}</h3>
 				<hr>
 				<!--				<div class="meta-container">-->
@@ -41,58 +49,45 @@
 								</td>
 							</tr>
 						}
-						<tr>
-							<td>
-								{{ "details.label.internal:rawData" | translate }}
-							</td>
-							<td>
-								<metadata-item [label]="'internal:rawData'" [data]="dataset"></metadata-item>
-							</td>
-						</tr>
 					</tbody>
 				</table>
-				<!--				</div>-->
-				<!--				<label for="contact-point">-->
-				<!--					{{ "details.label.contactPoint" | translate }}-->
-				<!--				</label>-->
-				<!--				<div id="contact-point">-->
-				<!--					{{ dataset["dcat:contactPoint"]["schema:name"] }} <a-->
-				<!--					href="mailto: {{ dataset['dcat:contactPoint']['schema:email'] }}">{{ dataset['dcat:contactPoint']['schema:email'] }}</a>-->
-				<!--				</div>-->
-				<!--				<hr>-->
-				<!--				<label for="status">-->
-				<!--					{{ "details.label.status" | translate }}-->
-				<!--				</label>-->
-				<!--				<div id="status">-->
-				<!--					<mat-chip mat-chip>{{ dataset["adms:status"] | status }}</mat-chip>-->
-				<!--				</div>-->
-				<!--				<hr>-->
-				<!--				<label for="publisher">-->
-				<!--					{{ "details.label.publisher" | translate }}-->
-				<!--				</label>-->
-				<!--				<div id="publisher">-->
-				<!--					<mat-chip>{{ dataset["dct:publisher"] | org }}</mat-chip>-->
-				<!--				</div>-->
-				<!--				<hr>-->
-				<!--				<label for="issued">-->
-				<!--					{{ "details.label.issued" | translate }}-->
-				<!--				</label>-->
-				<!--				<div id="issued">-->
-				<!--					{{ dataset["dct:issued"] |date:'d. MMMM yyyy' }}-->
-				<!--				</div>-->
-				<!--				<hr>-->
-				<!--&lt;!&ndash;				<label for="modified">&ndash;&gt;-->
-				<!--&lt;!&ndash;					{{ "details.label.modified" | translate }}&ndash;&gt;-->
-				<!--&lt;!&ndash;				</label>&ndash;&gt;-->
-				<!--&lt;!&ndash;				<div id="modified">&ndash;&gt;-->
-				<!--&lt;!&ndash;					{{ dataset["dct:modified"] |date:'d. MMMM yyyy' }}&ndash;&gt;-->
-				<!--&lt;!&ndash;				</div>&ndash;&gt;-->
-				<!--				<hr>-->
-				<!--				<metadata-item [label]="'adms:status'" [data]="dataset['adms:status']"></metadata-item>-->
+
+				<!-- distribution -->
+				<h3>{{ "details.heading.distributions" | translate }}</h3>
+				<hr>
+				<mat-accordion>
+					@for (dist of dataset["dcat:distribution"]; track $index) {
+						<mat-expansion-panel>
+							<mat-expansion-panel-header>
+								<mat-panel-title>
+									{{ dist["dct:title"]?.[ (currentLang$ | async) || 'en'] }}
+								</mat-panel-title>
+								<mat-panel-description>
+									{{ dist["dct:description"]?.[ (currentLang$ | async) || 'en'] }}
+								</mat-panel-description>
+							</mat-expansion-panel-header>
+							<pre>{{ dist | json }}</pre>
+
+						</mat-expansion-panel>
+					}
+				</mat-accordion>
+
+				<h3>{{ "details.heading.publications" | translate }}</h3>
+				<hr>
+				<table class="ob-table ob-table-plain">
+					<tbody>
+						@for (pub of dataset["bv:externalCatalogs"]; track $index) {
+							<tr>
+								<td>{{ pub["dcat:catalog"] }}</td>
+								<td>{{ pub["dct:identifier"] }}</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+
+
 			</div>
 		</div>
-
-
 	}
 }
 

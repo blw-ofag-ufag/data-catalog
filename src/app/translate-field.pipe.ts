@@ -17,6 +17,6 @@ export class TranslateFieldPipe implements PipeTransform {
 		}
 		const lang = this.translate.currentLang;
 		// @ts-ignore
-		return data[lang];
+		return data?.[lang];
 	}
 }

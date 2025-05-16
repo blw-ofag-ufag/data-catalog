@@ -75,6 +75,26 @@ ng build
 ```
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+# Docker
+The Dockerfile in the project root builds the angular application and copies the (html, css, js)-files
+to the default document root of an nginx web server.
+The image doesn't contain any node.js runtime anymore.
+
+
+## 🚀 Build the Docker Image
+```bash
+docker build -t yourusername/data-catalog:latest .
+```
+
+## run the container
+```docker run -p yourusername/data-catalog:latest```
+or for the pre-built image:
+```docker run -p iwfbr/data-catalog:latest```
+
+## Pre-built Docker Image
+https://hub.docker.com/repository/docker/iwfbr/data-catalog
+
 # 🤝 Contributing
 
 We believe a vibrant open-source community drives creativity.
