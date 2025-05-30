@@ -21,6 +21,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {CommonModule} from '@angular/common';
 import {MatListModule} from '@angular/material/list';
 import { MatSelectModule } from "@angular/material/select";
+import { ActiveFilters, DatasetService } from "../services/api/api.service";
 
 @Component({
 	selector: 'index-filter-col',
@@ -51,6 +52,7 @@ export class IndexFilterColComponent {
 		'dcat:theme': DatasetThemes,
 		class: ['', 'dataset', 'service', 'distribution']
 	};
+	private _selectedFilters: ActiveFilters = {};
 	// @Input() set availableFilters(filters: string[]) {
 	// 	this._availableFilters = filters;
 	// }
@@ -61,8 +63,11 @@ export class IndexFilterColComponent {
 	// allKeywords$: Observable<string[]>;
 	keywords: string[] = [];
 	allKeywords: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+	private activeFilters: ActiveFilters = {};
 
-	constructor() {
+	constructor(
+		private readonly filterService: DatasetService
+	) {
 		this.filteredKeywords$ = this.keywordControl.valueChanges.pipe(
 			startWith(null),
 			map((keyword: string | null) => (keyword ? this.filterKeywords(keyword) : this.allKeywords.slice()))
@@ -108,5 +113,20 @@ export class IndexFilterColComponent {
 		const filterValue = value.toLowerCase();
 
 		return this.allKeywords.filter(keyword => keyword.toLowerCase().includes(filterValue));
+	}
+
+	onCategoryChange(category: string, selectedOptions: string[]): void {
+		this.activeFilters[category] = {};
+
+		for (const option of selectedOptions) {
+			this.activeFilters[category][option] = true;
+		}
+
+		this.filterService.setFilters(this.activeFilters);
+	}
+
+	getSelectedOptions(category: string): string[] {
+		const selected = this.activeFilters[category];
+		return selected ? Object.keys(selected).filter(key => selected[key]) : [];
 	}
 }

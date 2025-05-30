@@ -35,11 +35,11 @@
 			<mat-form-field>
 				<mat-label>Default Select</mat-label>
 				<mat-select>
-					<mat-option [value]="0">Nach Relevanz sortieren</mat-option>
-					<mat-option [value]="1">Nach Titel sortieren</mat-option>
-					<mat-option [value]="2">Älteste zuerst</mat-option>
-					<mat-option [value]="3">Neueste zuerst</mat-option>
-					<mat-option [value]="4">Nach Dateninhaber</mat-option>
+					<mat-option [value]="0" (click)="setSorting('relevance')">Nach Relevanz sortieren</mat-option>
+					<mat-option [value]="1" (click)="setSorting('title')">Nach Titel sortieren</mat-option>
+					<mat-option [value]="2" (click)="setSorting('old')">Älteste zuerst</mat-option>
+					<mat-option [value]="3" (click)="setSorting('new')">Neueste zuerst</mat-option>
+					<mat-option [value]="4" (click)="setSorting('owner')">Nach Dateninhaber</mat-option>
 				</mat-select>
 			</mat-form-field>
 

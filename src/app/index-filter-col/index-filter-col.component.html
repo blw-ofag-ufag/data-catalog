@@ -29,7 +29,11 @@
 	@for (filterkey of availableFilters; track filterkey) {
 		<mat-form-field>
 			<mat-label>{{ filterkey }}</mat-label>
-			<mat-select multiple>
+			<mat-select
+				multiple
+				[value]="getSelectedOptions(filterkey)"
+				(selectionChange)="onCategoryChange(filterkey, $event.value)"
+			>
 				@for (choice of filterChoices(filterkey); track choice) {
 					<mat-option [value]="choice">{{ choice }}</mat-option>
 				}

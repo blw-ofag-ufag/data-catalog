@@ -71,4 +71,8 @@ export class IndexSwitchComponent implements OnInit {
 		// alert("shuffling");
 		this.datasetService.search((event?.target as HTMLInputElement)?.value);
 	}
+
+	setSorting(criterion: 'title' | 'old' | 'new' | 'owner' | 'relevance') {
+		this.datasetService.setSort(criterion);
+	}
 }

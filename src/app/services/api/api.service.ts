@@ -12,15 +12,19 @@ const fuseOptions = {
 	keys: ['dct:title.de', 'dct:title.en', 'dct:title.fr', 'dct:title.it', 'dct:description.de', 'dct:description.en', 'dct:description.fr', 'dct:description.it']
 };
 
+export type ActiveFilters = {[key: string]: {[key: string]: boolean}};
+const allFiltersOff = {};
+
 @Injectable({providedIn: 'root'})
 export class DatasetService {
 	private readonly filteredDatasetsSubject = new BehaviorSubject<DatasetSchema[]>([]);
 	private readonly searchTermSubject = new BehaviorSubject<string>('');
 	private readonly pageSubject = new BehaviorSubject<PageEvent>({pageIndex: 0, pageSize: 5, length: 0});
 	public filteredLength$ = new BehaviorSubject<number>(0);
-	private sort$ = new BehaviorSubject<'title' | 'old' | 'new' | 'owner'>('title');
+	private sort$ = new BehaviorSubject<'title' | 'old' | 'new' | 'owner' | 'relevance'>('title');
 
 	schemas$ = this.filteredDatasetsSubject.asObservable();
+	private filters$ = new BehaviorSubject<ActiveFilters>(allFiltersOff);
 
 	constructor(
 		private readonly http: HttpClient,
@@ -32,15 +36,28 @@ export class DatasetService {
 			this.sort$
 		]).pipe(
 			map(([schemas, sort]) => {
-				return [...schemas].sort((a, b) => {
-					const titleA = (a['dct:title']?.en || '').toLowerCase();
-					const titleB = (b['dct:title']?.en || '').toLowerCase();
-					return titleA && titleB ? titleA.localeCompare(titleB) : titleA ? -1 : 1;
-				});
+				switch (sort) {
+					case 'old':
+						return [...schemas].sort((a, b) => {
+							return a['dct:issued'] && b['dct:issued'] ? new Date(b['dct:issued']).getTime() - new Date(a['dct:issued']).getTime() : 0;
+						});
+					case 'new':
+						return [...schemas].sort((a, b) => {
+							return a['dct:issued'] && b['dct:issued'] ? new Date(a['dct:issued']).getTime() - new Date(b['dct:issued']).getTime() : 0;
+						});
+					case 'owner':
+					default: //title is default
+						return [...schemas].sort((a, b) => {
+							const titleA = (a['dct:title']?.en || '').toLowerCase();
+							const titleB = (b['dct:title']?.en || '').toLowerCase();
+							return titleA && titleB ? titleA.localeCompare(titleB) : titleA ? -1 : 1;
+						});
+				}
 			})
 		);
 
-		combineLatest([sortedSchemas$, this.searchTermSubject, this.pageSubject]).subscribe(([sortedSchemas, searchTerm, page]) => {
+		combineLatest([sortedSchemas$, this.searchTermSubject, this.filters$, this.pageSubject]).subscribe(([sortedSchemas, searchTerm, filters, page]) => {
+			console.log("FILTERS", filters);
 			const fuse = new Fuse(sortedSchemas, fuseOptions);
 			let filtered = [];
 			if (!searchTerm) {
@@ -83,7 +100,11 @@ export class DatasetService {
 		this.pageSubject.next({...this.pageSubject.value, pageSize});
 	}
 
-	setSort(order: 'title' | 'old' | 'new' | 'owner') {
+	setSort(order: 'title' | 'old' | 'new' | 'owner' | 'relevance') {
 		this.sort$.next(order);
+	}
+
+	setFilters(filters: ActiveFilters) {
+		this.filters$.next(filters);
 	}
 }
