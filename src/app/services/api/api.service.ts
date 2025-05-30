@@ -57,12 +57,23 @@ export class DatasetService {
 		);
 
 		combineLatest([sortedSchemas$, this.searchTermSubject, this.filters$, this.pageSubject]).subscribe(([sortedSchemas, searchTerm, filters, page]) => {
-			console.log("FILTERS", filters);
-			const fuse = new Fuse(sortedSchemas, fuseOptions);
-			let filtered = [];
-			if (!searchTerm) {
-				filtered = sortedSchemas;
-			} else {
+			let unfiltered = sortedSchemas;
+			let filtered = unfiltered;
+			if (Object.keys(filters).length > 0) {
+				filtered = unfiltered.filter(schema => {
+					for (const filter of Object.entries(filters)) {
+						const [category, choicesMap] = filter;
+						for (const choice of Object.keys(choicesMap)) {
+							if (schema[category] === choice) {
+								return true; // this means OR for filtering
+							}
+						}
+					}
+					return false;
+				});
+			}
+			if (searchTerm) {
+				const fuse = new Fuse(sortedSchemas, fuseOptions);
 				filtered = fuse.search(searchTerm).map(result => result.item);
 			}
 			this.filteredLength$.next(filtered.length);
