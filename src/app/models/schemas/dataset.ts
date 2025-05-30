@@ -13,11 +13,13 @@ export type English = string;
 /**
  * Defines the accessibility of the dataset (e.g., public, internal, etc.). You can find more information here: <a href='https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right'>DCAT-AP CH 3.0 – Access Rights Vocabulary</a>.
  */
-export type AccessRights = '' | 'CONFIDENTIAL' | 'NON_PUBLIC' | 'PUBLIC' | 'RESTRICTED' | 'SENSITIVE';
+export const AccessRights = ['', 'CONFIDENTIAL', 'NON_PUBLIC', 'PUBLIC', 'RESTRICTED', 'SENSITIVE'];
+export type AccessRight = (typeof AccessRights)[number];
 /**
  * Federal Office responsible for the data object
  */
-export type Publisher = '' | 'BLW-OFAG-UFAG-FOAG' | 'BLV-OSAV-USAV-FSVO';
+export const Publishers = ['', 'BLW-OFAG-UFAG-FOAG', 'BLV-OSAV-USAV-FSVO'];
+export type Publisher = (typeof Publishers)[number];
 export type ContactPointName = string;
 export type ContactPointEmailAddress = string;
 /**
@@ -27,7 +29,9 @@ export type IssuedDate = string | null;
 /**
  * This property indicates how long it is planned to keep the Dataset available. You can find the available values here: <a href='http://publications.europa.eu/resource/authority/planned-availability'>Planned availability</a>.
  */
-export type DatasetAvailability = '' | 'AVAILABLE' | 'EXPERIMENTAL' | 'STABLE' | 'TEMPORARY';
+export const DatasetAvailabilities = ['', 'AVAILABLE', 'EXPERIMENTAL', 'STABLE', 'TEMPORARY'] as const;
+
+export type DatasetAvailability = (typeof DatasetAvailabilities)[number];
 /**
  * Keywords describing the dataset.
  */
@@ -35,20 +39,23 @@ export type Keywords = string[] | null;
 /**
  * Frequency with which dataset is updated (e.g., 'Annual'). More information here: <a href='https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-frequency'>Available frequencies</a>.
  */
-export type AccrualPeriodicity =
-	| ''
-	| 'OTHER'
-	| 'HOURLY'
-	| 'UNKNOWN'
-	| 'QUARTERLY'
-	| 'NEVER'
-	| 'MONTHLY'
-	| 'ANNUAL'
-	| 'DAILY'
-	| 'AS_NEEDED'
-	| 'WEEKLY'
-	| 'IRREG'
-	| 'CONT';
+export const AccrualPeriocicites = [
+	'',
+	'OTHER',
+	'HOURLY',
+	'UNKNOWN',
+	'QUARTERLY',
+	'NEVER',
+	'MONTHLY',
+	'ANNUAL',
+	'DAILY',
+	'AS_NEEDED',
+	'WEEKLY',
+	'IRREG',
+	'CONT'
+];
+export type AccrualPeriodicity = (typeof AccrualPeriocicites)[number];
+
 /**
  * Last modification date of the data in the dataset.
  */
@@ -89,19 +96,23 @@ export type Role = 'businessDataOwner' | 'dataSteward' | 'dataCustodian';
 /**
  * Current status of the dataset.
  */
-export type Status = '' | 'workInProgress' | 'validated' | 'published' | 'deleted' | 'archived';
+export const Statuses = ['', 'workInProgress', 'validated', 'published', 'deleted', 'archived'];
+export type Status = (typeof Statuses)[number];
 /**
  * Classification level of the dataset according to the Swiss Informationssicherheitsgesetz, ISG. For information regarding the categorization, consult <a https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_13'>the Swiss Informationssicherheitsgesetz article 13</a>
  */
-export type ClassificationLevel = '' | 'none' | 'internal' | 'confidential' | 'secret';
+export const ClassificationLevels = ['', 'none', 'internal', 'confidential', 'secret'];
+export type ClassificationLevel = (typeof ClassificationLevels)[number];
 /**
  * Categorization regarding the Swiss data protection act. For information regarding the categorization, consult <a href='https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5'>the Swiss data protection act article 5</a>.
  */
-export type CategorizationDSG = '' | 'none' | 'personalData' | 'sensitivePersonalData';
+export const CategorizationsDSG = ['', 'none', 'personalData', 'sensitivePersonalData'];
+export type CategorizationDSG = (typeof CategorizationsDSG)[number];
 /**
  * Specifies the type of data in the dataset (master data, reference data, thematic data or unstructured data).
  */
-export type DataType = '' | 'primaryThematicData' | 'secondaryThematicData' | 'referenceData' | 'masterData' | 'unstructuredData';
+export const DataTypes = ['', 'primaryThematicData', 'secondaryThematicData', 'referenceData', 'masterData', 'unstructuredData'];
+export type DataType = (typeof DataTypes)[number];
 /**
  * Indicates if this dataset has archival value and must be sent to the BAR.
  */
@@ -126,35 +137,34 @@ export type IDInTheExternalCatalog = string;
 /**
  * This attribute classifies the dataset into one or more broad thematics. Proper classification allow other users interested in the topic to find the dataset without knowing its name or description. Those are opendata.swiss themes, which are then mapped to EU themes. For the mapping, please consult <a href='https://dcat-ap.ch/vocabulary/themes/20231122.html'>this page</a>.
  */
-export type DatasetThemes =
-	| (
-			| ''
-			| 'work'
-			| 'construction'
-			| 'population'
-			| 'education'
-			| 'energy'
-			| 'finances'
-			| 'geography'
-			| 'legislation'
-			| 'health'
-			| 'trade'
-			| 'industry'
-			| 'crime'
-			| 'culture'
-			| 'agriculture'
-			| 'mobility'
-			| 'public-order'
-			| 'politics'
-			| 'prices'
-			| 'territory'
-			| 'social-security'
-			| 'statistical-basis'
-			| 'tourism'
-			| 'administration'
-			| 'national-economy'
-	  )[]
-	| null;
+export const DatasetThemes = [
+	'',
+	'work',
+	'construction',
+	'population',
+	'education',
+	'energy',
+	'finances',
+	'geography',
+	'legislation',
+	'health',
+	'trade',
+	'industry',
+	'crime',
+	'culture',
+	'agriculture',
+	'mobility',
+	'public-order',
+	'politics',
+	'prices',
+	'territory',
+	'social-security',
+	'statistical-basis',
+	'tourism',
+	'administration',
+	'national-economy'
+];
+export type DatasetTheme = (typeof DatasetThemes)[number];
 /**
  * Landing page or homepage for the dataset.
  */
@@ -297,6 +307,7 @@ export type Comments1 = string;
  * Reference to data services used to provide access to the data.
  */
 export type AccessService = string[] | null;
+
 /**
  * A JSON schema for a dataset file in the data catalog.
  */
@@ -305,7 +316,7 @@ export interface DatasetSchema {
 	'dct:identifier': DatasetIdentifier;
 	'dct:title': DatasetTitle;
 	'dct:description': DatasetDescription;
-	'dct:accessRights': AccessRights;
+	'dct:accessRights': AccessRight;
 	'dct:publisher': Publisher;
 	'dcat:contactPoint': ContactPoint;
 	'dct:issued': IssuedDate;
@@ -321,7 +332,7 @@ export interface DatasetSchema {
 	'bv:typeOfData'?: DataType;
 	'bv:archivalValue': ArchivalValue;
 	'bv:externalCatalogs'?: ExternalCatalogs;
-	'dcat:theme'?: DatasetThemes;
+	'dcat:theme'?: DatasetTheme;
 	'dcat:landingPage'?: LandingPage;
 	'dct:spatial'?: SpatialCoverage;
 	'dct:temporal'?: TemporalCoverage;

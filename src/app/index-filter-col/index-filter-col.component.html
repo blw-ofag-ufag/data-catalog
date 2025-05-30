@@ -1,24 +1,39 @@
 <h1>Filter</h1>
 
 <div>
-	<mat-expansion-panel>
-		<mat-expansion-panel-header>
-			<mat-panel-title>Herausgeber</mat-panel-title>
-		</mat-expansion-panel-header>
+	<mat-form-field>
+		<mat-label>Keywords</mat-label>
+		<mat-chip-grid #chipGrid aria-label="Keyword selection">
+			<mat-chip-row *ngFor="let keyword of keywords" (removed)="remove(keyword)">
+				{{ keyword }}
+				<button type="button" matChipRemove [attr.aria-label]="'remove ' + keyword">
+					<mat-icon svgIcon="cancel-circle" />
+				</button>
+			</mat-chip-row>
+			<input
+				#keywordInput
+				placeholder="New Keyword..."
+				[formControl]="keywordControl"
+				[matChipInputFor]="chipGrid"
+				[matAutocomplete]="auto"
+				[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+				(matChipInputTokenEnd)="add($event)"
+			/>
+			<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+				<mat-option *ngFor="let keyword of filteredKeywords$ | async" [value]="keyword">
+					{{ keyword }}
+				</mat-option>
+			</mat-autocomplete>
+		</mat-chip-grid>
+	</mat-form-field>
+	@for (filterkey of availableFilters; track filterkey) {
 		<mat-form-field>
-			<mat-label>Your name</mat-label>
-			<input matInput placeholder="Your name" />
+			<mat-label>{{ filterkey }}</mat-label>
+			<mat-select multiple>
+				@for (choice of filterChoices(filterkey); track choice) {
+					<mat-option [value]="choice">{{ choice }}</mat-option>
+				}
+			</mat-select>
 		</mat-form-field>
-		<p>Challenge accepted! - Use your superpowers to make a difference.</p>
-	</mat-expansion-panel>
-	<mat-expansion-panel>
-		<mat-expansion-panel-header>
-			<mat-panel-title>Tags</mat-panel-title>
-		</mat-expansion-panel-header>
-		<mat-form-field>
-			<mat-label>Your name</mat-label>
-			<input matInput placeholder="Your name" />
-		</mat-form-field>
-		<p>Challenge accepted! - Use your superpowers to make a difference.</p>
-	</mat-expansion-panel>
+	}
 </div>
