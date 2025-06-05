@@ -21,11 +21,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {CommonModule} from '@angular/common';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
-import {ActiveFilters, DatasetService} from '../services/api/api.service';
+import { DatasetService} from '../services/api/api.service';
 import {TranslatePipe} from '@ngx-translate/core';
 import {TranslateFieldPipe} from '../translate-field.pipe';
 import { MatTooltip } from "@angular/material/tooltip";
 import { MatButton, MatIconButton } from "@angular/material/button";
+import { ActivatedRoute } from "@angular/router";
+import { ActiveFilters, createActiveFiltersFromParams } from "../models/ActiveFilters";
 
 @Component({
 	selector: 'index-filter-col',
@@ -75,7 +77,7 @@ export class IndexFilterColComponent implements OnInit {
 	@Input() activatedFilters$!: BehaviorSubject<ActiveFilters>;
 	activatedFilters: ActiveFilters = {};
 
-	constructor(private readonly filterService: DatasetService) {
+	constructor(private readonly filterService: DatasetService, private readonly route: ActivatedRoute) {
 		this.filteredKeywords$ = this.keywordControl.valueChanges.pipe(
 			startWith(null),
 			map((keyword: string | null) => (keyword ? this.filterKeywords(keyword) : this.allKeywords.slice()))
@@ -92,6 +94,12 @@ export class IndexFilterColComponent implements OnInit {
 				})
 			)
 			.subscribe();
+
+		this.route.queryParams.subscribe(params => {
+			this.activatedFilters$.next(
+				createActiveFiltersFromParams(params)
+			)
+		});
 	}
 
 	get availableFilters(): string[] {
@@ -136,7 +144,11 @@ export class IndexFilterColComponent implements OnInit {
 	}
 
 	onCategoryChange(category: string, selectedOptions: string[]): void {
-		this.activatedFilters[category] = {};
+		if (selectedOptions.length === 0) {
+			delete this.activatedFilters[category];
+		} else {
+			this.activatedFilters[category] = {};
+		}
 
 		for (const option of selectedOptions) {
 			this.activatedFilters[category][option] = true;
@@ -161,5 +173,6 @@ export class IndexFilterColComponent implements OnInit {
 
 	clearFilters() {
 		this.activatedFilters$.next({});
+		this.filterService.setFilters(this.activatedFilters);
 	}
 }

@@ -1,3 +1,4 @@
+
 @if (dataset$ | async; as dataset) {
 	@if (currentLang$ | async; as lang) {
 		<h2>{{ dataset["dct:title"][lang] }}</h2>

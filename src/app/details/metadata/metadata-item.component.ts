@@ -7,15 +7,14 @@ import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
-import { MatChip, MatChipSet } from "@angular/material/chips";
-import {enumTypes} from "../../models/schemas/dataset";
-import { RouterLink, RouterModule } from "@angular/router";
+import {MatChip, MatChipSet} from '@angular/material/chips';
+import {enumTypes} from '../../models/schemas/dataset';
+import {ActivatedRoute, Router, RouterLink, RouterModule} from '@angular/router';
 
 // Lokalisierung registrieren
 registerLocaleData(localeDe);
 registerLocaleData(localeFr);
 registerLocaleData(localeIt);
-
 
 @Component({
 	templateUrl: './free-list-item.component.html',
@@ -36,16 +35,27 @@ export class FreeListItemComponent {
 @Component({
 	templateUrl: './enum.component.html',
 	styleUrl: '../details.component.scss',
-	imports: [MatChip, MatChipSet, TranslateFieldPipe, RouterLink, RouterModule],
+	imports: [MatChip, MatChipSet, TranslateFieldPipe, RouterModule],
 	standalone: true
 })
 export class EnumComponent {
 	data: string = '';
 	label: string = '';
+	paramEntry: {[key: string]: string} = {};
+	fullHref: string;
 
-	constructor(private readonly injector: Injector) {
+	constructor(
+		private readonly injector: Injector,
+		private readonly router: Router
+	) {
 		this.label = this.injector.get('label', '');
 		this.data = this.injector.get('data', '');
+		this.paramEntry[this.label] = this.data;
+		this.fullHref = this.router
+			.createUrlTree(['/data-catalog/index'], {
+				queryParams: this.paramEntry
+			})
+			.toString();
 	}
 }
 
@@ -92,7 +102,7 @@ export class DateMetadataItemComponent {
 @Component({
 	selector: 'metadata-item',
 	template: ` <div class="data-row">
-		<ng-container *ngComponentOutlet="decideComponent(label, data); injector: createInjector(label, data)"> </ng-container>
+		<ng-container *ngComponentOutlet="decideComponent(label, data); injector: createInjector(label, data, route)"></ng-container>
 	</div>`,
 	styleUrl: '../details.component.scss',
 	imports: [NgComponentOutlet, JsonPipe],
@@ -102,7 +112,10 @@ export class MetadataItemComponent {
 	@Input() label: string = '';
 	@Input() data = {};
 
-	constructor(private injector: Injector) {}
+	constructor(
+		private injector: Injector,
+		protected route: ActivatedRoute
+	) {}
 
 	decideComponent(label: string, data: any) {
 		// if label in array EnumTypes
@@ -125,9 +138,10 @@ export class MetadataItemComponent {
 		return DefaultMetadataItemComponent;
 	}
 
-	createInjector(label: string, data: any) {
+	createInjector(label: string, data: any, route: ActivatedRoute) {
 		return Injector.create({
 			providers: [
+				{provide: ActivatedRoute, useValue: route},
 				{provide: 'label', useValue: label},
 				{provide: 'data', useValue: data}
 			],

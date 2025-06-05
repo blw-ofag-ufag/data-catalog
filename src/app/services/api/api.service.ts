@@ -7,6 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {PageEvent} from '@angular/material/paginator';
 import Fuse from 'fuse.js';
 import {MultiDatasetService} from './multi-dataset-service.service';
+import { ActiveFilters } from "../../models/ActiveFilters";
 
 const fuseOptions = {
 	threshold: 0.4,
@@ -23,7 +24,6 @@ const fuseOptions = {
 	]
 };
 
-export type ActiveFilters = {[key: string]: {[key: string]: boolean}};
 const allFiltersOff = {};
 
 @Injectable({providedIn: 'root'})

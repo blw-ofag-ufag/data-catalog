@@ -13,10 +13,11 @@ import {MatFormField, MatInput, MatLabel, MatPrefix} from '@angular/material/inp
 import {MatOption} from '@angular/material/core';
 import {MatSelect} from '@angular/material/select';
 import { BehaviorSubject, Observable } from "rxjs";
-import {DatasetSchema} from '../models/schemas/dataset';
-import { ActiveFilters, DatasetService } from "../services/api/api.service";
+import { DatasetSchema, enumTypes } from "../models/schemas/dataset";
+import { DatasetService } from "../services/api/api.service";
 import { LengthPipe } from "../length.pipe";
 import { MatBadge } from "@angular/material/badge";
+import { ActiveFilters } from "../models/ActiveFilters";
 
 @Component({
 	selector: 'index-switch',
@@ -39,7 +40,8 @@ import { MatBadge } from "@angular/material/badge";
 		MatLabel,
 		MatPrefix,
 		AsyncPipe,
-		MatBadge
+		MatBadge,
+		JsonPipe
 	],
 	styleUrl: './index-switch.component.scss'
 })
@@ -53,17 +55,21 @@ export class IndexSwitchComponent implements OnInit {
 		private readonly route: ActivatedRoute,
 		private readonly router: Router,
 		private readonly datasetService: DatasetService
-	) {
-	}
+	) {}
 
 	ngOnInit() {
 		this.route.queryParams.subscribe(params => {
 			this.view = params['view'] || 'tile';
+			for (const allowedfilter of enumTypes) {
+				if (params[allowedfilter]) {
+					this.showFilters = true;
+				}
+			}
 		});
 	}
 
 	async switchTo(mode: 'table' | 'tile') {
-		await this.router.navigate([], { queryParams: { view: mode }, queryParamsHandling: 'merge' });
+		await this.router.navigate([], {queryParams: {view: mode}, queryParamsHandling: 'merge'});
 	}
 
 	toggleShowFilters() {
