@@ -1,14 +1,15 @@
 import { Component, Input } from "@angular/core";
-import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle } from "@angular/material/card";
+import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardImage, MatCardSubtitle, MatCardTitle } from "@angular/material/card";
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {Router} from '@angular/router';
 import { Observable, startWith } from "rxjs";
 import { DatasetSchema } from "../models/schemas/dataset";
-import { AsyncPipe, JsonPipe } from "@angular/common";
+import { AsyncPipe, DatePipe, JsonPipe, NgOptimizedImage } from "@angular/common";
 import { map } from "rxjs/operators";
 import { TranslateService } from "@ngx-translate/core";
 import { MatButton } from "@angular/material/button";
 import { ObButtonDirective } from "@oblique/oblique";
+import { MatChip, MatChipSet } from "@angular/material/chips";
 
 @Component({
 	standalone: true,
@@ -28,7 +29,12 @@ import { ObButtonDirective } from "@oblique/oblique";
 		AsyncPipe,
 		JsonPipe,
 		MatButton,
-		ObButtonDirective
+		ObButtonDirective,
+		MatCardImage,
+		NgOptimizedImage,
+		DatePipe,
+		MatChipSet,
+		MatChip
 	]
 })
 export class IndexCardsComponent {

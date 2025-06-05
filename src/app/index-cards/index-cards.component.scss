@@ -1,3 +1,38 @@
 mat-card-title * {
 	font-size: 12px;
 }
+
+.truncate-title {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	line-height: 1em;
+	height: 3em;
+}
+
+.truncate-text {
+	display: -webkit-box; /* Flexbox alternative */
+	-webkit-line-clamp: 3; /* Number of lines to show */
+	-webkit-box-orient: vertical; /* Vertical orientation */
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.small-chip {
+	height: 24px;           /* default is ~32px, so smaller height */
+	font-size: 12px;        /* smaller font */
+	line-height: 24px;      /* vertically center text */
+	padding: 0 8px;         /* reduce horizontal padding */
+}
+
+.chip-container {
+	display: flex;          /* place chips in a row */
+	overflow-x: auto;       /* enable horizontal scrolling */
+	white-space: nowrap;    /* prevent wrapping */
+	-webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+	padding-bottom: 4px;    /* optional: some space below */
+	scrollbar-width: thin;  /* Firefox scrollbar styling */
+}

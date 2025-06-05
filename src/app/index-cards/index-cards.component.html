@@ -1,21 +1,41 @@
 <div class="card-container ob-grid">
 	@for (dataset of datasets$ | async; track $index) {
-		<mat-card class="ob-span-4">
+		<mat-card
+			class="ob-span-4"
+			(click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])"
+			style='cursor: pointer'
+		>
+			<img
+				mat-card-image
+				ngSrc="{{ dataset['schema:image'] || 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg' }}"
+				width="100%"
+				[height]="180"
+			/>
 			<mat-card-header>
-				<mat-card-title>
-					{{ dataset['dct:title']?.[ (currentLang$ | async)! ] }}
+				<mat-card-title class="truncate-title">
+<!--					<span class="trucate-title">-->
+						{{ dataset['dct:title']?.[ (currentLang$ | async)! ] }}
+<!--					</span>-->
 					<!--					{{ dataset['dct:title'][ currentLang$ | async] }}-->
 				</mat-card-title>
-<!--				<mat-card-subtitle>-->
-<!--					{{ dataset['dct:description']?.en }}-->
-<!--				</mat-card-subtitle>-->
+				<mat-card-subtitle>
+					<span class="truncate-text">
+						{{ dataset['dct:description']?.[ (currentLang$ | async)! ]}}
+					</span>
+				</mat-card-subtitle>
 			</mat-card-header>
 			<mat-card-content>
-				<img src="{{ dataset['schema:image'] || 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg' }}" width="100%" />
+				Ausgabedatum: {{ dataset['dct:issued'] | date:'d. MMMM y':'UTC': (currentLang$ | async)! }}
+				<br><br>
+				<div class="chip-container">
+						@for (tag of dataset["dcat:keyword"]; track $index) {
+							<mat-chip class="small-chip" style="display: inline-block; margin-right: 8px;">{{ tag }}</mat-chip>
+						}
+				</div>
 			</mat-card-content>
-			<mat-card-actions>
-				<button mat-button obButton="primary" type="button" (click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])">Open</button>
-			</mat-card-actions>
+			<!--			<mat-card-actions>-->
+			<!--				<button mat-button obButton="primary" type="button" (click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])">Open</button>-->
+			<!--			</mat-card-actions>-->
 		</mat-card>
 	}
 </div>
