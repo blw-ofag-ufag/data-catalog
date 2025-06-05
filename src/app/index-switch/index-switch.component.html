@@ -1,15 +1,3 @@
-<!--<index-cards *ngIf="view === 'tile'">-->
-<!--	<p>tile</p>-->
-<!--	<index-cards></index-cards>-->
-<!--</index-cards>-->
-<!--<mat-button-toggle-group obButton="secondary" name="fontStyle" aria-label="Font Style">-->
-<!--	<button mat-icon-button obButton="tertiary" type="button" matTooltip="cards">-->
-<!--		<mat-icon svgIcon="cards" />-->
-<!--	</button>-->
-<!--	<button mat-icon-button obButton="tertiary" type="button" matTooltip="list">-->
-<!--		<mat-icon svgIcon="list" />-->
-<!--	</button>-->
-<!--</mat-button-toggle-group>-->
 <div class="full-width">
 	<div class="index-head">
 		<div>
@@ -43,9 +31,21 @@
 				</mat-select>
 			</mat-form-field>
 
-<!--			<button>Filter anzeigen</button>-->
-			<button style="width: 100%; margin-top: 5px" (click)="toggleShowFilters()" mat-button obButton="secondary" type="button"><mat-icon svgIcon="filter" /> @if (showFilters) {Filter verbergen} @else {Filter anzeigen}</button>
-
+			<button
+				[matBadge]="getFilterCount(activatedFilters$ | async)"
+				style="width: 100%; margin-top: 5px"
+				(click)="toggleShowFilters()"
+				mat-button
+				obButton="secondary"
+				type="button"
+			>
+				<mat-icon svgIcon="filter" />
+				@if (showFilters) {
+					Filter verbergen
+				} @else {
+					Filter anzeigen
+				}
+			</button>
 		</div>
 		<div class="pull-right">
 			<button (click)="switchTo('tile')" mat-icon-button obButton="tertiary" type="button" matTooltip="cards">
@@ -60,7 +60,9 @@
 	<div class="ob-grid">
 		@if (showFilters) {
 			<div class="ob-quarter">
-				<index-filter-col></index-filter-col>
+				<index-filter-col
+					[activatedFilters$]="activatedFilters$"
+				></index-filter-col>
 			</div>
 			<div class="ob-two-thirds">
 				<index-outlet [view]="view" [dataset$]="datasets$"></index-outlet>

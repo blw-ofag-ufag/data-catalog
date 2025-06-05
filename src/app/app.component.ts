@@ -15,21 +15,17 @@ export class AppComponent {
 		private readonly router: Router
 	) {
 		activatedRoute.queryParams.subscribe(params => {
-			console.log('from url', params['lang']);
 			const langFromUrl = params['lang'] || 'en';
 			const langFromTranslate = translate.currentLang;
 			if (langFromUrl !== langFromTranslate) {
 				translate.resetLang(langFromUrl);
-				console.log('setting after listening to route', langFromUrl);
 			}
 		});
 		translate.onLangChange.subscribe(async event => {
-			console.log('from lang change', event.lang);
 			const langFromUrl = activatedRoute.snapshot.queryParams['lang'];
 			const langFromTranslate = event.lang;
 			if (langFromUrl !== langFromTranslate) {
 				await router.navigate([], {queryParams: {lang: langFromTranslate}, queryParamsHandling: 'merge'});
-				console.log('setting after listening to route',langFromTranslate);
 			}
 		});
 	}

@@ -418,3 +418,15 @@ export interface DistributionDescription {
 
 	[k: string]: unknown;
 }
+
+export const enumTypes = [
+	'dct:accessRights',
+	'dct:publisher',
+	'dcatap:availability',
+	'dct:accrualPeriodicity',
+	'adms:status',
+	'bv:classification',
+	'bv:personalData',
+	'bv:typeOfData',
+	// 'dcat:theme'
+];

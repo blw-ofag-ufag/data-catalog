@@ -10,18 +10,22 @@ import {
 	Publishers,
 	Statuses
 } from '../models/schemas/dataset';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {Observable, map, startWith} from 'rxjs';
+import {Observable, map, startWith, BehaviorSubject, tap} from 'rxjs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {CommonModule} from '@angular/common';
 import {MatListModule} from '@angular/material/list';
-import { MatSelectModule } from "@angular/material/select";
-import { ActiveFilters, DatasetService } from "../services/api/api.service";
+import {MatSelectModule} from '@angular/material/select';
+import {ActiveFilters, DatasetService} from '../services/api/api.service';
+import {TranslatePipe} from '@ngx-translate/core';
+import {TranslateFieldPipe} from '../translate-field.pipe';
+import { MatTooltip } from "@angular/material/tooltip";
+import { MatButton, MatIconButton } from "@angular/material/button";
 
 @Component({
 	selector: 'index-filter-col',
@@ -35,11 +39,16 @@ import { ActiveFilters, DatasetService } from "../services/api/api.service";
 		ReactiveFormsModule,
 		MatListModule,
 		MatSelectModule,
+		TranslatePipe,
+		TranslateFieldPipe,
+		MatTooltip,
+		MatIconButton,
+		MatButton
 	],
 	templateUrl: './index-filter-col.component.html',
 	styleUrl: './index-filter-col.component.scss'
 })
-export class IndexFilterColComponent {
+export class IndexFilterColComponent implements OnInit {
 	private readonly _availableFilters: {[key: string]: readonly string[]} = {
 		'dct:accessRights': AccessRights,
 		'dct:publisher': Publishers,
@@ -63,15 +72,26 @@ export class IndexFilterColComponent {
 	// allKeywords$: Observable<string[]>;
 	keywords: string[] = [];
 	allKeywords: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
-	private activeFilters: ActiveFilters = {};
+	@Input() activatedFilters$!: BehaviorSubject<ActiveFilters>;
+	activatedFilters: ActiveFilters = {};
 
-	constructor(
-		private readonly filterService: DatasetService
-	) {
+	constructor(private readonly filterService: DatasetService) {
 		this.filteredKeywords$ = this.keywordControl.valueChanges.pipe(
 			startWith(null),
 			map((keyword: string | null) => (keyword ? this.filterKeywords(keyword) : this.allKeywords.slice()))
 		);
+
+		// this.activatedFilters$.subscribe(filters => this.activatedFilters = filters);
+	}
+
+	ngOnInit() {
+		this.activatedFilters$
+			.pipe(
+				tap(filters => {
+					this.activatedFilters = {...filters};
+				})
+			)
+			.subscribe();
 	}
 
 	get availableFilters(): string[] {
@@ -116,17 +136,30 @@ export class IndexFilterColComponent {
 	}
 
 	onCategoryChange(category: string, selectedOptions: string[]): void {
-		this.activeFilters[category] = {};
+		this.activatedFilters[category] = {};
 
 		for (const option of selectedOptions) {
-			this.activeFilters[category][option] = true;
+			this.activatedFilters[category][option] = true;
 		}
 
-		this.filterService.setFilters(this.activeFilters);
+		this.filterService.setFilters(this.activatedFilters);
+		this.activatedFilters$.next(this.activatedFilters);
 	}
 
 	getSelectedOptions(category: string): string[] {
-		const selected = this.activeFilters[category];
+		const selected = this.activatedFilters[category];
 		return selected ? Object.keys(selected).filter(key => selected[key]) : [];
+	}
+
+	getTranslationKey(fieldKey: string): string {
+		return `details.label.${fieldKey}`;
+	}
+
+	getTranslationKeyEnum(fieldKey: string, valueKey: string): string {
+		return `schema.dataset.${fieldKey}.${valueKey}`;
+	}
+
+	clearFilters() {
+		this.activatedFilters$.next({});
 	}
 }

@@ -1,4 +1,10 @@
-<h1>Filter</h1>
+<div>
+	<h3 style="display: inline-block; margin-right: auto;">Filter</h3>
+	<button style="float: right;" (click)="clearFilters()" mat-button type="button" matTooltip="reset">
+		{{ "reset" | translate }}
+		<mat-icon svgIcon="refresh" />
+	</button>
+</div>
 
 <div>
 	<mat-form-field>
@@ -28,14 +34,14 @@
 	</mat-form-field>
 	@for (filterkey of availableFilters; track filterkey) {
 		<mat-form-field>
-			<mat-label>{{ filterkey }}</mat-label>
+			<mat-label>{{ getTranslationKey(filterkey) | translate }}</mat-label>
 			<mat-select
 				multiple
 				[value]="getSelectedOptions(filterkey)"
 				(selectionChange)="onCategoryChange(filterkey, $event.value)"
 			>
 				@for (choice of filterChoices(filterkey); track choice) {
-					<mat-option [value]="choice">{{ choice }}</mat-option>
+					<mat-option [value]="choice">{{ getTranslationKeyEnum(filterkey, choice) | translate }}</mat-option>
 				}
 			</mat-select>
 		</mat-form-field>

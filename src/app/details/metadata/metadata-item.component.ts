@@ -8,7 +8,8 @@ import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import { MatChip, MatChipSet } from "@angular/material/chips";
-import { MatExpansionPanel } from "@angular/material/expansion";
+import {enumTypes} from "../../models/schemas/dataset";
+import { RouterLink, RouterModule } from "@angular/router";
 
 // Lokalisierung registrieren
 registerLocaleData(localeDe);
@@ -24,6 +25,22 @@ registerLocaleData(localeIt);
 })
 export class FreeListItemComponent {
 	data: string[] = [];
+	label: string = '';
+
+	constructor(private readonly injector: Injector) {
+		this.label = this.injector.get('label', '');
+		this.data = this.injector.get('data', '');
+	}
+}
+
+@Component({
+	templateUrl: './enum.component.html',
+	styleUrl: '../details.component.scss',
+	imports: [MatChip, MatChipSet, TranslateFieldPipe, RouterLink, RouterModule],
+	standalone: true
+})
+export class EnumComponent {
+	data: string = '';
 	label: string = '';
 
 	constructor(private readonly injector: Injector) {
@@ -88,17 +105,23 @@ export class MetadataItemComponent {
 	constructor(private injector: Injector) {}
 
 	decideComponent(label: string, data: any) {
-		switch (label) {
-			case 'dct:issued':
-			case 'dct:modified':
-				return DateMetadataItemComponent;
-			case 'dcat:theme':
-				return FreeListItemComponent;
-			// case 'internal:rawData':
-			// 	return RawDataComponent;
-			default:
-				return DefaultMetadataItemComponent;
+		// if label in array EnumTypes
+		if (enumTypes.includes(label)) {
+			return EnumComponent;
+		} else {
+			switch (label) {
+				case 'dct:issued':
+				case 'dct:modified':
+					return DateMetadataItemComponent;
+				case 'dcat:theme':
+					return FreeListItemComponent;
+				// case 'internal:rawData':
+				// 	return RawDataComponent;
+				default:
+					return DefaultMetadataItemComponent;
+			}
 		}
+
 		return DefaultMetadataItemComponent;
 	}
 

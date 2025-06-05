@@ -65,12 +65,7 @@ export class MultiDatasetService {
 	}
 
 	loadDetail(publisher: string, klass: string, id: string) {
-		console.log("publisher", publisher);
-		console.log("klass", klass);
-		console.log("id", id);
-		console.log("detailUrls", this.detailUrls[publisher]);
-		// // (window as any).fetchfunction = this.detailUrls[publisher];
-		// alert(this.detailUrls[publisher]);
+
 		fetch((this.detailUrls[publisher])(id))
 			.then(response => {
 				response

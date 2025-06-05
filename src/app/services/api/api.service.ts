@@ -9,6 +9,7 @@ import Fuse from 'fuse.js';
 import {MultiDatasetService} from './multi-dataset-service.service';
 
 const fuseOptions = {
+	threshold: 0.4,
 	keys: [
 		'dct:title.de',
 		'dct:title.en',
