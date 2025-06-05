@@ -1,7 +1,7 @@
 <mat-chip-set>
-		<mat-chip>
-			<a [routerLink]="['/index', { label: label, data: data }]">
-				{{ [label, data] | translateField }}
-			</a>
-		</mat-chip>
+	<mat-chip>
+		<a [routerLink]="['/index']" [queryParams]="paramEntry">
+			{{ [label, data] | translateField }}
+		</a>
+	</mat-chip>
 </mat-chip-set>

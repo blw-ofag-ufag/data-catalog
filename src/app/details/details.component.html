@@ -51,7 +51,12 @@
 									{{ "details.label." + meta.label | translate }}
 								</td>
 								<td>
-									<metadata-item [label]="meta.label" [data]="meta.data"></metadata-item>
+									@if (enumTypes.includes(meta.label)) {
+										<enum [label]="meta.label" [data]="meta.data"></enum>
+									} @else {
+										<metadata-item [label]="meta.label" [data]="meta.data"></metadata-item>
+									}
+<!--									<a href="google.com">simple link</a>-->
 								</td>
 							</tr>
 						}
@@ -72,7 +77,6 @@
 									{{ dist["dct:description"]?.[ (currentLang$ | async) || 'en'] }}
 								</mat-panel-description>
 							</mat-expansion-panel-header>
-							<pre>{{ dist | json }}</pre>
 
 						</mat-expansion-panel>
 					}

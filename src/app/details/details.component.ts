@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {DatasetSchema} from '../models/schemas/dataset';
+import { DatasetSchema, enumTypes } from "../models/schemas/dataset";
 import {DatasetService} from '../services/api/api.service';
 import {BehaviorSubject, Observable, startWith} from 'rxjs';
 import {AsyncPipe, DatePipe, JsonPipe} from '@angular/common';
@@ -9,7 +9,7 @@ import {map} from 'rxjs/operators';
 import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
 import {StatusPipe} from '../status.pipe';
-import {MetadataItemComponent} from './metadata/metadata-item.component';
+import { EnumComponent, MetadataItemComponent } from "./metadata/metadata-item.component";
 import {NormalizedMetadataElement, filterAndNormalizeMetadata} from './details.helpers';
 import {
 	MatAccordion,
@@ -37,7 +37,8 @@ import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.compon
 		MatAccordion,
 		TranslatePipe,
 		JsonPipe,
-		AdmindirLookupComponent
+		AdmindirLookupComponent,
+		EnumComponent
 	],
 	styleUrl: './details.component.scss'
 })
@@ -75,4 +76,6 @@ export class DetailsComponent implements OnInit {
 			);
 		});
 	}
+
+	protected readonly enumTypes = enumTypes;
 }

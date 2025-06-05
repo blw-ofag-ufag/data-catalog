@@ -237,7 +237,7 @@ footer a:hover {
 .table-fixed th:nth-child(1) { width: 35%; }
 .table-fixed th:nth-child(2) { width: 15%; }
 .table-fixed th:nth-child(3) { width: 12%; }
-.table-fixed th:nth-child(4), .table-fixed td:nth-child(4) { 
+.table-fixed th:nth-child(4), .table-fixed td:nth-child(4) {
   width: auto;  /* Let it take up remaining space */
   white-space: normal;  /* Allow wrapping */
 }

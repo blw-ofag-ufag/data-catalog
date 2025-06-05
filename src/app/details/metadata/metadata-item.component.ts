@@ -1,4 +1,4 @@
-import {Component, Injector, Input, LOCALE_ID} from '@angular/core';
+import { Component, Injector, input, Input, LOCALE_ID, OnInit } from "@angular/core";
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {TextOrTranslatable} from '../../models/types/TextOrTranslatable';
 import {TranslateFieldPipe} from '../../translate-field.pipe';
@@ -15,6 +15,7 @@ import {ActivatedRoute, Router, RouterLink, RouterModule} from '@angular/router'
 registerLocaleData(localeDe);
 registerLocaleData(localeFr);
 registerLocaleData(localeIt);
+
 
 @Component({
 	templateUrl: './free-list-item.component.html',
@@ -33,29 +34,24 @@ export class FreeListItemComponent {
 }
 
 @Component({
+	selector: 'enum',
 	templateUrl: './enum.component.html',
 	styleUrl: '../details.component.scss',
-	imports: [MatChip, MatChipSet, TranslateFieldPipe, RouterModule],
+	imports: [JsonPipe, TranslateFieldPipe, MatChipSet, MatChip, RouterLink],
 	standalone: true
 })
-export class EnumComponent {
-	data: string = '';
-	label: string = '';
+export class EnumComponent implements OnInit{
+	@Input() data: string = '';
+	@Input() label: string = '';
 	paramEntry: {[key: string]: string} = {};
-	fullHref: string;
 
 	constructor(
-		private readonly injector: Injector,
-		private readonly router: Router
+		private readonly injector: Injector
 	) {
-		this.label = this.injector.get('label', '');
-		this.data = this.injector.get('data', '');
+	}
+
+	ngOnInit(): void {
 		this.paramEntry[this.label] = this.data;
-		this.fullHref = this.router
-			.createUrlTree(['/data-catalog/index'], {
-				queryParams: this.paramEntry
-			})
-			.toString();
 	}
 }
 
@@ -102,7 +98,7 @@ export class DateMetadataItemComponent {
 @Component({
 	selector: 'metadata-item',
 	template: ` <div class="data-row">
-		<ng-container *ngComponentOutlet="decideComponent(label, data); injector: createInjector(label, data, route)"></ng-container>
+		<ng-container *ngComponentOutlet="decideComponent(label, data); injector: createInjector(label, data)"></ng-container>
 	</div>`,
 	styleUrl: '../details.component.scss',
 	imports: [NgComponentOutlet, JsonPipe],
@@ -138,10 +134,9 @@ export class MetadataItemComponent {
 		return DefaultMetadataItemComponent;
 	}
 
-	createInjector(label: string, data: any, route: ActivatedRoute) {
+	createInjector(label: string, data: any) {
 		return Injector.create({
 			providers: [
-				{provide: ActivatedRoute, useValue: route},
 				{provide: 'label', useValue: label},
 				{provide: 'data', useValue: data}
 			],
