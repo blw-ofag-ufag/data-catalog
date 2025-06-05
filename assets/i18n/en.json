@@ -100,13 +100,13 @@
         "dataSteward": "Data Steward",
         "dataCustodian": "Data Custodian"
       },
-      "classification": {
+      "bv:classification": {
         "none": "None",
         "internal": "Internal",
         "confidential": "Confidential",
         "secret": "Secret"
       },
-      "personalData": {
+      "bv:personalData": {
         "none": "None",
         "personalData": "Personal data",
         "sensitivePersonalData": "Sensitive personal data"
@@ -118,7 +118,7 @@
         "masterData": "Master data",
         "unstucturedData": "Unstructured data"
       },
-      "theme": {
+      "dcat:theme": {
         "work": "Work",
         "construction": "Construction",
         "population": "Population",
