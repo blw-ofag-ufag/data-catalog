@@ -9,7 +9,17 @@ import Fuse from 'fuse.js';
 import {MultiDatasetService} from './multi-dataset-service.service';
 
 const fuseOptions = {
-	keys: ['dct:title.de', 'dct:title.en', 'dct:title.fr', 'dct:title.it', 'dct:description.de', 'dct:description.en', 'dct:description.fr', 'dct:description.it']
+	keys: [
+		'dct:title.de',
+		'dct:title.en',
+		'dct:title.fr',
+		'dct:title.it',
+		'dct:description.de',
+		'dct:description.en',
+		'dct:description.fr',
+		'dct:description.it',
+		'dcat:keyword'
+	]
 };
 
 export type ActiveFilters = {[key: string]: {[key: string]: boolean}};
