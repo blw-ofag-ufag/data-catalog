@@ -40,6 +40,8 @@ import { MatChip, MatChipSet } from "@angular/material/chips";
 export class IndexCardsComponent {
 	@Input() datasets$!: Observable<DatasetSchema[] | null>;
 	currentLang$: Observable<string>;
+	fallbackImageUrl = 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg';
+	fallbackThumbUrl = 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg';
 
 	constructor(
 		private readonly router: Router,

@@ -3,11 +3,12 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, combineLatest, filter, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {DatasetSchema} from '../../models/schemas/dataset';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
 import {PageEvent} from '@angular/material/paginator';
 import Fuse from 'fuse.js';
 import {MultiDatasetService} from './multi-dataset-service.service';
-import { ActiveFilters } from "../../models/ActiveFilters";
+import {ActiveFilters} from '../../models/ActiveFilters';
+import {enumTypes} from '../../models/schemas/dataset';
 
 const fuseOptions = {
 	threshold: 0.4,
@@ -40,7 +41,8 @@ export class DatasetService {
 	constructor(
 		private readonly http: HttpClient,
 		private readonly activatedRoute: ActivatedRoute,
-		private readonly multiDatasetService: MultiDatasetService
+		private readonly multiDatasetService: MultiDatasetService,
+		private readonly router: Router
 	) {
 		const sortedSchemas$ = combineLatest([
 			this.multiDatasetService.datasets$.pipe(filter((schemas): schemas is DatasetSchema[] => schemas !== null)),
@@ -126,7 +128,29 @@ export class DatasetService {
 		this.sort$.next(order);
 	}
 
-	setFilters(filters: ActiveFilters) {
+	async setFilters(filters: ActiveFilters) {
 		this.filters$.next(filters);
+
+		const emptyFilters = Object.values(enumTypes).reduce(
+			(acc, enumKey) => {
+				acc[enumKey] = null;
+				return acc;
+			},
+			{} as Record<string, string|null>
+		);
+
+		const mappedFilters = Object.entries(filters).reduce(
+			(acc, [key, subfilters]) => {
+				const activeSubfilters = Object.keys(subfilters).filter(subkey => subfilters[subkey]);
+				if (activeSubfilters.length > 0 && activeSubfilters) {
+					acc[key] = activeSubfilters.join(',');
+				}
+				return acc;
+			},
+
+			emptyFilters
+		);
+
+		await this.router.navigate([], {queryParams: mappedFilters, queryParamsHandling: 'merge'});
 	}
 }

@@ -5,12 +5,22 @@
 			(click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])"
 			style='cursor: pointer'
 		>
-			<img
-				mat-card-image
-				ngSrc="{{ dataset['schema:image'] || 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg' }}"
-				width="100%"
-				[height]="180"
-			/>
+			<div style="position: relative; width: 100%; height: 180px; background-color: #a3a58a; overflow: hidden;">
+				<!-- Image -->
+				<img
+					mat-card-image
+					ngSrc="{{ dataset['schema:image'] || fallbackImageUrl }}"
+					width="100%"
+					[height]="180"
+					style="position: absolute; top: 0; left: 0; width: 100%; height: 180px; object-fit: cover;"
+				/>
+
+				<!-- Chips overlay -->
+				<div style="position: absolute; top: 8px; left: 8px; z-index: 2;">
+					<mat-chip class="small-chip" style="margin-right: 8px;">Dataset</mat-chip>
+					<mat-chip class="small-chip" style="margin-right: 8px;">BLW</mat-chip>
+				</div>
+			</div>
 			<mat-card-header>
 				<mat-card-title class="truncate-title">
 <!--					<span class="trucate-title">-->
