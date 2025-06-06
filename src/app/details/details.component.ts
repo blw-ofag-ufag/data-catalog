@@ -19,6 +19,7 @@ import {
 	MatExpansionPanelHeader
 } from '@angular/material/expansion';
 import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.component';
+import { KeywordsComponent } from "./keywords/keywords.component";
 
 @Component({
 	selector: 'app-details',
@@ -37,7 +38,8 @@ import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.compon
 		AdmindirLookupComponent,
 		EnumComponent,
 		RouterLink,
-		TranslatePipe
+		TranslatePipe,
+		KeywordsComponent
 	],
 	styleUrl: './details.component.scss'
 })

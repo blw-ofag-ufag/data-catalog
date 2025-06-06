@@ -5,4 +5,6 @@ export interface Publisher {
 	branch: string; // e.g. 'main'
 	getProcessedUrl: () => string;
 	getDetailUrl: (id: string) => string;
+
+	getKeywordUrl(): string;
 }

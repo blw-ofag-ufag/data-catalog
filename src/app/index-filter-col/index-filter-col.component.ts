@@ -21,13 +21,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {CommonModule} from '@angular/common';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
-import { DatasetService} from '../services/api/api.service';
+import {DatasetService} from '../services/api/api.service';
 import {TranslatePipe} from '@ngx-translate/core';
 import {TranslateFieldPipe} from '../translate-field.pipe';
-import { MatTooltip } from "@angular/material/tooltip";
-import { MatButton, MatIconButton } from "@angular/material/button";
-import { ActivatedRoute } from "@angular/router";
-import { ActiveFilters, createActiveFiltersFromParams } from "../models/ActiveFilters";
+import {MatTooltip} from '@angular/material/tooltip';
+import {MatButton, MatIconButton} from '@angular/material/button';
+import {ActivatedRoute} from '@angular/router';
+import {ActiveFilters, createActiveFiltersFromParams} from '../models/ActiveFilters';
+import {MultiDatasetService} from '../services/api/multi-dataset-service.service';
 
 @Component({
 	selector: 'index-filter-col',
@@ -73,15 +74,23 @@ export class IndexFilterColComponent implements OnInit {
 	filteredKeywords$: Observable<string[]>;
 	// allKeywords$: Observable<string[]>;
 	keywords: string[] = [];
-	allKeywords: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+	allKeywords: string[] = [];
 	@Input() activatedFilters$!: BehaviorSubject<ActiveFilters>;
 	activatedFilters: ActiveFilters = {};
 
-	constructor(private readonly filterService: DatasetService, private readonly route: ActivatedRoute) {
+	constructor(
+		private readonly keywordService: MultiDatasetService,
+		private readonly filterService: DatasetService,
+		private readonly route: ActivatedRoute
+	) {
 		this.filteredKeywords$ = this.keywordControl.valueChanges.pipe(
 			startWith(null),
 			map((keyword: string | null) => (keyword ? this.filterKeywords(keyword) : this.allKeywords.slice()))
 		);
+
+		this.filteredKeywords$.subscribe(keywords => this.onCategoryChange('dcat:keyword', keywords));
+
+		this.keywordService.keywords$.subscribe(keywords => (this.allKeywords = keywords));
 
 		// this.activatedFilters$.subscribe(filters => this.activatedFilters = filters);
 	}
@@ -95,10 +104,8 @@ export class IndexFilterColComponent implements OnInit {
 			)
 			.subscribe();
 
-		this.route.queryParams.subscribe(async (params) => {
-			this.activatedFilters$.next(
-				createActiveFiltersFromParams(params)
-			);
+		this.route.queryParams.subscribe(async params => {
+			this.activatedFilters$.next(createActiveFiltersFromParams(params));
 			await this.filterService.setFilters(this.activatedFilters);
 		});
 	}

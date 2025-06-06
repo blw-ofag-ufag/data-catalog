@@ -2,18 +2,32 @@
 	<thead>
 	<tr>
 		<th scope="col">Title</th>
-		<th scope="col">Description</th>
+		<th scope="col">Issued</th>
+		<th scope="col">Owner</th>
+		<th scope="col">Keywords</th>
 	</tr>
 	</thead>
 	<tbody>
-	@for (dataset of datasets$ | async; track $index) {
-		<tr
-			(click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])"
-			style='cursor: pointer'
-		>
-			<td data-title="Title">{{ dataset["dct:title"]?.['en'] }}</td>
-			<td data-title="Description">{{ dataset["dct:description"]?.['en'] | slice:0:100 }}</td>
-		</tr>
-	}
+		@for (dataset of datasets$ | async; track $index) {
+			<tr
+				(click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])"
+				style='cursor: pointer'
+			>
+				<td data-title="Title">{{ dataset["dct:title"]?.['en'] }}</td>
+				<td data-title="Issued">{{ dataset["dct:issued"]}}</td>
+				<td data-title="Owner">...owner / stewart?</td>
+				<td data-title="Keywords">
+					<div class="chip-container">
+						@for (tag of dataset["dcat:keyword"]; track $index) {
+							<mat-chip (click)="onChipClick($event)" class="small-chip" style="display: inline-block; margin-right: 8px;">
+								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
+									{{ tag }}
+								</a>
+							</mat-chip>
+						}
+					</div>
+				</td>
+			</tr>
+		}
 	</tbody>
 </table>

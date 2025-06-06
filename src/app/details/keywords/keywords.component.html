@@ -1,0 +1,9 @@
+<div class="chip-container">
+	@for (tag of keywords; track $index) {
+		<mat-chip (click)="onChipClick($event)" class="small-chip" style="display: inline-block; margin-right: 8px;">
+			<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
+				{{ tag }}
+			</a>
+		</mat-chip>
+	}
+</div>

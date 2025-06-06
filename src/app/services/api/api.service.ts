@@ -50,11 +50,11 @@ export class DatasetService {
 		]).pipe(
 			map(([schemas, sort]) => {
 				switch (sort) {
-					case 'old':
+					case 'new':
 						return [...schemas].sort((a, b) => {
 							return a['dct:issued'] && b['dct:issued'] ? new Date(b['dct:issued']).getTime() - new Date(a['dct:issued']).getTime() : 0;
 						});
-					case 'new':
+					case 'old':
 						return [...schemas].sort((a, b) => {
 							return a['dct:issued'] && b['dct:issued'] ? new Date(a['dct:issued']).getTime() - new Date(b['dct:issued']).getTime() : 0;
 						});

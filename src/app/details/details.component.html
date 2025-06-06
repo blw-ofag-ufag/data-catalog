@@ -58,9 +58,13 @@
 									{{ "details.label." + meta.label | translate }}
 								</td>
 								<td>
-									@if (enumTypes.includes(meta.label)) {
+									@if (enumTypes.includes(meta.label) && meta.label !== "dcat:keyword") {
 										<enum [label]="meta.label" [data]="meta.data"></enum>
-									} @else {
+									}
+									@if (meta.label === "dcat:keyword") {
+										<keywords [keywords]="dataset['dcat:keyword'] || []"></keywords>
+									}
+									@if (!enumTypes.includes(meta.label) && meta.label !== "dcat:keyword") {
 										<metadata-item [label]="meta.label" [data]="meta.data"></metadata-item>
 									}
 									<!--									<a href="google.com">simple link</a>-->

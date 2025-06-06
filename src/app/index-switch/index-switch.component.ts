@@ -41,7 +41,6 @@ import { ActiveFilters } from "../models/ActiveFilters";
 		MatPrefix,
 		AsyncPipe,
 		MatBadge,
-		JsonPipe
 	],
 	styleUrl: './index-switch.component.scss'
 })

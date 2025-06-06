@@ -9,16 +9,21 @@ import {PublisherService} from './publisher.service';
 export class MultiDatasetService {
 	datasets$: Observable<DatasetSchema[]>;
 	selectedDataset$: Observable<DatasetSchema | null>;
+	keywords$: Observable<string[]>;
 	private readonly _datasetsSubject = new BehaviorSubject<DatasetSchema[]>([]);
+	private readonly _keywordsSubject = new BehaviorSubject<string[]>([]);
 	private readonly _selectedDatasetSubject = new BehaviorSubject<DatasetSchema | null>(null);
 	private readonly indexUrls: string[] = [];
+	private readonly keywordsUrls: string[] = [];
 	private readonly detailUrls: {[publisherId: string]: (datasetId: string) => string} = {};
 	private indexLoaded = false;
 
 	constructor(private readonly publisherService: PublisherService) {
 		this.datasets$ = this._datasetsSubject.asObservable();
 		this.selectedDataset$ = this._selectedDatasetSubject.asObservable();
+		this.keywords$ = this._keywordsSubject.asObservable();
 		this.indexUrls = publisherService.getPublishers().map(publisher => publisher.getProcessedUrl());
+		this.keywordsUrls = publisherService.getPublishers().map(publisher => publisher.getKeywordUrl());
 		this.detailUrls = publisherService.getPublishers().reduce((acc: {[publisherId: string]: (id: string) => string}, publisher) => {
 			acc[publisher.id] = publisher.getDetailUrl;
 			return acc;
@@ -62,7 +67,33 @@ export class MultiDatasetService {
 				console.error('Error fetching datasets from all sources:', error);
 				this._datasetsSubject.next([]);
 			});
+
+		const fetchKeywordsPromises = this.keywordsUrls.map(url =>
+			fetch(url)
+				.then(response => {
+					if (!response.ok) {
+						throw new Error(`Failed to fetch keywords from ${url}`);
+					}
+					return response.json();
+				})
+				.catch(error => {
+					console.error(`Error fetching keywords from ${url}:`, error);
+					return [];
+				})
+		);
+
+		Promise.all(fetchKeywordsPromises)
+			.then(results => {
+				const combinedKeywords: string[] = Array.from(new Set(results.flatMap(entry => entry["dcat:keyword"])));
+				this._keywordsSubject.next(combinedKeywords);
+				console.log(combinedKeywords);
+			})
+			.catch(error => {
+				console.error('Error fetching keywords from all sources:', error);
+				this._keywordsSubject.next([]);
+			});
 	}
+
 
 	loadDetail(publisher: string, klass: string, id: string) {
 		fetch(this.detailUrls[publisher](id))
