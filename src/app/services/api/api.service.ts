@@ -77,8 +77,16 @@ export class DatasetService {
 					for (const filter of Object.entries(filters)) {
 						const [category, choicesMap] = filter;
 						for (const choice of Object.keys(choicesMap)) {
-							if (schema[category] === choice) {
-								return true; // this means OR for filtering
+							if (category === 'dcat:keyword') {
+								if (schema['dcat:keyword']?.includes(choice)) {
+									return true; // this means OR for filtering
+								} else {
+									return false;
+								}
+							} else {
+								if (schema[category] === choice) {
+									return true; // this means OR for filtering
+								}
 							}
 						}
 					}
@@ -136,7 +144,7 @@ export class DatasetService {
 				acc[enumKey] = null;
 				return acc;
 			},
-			{} as Record<string, string|null>
+			{} as Record<string, string | null>
 		);
 
 		const mappedFilters = Object.entries(filters).reduce(

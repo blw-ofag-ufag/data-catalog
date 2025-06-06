@@ -1,17 +1,14 @@
-import { Component, Input } from "@angular/core";
-import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardImage, MatCardSubtitle, MatCardTitle } from "@angular/material/card";
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
-import {Router} from '@angular/router';
-import { Observable, startWith } from "rxjs";
-import { DatasetSchema } from "../models/schemas/dataset";
-import { AsyncPipe, DatePipe, JsonPipe, NgOptimizedImage } from "@angular/common";
-import { map } from "rxjs/operators";
-import { TranslateService } from "@ngx-translate/core";
-import { MatButton } from "@angular/material/button";
-import { ObButtonDirective } from "@oblique/oblique";
-import { MatChip, MatChipSet } from "@angular/material/chips";
-import { MatIcon } from "@angular/material/icon";
-import { OrgPipe } from "../org.pipe";
+import {Component, Input} from '@angular/core';
+import {MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
+import {Router, RouterLink} from '@angular/router';
+import {Observable, startWith} from 'rxjs';
+import {DatasetSchema} from '../models/schemas/dataset';
+import {AsyncPipe, DatePipe, NgOptimizedImage} from '@angular/common';
+import {map} from 'rxjs/operators';
+import {TranslateService} from '@ngx-translate/core';
+import {MatChip} from '@angular/material/chips';
+import {MatIcon} from '@angular/material/icon';
+import {OrgPipe} from '../org.pipe';
 
 @Component({
 	standalone: true,
@@ -30,14 +27,14 @@ import { OrgPipe } from "../org.pipe";
 		DatePipe,
 		MatChip,
 		MatIcon,
-		OrgPipe
+		OrgPipe,
+		RouterLink
 	]
 })
 export class IndexCardsComponent {
 	@Input() datasets$!: Observable<DatasetSchema[] | null>;
 	currentLang$: Observable<string>;
 	fallbackImageUrl = 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg';
-	fallbackThumbUrl = 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg';
 
 	constructor(
 		private readonly router: Router,
@@ -51,5 +48,28 @@ export class IndexCardsComponent {
 
 	async openDataset(publisher: string, dataset: string) {
 		await this.router.navigate(['details'], {queryParams: {publisher, dataset}, queryParamsHandling: 'replace'});
+	}
+
+	keywordFiltered(keyword: string) {
+		return {
+			'dcat:keyword': keyword
+		};
+	}
+
+	datasetFiltered() {
+		return {
+			class: 'dataset'
+		};
+	}
+
+	publisherFiltered(publisher: string) {
+		return {
+			'dct:publisher': publisher
+		};
+	}
+
+	onChipClick(event: MouseEvent): void {
+		event.preventDefault();
+		event.stopPropagation();
 	}
 }

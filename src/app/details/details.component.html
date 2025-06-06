@@ -1,4 +1,3 @@
-
 @if (dataset$ | async; as dataset) {
 	@if (currentLang$ | async; as lang) {
 		<h2>{{ dataset["dct:title"][lang] }}</h2>
@@ -6,8 +5,16 @@
 			<div class="ob-half">
 				<p>{{ dataset["dct:description"][lang] }}</p>
 				<div class="ob-inline-form">
-					<mat-chip> Data Set</mat-chip>
-					<mat-chip> {{ dataset["dct:publisher"] | org }}</mat-chip>
+					<mat-chip>
+						<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
+							Data Set
+						</a>
+					</mat-chip>
+					<mat-chip>
+						<a [routerLink]="['/index']" [queryParams]="publisherFiltered(dataset['dct:publisher'])">
+							{{ dataset['dct:publisher'] | org }}
+						</a>
+					</mat-chip>
 				</div>
 			</div>
 			<div class="ob-half">
@@ -56,7 +63,7 @@
 									} @else {
 										<metadata-item [label]="meta.label" [data]="meta.data"></metadata-item>
 									}
-<!--									<a href="google.com">simple link</a>-->
+									<!--									<a href="google.com">simple link</a>-->
 								</td>
 							</tr>
 						}

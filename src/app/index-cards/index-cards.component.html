@@ -17,25 +17,26 @@
 
 				<!-- Chips overlay -->
 				<div style="position: absolute; top: 8px; left: 8px; z-index: 2;">
-					<mat-chip class="small-chip" style="margin-right: 8px;">
-<!--						{{dataset['class']?.[ (currentLang$ | async)! ]}}-->
-						Data Set
+					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px;">
+						<!--						{{dataset['class']?.[ (currentLang$ | async)! ]}}-->
+						<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
+							Data Set
+						</a>
 					</mat-chip>
-					<mat-chip class="small-chip" style="margin-right: 8px;">
-						{{dataset['dct:publisher'] | org}}
+					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px;">
+						<a [routerLink]="['/index']" [queryParams]="publisherFiltered(dataset['dct:publisher'])">
+							{{ dataset['dct:publisher'] | org }}
+						</a>
 					</mat-chip>
 				</div>
 			</div>
 			<mat-card-header>
 				<mat-card-title class="truncate-title">
-<!--					<span class="trucate-title">-->
-						{{ dataset['dct:title']?.[ (currentLang$ | async)! ] }}
-<!--					</span>-->
-					<!--					{{ dataset['dct:title'][ currentLang$ | async] }}-->
+					{{ dataset['dct:title']?.[(currentLang$ | async)!] }}
 				</mat-card-title>
 				<mat-card-subtitle>
 					<span class="truncate-text">
-						{{ dataset['dct:description']?.[ (currentLang$ | async)! ]}}
+						{{ dataset['dct:description']?.[(currentLang$ | async)!] }}
 					</span>
 				</mat-card-subtitle>
 			</mat-card-header>
@@ -43,14 +44,15 @@
 				Ausgabedatum: {{ dataset['dct:issued'] | date:'d. MMMM y':'UTC': (currentLang$ | async)! }}
 				<br><br>
 				<div class="chip-container">
-						@for (tag of dataset["dcat:keyword"]; track $index) {
-							<mat-chip class="small-chip" style="display: inline-block; margin-right: 8px;">{{ tag }}</mat-chip>
-						}
+					@for (tag of dataset["dcat:keyword"]; track $index) {
+						<mat-chip (click)="onChipClick($event)" class="small-chip" style="display: inline-block; margin-right: 8px;">
+							<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
+								{{ tag }}
+							</a>
+						</mat-chip>
+					}
 				</div>
 			</mat-card-content>
-			<!--			<mat-card-actions>-->
-			<!--				<button mat-button obButton="primary" type="button" (click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])">Open</button>-->
-			<!--			</mat-card-actions>-->
 		</mat-card>
 	}
 </div>

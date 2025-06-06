@@ -65,8 +65,7 @@ export class MultiDatasetService {
 	}
 
 	loadDetail(publisher: string, klass: string, id: string) {
-
-		fetch((this.detailUrls[publisher])(id))
+		fetch(this.detailUrls[publisher](id))
 			.then(response => {
 				response
 					.json()

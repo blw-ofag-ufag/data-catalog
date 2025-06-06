@@ -428,5 +428,6 @@ export const enumTypes = [
 	'bv:classification',
 	'bv:personalData',
 	'bv:typeOfData',
+	'dcat:keyword'
 	// 'dcat:theme'
 ];

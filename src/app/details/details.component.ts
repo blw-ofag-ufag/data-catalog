@@ -1,15 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import { DatasetSchema, enumTypes } from "../models/schemas/dataset";
+import {ActivatedRoute, RouterLink} from '@angular/router';
+import {DatasetSchema, enumTypes} from '../models/schemas/dataset';
 import {DatasetService} from '../services/api/api.service';
-import {BehaviorSubject, Observable, startWith} from 'rxjs';
-import {AsyncPipe, DatePipe, JsonPipe} from '@angular/common';
-import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {Observable, startWith} from 'rxjs';
+import {AsyncPipe} from '@angular/common';
+import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import {map} from 'rxjs/operators';
 import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
-import {StatusPipe} from '../status.pipe';
-import { EnumComponent, MetadataItemComponent } from "./metadata/metadata-item.component";
+import {EnumComponent, MetadataItemComponent} from './metadata/metadata-item.component';
 import {NormalizedMetadataElement, filterAndNormalizeMetadata} from './details.helpers';
 import {
 	MatAccordion,
@@ -35,10 +34,10 @@ import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.compon
 		MatExpansionPanelDescription,
 		MatExpansionModule,
 		MatAccordion,
-		TranslatePipe,
-		JsonPipe,
 		AdmindirLookupComponent,
-		EnumComponent
+		EnumComponent,
+		RouterLink,
+		TranslatePipe
 	],
 	styleUrl: './details.component.scss'
 })
@@ -75,6 +74,18 @@ export class DetailsComponent implements OnInit {
 				})
 			);
 		});
+	}
+
+	datasetFiltered() {
+		return {
+			class: 'dataset'
+		};
+	}
+
+	publisherFiltered(publisher: string) {
+		return {
+			'dct:publisher': publisher
+		};
 	}
 
 	protected readonly enumTypes = enumTypes;

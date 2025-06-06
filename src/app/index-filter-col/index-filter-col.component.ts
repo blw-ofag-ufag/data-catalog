@@ -10,7 +10,7 @@ import {
 	Publishers,
 	Statuses
 } from '../models/schemas/dataset';
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
@@ -95,10 +95,11 @@ export class IndexFilterColComponent implements OnInit {
 			)
 			.subscribe();
 
-		this.route.queryParams.subscribe(params => {
+		this.route.queryParams.subscribe(async (params) => {
 			this.activatedFilters$.next(
 				createActiveFiltersFromParams(params)
-			)
+			);
+			await this.filterService.setFilters(this.activatedFilters);
 		});
 	}
 
