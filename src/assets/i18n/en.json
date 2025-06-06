@@ -1,7 +1,7 @@
 {
   "msg": {
     "adminDirError": "Could not look up on AdminDir",
-    "adminDirLookup": "Looking up on AdminDir..."
+    "adminDirLookup": "AdminDir ID"
   },
   "details": {
     "heading": {

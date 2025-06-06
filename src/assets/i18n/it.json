@@ -1,4 +1,7 @@
 {
+  "msg": {
+    "adminDirLookup": "AdminDir ID"
+  },
   "details": {
     "heading": {
       "affiliated": "Persone responsabili",

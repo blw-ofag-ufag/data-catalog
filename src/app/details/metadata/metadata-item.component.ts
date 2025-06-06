@@ -8,7 +8,7 @@ import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import {MatChip, MatChipSet} from '@angular/material/chips';
-import {ContactPoint, enumTypes} from '../../models/schemas/dataset';
+import {ContactPoint, enumTypes, TemporalCoverage} from '../../models/schemas/dataset';
 import {ActivatedRoute, Router, RouterLink, RouterModule} from '@angular/router';
 
 // Lokalisierung registrieren
@@ -92,6 +92,28 @@ export class DateMetadataItemComponent {
 }
 
 @Component({
+	templateUrl: './temporal-metadata-item.component.html',
+	styleUrl: '../details.component.scss',
+	imports: [DatePipe],
+	standalone: true
+})
+export class TemporalComponent {
+	@Input() locale: string;
+	data: TemporalCoverage = {'dcat:start_date': '', 'dcat:end_date': ''};
+
+	constructor(
+		private readonly injector: Injector,
+		private readonly translate: TranslateService
+	) {
+		this.data = this.injector.get('data', this.data);
+		this.locale = this.translate.currentLang;
+		this.translate.onLangChange.subscribe(evt => {
+			this.locale = evt.lang;
+		});
+	}
+}
+
+@Component({
 	template: '<a href="{{data}}" target="_blank">{{data}}</a>',
 	standalone: true
 })
@@ -119,7 +141,7 @@ export class LinkListComponent {
 @Component({
 	templateUrl: './contact-metadata-item.component.html',
 	standalone: true,
-	imports: [JsonPipe],
+	imports: [JsonPipe]
 })
 export class ContactPointComponent {
 	data: ContactPoint = {'schema:name': '', 'schema:email': ''};
@@ -131,7 +153,7 @@ export class ContactPointComponent {
 
 @Component({
 	template: '<p>{{ data }}</p>',
-	standalone: true,
+	standalone: true
 })
 export class NumberComponent {
 	data: ContactPoint = {'schema:name': '', 'schema:email': ''};
@@ -191,12 +213,16 @@ export class MetadataItemComponent {
 		if (typeof data === 'number') {
 			return NumberComponent;
 		}
+		if (label === 'dct:temporal') {
+			return TemporalComponent;
+		}
 		if (enumTypes.includes(label)) {
 			return EnumComponent;
 		} else {
 			switch (label) {
 				case 'dct:issued':
 				case 'dct:modified':
+				case 'bv:abrogation':
 					return DateMetadataItemComponent;
 				case 'dcat:theme':
 					return FreeListItemComponent;
