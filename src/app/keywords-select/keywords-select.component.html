@@ -1,0 +1,28 @@
+<mat-form-field>
+	<mat-label>Keywords</mat-label>
+	<mat-chip-grid #chipGrid aria-label="Keyword selection">
+		<mat-chip-row *ngFor="let keyword of value" (removed)="remove(keyword)">
+			{{ keyword }}
+			<button matChipRemove [attr.aria-label]="'Remove ' + keyword">
+				<mat-icon>cancel</mat-icon>
+			</button>
+		</mat-chip-row>
+
+		<input
+			matInput
+			#keywordInput
+			placeholder="New Keyword..."
+			[formControl]="keywordControl"
+			[matChipInputFor]="chipGrid"
+			[matAutocomplete]="auto"
+			[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+			(matChipInputTokenEnd)="add($event)"
+		/>
+
+		<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+			<mat-option *ngFor="let keyword of filteredKeywords$ | async" [value]="keyword">
+				{{ keyword }}
+			</mat-option>
+		</mat-autocomplete>
+	</mat-chip-grid>
+</mat-form-field>

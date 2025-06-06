@@ -13,7 +13,8 @@ export function filterAndNormalizeMetadata(dataset: DatasetSchema): NormalizedMe
 	const normalizedMetadata = Object.entries(metadata).map(([key, value]) => ({
 		label: key,
 		data: value
-	})) as NormalizedMetadataElement[];
+	}))
+		.filter(x => x.data != null) as NormalizedMetadataElement[];
 	return normalizedMetadata;
 }
 
