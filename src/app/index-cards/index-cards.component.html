@@ -17,8 +17,13 @@
 
 				<!-- Chips overlay -->
 				<div style="position: absolute; top: 8px; left: 8px; z-index: 2;">
-					<mat-chip class="small-chip" style="margin-right: 8px;">Dataset</mat-chip>
-					<mat-chip class="small-chip" style="margin-right: 8px;">BLW</mat-chip>
+					<mat-chip class="small-chip" style="margin-right: 8px;">
+<!--						{{dataset['class']?.[ (currentLang$ | async)! ]}}-->
+						Data Set
+					</mat-chip>
+					<mat-chip class="small-chip" style="margin-right: 8px;">
+						{{dataset['dct:publisher'] | org}}
+					</mat-chip>
 				</div>
 			</div>
 			<mat-card-header>

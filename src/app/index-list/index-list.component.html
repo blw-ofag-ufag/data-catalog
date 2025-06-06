@@ -7,7 +7,10 @@
 	</thead>
 	<tbody>
 	@for (dataset of datasets$ | async; track $index) {
-		<tr>
+		<tr
+			(click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])"
+			style='cursor: pointer'
+		>
 			<td data-title="Title">{{ dataset["dct:title"]?.['en'] }}</td>
 			<td data-title="Description">{{ dataset["dct:description"]?.['en'] | slice:0:100 }}</td>
 		</tr>

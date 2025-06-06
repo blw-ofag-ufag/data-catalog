@@ -10,6 +10,8 @@ import { TranslateService } from "@ngx-translate/core";
 import { MatButton } from "@angular/material/button";
 import { ObButtonDirective } from "@oblique/oblique";
 import { MatChip, MatChipSet } from "@angular/material/chips";
+import { MatIcon } from "@angular/material/icon";
+import { OrgPipe } from "../org.pipe";
 
 @Component({
 	standalone: true,
@@ -20,21 +22,15 @@ import { MatChip, MatChipSet } from "@angular/material/chips";
 		MatCard,
 		MatCardHeader,
 		MatCardContent,
-		MatCardActions,
 		MatCardTitle,
 		MatCardSubtitle,
-		MatLabel,
-		MatInput,
-		MatFormField,
 		AsyncPipe,
-		JsonPipe,
-		MatButton,
-		ObButtonDirective,
 		MatCardImage,
 		NgOptimizedImage,
 		DatePipe,
-		MatChipSet,
-		MatChip
+		MatChip,
+		MatIcon,
+		OrgPipe
 	]
 })
 export class IndexCardsComponent {
