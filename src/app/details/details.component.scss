@@ -15,6 +15,17 @@ h3 {
 	padding-top: 40px;
 }
 
-a {
-	color: white;
+mat-chip {
+	background-color: white !important;
+	color: black !important;
+	border: 1px solid #d1d5db !important;
+}
+
+mat-chip a {
+	color: black;
+	text-decoration: none;
+}
+
+mat-chip a:hover {
+	text-decoration: underline;
 }

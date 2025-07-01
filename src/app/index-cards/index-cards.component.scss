@@ -26,6 +26,9 @@ mat-card-title * {
 	font-size: 15px;        /* smaller font */
 	line-height: 30px;      /* vertically center text */
 	padding: 0 8px;         /* reduce horizontal padding */
+	background-color: white !important; /* white background */
+	color: black !important; /* black text */
+	border: 1px solid #d1d5db !important; /* light grey border */
 }
 
 .chip-container {
@@ -37,6 +40,11 @@ mat-card-title * {
 	scrollbar-width: thin;  /* Firefox scrollbar styling */
 }
 
-a {
-	color: white;
+.small-chip a {
+	color: black;
+	text-decoration: none;
+}
+
+.small-chip a:hover {
+	text-decoration: underline;
 }
