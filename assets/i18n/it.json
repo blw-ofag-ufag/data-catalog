@@ -1,4 +1,35 @@
 {
+  "app": {
+    "title": "Catalogo dati DigiAgriFoodCH",
+    "description": "Scopri e accedi ai dataset agricoli e alimentari svizzeri delle istituzioni federali",
+    "navigation": {
+      "index": "Indice"
+    }
+  },
+  "ui": {
+    "dataProducts": "Prodotti dati",
+    "dataSet": "Set di dati",
+    "filter": "Filtro",
+    "keywords": "Parole chiave",
+    "search": "Cerca",
+    "defaultSelect": "Selezione predefinita",
+    "newKeyword": "Nuova parola chiave...",
+    "remove": "Rimuovi",
+    "reset": "ripristina",
+    "cards": "schede",
+    "list": "elenco",
+    "addDataset": "Aggiungi set di dati",
+    "hideFilters": "Nascondi filtri",
+    "showFilters": "Mostra filtri",
+    "sortBy": {
+      "relevance": "Ordina per rilevanza",
+      "title": "Ordina per titolo",
+      "oldest": "Prima i più vecchi",
+      "newest": "Prima i più nuovi",
+      "owner": "Per proprietario dati"
+    },
+    "issueDate": "Data di emissione"
+  },
   "msg": {
     "adminDirLookup": "AdminDir ID"
   },
