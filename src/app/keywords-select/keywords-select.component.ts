@@ -8,6 +8,7 @@ import { CommonModule } from "@angular/common";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInput, MatInputModule } from "@angular/material/input";
+import { TranslatePipe } from "@ngx-translate/core";
 
 @Component({
 	selector: 'keywords-select',
@@ -22,7 +23,8 @@ import { MatInput, MatInputModule } from "@angular/material/input";
 		MatAutocompleteModule,
 		MatFormFieldModule,
 		MatIconModule,
-		MatInputModule
+		MatInputModule,
+		TranslatePipe
 	]
 })
 export class KeywordsSelectComponent implements OnInit {

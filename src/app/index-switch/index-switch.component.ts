@@ -18,6 +18,7 @@ import { DatasetService } from "../services/api/api.service";
 import { LengthPipe } from "../length.pipe";
 import { MatBadge } from "@angular/material/badge";
 import { ActiveFilters } from "../models/ActiveFilters";
+import { TranslatePipe } from "@ngx-translate/core";
 
 @Component({
 	selector: 'index-switch',
@@ -41,6 +42,7 @@ import { ActiveFilters } from "../models/ActiveFilters";
 		MatPrefix,
 		AsyncPipe,
 		MatBadge,
+		TranslatePipe
 	],
 	styleUrl: './index-switch.component.scss'
 })

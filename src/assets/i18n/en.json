@@ -1,4 +1,35 @@
 {
+  "app": {
+    "title": "DigiAgriFoodCH Data Catalog",
+    "description": "Discover and access Swiss agricultural and food-related datasets from federal institutions",
+    "navigation": {
+      "index": "Index"
+    }
+  },
+  "ui": {
+    "dataProducts": "Data Products",
+    "dataSet": "Data Set",
+    "filter": "Filter",
+    "keywords": "Keywords",
+    "search": "Search",
+    "defaultSelect": "Default Select",
+    "newKeyword": "New Keyword...",
+    "remove": "Remove",
+    "reset": "reset",
+    "cards": "cards",
+    "list": "list",
+    "addDataset": "Add Dataset",
+    "hideFilters": "Hide Filters",
+    "showFilters": "Show Filters",
+    "sortBy": {
+      "relevance": "Sort by Relevance",
+      "title": "Sort by Title",
+      "oldest": "Oldest First",
+      "newest": "Newest First",
+      "owner": "By Data Owner"
+    },
+    "issueDate": "Issue Date"
+  },
   "msg": {
     "adminDirError": "Could not look up on AdminDir",
     "adminDirLookup": "AdminDir ID"

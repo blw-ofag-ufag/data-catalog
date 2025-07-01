@@ -20,7 +20,7 @@
 					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px;">
 						<!--						{{dataset['class']?.[ (currentLang$ | async)! ]}}-->
 						<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
-							Data Set
+							{{ 'ui.dataSet' | translate }}
 						</a>
 					</mat-chip>
 					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px;">
@@ -41,7 +41,7 @@
 				</mat-card-subtitle>
 			</mat-card-header>
 			<mat-card-content>
-				Ausgabedatum: {{ dataset['dct:issued'] | date:'d. MMMM y':'UTC': (currentLang$ | async)! }}
+				{{ 'ui.issueDate' | translate }}: {{ dataset['dct:issued'] | date:'d. MMMM y':'UTC': (currentLang$ | async)! }}
 				<br><br>
 				<div class="chip-container">
 					@for (tag of dataset["dcat:keyword"]; track $index) {

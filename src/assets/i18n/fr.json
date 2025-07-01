@@ -1,4 +1,35 @@
 {
+  "app": {
+    "title": "Catalogue de données DigiAgriFoodCH",
+    "description": "Découvrez et accédez aux jeux de données agricoles et alimentaires suisses des institutions fédérales",
+    "navigation": {
+      "index": "Index"
+    }
+  },
+  "ui": {
+    "dataProducts": "Produits de données",
+    "dataSet": "Jeu de données",
+    "filter": "Filtre",
+    "keywords": "Mots-clés",
+    "search": "Rechercher",
+    "defaultSelect": "Sélection par défaut",
+    "newKeyword": "Nouveau mot-clé...",
+    "remove": "Supprimer",
+    "reset": "réinitialiser",
+    "cards": "cartes",
+    "list": "liste",
+    "addDataset": "Ajouter un jeu de données",
+    "hideFilters": "Masquer les filtres",
+    "showFilters": "Afficher les filtres",
+    "sortBy": {
+      "relevance": "Trier par pertinence",
+      "title": "Trier par titre",
+      "oldest": "Plus ancien en premier",
+      "newest": "Plus récent en premier",
+      "owner": "Par propriétaire des données"
+    },
+    "issueDate": "Date de publication"
+  },
   "msg": {
     "adminDirLookup": "AdminDir ID"
   },

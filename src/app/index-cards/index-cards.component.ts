@@ -5,7 +5,7 @@ import {Observable, startWith} from 'rxjs';
 import {DatasetSchema} from '../models/schemas/dataset';
 import {AsyncPipe, DatePipe, NgOptimizedImage} from '@angular/common';
 import {map} from 'rxjs/operators';
-import {TranslateService} from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import {MatChip} from '@angular/material/chips';
 import {MatIcon} from '@angular/material/icon';
 import {OrgPipe} from '../org.pipe';
@@ -28,7 +28,8 @@ import {OrgPipe} from '../org.pipe';
 		MatChip,
 		MatIcon,
 		OrgPipe,
-		RouterLink
+		RouterLink,
+		TranslatePipe
 	]
 })
 export class IndexCardsComponent {

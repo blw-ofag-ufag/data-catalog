@@ -1,4 +1,35 @@
 {
+  "app": {
+    "title": "DigiAgriFoodCH Datenkatalog",
+    "description": "Entdecken und nutzen Sie Schweizer landwirtschaftliche und ernährungsbezogene Datensätze von Bundesinstitutionen",
+    "navigation": {
+      "index": "Index"
+    }
+  },
+  "ui": {
+    "dataProducts": "Datenprodukte",
+    "dataSet": "Datensatz",
+    "filter": "Filter",
+    "keywords": "Schlüsselwörter",
+    "search": "Suchen",
+    "defaultSelect": "Standard Auswahl",
+    "newKeyword": "Neues Schlüsselwort...",
+    "remove": "Entfernen",
+    "reset": "zurücksetzen",
+    "cards": "Karten",
+    "list": "Liste",
+    "addDataset": "Datensatz hinzufügen",
+    "hideFilters": "Filter verbergen",
+    "showFilters": "Filter anzeigen",
+    "sortBy": {
+      "relevance": "Nach Relevanz sortieren",
+      "title": "Nach Titel sortieren",
+      "oldest": "Älteste zuerst",
+      "newest": "Neueste zuerst",
+      "owner": "Nach Dateninhaber"
+    },
+    "issueDate": "Ausgabedatum"
+  },
   "msg": {
     "adminDirLookup": "AdminDir ID"
   },

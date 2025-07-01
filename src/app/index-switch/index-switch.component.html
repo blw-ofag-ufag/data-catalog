@@ -1,11 +1,11 @@
 <div class="full-width">
 	<div class="index-head">
 		<div>
-			<h3>Data Products</h3>
+			<h3>{{ 'ui.dataProducts' | translate }}</h3>
 		</div>
 		<div class="pull-right">
 			<a href="/modify" mat-button obButton="primary" type="button" matTooltip="add">
-				Datensatz hinzufügen
+				{{ 'ui.addDataset' | translate }}
 				<mat-icon svgIcon="plus" />
 			</a>
 		</div>
@@ -17,17 +17,17 @@
 		<div style="display: flex; gap: 8px;">
 			<mat-form-field appearance="outline" class="search-bar">
 				<mat-icon matPrefix svgIcon="search"/>
-				<input matInput placeholder="Search" (input)="search($event)"/>
+				<input matInput [placeholder]="'ui.search' | translate" (input)="search($event)"/>
 			</mat-form-field>
 
 			<mat-form-field>
-				<mat-label>Default Select</mat-label>
+				<mat-label>{{ 'ui.defaultSelect' | translate }}</mat-label>
 				<mat-select>
-					<mat-option [value]="0" (click)="setSorting('relevance')">Nach Relevanz sortieren</mat-option>
-					<mat-option [value]="1" (click)="setSorting('title')">Nach Titel sortieren</mat-option>
-					<mat-option [value]="2" (click)="setSorting('old')">Älteste zuerst</mat-option>
-					<mat-option [value]="3" (click)="setSorting('new')">Neueste zuerst</mat-option>
-					<mat-option [value]="4" (click)="setSorting('owner')">Nach Dateninhaber</mat-option>
+					<mat-option [value]="0" (click)="setSorting('relevance')">{{ 'ui.sortBy.relevance' | translate }}</mat-option>
+					<mat-option [value]="1" (click)="setSorting('title')">{{ 'ui.sortBy.title' | translate }}</mat-option>
+					<mat-option [value]="2" (click)="setSorting('old')">{{ 'ui.sortBy.oldest' | translate }}</mat-option>
+					<mat-option [value]="3" (click)="setSorting('new')">{{ 'ui.sortBy.newest' | translate }}</mat-option>
+					<mat-option [value]="4" (click)="setSorting('owner')">{{ 'ui.sortBy.owner' | translate }}</mat-option>
 				</mat-select>
 			</mat-form-field>
 
@@ -41,17 +41,17 @@
 			>
 				<mat-icon svgIcon="filter" />
 				@if (showFilters) {
-					Filter verbergen
+					{{ 'ui.hideFilters' | translate }}
 				} @else {
-					Filter anzeigen
+					{{ 'ui.showFilters' | translate }}
 				}
 			</button>
 		</div>
 		<div class="pull-right">
-			<button (click)="switchTo('tile')" mat-icon-button obButton="tertiary" type="button" matTooltip="cards">
+			<button (click)="switchTo('tile')" mat-icon-button obButton="tertiary" type="button" [matTooltip]="'ui.cards' | translate">
 				<mat-icon svgIcon="cards" />
 			</button>
-			<button (click)="switchTo('table')" mat-icon-button obButton="tertiary" type="button" matTooltip="list">
+			<button (click)="switchTo('table')" mat-icon-button obButton="tertiary" type="button" [matTooltip]="'ui.list' | translate">
 				<mat-icon svgIcon="list" />
 			</button>
 		</div>

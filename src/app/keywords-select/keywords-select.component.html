@@ -1,9 +1,9 @@
 <mat-form-field>
-	<mat-label>Keywords</mat-label>
+	<mat-label>{{ 'ui.keywords' | translate }}</mat-label>
 	<mat-chip-grid #chipGrid aria-label="Keyword selection">
 		<mat-chip-row *ngFor="let keyword of value" (removed)="remove(keyword)">
 			{{ keyword }}
-			<button matChipRemove [attr.aria-label]="'Remove ' + keyword">
+			<button matChipRemove [attr.aria-label]="('ui.remove' | translate) + ' ' + keyword">
 				<mat-icon>cancel</mat-icon>
 			</button>
 		</mat-chip-row>
@@ -11,7 +11,7 @@
 		<input
 			matInput
 			#keywordInput
-			placeholder="New Keyword..."
+			[placeholder]="'ui.newKeyword' | translate"
 			[formControl]="keywordControl"
 			[matChipInputFor]="chipGrid"
 			[matAutocomplete]="auto"
