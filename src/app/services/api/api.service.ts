@@ -9,6 +9,7 @@ import Fuse from 'fuse.js';
 import {MultiDatasetService} from './multi-dataset-service.service';
 import {ActiveFilters} from '../../models/ActiveFilters';
 import {enumTypes} from '../../models/schemas/dataset';
+import {TranslateService} from '@ngx-translate/core';
 
 const fuseOptions = {
 	threshold: 0.4,
@@ -42,36 +43,73 @@ export class DatasetService {
 		private readonly http: HttpClient,
 		private readonly activatedRoute: ActivatedRoute,
 		private readonly multiDatasetService: MultiDatasetService,
-		private readonly router: Router
+		private readonly router: Router,
+		private readonly translate: TranslateService
 	) {
 		const sortedSchemas$ = combineLatest([
 			this.multiDatasetService.datasets$.pipe(filter((schemas): schemas is DatasetSchema[] => schemas !== null)),
 			this.sort$
 		]).pipe(
 			map(([schemas, sort]) => {
+				const currentLang = this.translate.currentLang || 'en';
+				
 				switch (sort) {
 					case 'new':
+						// Newest first - handle null dates properly
 						return [...schemas].sort((a, b) => {
-							return a['dct:issued'] && b['dct:issued'] ? new Date(b['dct:issued']).getTime() - new Date(a['dct:issued']).getTime() : 0;
+							const dateA = a['dct:issued'] ? new Date(a['dct:issued']).getTime() : 0;
+							const dateB = b['dct:issued'] ? new Date(b['dct:issued']).getTime() : 0;
+							return dateB - dateA; // Newest first
 						});
+						
 					case 'old':
+						// Oldest first - handle null dates properly
 						return [...schemas].sort((a, b) => {
-							return a['dct:issued'] && b['dct:issued'] ? new Date(a['dct:issued']).getTime() - new Date(b['dct:issued']).getTime() : 0;
+							const dateA = a['dct:issued'] ? new Date(a['dct:issued']).getTime() : Number.MAX_SAFE_INTEGER;
+							const dateB = b['dct:issued'] ? new Date(b['dct:issued']).getTime() : Number.MAX_SAFE_INTEGER;
+							return dateA - dateB; // Oldest first
 						});
+						
 					case 'owner':
-					default: //title is default
+						// Sort by data owner/steward/contact
 						return [...schemas].sort((a, b) => {
-							const titleA = (a['dct:title']?.en || '').toLowerCase();
-							const titleB = (b['dct:title']?.en || '').toLowerCase();
-							return titleA && titleB ? titleA.localeCompare(titleB) : titleA ? -1 : 1;
+							const ownerA = this.getDatasetOwner(a).toLowerCase();
+							const ownerB = this.getDatasetOwner(b).toLowerCase();
+							return ownerA.localeCompare(ownerB);
+						});
+						
+					case 'relevance':
+						// For relevance without search, use a quality score or default to title
+						return [...schemas].sort((a, b) => {
+							// Use quality score if available, otherwise fall back to title
+							const qualityA = (a as any).quality || 0;
+							const qualityB = (b as any).quality || 0;
+							if (qualityA !== qualityB) {
+								return qualityB - qualityA; // Higher quality first
+							}
+							// Fall back to title sorting
+							const titleA = this.getLocalizedTitle(a, currentLang).toLowerCase();
+							const titleB = this.getLocalizedTitle(b, currentLang).toLowerCase();
+							return titleA.localeCompare(titleB);
+						});
+						
+					case 'title':
+					default:
+						// Sort by title in current language
+						return [...schemas].sort((a, b) => {
+							const titleA = this.getLocalizedTitle(a, currentLang).toLowerCase();
+							const titleB = this.getLocalizedTitle(b, currentLang).toLowerCase();
+							return titleA.localeCompare(titleB);
 						});
 				}
 			})
 		);
 
-		combineLatest([sortedSchemas$, this.searchTermSubject, this.filters$, this.pageSubject]).subscribe(([sortedSchemas, searchTerm, filters, page]) => {
+		combineLatest([sortedSchemas$, this.searchTermSubject, this.filters$, this.pageSubject, this.sort$]).subscribe(([sortedSchemas, searchTerm, filters, page, currentSort]) => {
 			let unfiltered = sortedSchemas;
 			let filtered = unfiltered;
+			
+			// Apply filters first
 			if (Object.keys(filters).length > 0) {
 				filtered = unfiltered.filter(schema => {
 					// Each category must match (AND between categories)
@@ -100,10 +138,22 @@ export class DatasetService {
 					return true;
 				});
 			}
+			
+			// Apply search with respect to current sort order
 			if (searchTerm) {
-				const fuse = new Fuse(sortedSchemas, fuseOptions);
-				filtered = fuse.search(searchTerm).map(result => result.item);
+				const fuse = new Fuse(filtered, fuseOptions);
+				const searchResults = fuse.search(searchTerm);
+				
+				if (currentSort === 'relevance') {
+					// For relevance sort with search, use Fuse.js relevance scoring (overrides pre-sorting)
+					filtered = searchResults.map(result => result.item);
+				} else {
+					// For other sorts, maintain the current sort order but filter by search results
+					const searchResultItems = new Set(searchResults.map(result => result.item));
+					filtered = filtered.filter(item => searchResultItems.has(item));
+				}
 			}
+			
 			this.filteredLength$.next(filtered.length);
 
 			const paginated = filtered.slice(page.pageIndex * page.pageSize, (page.pageIndex + 1) * page.pageSize);
@@ -167,5 +217,48 @@ export class DatasetService {
 		);
 
 		await this.router.navigate([], {queryParams: mappedFilters, queryParamsHandling: 'merge'});
+	}
+
+	/**
+	 * Get localized title for a dataset in the specified language, with fallbacks
+	 */
+	private getLocalizedTitle(dataset: DatasetSchema, lang: string): string {
+		if (dataset['dct:title'] && typeof dataset['dct:title'] === 'object') {
+			const title = dataset['dct:title'] as any;
+			return title[lang] || title['en'] || title['de'] || title['fr'] || title['it'] || '';
+		}
+		return '';
+	}
+
+	/**
+	 * Get the dataset owner/steward/contact for sorting purposes
+	 */
+	private getDatasetOwner(dataset: DatasetSchema): string {
+		// Try prov:qualifiedAttribution first (new structure)
+		if (dataset['prov:qualifiedAttribution'] && Array.isArray(dataset['prov:qualifiedAttribution'])) {
+			const stewards = dataset['prov:qualifiedAttribution']
+				.filter(person => person['dcat:hadRole'] === 'dataSteward')
+				.map(person => person['schema:name'] || person['prov:agent'] || '');
+			
+			if (stewards.length > 0) {
+				return stewards[0]; // Use first steward for sorting
+			}
+		}
+		
+		// Fallback to businessDataOwner
+		if ((dataset as any)['businessDataOwner']) {
+			return (dataset as any)['businessDataOwner'];
+		}
+		
+		// Fallback to contact point
+		if (dataset['dcat:contactPoint'] && typeof dataset['dcat:contactPoint'] === 'object') {
+			const contact = dataset['dcat:contactPoint'] as any;
+			if (contact['schema:name']) {
+				return contact['schema:name'];
+			}
+		}
+		
+		// Final fallback to publisher
+		return dataset['dct:publisher'] || '';
 	}
 }
