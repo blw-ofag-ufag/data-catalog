@@ -90,9 +90,8 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 			map((keyword: string | null) => (keyword ? this.filterKeywords(keyword) : this.allKeywords.slice()))
 		);
 
-		this.filteredKeywords$
-			.pipe(takeUntil(this.destroy$))
-			.subscribe(keywords => this.onCategoryChange('dcat:keyword', keywords));
+		// Remove the subscription to filteredKeywords$ as it causes issues
+		// The keywords are handled via add/remove/selected methods instead
 
 		this.keywordService.keywords$
 			.pipe(takeUntil(this.destroy$))
@@ -114,8 +113,15 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 		this.route.queryParams
 			.pipe(takeUntil(this.destroy$))
 			.subscribe(async params => {
-				this.activatedFilters$.next(createActiveFiltersFromParams(params));
-				await this.filterService.setFilters(this.activatedFilters);
+				const filters = createActiveFiltersFromParams(params);
+				// Extract keywords from filters
+				if (filters['dcat:keyword']) {
+					this.keywords = Object.keys(filters['dcat:keyword']).filter(key => filters['dcat:keyword'][key]);
+				} else {
+					this.keywords = [];
+				}
+				this.activatedFilters$.next(filters);
+				await this.filterService.setFilters(filters);
 			});
 	}
 
@@ -136,8 +142,9 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 		const value = (event.value || '').trim();
 
 		// Add our keyword
-		if (value) {
+		if (value && !this.keywords.includes(value)) {
 			this.keywords.push(value);
+			this.onCategoryChange('dcat:keyword', this.keywords);
 		}
 
 		// Clear the input value
@@ -151,11 +158,16 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 
 		if (index >= 0) {
 			this.keywords.splice(index, 1);
+			this.onCategoryChange('dcat:keyword', this.keywords);
 		}
 	}
 
 	selected(event: MatAutocompleteSelectedEvent): void {
-		this.keywords.push(event.option.viewValue);
+		const keyword = event.option.viewValue;
+		if (!this.keywords.includes(keyword)) {
+			this.keywords.push(keyword);
+			this.onCategoryChange('dcat:keyword', this.keywords);
+		}
 		this.keywordControl.setValue(null);
 	}
 
@@ -194,7 +206,9 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 	}
 
 	clearFilters() {
+		this.keywords = [];
+		this.activatedFilters = {};
 		this.activatedFilters$.next({});
-		this.filterService.setFilters(this.activatedFilters);
+		this.filterService.setFilters({});
 	}
 }

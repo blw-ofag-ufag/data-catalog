@@ -74,23 +74,30 @@ export class DatasetService {
 			let filtered = unfiltered;
 			if (Object.keys(filters).length > 0) {
 				filtered = unfiltered.filter(schema => {
-					for (const filter of Object.entries(filters)) {
-						const [category, choicesMap] = filter;
-						for (const choice of Object.keys(choicesMap)) {
-							if (category === 'dcat:keyword') {
-								if (schema['dcat:keyword']?.includes(choice)) {
-									return true; // this means OR for filtering
-								} else {
-									return false;
-								}
-							} else {
-								if (schema[category] === choice) {
-									return true; // this means OR for filtering
-								}
-							}
+					// Each category must match (AND between categories)
+					for (const [category, choicesMap] of Object.entries(filters)) {
+						const choices = Object.keys(choicesMap).filter(key => choicesMap[key]);
+						if (choices.length === 0) continue;
+						
+						// Within a category, at least one choice must match (OR within category)
+						let categoryMatches = false;
+						
+						if (category === 'dcat:keyword') {
+							// For keywords, check if ANY of the selected keywords match ANY of the dataset keywords
+							const datasetKeywords = schema['dcat:keyword'] || [];
+							categoryMatches = choices.some(choice => datasetKeywords.includes(choice));
+						} else {
+							// For other categories, check if the schema value matches any of the choices
+							categoryMatches = choices.includes(schema[category] as string);
+						}
+						
+						// If this category doesn't match, the dataset doesn't pass the filter
+						if (!categoryMatches) {
+							return false;
 						}
 					}
-					return false;
+					// All categories matched
+					return true;
 				});
 			}
 			if (searchTerm) {
