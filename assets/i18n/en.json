@@ -38,59 +38,51 @@
     "adminDirError": "Could not look up on AdminDir",
     "adminDirLookup": "AdminDir ID"
   },
-  "details": {
-    "heading": {
-      "affiliated": "Responsible persons",
-      "metadata": "Metadata",
-      "distributions": "Distributions",
-      "publications": "Publication in external catalogs"
-    },
-    "label": {
-      "image": "Image",
-      "identifier": "Identifier",
-      "title": "Title",
-      "description": "Description",
-      "dct:accessRights": "Access rights",
-      "publisher": "Publisher",
-      "dcat:contactPoint": "Contact Point",
-      "dct:issued": "Issue date",
-      "availability": "Availability",
-      "dcat:keyword": "Keywords",
-      "dct:accrualPeriodicity": "Accrual periodicity",
-      "dct:modified": "Modification date",
-      "version": "Version",
-      "qualitifedAttribution": "Responsible persons",
-      "adms:status": "Status",
-      "bv:classification": "Classification",
-      "bv:personalData": "Personal data",
-      "bv:typeOfData": "Type of data",
-      "bv:archivalValue": "Archival value",
-      "bv:externalCatalogs": "Publication in external catalogs",
-      "dcat:theme": "Theme",
-      "dcat:landingPage": "Landing page",
-      "spatial": "Spatial coverage",
-      "dct:temporal": "Temporal coverage",
-      "dcatap:applicableLegislation": "Legal Basis",
-      "wasGeneratedBy": "Business Process",
-      "retentionPeriod": "Retention period",
-      "catalog": "Catalog",
-      "wasDerivedFrom": "Derived from",
-      "geoIdentifier": "Identifier GeoIV",
-      "foaf:page": "Related resources",
-      "schema:comment": "Additional comments",
-      "abrogation": "Abrogation date",
-      "itSystem": "IT System",
-      "inSeries": "In dataset series",
-      "replaces": "Replaces",
-      "accessURL": "Access URL",
-      "format": "File format",
-      "downloadURL": "Download URL",
-      "conformsTo": "Conforms to",
-      "license": "License",
-      "accessService": "Access service"
-    }
+  "labels": {
+    "image": "Image",
+    "identifier": "Identifier",
+    "title": "Title",
+    "description": "Description",
+    "dct:accessRights": "Access rights",
+    "publisher": "Publisher",
+    "dcat:contactPoint": "Contact Point",
+    "dct:issued": "Issue date",
+    "availability": "Availability",
+    "dcat:keyword": "Keywords",
+    "dct:accrualPeriodicity": "Accrual periodicity",
+    "dct:modified": "Modification date",
+    "version": "Version",
+    "qualitifedAttribution": "Responsible persons",
+    "adms:status": "Status",
+    "bv:classification": "Classification",
+    "bv:personalData": "Personal data",
+    "bv:typeOfData": "Type of data",
+    "bv:archivalValue": "Archival value",
+    "bv:externalCatalogs": "Publication in external catalogs",
+    "dcat:theme": "Theme",
+    "dcat:landingPage": "Landing page",
+    "spatial": "Spatial coverage",
+    "dct:temporal": "Temporal coverage",
+    "dcatap:applicableLegislation": "Legal Basis",
+    "wasGeneratedBy": "Business Process",
+    "retentionPeriod": "Retention period",
+    "catalog": "Catalog",
+    "wasDerivedFrom": "Derived from",
+    "geoIdentifier": "Identifier GeoIV",
+    "foaf:page": "Related resources",
+    "schema:comment": "Additional comments",
+    "abrogation": "Abrogation date",
+    "itSystem": "IT System",
+    "inSeries": "In dataset series",
+    "replaces": "Replaces",
+    "accessURL": "Access URL",
+    "format": "File format",
+    "downloadURL": "Download URL",
+    "conformsTo": "Conforms to",
+    "license": "License",
+    "accessService": "Access service"
   },
-  "schema": {
+  "choices": {
     "dataset": {
       "status": {
         "workInProgress": "Work in progress",
@@ -203,6 +195,14 @@
         "cc-by/4.0": "CC BY 4.0",
         "cc-by-sa/4.0": "CC BY-SA 4.0"
       }
+    }
+  },
+  "details": {
+    "heading": {
+      "affiliated": "Responsible persons",
+      "metadata": "Metadata",
+      "distributions": "Distributions",
+      "publications": "Publication in external catalogs"
     }
   }
 }
