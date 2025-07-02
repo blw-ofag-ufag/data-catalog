@@ -9,6 +9,7 @@ import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import {MatChip} from '@angular/material/chips';
 import {MatIcon} from '@angular/material/icon';
 import {OrgPipe} from '../org.pipe';
+import {TranslateFieldPipe} from '../translate-field.pipe';
 
 @Component({
 	standalone: true,
@@ -29,7 +30,8 @@ import {OrgPipe} from '../org.pipe';
 		MatIcon,
 		OrgPipe,
 		RouterLink,
-		TranslatePipe
+		TranslatePipe,
+		TranslateFieldPipe
 	]
 })
 export class IndexCardsComponent {

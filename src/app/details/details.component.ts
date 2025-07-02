@@ -8,6 +8,7 @@ import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import {map, takeUntil} from 'rxjs/operators';
 import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
+import {TranslateFieldPipe} from '../translate-field.pipe';
 import {EnumComponent, MetadataItemComponent} from './metadata/metadata-item.component';
 import {NormalizedMetadataElement, filterAndNormalizeMetadata} from './details.helpers';
 import {
@@ -39,6 +40,7 @@ import { KeywordsComponent } from "./keywords/keywords.component";
 		EnumComponent,
 		RouterLink,
 		TranslatePipe,
+		TranslateFieldPipe,
 		KeywordsComponent
 	],
 	styleUrl: './details.component.scss'

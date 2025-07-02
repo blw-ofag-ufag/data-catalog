@@ -32,11 +32,11 @@
 			</div>
 			<mat-card-header>
 				<mat-card-title class="truncate-title">
-					{{ dataset['dct:title']?.[(currentLang$ | async)!] }}
+					{{ ["dct:title", dataset['dct:title']] | translateField }}
 				</mat-card-title>
 				<mat-card-subtitle>
 					<span class="truncate-text">
-						{{ dataset['dct:description']?.[(currentLang$ | async)!] }}
+						{{ ["dct:description", dataset['dct:description']] | translateField }}
 					</span>
 				</mat-card-subtitle>
 			</mat-card-header>

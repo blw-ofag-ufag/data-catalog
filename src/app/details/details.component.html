@@ -1,9 +1,9 @@
 @if (dataset$ | async; as dataset) {
 	@if (currentLang$ | async; as lang) {
-		<h2>{{ dataset["dct:title"][lang] }}</h2>
+		<h2>{{ ["dct:title", dataset["dct:title"]] | translateField }}</h2>
 		<div class="ob-grid">
 			<div class="ob-half">
-				<p>{{ dataset["dct:description"][lang] }}</p>
+				<p>{{ ["dct:description", dataset["dct:description"]] | translateField }}</p>
 				<div class="ob-inline-form">
 					<mat-chip>
 						<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
@@ -82,10 +82,10 @@
 						<mat-expansion-panel>
 							<mat-expansion-panel-header>
 								<mat-panel-title>
-									{{ dist["dct:title"]?.[ (currentLang$ | async) || 'en'] }}
+									{{ ["dct:title", dist["dct:title"]] | translateField }}
 								</mat-panel-title>
 								<mat-panel-description>
-									{{ dist["dct:description"]?.[ (currentLang$ | async) || 'en'] }}
+									{{ ["dct:description", dist["dct:description"]] | translateField }}
 								</mat-panel-description>
 							</mat-expansion-panel-header>
 
