@@ -12,3 +12,11 @@
 .small-chip a:hover {
 	text-decoration: underline;
 }
+
+// Override Oblique table header styles
+.ob-table thead th {
+	background-color: transparent !important;
+	text-transform: none !important;
+	font-weight: 600;
+	border-bottom: 2px solid #e5e7eb;
+}
