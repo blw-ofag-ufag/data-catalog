@@ -36,13 +36,31 @@ export class IndexListComponent {
 	}
 
 	getStewards(dataset: DatasetSchema): string[] {
-		if (!dataset['prov:qualifiedAttribution'] || !Array.isArray(dataset['prov:qualifiedAttribution'])) {
-			return [];
+		// First, try to get from prov:qualifiedAttribution (new structure)
+		if (dataset['prov:qualifiedAttribution'] && Array.isArray(dataset['prov:qualifiedAttribution'])) {
+			const stewards = dataset['prov:qualifiedAttribution']
+				.filter(person => person['dcat:hadRole'] === 'dataSteward') // Fixed: was 'dcat:role'
+				.map(person => person['schema:name'] || person['prov:agent'] || '')
+				.filter(name => name !== '');
+			
+			if (stewards.length > 0) {
+				return stewards;
+			}
 		}
 		
-		return dataset['prov:qualifiedAttribution']
-			.filter(person => person['dcat:role'] === 'dataSteward')
-			.map(person => person['schema:name'] || person['prov:agent'] || '')
-			.filter(name => name !== '');
+		// Fallback 1: Use businessDataOwner field (current data structure)
+		if ((dataset as any)['businessDataOwner']) {
+			return [(dataset as any)['businessDataOwner']];
+		}
+		
+		// Fallback 2: Use dcat:contactPoint if available
+		if (dataset['dcat:contactPoint'] && typeof dataset['dcat:contactPoint'] === 'object') {
+			const contact = dataset['dcat:contactPoint'] as any;
+			if (contact['schema:name']) {
+				return [contact['schema:name']];
+			}
+		}
+		
+		return [];
 	}
 }

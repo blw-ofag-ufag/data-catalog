@@ -21,6 +21,7 @@
     "title": "Titel",
     "issued": "Veröffentlicht",
     "steward": "Datenverwalter",
+    "stewardOwnerContact": "Verwalter / Eigentümer / Kontakt",
     "addDataset": "Datensatz hinzufügen",
     "hideFilters": "Filter verbergen",
     "showFilters": "Filter anzeigen",

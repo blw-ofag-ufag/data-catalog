@@ -21,6 +21,7 @@
     "title": "Titre",
     "issued": "Publié",
     "steward": "Gestionnaire de données",
+    "stewardOwnerContact": "Gestionnaire / Propriétaire / Contact",
     "addDataset": "Ajouter un jeu de données",
     "hideFilters": "Masquer les filtres",
     "showFilters": "Afficher les filtres",
