@@ -1,14 +1,17 @@
 .bleeding-landing-header {
-	//width: 100vw; /* Make the width span the full viewport width */
-	//margin-left: calc(-50vw + 50%); /* Adjust to ensure it aligns with the viewport edge */
-	background-color: #F0F4F7; /* Existing background color */
-	//margin-top: -16px;
-	//padding-top: 32px;
-	//padding-bottom: 32px;
+	width: 100vw;
+	margin-left: calc(-50vw + 50%);
+	margin-top: -16px;
+	background-color: #F0F4F7;
+	padding-top: 48px;
+	padding-bottom: 32px;
 }
 .landing-header-container {
-	margin: auto;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 16px;
 }
 .container {
-	width: 100%;
+	max-width: 1460px;
+	margin: 0 auto;
 }
