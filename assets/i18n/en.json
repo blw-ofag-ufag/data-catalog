@@ -21,6 +21,7 @@
     "title": "Title",
     "issued": "Issued",
     "steward": "Steward",
+    "stewardOwnerContact": "Steward / Owner / Contact",
     "addDataset": "Add Dataset",
     "hideFilters": "Hide Filters",
     "showFilters": "Show Filters",
