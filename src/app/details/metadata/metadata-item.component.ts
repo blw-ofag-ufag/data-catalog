@@ -1,8 +1,10 @@
-import {Component, Injector, input, Input, LOCALE_ID, OnInit} from '@angular/core';
+import {Component, Injector, input, Input, LOCALE_ID, OnInit, OnDestroy} from '@angular/core';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {TextOrTranslatable} from '../../models/types/TextOrTranslatable';
 import {TranslateFieldPipe} from '../../translate-field.pipe';
 import {DatePipe, JsonPipe, NgComponentOutlet} from '@angular/common';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
@@ -73,10 +75,11 @@ export class DefaultMetadataItemComponent {
 	imports: [DatePipe],
 	standalone: true
 })
-export class DateMetadataItemComponent {
+export class DateMetadataItemComponent implements OnDestroy {
 	data: string = '';
 	label: string = '';
 	@Input() locale: string;
+	private destroy$ = new Subject<void>();
 
 	constructor(
 		private readonly injector: Injector,
@@ -85,9 +88,16 @@ export class DateMetadataItemComponent {
 		this.label = this.injector.get('label', '');
 		this.data = this.injector.get('data', '');
 		this.locale = this.translate.currentLang;
-		this.translate.onLangChange.subscribe(evt => {
-			this.locale = evt.lang;
-		});
+		this.translate.onLangChange
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(evt => {
+				this.locale = evt.lang;
+			});
+	}
+
+	ngOnDestroy() {
+		this.destroy$.next();
+		this.destroy$.complete();
 	}
 }
 
@@ -97,9 +107,10 @@ export class DateMetadataItemComponent {
 	imports: [DatePipe],
 	standalone: true
 })
-export class TemporalComponent {
+export class TemporalComponent implements OnDestroy {
 	@Input() locale: string;
 	data: TemporalCoverage = {'dcat:start_date': '', 'dcat:end_date': ''};
+	private destroy$ = new Subject<void>();
 
 	constructor(
 		private readonly injector: Injector,
@@ -107,9 +118,16 @@ export class TemporalComponent {
 	) {
 		this.data = this.injector.get('data', this.data);
 		this.locale = this.translate.currentLang;
-		this.translate.onLangChange.subscribe(evt => {
-			this.locale = evt.lang;
-		});
+		this.translate.onLangChange
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(evt => {
+				this.locale = evt.lang;
+			});
+	}
+
+	ngOnDestroy() {
+		this.destroy$.next();
+		this.destroy$.complete();
 	}
 }
 

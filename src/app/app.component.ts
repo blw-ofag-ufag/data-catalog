@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
 	selector: 'root',
@@ -8,28 +10,38 @@ import {TranslateService} from '@ngx-translate/core';
 	standalone: false,
 	styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
+	title = 'DigiAgriFoodCH';
+	navigation = [{url: 'index', label: 'Index'}];
+	private destroy$ = new Subject<void>();
+
 	constructor(
 		private readonly activatedRoute: ActivatedRoute,
 		private readonly translate: TranslateService,
 		private readonly router: Router
 	) {
-		activatedRoute.queryParams.subscribe(params => {
-			const langFromUrl = params['lang'] || 'en';
-			const langFromTranslate = translate.currentLang;
-			if (langFromUrl !== langFromTranslate) {
-				translate.resetLang(langFromUrl);
-			}
-		});
-		translate.onLangChange.subscribe(async event => {
-			const langFromUrl = activatedRoute.snapshot.queryParams['lang'];
-			const langFromTranslate = event.lang;
-			if (langFromUrl !== langFromTranslate) {
-				await router.navigate([], {queryParams: {lang: langFromTranslate}, queryParamsHandling: 'merge'});
-			}
-		});
+		activatedRoute.queryParams
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(params => {
+				const langFromUrl = params['lang'] || 'en';
+				const langFromTranslate = translate.currentLang;
+				if (langFromUrl !== langFromTranslate) {
+					translate.resetLang(langFromUrl);
+				}
+			});
+		translate.onLangChange
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(async event => {
+				const langFromUrl = activatedRoute.snapshot.queryParams['lang'];
+				const langFromTranslate = event.lang;
+				if (langFromUrl !== langFromTranslate) {
+					await router.navigate([], {queryParams: {lang: langFromTranslate}, queryParamsHandling: 'merge'});
+				}
+			});
 	}
 
-	title = 'DigiAgriFoodCH';
-	navigation = [{url: 'index', label: 'Index'}];
+	ngOnDestroy() {
+		this.destroy$.next();
+		this.destroy$.complete();
+	}
 }

@@ -10,12 +10,13 @@ import {
 	Publishers,
 	Statuses
 } from '../models/schemas/dataset';
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {Observable, map, startWith, BehaviorSubject, tap} from 'rxjs';
+import {Observable, map, startWith, BehaviorSubject, tap, Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {CommonModule} from '@angular/common';
@@ -51,7 +52,7 @@ import {MultiDatasetService} from '../services/api/multi-dataset-service.service
 	templateUrl: './index-filter-col.component.html',
 	styleUrl: './index-filter-col.component.scss'
 })
-export class IndexFilterColComponent implements OnInit {
+export class IndexFilterColComponent implements OnInit, OnDestroy {
 	private readonly _availableFilters: {[key: string]: readonly string[]} = {
 		'dct:accessRights': AccessRights,
 		'dct:publisher': Publishers,
@@ -65,6 +66,7 @@ export class IndexFilterColComponent implements OnInit {
 		class: ['', 'dataset', 'service', 'distribution']
 	};
 	private _selectedFilters: ActiveFilters = {};
+	private destroy$ = new Subject<void>();
 	// @Input() set availableFilters(filters: string[]) {
 	// 	this._availableFilters = filters;
 	// }
@@ -88,9 +90,13 @@ export class IndexFilterColComponent implements OnInit {
 			map((keyword: string | null) => (keyword ? this.filterKeywords(keyword) : this.allKeywords.slice()))
 		);
 
-		this.filteredKeywords$.subscribe(keywords => this.onCategoryChange('dcat:keyword', keywords));
+		this.filteredKeywords$
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(keywords => this.onCategoryChange('dcat:keyword', keywords));
 
-		this.keywordService.keywords$.subscribe(keywords => (this.allKeywords = keywords));
+		this.keywordService.keywords$
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(keywords => (this.allKeywords = keywords));
 
 		// this.activatedFilters$.subscribe(filters => this.activatedFilters = filters);
 	}
@@ -98,16 +104,24 @@ export class IndexFilterColComponent implements OnInit {
 	ngOnInit() {
 		this.activatedFilters$
 			.pipe(
+				takeUntil(this.destroy$),
 				tap(filters => {
 					this.activatedFilters = {...filters};
 				})
 			)
 			.subscribe();
 
-		this.route.queryParams.subscribe(async params => {
-			this.activatedFilters$.next(createActiveFiltersFromParams(params));
-			await this.filterService.setFilters(this.activatedFilters);
-		});
+		this.route.queryParams
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(async params => {
+				this.activatedFilters$.next(createActiveFiltersFromParams(params));
+				await this.filterService.setFilters(this.activatedFilters);
+			});
+	}
+
+	ngOnDestroy() {
+		this.destroy$.next();
+		this.destroy$.complete();
 	}
 
 	get availableFilters(): string[] {

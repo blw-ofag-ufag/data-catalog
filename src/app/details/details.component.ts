@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {DatasetSchema, enumTypes} from '../models/schemas/dataset';
 import {DatasetService} from '../services/api/api.service';
-import {Observable, startWith} from 'rxjs';
+import {Observable, startWith, Subject} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import { TranslatePipe, TranslateService } from "@ngx-translate/core";
-import {map} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
 import {EnumComponent, MetadataItemComponent} from './metadata/metadata-item.component';
@@ -43,12 +43,13 @@ import { KeywordsComponent } from "./keywords/keywords.component";
 	],
 	styleUrl: './details.component.scss'
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent implements OnInit, OnDestroy {
 	dataset: string = '';
 	dataset$: Observable<DatasetSchema | null> = new Observable();
 	// lang$: Observable<string> = new Observable();
 	currentLang$: Observable<string>;
 	metadata$: Observable<NormalizedMetadataElement[]> = new Observable();
+	private destroy$ = new Subject<void>();
 
 	constructor(
 		private readonly datasetService: DatasetService,
@@ -63,19 +64,26 @@ export class DetailsComponent implements OnInit {
 
 	ngOnInit(): void {
 		// this.lang$ = new BehaviorSubject(this.route.snapshot.queryParams['lang'] || 'en');
-		this.route.queryParams.subscribe(params => {
-			this.dataset = params['dataset'];
-			this.dataset$ = this.datasetService.getDatasetById(this.dataset);
+		this.route.queryParams
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(params => {
+				this.dataset = params['dataset'];
+				this.dataset$ = this.datasetService.getDatasetById(this.dataset);
 
-			this.metadata$ = this.dataset$.pipe(
-				map(dataset => {
-					if (!dataset) {
-						return [];
-					}
-					return filterAndNormalizeMetadata(dataset);
-				})
-			);
-		});
+				this.metadata$ = this.dataset$.pipe(
+					map(dataset => {
+						if (!dataset) {
+							return [];
+						}
+						return filterAndNormalizeMetadata(dataset);
+					})
+				);
+			});
+	}
+
+	ngOnDestroy() {
+		this.destroy$.next();
+		this.destroy$.complete();
 	}
 
 	datasetFiltered() {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { AsyncPipe, JsonPipe } from "@angular/common";
 import {IndexCardsComponent} from '../index-cards/index-cards.component';
@@ -12,7 +12,8 @@ import {IndexOutletComponent} from '../index-outlet/index-outlet.component';
 import {MatFormField, MatInput, MatLabel, MatPrefix} from '@angular/material/input';
 import {MatOption} from '@angular/material/core';
 import {MatSelect} from '@angular/material/select';
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
+import { takeUntil } from 'rxjs/operators';
 import { DatasetSchema, enumTypes } from "../models/schemas/dataset";
 import { DatasetService } from "../services/api/api.service";
 import { LengthPipe } from "../length.pipe";
@@ -46,11 +47,12 @@ import { TranslatePipe } from "@ngx-translate/core";
 	],
 	styleUrl: './index-switch.component.scss'
 })
-export class IndexSwitchComponent implements OnInit {
+export class IndexSwitchComponent implements OnInit, OnDestroy {
 	view: 'table' | 'tile' = 'tile';
 	showFilters = false;
 	@Input() datasets$: Observable<DatasetSchema[] | null> = new Observable();
 	activatedFilters$: BehaviorSubject<ActiveFilters> = new BehaviorSubject({});
+	private destroy$ = new Subject<void>();
 
 	constructor(
 		private readonly route: ActivatedRoute,
@@ -59,14 +61,21 @@ export class IndexSwitchComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.route.queryParams.subscribe(params => {
-			this.view = params['view'] || 'tile';
-			for (const allowedfilter of enumTypes) {
-				if (params[allowedfilter]) {
-					this.showFilters = true;
+		this.route.queryParams
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(params => {
+				this.view = params['view'] || 'tile';
+				for (const allowedfilter of enumTypes) {
+					if (params[allowedfilter]) {
+						this.showFilters = true;
+					}
 				}
-			}
-		});
+			});
+	}
+
+	ngOnDestroy() {
+		this.destroy$.next();
+		this.destroy$.complete();
 	}
 
 	async switchTo(mode: 'table' | 'tile') {
