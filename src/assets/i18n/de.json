@@ -37,171 +37,208 @@
   "msg": {
     "adminDirLookup": "AdminDir ID"
   },
+  "labels": {
+    "image": "Bild",
+    "identifier": "Identifikator",
+    "title": "Titel",
+    "description": "Beschreibung",
+    "accessRights": "Zugriffsrechte",
+    "dct:publisher": "Herausgeber",
+    "contactPoint": "Kontaktstelle",
+    "issued": "Ausgabedatum",
+    "availability": "Verfügbarkeit",
+    "keyword": "Schlüsselwörter",
+    "accrualPeriodicity": "Aktualisierungsintervall",
+    "modified": "Änderungsdatum",
+    "version": "Version",
+    "qualitifedAttribution": "Verantwortliche Personen",
+    "status": "Status",
+    "classification": "Klassifizierung",
+    "personalData": "Personenbezogene Daten",
+    "typeOfData": "Datentyp",
+    "archivalValue": "Archivwürdig",
+    "externalCatalogs": "Veröffentlichung in externen Katalogen",
+    "theme": "Thema",
+    "landingPage": "Einstiegsseite",
+    "spatial": "Räumliche Abdeckung",
+    "temporal": "Zeitliche Abdeckung",
+    "applicableLegislation": "Rechtsgrundlage",
+    "wasGeneratedBy": "Geschäftsprozess",
+    "retentionPeriod": "Aufbewahrungsfrist",
+    "catalog": "Katalog",
+    "wasDerivedFrom": "Abgeleitet von",
+    "geoIdentifier": "Identifikator GeoIV",
+    "page": "Verwandte Ressourcen",
+    "comment": "Zusätzliche Bemerkungen",
+    "abrogation": "Aufhebungsdatum",
+    "itSystem": "IT-System",
+    "inSeries": "In dataset Serie",
+    "replaces": "Ersetzt",
+    "accessURL": "Zugriffs-URL",
+    "format": "Dateiformat",
+    "downloadURL": "Download-URL",
+    "conformsTo": "Entspricht",
+    "license": "Lizenz",
+    "accessService": "Zugriffsdienst",
+    "dct:accessRights": "Zugriffsrechte",
+    "dcat:contactPoint": "Kontaktstelle",
+    "dct:issued": "Ausgabedatum",
+    "dcatap:availability": "Verfügbarkeit",
+    "dcat:keyword": "Schlüsselwörter",
+    "dct:accrualPeriodicity": "Aktualisierungsintervall",
+    "dct:modified": "Änderungsdatum",
+    "dcat:version": "Version",
+    "prov:qualifiedAttribution": "Verantwortliche Personen",
+    "adms:status": "Status",
+    "bv:classification": "Klassifizierung",
+    "bv:personalData": "Personenbezogene Daten",
+    "bv:typeOfData": "Datentyp",
+    "bv:archivalValue": "Archivwürdig",
+    "bv:externalCatalogs": "Veröffentlichung in externen Katalogen",
+    "dcat:theme": "Thema",
+    "dcat:landingPage": "Einstiegsseite",
+    "dct:spatial": "Räumliche Abdeckung",
+    "dct:temporal": "Zeitliche Abdeckung",
+    "dcatap:applicableLegislation": "Rechtsgrundlage",
+    "prov:wasGeneratedBy": "Geschäftsprozess",
+    "bv:retentionPeriod": "Aufbewahrungsfrist",
+    "dcat:catalog": "Katalog",
+    "prov:wasDerivedFrom": "Abgeleitet von",
+    "bv:geoIdentifier": "Identifikator GeoIV",
+    "foaf:page": "Verwandte Ressourcen",
+    "schema:comment": "Zusätzliche Bemerkungen",
+    "bv:abrogation": "Aufhebungsdatum",
+    "bv:itSystem": "IT-System",
+    "dcat:inSeries": "In dataset Serie",
+    "dct:replaces": "Ersetzt",
+    "dcat:accessURL": "Zugriffs-URL",
+    "dct:format": "Dateiformat",
+    "dcat:downloadURL": "Download-URL",
+    "dct:conformsTo": "Entspricht",
+    "dct:license": "Lizenz",
+    "dcat:accessService": "Zugriffsdienst"
+  },
+  "choices": {
+    "dataset": {
+      "status": {
+        "workInProgress": "In Bearbeitung",
+        "validated": "Validiert",
+        "published": "Veröffentlicht",
+        "deleted": "Gelöscht",
+        "archived": "Archiviert"
+      },
+      "accessRights": {
+        "CONFIDENTIAL": "Vertraulich",
+        "NON_PUBLIC": "Nicht öffentlich",
+        "PUBLIC": "Öffentlich",
+        "RESTRICTED": "Eingeschränkt",
+        "SENSITIVE": "Sensibel"
+      },
+      "dct:publisher": {
+        "BLW-OFAG-UFAG-FOAG": "BLW",
+        "BLV-OSAV-USAV-FSVO": "BLV"
+      },
+      "availability": {
+        "AVAILABLE": "Verfügbar",
+        "EXPERIMENTAL": "Experimentell",
+        "STABLE": "Stabil",
+        "TEMPORARY": "Temporär"
+      },
+      "accrualPeriodicity": {
+        "OTHER": "Andere",
+        "HOURLY": "Stündlich",
+        "UNKNOWN": "Unbekannt",
+        "QUARTERLY": "Vierteljährlich",
+        "NEVER": "Nie",
+        "MONTHLY": "Monatlich",
+        "ANNUAL": "Jährlich",
+        "DAILY": "Täglich",
+        "AS_NEEDED": "Nach Bedarf",
+        "WEEKLY": "Wöchentlich",
+        "IRREG": "Unregelmässig",
+        "CONT": "Kontinuierlich (Echtzeit)"
+      },
+      "hadRole": {
+        "businessDataOwner": "Busienss Data Owner",
+        "dataSteward": "Data Steward",
+        "dataCustodian": "Data Custodian"
+      },
+      "classification": {
+        "none": "Keine",
+        "internal": "Intern",
+        "confidential": "Vertraulich",
+        "secret": "Geheim"
+      },
+      "personalData": {
+        "none": "Keine",
+        "personalData": "Personenbezogene Daten",
+        "sensitivePersonalData": "Besonders schutzenswerte Personendaten"
+      },
+      "typeOfData": {
+        "primaryThematicData": "Primäre Fachdaten",
+        "secondaryThematicData": "Sekundäre Fachdaten",
+        "referenceData": "Referenzdaten",
+        "masterData": "Stammdaten",
+        "unstucturedData": "Unstrukturierte Daten"
+      },
+      "theme": {
+        "work": "Arbeit",
+        "construction": "Bau",
+        "population": "Bevölkerung",
+        "education": "Bildung",
+        "energy": "Energie",
+        "finances": "Finanzen",
+        "geography": "Geographie",
+        "legislation": "Gesetzgebung",
+        "health": "Gesundheit",
+        "trade": "Handel",
+        "industry": "Industrie",
+        "crime": "Kriminalität",
+        "culture": "Kultur",
+        "agriculture": "Landwirtschaft",
+        "mobility": "Mobilität",
+        "public-order": "Öffentliche Ordnung",
+        "politics": "Politik",
+        "prices": "Preise",
+        "territory": "Raum",
+        "social-security": "Soziale Sicherheit",
+        "statistical-basis": "Statistische Grundlagen",
+        "tourism": "Tourismus",
+        "administration": "Verwaltung",
+        "national-economy": "Volkswirtschaft"
+      }
+    },
+    "distribution": {
+      "status": {
+        "workInProgress": "In Bearbeitung",
+        "validated": "Validiert",
+        "published": "Veröffentlicht",
+        "deleted": "Gelöscht",
+        "archived": "Archiviert"
+      },
+      "availability": {
+        "AVAILABLE": "Verfügbar",
+        "EXPERIMENTAL": "Experimentell",
+        "STABLE": "Stabil",
+        "TEMPORARY": "Temporär"
+      },
+      "license": {
+        "terms_open": "Offene Nutzung",
+        "terms_by": "Offene Nutzung. Quellenangabe erforderlich",
+        "terms_ask": "Offene Nutzung. Kommerzielle Nutzung bedarf der Zustimmung des Dateneigentümers",
+        "terms_by_ask": "Offene Nutzung. Quellenangabe erforderlich. Kommerzielle Nutzung bedarf der Zustimmung des Dateneigentümers",
+        "cc-zero": "CC0",
+        "cc-by/4.0": "CC BY 4.0",
+        "cc-by-sa/4.0": "CC BY-SA 4.0"
+      }
+    }
+  },
   "details": {
     "heading": {
       "affiliated": "Verantwortliche Personen",
       "metadata": "Metadaten",
       "distributions": "Bereitstellungsformen",
       "externalCatalogs": "Veröffentlichung in externen Katalogen"
-    },
-    "label": {
-      "image": "Bild",
-      "identifier": "Identifikator",
-      "title": "Titel",
-      "description": "Beschreibung",
-      "accessRights": "Zugriffsrechte",
-      "publisher": "Herausgeber",
-      "contactPoint": "Kontaktstelle",
-      "issued": "Ausgabedatum",
-      "availability": "Verfügbarkeit",
-      "keyword": "Schlüsselwörter",
-      "accrualPeriodicity": "Aktualisierungsintervall",
-      "modified": "Änderungsdatum",
-      "version": "Version",
-      "qualitifedAttribution": "Verantwortliche Personen",
-      "status": "Status",
-      "classification": "Klassifizierung",
-      "personalData": "Personenbezogene Daten",
-      "typeOfData": "Datentyp",
-      "archivalValue": "Archivwürdig",
-      "externalCatalogs": "Veröffentlichung in externen Katalogen",
-      "theme": "Thema",
-      "landingPage": "Einstiegsseite",
-      "spatial": "Räumliche Abdeckung",
-      "temporal": "Zeitliche Abdeckung",
-      "applicableLegislation": "Rechtsgrundlage",
-      "wasGeneratedBy": "Geschäftsprozess",
-      "retentionPeriod": "Aufbewahrungsfrist",
-      "catalog": "Katalog",
-      "wasDerivedFrom": "Abgeleitet von",
-      "geoIdentifier": "Identifikator GeoIV",
-      "page": "Verwandte Ressourcen",
-      "comment": "Zusätzliche Bemerkungen",
-      "abrogation": "Aufhebungsdatum",
-      "itSystem": "IT-System",
-      "inSeries": "In dataset Serie",
-      "replaces": "Ersetzt",
-      "accessURL": "Zugriffs-URL",
-      "format": "Dateiformat",
-      "downloadURL": "Download-URL",
-      "conformsTo": "Entspricht",
-      "license": "Lizenz",
-      "accessService": "Zugriffsdienst"
-    },
-    "schema": {
-      "dataset": {
-        "status": {
-          "workInProgress": "In Bearbeitung",
-          "validated": "Validiert",
-          "published": "Veröffentlicht",
-          "deleted": "Gelöscht",
-          "archived": "Archiviert"
-        },
-        "accessRights": {
-          "CONFIDENTIAL": "Vertraulich",
-          "NON_PUBLIC": "Nicht öffentlich",
-          "PUBLIC": "Öffentlich",
-          "RESTRICTED": "Eingeschränkt",
-          "SENSITIVE": "Sensibel"
-        },
-        "publisher": {
-          "BLW-OFAG-UFAG-FOAG": "BLW",
-          "BLV-OSAV-USAV-FSVO": "BLV"
-        },
-        "availability": {
-          "AVAILABLE": "Verfügbar",
-          "EXPERIMENTAL": "Experimentell",
-          "STABLE": "Stabil",
-          "TEMPORARY": "Temporär"
-        },
-        "accrualPeriodicity": {
-          "OTHER": "Andere",
-          "HOURLY": "Stündlich",
-          "UNKNOWN": "Unbekannt",
-          "QUARTERLY": "Vierteljährlich",
-          "NEVER": "Nie",
-          "MONTHLY": "Monatlich",
-          "ANNUAL": "Jährlich",
-          "DAILY": "Täglich",
-          "AS_NEEDED": "Nach Bedarf",
-          "WEEKLY": "Wöchentlich",
-          "IRREG": "Unregelmässig",
-          "CONT": "Kontinuierlich (Echtzeit)"
-        },
-        "hadRole": {
-          "businessDataOwner": "Busienss Data Owner",
-          "dataSteward": "Data Steward",
-          "dataCustodian": "Data Custodian"
-        },
-        "classification": {
-          "none": "Keine",
-          "internal": "Intern",
-          "confidential": "Vertraulich",
-          "secret": "Geheim"
-        },
-        "personalData": {
-          "none": "Keine",
-          "personalData": "Personenbezogene Daten",
-          "sensitivePersonalData": "Besonders schutzenswerte Personendaten"
-        },
-        "typeOfData": {
-          "primaryThematicData": "Primäre Fachdaten",
-          "secondaryThematicData": "Sekundäre Fachdaten",
-          "referenceData": "Referenzdaten",
-          "masterData": "Stammdaten",
-          "unstucturedData": "Unstrukturierte Daten"
-        },
-        "theme": {
-          "work": "Arbeit",
-          "construction": "Bau",
-          "population": "Bevölkerung",
-          "education": "Bildung",
-          "energy": "Energie",
-          "finances": "Finanzen",
-          "geography": "Geographie",
-          "legislation": "Gesetzgebung",
-          "health": "Gesundheit",
-          "trade": "Handel",
-          "industry": "Industrie",
-          "crime": "Kriminalität",
-          "culture": "Kultur",
-          "agriculture": "Landwirtschaft",
-          "mobility": "Mobilität",
-          "public-order": "Öffentliche Ordnung",
-          "politics": "Politik",
-          "prices": "Preise",
-          "territory": "Raum",
-          "social-security": "Soziale Sicherheit",
-          "statistical-basis": "Statistische Grundlagen",
-          "tourism": "Tourismus",
-          "administration": "Verwaltung",
-          "national-economy": "Volkswirtschaft"
-        }
-      },
-      "distribution": {
-        "status": {
-          "workInProgress": "In Bearbeitung",
-          "validated": "Validiert",
-          "published": "Veröffentlicht",
-          "deleted": "Gelöscht",
-          "archived": "Archiviert"
-        },
-        "availability": {
-          "AVAILABLE": "Verfügbar",
-          "EXPERIMENTAL": "Experimentell",
-          "STABLE": "Stabil",
-          "TEMPORARY": "Temporär"
-        },
-        "license": {
-          "terms_open": "Offene Nutzung",
-          "terms_by": "Offene Nutzung. Quellenangabe erforderlich",
-          "terms_ask": "Offene Nutzung. Kommerzielle Nutzung bedarf der Zustimmung des Dateneigentümers",
-          "terms_by_ask": "Offene Nutzung. Quellenangabe erforderlich. Kommerzielle Nutzung bedarf der Zustimmung des Dateneigentümers",
-          "cc-zero": "CC0",
-          "cc-by/4.0": "CC BY 4.0",
-          "cc-by-sa/4.0": "CC BY-SA 4.0"
-        }
-      }
     }
   }
 }

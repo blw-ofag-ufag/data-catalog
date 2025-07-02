@@ -198,11 +198,11 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 	}
 
 	getTranslationKey(fieldKey: string): string {
-		return `details.label.${fieldKey}`;
+		return `labels.${fieldKey}`;
 	}
 
 	getTranslationKeyEnum(fieldKey: string, valueKey: string): string {
-		return `schema.dataset.${fieldKey}.${valueKey}`;
+		return `choices.dataset.${fieldKey}.${valueKey}`;
 	}
 
 	clearFilters() {

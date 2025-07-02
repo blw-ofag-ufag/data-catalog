@@ -55,7 +55,7 @@
 						@for (meta of metadata$ | async; track $index) {
 							<tr>
 								<td>
-									{{ "details.label." + meta.label | translate }}
+									{{ "labels." + meta.label | translate }}
 								</td>
 								<td>
 									@if (enumTypes.includes(meta.label) && meta.label !== "dcat:keyword") {
