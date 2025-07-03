@@ -182,6 +182,56 @@ export class NumberComponent {
 }
 
 @Component({
+	template: '<p>{{ data[0] }} - <a href="{{ data[1] }}" target="_blank">{{ data[1] }}</a></p>',
+	standalone: true
+})
+export class WasGeneratedByComponent {
+	data: string[] = [];
+
+	constructor(private readonly injector: Injector) {
+		this.data = this.injector.get('data', []);
+	}
+}
+
+@Component({
+	template: '<p>{{ data[0] }} - {{ data[1] }}</p>',
+	standalone: true
+})
+export class WasDerivedFromComponent {
+	data: string[] = [];
+
+	constructor(private readonly injector: Injector) {
+		this.data = this.injector.get('data', []);
+	}
+}
+
+@Component({
+	template: '<ul>@for (item of data; track $index) {<li><a href="{{item.uri}}" target="_blank">{{item.alias || item.uri}}</a></li>}</ul>',
+	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
+	standalone: true
+})
+export class RelatedResourcesComponent {
+	data: Array<{alias?: string; uri: string}> = [];
+
+	constructor(private readonly injector: Injector) {
+		this.data = this.injector.get('data', []);
+	}
+}
+
+@Component({
+	template: '<ul>@for (id of data; track $index) {<li>{{ id }}</li>}</ul>',
+	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
+	standalone: true
+})
+export class DatasetIdListComponent {
+	data: string[] = [];
+
+	constructor(private readonly injector: Injector) {
+		this.data = this.injector.get('data', []);
+	}
+}
+
+@Component({
 	template: '<p>Yes</p>',
 	standalone: true
 })
@@ -234,6 +284,15 @@ export class MetadataItemComponent {
 		if (label === 'dct:temporal') {
 			return TemporalComponent;
 		}
+		if (label === 'prov:wasGeneratedBy') {
+			return WasGeneratedByComponent;
+		}
+		if (label === 'prov:wasDerivedFrom') {
+			return WasDerivedFromComponent;
+		}
+		if (label === 'foaf:page' && Array.isArray(data) && data.length > 0 && typeof data[0] === 'object') {
+			return RelatedResourcesComponent;
+		}
 		if (enumTypes.includes(label)) {
 			return EnumComponent;
 		} else {
@@ -244,6 +303,9 @@ export class MetadataItemComponent {
 					return DateMetadataItemComponent;
 				case 'dcat:theme':
 					return FreeListItemComponent;
+				case 'dcat:inSeries':
+				case 'dct:replaces':
+					return DatasetIdListComponent;
 				// case 'internal:rawData':
 				// 	return RawDataComponent;
 				default:

@@ -11,6 +11,6 @@ export class OrgPipe implements PipeTransform {
 		// mapping.set('BLW-OFAG-UFAG-FOAG', 'BLW');
 		// mapping.set('BLV-OSAV-USAV-FSVO', 'BLV');
 		// return mapping.get(value) || value;
-		return this.translate.instant(`schema.dataset.publisher.${value}`);
+		return this.translate.instant(`choices.dataset.dct:publisher.${value}`);
 	}
 }
