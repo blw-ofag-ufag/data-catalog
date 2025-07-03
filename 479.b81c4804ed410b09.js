@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkDigiAgriFoodDB=self.webpackChunkDigiAgriFoodDB||[]).push([[479],{3479:(D,d,_)=>{_.r(d),_.d(d,{RadarModule:()=>s.l,createRadarServices:()=>s.f});var s=_(2565);_(7668)}}]);
