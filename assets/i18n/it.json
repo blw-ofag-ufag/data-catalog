@@ -254,5 +254,10 @@
     "contact": "Contatto: info@blw.admin.ch",
     "legalBasis": "Basi legali",
     "source": "Codice sorgente (GitHub)"
+  },
+  "not-found": {
+    "title": "Pagina non trovata",
+    "message": "La pagina che stai cercando non esiste.",
+    "back-home": "Torna alla home"
   }
 }
