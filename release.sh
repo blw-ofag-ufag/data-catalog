@@ -100,7 +100,7 @@ fi
 # Commit version changes
 echo ""
 echo "📦 Committing version changes..."
-git add VERSION.txt package.json
+git add src/assets/VERSION.txt package.json
 git commit -m "chore: bump version to $NEW_VERSION
 
 🤖 Generated with [Claude Code](https://claude.ai/code)
