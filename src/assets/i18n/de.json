@@ -241,7 +241,8 @@
       "affiliated": "Verantwortliche Personen",
       "metadata": "Metadaten",
       "distributions": "Bereitstellungsformen",
-      "externalCatalogs": "Veröffentlichung in externen Katalogen"
+      "externalCatalogs": "Veröffentlichung in externen Katalogen",
+      "publications": "Publikationen in externen Katalogen"
     }
   }
 }

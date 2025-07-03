@@ -77,7 +77,6 @@ export class AppModule {
 		config.homePageRoute = 'index';
 		config.locale.locales = ['de-CH', 'fr-CH', 'it-CH', 'en-US'];
 		config.layout.hasMaxWidth = true;
-		config.footer.isCustom = true;
 		config.header.serviceNavigation.displayLanguages = true;
 		// config.header.isCustom = true;
 	}

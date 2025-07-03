@@ -1,7 +1,29 @@
 <ob-master-layout [navigation]="topNavigation">
 	<ng-container obHeaderTitle>{{ 'app.title' | translate }}</ng-container>
+
+<!--	Data catalog version-->
 	<ng-container obFooterInfo>
-		<app-footer></app-footer>
+		<p>Version: X.X.X</p>
+	</ng-container>
+
+	<ng-container obFooterInfo>
+		<p>Kontaktinformationen: TBD</p>
+	</ng-container>
+
+	<ng-template #obFooterLink>
+		<a href="https://www.admin.ch/gov/?{lang}/start/rechtliches.html" title="Source" target="_blank" class="link">Legal basis</a>
+	</ng-template>
+
+	<ng-template #obFooterLink>
+		<a href="https://github.com/blw-ofag-ufag/data-catalog" title="Source" target="_blank" class="link">Source (Github)</a>
+	</ng-template>
+
+<!--	Link to source code (GitHub)-->
+<!--	Contact information-->
+<!--	Legal basis, refer to https://www.admin.ch/gov/?{lang}/start/rechtliches.html-->
+
+<!--	<ng-container obFooterInfo>-->
+<!--		<app-footer></app-footer>-->
 <!--		<p>Oblique's footer</p>-->
 <!--		<p>-->
 <!--			&copy; 2020 <span>{{ "i18n.oblique.footer.title" | translate }}</span>-->
@@ -15,5 +37,5 @@
 <!--			<mat-chip-option class="warning">Warn</mat-chip-option>-->
 <!--			<mat-chip-option disabled>Disabled</mat-chip-option>-->
 <!--		</mat-chip-listbox>-->
-	</ng-container>
+<!--	</ng-container>-->
 </ob-master-layout>

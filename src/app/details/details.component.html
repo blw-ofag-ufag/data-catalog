@@ -75,36 +75,40 @@
 				</table>
 
 				<!-- distribution -->
-				<h3>{{ "details.heading.distributions" | translate }}</h3>
-				<hr>
-				<mat-accordion>
-					@for (dist of dataset["dcat:distribution"]; track $index) {
-						<mat-expansion-panel>
-							<mat-expansion-panel-header>
-								<mat-panel-title>
-									{{ ["dct:title", dist["dct:title"]] | translateField }}
-								</mat-panel-title>
-								<mat-panel-description>
-									{{ ["dct:description", dist["dct:description"]] | translateField }}
-								</mat-panel-description>
-							</mat-expansion-panel-header>
-							<distribution [distribution]="dist"></distribution>
-						</mat-expansion-panel>
-					}
-				</mat-accordion>
-
-				<h3>{{ "details.heading.publications" | translate }}</h3>
-				<hr>
-				<table class="ob-table ob-table-plain">
-					<tbody>
-						@for (pub of dataset["bv:externalCatalogs"]; track $index) {
-							<tr>
-								<td>{{ pub["dcat:catalog"] }}</td>
-								<td>{{ pub["dct:identifier"] }}</td>
-							</tr>
+				@if (dataset["dcat:distribution"] && dataset["dcat:distribution"].length > 0) {
+					<h3>{{ "details.heading.distributions" | translate }}</h3>
+					<hr>
+					<mat-accordion>
+						@for (dist of dataset["dcat:distribution"]; track $index) {
+							<mat-expansion-panel>
+								<mat-expansion-panel-header>
+									<mat-panel-title>
+										{{ ["dct:title", dist["dct:title"]] | translateField }}
+									</mat-panel-title>
+									<mat-panel-description>
+										{{ ["dct:description", dist["dct:description"]] | translateField }}
+									</mat-panel-description>
+								</mat-expansion-panel-header>
+								<distribution [distribution]="dist"></distribution>
+							</mat-expansion-panel>
 						}
-					</tbody>
-				</table>
+					</mat-accordion>
+				}
+
+				@if (dataset["bv:externalCatalogs"] && dataset["bv:externalCatalogs"].length > 0) {
+					<h3>{{ "details.heading.publications" | translate }}</h3>
+					<hr>
+					<table class="ob-table ob-table-plain">
+						<tbody>
+							@for (pub of dataset["bv:externalCatalogs"]; track $index) {
+								<tr>
+									<td>{{ pub["dcat:catalog"] }}</td>
+									<td>{{ pub["dct:identifier"] }}</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				}
 
 
 			</div>
