@@ -248,5 +248,11 @@
       "publications": "Publication dans des catalogues externes"
     },
     "noAffiliatedPersons": "Personne ne revendique ce jeu de données – pourquoi ne pas lui trouver quelqu'un à qui il tient à cœur ?"
+  },
+  "footer": {
+    "version": "Version",
+    "contact": "Contact: info@blw.admin.ch",
+    "legalBasis": "Bases légales",
+    "source": "Code source (GitHub)"
   }
 }

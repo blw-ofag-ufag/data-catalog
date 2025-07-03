@@ -212,5 +212,11 @@
       "publications": "Publication in external catalogs"
     },
     "noAffiliatedPersons": "Nobody's claiming this dataset yet—how about giving it some love by assigning a responsible human?"
+  },
+  "footer": {
+    "version": "Version",
+    "contact": "Contact: info@blw.admin.ch",
+    "legalBasis": "Legal basis",
+    "source": "Source (GitHub)"
   }
 }
