@@ -10,9 +10,11 @@ export class MultiDatasetService {
 	datasets$: Observable<DatasetSchema[]>;
 	selectedDataset$: Observable<DatasetSchema | null>;
 	keywords$: Observable<string[]>;
+	loading$: Observable<boolean>;
 	private readonly _datasetsSubject = new BehaviorSubject<DatasetSchema[]>([]);
 	private readonly _keywordsSubject = new BehaviorSubject<string[]>([]);
 	private readonly _selectedDatasetSubject = new BehaviorSubject<DatasetSchema | null>(null);
+	private readonly _loadingSubject = new BehaviorSubject<boolean>(false);
 	private readonly indexUrls: string[] = [];
 	private readonly keywordsUrls: string[] = [];
 	private readonly detailUrls: {[publisherId: string]: (datasetId: string) => string} = {};
@@ -22,6 +24,7 @@ export class MultiDatasetService {
 		this.datasets$ = this._datasetsSubject.asObservable();
 		this.selectedDataset$ = this._selectedDatasetSubject.asObservable();
 		this.keywords$ = this._keywordsSubject.asObservable();
+		this.loading$ = this._loadingSubject.asObservable();
 		this.indexUrls = publisherService.getPublishers().map(publisher => publisher.getProcessedUrl());
 		this.keywordsUrls = publisherService.getPublishers().map(publisher => publisher.getKeywordUrl());
 		this.detailUrls = publisherService.getPublishers().reduce((acc: {[publisherId: string]: (id: string) => string}, publisher) => {
@@ -96,21 +99,25 @@ export class MultiDatasetService {
 
 
 	loadDetail(publisher: string, klass: string, id: string) {
+		this._loadingSubject.next(true);
 		fetch(this.detailUrls[publisher](id))
 			.then(response => {
 				response
 					.json()
 					.then(data => {
 						this._selectedDatasetSubject.next(data);
+						this._loadingSubject.next(false);
 					})
 					.catch(error => {
 						console.error(`Error fetching dataset from ${this.detailUrls[publisher](id)}:`, error);
 						this._selectedDatasetSubject.next(null);
+						this._loadingSubject.next(false);
 					});
 			})
 			.catch(error => {
 				console.error(`Error deserializing dataset from ${this.detailUrls[publisher](id)}:`, error);
 				this._selectedDatasetSubject.next(null);
+				this._loadingSubject.next(false);
 			});
 	}
 }

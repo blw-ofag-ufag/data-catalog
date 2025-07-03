@@ -1,3 +1,6 @@
+<!--<pre>{{dataset$ | async | json }}</pre>-->
+<!--<pre>{{loading$ | async | json }}</pre>-->
+
 @if (dataset$ | async; as dataset) {
 	@if (currentLang$ | async; as lang) {
 		<h2>{{ ["dct:title", dataset["dct:title"]] | translateField }}</h2>
@@ -118,6 +121,13 @@
 			</div>
 		</div>
 	}
+} @else {
+	@if (loading$ | async) {
+		<pre>loading...</pre>
+	} @else {
+		<app-not-found></app-not-found>
+	}
+<!--	<app-not-found *ngIf="!loading$ | async"></app-not-found>-->
 }
 
 <!--<p>details for dataset {{ dataset }}</p>-->

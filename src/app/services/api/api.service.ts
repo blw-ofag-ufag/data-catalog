@@ -181,6 +181,10 @@ export class DatasetService {
 		return this.multiDatasetService.selectedDataset$;
 	}
 
+	getLoadingState() {
+		return this.multiDatasetService.loading$;
+	}
+
 	loadDatasetById(publisher: string, id: string): void {
 		this.multiDatasetService.loadDetail(publisher, 'dataset', id);
 	}
