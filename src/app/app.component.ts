@@ -1,9 +1,10 @@
 import {Component, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import { ObINavigationLink } from "@oblique/oblique";
+import { VersionService } from './services/version.service';
 
 @Component({
 	selector: 'root',
@@ -15,14 +16,17 @@ export class AppComponent implements OnDestroy {
 	title = 'DigiAgriFoodCH';
 	navigation = [{url: 'index', label: 'Index'}];
 	private destroy$ = new Subject<void>();
+	version$: Observable<string>;
 
 	topNavigation: ObINavigationLink[] = [];
 
 	constructor(
 		private readonly activatedRoute: ActivatedRoute,
 		private readonly translate: TranslateService,
-		private readonly router: Router
+		private readonly router: Router,
+		private readonly versionService: VersionService
 	) {
+		this.version$ = this.versionService.getVersion();
 		this.updateNavigation();
 		
 		activatedRoute.queryParams
@@ -52,6 +56,10 @@ export class AppComponent implements OnDestroy {
 			{ label: this.translate.instant('app.navigation.about'), url: 'about' },
 			{ label: this.translate.instant('app.navigation.handbook'), url: 'handbook' }
 		];
+	}
+
+	getCurrentLanguage(): string {
+		return this.translate.currentLang || 'en';
 	}
 
 	ngOnDestroy() {

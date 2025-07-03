@@ -248,5 +248,11 @@
       "publications": "Pubblicazione in cataloghi esterni"
     },
     "noAffiliatedPersons": "Nessuno si prende cura di questo dataset: perché non affidi questa responsabilità a qualcuno?"
+  },
+  "footer": {
+    "version": "Versione",
+    "contact": "Contatto: info@blw.admin.ch",
+    "legalBasis": "Basi legali",
+    "source": "Codice sorgente (GitHub)"
   }
 }

@@ -3,19 +3,29 @@
 
 <!--	Data catalog version-->
 	<ng-container obFooterInfo>
-		<p>Version: X.X.X</p>
+		<p>{{ 'footer.version' | translate }}: {{ version$ | async }}</p>
 	</ng-container>
 
 	<ng-container obFooterInfo>
-		<p>Kontaktinformationen: TBD</p>
+		<p>{{ 'footer.contact' | translate }}</p>
 	</ng-container>
 
 	<ng-template #obFooterLink>
-		<a href="https://www.admin.ch/gov/?{lang}/start/rechtliches.html" title="Source" target="_blank" class="link">Legal basis</a>
+		<a [href]="'https://www.admin.ch/gov/' + getCurrentLanguage() + '/start/rechtliches.html'" 
+		   [title]="'footer.legalBasis' | translate" 
+		   target="_blank" 
+		   class="link">
+			{{ 'footer.legalBasis' | translate }}
+		</a>
 	</ng-template>
 
 	<ng-template #obFooterLink>
-		<a href="https://github.com/blw-ofag-ufag/data-catalog" title="Source" target="_blank" class="link">Source (Github)</a>
+		<a href="https://github.com/blw-ofag-ufag/data-catalog" 
+		   [title]="'footer.source' | translate" 
+		   target="_blank" 
+		   class="link">
+			{{ 'footer.source' | translate }}
+		</a>
 	</ng-template>
 
 <!--	Link to source code (GitHub)-->
