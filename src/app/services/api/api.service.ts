@@ -23,7 +23,8 @@ const fuseOptions = {
 		'dct:description.fr',
 		'dct:description.it',
 		'dcat:keyword'
-	]
+	],
+	useExtendedSearch: true
 };
 
 const allFiltersOff = {};
@@ -53,7 +54,7 @@ export class DatasetService {
 		]).pipe(
 			map(([schemas, sort]) => {
 				const currentLang = this.translate.currentLang || 'en';
-				
+
 				switch (sort) {
 					case 'new':
 						// Newest first - handle null dates properly
@@ -62,7 +63,7 @@ export class DatasetService {
 							const dateB = b['dct:issued'] ? new Date(b['dct:issued']).getTime() : 0;
 							return dateB - dateA; // Newest first
 						});
-						
+
 					case 'old':
 						// Oldest first - handle null dates properly
 						return [...schemas].sort((a, b) => {
@@ -70,7 +71,7 @@ export class DatasetService {
 							const dateB = b['dct:issued'] ? new Date(b['dct:issued']).getTime() : Number.MAX_SAFE_INTEGER;
 							return dateA - dateB; // Oldest first
 						});
-						
+
 					case 'owner':
 						// Sort by data owner/steward/contact
 						return [...schemas].sort((a, b) => {
@@ -78,7 +79,7 @@ export class DatasetService {
 							const ownerB = this.getDatasetOwner(b).toLowerCase();
 							return ownerA.localeCompare(ownerB);
 						});
-						
+
 					case 'relevance':
 						// For relevance without search, use a quality score or default to title
 						return [...schemas].sort((a, b) => {
@@ -93,7 +94,7 @@ export class DatasetService {
 							const titleB = this.getLocalizedTitle(b, currentLang).toLowerCase();
 							return titleA.localeCompare(titleB);
 						});
-						
+
 					case 'title':
 					default:
 						// Sort by title in current language
@@ -109,7 +110,7 @@ export class DatasetService {
 		combineLatest([sortedSchemas$, this.searchTermSubject, this.filters$, this.pageSubject, this.sort$]).subscribe(([sortedSchemas, searchTerm, filters, page, currentSort]) => {
 			let unfiltered = sortedSchemas;
 			let filtered = unfiltered;
-			
+
 			// Apply filters first
 			if (Object.keys(filters).length > 0) {
 				filtered = unfiltered.filter(schema => {
@@ -117,10 +118,10 @@ export class DatasetService {
 					for (const [category, choicesMap] of Object.entries(filters)) {
 						const choices = Object.keys(choicesMap).filter(key => choicesMap[key]);
 						if (choices.length === 0) continue;
-						
+
 						// Within a category, at least one choice must match (OR within category)
 						let categoryMatches = false;
-						
+
 						if (category === 'dcat:keyword') {
 							// For keywords, check if ANY of the selected keywords match ANY of the dataset keywords
 							const datasetKeywords = schema['dcat:keyword'] || [];
@@ -129,7 +130,7 @@ export class DatasetService {
 							// For other categories, check if the schema value matches any of the choices
 							categoryMatches = choices.includes(schema[category] as string);
 						}
-						
+
 						// If this category doesn't match, the dataset doesn't pass the filter
 						if (!categoryMatches) {
 							return false;
@@ -139,12 +140,12 @@ export class DatasetService {
 					return true;
 				});
 			}
-			
+
 			// Apply search with respect to current sort order
 			if (searchTerm) {
 				const fuse = new Fuse(filtered, fuseOptions);
 				const searchResults = fuse.search(searchTerm);
-				
+
 				if (currentSort === 'relevance') {
 					// For relevance sort with search, use Fuse.js relevance scoring (overrides pre-sorting)
 					filtered = searchResults.map(result => result.item);
@@ -154,7 +155,7 @@ export class DatasetService {
 					filtered = filtered.filter(item => searchResultItems.has(item));
 				}
 			}
-			
+
 			this.filteredLength$.next(filtered.length);
 
 			const paginated = filtered.slice(page.pageIndex * page.pageSize, (page.pageIndex + 1) * page.pageSize);
@@ -257,17 +258,17 @@ export class DatasetService {
 			const stewards = dataset['prov:qualifiedAttribution']
 				.filter(person => person['dcat:hadRole'] === 'dataSteward')
 				.map(person => person['schema:name'] || person['prov:agent'] || '');
-			
+
 			if (stewards.length > 0) {
 				return stewards[0]; // Use first steward for sorting
 			}
 		}
-		
+
 		// Fallback to businessDataOwner
 		if ((dataset as any)['businessDataOwner']) {
 			return (dataset as any)['businessDataOwner'];
 		}
-		
+
 		// Fallback to contact point
 		if (dataset['dcat:contactPoint'] && typeof dataset['dcat:contactPoint'] === 'object') {
 			const contact = dataset['dcat:contactPoint'] as any;
@@ -275,7 +276,7 @@ export class DatasetService {
 				return contact['schema:name'];
 			}
 		}
-		
+
 		// Final fallback to publisher
 		return dataset['dct:publisher'] || '';
 	}
