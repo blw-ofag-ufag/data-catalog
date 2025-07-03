@@ -15,12 +15,12 @@
 			>
 				<td data-title="Title">{{ ["dct:title", dataset["dct:title"]] | translateField }}</td>
 				<td data-title="Issued" class="no-wrap">{{ dataset["dct:issued"] | date:'shortDate':translate.currentLang }}</td>
-				<td data-title="Steward">
+				<td data-title="Steward" class="no-wrap">
 					<div class="chip-container">
 						@for (steward of getStewards(dataset); track $index) {
-							<mat-chip class="small-chip" style="display: inline-block; margin-right: 8px;">
+<!--							<mat-chip class="small-chip" style="display: inline-block; margin-right: 8px;">-->
 								{{ steward }}
-							</mat-chip>
+<!--							</mat-chip>-->
 						}
 					</div>
 				</td>
