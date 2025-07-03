@@ -369,7 +369,6 @@ export class MetadataItemComponent {
 				case 'dcat:theme':
 					return FreeListItemComponent;
 				case 'dcat:inSeries':
-					return DatasetIdListComponent;
 				case 'dct:replaces':
 					return DatasetLinkListComponent;
 				// case 'internal:rawData':
