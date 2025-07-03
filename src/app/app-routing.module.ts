@@ -4,6 +4,7 @@ import {ObUnknownRouteModule} from '@oblique/oblique';
 import {HomeComponent} from './home/home.component';
 import {IndexComponent} from './index/index.component';
 import {DetailsComponent} from './details/details.component';
+import {AboutComponent} from './about/about.component';
 import {HandbookComponent} from './handbook/handbook.component';
 import {ModifyComponent} from './modify/modify.component';
 
@@ -12,6 +13,7 @@ const routes: Routes = [
 	{path: 'home', component: HomeComponent},
 	{path: 'index', component: IndexComponent},
 	{path: 'details', component: DetailsComponent},
+	{path: 'about', component: AboutComponent},
 	{path: 'handbook', component: HandbookComponent},
 	{path: 'modify', component: ModifyComponent},
 	{path: '**', redirectTo: 'unknown-route'}
