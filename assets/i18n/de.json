@@ -3,7 +3,10 @@
     "title": "DigiAgriFoodCH Datenkatalog",
     "description": "Entdecken und nutzen Sie Schweizer landwirtschaftliche und ernährungsbezogene Datensätze von Bundesinstitutionen",
     "navigation": {
-      "index": "Index"
+      "index": "Index",
+      "catalog": "Katalog",
+      "about": "Über uns",
+      "handbook": "Handbuch"
     }
   },
   "ui": {

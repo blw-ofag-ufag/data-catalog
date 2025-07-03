@@ -3,7 +3,10 @@
     "title": "Catalogo dati DigiAgriFoodCH",
     "description": "Scopri e accedi ai dataset agricoli e alimentari svizzeri delle istituzioni federali",
     "navigation": {
-      "index": "Indice"
+      "index": "Indice",
+      "catalog": "Catalogo",
+      "about": "Chi siamo",
+      "handbook": "Manuale"
     }
   },
   "ui": {
