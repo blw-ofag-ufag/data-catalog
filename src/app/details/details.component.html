@@ -27,24 +27,28 @@
 				<!-- persons -->
 				<h3>{{ "details.heading.affiliated" | translate }}</h3>
 				<hr>
-				<table class="ob-table ob-table-plain">
-					<tbody>
-						@for (person of dataset["prov:qualifiedAttribution"]; track $index) {
-							<tr>
-								<td>
-									@if (person["prov:agent"]) {
-										<admindir-lookup [person]="person"></admindir-lookup>
-									} @else {
-										<a href="mailto:{{ person['schema:email'] }}">{{ person["schema:name"] }}</a>
-									}
-								</td>
-								<td>
-									<mat-chip>{{ person["dcat:hadRole"] }}</mat-chip>
-								</td>
-							</tr>
-						}
-					</tbody>
-				</table>
+				@if (dataset["prov:qualifiedAttribution"] && dataset["prov:qualifiedAttribution"].length > 0) {
+					<table class="ob-table ob-table-plain">
+						<tbody>
+							@for (person of dataset["prov:qualifiedAttribution"]; track $index) {
+								<tr>
+									<td>
+										@if (person["prov:agent"]) {
+											<admindir-lookup [person]="person"></admindir-lookup>
+										} @else {
+											<a href="mailto:{{ person['schema:email'] }}">{{ person["schema:name"] }}</a>
+										}
+									</td>
+									<td>
+										<mat-chip>{{ person["dcat:hadRole"] }}</mat-chip>
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				} @else {
+					<p class="empty-state">{{ "details.noAffiliatedPersons" | translate }}</p>
+				}
 
 				<!-- metadata -->
 				<h3>{{ "details.heading.metadata" | translate }}</h3>

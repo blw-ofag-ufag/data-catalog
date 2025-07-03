@@ -49,7 +49,7 @@
     "dct:publisher": "Herausgeber",
     "contactPoint": "Kontaktstelle",
     "issued": "Ausgabedatum",
-    "availability": "Verfügbarkeit",
+    "dcatap:availability": "Verfügbarkeit",
     "keyword": "Schlüsselwörter",
     "accrualPeriodicity": "Aktualisierungsintervall",
     "modified": "Änderungsdatum",
@@ -67,14 +67,14 @@
     "temporal": "Zeitliche Abdeckung",
     "applicableLegislation": "Rechtsgrundlage",
     "prov:wasGeneratedBy": "Geschäftsprozess",
-    "retentionPeriod": "Aufbewahrungsfrist",
+    "bv:retentionPeriod": "Aufbewahrungsfrist",
     "catalog": "Katalog",
     "prov:wasDerivedFrom": "Abgeleitet von",
     "geoIdentifier": "Identifikator GeoIV",
     "page": "Verwandte Ressourcen",
     "comment": "Zusätzliche Bemerkungen",
-    "abrogation": "Aufhebungsdatum",
-    "itSystem": "IT-System",
+    "bv:abrogation": "Aufhebungsdatum",
+    "bv:itSystem": "IT-System",
     "inSeries": "In dataset Serie",
     "replaces": "Ersetzt",
     "accessURL": "Zugriffs-URL",
@@ -123,14 +123,14 @@
   },
   "choices": {
     "dataset": {
-      "status": {
+      "adms:status": {
         "workInProgress": "In Bearbeitung",
         "validated": "Validiert",
         "published": "Veröffentlicht",
         "deleted": "Gelöscht",
         "archived": "Archiviert"
       },
-      "accessRights": {
+      "dct:accessRights": {
         "CONFIDENTIAL": "Vertraulich",
         "NON_PUBLIC": "Nicht öffentlich",
         "PUBLIC": "Öffentlich",
@@ -141,13 +141,13 @@
         "BLW-OFAG-UFAG-FOAG": "BLW",
         "BLV-OSAV-USAV-FSVO": "BLV"
       },
-      "availability": {
+      "dcatap:availability": {
         "AVAILABLE": "Verfügbar",
         "EXPERIMENTAL": "Experimentell",
         "STABLE": "Stabil",
         "TEMPORARY": "Temporär"
       },
-      "accrualPeriodicity": {
+      "dct:accrualPeriodicity": {
         "OTHER": "Andere",
         "HOURLY": "Stündlich",
         "UNKNOWN": "Unbekannt",
@@ -166,25 +166,25 @@
         "dataSteward": "Data Steward",
         "dataCustodian": "Data Custodian"
       },
-      "classification": {
+      "bv:classification": {
         "none": "Keine",
         "internal": "Intern",
         "confidential": "Vertraulich",
         "secret": "Geheim"
       },
-      "personalData": {
+      "bv:personalData": {
         "none": "Keine",
         "personalData": "Personenbezogene Daten",
         "sensitivePersonalData": "Besonders schutzenswerte Personendaten"
       },
-      "typeOfData": {
+      "bv:typeOfData": {
         "primaryThematicData": "Primäre Fachdaten",
         "secondaryThematicData": "Sekundäre Fachdaten",
         "referenceData": "Referenzdaten",
         "masterData": "Stammdaten",
-        "unstucturedData": "Unstrukturierte Daten"
+        "unstructuredData": "Unstrukturierte Daten"
       },
-      "theme": {
+      "dcat:theme": {
         "work": "Arbeit",
         "construction": "Bau",
         "population": "Bevölkerung",
@@ -243,6 +243,7 @@
       "distributions": "Bereitstellungsformen",
       "externalCatalogs": "Veröffentlichung in externen Katalogen",
       "publications": "Publikationen in externen Katalogen"
-    }
+    },
+    "noAffiliatedPersons": "Niemand fühlt sich für diesen Datensatz zuständig – höchste Zeit, jemandem diese Ehre zu erteilen!"
   }
 }

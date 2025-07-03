@@ -63,7 +63,7 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 		'bv:personalData': CategorizationsDSG,
 		'bv:typeOfData': DataTypes,
 		'dcat:theme': DatasetThemes,
-		class: ['', 'dataset', 'service', 'distribution']
+		// class: ['dataset']
 	};
 	private _selectedFilters: ActiveFilters = {};
 	private destroy$ = new Subject<void>();
