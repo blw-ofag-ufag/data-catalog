@@ -62,6 +62,23 @@ export class AppComponent implements OnDestroy {
 		return this.translate.currentLang || 'en';
 	}
 
+	getLegalBasisUrl(): string {
+		const lang = this.getCurrentLanguage();
+		const langCode = lang.split('-')[0];
+		
+		switch (langCode) {
+			case 'de':
+				return 'https://www.admin.ch/gov/de/start/rechtliches.html';
+			case 'fr':
+				return 'https://www.admin.ch/gov/fr/accueil/conditions-utilisation.html';
+			case 'it':
+				return 'https://www.admin.ch/gov/it/pagina-iniziale/basi-legali.html';
+			case 'en':
+			default:
+				return 'https://www.admin.ch/gov/en/start/terms-and-conditions.html';
+		}
+	}
+
 	ngOnDestroy() {
 		this.destroy$.next();
 		this.destroy$.complete();

@@ -11,7 +11,7 @@
 	</ng-container>
 
 	<ng-template #obFooterLink>
-		<a [href]="'https://www.admin.ch/gov/' + getCurrentLanguage() + '/start/rechtliches.html'" 
+		<a [href]="getLegalBasisUrl()" 
 		   [title]="'footer.legalBasis' | translate" 
 		   target="_blank" 
 		   class="link">
