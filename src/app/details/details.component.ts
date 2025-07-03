@@ -21,6 +21,7 @@ import {
 } from '@angular/material/expansion';
 import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.component';
 import { KeywordsComponent } from "./keywords/keywords.component";
+import { DistributionComponent } from "./distribution/distribution.component";
 
 @Component({
 	selector: 'app-details',
@@ -41,7 +42,8 @@ import { KeywordsComponent } from "./keywords/keywords.component";
 		RouterLink,
 		TranslatePipe,
 		TranslateFieldPipe,
-		KeywordsComponent
+		KeywordsComponent,
+		DistributionComponent
 	],
 	styleUrl: './details.component.scss'
 })
