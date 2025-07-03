@@ -32,7 +32,8 @@
       "newest": "Neueste zuerst",
       "owner": "Nach Dateninhaber"
     },
-    "issueDate": "Ausgabedatum"
+    "issueDate": "Ausgabedatum",
+    "noResultsFound": "Keine Ergebnisse gefunden. Versuchen Sie allgemeinere Filter oder Suche."
   },
   "msg": {
     "adminDirLookup": "AdminDir ID"

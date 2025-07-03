@@ -6,10 +6,11 @@ import { Observable } from "rxjs";
 import { DatasetSchema } from "../models/schemas/dataset";
 import { DatasetService } from "../services/api/api.service";
 import { AsyncPipe } from "@angular/common";
+import { TranslatePipe } from "@ngx-translate/core";
 
 @Component({
 	selector: 'index-outlet',
-	imports: [IndexCardsComponent, IndexListComponent, MatPaginator, AsyncPipe],
+	imports: [IndexCardsComponent, IndexListComponent, MatPaginator, AsyncPipe, TranslatePipe],
 	templateUrl: './index-outlet.component.html',
 	styleUrl: './index-outlet.component.scss'
 })
