@@ -32,7 +32,8 @@
       "newest": "Newest First",
       "owner": "By Data Owner"
     },
-    "issueDate": "Issue Date"
+    "issueDate": "Issue Date",
+    "noResultsFound": "No results found. Try more general filters or search."
   },
   "msg": {
     "adminDirError": "Could not look up on AdminDir",
