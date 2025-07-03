@@ -57,7 +57,7 @@ export class IndexSwitchComponent implements OnInit, OnDestroy {
 	constructor(
 		private readonly route: ActivatedRoute,
 		private readonly router: Router,
-		private readonly datasetService: DatasetService
+		public readonly datasetService: DatasetService
 	) {}
 
 	ngOnInit() {

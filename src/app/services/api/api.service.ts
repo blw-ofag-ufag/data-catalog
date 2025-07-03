@@ -37,6 +37,7 @@ export class DatasetService {
 	private sort$ = new BehaviorSubject<'title' | 'old' | 'new' | 'owner' | 'relevance'>('title');
 
 	schemas$ = this.filteredDatasetsSubject.asObservable();
+	searchTerm$ = this.searchTermSubject.asObservable();
 	private filters$ = new BehaviorSubject<ActiveFilters>(allFiltersOff);
 
 	constructor(
@@ -161,6 +162,12 @@ export class DatasetService {
 		});
 
 		this.activatedRoute.queryParams.subscribe(params => {
+			// Handle search parameter from URL
+			const searchParam = params['search'] || '';
+			if (searchParam !== this.searchTermSubject.value) {
+				this.searchTermSubject.next(searchParam);
+			}
+
 			if (!params['dataset']) {
 				this.multiDatasetService.onRouteChange(null);
 			} else {
@@ -179,6 +186,17 @@ export class DatasetService {
 
 	search(query: string) {
 		this.searchTermSubject.next(query);
+		this.updateUrlWithSearch(query);
+	}
+
+	private async updateUrlWithSearch(searchTerm: string) {
+		const queryParams: any = {};
+		if (searchTerm && searchTerm.trim()) {
+			queryParams['search'] = searchTerm.trim();
+		} else {
+			queryParams['search'] = null;
+		}
+		await this.router.navigate([], {queryParams, queryParamsHandling: 'merge'});
 	}
 
 	onPageChange(event: PageEvent) {

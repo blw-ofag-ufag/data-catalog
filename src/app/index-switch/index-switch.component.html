@@ -17,7 +17,7 @@
 		<div style="display: flex; gap: 8px;">
 			<mat-form-field appearance="outline" class="search-bar">
 				<mat-icon matPrefix svgIcon="search"/>
-				<input matInput [placeholder]="'ui.search' | translate" (input)="search($event)"/>
+				<input matInput [placeholder]="'ui.search' | translate" [value]="datasetService.searchTerm$ | async" (input)="search($event)"/>
 			</mat-form-field>
 
 			<mat-form-field>
