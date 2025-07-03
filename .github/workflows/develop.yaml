@@ -18,17 +18,17 @@ jobs:
             -   name: Build Angular App
                 run: |
                     npm run prebuild
-                    npm run build
+                    npm run build -- --output-path=docs
             -   name: Set Git identity
                 run: |
                     git config user.name "github-actions[bot]"
                     git config user.email "github-actions[bot]@users.noreply.github.com"
-            -   name: "Debug: list dist contents"
-                run: ls -R dist
+            -   name: "Debug: list docs contents"
+                run: ls -R docs
 
             -   name: Deploy to gh-pages
                 run: |
-                    npx angular-cli-ghpages --dir=dist/DigiAgriFoodDB
+                    npx angular-cli-ghpages --dir=docs
                 env:
                     CI: true
                     GH_TOKEN: ${{ secrets.GH_TOKEN }}
