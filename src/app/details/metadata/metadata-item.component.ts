@@ -132,7 +132,7 @@ export class TemporalComponent implements OnDestroy {
 }
 
 @Component({
-	template: '<a href="{{data}}" target="_blank">{{data}}</a>',
+	template: '<a [href]="data" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event)" style="cursor: pointer;">{{data}}</a>',
 	standalone: true
 })
 export class LinkComponent {
@@ -141,10 +141,16 @@ export class LinkComponent {
 	constructor(private readonly injector: Injector) {
 		this.data = this.injector.get('data', '');
 	}
+
+	onMouseUp(event: Event) {
+		if (this.data && this.data.startsWith('http')) {
+			window.open(this.data, '_blank', 'noopener,noreferrer');
+		}
+	}
 }
 
 @Component({
-	template: '<ul>@for (item of data; track $index) {<li><a href="{{item}}" target="_blank">{{item}}</a></li>}</ul>',
+	template: '<ul>@for (item of data; track $index) {<li><a [href]="item" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event, item)" style="cursor: pointer;">{{item}}</a></li>}</ul>',
 	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
 	standalone: true
 })
@@ -153,6 +159,12 @@ export class LinkListComponent {
 
 	constructor(private readonly injector: Injector) {
 		this.data = this.injector.get('data', '');
+	}
+
+	onMouseUp(event: Event, url: string) {
+		if (url && url.startsWith('http')) {
+			window.open(url, '_blank', 'noopener,noreferrer');
+		}
 	}
 }
 
@@ -182,7 +194,7 @@ export class NumberComponent {
 }
 
 @Component({
-	template: '<p>{{ data[0] }} - <a href="{{ data[1] }}" target="_blank">{{ data[1] }}</a></p>',
+	template: '<p>{{ data[0] }} - <a [href]="data[1]" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event)" style="cursor: pointer;">{{ data[1] }}</a></p>',
 	standalone: true
 })
 export class WasGeneratedByComponent {
@@ -190,6 +202,12 @@ export class WasGeneratedByComponent {
 
 	constructor(private readonly injector: Injector) {
 		this.data = this.injector.get('data', []);
+	}
+
+	onMouseUp(event: Event) {
+		if (this.data[1] && this.data[1].startsWith('http')) {
+			window.open(this.data[1], '_blank', 'noopener,noreferrer');
+		}
 	}
 }
 
@@ -206,7 +224,7 @@ export class WasDerivedFromComponent {
 }
 
 @Component({
-	template: '<ul>@for (item of data; track $index) {<li><a href="{{item.uri}}" target="_blank">{{item.alias || item.uri}}</a></li>}</ul>',
+	template: '<ul>@for (item of data; track $index) {<li><a [href]="item.uri" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event, item.uri)" style="cursor: pointer;">{{item.alias || item.uri}}</a></li>}</ul>',
 	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
 	standalone: true
 })
@@ -215,6 +233,12 @@ export class RelatedResourcesComponent {
 
 	constructor(private readonly injector: Injector) {
 		this.data = this.injector.get('data', []);
+	}
+
+	onMouseUp(event: Event, uri: string) {
+		if (uri && uri.startsWith('http')) {
+			window.open(uri, '_blank', 'noopener,noreferrer');
+		}
 	}
 }
 
