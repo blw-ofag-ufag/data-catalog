@@ -47,10 +47,10 @@
     "dct:title": "Title",
     "dct:description": "Description",
     "dct:accessRights": "Access rights",
-    "publisher": "Publisher",
+    "dct:publisher": "Publisher",
     "dcat:contactPoint": "Contact Point",
     "dct:issued": "Issue date",
-    "availability": "Availability",
+    "dcatap:availability": "Availability",
     "dcat:keyword": "Keywords",
     "dct:accrualPeriodicity": "Accrual periodicity",
     "dct:modified": "Modification date",
@@ -68,14 +68,14 @@
     "dct:temporal": "Temporal coverage",
     "dcatap:applicableLegislation": "Legal Basis",
     "prov:wasGeneratedBy": "Business Process",
-    "retentionPeriod": "Retention period",
+    "bv:retentionPeriod": "Retention period",
     "catalog": "Catalog",
     "prov:wasDerivedFrom": "Derived from",
     "geoIdentifier": "Identifier GeoIV",
     "foaf:page": "Related resources",
     "schema:comment": "Additional comments",
-    "abrogation": "Abrogation date",
-    "itSystem": "IT System",
+    "bv:abrogation": "Abrogation date",
+    "bv:itSystem": "IT System",
     "inSeries": "In dataset series",
     "replaces": "Replaces",
     "accessURL": "Access URL",
@@ -87,7 +87,7 @@
   },
   "choices": {
     "dataset": {
-      "status": {
+      "adms:status": {
         "workInProgress": "Work in progress",
         "validated": "Validated",
         "published": "Published",
@@ -101,11 +101,11 @@
         "RESTRICTED": "Restricted",
         "SENSITIVE": "Sensitive"
       },
-      "publisher": {
+      "dct:publisher": {
         "BLW-OFAG-UFAG-FOAG": "FOAG",
         "BLV-OSAV-USAV-FSVO": "FSVO"
       },
-      "availability": {
+      "dcatap:availability": {
         "AVAILABLE": "Available",
         "EXPERIMENTAL": "Experimental",
         "STABLE": "Stable",
@@ -146,7 +146,7 @@
         "secondaryThematicData": "Secondary thematic data",
         "referenceData": "Reference data",
         "masterData": "Master data",
-        "unstucturedData": "Unstructured data"
+        "unstructuredData": "Unstructured data"
       },
       "dcat:theme": {
         "work": "Work",
@@ -206,6 +206,7 @@
       "metadata": "Metadata",
       "distributions": "Distributions",
       "publications": "Publication in external catalogs"
-    }
+    },
+    "noAffiliatedPersons": "Nobody's claiming this dataset yet—how about giving it some love by assigning a responsible human?"
   }
 }
