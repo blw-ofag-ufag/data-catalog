@@ -256,6 +256,33 @@ export class DatasetIdListComponent {
 }
 
 @Component({
+	template: `<ul>@for (id of data; track $index) {<li><a (mouseup)="navigateToDataset(id)" style="cursor: pointer; text-decoration: underline">{{ id }}</a></li>}</ul>`,
+	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
+	standalone: true
+})
+export class DatasetLinkListComponent {
+	data: string[] = [];
+	private route: ActivatedRoute;
+	private router: Router;
+
+	constructor(private readonly injector: Injector) {
+		this.data = this.injector.get('data', []);
+		this.route = this.injector.get(ActivatedRoute);
+		this.router = this.injector.get(Router);
+	}
+
+	navigateToDataset(datasetId: string) {
+		const currentParams = this.route.snapshot.queryParams;
+		const queryParams = {
+			publisher: currentParams['publisher'],
+			dataset: datasetId,
+			lang: currentParams['lang']
+		};
+		this.router.navigate(['/details'], { queryParams });
+	}
+}
+
+@Component({
 	template: '<p>Yes</p>',
 	standalone: true
 })
@@ -328,8 +355,9 @@ export class MetadataItemComponent {
 				case 'dcat:theme':
 					return FreeListItemComponent;
 				case 'dcat:inSeries':
-				case 'dct:replaces':
 					return DatasetIdListComponent;
+				case 'dct:replaces':
+					return DatasetLinkListComponent;
 				// case 'internal:rawData':
 				// 	return RawDataComponent;
 				default:
