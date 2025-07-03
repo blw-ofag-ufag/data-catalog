@@ -1,10 +1,10 @@
 <table class="ob-table ob-table-plain">
 	<thead>
 	<tr>
-		<th scope="col">{{ 'ui.title' | translate }}</th>
-		<th scope="col">{{ 'ui.issued' | translate }}</th>
-		<th scope="col">{{ 'ui.stewardOwnerContact' | translate }}</th>
-		<th scope="col">{{ 'ui.keywords' | translate }}</th>
+		<th scope="col" class="no-wrap">{{ 'ui.title' | translate }}</th>
+		<th scope="col" class="no-wrap">{{ 'ui.issued' | translate }}</th>
+		<th scope="col" class="no-wrap">{{ 'ui.stewardOwnerContact' | translate }}</th>
+		<th scope="col" class="no-wrap">{{ 'ui.keywords' | translate }}</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -14,7 +14,7 @@
 				style='cursor: pointer'
 			>
 				<td data-title="Title">{{ ["dct:title", dataset["dct:title"]] | translateField }}</td>
-				<td data-title="Issued">{{ dataset["dct:issued"] | date:'shortDate':translate.currentLang }}</td>
+				<td data-title="Issued" class="no-wrap">{{ dataset["dct:issued"] | date:'shortDate':translate.currentLang }}</td>
 				<td data-title="Steward">
 					<div class="chip-container">
 						@for (steward of getStewards(dataset); track $index) {

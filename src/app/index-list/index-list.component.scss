@@ -20,3 +20,8 @@
 	font-weight: 600;
 	border-bottom: 2px solid #e5e7eb;
 }
+
+// Prevent line wrapping in issued column
+.no-wrap {
+	white-space: nowrap;
+}
