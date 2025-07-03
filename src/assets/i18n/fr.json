@@ -3,7 +3,10 @@
     "title": "Catalogue de données DigiAgriFoodCH",
     "description": "Découvrez et accédez aux jeux de données agricoles et alimentaires suisses des institutions fédérales",
     "navigation": {
-      "index": "Index"
+      "index": "Index",
+      "catalog": "Catalogue",
+      "about": "À propos",
+      "handbook": "Manuel"
     }
   },
   "ui": {

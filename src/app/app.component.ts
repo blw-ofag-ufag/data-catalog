@@ -16,17 +16,15 @@ export class AppComponent implements OnDestroy {
 	navigation = [{url: 'index', label: 'Index'}];
 	private destroy$ = new Subject<void>();
 
-	topNavigation: ObINavigationLink[] = [
-		{ label: 'Catalog', url: 'index' },
-		{ label: 'About', url: 'about' },
-		{ label: 'Handbook', url: 'handbook' }
-	];
+	topNavigation: ObINavigationLink[] = [];
 
 	constructor(
 		private readonly activatedRoute: ActivatedRoute,
 		private readonly translate: TranslateService,
 		private readonly router: Router
 	) {
+		this.updateNavigation();
+		
 		activatedRoute.queryParams
 			.pipe(takeUntil(this.destroy$))
 			.subscribe(params => {
@@ -39,12 +37,21 @@ export class AppComponent implements OnDestroy {
 		translate.onLangChange
 			.pipe(takeUntil(this.destroy$))
 			.subscribe(async event => {
+				this.updateNavigation();
 				const langFromUrl = activatedRoute.snapshot.queryParams['lang'];
 				const langFromTranslate = event.lang;
 				if (langFromUrl !== langFromTranslate) {
 					await router.navigate([], {queryParams: {lang: langFromTranslate}, queryParamsHandling: 'merge'});
 				}
 			});
+	}
+
+	private updateNavigation() {
+		this.topNavigation = [
+			{ label: this.translate.instant('app.navigation.catalog'), url: 'index' },
+			{ label: this.translate.instant('app.navigation.about'), url: 'about' },
+			{ label: this.translate.instant('app.navigation.handbook'), url: 'handbook' }
+		];
 	}
 
 	ngOnDestroy() {

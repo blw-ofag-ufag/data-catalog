@@ -3,7 +3,10 @@
     "title": "DigiAgriFoodCH Data Catalog",
     "description": "Discover and access Swiss agricultural and food-related datasets from federal institutions",
     "navigation": {
-      "index": "Index"
+      "index": "Index",
+      "catalog": "Catalog",
+      "about": "About",
+      "handbook": "Handbook"
     }
   },
   "ui": {
