@@ -212,14 +212,28 @@ export class WasGeneratedByComponent {
 }
 
 @Component({
-	template: '<p>{{ data[0] }} - {{ data[1] }}</p>',
+	template: '<p>{{ data[0] }} - <a (mouseup)="navigateToDataset(data[1])" style="cursor: pointer; text-decoration: underline; color: #0066cc;">{{ data[1] }}</a></p>',
 	standalone: true
 })
 export class WasDerivedFromComponent {
 	data: string[] = [];
+	private route: ActivatedRoute;
+	private router: Router;
 
 	constructor(private readonly injector: Injector) {
 		this.data = this.injector.get('data', []);
+		this.route = this.injector.get(ActivatedRoute);
+		this.router = this.injector.get(Router);
+	}
+
+	navigateToDataset(datasetId: string) {
+		const currentParams = this.route.snapshot.queryParams;
+		const queryParams = {
+			publisher: currentParams['publisher'],
+			dataset: datasetId,
+			lang: currentParams['lang']
+		};
+		this.router.navigate(['/details'], { queryParams });
 	}
 }
 
