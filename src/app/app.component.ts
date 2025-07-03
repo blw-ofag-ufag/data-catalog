@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import { ObINavigationLink } from "@oblique/oblique";
 
 @Component({
 	selector: 'root',
@@ -14,6 +15,12 @@ export class AppComponent implements OnDestroy {
 	title = 'DigiAgriFoodCH';
 	navigation = [{url: 'index', label: 'Index'}];
 	private destroy$ = new Subject<void>();
+
+	topNavigation: ObINavigationLink[] = [
+		{ label: 'Catalog', url: 'index' },
+		{ label: 'About', url: 'about' },
+		{ label: 'Handbook', url: 'handbook' }
+	];
 
 	constructor(
 		private readonly activatedRoute: ActivatedRoute,

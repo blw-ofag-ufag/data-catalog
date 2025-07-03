@@ -26,13 +26,13 @@ export class AboutComponent implements OnInit {
 		const filename = `about/${currentLang}.md`;
 
 		try {
-			const response = await fetch(`/assets/md/${filename}`);
+			const response = await fetch(`./assets/md/${filename}`);
 			if (response.ok) {
 				const markdownText = await response.text();
 				this.markdownContent = await marked.parse(markdownText);
 			} else {
 				// Fallback to English if current language file doesn't exist
-				const fallbackResponse = await fetch('/assets/md/about/en.md');
+				const fallbackResponse = await fetch('./assets/md/about/en.md');
 				if (fallbackResponse.ok) {
 					const markdownText = await fallbackResponse.text();
 					this.markdownContent = await marked.parse(markdownText);

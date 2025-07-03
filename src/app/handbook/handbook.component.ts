@@ -47,13 +47,13 @@ export class HandbookComponent implements OnInit, AfterViewInit {
 		const filename = `handbook/${currentLang}.md`;
 
 		try {
-			const response = await fetch(`/assets/md/${filename}`);
+			const response = await fetch(`./assets/md/${filename}`);
 			if (response.ok) {
 				const markdownText = await response.text();
 				this.markdownContent = await this.processMarkdownWithMermaid(markdownText);
 			} else {
 				// Fallback to English if current language file doesn't exist
-				const fallbackResponse = await fetch('/assets/md/handbook/en.md');
+				const fallbackResponse = await fetch('./assets/md/handbook/en.md');
 				if (fallbackResponse.ok) {
 					const markdownText = await fallbackResponse.text();
 					this.markdownContent = await this.processMarkdownWithMermaid(markdownText);
