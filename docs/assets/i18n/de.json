@@ -249,5 +249,11 @@
       "publications": "Publikationen in externen Katalogen"
     },
     "noAffiliatedPersons": "Niemand fühlt sich für diesen Datensatz zuständig – höchste Zeit, jemandem diese Ehre zu erteilen!"
+  },
+  "footer": {
+    "version": "Version",
+    "contact": "Kontakt: info@blw.admin.ch",
+    "legalBasis": "Rechtliche Grundlagen",
+    "source": "Quellcode (GitHub)"
   }
 }
