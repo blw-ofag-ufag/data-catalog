@@ -27,7 +27,8 @@ export class HandbookComponent implements OnInit, AfterViewInit {
 			flowchart: {
 				useMaxWidth: true,
 				htmlLabels: true
-			}
+			},
+			suppressErrorRendering: true
 		});
 
 		await this.loadMarkdownContent();
