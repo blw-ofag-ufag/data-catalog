@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AsyncPipe} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
 import {MatAnchor, MatButton, MatIconButton} from '@angular/material/button';
-import {ObButtonDirective} from '@oblique/oblique';
+import { ObButtonDirective, ObInputClearDirective } from "@oblique/oblique";
 import {MatTooltip} from '@angular/material/tooltip';
 import {IndexFilterColComponent} from '../index-filter-col/index-filter-col.component';
 import {IndexOutletComponent} from '../index-outlet/index-outlet.component';
@@ -40,7 +40,8 @@ import {TranslatePipe} from '@ngx-translate/core';
 		MatPrefix,
 		AsyncPipe,
 		MatBadge,
-		TranslatePipe
+		TranslatePipe,
+		ObInputClearDirective
 	],
 	styleUrl: './index-switch.component.scss'
 })
@@ -82,8 +83,11 @@ export class IndexSwitchComponent implements OnInit, OnDestroy {
 	}
 
 	search(event: Event) {
-		// alert("shuffling");
 		this.datasetService.search((event?.target as HTMLInputElement)?.value);
+	}
+
+	clearSearch() {
+		this.datasetService.search('');
 	}
 
 	setSorting(criterion: 'title' | 'old' | 'new' | 'owner' | 'relevance') {

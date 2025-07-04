@@ -17,7 +17,11 @@
 		<div style="display: flex; gap: 8px">
 			<mat-form-field appearance="outline" class="search-bar">
 				<mat-icon matPrefix svgIcon="search" />
-				<input matInput [placeholder]="'ui.search' | translate" [value]="datasetService.searchTerm$ | async" (input)="search($event)" />
+				<input #searchInput matInput [placeholder]="'ui.search' | translate" [value]="datasetService.searchTerm$ | async" (input)="search($event)" />
+        <button type="button" [obInputClear]="searchInput" (click)="clearSearch()">
+          <mat-icon svgIcon="cancel-circle" />
+          <span class="ob-screen-reader-only">Clear</span>
+        </button>
 			</mat-form-field>
 
 			<mat-form-field>
