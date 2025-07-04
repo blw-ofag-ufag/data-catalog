@@ -20,7 +20,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes), ObUnknownRouteModule],
+	imports: [RouterModule.forRoot(routes, { useHash: true }), ObUnknownRouteModule],
 	exports: [RouterModule]
 })
 export class AppRoutingModule {}
