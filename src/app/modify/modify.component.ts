@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'modify',
-  standalone: false,
-  templateUrl: './modify.component.html',
-  styleUrl: './modify.component.scss'
+	selector: 'modify',
+	standalone: false,
+	templateUrl: './modify.component.html',
+	styleUrl: './modify.component.scss'
 })
-export class ModifyComponent {
-
-}
+export class ModifyComponent {}

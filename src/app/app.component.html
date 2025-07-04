@@ -1,51 +1,45 @@
 <ob-master-layout [navigation]="topNavigation">
-	<ng-container obHeaderTitle>{{ 'app.title' | translate }}</ng-container>
+	<ng-container obHeaderTitle>{{ "app.title" | translate }}</ng-container>
 
-<!--	Data catalog version-->
+	<!--	Data catalog version-->
 	<ng-container obFooterInfo>
-		<p>{{ 'footer.version' | translate }}: {{ version$ | async }}</p>
+		<p>{{ "footer.version" | translate }}: {{ version$ | async }}</p>
 	</ng-container>
 
 	<ng-container obFooterInfo>
-		<p>{{ 'footer.contact' | translate }}</p>
+		<p>{{ "footer.contact" | translate }}</p>
 	</ng-container>
 
 	<ng-template #obFooterLink>
-		<a [href]="getLegalBasisUrl()" 
-		   [title]="'footer.legalBasis' | translate" 
-		   target="_blank" 
-		   class="link">
-			{{ 'footer.legalBasis' | translate }}
+		<a [href]="getLegalBasisUrl()" [title]="'footer.legalBasis' | translate" target="_blank" class="link">
+			{{ "footer.legalBasis" | translate }}
 		</a>
 	</ng-template>
 
 	<ng-template #obFooterLink>
-		<a href="https://github.com/blw-ofag-ufag/data-catalog" 
-		   [title]="'footer.source' | translate" 
-		   target="_blank" 
-		   class="link">
-			{{ 'footer.source' | translate }}
+		<a href="https://github.com/blw-ofag-ufag/data-catalog" [title]="'footer.source' | translate" target="_blank" class="link">
+			{{ "footer.source" | translate }}
 		</a>
 	</ng-template>
 
-<!--	Link to source code (GitHub)-->
-<!--	Contact information-->
-<!--	Legal basis, refer to https://www.admin.ch/gov/?{lang}/start/rechtliches.html-->
+	<!--	Link to source code (GitHub)-->
+	<!--	Contact information-->
+	<!--	Legal basis, refer to https://www.admin.ch/gov/?{lang}/start/rechtliches.html-->
 
-<!--	<ng-container obFooterInfo>-->
-<!--		<app-footer></app-footer>-->
-<!--		<p>Oblique's footer</p>-->
-<!--		<p>-->
-<!--			&copy; 2020 <span>{{ "i18n.oblique.footer.title" | translate }}</span>-->
-<!--		</p>-->
-<!--		<h3>mat-chip-listbox</h3>-->
-<!--		<mat-chip-listbox>-->
-<!--			<mat-chip-option>Default</mat-chip-option>-->
-<!--			<mat-chip-option class="info">Info</mat-chip-option>-->
-<!--			<mat-chip-option class="success">Success</mat-chip-option>-->
-<!--			<mat-chip-option class="error">Error</mat-chip-option>-->
-<!--			<mat-chip-option class="warning">Warn</mat-chip-option>-->
-<!--			<mat-chip-option disabled>Disabled</mat-chip-option>-->
-<!--		</mat-chip-listbox>-->
-<!--	</ng-container>-->
+	<!--	<ng-container obFooterInfo>-->
+	<!--		<app-footer></app-footer>-->
+	<!--		<p>Oblique's footer</p>-->
+	<!--		<p>-->
+	<!--			&copy; 2020 <span>{{ "i18n.oblique.footer.title" | translate }}</span>-->
+	<!--		</p>-->
+	<!--		<h3>mat-chip-listbox</h3>-->
+	<!--		<mat-chip-listbox>-->
+	<!--			<mat-chip-option>Default</mat-chip-option>-->
+	<!--			<mat-chip-option class="info">Info</mat-chip-option>-->
+	<!--			<mat-chip-option class="success">Success</mat-chip-option>-->
+	<!--			<mat-chip-option class="error">Error</mat-chip-option>-->
+	<!--			<mat-chip-option class="warning">Warn</mat-chip-option>-->
+	<!--			<mat-chip-option disabled>Disabled</mat-chip-option>-->
+	<!--		</mat-chip-listbox>-->
+	<!--	</ng-container>-->
 </ob-master-layout>

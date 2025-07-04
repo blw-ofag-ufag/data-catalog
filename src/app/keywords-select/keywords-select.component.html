@@ -1,5 +1,5 @@
 <mat-form-field>
-	<mat-label>{{ 'ui.keywords' | translate }}</mat-label>
+	<mat-label>{{ "ui.keywords" | translate }}</mat-label>
 	<mat-chip-grid #chipGrid aria-label="Keyword selection">
 		<mat-chip-row *ngFor="let keyword of value" (removed)="remove(keyword)">
 			{{ keyword }}

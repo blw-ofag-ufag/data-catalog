@@ -10,12 +10,12 @@
 				<div class="ob-inline-form">
 					<mat-chip>
 						<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
-							{{ 'ui.dataSet' | translate }}
+							{{ "ui.dataSet" | translate }}
 						</a>
 					</mat-chip>
 					<mat-chip>
 						<a [routerLink]="['/index']" [queryParams]="publisherFiltered(dataset['dct:publisher'])">
-							{{ dataset['dct:publisher'] | org }}
+							{{ dataset["dct:publisher"] | org }}
 						</a>
 					</mat-chip>
 				</div>
@@ -26,10 +26,9 @@
 		</div>
 		<div class="ob-grid">
 			<div class="ob-span-12">
-
 				<!-- persons -->
 				<h3>{{ "details.heading.affiliated" | translate }}</h3>
-				<hr>
+				<hr />
 				@if (dataset["prov:qualifiedAttribution"] && dataset["prov:qualifiedAttribution"].length > 0) {
 					<table class="ob-table ob-table-plain">
 						<tbody>
@@ -55,7 +54,7 @@
 
 				<!-- metadata -->
 				<h3>{{ "details.heading.metadata" | translate }}</h3>
-				<hr>
+				<hr />
 				<!--				<div class="meta-container">-->
 				<table class="ob-table ob-table-plain">
 					<tbody>
@@ -84,7 +83,7 @@
 				<!-- distribution -->
 				@if (dataset["dcat:distribution"] && dataset["dcat:distribution"].length > 0) {
 					<h3>{{ "details.heading.distributions" | translate }}</h3>
-					<hr>
+					<hr />
 					<mat-accordion>
 						@for (dist of dataset["dcat:distribution"]; track $index) {
 							<mat-expansion-panel>
@@ -104,7 +103,7 @@
 
 				@if (dataset["bv:externalCatalogs"] && dataset["bv:externalCatalogs"].length > 0) {
 					<h3>{{ "details.heading.publications" | translate }}</h3>
-					<hr>
+					<hr />
 					<table class="ob-table ob-table-plain">
 						<tbody>
 							@for (pub of dataset["bv:externalCatalogs"]; track $index) {
@@ -116,8 +115,6 @@
 						</tbody>
 					</table>
 				}
-
-
 			</div>
 		</div>
 	}
@@ -127,7 +124,7 @@
 	} @else {
 		<app-not-found></app-not-found>
 	}
-<!--	<app-not-found *ngIf="!loading$ | async"></app-not-found>-->
+	<!--	<app-not-found *ngIf="!loading$ | async"></app-not-found>-->
 }
 
 <!--<p>details for dataset {{ dataset }}</p>-->
@@ -149,7 +146,6 @@
 <!--    <div id="data-steward">-->
 <!--      <mat-chip>Business Data Owner</mat-chip>-->
 <!--    </div>-->
-
 
 <!--    <br>-->
 <!--    <h6>Metadata</h6>-->

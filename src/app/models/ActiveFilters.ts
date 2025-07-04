@@ -1,7 +1,7 @@
 import {Params} from '@angular/router';
+import {enumTypes} from '../models/schemas/dataset';
 
 export type ActiveFilters = {[key: string]: {[key: string]: boolean}};
-import {enumTypes} from '../models/schemas/dataset';
 
 export function createActiveFiltersFromParams(params: Params): ActiveFilters {
 	const activeFilters: ActiveFilters = {};

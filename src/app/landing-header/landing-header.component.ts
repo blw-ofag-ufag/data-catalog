@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'landing-header',
-  standalone: false,
-  templateUrl: './landing-header.component.html',
-  styleUrl: './landing-header.component.scss'
+	selector: 'landing-header',
+	standalone: false,
+	templateUrl: './landing-header.component.html',
+	styleUrl: './landing-header.component.scss'
 })
-export class LandingHeaderComponent {
-
-}
+export class LandingHeaderComponent {}

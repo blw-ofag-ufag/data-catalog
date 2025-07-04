@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import { MatChip } from "@angular/material/chips";
-import { RouterLink } from "@angular/router";
+import {MatChip} from '@angular/material/chips';
+import {RouterLink} from '@angular/router';
 
 @Component({
 	selector: 'keywords',
@@ -18,7 +18,7 @@ export class KeywordsComponent {
 
 	keywordFiltered(keyword: string) {
 		return {
-			'dcat:keyword': keyword,
+			'dcat:keyword': keyword
 		};
 	}
 }

@@ -6,7 +6,7 @@
 			<index-list [datasets$]="dataset$"></index-list>
 		}
 
-		<hr/>
+		<hr />
 
 		@if (view === "tile") {
 			<div class="paginator-container">
@@ -14,7 +14,7 @@
 					pageSize="6"
 					(page)="onPageChange($event)"
 					aria-label="Select page"
-					[length]="(datasetService.filteredLength$ | async)"
+					[length]="datasetService.filteredLength$ | async"
 					[pageSizeOptions]="[6, 9, 18, 36]"
 				/>
 			</div>
@@ -24,14 +24,14 @@
 					pageSize="10"
 					(page)="onPageChange($event)"
 					aria-label="Select page"
-					[length]="(datasetService.filteredLength$ | async)"
+					[length]="datasetService.filteredLength$ | async"
 					[pageSizeOptions]="[10, 25, 100, 200]"
 				/>
 			</div>
 		}
 	} @else {
 		<div class="no-results-container">
-			<p class="no-results-message">{{ 'ui.noResultsFound' | translate }}</p>
+			<p class="no-results-message">{{ "ui.noResultsFound" | translate }}</p>
 		</div>
 	}
 }

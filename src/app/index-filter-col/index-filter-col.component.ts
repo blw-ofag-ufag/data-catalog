@@ -1,4 +1,3 @@
-import {MatCheckbox} from '@angular/material/checkbox';
 import {
 	AccessRights,
 	AccrualPeriocicites,
@@ -10,12 +9,12 @@ import {
 	Publishers,
 	Statuses
 } from '../models/schemas/dataset';
-import {Component, Input, OnInit, OnDestroy} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {Observable, map, startWith, BehaviorSubject, tap, Subject} from 'rxjs';
+import {BehaviorSubject, map, Observable, startWith, Subject, tap} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -24,9 +23,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import {DatasetService} from '../services/api/api.service';
 import {TranslatePipe} from '@ngx-translate/core';
-import {TranslateFieldPipe} from '../translate-field.pipe';
 import {MatTooltip} from '@angular/material/tooltip';
-import {MatButton, MatIconButton} from '@angular/material/button';
+import {MatButton} from '@angular/material/button';
 import {ActivatedRoute} from '@angular/router';
 import {ActiveFilters, createActiveFiltersFromParams} from '../models/ActiveFilters';
 import {MultiDatasetService} from '../services/api/multi-dataset-service.service';
@@ -44,9 +42,7 @@ import {MultiDatasetService} from '../services/api/multi-dataset-service.service
 		MatListModule,
 		MatSelectModule,
 		TranslatePipe,
-		TranslateFieldPipe,
 		MatTooltip,
-		MatIconButton,
 		MatButton
 	],
 	templateUrl: './index-filter-col.component.html',
@@ -62,11 +58,11 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 		'bv:classification': ClassificationLevels,
 		'bv:personalData': CategorizationsDSG,
 		'bv:typeOfData': DataTypes,
-		'dcat:theme': DatasetThemes,
+		'dcat:theme': DatasetThemes
 		// class: ['dataset']
 	};
-	private _selectedFilters: ActiveFilters = {};
-	private destroy$ = new Subject<void>();
+	private readonly _selectedFilters: ActiveFilters = {};
+	private readonly destroy$ = new Subject<void>();
 	// @Input() set availableFilters(filters: string[]) {
 	// 	this._availableFilters = filters;
 	// }
@@ -93,9 +89,7 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 		// Remove the subscription to filteredKeywords$ as it causes issues
 		// The keywords are handled via add/remove/selected methods instead
 
-		this.keywordService.keywords$
-			.pipe(takeUntil(this.destroy$))
-			.subscribe(keywords => (this.allKeywords = keywords));
+		this.keywordService.keywords$.pipe(takeUntil(this.destroy$)).subscribe(keywords => (this.allKeywords = keywords));
 
 		// this.activatedFilters$.subscribe(filters => this.activatedFilters = filters);
 	}
@@ -110,19 +104,17 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 			)
 			.subscribe();
 
-		this.route.queryParams
-			.pipe(takeUntil(this.destroy$))
-			.subscribe(async params => {
-				const filters = createActiveFiltersFromParams(params);
-				// Extract keywords from filters
-				if (filters['dcat:keyword']) {
-					this.keywords = Object.keys(filters['dcat:keyword']).filter(key => filters['dcat:keyword'][key]);
-				} else {
-					this.keywords = [];
-				}
-				this.activatedFilters$.next(filters);
-				await this.filterService.setFilters(filters);
-			});
+		this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(async params => {
+			const filters = createActiveFiltersFromParams(params);
+			// Extract keywords from filters
+			if (filters['dcat:keyword']) {
+				this.keywords = Object.keys(filters['dcat:keyword']).filter(key => filters['dcat:keyword'][key]);
+			} else {
+				this.keywords = [];
+			}
+			this.activatedFilters$.next(filters);
+			await this.filterService.setFilters(filters);
+		});
 	}
 
 	ngOnDestroy() {

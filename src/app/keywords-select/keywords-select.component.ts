@@ -1,14 +1,14 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatChipInputEvent, MatChipsModule } from "@angular/material/chips";
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { Observable, startWith, map } from 'rxjs';
-import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
-import { CommonModule } from "@angular/common";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatIconModule } from "@angular/material/icon";
-import { MatInput, MatInputModule } from "@angular/material/input";
-import { TranslatePipe } from "@ngx-translate/core";
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {map, Observable, startWith} from 'rxjs';
+import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {CommonModule} from '@angular/common';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
 	selector: 'keywords-select',
@@ -36,7 +36,7 @@ export class KeywordsSelectComponent implements OnInit {
 	keywordControl = new FormControl('');
 	filteredKeywords$!: Observable<string[]>;
 
-	private allKeywords: string[] = [];
+	private readonly allKeywords: string[] = [];
 
 	ngOnInit() {
 		this.filteredKeywords$ = this.keywordControl.valueChanges.pipe(

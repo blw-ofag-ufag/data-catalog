@@ -1,10 +1,9 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { TranslatePipe } from "@ngx-translate/core";
-import { ObAlertComponent } from "@oblique/oblique";
+import {Component, Input, OnInit} from '@angular/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
 	selector: 'admindir-lookup',
-	imports: [TranslatePipe, ObAlertComponent],
+	imports: [TranslatePipe],
 	templateUrl: './admindir-lookup.component.html',
 	styleUrl: './admindir-lookup.component.scss'
 })
@@ -14,7 +13,7 @@ export class AdmindirLookupComponent implements OnInit {
 	adminDirError: boolean = false;
 
 	ngOnInit(): void {
-		if (this.person && this.person['prov:agent']) {
+		if (this.person?.['prov:agent']) {
 			const id = this.person['prov:agent'];
 			const url = `https://admindir.verzeichnisse.admin.ch/api/person/${id}`;
 

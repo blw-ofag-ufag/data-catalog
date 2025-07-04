@@ -1,17 +1,16 @@
-import {Component, Injector, input, Input, LOCALE_ID, OnInit, OnDestroy} from '@angular/core';
-import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {Component, Injector, Input, OnDestroy, OnInit} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 import {TextOrTranslatable} from '../../models/types/TextOrTranslatable';
 import {TranslateFieldPipe} from '../../translate-field.pipe';
-import {DatePipe, JsonPipe, NgComponentOutlet} from '@angular/common';
+import {DatePipe, NgComponentOutlet, registerLocaleData} from '@angular/common';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import {MatChip, MatChipSet} from '@angular/material/chips';
 import {ContactPoint, enumTypes, TemporalCoverage} from '../../models/schemas/dataset';
-import {ActivatedRoute, Router, RouterLink, RouterModule} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 
 // Lokalisierung registrieren
 registerLocaleData(localeDe);
@@ -38,7 +37,7 @@ export class FreeListItemComponent {
 	selector: 'enum',
 	templateUrl: './enum.component.html',
 	styleUrl: '../details.component.scss',
-	imports: [JsonPipe, TranslateFieldPipe, MatChipSet, MatChip, RouterLink],
+	imports: [TranslateFieldPipe, MatChipSet, MatChip, RouterLink],
 	standalone: true
 })
 export class EnumComponent implements OnInit {
@@ -56,7 +55,7 @@ export class EnumComponent implements OnInit {
 @Component({
 	templateUrl: './default-metadata-item.component.html',
 	styleUrl: '../details.component.scss',
-	imports: [TranslatePipe, TranslateFieldPipe, JsonPipe],
+	imports: [TranslateFieldPipe],
 	standalone: true
 })
 export class DefaultMetadataItemComponent {
@@ -79,7 +78,7 @@ export class DateMetadataItemComponent implements OnDestroy {
 	data: string = '';
 	label: string = '';
 	@Input() locale: string;
-	private destroy$ = new Subject<void>();
+	private readonly destroy$ = new Subject<void>();
 
 	constructor(
 		private readonly injector: Injector,
@@ -88,11 +87,9 @@ export class DateMetadataItemComponent implements OnDestroy {
 		this.label = this.injector.get('label', '');
 		this.data = this.injector.get('data', '');
 		this.locale = this.translate.currentLang;
-		this.translate.onLangChange
-			.pipe(takeUntil(this.destroy$))
-			.subscribe(evt => {
-				this.locale = evt.lang;
-			});
+		this.translate.onLangChange.pipe(takeUntil(this.destroy$)).subscribe(evt => {
+			this.locale = evt.lang;
+		});
 	}
 
 	ngOnDestroy() {
@@ -110,7 +107,7 @@ export class DateMetadataItemComponent implements OnDestroy {
 export class TemporalComponent implements OnDestroy {
 	@Input() locale: string;
 	data: TemporalCoverage = {'dcat:start_date': '', 'dcat:end_date': ''};
-	private destroy$ = new Subject<void>();
+	private readonly destroy$ = new Subject<void>();
 
 	constructor(
 		private readonly injector: Injector,
@@ -118,11 +115,9 @@ export class TemporalComponent implements OnDestroy {
 	) {
 		this.data = this.injector.get('data', this.data);
 		this.locale = this.translate.currentLang;
-		this.translate.onLangChange
-			.pipe(takeUntil(this.destroy$))
-			.subscribe(evt => {
-				this.locale = evt.lang;
-			});
+		this.translate.onLangChange.pipe(takeUntil(this.destroy$)).subscribe(evt => {
+			this.locale = evt.lang;
+		});
 	}
 
 	ngOnDestroy() {
@@ -150,7 +145,8 @@ export class LinkComponent {
 }
 
 @Component({
-	template: '<ul>@for (item of data; track $index) {<li><a [href]="item" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event, item)" style="cursor: pointer;">{{item}}</a></li>}</ul>',
+	template:
+		'<ul>@for (item of data; track $index) {<li><a [href]="item" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event, item)" style="cursor: pointer;">{{item}}</a></li>}</ul>',
 	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
 	standalone: true
 })
@@ -171,7 +167,7 @@ export class LinkListComponent {
 @Component({
 	templateUrl: './contact-metadata-item.component.html',
 	standalone: true,
-	imports: [JsonPipe]
+	imports: []
 })
 export class ContactPointComponent {
 	data: ContactPoint = {'schema:name': '', 'schema:email': ''};
@@ -194,7 +190,8 @@ export class NumberComponent {
 }
 
 @Component({
-	template: '<p>{{ data[0] }} - <a [href]="data[1]" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event)" style="cursor: pointer;">{{ data[1] }}</a></p>',
+	template:
+		'<p>{{ data[0] }} - <a [href]="data[1]" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event)" style="cursor: pointer;">{{ data[1] }}</a></p>',
 	standalone: true
 })
 export class WasGeneratedByComponent {
@@ -212,13 +209,14 @@ export class WasGeneratedByComponent {
 }
 
 @Component({
-	template: '<p>{{ data[0] }} - <a (mouseup)="navigateToDataset(data[1])" style="cursor: pointer; text-decoration: underline; color: #0066cc;">{{ data[1] }}</a></p>',
+	template:
+		'<p>{{ data[0] }} - <a (mouseup)="navigateToDataset(data[1])" style="cursor: pointer; text-decoration: underline; color: #0066cc;">{{ data[1] }}</a></p>',
 	standalone: true
 })
 export class WasDerivedFromComponent {
 	data: string[] = [];
-	private route: ActivatedRoute;
-	private router: Router;
+	private readonly route: ActivatedRoute;
+	private readonly router: Router;
 
 	constructor(private readonly injector: Injector) {
 		this.data = this.injector.get('data', []);
@@ -233,17 +231,18 @@ export class WasDerivedFromComponent {
 			dataset: datasetId,
 			lang: currentParams['lang']
 		};
-		this.router.navigate(['/details'], { queryParams });
+		this.router.navigate(['/details'], {queryParams});
 	}
 }
 
 @Component({
-	template: '<ul>@for (item of data; track $index) {<li><a [href]="item.uri" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event, item.uri)" style="cursor: pointer;">{{item.alias || item.uri}}</a></li>}</ul>',
+	template:
+		'<ul>@for (item of data; track $index) {<li><a [href]="item.uri" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event, item.uri)" style="cursor: pointer;">{{item.alias || item.uri}}</a></li>}</ul>',
 	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
 	standalone: true
 })
 export class RelatedResourcesComponent {
-	data: Array<{alias?: string; uri: string}> = [];
+	data: {alias?: string; uri: string}[] = [];
 
 	constructor(private readonly injector: Injector) {
 		this.data = this.injector.get('data', []);
@@ -270,14 +269,20 @@ export class DatasetIdListComponent {
 }
 
 @Component({
-	template: `<ul>@for (id of data; track $index) {<li><a (mouseup)="navigateToDataset(id)" style="cursor: pointer; text-decoration: underline">{{ id }}</a></li>}</ul>`,
+	template: `<ul>
+		@for (id of data; track $index) {
+			<li>
+				<a (mouseup)="navigateToDataset(id)" style="cursor: pointer; text-decoration: underline">{{ id }}</a>
+			</li>
+		}
+	</ul>`,
 	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
 	standalone: true
 })
 export class DatasetLinkListComponent {
 	data: string[] = [];
-	private route: ActivatedRoute;
-	private router: Router;
+	private readonly route: ActivatedRoute;
+	private readonly router: Router;
 
 	constructor(private readonly injector: Injector) {
 		this.data = this.injector.get('data', []);
@@ -292,7 +297,7 @@ export class DatasetLinkListComponent {
 			dataset: datasetId,
 			lang: currentParams['lang']
 		};
-		this.router.navigate(['/details'], { queryParams });
+		this.router.navigate(['/details'], {queryParams});
 	}
 }
 
@@ -314,7 +319,7 @@ export class NoComponent {}
 		<ng-container *ngComponentOutlet="decideComponent(label, data); injector: createInjector(label, data)"></ng-container>
 	</div>`,
 	styleUrl: '../details.component.scss',
-	imports: [NgComponentOutlet, JsonPipe],
+	imports: [NgComponentOutlet],
 	standalone: true
 })
 export class MetadataItemComponent {
@@ -322,7 +327,7 @@ export class MetadataItemComponent {
 	@Input() data = {};
 
 	constructor(
-		private injector: Injector,
+		private readonly injector: Injector,
 		protected route: ActivatedRoute
 	) {}
 
@@ -360,22 +365,21 @@ export class MetadataItemComponent {
 		}
 		if (enumTypes.includes(label)) {
 			return EnumComponent;
-		} else {
-			switch (label) {
-				case 'dct:issued':
-				case 'dct:modified':
-				case 'bv:abrogation':
-					return DateMetadataItemComponent;
-				case 'dcat:theme':
-					return FreeListItemComponent;
-				case 'dcat:inSeries':
-				case 'dct:replaces':
-					return DatasetLinkListComponent;
-				// case 'internal:rawData':
-				// 	return RawDataComponent;
-				default:
-					return DefaultMetadataItemComponent;
-			}
+		}
+		switch (label) {
+			case 'dct:issued':
+			case 'dct:modified':
+			case 'bv:abrogation':
+				return DateMetadataItemComponent;
+			case 'dcat:theme':
+				return FreeListItemComponent;
+			case 'dcat:inSeries':
+			case 'dct:replaces':
+				return DatasetLinkListComponent;
+			// case 'internal:rawData':
+			// 	return RawDataComponent;
+			default:
+				return DefaultMetadataItemComponent;
 		}
 
 		return DefaultMetadataItemComponent;

@@ -6,5 +6,5 @@ export interface Publisher {
 	getProcessedUrl: () => string;
 	getDetailUrl: (id: string) => string;
 
-	getKeywordUrl(): string;
+	getKeywordUrl: () => string;
 }

@@ -1,28 +1,21 @@
-import {Component, Input, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {DatasetSchema, enumTypes} from '../models/schemas/dataset';
 import {DatasetService} from '../services/api/api.service';
 import {Observable, startWith, Subject} from 'rxjs';
-import { AsyncPipe, JsonPipe } from "@angular/common";
-import { TranslatePipe, TranslateService } from "@ngx-translate/core";
+import {AsyncPipe} from '@angular/common';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {map, takeUntil} from 'rxjs/operators';
 import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
 import {TranslateFieldPipe} from '../translate-field.pipe';
 import {EnumComponent, MetadataItemComponent} from './metadata/metadata-item.component';
-import {NormalizedMetadataElement, filterAndNormalizeMetadata} from './details.helpers';
-import {
-	MatAccordion,
-	MatExpansionModule,
-	MatExpansionPanel,
-	MatExpansionPanelContent,
-	MatExpansionPanelDescription,
-	MatExpansionPanelHeader
-} from '@angular/material/expansion';
+import {filterAndNormalizeMetadata, NormalizedMetadataElement} from './details.helpers';
+import {MatAccordion, MatExpansionModule, MatExpansionPanel, MatExpansionPanelDescription, MatExpansionPanelHeader} from '@angular/material/expansion';
 import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.component';
-import { KeywordsComponent } from "./keywords/keywords.component";
-import { DistributionComponent } from "./distribution/distribution.component";
-import { NotFoundComponent } from "../not-found/not-found.component";
+import {KeywordsComponent} from './keywords/keywords.component';
+import {DistributionComponent} from './distribution/distribution.component';
+import {NotFoundComponent} from '../not-found/not-found.component';
 
 @Component({
 	selector: 'app-details',
@@ -45,7 +38,6 @@ import { NotFoundComponent } from "../not-found/not-found.component";
 		TranslateFieldPipe,
 		KeywordsComponent,
 		DistributionComponent,
-		JsonPipe,
 		NotFoundComponent
 	],
 	styleUrl: './details.component.scss'

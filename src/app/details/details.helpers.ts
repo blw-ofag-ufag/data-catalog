@@ -1,4 +1,4 @@
-import {DatasetDescription, DatasetIdentifier, DatasetSchema, DatasetTitle} from '../models/schemas/dataset';
+import {DatasetSchema} from '../models/schemas/dataset';
 // usage
 // const metadataElements = filterAndNormalizeMetadata(dataset);
 
@@ -10,10 +10,11 @@ export interface NormalizedMetadataElement {
 export function filterAndNormalizeMetadata(dataset: DatasetSchema): NormalizedMetadataElement[] {
 	const metadata = Object.fromEntries(Object.entries(dataset).filter(([key]) => isKeyMetadata(key)));
 
-	const normalizedMetadata = Object.entries(metadata).map(([key, value]) => ({
-		label: key,
-		data: value
-	}))
+	const normalizedMetadata = Object.entries(metadata)
+		.map(([key, value]) => ({
+			label: key,
+			data: value
+		}))
 		.filter(x => x.data != null) as NormalizedMetadataElement[];
 	return normalizedMetadata;
 }
@@ -34,8 +35,5 @@ export function isKeyMetadata(key: string): boolean {
 }
 
 export function isKeyInDistributionPropertyList(key: string): boolean {
-	return !(
-		key.startsWith('dct:title') ||
-		key.startsWith('dct:description')
-	);
+	return !(key.startsWith('dct:title') || key.startsWith('dct:description'));
 }

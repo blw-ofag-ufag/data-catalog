@@ -1,37 +1,29 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {
-	ObButtonModule,
-	ObExternalLinkModule, ObHttpApiInterceptor,
-	ObMasterLayoutConfig,
-	ObMasterLayoutModule,
-	provideObliqueConfiguration
-} from "@oblique/oblique";
+import {ObButtonModule, ObExternalLinkModule, ObMasterLayoutConfig, ObMasterLayoutModule, provideObliqueConfiguration} from '@oblique/oblique';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {registerLocaleData} from '@angular/common';
 import localeDECH from '@angular/common/locales/de-CH';
 import localeFRCH from '@angular/common/locales/fr-CH';
 import localeITCH from '@angular/common/locales/it-CH';
 import {TranslateModule} from '@ngx-translate/core';
-import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
+import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {HomeComponent} from './home/home.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { MatChip, MatChipListbox, MatChipOption } from "@angular/material/chips";
-import { IndexComponent } from './index/index.component';
-import { DetailsComponent } from './details/details.component';
-import { AboutComponent } from './about/about.component';
-import { HandbookComponent } from './handbook/handbook.component';
-import { ModifyComponent } from './modify/modify.component';
-import { LandingHeaderComponent } from './landing-header/landing-header.component';
-import { IndexCardsComponent } from './index-cards/index-cards.component';
-import { IndexListComponent } from './index-list/index-list.component';
-import { IndexSwitchComponent } from './index-switch/index-switch.component';
-import { MatTable } from "@angular/material/table";
-import { FooterComponent } from "./footer/footer.component";
-import { MatNavList } from "@angular/material/list";
-import { OrgPipe } from './org.pipe';
+import {MatChip, MatChipListbox, MatChipOption} from '@angular/material/chips';
+import {IndexComponent} from './index/index.component';
+import {AboutComponent} from './about/about.component';
+import {HandbookComponent} from './handbook/handbook.component';
+import {ModifyComponent} from './modify/modify.component';
+import {LandingHeaderComponent} from './landing-header/landing-header.component';
+import {IndexCardsComponent} from './index-cards/index-cards.component';
+import {IndexListComponent} from './index-list/index-list.component';
+import {IndexSwitchComponent} from './index-switch/index-switch.component';
+import {MatTable} from '@angular/material/table';
+import {FooterComponent} from './footer/footer.component';
+import {MatNavList} from '@angular/material/list';
 
 registerLocaleData(localeDECH);
 registerLocaleData(localeFRCH);

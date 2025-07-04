@@ -5,9 +5,8 @@ import {Observable, startWith} from 'rxjs';
 import {DatasetSchema} from '../models/schemas/dataset';
 import {AsyncPipe, DatePipe, NgOptimizedImage} from '@angular/common';
 import {map} from 'rxjs/operators';
-import { TranslatePipe, TranslateService } from "@ngx-translate/core";
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatChip} from '@angular/material/chips';
-import {MatIcon} from '@angular/material/icon';
 import {OrgPipe} from '../org.pipe';
 import {TranslateFieldPipe} from '../translate-field.pipe';
 
@@ -27,7 +26,6 @@ import {TranslateFieldPipe} from '../translate-field.pipe';
 		NgOptimizedImage,
 		DatePipe,
 		MatChip,
-		MatIcon,
 		OrgPipe,
 		RouterLink,
 		TranslatePipe,

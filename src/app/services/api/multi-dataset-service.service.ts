@@ -87,7 +87,7 @@ export class MultiDatasetService {
 
 		Promise.all(fetchKeywordsPromises)
 			.then(results => {
-				const combinedKeywords: string[] = Array.from(new Set(results.flatMap(entry => entry["dcat:keyword"])));
+				const combinedKeywords: string[] = Array.from(new Set(results.flatMap(entry => entry['dcat:keyword'])));
 				this._keywordsSubject.next(combinedKeywords);
 				console.log(combinedKeywords);
 			})
@@ -96,7 +96,6 @@ export class MultiDatasetService {
 				this._keywordsSubject.next([]);
 			});
 	}
-
 
 	loadDetail(publisher: string, klass: string, id: string) {
 		this._loadingSubject.next(true);

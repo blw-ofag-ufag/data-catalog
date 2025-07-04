@@ -75,7 +75,7 @@ export default [...compat.extends(
         "@typescript-eslint/prefer-regexp-exec": "error",
         "@typescript-eslint/prefer-string-starts-ends-with": "error",
         "@typescript-eslint/unified-signatures": "error",
-        "dot-notation": "error",
+        "dot-notation": "off",
         eqeqeq: ["error", "smart"],
         "guard-for-in": "error",
 

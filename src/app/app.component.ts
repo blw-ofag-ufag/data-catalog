@@ -3,8 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import { ObINavigationLink } from "@oblique/oblique";
-import { VersionService } from './services/version.service';
+import {ObINavigationLink} from '@oblique/oblique';
+import {VersionService} from './services/version.service';
 
 @Component({
 	selector: 'root',
@@ -15,7 +15,7 @@ import { VersionService } from './services/version.service';
 export class AppComponent implements OnDestroy {
 	title = 'DigiAgriFoodCH';
 	navigation = [{url: 'index', label: 'Index'}];
-	private destroy$ = new Subject<void>();
+	private readonly destroy$ = new Subject<void>();
 	version$: Observable<string>;
 
 	topNavigation: ObINavigationLink[] = [];
@@ -28,33 +28,29 @@ export class AppComponent implements OnDestroy {
 	) {
 		this.version$ = this.versionService.getVersion();
 		this.updateNavigation();
-		
-		activatedRoute.queryParams
-			.pipe(takeUntil(this.destroy$))
-			.subscribe(params => {
-				const langFromUrl = params['lang'] || 'en';
-				const langFromTranslate = translate.currentLang;
-				if (langFromUrl !== langFromTranslate) {
-					translate.resetLang(langFromUrl);
-				}
-			});
-		translate.onLangChange
-			.pipe(takeUntil(this.destroy$))
-			.subscribe(async event => {
-				this.updateNavigation();
-				const langFromUrl = activatedRoute.snapshot.queryParams['lang'];
-				const langFromTranslate = event.lang;
-				if (langFromUrl !== langFromTranslate) {
-					await router.navigate([], {queryParams: {lang: langFromTranslate}, queryParamsHandling: 'merge'});
-				}
-			});
+
+		activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+			const langFromUrl = params['lang'] || 'en';
+			const langFromTranslate = translate.currentLang;
+			if (langFromUrl !== langFromTranslate) {
+				translate.resetLang(langFromUrl);
+			}
+		});
+		translate.onLangChange.pipe(takeUntil(this.destroy$)).subscribe(async event => {
+			this.updateNavigation();
+			const langFromUrl = activatedRoute.snapshot.queryParams['lang'];
+			const langFromTranslate = event.lang;
+			if (langFromUrl !== langFromTranslate) {
+				await router.navigate([], {queryParams: {lang: langFromTranslate}, queryParamsHandling: 'merge'});
+			}
+		});
 	}
 
 	private updateNavigation() {
 		this.topNavigation = [
-			{ label: this.translate.instant('app.navigation.catalog'), url: 'index' },
-			{ label: this.translate.instant('app.navigation.about'), url: 'about' },
-			{ label: this.translate.instant('app.navigation.handbook'), url: 'handbook' }
+			{label: this.translate.instant('app.navigation.catalog'), url: 'index'},
+			{label: this.translate.instant('app.navigation.about'), url: 'about'},
+			{label: this.translate.instant('app.navigation.handbook'), url: 'handbook'}
 		];
 	}
 
@@ -65,7 +61,7 @@ export class AppComponent implements OnDestroy {
 	getLegalBasisUrl(): string {
 		const lang = this.getCurrentLanguage();
 		const langCode = lang.split('-')[0];
-		
+
 		switch (langCode) {
 			case 'de':
 				return 'https://www.admin.ch/gov/de/start/rechtliches.html';

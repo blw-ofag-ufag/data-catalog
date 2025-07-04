@@ -1,51 +1,46 @@
 <div class="card-container ob-grid">
 	@for (dataset of datasets$ | async; track $index) {
-		<mat-card
-			class="ob-span-4"
-			(click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])"
-			style='cursor: pointer'
-		>
-			<div style="position: relative; width: 100%; height: 180px; background-color: #a3a58a; overflow: hidden;">
+		<mat-card class="ob-span-4" (click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])" style="cursor: pointer">
+			<div style="position: relative; width: 100%; height: 180px; background-color: #a3a58a; overflow: hidden">
 				<!-- Image -->
 				<img
 					mat-card-image
 					ngSrc="{{ dataset['schema:image'] || fallbackImageUrl }}"
 					width="100%"
 					[height]="180"
-					style="position: absolute; top: 0; left: 0; width: 100%; height: 180px; object-fit: cover;"
+					style="position: absolute; top: 0; left: 0; width: 100%; height: 180px; object-fit: cover"
 				/>
 
 				<!-- Chips overlay -->
-				<div style="position: absolute; top: 8px; left: 8px; z-index: 2;">
-					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px;">
+				<div style="position: absolute; top: 8px; left: 8px; z-index: 2">
+					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px">
 						<!--						{{dataset['class']?.[ (currentLang$ | async)! ]}}-->
 						<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
-							{{ 'ui.dataSet' | translate }}
+							{{ "ui.dataSet" | translate }}
 						</a>
 					</mat-chip>
-					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px;">
+					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px">
 						<a [routerLink]="['/index']" [queryParams]="publisherFiltered(dataset['dct:publisher'])">
-							{{ dataset['dct:publisher'] | org }}
+							{{ dataset["dct:publisher"] | org }}
 						</a>
 					</mat-chip>
 				</div>
 			</div>
 			<mat-card-header>
 				<mat-card-title class="truncate-title">
-					{{ ["dct:title", dataset['dct:title']] | translateField }}
+					{{ ["dct:title", dataset["dct:title"]] | translateField }}
 				</mat-card-title>
 				<mat-card-subtitle>
 					<span class="truncate-text">
-						{{ ["dct:description", dataset['dct:description']] | translateField }}
+						{{ ["dct:description", dataset["dct:description"]] | translateField }}
 					</span>
 				</mat-card-subtitle>
 			</mat-card-header>
 			<mat-card-content>
-				{{ 'ui.issueDate' | translate }}: {{ dataset['dct:issued'] | date:'d. MMMM y':'UTC': (currentLang$ | async)! }}
-				<br><br>
+				{{ "ui.issueDate" | translate }}: {{ dataset["dct:issued"] | date: "d. MMMM y" : "UTC" : (currentLang$ | async)! }} <br /><br />
 				<div class="chip-container">
 					@for (tag of dataset["dcat:keyword"]; track $index) {
-						<mat-chip (click)="onChipClick($event)" class="small-chip" style="display: inline-block; margin-right: 8px;">
+						<mat-chip (click)="onChipClick($event)" class="small-chip" style="display: inline-block; margin-right: 8px">
 							<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
 								{{ tag }}
 							</a>

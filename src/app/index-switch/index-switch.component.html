@@ -1,33 +1,33 @@
 <div id="index-switch" class="full-width">
 	<div class="index-head">
 		<div>
-			<h3>{{ 'ui.dataProducts' | translate }}</h3>
+			<h3>{{ "ui.dataProducts" | translate }}</h3>
 		</div>
 		<div class="pull-right">
 			<a href="/modify" mat-button obButton="primary" type="button" matTooltip="add">
-				{{ 'ui.addDataset' | translate }}
+				{{ "ui.addDataset" | translate }}
 				<mat-icon svgIcon="plus" />
 			</a>
 		</div>
 	</div>
 
-	<hr/>
+	<hr />
 
 	<div class="filterbar">
-		<div style="display: flex; gap: 8px;">
+		<div style="display: flex; gap: 8px">
 			<mat-form-field appearance="outline" class="search-bar">
-				<mat-icon matPrefix svgIcon="search"/>
-				<input matInput [placeholder]="'ui.search' | translate" [value]="datasetService.searchTerm$ | async" (input)="search($event)"/>
+				<mat-icon matPrefix svgIcon="search" />
+				<input matInput [placeholder]="'ui.search' | translate" [value]="datasetService.searchTerm$ | async" (input)="search($event)" />
 			</mat-form-field>
 
 			<mat-form-field>
-				<mat-label>{{ 'ui.defaultSelect' | translate }}</mat-label>
+				<mat-label>{{ "ui.defaultSelect" | translate }}</mat-label>
 				<mat-select>
-					<mat-option [value]="0" (click)="setSorting('relevance')">{{ 'ui.sortBy.relevance' | translate }}</mat-option>
-					<mat-option [value]="1" (click)="setSorting('title')">{{ 'ui.sortBy.title' | translate }}</mat-option>
-					<mat-option [value]="2" (click)="setSorting('old')">{{ 'ui.sortBy.oldest' | translate }}</mat-option>
-					<mat-option [value]="3" (click)="setSorting('new')">{{ 'ui.sortBy.newest' | translate }}</mat-option>
-					<mat-option [value]="4" (click)="setSorting('owner')">{{ 'ui.sortBy.owner' | translate }}</mat-option>
+					<mat-option [value]="0" (click)="setSorting('relevance')">{{ "ui.sortBy.relevance" | translate }}</mat-option>
+					<mat-option [value]="1" (click)="setSorting('title')">{{ "ui.sortBy.title" | translate }}</mat-option>
+					<mat-option [value]="2" (click)="setSorting('old')">{{ "ui.sortBy.oldest" | translate }}</mat-option>
+					<mat-option [value]="3" (click)="setSorting('new')">{{ "ui.sortBy.newest" | translate }}</mat-option>
+					<mat-option [value]="4" (click)="setSorting('owner')">{{ "ui.sortBy.owner" | translate }}</mat-option>
 				</mat-select>
 			</mat-form-field>
 
@@ -41,9 +41,9 @@
 			>
 				<mat-icon svgIcon="filter" />
 				@if (showFilters) {
-					{{ 'ui.hideFilters' | translate }}
+					{{ "ui.hideFilters" | translate }}
 				} @else {
-					{{ 'ui.showFilters' | translate }}
+					{{ "ui.showFilters" | translate }}
 				}
 			</button>
 		</div>
@@ -60,9 +60,7 @@
 	<div class="ob-grid">
 		@if (showFilters) {
 			<div class="ob-quarter">
-				<index-filter-col
-					[activatedFilters$]="activatedFilters$"
-				></index-filter-col>
+				<index-filter-col [activatedFilters$]="activatedFilters$"></index-filter-col>
 			</div>
 			<div class="ob-three-quarters">
 				<index-outlet [view]="view" [dataset$]="datasets$"></index-outlet>

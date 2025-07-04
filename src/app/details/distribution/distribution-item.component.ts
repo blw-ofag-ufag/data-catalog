@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {NgComponentOutlet} from '@angular/common';
 import {TextOrTranslatable} from '../../models/types/TextOrTranslatable';
 import {TranslateFieldPipe} from '../../translate-field.pipe';
-import {TranslatePipe} from '@ngx-translate/core';
 
 // Default distribution metadata item component
 @Component({
@@ -56,9 +55,9 @@ export class DistributionItemComponent {
 	@Input() data = {};
 
 	constructor(
-		private injector: Injector,
+		private readonly injector: Injector,
 		protected route: ActivatedRoute,
-		private router: Router
+		private readonly router: Router
 	) {}
 
 	decideComponent(label: string, data: any) {
@@ -66,7 +65,7 @@ export class DistributionItemComponent {
 		if (typeof data === 'string' && data.startsWith('http')) {
 			return DistributionLinkComponent;
 		}
-		
+
 		// Default component for other fields
 		return DefaultDistributionItemComponent;
 	}

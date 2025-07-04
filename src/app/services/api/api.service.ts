@@ -1,14 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, combineLatest, filter, Observable} from 'rxjs';
+import {BehaviorSubject, combineLatest, filter} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {DatasetSchema} from '../../models/schemas/dataset';
-import {ActivatedRoute, Params, Router, RouterModule} from '@angular/router';
+import {DatasetSchema, enumTypes} from '../../models/schemas/dataset';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PageEvent} from '@angular/material/paginator';
 import Fuse from 'fuse.js';
 import {MultiDatasetService} from './multi-dataset-service.service';
 import {ActiveFilters} from '../../models/ActiveFilters';
-import {enumTypes} from '../../models/schemas/dataset';
 import {TranslateService} from '@ngx-translate/core';
 
 const fuseOptions = {
@@ -35,11 +34,11 @@ export class DatasetService {
 	private readonly searchTermSubject = new BehaviorSubject<string>('');
 	private readonly pageSubject = new BehaviorSubject<PageEvent>({pageIndex: 0, pageSize: 5, length: 0});
 	public filteredLength$ = new BehaviorSubject<number>(0);
-	private sort$ = new BehaviorSubject<'title' | 'old' | 'new' | 'owner' | 'relevance'>('title');
+	private readonly sort$ = new BehaviorSubject<'title' | 'old' | 'new' | 'owner' | 'relevance'>('title');
 
 	schemas$ = this.filteredDatasetsSubject.asObservable();
 	searchTerm$ = this.searchTermSubject.asObservable();
-	private filters$ = new BehaviorSubject<ActiveFilters>(allFiltersOff);
+	private readonly filters$ = new BehaviorSubject<ActiveFilters>(allFiltersOff);
 
 	constructor(
 		private readonly http: HttpClient,
@@ -107,60 +106,62 @@ export class DatasetService {
 			})
 		);
 
-		combineLatest([sortedSchemas$, this.searchTermSubject, this.filters$, this.pageSubject, this.sort$]).subscribe(([sortedSchemas, searchTerm, filters, page, currentSort]) => {
-			let unfiltered = sortedSchemas;
-			let filtered = unfiltered;
+		combineLatest([sortedSchemas$, this.searchTermSubject, this.filters$, this.pageSubject, this.sort$]).subscribe(
+			([sortedSchemas, searchTerm, filters, page, currentSort]) => {
+				const unfiltered = sortedSchemas;
+				let filtered = unfiltered;
 
-			// Apply filters first
-			if (Object.keys(filters).length > 0) {
-				filtered = unfiltered.filter(schema => {
-					// Each category must match (AND between categories)
-					for (const [category, choicesMap] of Object.entries(filters)) {
-						const choices = Object.keys(choicesMap).filter(key => choicesMap[key]);
-						if (choices.length === 0) continue;
+				// Apply filters first
+				if (Object.keys(filters).length > 0) {
+					filtered = unfiltered.filter(schema => {
+						// Each category must match (AND between categories)
+						for (const [category, choicesMap] of Object.entries(filters)) {
+							const choices = Object.keys(choicesMap).filter(key => choicesMap[key]);
+							if (choices.length === 0) continue;
 
-						// Within a category, at least one choice must match (OR within category)
-						let categoryMatches = false;
+							// Within a category, at least one choice must match (OR within category)
+							let categoryMatches = false;
 
-						if (category === 'dcat:keyword') {
-							// For keywords, check if ANY of the selected keywords match ANY of the dataset keywords
-							const datasetKeywords = schema['dcat:keyword'] || [];
-							categoryMatches = choices.some(choice => datasetKeywords.includes(choice));
-						} else {
-							// For other categories, check if the schema value matches any of the choices
-							categoryMatches = choices.includes(schema[category] as string);
+							if (category === 'dcat:keyword') {
+								// For keywords, check if ANY of the selected keywords match ANY of the dataset keywords
+								const datasetKeywords = schema['dcat:keyword'] || [];
+								categoryMatches = choices.some(choice => datasetKeywords.includes(choice));
+							} else {
+								// For other categories, check if the schema value matches any of the choices
+								categoryMatches = choices.includes(schema[category] as string);
+							}
+
+							// If this category doesn't match, the dataset doesn't pass the filter
+							if (!categoryMatches) {
+								return false;
+							}
 						}
-
-						// If this category doesn't match, the dataset doesn't pass the filter
-						if (!categoryMatches) {
-							return false;
-						}
-					}
-					// All categories matched
-					return true;
-				});
-			}
-
-			// Apply search with respect to current sort order
-			if (searchTerm) {
-				const fuse = new Fuse(filtered, fuseOptions);
-				const searchResults = fuse.search(searchTerm);
-
-				if (currentSort === 'relevance') {
-					// For relevance sort with search, use Fuse.js relevance scoring (overrides pre-sorting)
-					filtered = searchResults.map(result => result.item);
-				} else {
-					// For other sorts, maintain the current sort order but filter by search results
-					const searchResultItems = new Set(searchResults.map(result => result.item));
-					filtered = filtered.filter(item => searchResultItems.has(item));
+						// All categories matched
+						return true;
+					});
 				}
+
+				// Apply search with respect to current sort order
+				if (searchTerm) {
+					const fuse = new Fuse(filtered, fuseOptions);
+					const searchResults = fuse.search(searchTerm);
+
+					if (currentSort === 'relevance') {
+						// For relevance sort with search, use Fuse.js relevance scoring (overrides pre-sorting)
+						filtered = searchResults.map(result => result.item);
+					} else {
+						// For other sorts, maintain the current sort order but filter by search results
+						const searchResultItems = new Set(searchResults.map(result => result.item));
+						filtered = filtered.filter(item => searchResultItems.has(item));
+					}
+				}
+
+				this.filteredLength$.next(filtered.length);
+
+				const paginated = filtered.slice(page.pageIndex * page.pageSize, (page.pageIndex + 1) * page.pageSize);
+				this.filteredDatasetsSubject.next(paginated);
 			}
-
-			this.filteredLength$.next(filtered.length);
-
-			const paginated = filtered.slice(page.pageIndex * page.pageSize, (page.pageIndex + 1) * page.pageSize);
-			this.filteredDatasetsSubject.next(paginated);
-		});
+		);
 
 		this.activatedRoute.queryParams.subscribe(params => {
 			// Handle search parameter from URL

@@ -1,7 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {TextOrTranslatable} from './models/types/TextOrTranslatable';
-import { Deutsch, English, Francais, Italiano } from "./models/schemas/dataset";
 
 @Pipe({
 	name: 'translateField'
@@ -11,9 +10,9 @@ export class TranslateFieldPipe implements PipeTransform {
 
 	transform([label, data]: [string, TextOrTranslatable | undefined], ...args: unknown[]): string {
 		if (typeof data === 'string') {
-			let trans = this.translate.instant("choices.dataset." + label + "." + data);
-			let untrans= "choices.dataset." + label + "." + data;
-			return trans === untrans ? (data || "") : trans;
+			const trans = this.translate.instant(`choices.dataset.${label}.${data}`);
+			const untrans = `choices.dataset.${label}.${data}`;
+			return trans === untrans ? data || '' : trans;
 		}
 
 		if (typeof data === 'object' && data !== null && data !== undefined) {
@@ -21,12 +20,7 @@ export class TranslateFieldPipe implements PipeTransform {
 			const dataObj = data as any;
 
 			// Try current language first, then fallback chain
-			return dataObj[lang] ||
-				   dataObj['en'] ||
-				   dataObj['de'] ||
-				   dataObj['fr'] ||
-				   dataObj['it'] ||
-				   '';
+			return dataObj[lang] || dataObj['en'] || dataObj['de'] || dataObj['fr'] || dataObj['it'] || '';
 		}
 
 		return '';

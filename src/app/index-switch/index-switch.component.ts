@@ -1,8 +1,6 @@
-import {Component, Input, OnInit, OnDestroy} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { AsyncPipe, JsonPipe } from "@angular/common";
-import {IndexCardsComponent} from '../index-cards/index-cards.component';
-import {IndexListComponent} from '../index-list/index-list.component';
+import {AsyncPipe} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
 import {MatAnchor, MatButton, MatIconButton} from '@angular/material/button';
 import {ObButtonDirective} from '@oblique/oblique';
@@ -12,14 +10,13 @@ import {IndexOutletComponent} from '../index-outlet/index-outlet.component';
 import {MatFormField, MatInput, MatLabel, MatPrefix} from '@angular/material/input';
 import {MatOption} from '@angular/material/core';
 import {MatSelect} from '@angular/material/select';
-import { BehaviorSubject, Observable, Subject } from "rxjs";
-import { takeUntil } from 'rxjs/operators';
-import { DatasetSchema, enumTypes } from "../models/schemas/dataset";
-import { DatasetService } from "../services/api/api.service";
-import { LengthPipe } from "../length.pipe";
-import { MatBadge } from "@angular/material/badge";
-import { ActiveFilters } from "../models/ActiveFilters";
-import { TranslatePipe } from "@ngx-translate/core";
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+import {DatasetSchema, enumTypes} from '../models/schemas/dataset';
+import {DatasetService} from '../services/api/api.service';
+import {MatBadge} from '@angular/material/badge';
+import {ActiveFilters} from '../models/ActiveFilters';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
 	selector: 'index-switch',
@@ -52,7 +49,7 @@ export class IndexSwitchComponent implements OnInit, OnDestroy {
 	showFilters = false;
 	@Input() datasets$: Observable<DatasetSchema[] | null> = new Observable();
 	activatedFilters$: BehaviorSubject<ActiveFilters> = new BehaviorSubject({});
-	private destroy$ = new Subject<void>();
+	private readonly destroy$ = new Subject<void>();
 
 	constructor(
 		private readonly route: ActivatedRoute,
@@ -61,16 +58,14 @@ export class IndexSwitchComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit() {
-		this.route.queryParams
-			.pipe(takeUntil(this.destroy$))
-			.subscribe(params => {
-				this.view = params['view'] || 'tile';
-				for (const allowedfilter of enumTypes) {
-					if (params[allowedfilter]) {
-						this.showFilters = true;
-					}
+		this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+			this.view = params['view'] || 'tile';
+			for (const allowedfilter of enumTypes) {
+				if (params[allowedfilter]) {
+					this.showFilters = true;
 				}
-			});
+			}
+		});
 	}
 
 	ngOnDestroy() {
