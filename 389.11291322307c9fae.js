@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkDigiAgriFoodDB=self.webpackChunkDigiAgriFoodDB||[]).push([[389],{3389:(i,s,_)=>{_.r(s),_.d(s,{PieModule:()=>D.B,createPieServices:()=>D.f});var D=_(7246);_(7668)}}]);
