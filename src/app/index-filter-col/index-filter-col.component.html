@@ -1,0 +1,47 @@
+<div>
+	<h3 style="display: inline-block; margin-right: auto">{{ "ui.filter" | translate }}</h3>
+	<button style="float: right" (click)="clearFilters()" mat-button type="button" [matTooltip]="'ui.reset' | translate">
+		{{ "reset" | translate }}
+		<mat-icon svgIcon="refresh" />
+	</button>
+</div>
+
+<div>
+	<mat-form-field>
+		<mat-label>{{ "ui.keywords" | translate }}</mat-label>
+		<mat-chip-grid #chipGrid aria-label="Keyword selection">
+			<mat-chip-row *ngFor="let keyword of keywords" (removed)="remove(keyword)">
+				{{ keyword }}
+				<button type="button" matChipRemove [attr.aria-label]="('ui.remove' | translate) + ' ' + keyword">
+					<mat-icon svgIcon="cancel-circle" />
+				</button>
+			</mat-chip-row>
+			<input
+				#keywordInput
+				[placeholder]="'ui.newKeyword' | translate"
+				[formControl]="keywordControl"
+				[matChipInputFor]="chipGrid"
+				[matAutocomplete]="auto"
+				[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+				(matChipInputTokenEnd)="add($event)"
+			/>
+			<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+				<mat-option *ngFor="let keyword of filteredKeywords$ | async" [value]="keyword">
+					{{ keyword }}
+				</mat-option>
+			</mat-autocomplete>
+		</mat-chip-grid>
+	</mat-form-field>
+	@for (filterkey of availableFilters; track filterkey) {
+		<mat-form-field>
+			<mat-label>{{ getTranslationKey(filterkey) | translate }}</mat-label>
+			<mat-select multiple [value]="getSelectedOptions(filterkey)" (selectionChange)="onCategoryChange(filterkey, $event.value)">
+				@for (choice of filterChoices(filterkey); track choice) {
+					<mat-option [value]="choice">{{ getTranslationKeyEnum(filterkey, choice) | translate }}</mat-option>
+				}
+			</mat-select>
+		</mat-form-field>
+	}
+</div>
+<!--<pre>{{ activatedFilters$ | async | json }}</pre>-->
+<!--<pre>{{ allKeywords | json }}</pre>-->

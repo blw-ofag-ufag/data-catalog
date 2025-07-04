@@ -1,0 +1,78 @@
+<div id="index-switch" class="full-width">
+	<div class="index-head">
+		<div>
+			<h3>{{ "ui.dataProducts" | translate }}</h3>
+		</div>
+		<div class="pull-right">
+			<a href="/modify" mat-button obButton="primary" type="button" matTooltip="add" disabled>
+				{{ "ui.addDataset" | translate }}
+				<mat-icon svgIcon="plus" />
+			</a>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="filterbar">
+		<div style="display: flex; gap: 8px">
+			<mat-form-field appearance="outline" class="search-bar">
+				<mat-icon matPrefix svgIcon="search" />
+				<input #searchInput matInput [placeholder]="'ui.search' | translate" [value]="datasetService.searchTerm$ | async" (input)="search($event)" />
+        <button type="button" [obInputClear]="searchInput" (click)="clearSearch()">
+          <mat-icon svgIcon="cancel-circle" />
+          <span class="ob-screen-reader-only">Clear</span>
+        </button>
+			</mat-form-field>
+
+			<mat-form-field>
+				<mat-label>{{ "ui.defaultSelect" | translate }}</mat-label>
+				<mat-select>
+					<mat-option [value]="0" (click)="setSorting('relevance')">{{ "ui.sortBy.relevance" | translate }}</mat-option>
+					<mat-option [value]="1" (click)="setSorting('title')">{{ "ui.sortBy.title" | translate }}</mat-option>
+					<mat-option [value]="2" (click)="setSorting('old')">{{ "ui.sortBy.oldest" | translate }}</mat-option>
+					<mat-option [value]="3" (click)="setSorting('new')">{{ "ui.sortBy.newest" | translate }}</mat-option>
+					<mat-option [value]="4" (click)="setSorting('owner')">{{ "ui.sortBy.owner" | translate }}</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<button
+				[matBadge]="getFilterCount(activatedFilters$ | async)"
+				style="width: 100%; margin-top: 5px"
+				(click)="toggleShowFilters()"
+				mat-button
+				obButton="secondary"
+				type="button"
+			>
+				<mat-icon svgIcon="filter" />
+				@if (showFilters) {
+					{{ "ui.hideFilters" | translate }}
+				} @else {
+					{{ "ui.showFilters" | translate }}
+				}
+			</button>
+		</div>
+		<div class="pull-right">
+			<button (click)="switchTo('tile')" mat-icon-button [obButton]="view === 'tile' ? 'primary' : 'tertiary'" type="button" [matTooltip]="'ui.cards' | translate">
+				<mat-icon svgIcon="cards" />
+			</button>
+			<button (click)="switchTo('table')" mat-icon-button [obButton]="view === 'table' ? 'primary' : 'tertiary'" type="button" [matTooltip]="'ui.list' | translate">
+				<mat-icon svgIcon="list" />
+			</button>
+		</div>
+	</div>
+
+	<div class="ob-grid">
+		@if (showFilters) {
+			<div class="ob-quarter">
+				<index-filter-col [activatedFilters$]="activatedFilters$"></index-filter-col>
+			</div>
+			<div class="ob-three-quarters">
+				<index-outlet [view]="view" [dataset$]="datasets$"></index-outlet>
+			</div>
+		} @else {
+			<div class="ob-full">
+				<index-outlet [view]="view" [dataset$]="datasets$"></index-outlet>
+			</div>
+		}
+	</div>
+</div>

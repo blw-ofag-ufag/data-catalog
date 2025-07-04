@@ -1,0 +1,30 @@
+<ob-master-layout [navigation]="topNavigation">
+	<ng-container obHeaderTitle>{{ "app.title" | translate }}</ng-container>
+
+	<!--	Data catalog version-->
+	<ng-container obFooterInfo>
+		<p>{{ "footer.version" | translate }}: {{ version$ | async }}</p>
+	</ng-container>
+
+	<ng-container obFooterInfo>
+		<p>{{ "footer.contact" | translate }}</p>
+	</ng-container>
+
+	<ng-template #obFooterLink>
+		<a [href]="getLegalBasisUrl()" [title]="'footer.legalBasis' | translate" target="_blank" class="link">
+			{{ "footer.legalBasis" | translate }}
+		</a>
+	</ng-template>
+
+	<ng-template #obFooterLink>
+		<a href="https://github.com/blw-ofag-ufag/data-catalog" [title]="'footer.source' | translate" target="_blank" class="link">
+			{{ "footer.source" | translate }}
+		</a>
+	</ng-template>
+	<ng-template #footer>
+		<pre>custom footer</pre>
+	</ng-template>
+	<footer>
+		<pre>custom footer</pre>
+	</footer>
+</ob-master-layout>

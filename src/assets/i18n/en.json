@@ -1,0 +1,228 @@
+{
+  "app": {
+    "title": "DigiAgriFoodCH Data Catalog",
+    "description": "Discover and access Swiss agricultural and food-related datasets from federal institutions",
+    "navigation": {
+      "index": "Index",
+      "catalog": "Catalog",
+      "about": "About",
+      "handbook": "Handbook"
+    }
+  },
+  "ui": {
+    "dataProducts": "Data Products",
+    "dataSet": "Data Set",
+    "filter": "Filter",
+    "keywords": "Keywords",
+    "search": "Search",
+    "defaultSelect": "Default Select",
+    "newKeyword": "New Keyword...",
+    "remove": "Remove",
+    "reset": "reset",
+    "cards": "cards",
+    "list": "list",
+    "title": "Title",
+    "issued": "Issued",
+    "steward": "Steward",
+    "stewardOwnerContact": "Contact",
+    "addDataset": "Add Dataset",
+    "editDataset": "Edit",
+    "hideFilters": "Hide Filters",
+    "showFilters": "Show Filters",
+    "sortBy": {
+      "relevance": "Sort by Relevance",
+      "title": "Sort by Title",
+      "oldest": "Oldest First",
+      "newest": "Newest First",
+      "owner": "By Data Owner"
+    },
+    "issueDate": "Issue Date",
+    "noResultsFound": "No results found. Try more general filters or search."
+  },
+  "msg": {
+    "adminDirError": "Could not look up on AdminDir",
+    "adminDirLookup": "AdminDir ID"
+  },
+  "labels": {
+    "image": "Image",
+    "identifier": "Identifier",
+    "title": "Title",
+    "description": "Description",
+    "dct:identifier": "Identifier",
+    "dct:title": "Title",
+    "dct:description": "Description",
+    "dct:accessRights": "Access rights",
+    "dct:publisher": "Publisher",
+    "dcat:contactPoint": "Contact Point",
+    "dct:issued": "Issue date",
+    "dcatap:availability": "Availability",
+    "dcat:keyword": "Keywords",
+    "dct:accrualPeriodicity": "Accrual periodicity",
+    "dct:modified": "Modification date",
+    "version": "Version",
+    "qualitifedAttribution": "Responsible persons",
+    "adms:status": "Status",
+    "bv:classification": "Classification",
+    "bv:personalData": "Personal data",
+    "bv:typeOfData": "Type of data",
+    "bv:archivalValue": "Archival value",
+    "bv:externalCatalogs": "Publication in external catalogs",
+    "dcat:theme": "Theme",
+    "dcat:landingPage": "Landing page",
+    "spatial": "Spatial coverage",
+    "dct:temporal": "Temporal coverage",
+    "dcatap:applicableLegislation": "Legal Basis",
+    "prov:wasGeneratedBy": "Business Process",
+    "bv:retentionPeriod": "Retention period",
+    "catalog": "Catalog",
+    "prov:wasDerivedFrom": "Derived from",
+    "geoIdentifier": "Identifier GeoIV",
+    "foaf:page": "Related resources",
+    "schema:comment": "Additional comments",
+    "bv:abrogation": "Abrogation date",
+    "bv:itSystem": "IT System",
+    "inSeries": "In dataset series",
+    "replaces": "Replaces",
+    "accessURL": "Access URL",
+    "format": "File format",
+    "downloadURL": "Download URL",
+    "conformsTo": "Conforms to",
+    "license": "License",
+    "accessService": "Access service"
+  },
+  "choices": {
+    "dataset": {
+      "adms:status": {
+        "workInProgress": "Work in progress",
+        "validated": "Validated",
+        "published": "Published",
+        "deleted": "Deleted",
+        "archived": "Archived"
+      },
+      "dct:accessRights": {
+        "CONFIDENTIAL": "Confidential",
+        "NON_PUBLIC": "Non public",
+        "PUBLIC": "Public",
+        "RESTRICTED": "Restricted",
+        "SENSITIVE": "Sensitive"
+      },
+      "dct:publisher": {
+        "BLW-OFAG-UFAG-FOAG": "FOAG",
+        "BLV-OSAV-USAV-FSVO": "FSVO"
+      },
+      "dcatap:availability": {
+        "AVAILABLE": "Available",
+        "EXPERIMENTAL": "Experimental",
+        "STABLE": "Stable",
+        "TEMPORARY": "Temporary"
+      },
+      "dct:accrualPeriodicity": {
+        "OTHER": "Other",
+        "HOURLY": "Hourly",
+        "UNKNOWN": "Unknown",
+        "QUARTERLY": "Quarterly",
+        "NEVER": "Never",
+        "MONTHLY": "Monthly",
+        "ANNUAL": "Annual",
+        "DAILY": "Daily",
+        "AS_NEEDED": "As needed",
+        "WEEKLY": "Weekly",
+        "IRREG": "Irregular",
+        "CONT": "Continuously (real time)"
+      },
+      "hadRole": {
+        "businessDataOwner": "Business Data Owner",
+        "dataSteward": "Data Steward",
+        "dataCustodian": "Data Custodian"
+      },
+      "bv:classification": {
+        "none": "None",
+        "internal": "Internal",
+        "confidential": "Confidential",
+        "secret": "Secret"
+      },
+      "bv:personalData": {
+        "none": "None",
+        "personalData": "Personal data",
+        "sensitivePersonalData": "Sensitive personal data"
+      },
+      "bv:typeOfData": {
+        "primaryThematicData": "Primary thematic data",
+        "secondaryThematicData": "Secondary thematic data",
+        "referenceData": "Reference data",
+        "masterData": "Master data",
+        "unstructuredData": "Unstructured data"
+      },
+      "dcat:theme": {
+        "work": "Work",
+        "construction": "Construction",
+        "population": "Population",
+        "education": "Education",
+        "energy": "Energy",
+        "finances": "Finances",
+        "geography": "Geography",
+        "legislation": "Legislation",
+        "health": "Health",
+        "trade": "Trade",
+        "industry": "Industry",
+        "crime": "Crime",
+        "culture": "Culture",
+        "agriculture": "Agriculture",
+        "mobility": "Mobility",
+        "public-order": "Public order",
+        "politics": "Politics",
+        "prices": "Prices",
+        "territory": "Territory",
+        "social-security": "Social security",
+        "statistical-basis": "Statistical basis",
+        "tourism": "Tourism",
+        "administration": "Administration",
+        "national-economy": "National economy"
+      }
+    },
+    "distribution": {
+      "status": {
+        "workInProgress": "Work in progress",
+        "validated": "Validated",
+        "published": "Published",
+        "deleted": "Deleted",
+        "archived": "Archived"
+      },
+      "availability": {
+        "AVAILABLE": "Available",
+        "EXPERIMENTAL": "Experimental",
+        "STABLE": "Stable",
+        "TEMPORARY": "Temporary"
+      },
+      "license": {
+        "terms_open": "Open use",
+        "terms_by": "Open use. Must provide the source",
+        "terms_ask": "Open use. Use for commercial purposes requires permission of the data owner",
+        "terms_by_ask": "Open use. Must provide the source. Use for commercial purposes requires permission of the data owner",
+        "cc-zero": "CC0",
+        "cc-by/4.0": "CC BY 4.0",
+        "cc-by-sa/4.0": "CC BY-SA 4.0"
+      }
+    }
+  },
+  "details": {
+    "heading": {
+      "affiliated": "Responsible persons",
+      "metadata": "Metadata",
+      "distributions": "Distributions",
+      "publications": "Publication in external catalogs"
+    },
+    "noAffiliatedPersons": "Nobody's claiming this dataset yet—how about giving it some love by assigning a responsible human?"
+  },
+  "footer": {
+    "version": "Version",
+    "contact": "Contact: info@blw.admin.ch",
+    "legalBasis": "Legal basis",
+    "source": "Source (GitHub)"
+  },
+  "not-found": {
+    "title": "Page not found",
+    "message": "The page you are looking for does not exist.",
+    "back-home": "Back to home"
+  }
+}

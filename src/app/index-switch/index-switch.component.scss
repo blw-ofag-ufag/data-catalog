@@ -1,0 +1,22 @@
+.index-head, .filterbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.pull-right {
+	display: flex;
+	gap: 8px; /* optional: spacing between buttons */
+}
+
+.full-width {
+	width: 100%;
+}
+
+#index-switch {
+	margin-top: 32px;
+}
+
+.search-bar {
+	min-width: 300px;
+}

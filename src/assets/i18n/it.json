@@ -1,0 +1,264 @@
+{
+  "app": {
+    "title": "Catalogo dati DigiAgriFoodCH",
+    "description": "Scopri e accedi ai dataset agricoli e alimentari svizzeri delle istituzioni federali",
+    "navigation": {
+      "index": "Indice",
+      "catalog": "Catalogo",
+      "about": "Chi siamo",
+      "handbook": "Manuale"
+    }
+  },
+  "ui": {
+    "dataProducts": "Prodotti dati",
+    "dataSet": "Set di dati",
+    "filter": "Filtro",
+    "keywords": "Parole chiave",
+    "search": "Cerca",
+    "defaultSelect": "Selezione predefinita",
+    "newKeyword": "Nuova parola chiave...",
+    "remove": "Rimuovi",
+    "reset": "ripristina",
+    "cards": "schede",
+    "list": "elenco",
+    "title": "Titolo",
+    "issued": "Pubblicato",
+    "steward": "Responsabile dei dati",
+    "stewardOwnerContact": "Contatto",
+    "addDataset": "Aggiungi set di dati",
+    "editDataset": "Modifica",
+    "hideFilters": "Nascondi filtri",
+    "showFilters": "Mostra filtri",
+    "sortBy": {
+      "relevance": "Ordina per rilevanza",
+      "title": "Ordina per titolo",
+      "oldest": "Prima i più vecchi",
+      "newest": "Prima i più nuovi",
+      "owner": "Per proprietario dati"
+    },
+    "issueDate": "Data di emissione",
+    "noResultsFound": "Nessun risultato trovato. Prova filtri o ricerca più generali."
+  },
+  "msg": {
+    "adminDirLookup": "AdminDir ID"
+  },
+  "labels": {
+    "image": "Immagine",
+    "identifier": "Identificatore",
+    "title": "Titolo",
+    "description": "Descrizione",
+    "dct:identifier": "Identificatore",
+    "dct:title": "Titolo",
+    "dct:description": "Descrizione",
+    "accessRights": "Diritti di accesso",
+    "publisher": "Editore",
+    "contactPoint": "Punto di contatto",
+    "issued": "Data di pubblicazione",
+    "availability": "Disponibilità",
+    "keyword": "Parole chiave",
+    "accrualPeriodicity": "Periodicità di aggiornamento",
+    "modified": "Data di modifica",
+    "version": "Versione",
+    "qualitifedAttribution": "Persone responsabili",
+    "status": "Stato",
+    "classification": "Classificazione",
+    "personalData": "Dati personali",
+    "typeOfData": "Tipo di dati",
+    "archivalValue": "Valore archivistico",
+    "externalCatalogs": "Pubblicazione in cataloghi esterni",
+    "theme": "Tema",
+    "landingPage": "Pagina iniziale",
+    "spatial": "Copertura spaziale",
+    "temporal": "Copertura temporale",
+    "applicableLegislation": "Base legale",
+    "prov:wasGeneratedBy": "Processo aziendale",
+    "retentionPeriod": "Periodo di conservazione",
+    "catalog": "Catalogo",
+    "prov:wasDerivedFrom": "Derivato da",
+    "geoIdentifier": "Identificatore GeoIV",
+    "page": "Risorse correlate",
+    "comment": "Commenti aggiuntivi",
+    "abrogation": "Data di abrogazione",
+    "itSystem": "Sistema IT",
+    "inSeries": "In serie di dati",
+    "replaces": "Sostituisce",
+    "accessURL": "URL di accesso",
+    "format": "Formato del file",
+    "downloadURL": "URL di download",
+    "conformsTo": "Conforme a",
+    "license": "Licenza",
+    "accessService": "Servizio di accesso",
+    "dct:accessRights": "Diritti di accesso",
+    "dcat:contactPoint": "Punto di contatto",
+    "dct:issued": "Data di pubblicazione",
+    "dcatap:availability": "Disponibilità",
+    "dcat:keyword": "Parole chiave",
+    "dct:accrualPeriodicity": "Periodicità di aggiornamento",
+    "dct:modified": "Data di modifica",
+    "dcat:version": "Versione",
+    "prov:qualifiedAttribution": "Persone responsabili",
+    "adms:status": "Stato",
+    "bv:classification": "Classificazione",
+    "bv:personalData": "Dati personali",
+    "bv:typeOfData": "Tipo di dati",
+    "bv:archivalValue": "Valore archivistico",
+    "bv:externalCatalogs": "Pubblicazione in cataloghi esterni",
+    "dcat:theme": "Tema",
+    "dcat:landingPage": "Pagina iniziale",
+    "dct:spatial": "Copertura spaziale",
+    "dct:temporal": "Copertura temporale",
+    "dcatap:applicableLegislation": "Base legale",
+    "prov:wasGeneratedBy": "Processo aziendale",
+    "bv:retentionPeriod": "Periodo di conservazione",
+    "dcat:catalog": "Catalogo",
+    "prov:wasDerivedFrom": "Derivato da",
+    "bv:geoIdentifier": "Identificatore GeoIV",
+    "foaf:page": "Risorse correlate",
+    "schema:comment": "Commenti aggiuntivi",
+    "bv:abrogation": "Data di abrogazione",
+    "bv:itSystem": "Sistema IT",
+    "dcat:inSeries": "In serie di dati",
+    "dct:replaces": "Sostituisce",
+    "dcat:accessURL": "URL di accesso",
+    "dct:format": "Formato del file",
+    "dcat:downloadURL": "URL di download",
+    "dct:conformsTo": "Conforme a",
+    "dct:license": "Licenza",
+    "dcat:accessService": "Servizio di accesso"
+  },
+  "choices": {
+    "dataset": {
+      "status": {
+        "workInProgress": "In lavorazione",
+        "validated": "Convalidato",
+        "published": "Pubblicato",
+        "deleted": "Eliminato",
+        "archived": "Archiviato"
+      },
+      "dct:accessRights": {
+        "CONFIDENTIAL": "Riservato",
+        "NON_PUBLIC": "Non pubblico",
+        "PUBLIC": "Pubblico",
+        "RESTRICTED": "Limitato",
+        "SENSITIVE": "Sensibile"
+      },
+      "publisher": {
+        "BLW-OFAG-UFAG-FOAG": "UFAG",
+        "BLV-OSAV-USAV-FSVO": "USAV"
+      },
+      "availability": {
+        "AVAILABLE": "Disponibile",
+        "EXPERIMENTAL": "Sperimentale",
+        "STABLE": "Stabile",
+        "TEMPORARY": "Temporaneo"
+      },
+      "dct:accrualPeriodicity": {
+        "OTHER": "Altro",
+        "HOURLY": "Ogni ora",
+        "UNKNOWN": "Sconosciuto",
+        "QUARTERLY": "Trimestrale",
+        "NEVER": "Mai",
+        "MONTHLY": "Mensile",
+        "ANNUAL": "Annuale",
+        "DAILY": "Giornaliero",
+        "AS_NEEDED": "Secondo necessità",
+        "WEEKLY": "Settimanale",
+        "IRREG": "Irregolare",
+        "CONT": "Continuo (tempo reale)"
+      },
+      "hadRole": {
+        "businessDataOwner": "Business Data Owner",
+        "dataSteward": "Data Steward",
+        "dataCustodian": "Data Custodian"
+      },
+      "classification": {
+        "none": "Nessuna",
+        "internal": "Interno",
+        "confidential": "Riservato",
+        "secret": "Segreto"
+      },
+      "personalData": {
+        "none": "Nessuno",
+        "personalData": "Dati personali",
+        "sensitivePersonalData": "Dati personali sensibili"
+      },
+      "typeOfData": {
+        "primaryThematicData": "Dati tematici primari",
+        "secondaryThematicData": "Dati tematici secondari",
+        "referenceData": "Dati di riferimento",
+        "masterData": "Dati anagrafici",
+        "unstucturedData": "Dati non strutturati"
+      },
+      "theme": {
+        "work": "Lavoro",
+        "construction": "Costruzione",
+        "population": "Popolazione",
+        "education": "Istruzione",
+        "energy": "Energia",
+        "finances": "Finanze",
+        "geography": "Geografia",
+        "legislation": "Legislazione",
+        "health": "Salute",
+        "trade": "Commercio",
+        "industry": "Industria",
+        "crime": "Criminalità",
+        "culture": "Cultura",
+        "agriculture": "Agricoltura",
+        "mobility": "Mobilità",
+        "public-order": "Ordine pubblico",
+        "politics": "Politica",
+        "prices": "Prezzi",
+        "territory": "Territorio",
+        "social-security": "Sicurezza sociale",
+        "statistical-basis": "Basi statistiche",
+        "tourism": "Turismo",
+        "administration": "Amministrazione",
+        "national-economy": "Economia nazionale"
+      }
+    },
+    "distribution": {
+      "status": {
+        "workInProgress": "In lavorazione",
+        "validated": "Convalidato",
+        "published": "Pubblicato",
+        "deleted": "Eliminato",
+        "archived": "Archiviato"
+      },
+      "availability": {
+        "AVAILABLE": "Disponibile",
+        "EXPERIMENTAL": "Sperimentale",
+        "STABLE": "Stabile",
+        "TEMPORARY": "Temporaneo"
+      },
+      "license": {
+        "terms_open": "Utilizzo aperto",
+        "terms_by": "Utilizzo aperto. Necessaria l'indicazione della fonte",
+        "terms_ask": "Utilizzo aperto. L'utilizzo commerciale richiede l'autorizzazione del proprietario dei dati",
+        "terms_by_ask": "Utilizzo aperto. Necessaria l'indicazione della fonte. L'utilizzo commerciale richiede l'autorizzazione del proprietario dei dati",
+        "cc-zero": "CC0",
+        "cc-by/4.0": "CC BY 4.0",
+        "cc-by-sa/4.0": "CC BY-SA 4.0"
+      }
+    }
+  },
+  "details": {
+    "heading": {
+      "affiliated": "Persone responsabili",
+      "metadata": "Metadati",
+      "distributions": "Formati di distribuzione",
+      "publications": "Pubblicazione in cataloghi esterni"
+    },
+    "noAffiliatedPersons": "Nessuno si prende cura di questo dataset: perché non affidi questa responsabilità a qualcuno?"
+  },
+  "footer": {
+    "version": "Versione",
+    "contact": "Contatto: info@blw.admin.ch",
+    "legalBasis": "Basi legali",
+    "source": "Codice sorgente (GitHub)"
+  },
+  "not-found": {
+    "title": "Pagina non trovata",
+    "message": "La pagina che stai cercando non esiste.",
+    "back-home": "Torna alla home"
+  }
+}

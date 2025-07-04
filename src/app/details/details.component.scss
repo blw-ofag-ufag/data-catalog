@@ -1,0 +1,128 @@
+label {
+	float: left;
+	width: 300px;
+}
+
+div {
+	clear: both;
+}
+
+.data-row {
+	width: 100%;
+}
+
+h3 {
+	padding-top: 40px;
+}
+
+mat-chip {
+	background-color: white !important;
+	color: black !important;
+	border: 1px solid #d1d5db !important;
+}
+
+mat-chip a {
+	color: black;
+	text-decoration: none;
+}
+
+mat-chip a:hover {
+	text-decoration: underline;
+}
+
+.empty-state {
+	font-style: italic;
+	color: #6b7280;
+	margin: 1rem 0;
+	padding: 1rem;
+	background-color: #f9fafb;
+	border-left: 4px solid #e5e7eb;
+	border-radius: 4px;
+}
+
+.header-container {
+	position: relative;
+	margin-top: 2rem;
+}
+
+.main-heading {
+	font-size: 2.5rem;
+	padding: 1.5rem 0;
+	margin: 0;
+	padding-right: 120px;
+	//max-width: calc(100% - 200px);
+}
+
+.floating-actions {
+	position: absolute;
+	top: 1.5rem;
+	right: 0;
+	display: flex;
+	gap: 0.5rem;
+	flex-direction: row;
+	z-index: 10;
+	align-items: center;
+}
+
+.floating-actions button {
+	width: 40px;
+	height: 40px;
+	min-height: 40px;
+	min-width: 40px;
+	border-radius: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.floating-actions button mat-icon {
+	font-size: 24px;
+	width: 24px;
+	height: 24px;
+	margin-right: 0px;
+}
+
+:host {
+	padding-bottom: 40px;
+}
+
+.hero-section {
+	background-color: #f0f4f7;
+	margin-left: calc(-50vw + 50%);
+	margin-right: calc(-50vw + 50%);
+	padding-left: calc(50vw - 50%);
+	padding-right: calc(50vw - 50%);
+	margin-top: -16px;
+	overflow: hidden;
+
+	.ob-grid {
+		.ob-half:last-child {
+			overflow: visible;
+		}
+	}
+
+	min-height: calc(140px + 25vw);
+	padding-bottom: 30px;
+}
+
+img {
+	position: absolute;
+	width: 50vw;
+	right:0;
+	height: 25vw;
+	object-fit: contain;
+}
+
+// Accordion styling
+mat-panel-description mat-icon {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+}
+
+// Prevent line wrapping in issued column
+.no-wrap {
+	white-space: nowrap;
+}
+

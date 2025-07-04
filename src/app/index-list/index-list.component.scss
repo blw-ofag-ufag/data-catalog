@@ -1,0 +1,27 @@
+.small-chip {
+	background-color: white !important;
+	color: black !important;
+	border: 1px solid #d1d5db !important;
+}
+
+.small-chip a {
+	color: black;
+	text-decoration: none;
+}
+
+.small-chip a:hover {
+	text-decoration: underline;
+}
+
+// Override Oblique table header styles
+.ob-table thead th {
+	background-color: transparent !important;
+	text-transform: none !important;
+	font-weight: 600;
+	border-bottom: 2px solid #e5e7eb;
+}
+
+// Prevent line wrapping in issued column
+.no-wrap {
+	white-space: nowrap;
+}

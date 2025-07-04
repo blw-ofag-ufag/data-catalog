@@ -1,0 +1,148 @@
+<!--<pre>{{dataset$ | async | json }}</pre>-->
+<!--<pre>{{loading$ | async | json }}</pre>-->
+
+@if (dataset$ | async; as dataset) {
+	@if (currentLang$ | async; as lang) {
+		<div class="hero-section">
+			<div class="header-container">
+				<h2 class="main-heading">{{ ["dct:title", dataset["dct:title"]] | translateField }}</h2>
+				<div class="floating-actions">
+          <button mat-button obButton="secondary" type="button" aria-label="data source on github" (click)="openGitHubFile()">
+            <mat-icon svgIcon="git-hub">github</mat-icon>
+          </button>
+					<button mat-button obButton="secondary" type="button" aria-label="raw data" (click)="openRawJson()">
+            <mat-icon svgIcon="file-json">raw</mat-icon>
+					</button>
+<!--          <a href="/edit" mat-button obButton="primary" type="button">-->
+<!--            {{ "ui.editDataset" | translate }}-->
+<!--            <mat-icon svgIcon="pen" />-->
+<!--          </a>-->
+				</div>
+			</div>
+			<div class="ob-grid">
+				<div class="ob-half">
+					<p>{{ ["dct:description", dataset["dct:description"]] | translateField }}</p>
+					<div class="ob-inline-form">
+						<mat-chip>
+							<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
+								{{ "ui.dataSet" | translate }}
+							</a>
+						</mat-chip>
+						<mat-chip>
+							<a [routerLink]="['/index']" [queryParams]="publisherFiltered(dataset['dct:publisher'])">
+								{{ dataset["dct:publisher"] | org }}
+							</a>
+						</mat-chip>
+					</div>
+				</div>
+				<div class="ob-half">
+					<img src="{{ dataset['schema:image'] || 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg' }}" width="100%" />
+				</div>
+			</div>
+		</div>
+		<div class="ob-grid">
+			<div class="ob-span-12">
+				<!-- persons -->
+				<h3>{{ "details.heading.affiliated" | translate }}</h3>
+				<hr />
+				@if (dataset["prov:qualifiedAttribution"] && dataset["prov:qualifiedAttribution"].length > 0) {
+					<table class="ob-table ob-table-plain">
+						<tbody>
+							@for (person of dataset["prov:qualifiedAttribution"]; track $index) {
+								<tr>
+									<td>
+										@if (person["prov:agent"]) {
+											<admindir-lookup [person]="person"></admindir-lookup>
+										} @else {
+											<a href="mailto:{{ person['schema:email'] }}">{{ person["schema:name"] }}</a>
+										}
+									</td>
+									<td>
+										<mat-chip>{{ "choices.dataset.hadRole." + person["dcat:hadRole"] | translate }}</mat-chip>
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				} @else {
+					<p class="empty-state">{{ "details.noAffiliatedPersons" | translate }}</p>
+				}
+
+				<!-- metadata -->
+				<h3>{{ "details.heading.metadata" | translate }}</h3>
+				<hr />
+				<!--				<div class="meta-container">-->
+				<table class="ob-table ob-table-plain">
+					<tbody>
+						@for (meta of metadata$ | async; track $index) {
+							<tr>
+								<td>
+									{{ "labels." + meta.label | translate }}
+								</td>
+								<td>
+									@if (enumTypes.includes(meta.label) && meta.label !== "dcat:keyword") {
+										<enum [label]="meta.label" [data]="meta.data"></enum>
+									}
+									@if (meta.label === "dcat:keyword") {
+										<keywords [keywords]="dataset['dcat:keyword'] || []"></keywords>
+									}
+									@if (!enumTypes.includes(meta.label) && meta.label !== "dcat:keyword") {
+										<metadata-item [label]="meta.label" [data]="meta.data"></metadata-item>
+									}
+									<!--									<a href="google.com">simple link</a>-->
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+
+				<!-- distribution -->
+				@if (dataset["dcat:distribution"] && dataset["dcat:distribution"].length > 0) {
+					<h3>{{ "details.heading.distributions" | translate }}</h3>
+					<hr />
+					<mat-accordion>
+						@for (dist of dataset["dcat:distribution"]; track $index) {
+							<mat-expansion-panel>
+								<mat-expansion-panel-header>
+									<mat-panel-title>
+										{{ ["dct:title", dist["dct:title"]] | translateField }}
+									</mat-panel-title>
+									<mat-panel-description>
+                    <div style="text-align: right; width: 100%;">
+                      <mat-icon [svgIcon]="getFormatIcon(dist['dct:format'])">{{ dist['dct:format'] || 'file' }}</mat-icon>
+                        {{ dist['dct:format'] || 'Unknown format' }}
+                    </div>
+									</mat-panel-description>
+								</mat-expansion-panel-header>
+								<distribution [distribution]="dist"></distribution>
+							</mat-expansion-panel>
+						}
+					</mat-accordion>
+				}
+
+				@if (dataset["bv:externalCatalogs"] && dataset["bv:externalCatalogs"].length > 0) {
+					<h3>{{ "details.heading.publications" | translate }}</h3>
+					<hr />
+					<table class="ob-table ob-table-plain">
+						<tbody>
+							@for (pub of dataset["bv:externalCatalogs"]; track $index) {
+								<tr>
+									<td>{{ pub["dcat:catalog"] }}</td>
+									<td>{{ pub["dct:identifier"] }}</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				}
+			</div>
+		</div>
+	}
+} @else {
+	@if (loading$ | async) {
+		<pre>loading...</pre>
+	} @else {
+		<app-not-found></app-not-found>
+	}
+	<!--	<app-not-found *ngIf="!loading$ | async"></app-not-found>-->
+}
+

@@ -1,0 +1,47 @@
+name: Build and Deploy Script
+on:
+    push:
+        branches:
+            - develop
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout Repository
+                uses: actions/checkout@v2
+            -   name: Adding Node.js
+                uses: actions/setup-node@v2
+                with:
+                    node-version: 22
+            -   name: Install Dependencies
+                run: npm install
+            -   name: Build Angular App
+                run: |
+                    npm run prebuild
+                    npm run build -- --output-path=docs
+            -   name: Set Git identity
+                run: |
+                    git config user.name "github-actions[bot]"
+                    git config user.email "github-actions[bot]@users.noreply.github.com"
+            -   name: "Debug: list docs contents"
+                run: ls -R docs
+
+            -   name: Deploy to gh-pages
+                run: |
+                    npx angular-cli-ghpages --dir=docs
+                env:
+                    CI: true
+                    GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+            -   name: Update base href in docs/index.html #for prod setup
+                run: |
+                    sed -i 's|<base href="/data-catalog/">|<base href="/">|g' docs/index.html
+
+            -   name: Commit and push to docs directory
+                run: |
+                    git add docs/
+                    git commit -m "Deploy Angular app to docs directory" || echo "No changes to commit"
+                    git push origin develop
+                env:
+                    CI: true
+                    GH_TOKEN: ${{ secrets.GH_TOKEN }}
