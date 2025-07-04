@@ -7,15 +7,16 @@
 			<div class="header-container">
 				<h2 class="main-heading">{{ ["dct:title", dataset["dct:title"]] | translateField }}</h2>
 				<div class="floating-actions">
-					<button mat-fab color="primary" aria-label="Share dataset">
-						<mat-icon>share</mat-icon>
+          <button mat-fab color="accent" aria-label="data source on github" (click)="openGitHubFile()">
+            <mat-icon svgIcon="git-hub">github</mat-icon>
+          </button>
+					<button mat-fab color="accent" aria-label="raw data" (click)="openRawJson()">
+						<mat-icon svgIcon="file-json">raw</mat-icon>
 					</button>
-					<button mat-fab color="accent" aria-label="Download dataset">
-						<mat-icon>download</mat-icon>
-					</button>
-					<button mat-fab color="warn" aria-label="Bookmark dataset">
-						<mat-icon>bookmark</mat-icon>
-					</button>
+<!--          <a href="/edit" mat-button obButton="primary" type="button">-->
+<!--            {{ "ui.editDataset" | translate }}-->
+<!--            <mat-icon svgIcon="pen" />-->
+<!--          </a>-->
 				</div>
 			</div>
 			<div class="ob-grid">

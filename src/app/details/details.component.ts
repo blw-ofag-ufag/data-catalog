@@ -17,6 +17,9 @@ import {KeywordsComponent} from './keywords/keywords.component';
 import {DistributionComponent} from './distribution/distribution.component';
 import {NotFoundComponent} from '../not-found/not-found.component';
 import { MatIcon } from "@angular/material/icon";
+import { MatAnchor, MatFabButton } from "@angular/material/button";
+import { ObButtonDirective } from "@oblique/oblique";
+import {PublisherService} from '../services/api/publisher.service';
 
 @Component({
 	selector: 'app-details',
@@ -40,7 +43,10 @@ import { MatIcon } from "@angular/material/icon";
 		KeywordsComponent,
 		DistributionComponent,
 		NotFoundComponent,
-		MatIcon
+		MatIcon,
+		MatAnchor,
+		MatFabButton,
+		ObButtonDirective
 	],
 	styleUrl: './details.component.scss'
 })
@@ -56,7 +62,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
 	constructor(
 		private readonly datasetService: DatasetService,
 		private readonly route: ActivatedRoute,
-		private readonly translate: TranslateService
+		private readonly translate: TranslateService,
+		private readonly publisherService: PublisherService
 	) {
 		this.loading$ = this.datasetService.getLoadingState();
 		this.currentLang$ = this.translate.onLangChange.pipe(
@@ -97,6 +104,44 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		return {
 			'dct:publisher': publisher
 		};
+	}
+
+	getGitHubFileUrl(): string {
+		const params = this.route.snapshot.queryParams;
+		const publisherId = params['publisher'];
+		const datasetId = params['dataset'];
+		if (!publisherId || !datasetId) return '';
+		
+		const publisher = this.publisherService.getPublishers().find(p => p.id === publisherId);
+		if (!publisher) return '';
+		
+		return `https://github.com/${publisher.githubRepo}/blob/${publisher.branch}/data/raw/datasets/${datasetId}.json`;
+	}
+
+	getRawJsonUrl(): string {
+		const params = this.route.snapshot.queryParams;
+		const publisherId = params['publisher'];
+		const datasetId = params['dataset'];
+		if (!publisherId || !datasetId) return '';
+		
+		const publisher = this.publisherService.getPublishers().find(p => p.id === publisherId);
+		if (!publisher) return '';
+		
+		return publisher.getDetailUrl(datasetId);
+	}
+
+	openGitHubFile(): void {
+		const url = this.getGitHubFileUrl();
+		if (url) {
+			window.open(url, '_blank', 'noopener');
+		}
+	}
+
+	openRawJson(): void {
+		const url = this.getRawJsonUrl();
+		if (url) {
+			window.open(url, '_blank', 'noopener');
+		}
 	}
 
 	protected readonly enumTypes = enumTypes;
