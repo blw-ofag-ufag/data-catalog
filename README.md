@@ -76,6 +76,10 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+# Github actions / production build
+There is a `develop` workflow which builds the angular application as a SPA, the resulting build is just an `index.html` with colocated js bundles. For environment backwards compatibility reasons, this build is located under `docs`.
+The base url is fixed to `data-catalog` and is not configurable. A deployment should check out the code, point a web server document root to `/docs` and serve `index.html` under `<domain>/data-catalog/`.
+
 # Docker
 The Dockerfile in the project root builds the angular application and copies the (html, css, js)-files
 to the default document root of an nginx web server.
@@ -89,11 +93,6 @@ docker build -t yourusername/data-catalog:latest .
 
 ## run the container
 ```docker run -p yourusername/data-catalog:latest```
-or for the pre-built image:
-```docker run -p iwfbr/data-catalog:latest```
-
-## Pre-built Docker Image
-https://hub.docker.com/repository/docker/iwfbr/data-catalog
 
 # 🤝 Contributing
 
