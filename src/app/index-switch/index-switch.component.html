@@ -52,10 +52,10 @@
 			</button>
 		</div>
 		<div class="pull-right">
-			<button (click)="switchTo('tile')" mat-icon-button obButton="tertiary" type="button" [matTooltip]="'ui.cards' | translate">
+			<button (click)="switchTo('tile')" mat-icon-button [obButton]="view === 'tile' ? 'primary' : 'tertiary'" type="button" [matTooltip]="'ui.cards' | translate">
 				<mat-icon svgIcon="cards" />
 			</button>
-			<button (click)="switchTo('table')" mat-icon-button obButton="tertiary" type="button" [matTooltip]="'ui.list' | translate">
+			<button (click)="switchTo('table')" mat-icon-button [obButton]="view === 'table' ? 'primary' : 'tertiary'" type="button" [matTooltip]="'ui.list' | translate">
 				<mat-icon svgIcon="list" />
 			</button>
 		</div>
