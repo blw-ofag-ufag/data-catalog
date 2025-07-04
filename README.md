@@ -80,6 +80,10 @@ This will compile your project and store the build artifacts in the `dist/` dire
 There is a `develop` workflow which builds the angular application as a SPA, the resulting build is just an `index.html` with colocated js bundles. For environment backwards compatibility reasons, this build is located under `docs`.
 The base url is fixed to `data-catalog` and is not configurable. A deployment should check out the code, point a web server document root to `/docs` and serve `index.html` under `<domain>/data-catalog/`.
 
+# Configuration (publishers)
+The set of publishers is configurable, this can be declared in `config/publishers.yaml`. `npm run prebuild` applies the config (generates some code).
+All publishers can provide a data repository adhering to the same structure as the BLW repo and JSON schema, for the index we query all and merge them, so an instance of the data catalog can serve multiple sources at once.
+
 # Docker
 The Dockerfile in the project root builds the angular application and copies the (html, css, js)-files
 to the default document root of an nginx web server.
