@@ -1,7 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {marked} from 'marked';
-import mermaid from 'mermaid';
+
+declare const mermaid: any;
 
 @Component({
 	selector: 'handbook',
