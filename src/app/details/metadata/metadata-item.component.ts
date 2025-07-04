@@ -9,7 +9,7 @@ import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import {MatChip, MatChipSet} from '@angular/material/chips';
-import {ContactPoint, enumTypes, TemporalCoverage} from '../../models/schemas/dataset';
+import {ContactPoint, TemporalCoverage, enumTypes} from '../../models/schemas/dataset';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 
 // Lokalisierung registrieren

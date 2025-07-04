@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {map, Observable, startWith} from 'rxjs';
+import {Observable, map, startWith} from 'rxjs';
 import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {CommonModule} from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';

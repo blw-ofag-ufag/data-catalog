@@ -3,9 +3,9 @@ import {
 	AccrualPeriocicites,
 	CategorizationsDSG,
 	ClassificationLevels,
+	DataTypes,
 	DatasetAvailabilities,
 	DatasetThemes,
-	DataTypes,
 	Publishers,
 	Statuses
 } from '../models/schemas/dataset';
@@ -14,7 +14,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule, MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {BehaviorSubject, map, Observable, startWith, Subject, tap} from 'rxjs';
+import {BehaviorSubject, Observable, Subject, map, startWith, tap} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
