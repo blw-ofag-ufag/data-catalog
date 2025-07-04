@@ -114,4 +114,15 @@ img {
 	object-fit: contain;
 }
 
+// Accordion styling
+mat-panel-description mat-icon {
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+}
+
+// Prevent line wrapping in issued column
+.no-wrap {
+	white-space: nowrap;
+}
 

@@ -10,7 +10,7 @@ import {TranslatePipe} from '@ngx-translate/core';
 				@for (field of getDistributionFields(); track field.label) {
 					@if (field.data !== null && field.data !== undefined && field.data !== '') {
 						<tr>
-							<td>{{ 'labels.' + field.label | translate }}</td>
+							<td class="no-wrap">{{ 'labels.' + field.label | translate }}</td>
 							<td>
 								<distribution-item [label]="field.label" [data]="field.data"></distribution-item>
 							</td>

@@ -108,7 +108,10 @@
 										{{ ["dct:title", dist["dct:title"]] | translateField }}
 									</mat-panel-title>
 									<mat-panel-description>
-										{{ ["dct:description", dist["dct:description"]] | translateField }}
+                    <div style="text-align: right; width: 100%;">
+                      <mat-icon [svgIcon]="getFormatIcon(dist['dct:format'])">{{ dist['dct:format'] || 'file' }}</mat-icon>
+                        {{ dist['dct:format'] || 'Unknown format' }}
+                    </div>
 									</mat-panel-description>
 								</mat-expansion-panel-header>
 								<distribution [distribution]="dist"></distribution>
@@ -143,70 +146,3 @@
 	<!--	<app-not-found *ngIf="!loading$ | async"></app-not-found>-->
 }
 
-<!--<p>details for dataset {{ dataset }}</p>-->
-<!--<pre>{{dataset$ | async | json}}</pre>-->
-<!--<div class="ob-grid">-->
-<!--  <div class="ob-span-10">-->
-<!--    <h6>Affiliated Persons</h6>-->
-<!--    <hr/>-->
-<!--    <label for="data-steward">-->
-<!--      <a href="#">Andrea Müller</a>-->
-<!--    </label>-->
-<!--    <div id="data-steward">-->
-<!--      <mat-chip>Data Steward</mat-chip>-->
-<!--    </div>-->
-<!--    <hr/>-->
-<!--    <label for="data-steward">-->
-<!--      <a href="#">Michael Gysi</a>-->
-<!--    </label>-->
-<!--    <div id="data-steward">-->
-<!--      <mat-chip>Business Data Owner</mat-chip>-->
-<!--    </div>-->
-
-<!--    <br>-->
-<!--    <h6>Metadata</h6>-->
-<!--    <hr/>-->
-<!--    <label for="contact-point">-->
-<!--      Contact Point-->
-<!--    </label>-->
-<!--    <div id="contact-point">-->
-<!--      Büro für Sortenschutz <a href="#">sortenadmin&#64;blw.admin.ch</a>-->
-<!--    </div>-->
-<!--    <hr/>-->
-<!--    ...-->
-
-<!--    <br>-->
-<!--    <h6>Distribution</h6>-->
-
-<!--    <br>-->
-<!--    <h6>Publications</h6>-->
-<!--    <table class="ob-table">-->
-<!--      <thead>-->
-<!--      <tr>-->
-<!--        <th scope="col">Catalog</th>-->
-<!--        <th scope="col">Publications</th>-->
-<!--        <th scope="col">Identifier</th>-->
-<!--      </tr>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--      <tr>-->
-<!--        <td data-title="POSITION">opendata.swiss</td>-->
-<!--        <th scope="row" data-title="NAME"><mat-chip>No</mat-chip></th>-->
-<!--        <td data-title="WEIGHT"></td>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <td data-title="POSITION">I14Y</td>-->
-<!--        <th scope="row" data-title="NAME"><mat-chip>Yes</mat-chip></th>-->
-<!--        <td data-title="WEIGHT"><a href="#">BLW_DS_VARIETIES</a></td>-->
-<!--      </tr>-->
-<!--      </tbody>-->
-<!--      </tbody>-->
-<!--    </table>-->
-
-<!--  </div>-->
-<!--  <div class="ob-span-2">-->
-<!--    <pre>-->
-<!--      tbd: Quicknav-->
-<!--    </pre>-->
-<!--  </div>-->
-<!--</div>-->
