@@ -89,7 +89,6 @@ export class MultiDatasetService {
 			.then(results => {
 				const combinedKeywords: string[] = Array.from(new Set(results.flatMap(entry => entry['dcat:keyword'])));
 				this._keywordsSubject.next(combinedKeywords);
-				console.log(combinedKeywords);
 			})
 			.catch(error => {
 				console.error('Error fetching keywords from all sources:', error);
