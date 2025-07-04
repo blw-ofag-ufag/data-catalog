@@ -39,3 +39,36 @@ mat-chip a:hover {
 	border-left: 4px solid #e5e7eb;
 	border-radius: 4px;
 }
+
+.header-container {
+	position: relative;
+	margin-bottom: 2rem;
+}
+
+.main-heading {
+	font-size: 2.5rem;
+	padding: 1.5rem 0;
+	margin: 0;
+	padding-right: 160px;
+}
+
+.floating-actions {
+	position: absolute;
+	top: 1.5rem;
+	right: 0;
+	display: flex;
+	gap: 0.5rem;
+	flex-direction: row;
+	z-index: 10;
+	align-items: center;
+}
+
+.floating-actions button {
+	width: 40px;
+	height: 40px;
+	min-height: 40px;
+}
+
+:host {
+	padding-bottom: 40px;
+}

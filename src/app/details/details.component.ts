@@ -16,6 +16,7 @@ import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.compon
 import {KeywordsComponent} from './keywords/keywords.component';
 import {DistributionComponent} from './distribution/distribution.component';
 import {NotFoundComponent} from '../not-found/not-found.component';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
 	selector: 'app-details',
@@ -38,7 +39,8 @@ import {NotFoundComponent} from '../not-found/not-found.component';
 		TranslateFieldPipe,
 		KeywordsComponent,
 		DistributionComponent,
-		NotFoundComponent
+		NotFoundComponent,
+		MatIcon
 	],
 	styleUrl: './details.component.scss'
 })

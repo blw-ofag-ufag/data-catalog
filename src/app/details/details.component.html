@@ -3,7 +3,20 @@
 
 @if (dataset$ | async; as dataset) {
 	@if (currentLang$ | async; as lang) {
-		<h2>{{ ["dct:title", dataset["dct:title"]] | translateField }}</h2>
+		<div class="header-container">
+			<h2 class="main-heading">{{ ["dct:title", dataset["dct:title"]] | translateField }}</h2>
+			<div class="floating-actions">
+				<button mat-fab color="primary" aria-label="Share dataset">
+					<mat-icon>share</mat-icon>
+				</button>
+				<button mat-fab color="accent" aria-label="Download dataset">
+					<mat-icon>download</mat-icon>
+				</button>
+				<button mat-fab color="warn" aria-label="Bookmark dataset">
+					<mat-icon>bookmark</mat-icon>
+				</button>
+			</div>
+		</div>
 		<div class="ob-grid">
 			<div class="ob-half">
 				<p>{{ ["dct:description", dataset["dct:description"]] | translateField }}</p>
