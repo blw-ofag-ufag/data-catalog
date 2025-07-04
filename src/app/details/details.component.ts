@@ -17,7 +17,7 @@ import {KeywordsComponent} from './keywords/keywords.component';
 import {DistributionComponent} from './distribution/distribution.component';
 import {NotFoundComponent} from '../not-found/not-found.component';
 import { MatIcon } from "@angular/material/icon";
-import { MatAnchor, MatFabButton } from "@angular/material/button";
+import { MatAnchor, MatButton, MatFabButton } from "@angular/material/button";
 import { ObButtonDirective } from "@oblique/oblique";
 import {PublisherService} from '../services/api/publisher.service';
 
@@ -46,7 +46,8 @@ import {PublisherService} from '../services/api/publisher.service';
 		MatIcon,
 		MatAnchor,
 		MatFabButton,
-		ObButtonDirective
+		ObButtonDirective,
+		MatButton
 	],
 	styleUrl: './details.component.scss'
 })
@@ -111,10 +112,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		const publisherId = params['publisher'];
 		const datasetId = params['dataset'];
 		if (!publisherId || !datasetId) return '';
-		
+
 		const publisher = this.publisherService.getPublishers().find(p => p.id === publisherId);
 		if (!publisher) return '';
-		
+
 		return `https://github.com/${publisher.githubRepo}/blob/${publisher.branch}/data/raw/datasets/${datasetId}.json`;
 	}
 
@@ -123,10 +124,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		const publisherId = params['publisher'];
 		const datasetId = params['dataset'];
 		if (!publisherId || !datasetId) return '';
-		
+
 		const publisher = this.publisherService.getPublishers().find(p => p.id === publisherId);
 		if (!publisher) return '';
-		
+
 		return publisher.getDetailUrl(datasetId);
 	}
 

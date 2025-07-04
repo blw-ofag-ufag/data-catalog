@@ -68,6 +68,19 @@ mat-chip a:hover {
 	width: 40px;
 	height: 40px;
 	min-height: 40px;
+	min-width: 40px;
+	border-radius: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.floating-actions button mat-icon {
+	font-size: 24px;
+	width: 24px;
+	height: 24px;
+	margin-right: 0px;
 }
 
 :host {
