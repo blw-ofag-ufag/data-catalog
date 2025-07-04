@@ -167,7 +167,7 @@
         "CONT": "Kontinuierlich (Echtzeit)"
       },
       "hadRole": {
-        "businessDataOwner": "Busienss Data Owner",
+        "businessDataOwner": "Business Data Owner",
         "dataSteward": "Data Steward",
         "dataCustodian": "Data Custodian"
       },
