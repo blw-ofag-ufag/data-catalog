@@ -3,38 +3,40 @@
 
 @if (dataset$ | async; as dataset) {
 	@if (currentLang$ | async; as lang) {
-		<div class="header-container">
-			<h2 class="main-heading">{{ ["dct:title", dataset["dct:title"]] | translateField }}</h2>
-			<div class="floating-actions">
-				<button mat-fab color="primary" aria-label="Share dataset">
-					<mat-icon>share</mat-icon>
-				</button>
-				<button mat-fab color="accent" aria-label="Download dataset">
-					<mat-icon>download</mat-icon>
-				</button>
-				<button mat-fab color="warn" aria-label="Bookmark dataset">
-					<mat-icon>bookmark</mat-icon>
-				</button>
-			</div>
-		</div>
-		<div class="ob-grid">
-			<div class="ob-half">
-				<p>{{ ["dct:description", dataset["dct:description"]] | translateField }}</p>
-				<div class="ob-inline-form">
-					<mat-chip>
-						<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
-							{{ "ui.dataSet" | translate }}
-						</a>
-					</mat-chip>
-					<mat-chip>
-						<a [routerLink]="['/index']" [queryParams]="publisherFiltered(dataset['dct:publisher'])">
-							{{ dataset["dct:publisher"] | org }}
-						</a>
-					</mat-chip>
+		<div class="hero-section">
+			<div class="header-container">
+				<h2 class="main-heading">{{ ["dct:title", dataset["dct:title"]] | translateField }}</h2>
+				<div class="floating-actions">
+					<button mat-fab color="primary" aria-label="Share dataset">
+						<mat-icon>share</mat-icon>
+					</button>
+					<button mat-fab color="accent" aria-label="Download dataset">
+						<mat-icon>download</mat-icon>
+					</button>
+					<button mat-fab color="warn" aria-label="Bookmark dataset">
+						<mat-icon>bookmark</mat-icon>
+					</button>
 				</div>
 			</div>
-			<div class="ob-half">
-				<img src="{{ dataset['schema:image'] || 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg' }}" width="100%" />
+			<div class="ob-grid">
+				<div class="ob-half">
+					<p>{{ ["dct:description", dataset["dct:description"]] | translateField }}</p>
+					<div class="ob-inline-form">
+						<mat-chip>
+							<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
+								{{ "ui.dataSet" | translate }}
+							</a>
+						</mat-chip>
+						<mat-chip>
+							<a [routerLink]="['/index']" [queryParams]="publisherFiltered(dataset['dct:publisher'])">
+								{{ dataset["dct:publisher"] | org }}
+							</a>
+						</mat-chip>
+					</div>
+				</div>
+				<div class="ob-half">
+					<img src="{{ dataset['schema:image'] || 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg' }}" width="100%" />
+				</div>
 			</div>
 		</div>
 		<div class="ob-grid">
