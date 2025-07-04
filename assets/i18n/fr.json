@@ -26,6 +26,7 @@
     "steward": "Gestionnaire de données",
     "stewardOwnerContact": "Contact",
     "addDataset": "Ajouter un jeu de données",
+    "editDataset": "Modifier",
     "hideFilters": "Masquer les filtres",
     "showFilters": "Afficher les filtres",
     "sortBy": {
