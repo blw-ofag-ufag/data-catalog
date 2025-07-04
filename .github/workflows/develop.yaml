@@ -26,17 +26,22 @@ jobs:
             -   name: "Debug: list docs contents"
                 run: ls -R docs
 
+            -   name: Deploy to gh-pages
+                run: |
+                    npx angular-cli-ghpages --dir=docs
+                env:
+                    CI: true
+                    GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+            -   name: Update base href in docs/index.html #for prod setup
+                run: |
+                    sed -i 's|<base href="/data-catalog/">|<base href="/">|g' docs/index.html
+
             -   name: Commit and push to docs directory
                 run: |
                     git add docs/
                     git commit -m "Deploy Angular app to docs directory" || echo "No changes to commit"
                     git push origin develop
-                env:
-                    CI: true
-                    GH_TOKEN: ${{ secrets.GH_TOKEN }}
-            -   name: Deploy to gh-pages
-                run: |
-                    npx angular-cli-ghpages --dir=docs
                 env:
                     CI: true
                     GH_TOKEN: ${{ secrets.GH_TOKEN }}
