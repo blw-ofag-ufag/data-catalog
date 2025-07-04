@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, AfterViewInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject} from 'rxjs';
@@ -12,7 +12,7 @@ import {VersionService} from './services/version.service';
 	standalone: false,
 	styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnDestroy, AfterViewInit {
 	title = 'DigiAgriFoodCH';
 	navigation = [{url: 'index', label: 'Index'}];
 	private readonly destroy$ = new Subject<void>();
@@ -73,6 +73,16 @@ export class AppComponent implements OnDestroy {
 			default:
 				return 'https://www.admin.ch/gov/en/start/terms-and-conditions.html';
 		}
+	}
+
+	ngAfterViewInit() {
+		// Remove accessibility statement link from footer
+		setTimeout(() => {
+			const accessibilityLink = document.querySelector('ob-master-layout-footer > div > ul > li > a[routerlink="accessibility-statement"]');
+			if (accessibilityLink) {
+				accessibilityLink.remove();
+			}
+		}, 0);
 	}
 
 	ngOnDestroy() {

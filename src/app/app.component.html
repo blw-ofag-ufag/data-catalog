@@ -21,25 +21,10 @@
 			{{ "footer.source" | translate }}
 		</a>
 	</ng-template>
-
-	<!--	Link to source code (GitHub)-->
-	<!--	Contact information-->
-	<!--	Legal basis, refer to https://www.admin.ch/gov/?{lang}/start/rechtliches.html-->
-
-	<!--	<ng-container obFooterInfo>-->
-	<!--		<app-footer></app-footer>-->
-	<!--		<p>Oblique's footer</p>-->
-	<!--		<p>-->
-	<!--			&copy; 2020 <span>{{ "i18n.oblique.footer.title" | translate }}</span>-->
-	<!--		</p>-->
-	<!--		<h3>mat-chip-listbox</h3>-->
-	<!--		<mat-chip-listbox>-->
-	<!--			<mat-chip-option>Default</mat-chip-option>-->
-	<!--			<mat-chip-option class="info">Info</mat-chip-option>-->
-	<!--			<mat-chip-option class="success">Success</mat-chip-option>-->
-	<!--			<mat-chip-option class="error">Error</mat-chip-option>-->
-	<!--			<mat-chip-option class="warning">Warn</mat-chip-option>-->
-	<!--			<mat-chip-option disabled>Disabled</mat-chip-option>-->
-	<!--		</mat-chip-listbox>-->
-	<!--	</ng-container>-->
+	<ng-template #footer>
+		<pre>custom footer</pre>
+	</ng-template>
+	<footer>
+		<pre>custom footer</pre>
+	</footer>
 </ob-master-layout>
