@@ -1,6 +1,6 @@
 {
   "name": "DigiAgriFoodCH",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "scripts": {
     "start": "ng serve",
     "prebuild": "node config/convert-yaml.js",
@@ -27,12 +27,10 @@
     "@oblique/oblique": "^13.2.1",
     "@popperjs/core": "^2.0.0",
     "@types/marked": "^5.0.2",
-    "@types/mermaid": "^9.1.0",
     "angular-oauth2-oidc": "^19.0.0",
     "fuse.js": "^7.1.0",
     "jwt-decode": "^4.0.0",
     "marked": "^16.0.0",
-    "mermaid": "^11.7.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
