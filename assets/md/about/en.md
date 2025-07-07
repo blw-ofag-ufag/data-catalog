@@ -10,7 +10,7 @@ In doing so, many different types of data are collected, created, managed, proce
 Data come in many forms: from simple Excel sheets to complex databases. Some data relate to individuals and thus carry security risks; other data don't need protection but instead are meant to be publicly available.
 Certain data might pertain to milk production, while others address nitrogen losses in agriculture.
 
-With this constantly growing volume of data, it is essential for FOAG to provide a tool that allows for clear and structured data management.
+With this constantly growing volume of data, it is essential for FOAG to proyvide a tool that allows for clear and structured data management.
 This is fundamentally the goal of a comprehensive and up-to-date data catalog.
 As a result, it directly contributes to adherence to the principles of the [digitalization strategy](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie), such as *Once Only*, *Open by Default*, *Security & Privacy by Default*, and *Innovation First*.
 
@@ -43,6 +43,15 @@ Different groups can benefit significantly from a data catalog, especially:
 - **Managers and decision-makers:** Quickly gaining an overview of existing data resources to support evidence-based strategies.
 - **Technical teams:** Improving the planning and assessment of system integrations.
 - **External stakeholders:** Finding publicly available data easily when needed.
+
+# What does the Data Catalog contain?
+
+The Data Catalog includes data products that are actively managed, regularly used, and provide ongoing value. Examples include:
+- An annual Excel file with updated milk production figures
+- A BI dashboard tracking the progress of metric XY
+- A data warehouse table summarizing egg sales by retailer
+
+Note: Raw data files, such as a retailer’s original sales data for a specific period, should not be listed as separate data products. Instead, this raw data should be incorporated into an existing sales data product covering that period. Additionally, temporary or single-use files, like a one-off CSV created for quick analysis, are not considered relevant data products.
 
 # Next Steps
 
