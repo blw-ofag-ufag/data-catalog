@@ -10,7 +10,7 @@ In doing so, many different types of data are collected, created, managed, proce
 Data come in many forms: from simple Excel sheets to complex databases. Some data relate to individuals and thus carry security risks; other data don't need protection but instead are meant to be publicly available.
 Certain data might pertain to milk production, while others address nitrogen losses in agriculture.
 
-With this constantly growing volume of data, it is essential for FOAG to proyvide a tool that allows for clear and structured data management.
+With this constantly growing volume of data, it is essential for FOAG to provide a tool that allows for clear and structured data management.
 This is fundamentally the goal of a comprehensive and up-to-date data catalog.
 As a result, it directly contributes to adherence to the principles of the [digitalization strategy](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie), such as *Once Only*, *Open by Default*, *Security & Privacy by Default*, and *Innovation First*.
 
