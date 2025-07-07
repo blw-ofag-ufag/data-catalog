@@ -2,7 +2,10 @@
 	<!--	@if (adminDirError) {-->
 	<!--		<ob-alert type="warning">{{'msg.adminDirError' | translate }}: <b>{{ person['prov:agent'] }}</b></ob-alert>-->
 	<!--	} @else {-->
-	{{ "msg.adminDirLookup" | translate }}: <b>{{ person["prov:agent"] }}</b>
+	{{ "msg.adminDirLookup" | translate }}:
+	<a href="https://admindir.verzeichnisse.admin.ch/person/{{ person['prov:agent'] }}">
+		{{ person['prov:agent'] }}
+	</a>
 	<!--	}-->
 } @else {
 	<a href="mailto:{{ person['schema:email'] }}">{{ person["schema:name"] }}</a>
