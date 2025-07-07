@@ -51,7 +51,7 @@ Von einem Datenkatalog können unterschiedliche Gruppen profitieren. Hauptsächl
 # Was enthält der Datenkatalog?
 Der Datenkatalog umfasst Datenprodukte, die aktiv verwaltet und regelmäßig genutzt werden sowie einen kontinuierlichen Mehrwert bieten. Beispiele hierfür sind:
 - Eine jährliche Excel-Datei mit aktualisierten Zahlen zur Milchproduktion
-- Ein BI-Dashboard zur Verfolgung des Fortschritts der Kennzahl XY
+- Ein BI-Dashboard zur Verfolgung der Entwicklung der Einkommenssituation
 - Eine Data-Warehouse-Tabelle mit einer Zusammenfassung der Eierverkäufe nach Einzelhändlern
 
 Hinweis: Dateien mit Rohdaten, wie z. B. die Originalverkaufsdaten eines Einzelhändlers für einen bestimmten Zeitraum, sollten nicht als separate Datenprodukte aufgeführt werden. Stattdessen sollten diese Rohdaten in ein bestehendes Datenprodukt über den Verkauf integriert werden. 
