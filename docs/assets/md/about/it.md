@@ -40,6 +40,15 @@ Diversi gruppi possono beneficiare significativamente di un catalogo dei dati, i
 - **Team tecnici:** Migliorare la pianificazione e la valutazione delle integrazioni di sistema.
 - **Parti interessate esterne:** Accedere facilmente ai dati pubblici in caso di necessità.
 
+# Cosa contiene il catalogo dei dati?
+Il catalogo dei dati comprende prodotti di dati che vengono gestiti attivamente e utilizzati regolarmente e che offrono un valore aggiunto continuo. Alcuni esempi:
+- Un file Excel annuale con dati aggiornati sulla produzione di latte
+- Un dashboard BI per monitorare l'andamento dell'indicatore XY
+- Una tabella di data warehouse con un riepilogo delle vendite di uova per singolo rivenditore
+
+Nota: i file contenenti dati grezzi, come i dati di vendita originali di un rivenditore per un determinato periodo di tempo, non devono essere elencati come prodotti di dati separati. Questi dati grezzi devono invece essere integrati in un prodotto di dati esistente tramite la vendita.
+Inoltre, i file temporanei, come un file CSV per un'analisi una tantum, non sono considerati prodotti di dati rilevanti.
+
 # Prossimi passi
 
 Affineremo ulteriormente il catalogo coinvolgendo i proprietari dei dati, aggiornando le voci esistenti ed esaminando l'integrazione con altre piattaforme. Nel tempo, desideriamo rendere questo strumento una risorsa indispensabile per i partner interni ed esterni, favorendo l'innovazione basata sui dati in tutti gli ambiti.
