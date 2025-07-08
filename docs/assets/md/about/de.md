@@ -49,7 +49,7 @@ Von einem Datenkatalog können unterschiedliche Gruppen profitieren. Hauptsächl
 - externe Interessensgruppen, weil sie bei Bedarf öffentlich verfügbare Daten finden können.
 
 # Was enthält der Datenkatalog?
-Der Datenkatalog umfasst Datenprodukte, die aktiv verwaltet und regelmäßig genutzt werden sowie einen kontinuierlichen Mehrwert bieten. Beispiele hierfür sind:
+Der Datenkatalog umfasst Datenprodukte, die aktiv verwaltet und regelmässig genutzt werden sowie einen kontinuierlichen Mehrwert bieten. Beispiele hierfür sind:
 - Eine jährliche Excel-Datei mit aktualisierten Zahlen zur Milchproduktion
 - Ein BI-Dashboard zur Verfolgung der Entwicklung der Einkommenssituation
 - Eine Data-Warehouse-Tabelle mit einer Zusammenfassung der Eierverkäufe nach Einzelhändlern
