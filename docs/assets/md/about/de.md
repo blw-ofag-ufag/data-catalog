@@ -53,8 +53,8 @@ Der Datenkatalog umfasst Datenprodukte, die aktiv verwaltet und regelmässig gen
 - Eine jährliche Excel-Datei mit aktualisierten Zahlen zur Milchproduktion
 - Ein BI-Dashboard zur Verfolgung der Entwicklung der Einkommenssituation
 - Eine Data-Warehouse-Tabelle mit einer Zusammenfassung der Eierverkäufe nach Einzelhändlern
-- Statistische Modelle und/oder Machine Learning Modelle, die zur Analyse von Daten und zur Erstellung von Prognosen verwendet werden
-- APIs oder Datendienste, die internen oder externen Mitarbeitern zur Verfügung gestellt werden
+- Ein Machine Learning Modell zur Vorhersage von Schädlingsrisiken basierend auf Wetter- und Anbaudaten
+- Ein öffentlich zugänglicher API-Dienst zur Echtzeitprognose der erwarteten Ernteerträge pro Kultur und Region
 
 Hinweis: Dateien mit Rohdaten, wie z. B. die Originalverkaufsdaten eines Einzelhändlers für einen bestimmten Zeitraum, sollten nicht als separate Datenprodukte aufgeführt werden. Stattdessen sollten diese Rohdaten in ein bestehendes Datenprodukt über den Verkauf integriert werden. 
 Darüber hinaus gelten temporäre Dateien, wie z. B. eine CSV-Datei für eine einmalige Analyse, nicht als relevante Datenprodukte.
