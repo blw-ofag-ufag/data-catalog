@@ -50,6 +50,8 @@ The Data Catalog includes data products that are actively managed, regularly use
 - An annual Excel file with updated milk production figures
 - A BI dashboard tracking the development of the income situation
 - A data warehouse table summarizing egg sales by retailer
+- Statistical models and/or machine learning models used for analyzing data and making predictions
+- APIs or data services provided to internal or external collaborators
 
 Note: Raw data files, such as a retailer’s original sales data for a specific period, should not be listed as separate data products. Instead, this raw data should be incorporated into an existing sales data product covering that period. Additionally, temporary or single-use files, like a one-off CSV created for quick analysis, are not considered relevant data products.
 
