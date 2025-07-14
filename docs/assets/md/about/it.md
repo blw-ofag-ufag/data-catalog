@@ -45,8 +45,8 @@ Il catalogo dei dati comprende prodotti di dati che vengono gestiti attivamente 
 - Un file Excel annuale con dati aggiornati sulla produzione di latte
 - Un dashboard BI per monitorare l'evoluzione della situazione reddituale
 - Una tabella di data warehouse con un riepilogo delle vendite di uova per singolo rivenditore
-- Modelli statistici e/o modelli di machine learning utilizzati per analizzare i dati e fare previsioni
-- API o servizi di dati forniti a collaboratori interni o esterni
+- Un modello di machine learning per prevedere i rischi di infestazione da parassiti sulla base dei dati meteorologici e colturali
+- Un servizio API accessibile al pubblico per prevedere in tempo reale i rendimenti attesi per coltura e regione
 
 Nota: i file contenenti dati grezzi, come i dati di vendita originali di un rivenditore per un determinato periodo di tempo, non devono essere elencati come prodotti di dati separati. Questi dati grezzi devono invece essere integrati in un prodotto di dati esistente tramite la vendita.
 Inoltre, i file temporanei, come un file CSV per un'analisi una tantum, non sono considerati prodotti di dati rilevanti.
