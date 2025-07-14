@@ -52,8 +52,8 @@ Le catalogue de données comprend les produits de données qui sont activement g
 - Un fichier Excel annuel contenant les chiffres actualisés de la production laitière
 - Un rapport BI (Power BI, SAP BO) permettant de suivre l'évolution de la situation des revenus
 - Un tableau de l'entrepôt de données contenant un résumé des ventes d'œufs par détaillant
-- Des modèles statistiques et/ou des modèles de Machine Learning utilisés pour analyser les données et faire des prévisions
-- Des API ou des services de données fournis à des collaborateurs internes ou externes
+- Un modèle machine learning pour prévoir les risques liés aux parasites en fonction des données météorologiques et agricoles
+- Un service API accessible au public pour prévoir en temps réel les rendements attendus par culture et par région
 
 Les fichiers contenant des données brutes, telles que les données de vente originales d'un détaillant pour une période donnée, ne doivent pas être répertoriés comme des produits de données distincts. Ces données brutes doivent plutôt être intégrées dans un produit de données existant via la vente.
 En outre, les fichiers temporaires, tels qu'un fichier CSV pour une analyse unique, ne sont pas considérés comme des produits de données pertinents.
