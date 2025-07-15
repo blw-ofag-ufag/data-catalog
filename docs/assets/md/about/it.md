@@ -43,7 +43,7 @@ Diversi gruppi possono beneficiare significativamente di un catalogo dei dati, i
 # Cosa contiene il catalogo dei dati?
 Il catalogo dei dati comprende prodotti di dati che vengono gestiti attivamente e utilizzati regolarmente e che offrono un valore aggiunto continuo. Alcuni esempi:
 - Un file Excel annuale con dati aggiornati sulla produzione di latte
-- Un dashboard BI per monitorare l'evoluzione della situazione reddituale
+- Un rapporto BI (Power BI, SAP BO) per monitorare l'evoluzione della situazione reddituale
 - Una tabella di data warehouse con un riepilogo delle vendite di uova per singolo rivenditore
 - Un modello di machine learning per prevedere i rischi di infestazione da parassiti sulla base dei dati meteorologici e colturali
 - Un servizio API accessibile al pubblico per prevedere in tempo reale i rendimenti attesi per coltura e regione
