@@ -48,7 +48,7 @@ Different groups can benefit significantly from a data catalog, especially:
 
 The Data Catalog includes data products that are actively managed, regularly used, and provide ongoing value. Examples include:
 - An Excel file with updated milk production figures per year
-- A BI dashboard tracking the development of the income situation
+- A BI report (Power BI, SAP BO) tracking the development of the income situation
 - A data warehouse table summarizing egg sales by retailer
 - A machine learning model to predict pest risks based on weather and crop data
 - A publicly accessible API service for real-time forecasting of expected crop yields per crop and region
