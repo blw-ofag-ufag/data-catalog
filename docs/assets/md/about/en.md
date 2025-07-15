@@ -44,17 +44,6 @@ Different groups can benefit significantly from a data catalog, especially:
 - **Technical teams:** Improving the planning and assessment of system integrations.
 - **External stakeholders:** Finding publicly available data easily when needed.
 
-# What does the Data Catalog contain?
-
-The Data Catalog includes data products that are actively managed, regularly used, and provide ongoing value. Examples include:
-- An Excel file with updated milk production figures per year
-- A BI report (Power BI, SAP BO) tracking the development of the income situation
-- A data warehouse table summarizing egg sales by retailer
-- A machine learning model to predict pest risks based on weather and crop data
-- A publicly accessible API service for real-time forecasting of expected crop yields per crop and region
-
-Note: Raw data files, such as a retailer’s original sales data for a specific period, should not be listed as separate data products. Instead, this raw data should be incorporated into an existing sales data product covering that period. Additionally, temporary or single-use files, like a one-off CSV created for quick analysis, are not considered relevant data products.
-
 # Next Steps
 
 We will refine the catalog further by engaging data owners, updating existing entries, and examining integration with other platforms.

@@ -47,17 +47,6 @@ Différents groupes peuvent bénéficier significativement d'un catalogue de don
 - **Équipes techniques :** Meilleure planification et évaluation des intégrations système.
 - **Parties prenantes externes :** Accès facile aux données publiques en cas de besoin.
 
-# Que contient le catalogue de données ?
-Le catalogue de données comprend les produits de données qui sont activement gérés, régulièrement utilisés et qui offrent une valeur ajoutée continue. Voici quelques exemples :
-- Un fichier Excel annuel contenant les chiffres actualisés de la production laitière
-- Un rapport BI (Power BI, SAP BO) permettant de suivre l'évolution de la situation des revenus
-- Un tableau de l'entrepôt de données contenant un résumé des ventes d'œufs par détaillant
-- Un modèle machine learning pour prévoir les risques liés aux parasites en fonction des données météorologiques et agricoles
-- Un service API accessible au public pour prévoir en temps réel les rendements attendus par culture et par région
-
-Les fichiers contenant des données brutes, telles que les données de vente originales d'un détaillant pour une période donnée, ne doivent pas être répertoriés comme des produits de données distincts. Ces données brutes doivent plutôt être intégrées dans un produit de données existant via la vente.
-En outre, les fichiers temporaires, tels qu'un fichier CSV pour une analyse unique, ne sont pas considérés comme des produits de données pertinents.
-
 # Prochaines étapes
 
 Nous affinerons davantage le catalogue en impliquant les propriétaires de données, en actualisant les entrées existantes et en examinant l'intégration avec d'autres plateformes.
