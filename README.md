@@ -3,8 +3,8 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/blw-ofag-ufag/data-catalog.svg)](https://github.com/blw-ofag-ufag/data-catalog/commits)
 [![GitHub issues](https://img.shields.io/github/issues/blw-ofag-ufag/data-catalog.svg)](https://github.com/blw-ofag-ufag/data-catalog/issues)
 
-DigiAgriFoodCH Data Catalog
-===========================
+FOAG Data Catalog
+=================
 
 This data catalog was built in a joint effort by the Federal Office for Agriculture FOAG and the Federal Food Safety and Veterinary Office FSVO.
 It aims to showcase the offices datasets in a user-friendly way and in one place while maintaining interoperability with broader metadata platforms.
