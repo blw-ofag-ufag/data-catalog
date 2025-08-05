@@ -81,7 +81,7 @@
         "CONT": "Continuously (real time)",
         "DAILY": "Daily",
         "HOURLY": "Hourly",
-        "IRREG": "Irregular",
+        "IRREG": "Irregularly",
         "MONTHLY": "Monthly",
         "NEVER": "Never",
         "OTHER": "Other",
