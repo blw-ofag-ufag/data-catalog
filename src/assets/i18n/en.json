@@ -1,13 +1,13 @@
 {
   "app": {
-    "description": "Discover and access Swiss agricultural and food-related datasets from federal institutions",
+    "description": "Search the joint data catalog of the Federal Office for Agriculture (FOAG) and the Federal Office for Food Safety and Veterinary Affairs (FOVV)",
     "navigation": {
       "about": "About this data catalog",
       "catalog": "Catalog",
       "handbook": "Handbook",
       "index": "Index"
     },
-    "title": "FOAG Data Catalog"
+    "title": "Agri-Food Data Catalog"
   },
   "choices": {
     "dataset": {

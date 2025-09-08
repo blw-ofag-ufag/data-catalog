@@ -1,13 +1,13 @@
 {
   "app": {
-    "description": "Scopri e accedi a set di dati svizzeri relativi all'agricoltura e all'alimentazione provenienti da istituzioni federali",
+    "description": "Cerca nel catalogo dati comune dell'Ufficio federale dell'agricoltura (UFAG) e dell'Ufficio federale della sicurezza alimentare e di veterinaria (USAV)",
     "navigation": {
       "about": "Informazioni su questo catalogo dati",
       "catalog": "Catalogo",
       "handbook": "Manuale",
       "index": "Indice"
     },
-    "title": "Catalogo Dati UFAG"
+    "title": "Catalogo dei dati agroalimentari"
   },
   "choices": {
     "dataset": {
