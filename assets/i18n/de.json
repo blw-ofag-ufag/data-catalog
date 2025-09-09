@@ -1,13 +1,13 @@
 {
   "app": {
-    "description": "Entdecken und nutzen Sie Schweizer landwirtschaftliche und ernährungsbezogene Datensätze von Bundesinstitutionen",
+    "description": "Durchsuchen Sie den gemeinsamen Datenkatalog des Bundesamtes für Landwirtschaft (BLW) und des Bundesamtes für Lebensmittelsicherheit und Veterinärwesen (BLV)",
     "navigation": {
       "about": "Über diesen Datenkatalog",
       "catalog": "Katalog",
       "handbook": "Handbuch",
       "index": "Index"
     },
-    "title": "BLW Datenkatalog"
+    "title": "Agri-Food-Datenkatalog"
   },
   "choices": {
     "dataset": {
