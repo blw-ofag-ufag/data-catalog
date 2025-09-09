@@ -1,5 +1,5 @@
 {
-  "name": "FOAG Data Catalog",
+  "name": "Agri-Food Data Catalog",
   "version": "2.1.6",
   "scripts": {
     "start": "ng serve",

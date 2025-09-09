@@ -54,8 +54,8 @@ registerLocaleData(localeITCH);
 		{provide: LOCALE_ID, useValue: 'de-CH'},
 		provideObliqueConfiguration({
 			accessibilityStatement: {
-				applicationName: 'FOAG Data Catalog',
-				applicationOperator: 'Replace me with the name and address of the federal office that exploit this application, HTML is permitted',
+				applicationName: 'Agri-Food Data Catalog',
+				applicationOperator: 'Federal Office for Agriculture FOAG and Federal Food Safety and Veterinary Office FSVO',
 				contact: {/* at least 1 email or phone number has to be provided */ emails: [''], phones: ['']}
 			}
 		}),
