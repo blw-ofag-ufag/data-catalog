@@ -1,13 +1,13 @@
 {
   "app": {
-    "description": "Découvrez et accédez aux jeux de données suisses liés à l'agriculture et à l'alimentation provenant des institutions fédérales",
+    "description": "Consultez le catalogue commun de données de l'Office fédéral de l'agriculture (OFAG) et de l'Office fédéral de la sécurité alimentaire et des affaires vétérinaires (OSAV).",
     "navigation": {
       "about": "À propos de ce catalogue de données",
       "catalog": "Catalogue",
       "handbook": "Manuel",
       "index": "Index"
     },
-    "title": "Catalogue de données OFAG"
+    "title": "Catalogue de données agroalimentaires"
   },
   "choices": {
     "dataset": {
