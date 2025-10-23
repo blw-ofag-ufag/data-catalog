@@ -3,7 +3,8 @@ import {TranslateService} from '@ngx-translate/core';
 import {TextOrTranslatable} from './models/types/TextOrTranslatable';
 
 @Pipe({
-	name: 'translateField'
+	name: 'translateField',
+	pure: false
 })
 export class TranslateFieldPipe implements PipeTransform {
 	constructor(private readonly translate: TranslateService) {}
