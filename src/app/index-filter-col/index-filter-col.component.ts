@@ -104,16 +104,14 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 			)
 			.subscribe();
 
-		this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(async params => {
-			const filters = createActiveFiltersFromParams(params);
-			// Extract keywords from filters
+		// Subscribe to filters from parent component
+		this.activatedFilters$.pipe(takeUntil(this.destroy$)).subscribe(filters => {
+			// Extract keywords from filters for UI display
 			if (filters['dcat:keyword']) {
 				this.keywords = Object.keys(filters['dcat:keyword']).filter(key => filters['dcat:keyword'][key]);
 			} else {
 				this.keywords = [];
 			}
-			this.activatedFilters$.next(filters);
-			await this.filterService.setFilters(filters);
 		});
 	}
 

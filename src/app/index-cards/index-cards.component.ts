@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
-import {Router, RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {Observable, startWith} from 'rxjs';
 import {DatasetSchema} from '../models/schemas/dataset';
 import {AsyncPipe, DatePipe, NgOptimizedImage} from '@angular/common';
@@ -39,7 +39,8 @@ export class IndexCardsComponent {
 
 	constructor(
 		private readonly router: Router,
-		private readonly translate: TranslateService
+		private readonly translate: TranslateService,
+		private readonly route: ActivatedRoute
 	) {
 		this.currentLang$ = this.translate.onLangChange.pipe(
 			map(event => event.lang),
@@ -52,8 +53,18 @@ export class IndexCardsComponent {
 	}
 
 	keywordFiltered(keyword: string) {
+		const currentParams = this.route.snapshot.queryParams;
+		const existingKeywords = currentParams['dcat:keyword'];
+
+		// If there are existing keywords, merge them
+		let keywordValue = keyword;
+		if (existingKeywords && !existingKeywords.split(',').includes(keyword)) {
+			keywordValue = existingKeywords + ',' + keyword;
+		}
+
 		return {
-			'dcat:keyword': keyword
+			...currentParams,
+			'dcat:keyword': keywordValue
 		};
 	}
 

@@ -15,7 +15,7 @@ import {takeUntil} from 'rxjs/operators';
 import {DatasetSchema, enumTypes} from '../models/schemas/dataset';
 import {DatasetService} from '../services/api/api.service';
 import {MatBadge} from '@angular/material/badge';
-import {ActiveFilters} from '../models/ActiveFilters';
+import {ActiveFilters, createActiveFiltersFromParams} from '../models/ActiveFilters';
 import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
@@ -61,7 +61,7 @@ export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 	) {}
 
 	ngOnInit() {
-		this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+		this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(async params => {
 			this.view = params['view'] || 'tile';
 
 			// Handle showFilters parameter from URL
@@ -72,19 +72,12 @@ export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 			// Note: Removed automatic filter panel showing when filters are active
 			// Users must explicitly request the filter panel to be shown
 
-			// Parse and populate filter state from URL parameters for filter count badge
-			const urlFilters: ActiveFilters = {};
-			for (const enumType of enumTypes) {
-				if (params[enumType]) {
-					const filterValues = params[enumType].split(',');
-					const filterObj: { [key: string]: boolean } = {};
-					filterValues.forEach((value: string) => {
-						filterObj[value] = true;
-					});
-					urlFilters[enumType] = filterObj;
-				}
-			}
+			// Parse and populate filter state from URL parameters
+			const urlFilters = createActiveFiltersFromParams(params);
 			this.activatedFilters$.next(urlFilters);
+
+			// Apply filters to the dataset service regardless of filter panel visibility
+			await this.datasetService.setFilters(urlFilters);
 		});
 	}
 
