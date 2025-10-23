@@ -68,15 +68,23 @@ export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 			const showFiltersParam = params['showFilters'];
 			if (showFiltersParam !== undefined) {
 				this.showFilters = showFiltersParam === 'true';
-			} else {
-				// Check if any filters are active to determine initial showFilters state
-				for (const allowedfilter of enumTypes) {
-					if (params[allowedfilter]) {
-						this.showFilters = true;
-						break;
-					}
+			}
+			// Note: Removed automatic filter panel showing when filters are active
+			// Users must explicitly request the filter panel to be shown
+
+			// Parse and populate filter state from URL parameters for filter count badge
+			const urlFilters: ActiveFilters = {};
+			for (const enumType of enumTypes) {
+				if (params[enumType]) {
+					const filterValues = params[enumType].split(',');
+					const filterObj: { [key: string]: boolean } = {};
+					filterValues.forEach((value: string) => {
+						filterObj[value] = true;
+					});
+					urlFilters[enumType] = filterObj;
 				}
 			}
+			this.activatedFilters$.next(urlFilters);
 		});
 	}
 
