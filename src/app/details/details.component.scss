@@ -126,3 +126,9 @@ mat-panel-description mat-icon {
 	white-space: nowrap;
 }
 
+// Fix for external catalogs table column width
+.ob-table td:first-child {
+	//min-width: 120px;
+	white-space: nowrap;
+}
+
