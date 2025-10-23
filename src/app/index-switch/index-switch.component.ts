@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild, AfterViewInit, ElementRef, ChangeDetectorRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AsyncPipe} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
@@ -45,28 +45,80 @@ import {TranslatePipe} from '@ngx-translate/core';
 	],
 	styleUrl: './index-switch.component.scss'
 })
-export class IndexSwitchComponent implements OnInit, OnDestroy {
+export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 	view: 'table' | 'tile' = 'tile';
 	showFilters = false;
 	@Input() datasets$: Observable<DatasetSchema[] | null> = new Observable();
 	activatedFilters$: BehaviorSubject<ActiveFilters> = new BehaviorSubject({});
+	@ViewChild(MatSelect) sortSelect!: MatSelect;
 	private readonly destroy$ = new Subject<void>();
 
 	constructor(
 		private readonly route: ActivatedRoute,
 		private readonly router: Router,
-		public readonly datasetService: DatasetService
+		public readonly datasetService: DatasetService,
+		private readonly cdr: ChangeDetectorRef
 	) {}
 
 	ngOnInit() {
 		this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
 			this.view = params['view'] || 'tile';
-			for (const allowedfilter of enumTypes) {
-				if (params[allowedfilter]) {
-					this.showFilters = true;
+
+			// Handle showFilters parameter from URL
+			const showFiltersParam = params['showFilters'];
+			if (showFiltersParam !== undefined) {
+				this.showFilters = showFiltersParam === 'true';
+			} else {
+				// Check if any filters are active to determine initial showFilters state
+				for (const allowedfilter of enumTypes) {
+					if (params[allowedfilter]) {
+						this.showFilters = true;
+						break;
+					}
 				}
 			}
 		});
+	}
+
+	ngAfterViewInit() {
+		// Try multiple approaches to trigger a refresh of the mat-select display
+		setTimeout(() => {
+			if (this.sortSelect) {
+				try {
+					// Approach 1: Update error state (forces internal refresh)
+					this.sortSelect.updateErrorState();
+
+					// Approach 2: Trigger focus/blur events on the trigger element
+					if (this.sortSelect.trigger) {
+						const triggerElement = this.sortSelect.trigger.nativeElement;
+						triggerElement.dispatchEvent(new Event('focus', { bubbles: true }));
+						triggerElement.dispatchEvent(new Event('blur', { bubbles: true }));
+					}
+
+					// Approach 3: Force change detection
+					this.cdr.detectChanges();
+
+					// Approach 4: Trigger a programmatic click (most aggressive)
+					if (this.sortSelect.trigger) {
+						const clickEvent = new MouseEvent('click', {
+							view: window,
+							bubbles: true,
+							cancelable: true
+						});
+						this.sortSelect.trigger.nativeElement.dispatchEvent(clickEvent);
+						// Immediately close it to simulate just a "wake up" click
+						setTimeout(() => {
+							if (this.sortSelect.panelOpen) {
+								this.sortSelect.close();
+							}
+						}, 10);
+					}
+				} catch (error) {
+					// Silently handle any errors from the workaround attempts
+					console.debug('Mat-select refresh workaround failed:', error);
+				}
+			}
+		}, 100);
 	}
 
 	ngOnDestroy() {
@@ -78,8 +130,9 @@ export class IndexSwitchComponent implements OnInit, OnDestroy {
 		await this.router.navigate([], {queryParams: {view: mode}, queryParamsHandling: 'merge'});
 	}
 
-	toggleShowFilters() {
+	async toggleShowFilters() {
 		this.showFilters = !this.showFilters;
+		await this.updateUrlWithShowFilters(this.showFilters);
 	}
 
 	search(event: Event) {
@@ -99,5 +152,29 @@ export class IndexSwitchComponent implements OnInit, OnDestroy {
 			return null;
 		}
 		return Object.keys(filters).length;
+	}
+
+
+	getSortLabel(sortType: 'title' | 'old' | 'new' | 'owner' | 'relevance' | null): string {
+		if (sortType === 'title' || !sortType) {
+			return 'ui.defaultSelect';
+		}
+		return 'ui.sort'; // Just "Sort" for non-default cases
+	}
+
+	onSortChangeByType(value: 'title' | 'old' | 'new' | 'owner' | 'relevance') {
+		if (value) {
+			this.setSorting(value);
+		}
+	}
+
+	private async updateUrlWithShowFilters(showFilters: boolean) {
+		const queryParams: any = {};
+		if (showFilters) {
+			queryParams['showFilters'] = 'true';
+		} else {
+			queryParams['showFilters'] = null;
+		}
+		await this.router.navigate([], {queryParams, queryParamsHandling: 'merge'});
 	}
 }
