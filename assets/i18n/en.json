@@ -246,6 +246,7 @@
     "reset": "Reset",
     "search": "Search",
     "showFilters": "Show Filters",
+    "sort": "Sort",
     "sortBy": {
       "newest": "Newest First",
       "oldest": "Oldest First",
