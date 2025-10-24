@@ -88,31 +88,55 @@ mat-chip a:hover {
 }
 
 .hero-section {
-	background-color: #f0f4f7;
-	margin-left: calc(-50vw + 50%);
-	margin-right: calc(-50vw + 50%);
-	padding-left: calc(50vw - 50%);
-	padding-right: calc(50vw - 50%);
+	display: flex;
 	margin-top: -16px;
+	margin-left: calc(-50vw + 50%);
+	width: 100vw;
 	overflow: hidden;
 
-	.ob-grid {
-		.ob-half:last-child {
-			overflow: visible;
+	.content-side {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+
+		.content-area {
+			background-color: #f0f4f7;
+			padding-left: max(24px, calc(50vw - 720px));
+			padding-bottom: 60px;
+			flex-shrink: 0;
+		}
+
+		.footer-area {
+			background-color: white;
+			flex: 1;
+		}
+
+		.header-container {
+			//max-width: calc(50% - 16px);
+		}
+
+		.ob-grid {
+			//max-width: calc(50% - 16px);
 		}
 	}
 
-	min-height: calc(140px + 25vw);
-	padding-bottom: 30px;
+	.image-side {
+		flex: 1;
+		min-width: 0;
+		display: flex;
+		align-items: stretch;
+		aspect-ratio: 16/9;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: right center;
+		}
+	}
 }
 
-img {
-	position: absolute;
-	width: 50vw;
-	right:0;
-	height: 25vw;
-	object-fit: contain;
-}
 
 // Accordion styling
 mat-panel-description mat-icon {
