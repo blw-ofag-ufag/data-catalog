@@ -27,7 +27,7 @@
       "bv:personalData": {
         "none": "Keine",
         "personalData": "Personenbezogene Daten",
-        "sensitivePersonalData": "Besonders schutzenswerte Personendaten"
+        "sensitivePersonalData": "Besonders schützenswerte Personendaten"
       },
       "bv:typeOfData": {
         "masterData": "Stammdaten",
