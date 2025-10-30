@@ -173,6 +173,30 @@ mat-panel-description mat-icon {
 	white-space: nowrap;
 }
 
+// Fix distribution title overflow issue and improve space utilization
+mat-expansion-panel-header {
+	.mat-expansion-panel-header-title {
+		flex: 3; // Take 3/4 of available space
+		margin-right: 1rem;
+	}
+
+	.mat-expansion-panel-header-description {
+		flex: 1; // Take 1/4 of available space
+		justify-content: flex-end;
+	}
+}
+
+mat-panel-title {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 1.4;
+	max-height: 2.8em; // 2 lines * 1.4 line-height
+	word-wrap: break-word;
+}
+
 :host{
 	width: 100%;
 }
