@@ -12,10 +12,14 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {GitHubAuthService} from '../services/auth/github-auth.service';
+import {RepositoryCredentialsService} from '../services/auth/repository-credentials.service';
 import {MultiDatasetService} from '../services/api/multi-dataset-service.service';
+import {I14YThemeService} from '../services/api/i14y-theme.service';
+import {PublisherService} from '../services/api/publisher.service';
 import {DatasetSubmitComponent} from './submit/dataset-submit.component';
 import {MultilingualTextFieldComponent} from './form/components/multilingual-text-field/multilingual-text-field.component';
 import {EnumSelectFieldComponent} from './form/components/enum-select-field/enum-select-field.component';
+import {ThemeSelectFieldComponent} from './form/components/theme-select-field/theme-select-field.component';
 import {KeywordArrayFieldComponent} from './form/components/keyword-array-field/keyword-array-field.component';
 import {AffiliatedPersonsFieldComponent} from './form/components/affiliated-persons-field/affiliated-persons-field.component';
 import {DistributionFieldComponent} from './form/components/distribution-field/distribution-field.component';
@@ -49,6 +53,7 @@ import {
 		DatasetSubmitComponent,
 		MultilingualTextFieldComponent,
 		EnumSelectFieldComponent,
+		ThemeSelectFieldComponent,
 		KeywordArrayFieldComponent,
 		AffiliatedPersonsFieldComponent,
 		DistributionFieldComponent
@@ -82,13 +87,19 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		private readonly route: ActivatedRoute,
 		private readonly router: Router,
 		private readonly githubAuthService: GitHubAuthService,
+		private readonly repositoryCredentialsService: RepositoryCredentialsService,
 		private readonly datasetService: MultiDatasetService,
+		private readonly i14yThemeService: I14YThemeService,
+		private readonly publisherService: PublisherService,
 		private readonly translateService: TranslateService
 	) {
 		this.datasetForm = this.createForm();
 	}
 
 	ngOnInit(): void {
+		// Load I14Y themes
+		this.i14yThemeService.loadThemes().pipe(takeUntil(this.destroy$)).subscribe();
+
 		// Check if we're in edit mode - check both route params and query params
 		this.route.paramMap.pipe(takeUntil(this.destroy$)).subscribe(params => {
 			const routeDatasetId = params.get('id');
@@ -357,5 +368,14 @@ export class ModifyComponent implements OnInit, OnDestroy {
 				firstErrorElement.scrollIntoView({behavior: 'smooth', block: 'center'});
 			}
 		}, 100);
+	}
+
+	getSelectedRepositoryDisplay(): string {
+		const selectedRepo = this.repositoryCredentialsService.getSelectedRepository();
+		if (selectedRepo) {
+			const publisher = this.publisherService.getPublishers().find(p => p.githubRepo === selectedRepo);
+			return publisher ? `${publisher.shortId} (${selectedRepo})` : selectedRepo;
+		}
+		return 'blw-ofag-ufag/metadata'; // Default fallback
 	}
 }

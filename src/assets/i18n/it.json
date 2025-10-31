@@ -298,7 +298,8 @@
         "placeholders": {
           "title": "Inserisci il titolo del set di dati",
           "description": "Inserisci la descrizione del set di dati",
-          "keyword": "Aggiungi parola chiave"
+          "keyword": "Aggiungi parola chiave",
+          "theme": "Seleziona tema"
         },
         "labels": {
           "temporalStart": "Inizio copertura temporale",

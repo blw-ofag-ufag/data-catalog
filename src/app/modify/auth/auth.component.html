@@ -23,6 +23,29 @@
 					</ob-alert>
 
 					<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+						<!-- Repository Selection -->
+						<mat-form-field class="w-100 mb-3">
+							<mat-label>{{ "modify.auth.repository" | translate }}</mat-label>
+							<mat-select formControlName="repository" (selectionChange)="onRepositoryChange()">
+								<mat-option *ngFor="let publisher of publishers" [value]="publisher.githubRepo">
+									{{ publisher.shortId }} ({{ publisher.githubRepo }})
+								</mat-option>
+								<mat-option value="custom">{{ "modify.auth.customRepository" | translate }}</mat-option>
+							</mat-select>
+							<mat-error *ngIf="authForm.get('repository')?.errors?.['required'] && authForm.get('repository')?.touched">
+								{{ "modify.auth.validation.repositoryRequired" | translate }}
+							</mat-error>
+						</mat-form-field>
+
+						<!-- Custom Repository Field -->
+						<mat-form-field *ngIf="customRepositoryMode" class="w-100 mb-3">
+							<mat-label>{{ "modify.auth.customRepositoryPlaceholder" | translate }}</mat-label>
+							<input matInput formControlName="customRepository" placeholder="owner/repository" />
+							<mat-error *ngIf="authForm.get('customRepository')?.errors?.['required'] && authForm.get('customRepository')?.touched">
+								{{ "modify.auth.validation.customRepositoryRequired" | translate }}
+							</mat-error>
+						</mat-form-field>
+
 						<!-- Username Field -->
 						<mat-form-field class="w-100 mb-3">
 							<mat-label>{{ "modify.auth.username" | translate }}</mat-label>

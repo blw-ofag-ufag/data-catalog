@@ -6,9 +6,13 @@
 				<h1>
 					{{ (isEditMode ? "modify.auth.form.title.edit" : "modify.auth.form.title.new") | translate }}
 				</h1>
-				<a routerLink="/modify/auth" class="btn btn-outline-info btn-sm">
-					{{ "modify.auth.form.authOptional" | translate }}
-				</a>
+				<div class="d-flex align-items-center gap-2">
+					<small class="text-muted">{{ "modify.auth.form.selectedRepository" | translate }}:</small>
+					<strong class="me-3">{{ getSelectedRepositoryDisplay() }}</strong>
+					<a routerLink="/modify/auth" class="btn btn-outline-info btn-sm">
+						{{ "modify.auth.form.changeRepository" | translate }}
+					</a>
+				</div>
 			</div>
 
 			<!-- Dataset Form -->
@@ -41,13 +45,12 @@
 							<app-keyword-array-field formControlName="dcat:keyword" [label]="'labels.dcat:keyword'" [placeholder]="'modify.auth.form.placeholders.keyword'">
 							</app-keyword-array-field>
 
-							<app-enum-select-field
+							<app-theme-select-field
 								formControlName="dcat:theme"
 								[label]="'labels.dcat:theme'"
-								[options]="themes"
-								[translationPath]="'choices.dataset.dcat:theme'"
+								[placeholder]="'modify.auth.form.placeholders.theme'"
 							>
-							</app-enum-select-field>
+							</app-theme-select-field>
 						</div>
 					</div>
 

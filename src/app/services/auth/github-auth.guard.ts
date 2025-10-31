@@ -1,13 +1,23 @@
-import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {CanActivate, Router} from '@angular/router';
+import {GitHubAuthService} from './github-auth.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class GitHubAuthGuard implements CanActivate {
-	// Authentication is now optional - always allow access
-	// The form will show auth status and let users proceed either way
+	constructor(
+		private githubAuthService: GitHubAuthService,
+		private router: Router
+	) {}
+
 	canActivate(): boolean {
-		return true;
+		if (this.githubAuthService.isAuthenticated()) {
+			return true;
+		} else {
+			// Redirect to auth page if not authenticated
+			this.router.navigate(['/modify/auth']);
+			return false;
+		}
 	}
 }

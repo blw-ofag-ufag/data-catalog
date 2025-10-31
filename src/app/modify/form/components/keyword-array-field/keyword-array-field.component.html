@@ -3,7 +3,7 @@
 		<mat-label>{{ label | translate }}</mat-label>
 
 		<mat-chip-grid #chipGrid>
-			<mat-chip-row *ngFor="let keyword of values" [removable]="true" (removed)="removeKeyword(keyword)">
+			<mat-chip-row *ngFor="let keyword of sortedValues" [removable]="true" (removed)="removeKeyword(keyword)">
 				{{ keyword }}
 				<mat-icon matChipRemove>cancel</mat-icon>
 			</mat-chip-row>

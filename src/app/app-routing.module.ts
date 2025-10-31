@@ -20,16 +20,17 @@ const routes: Routes = [
 	{
 		path: 'modify',
 		children: [
-			{ path: '', component: ModifyComponent },
-			{ path: 'auth', component: AuthComponent },
-			{ path: ':id', component: ModifyComponent }
+			{path: '', component: ModifyComponent, canActivate: [GitHubAuthGuard]},
+			{path: 'auth', component: AuthComponent},
+			{path: 'form', component: ModifyComponent, canActivate: [GitHubAuthGuard]},
+			{path: ':id', component: ModifyComponent, canActivate: [GitHubAuthGuard]}
 		]
 	},
 	{path: '**', redirectTo: 'unknown-route'}
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes, { useHash: true }), ObUnknownRouteModule],
+	imports: [RouterModule.forRoot(routes, {useHash: true}), ObUnknownRouteModule],
 	exports: [RouterModule]
 })
 export class AppRoutingModule {}

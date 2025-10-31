@@ -298,7 +298,8 @@
         "placeholders": {
           "title": "Saisir le titre du jeu de données",
           "description": "Saisir la description du jeu de données",
-          "keyword": "Ajouter un mot-clé"
+          "keyword": "Ajouter un mot-clé",
+          "theme": "Sélectionner un thème"
         },
         "labels": {
           "temporalStart": "Début de la couverture temporelle",

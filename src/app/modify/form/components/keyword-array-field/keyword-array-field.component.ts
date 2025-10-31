@@ -41,6 +41,10 @@ export class KeywordArrayFieldComponent implements ControlValueAccessor, OnDestr
 	private onChange = (value: string[] | null) => {};
 	private onTouched = () => {};
 
+	get sortedValues(): string[] {
+		return [...this.values].sort((a, b) => a.localeCompare(b));
+	}
+
 	constructor() {
 		// Subscribe to input changes for autocomplete
 		this.filteredSuggestions$.pipe(takeUntil(this.destroy$)).subscribe();
@@ -107,6 +111,7 @@ export class KeywordArrayFieldComponent implements ControlValueAccessor, OnDestr
 		return this.suggestions
 			.filter(suggestion => suggestion.toLowerCase().includes(filterValue))
 			.filter(suggestion => !this.values.includes(suggestion))
+			.sort((a, b) => a.localeCompare(b))
 			.slice(0, 10); // Limit to 10 suggestions
 	}
 }

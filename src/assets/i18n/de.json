@@ -227,6 +227,9 @@
     "auth": {
       "title": "GitHub-Authentifizierung",
       "description": "Authentifizieren Sie sich mit GitHub, um Datensätze zu erstellen oder zu bearbeiten.",
+      "repository": "Repository",
+      "customRepository": "Benutzerdefiniertes Repository",
+      "customRepositoryPlaceholder": "GitHub Repository (z.B. owner/repo)",
       "username": "GitHub-Benutzername",
       "usernamePlaceholder": "Ihr GitHub-Benutzername",
       "token": "Personal Access Token",
@@ -240,6 +243,8 @@
         "step3": "Geben Sie Ihren Benutzername und Token unten ein"
       },
       "validation": {
+        "repositoryRequired": "Repository ist erforderlich",
+        "customRepositoryRequired": "Repository ist erforderlich",
         "usernameRequired": "Benutzername ist erforderlich",
         "tokenRequired": "Token ist erforderlich",
         "tokenMinLength": "Token muss mindestens 10 Zeichen lang sein"
@@ -300,6 +305,7 @@
           "title": "Titel des Datensatzes eingeben",
           "description": "Beschreibung des Datensatzes eingeben",
           "keyword": "Schlüsselwort hinzufügen",
+          "theme": "Thema auswählen",
           "itSystem": "Name des IT-Systems",
           "retentionPeriod": "z.B., 10",
           "businessProcess": "Zugehöriger Geschäftsprozess",
@@ -355,7 +361,9 @@
         "contactEmail": "E-Mail der Kontaktperson",
         "generateJson": "JSON generieren",
         "backToForm": "Zurück zum Formular",
-        "authOptional": "Optional: Authentifizierung"
+        "authOptional": "Optional: Authentifizierung",
+        "selectedRepository": "Ausgewähltes Repository",
+        "changeRepository": "Repository wechseln"
       },
       "submit": {
         "title": "Datensatz einreichen",

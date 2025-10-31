@@ -226,6 +226,9 @@
     "auth": {
       "title": "GitHub Authentication",
       "description": "Authenticate with GitHub to create or edit datasets.",
+      "repository": "Repository",
+      "customRepository": "Custom Repository",
+      "customRepositoryPlaceholder": "GitHub Repository (e.g. owner/repo)",
       "username": "GitHub Username",
       "usernamePlaceholder": "Your GitHub username",
       "token": "Personal Access Token",
@@ -239,6 +242,8 @@
         "step3": "Enter your username and token below"
       },
       "validation": {
+        "repositoryRequired": "Repository is required",
+        "customRepositoryRequired": "Repository is required",
         "usernameRequired": "Username is required",
         "tokenRequired": "Token is required",
         "tokenMinLength": "Token must be at least 10 characters long"
@@ -298,7 +303,8 @@
         "placeholders": {
           "title": "Enter dataset title",
           "description": "Enter dataset description",
-          "keyword": "Add keyword"
+          "keyword": "Add keyword",
+          "theme": "Select theme"
         },
         "labels": {
           "temporalStart": "Temporal Coverage Start",
@@ -315,6 +321,8 @@
         "generateJson": "Generate JSON",
         "backToForm": "Back to Form",
         "authOptional": "Optional: Authentication",
+        "selectedRepository": "Selected Repository",
+        "changeRepository": "Change Repository",
         "keywordArray": "Press Enter or use comma to add keywords"
       },
       "submit": {

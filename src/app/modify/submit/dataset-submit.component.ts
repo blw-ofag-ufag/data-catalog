@@ -6,8 +6,11 @@ import {ObAlertModule} from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {GitHubAuthService} from '../../services/auth/github-auth.service';
+import {RepositoryCredentialsService} from '../../services/auth/repository-credentials.service';
+import {PublisherService} from '../../services/api/publisher.service';
 import {DatasetJsonService} from '../../services/dataset-json.service';
 import {DatasetSchema} from '../../models/schemas/dataset';
+import {Publisher} from '../../models/publisher.model';
 
 @Component({
 	selector: 'app-dataset-submit',
@@ -26,14 +29,29 @@ export class DatasetSubmitComponent implements OnInit {
 	filePath = '';
 	isAuthenticated = false;
 	showJsonPreview = false;
+	selectedRepository: string | null = null;
+	selectedPublisher: Publisher | null = null;
 
 	constructor(
 		private readonly githubAuthService: GitHubAuthService,
+		private readonly repositoryCredentialsService: RepositoryCredentialsService,
+		private readonly publisherService: PublisherService,
 		private readonly datasetJsonService: DatasetJsonService
 	) {}
 
 	ngOnInit(): void {
-		this.isAuthenticated = this.githubAuthService.isAuthenticated();
+		// Get the selected repository
+		this.selectedRepository = this.repositoryCredentialsService.getSelectedRepository();
+
+		// Check if authenticated for the selected repository
+		if (this.selectedRepository) {
+			this.isAuthenticated = this.repositoryCredentialsService.hasValidCredentials(this.selectedRepository);
+			this.selectedPublisher = this.publisherService.getPublishers().find(p => p.githubRepo === this.selectedRepository) || null;
+		} else {
+			// Fallback to legacy authentication
+			this.isAuthenticated = this.githubAuthService.isAuthenticated();
+		}
+
 		this.generateJson();
 	}
 
@@ -78,12 +96,31 @@ export class DatasetSubmitComponent implements OnInit {
 		if (this.generatedJson && this.filePath) {
 			let githubUrl: string;
 
-			if (this.isEditMode && this.datasetId) {
-				// Edit existing file
-				githubUrl = this.githubAuthService.generateEditFileUrl(this.filePath);
+			if (this.selectedRepository && this.selectedPublisher) {
+				// Use selected repository and publisher configuration
+				if (this.isEditMode && this.datasetId) {
+					// Edit existing file
+					githubUrl = this.githubAuthService.generateEditFileUrlForRepository(
+						this.selectedRepository,
+						this.selectedPublisher.branch,
+						this.filePath
+					);
+				} else {
+					// Create new file
+					githubUrl = this.githubAuthService.generateCreateFileUrlForRepository(
+						this.selectedRepository,
+						this.selectedPublisher.branch,
+						this.filePath,
+						this.formattedJson
+					);
+				}
 			} else {
-				// Create new file
-				githubUrl = this.githubAuthService.generateCreateFileUrl(this.filePath, this.formattedJson);
+				// Fallback to legacy method
+				if (this.isEditMode && this.datasetId) {
+					githubUrl = this.githubAuthService.generateEditFileUrl(this.filePath);
+				} else {
+					githubUrl = this.githubAuthService.generateCreateFileUrl(this.filePath, this.formattedJson);
+				}
 			}
 
 			window.open(githubUrl, '_blank');
