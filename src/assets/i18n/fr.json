@@ -222,6 +222,103 @@
     "adminDirError": "Impossible de consulter AdminDir",
     "adminDirLookup": "ID AdminDir"
   },
+  "modify": {
+    "auth": {
+      "title": "Authentification GitHub",
+      "description": "Authentifiez-vous avec GitHub pour créer ou modifier des jeux de données.",
+      "username": "Nom d'utilisateur GitHub",
+      "usernamePlaceholder": "Votre nom d'utilisateur GitHub",
+      "token": "Token d'accès personnel",
+      "tokenPlaceholder": "Votre token d'accès personnel GitHub",
+      "validate": "Valider les identifiants",
+      "cancel": "Annuler",
+      "instructions": {
+        "title": "Instructions:",
+        "step1": "Allez dans Paramètres GitHub > Paramètres développeur > Tokens d'accès personnel",
+        "step2": "Créez un nouveau token avec les permissions 'repo'",
+        "step3": "Saisissez votre nom d'utilisateur et token ci-dessous"
+      },
+      "validation": {
+        "usernameRequired": "Le nom d'utilisateur est requis",
+        "tokenRequired": "Le token est requis",
+        "tokenMinLength": "Le token doit contenir au moins 10 caractères"
+      },
+      "errors": {
+        "invalidToken": "Token invalide. Veuillez vérifier votre token d'accès personnel.",
+        "tokenExpired": "Le token a expiré. Veuillez créer un nouveau token.",
+        "noWritePermission": "Le token n'a pas les permissions d'écriture sur le dépôt.",
+        "repoNotFound": "Dépôt non trouvé.",
+        "noRepoAccess": "Aucun accès au dépôt.",
+        "networkError": "Erreur réseau. Veuillez réessayer plus tard.",
+        "unknown": "Erreur inconnue."
+      },
+      "help": {
+        "title": "Besoin d'aide ?",
+        "description": "Contactez le centre de compétence pour la transformation numérique si vous avez besoin d'aide pour créer un token d'accès personnel.",
+        "learnMore": "En savoir plus sur les tokens GitHub"
+      },
+      "form": {
+        "title": {
+          "new": "Créer un nouveau jeu de données",
+          "edit": "Modifier le jeu de données"
+        },
+        "comingSoon": "Le formulaire est en cours d'implémentation...",
+        "logout": "Se déconnecter",
+        "cancel": "Annuler",
+        "create": "Créer le jeu de données",
+        "update": "Mettre à jour le jeu de données",
+        "validation": {
+          "required": "Ce champ est requis",
+          "maxLength": "Longueur maximale dépassée",
+          "email": "Veuillez saisir une adresse e-mail valide",
+          "summary": "Erreurs de validation du formulaire :",
+          "fillRequired": "Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*)"
+        },
+        "confirmation": {
+          "unsavedChanges": "Vous avez des modifications non enregistrées. Êtes-vous sûr de vouloir quitter ? Toutes les modifications seront perdues."
+        },
+        "help": {
+          "multilingualRequired": "Au moins l'allemand et le français sont requis"
+        },
+        "options": {
+          "none": "Aucune sélection"
+        },
+        "sections": {
+          "basic": "Informations de base",
+          "access": "Accès et classification",
+          "publisher": "Éditeur et contact",
+          "metadata": "Métadonnées et versioning",
+          "governance": "Gouvernance et responsabilité",
+          "external": "Références externes et liens",
+          "coverage": "Couverture et aspects légaux",
+          "business": "Contexte métier",
+          "additional": "Métadonnées supplémentaires et relations",
+          "distributions": "Distributions"
+        },
+        "placeholders": {
+          "title": "Saisir le titre du jeu de données",
+          "description": "Saisir la description du jeu de données",
+          "keyword": "Ajouter un mot-clé"
+        },
+        "labels": {
+          "temporalStart": "Début de la couverture temporelle",
+          "temporalEnd": "Fin de la couverture temporelle",
+          "imageUrl": "URL de l'image du jeu de données",
+          "relationships": "Relations du jeu de données"
+        },
+        "help": {
+          "externalCatalogs": "Sélectionnez les catalogues externes où ce jeu de données doit être publié",
+          "relationships": "Saisissez les IDs des jeux de données séparés par des virgules pour les jeux de données liés"
+        },
+        "contactName": "Nom de la personne de contact",
+        "contactEmail": "E-mail de la personne de contact",
+        "generateJson": "Générer le JSON",
+        "backToForm": "Retour au formulaire",
+        "authOptional": "Optionnel : Authentification",
+        "keywordArray": "Appuyez sur Entrée ou utilisez une virgule pour ajouter des mots-clés"
+      }
+    }
+  },
   "not-found": {
     "back-home": "Retour à l'accueil",
     "message": "La page que vous recherchez n'existe pas.",

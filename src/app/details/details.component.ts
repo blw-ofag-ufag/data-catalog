@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {DatasetSchema, enumTypes} from '../models/schemas/dataset';
 import {DatasetService} from '../services/api/api.service';
 import {Observable, Subject, startWith} from 'rxjs';
@@ -17,7 +17,7 @@ import {KeywordsComponent} from './keywords/keywords.component';
 import {DistributionComponent} from './distribution/distribution.component';
 import {NotFoundComponent} from '../not-found/not-found.component';
 import { MatIcon } from "@angular/material/icon";
-import { MatAnchor, MatButton, MatFabButton } from "@angular/material/button";
+import { MatButton } from "@angular/material/button";
 import { ObButtonDirective } from "@oblique/oblique";
 import {PublisherService} from '../services/api/publisher.service';
 
@@ -44,8 +44,6 @@ import {PublisherService} from '../services/api/publisher.service';
 		DistributionComponent,
 		NotFoundComponent,
 		MatIcon,
-		MatAnchor,
-		MatFabButton,
 		ObButtonDirective,
 		MatButton
 	],
@@ -63,6 +61,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 	constructor(
 		private readonly datasetService: DatasetService,
 		private readonly route: ActivatedRoute,
+		private readonly router: Router,
 		private readonly translate: TranslateService,
 		private readonly publisherService: PublisherService
 	) {
@@ -143,6 +142,21 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		if (url) {
 			window.open(url, '_blank', 'noopener');
 		}
+	}
+
+	openEditTab(): void {
+		// Get current dataset from dataset$ observable
+		this.dataset$.pipe(takeUntil(this.destroy$)).subscribe(dataset => {
+			if (dataset && dataset['dct:identifier']) {
+				// Navigate to modify route with edit mode and dataset ID
+				this.router.navigate(['/modify'], {
+					queryParams: {
+						mode: 'edit',
+						dataset: dataset['dct:identifier']
+					}
+				});
+			}
+		}).unsubscribe(); // Unsubscribe immediately after getting the value
 	}
 
 	getFormatIcon(format: string): string {

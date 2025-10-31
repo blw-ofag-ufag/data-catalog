@@ -1,8 +1,8 @@
 import {Component, Input, OnDestroy, OnInit, ViewChild, AfterViewInit, ElementRef, ChangeDetectorRef} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {AsyncPipe} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
-import {MatAnchor, MatButton, MatIconButton} from '@angular/material/button';
+import {MatButton, MatIconButton} from '@angular/material/button';
 import { ObButtonDirective, ObInputClearDirective } from "@oblique/oblique";
 import {MatTooltip} from '@angular/material/tooltip';
 import {IndexFilterColComponent} from '../index-filter-col/index-filter-col.component';
@@ -23,6 +23,7 @@ import {TranslatePipe} from '@ngx-translate/core';
 	standalone: true,
 	templateUrl: './index-switch.component.html',
 	imports: [
+		RouterModule,
 		MatIcon,
 		MatIconButton,
 		ObButtonDirective,
@@ -31,7 +32,6 @@ import {TranslatePipe} from '@ngx-translate/core';
 		MatButton,
 		IndexFilterColComponent,
 		IndexOutletComponent,
-		MatAnchor,
 		MatFormField,
 		MatOption,
 		MatSelect,
@@ -177,5 +177,13 @@ export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 			queryParams['showFilters'] = null;
 		}
 		await this.router.navigate([], {queryParams, queryParamsHandling: 'merge'});
+	}
+
+	openNewDatasetTab(): void {
+		this.router.navigate(['/modify'], {
+			queryParams: {
+				mode: 'new'
+			}
+		});
 	}
 }

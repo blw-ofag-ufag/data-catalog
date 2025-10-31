@@ -222,6 +222,126 @@
     "adminDirError": "Could not look up on AdminDir",
     "adminDirLookup": "AdminDir ID"
   },
+  "modify": {
+    "auth": {
+      "title": "GitHub Authentication",
+      "description": "Authenticate with GitHub to create or edit datasets.",
+      "username": "GitHub Username",
+      "usernamePlaceholder": "Your GitHub username",
+      "token": "Personal Access Token",
+      "tokenPlaceholder": "Your GitHub Personal Access Token",
+      "validate": "Validate Credentials",
+      "cancel": "Cancel",
+      "instructions": {
+        "title": "Instructions:",
+        "step1": "Go to GitHub Settings > Developer settings > Personal access tokens",
+        "step2": "Create a new token with 'repo' permissions",
+        "step3": "Enter your username and token below"
+      },
+      "validation": {
+        "usernameRequired": "Username is required",
+        "tokenRequired": "Token is required",
+        "tokenMinLength": "Token must be at least 10 characters long"
+      },
+      "errors": {
+        "invalidToken": "Invalid token. Please check your Personal Access Token.",
+        "tokenExpired": "Token has expired. Please create a new token.",
+        "noWritePermission": "Token does not have write permission to the repository.",
+        "repoNotFound": "Repository not found.",
+        "noRepoAccess": "No access to the repository.",
+        "networkError": "Network error. Please try again later.",
+        "unknown": "Unknown error occurred."
+      },
+      "help": {
+        "title": "Need Help?",
+        "description": "Contact the competence center for digital transformation if you need assistance creating a Personal Access Token.",
+        "learnMore": "Learn more about GitHub tokens"
+      },
+      "form": {
+        "title": {
+          "new": "Create New Dataset",
+          "edit": "Edit Dataset"
+        },
+        "comingSoon": "The form is currently being implemented...",
+        "logout": "Logout",
+        "cancel": "Cancel",
+        "create": "Create Dataset",
+        "update": "Update Dataset",
+        "validation": {
+          "required": "This field is required",
+          "maxLength": "Maximum length exceeded",
+          "email": "Please enter a valid email address",
+          "summary": "Form validation errors:",
+          "fillRequired": "Please fill out all required fields marked with an asterisk (*)"
+        },
+        "confirmation": {
+          "unsavedChanges": "You have unsaved changes. Are you sure you want to leave? All changes will be lost."
+        },
+        "help": {
+          "multilingualRequired": "At least German and French are required"
+        },
+        "options": {
+          "none": "No selection"
+        },
+        "sections": {
+          "basic": "Basic Information",
+          "access": "Access & Classification",
+          "publisher": "Publisher & Contact",
+          "metadata": "Metadata & Versioning",
+          "governance": "Governance & Responsibility",
+          "external": "External References & Links",
+          "coverage": "Coverage & Legal",
+          "business": "Business Context",
+          "additional": "Additional Metadata & Relationships",
+          "distributions": "Distributions"
+        },
+        "placeholders": {
+          "title": "Enter dataset title",
+          "description": "Enter dataset description",
+          "keyword": "Add keyword"
+        },
+        "labels": {
+          "temporalStart": "Temporal Coverage Start",
+          "temporalEnd": "Temporal Coverage End",
+          "imageUrl": "Dataset Image URL",
+          "relationships": "Dataset Relationships"
+        },
+        "help": {
+          "externalCatalogs": "Select external catalogs where this dataset should be published",
+          "relationships": "Enter dataset IDs separated by commas for related datasets"
+        },
+        "contactName": "Contact person name",
+        "contactEmail": "Contact person email",
+        "generateJson": "Generate JSON",
+        "backToForm": "Back to Form",
+        "authOptional": "Optional: Authentication",
+        "keywordArray": "Press Enter or use comma to add keywords"
+      },
+      "submit": {
+        "title": "Submit Dataset",
+        "authSuccess": "GitHub permissions verified",
+        "authInfo": "Authentication is optional - GitHub will ask for credentials",
+        "authenticate": "Authenticate Now",
+        "showJson": "Show JSON",
+        "hideJson": "Hide JSON",
+        "options": "Submission Options",
+        "createInGitHub": "Create in GitHub",
+        "editInGitHub": "Edit in GitHub",
+        "githubDescription": "Opens GitHub with pre-filled content for review and commit",
+        "alternatives": "Alternative Options",
+        "copyJson": "Copy JSON",
+        "copyDescription": "Copies JSON to clipboard for manual pasting",
+        "downloadJson": "Download JSON",
+        "downloadDescription": "Downloads JSON file for local storage",
+        "help": {
+          "title": "How does it work?",
+          "github": "Click 'Create in GitHub' to open GitHub with pre-filled content",
+          "review": "Review changes in GitHub's diff view",
+          "commit": "Create the commit directly in GitHub or create a pull request"
+        }
+      }
+    }
+  },
   "not-found": {
     "back-home": "Back to home",
     "message": "The page you are looking for does not exist.",

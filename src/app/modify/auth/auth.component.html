@@ -1,0 +1,78 @@
+<div class="container py-4">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header">
+					<h2 class="card-title mb-0">{{ "modify.auth.title" | translate }}</h2>
+				</div>
+				<div class="card-body">
+					<p class="mb-4">{{ "modify.auth.description" | translate }}</p>
+
+					<ob-alert type="info" class="mb-4">
+						<h6>{{ "modify.auth.instructions.title" | translate }}</h6>
+						<ol class="mb-0">
+							<li>{{ "modify.auth.instructions.step1" | translate }}</li>
+							<li>{{ "modify.auth.instructions.step2" | translate }}</li>
+							<li>{{ "modify.auth.instructions.step3" | translate }}</li>
+						</ol>
+					</ob-alert>
+
+					<!-- Error Alert -->
+					<ob-alert *ngIf="errorMessage" type="error" class="mb-4">
+						{{ errorMessage | translate }}
+					</ob-alert>
+
+					<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+						<!-- Username Field -->
+						<mat-form-field class="w-100 mb-3">
+							<mat-label>{{ "modify.auth.username" | translate }}</mat-label>
+							<input matInput formControlName="username" [placeholder]="'modify.auth.usernamePlaceholder' | translate" autocomplete="username" />
+							<mat-error *ngIf="usernameControl?.errors?.['required'] && usernameControl?.touched">
+								{{ "modify.auth.validation.usernameRequired" | translate }}
+							</mat-error>
+						</mat-form-field>
+
+						<!-- Token Field -->
+						<mat-form-field class="w-100 mb-4">
+							<mat-label>{{ "modify.auth.token" | translate }}</mat-label>
+							<input matInput type="password" formControlName="token" [placeholder]="'modify.auth.tokenPlaceholder' | translate" autocomplete="new-password" />
+							<mat-error *ngIf="tokenControl?.errors?.['required'] && tokenControl?.touched">
+								{{ "modify.auth.validation.tokenRequired" | translate }}
+							</mat-error>
+							<mat-error *ngIf="tokenControl?.errors?.['minlength'] && tokenControl?.touched">
+								{{ "modify.auth.validation.tokenMinLength" | translate }}
+							</mat-error>
+						</mat-form-field>
+
+						<!-- Submit Button -->
+						<div class="d-flex justify-content-between align-items-center">
+							<button type="button" class="btn btn-outline-secondary" (click)="onCancel()">
+								{{ "modify.auth.cancel" | translate }}
+							</button>
+
+							<button type="submit" [obButton]="'primary'" [disabled]="authForm.invalid || isLoading" class="btn btn-primary">
+								<span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+								{{ "modify.auth.validate" | translate }}
+							</button>
+						</div>
+					</form>
+
+					<!-- Help Section -->
+					<div class="mt-4 pt-4 border-top">
+						<h6>{{ "modify.auth.help.title" | translate }}</h6>
+						<p class="text-muted small">
+							{{ "modify.auth.help.description" | translate }}
+						</p>
+						<a
+							href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token"
+							target="_blank"
+							class="btn btn-sm btn-outline-info"
+						>
+							{{ "modify.auth.help.learnMore" | translate }}
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<div class="multilingual-field">
+	<label class="field-label" *ngIf="label">
+		{{ label | translate }}
+		<span *ngIf="required" class="required-asterisk">*</span>
+	</label>
+
+	<mat-tab-group>
+		<mat-tab *ngFor="let lang of languages" [label]="lang.label">
+			<div class="tab-content">
+				<mat-form-field class="w-100">
+					<mat-label>{{ label | translate }} ({{ lang.label }})</mat-label>
+
+					<input
+						*ngIf="!textarea"
+						matInput
+						[formControl]="getControl(lang.code)"
+						[placeholder]="placeholder | translate"
+						[maxlength]="maxLength || null"
+						(blur)="onBlur()"
+					/>
+
+					<textarea
+						*ngIf="textarea"
+						matInput
+						[formControl]="getControl(lang.code)"
+						[placeholder]="placeholder | translate"
+						[maxlength]="maxLength || null"
+						rows="4"
+						(blur)="onBlur()"
+					></textarea>
+
+					<mat-hint *ngIf="maxLength"> {{ getControl(lang.code).value?.length || 0 }}/{{ maxLength }} </mat-hint>
+
+					<mat-error *ngIf="hasError(lang.code, 'required')">
+						{{ getErrorMessage(lang.code) | translate }}
+					</mat-error>
+
+					<mat-error *ngIf="hasError(lang.code, 'maxlength')">
+						{{ getErrorMessage(lang.code) | translate }}
+					</mat-error>
+				</mat-form-field>
+			</div>
+		</mat-tab>
+	</mat-tab-group>
+
+	<div class="field-help" *ngIf="required">
+		<small class="text-muted">
+			{{ "modify.auth.form.help.multilingualRequired" | translate }}
+		</small>
+	</div>
+</div>

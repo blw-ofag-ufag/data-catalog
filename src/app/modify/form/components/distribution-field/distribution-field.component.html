@@ -1,0 +1,141 @@
+<div class="distribution-field">
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<label class="field-label">
+			{{ label | translate }}
+			<span *ngIf="required" class="required-asterisk">*</span>
+		</label>
+		<button type="button" mat-button obButton="secondary" (click)="addDistribution()" class="btn btn-outline-primary btn-sm">
+			<mat-icon>add</mat-icon>
+			{{ 'modify.auth.form.buttons.addDistribution' | translate }}
+		</button>
+	</div>
+
+	<div *ngIf="distributionsArray.length === 0" class="no-distributions-message">
+		<small class="text-muted">{{ 'modify.auth.form.messages.noDistributions' | translate }}</small>
+	</div>
+
+	<div *ngFor="let distributionGroup of distributionsArray.controls; let i = index" class="distribution-card card mb-4">
+		<div class="card-body">
+			<div class="d-flex justify-content-between align-items-start mb-3">
+				<h6 class="card-title mb-0">{{ 'modify.auth.form.labels.distribution' | translate }} {{ i + 1 }}</h6>
+				<button type="button" mat-icon-button (click)="removeDistribution(i)" class="btn btn-outline-danger btn-sm">
+					<mat-icon>delete</mat-icon>
+				</button>
+			</div>
+
+			<div [formGroup]="$any(distributionGroup)">
+				<!-- Required Fields -->
+				<div class="row mb-3">
+					<div class="col-md-3">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.dct:identifier' | translate }} *</mat-label>
+							<input matInput formControlName="dct:identifier" [placeholder]="'modify.auth.form.placeholders.distributionId' | translate" (blur)="onBlur()" />
+						</mat-form-field>
+					</div>
+					<div class="col-md-3">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.adms:status' | translate }} *</mat-label>
+							<mat-select formControlName="adms:status" (blur)="onBlur()">
+								<mat-option *ngFor="let status of statuses" [value]="status.value">
+									{{ status.label }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div class="col-md-3">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.dct:format' | translate }} *</mat-label>
+							<input matInput formControlName="dct:format" [placeholder]="'modify.auth.form.placeholders.format' | translate" (blur)="onBlur()" />
+						</mat-form-field>
+					</div>
+					<div class="col-md-3">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.dct:modified' | translate }}</mat-label>
+							<input matInput [matDatepicker]="modifiedPicker" formControlName="dct:modified" />
+							<mat-datepicker-toggle matIconSuffix [for]="modifiedPicker"></mat-datepicker-toggle>
+							<mat-datepicker #modifiedPicker></mat-datepicker>
+						</mat-form-field>
+					</div>
+				</div>
+
+				<!-- URLs -->
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.dcat:accessURL' | translate }} *</mat-label>
+							<input matInput type="url" formControlName="dcat:accessURL" [placeholder]="'modify.auth.form.placeholders.accessUrl' | translate" (blur)="onBlur()" />
+							<mat-hint>{{ 'modify.auth.form.help.accessUrl' | translate }}</mat-hint>
+						</mat-form-field>
+					</div>
+					<div class="col-md-6">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.dcat:downloadURL' | translate }}</mat-label>
+							<input matInput type="url" formControlName="dcat:downloadURL" [placeholder]="'modify.auth.form.placeholders.downloadUrl' | translate" (blur)="onBlur()" />
+							<mat-hint>{{ 'modify.auth.form.help.downloadUrl' | translate }}</mat-hint>
+						</mat-form-field>
+					</div>
+				</div>
+
+				<!-- Optional Metadata -->
+				<div class="row mb-3">
+					<div class="col-md-4">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.dct:title' | translate }}</mat-label>
+							<input matInput formControlName="dct:title" [placeholder]="'modify.auth.form.placeholders.distributionTitle' | translate" (blur)="onBlur()" />
+						</mat-form-field>
+					</div>
+					<div class="col-md-4">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.dcatap:availability' | translate }}</mat-label>
+							<mat-select formControlName="dcatap:availability" (blur)="onBlur()">
+								<mat-option *ngFor="let availability of availabilities" [value]="availability.value">
+									{{ availability.label }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div class="col-md-4">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.dct:license' | translate }}</mat-label>
+							<mat-select formControlName="dct:license" (blur)="onBlur()">
+								<mat-option *ngFor="let license of licenses" [value]="license.value">
+									{{ license.label }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</div>
+
+				<!-- Description & Other Fields -->
+				<div class="row mb-3">
+					<div class="col-md-6">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.dct:description' | translate }}</mat-label>
+							<textarea matInput formControlName="dct:description" rows="2" [placeholder]="'modify.auth.form.placeholders.distributionDescription' | translate" (blur)="onBlur()"></textarea>
+						</mat-form-field>
+					</div>
+					<div class="col-md-6">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.schema:comment' | translate }}</mat-label>
+							<textarea matInput formControlName="schema:comment" rows="2" [placeholder]="'modify.auth.form.placeholders.additionalComments' | translate" (blur)="onBlur()"></textarea>
+						</mat-form-field>
+					</div>
+				</div>
+
+				<!-- Standards -->
+				<div class="row">
+					<div class="col-md-12">
+						<mat-form-field class="w-100">
+							<mat-label>{{ 'labels.dct:conformsTo' | translate }}</mat-label>
+							<input matInput formControlName="dct:conformsTo" [placeholder]="'modify.auth.form.placeholders.conformsTo' | translate" (blur)="onBlur()" />
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="field-help" *ngIf="required">
+		<small class="text-muted">{{ 'modify.auth.form.help.distributionsRequired' | translate }}</small>
+	</div>
+</div>

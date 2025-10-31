@@ -16,7 +16,6 @@ import {MatChip, MatChipListbox, MatChipOption} from '@angular/material/chips';
 import {IndexComponent} from './index/index.component';
 import {AboutComponent} from './about/about.component';
 import {HandbookComponent} from './handbook/handbook.component';
-import {ModifyComponent} from './modify/modify.component';
 import {LandingHeaderComponent} from './landing-header/landing-header.component';
 import {IndexCardsComponent} from './index-cards/index-cards.component';
 import {IndexListComponent} from './index-list/index-list.component';
@@ -30,7 +29,7 @@ registerLocaleData(localeFRCH);
 registerLocaleData(localeITCH);
 
 @NgModule({
-	declarations: [AppComponent, HomeComponent, IndexComponent, AboutComponent, HandbookComponent, ModifyComponent, LandingHeaderComponent],
+	declarations: [AppComponent, HomeComponent, IndexComponent, AboutComponent, HandbookComponent, LandingHeaderComponent],
 	imports: [
 		AppRoutingModule,
 		ObMasterLayoutModule,

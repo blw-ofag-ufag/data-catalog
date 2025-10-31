@@ -1,0 +1,30 @@
+.keyword-array-field {
+	margin-bottom: 1.5rem;
+
+	mat-form-field {
+		width: 100%;
+	}
+
+	mat-chip-grid {
+		min-height: 3rem;
+	}
+
+	mat-chip-row {
+		margin: 0.25rem 0.25rem 0.25rem 0;
+
+		mat-icon {
+			cursor: pointer;
+			font-size: 1.125rem;
+			height: 1.125rem;
+			width: 1.125rem;
+		}
+	}
+
+	input {
+		border: none;
+		outline: none;
+		background: transparent;
+		min-width: 200px;
+		padding: 0.5rem 0;
+	}
+}

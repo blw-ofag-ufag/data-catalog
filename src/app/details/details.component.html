@@ -13,10 +13,9 @@
 					<button mat-button obButton="secondary" type="button" aria-label="raw data" (click)="openRawJson()">
 						<mat-icon svgIcon="file-json">raw</mat-icon>
 					</button>
-					<!--          <a href="/edit" mat-button obButton="primary" type="button">-->
-					<!--            {{ "ui.editDataset" | translate }}-->
-					<!--            <mat-icon svgIcon="pen" />-->
-					<!--          </a>-->
+					<button mat-button obButton="primary" type="button" aria-label="edit dataset" (click)="openEditTab()">
+						<mat-icon svgIcon="pen">{{ "ui.editDataset" | translate }}</mat-icon>
+					</button>
 				</div>
 			</div>
 		</div>

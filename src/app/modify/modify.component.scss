@@ -1,0 +1,76 @@
+.form-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 1rem;
+	padding: 1.5rem 0;
+	border-top: 1px solid #dee2e6;
+	margin-top: 2rem;
+
+	.btn {
+		min-width: 120px;
+		padding: 0.75rem 1.5rem;
+		font-weight: 500;
+	}
+}
+
+.dataset-form-container {
+	.card {
+		border: 1px solid #e3e7eb;
+		border-radius: 0.5rem;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+		.card-header {
+			background-color: #f8f9fa;
+			border-bottom: 1px solid #e3e7eb;
+
+			h4 {
+				margin: 0;
+				color: #495057;
+				font-size: 1.1rem;
+				font-weight: 600;
+			}
+		}
+	}
+}
+
+// Improve spacing for form fields
+.w-100 {
+	width: 100% !important;
+}
+
+// Style the archival value checkbox
+.mt-4 {
+	margin-top: 1.5rem !important;
+
+	.mat-mdc-checkbox {
+		.mdc-form-field {
+			color: #495057;
+		}
+	}
+}
+
+// Style external catalogs section
+.external-catalogs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-bottom: 0.5rem;
+
+	.mat-mdc-checkbox {
+		.mdc-form-field {
+			color: #495057;
+		}
+	}
+}
+
+// Improve form field spacing
+.row.mb-3 {
+	margin-bottom: 1.5rem !important;
+}
+
+// Style form labels
+.form-label {
+	font-weight: 500;
+	color: #495057;
+	margin-bottom: 0.5rem;
+}
