@@ -1,12 +1,12 @@
 <div class="dataset-submit">
-	<div class="card">
-		<div class="card-header">
-			<h3>{{ "modify.submit.title" | translate }}</h3>
-		</div>
+	<mat-card>
+		<mat-card-header>
+			<mat-card-title>{{ "modify.submit.title" | translate }}</mat-card-title>
+		</mat-card-header>
 
-		<div class="card-body">
+		<mat-card-content>
 			<!-- Authentication Status -->
-			<div class="auth-status mb-3">
+			<div class="auth-status ob-mb-3">
 				<ob-alert *ngIf="isAuthenticated" type="success">
 					<mat-icon>verified_user</mat-icon>
 					{{ "modify.submit.authSuccess" | translate }}
@@ -14,22 +14,23 @@
 				<ob-alert *ngIf="!isAuthenticated" type="info">
 					<mat-icon>info</mat-icon>
 					{{ "modify.submit.authInfo" | translate }}
-					<button type="button" class="btn btn-sm btn-outline-primary ms-2" (click)="openAuthDialog()">
+					<button type="button" [obButton]="'tertiary'" size="sm" class="ob-ms-2" (click)="openAuthDialog()">
 						{{ "modify.submit.authenticate" | translate }}
 					</button>
 				</ob-alert>
 			</div>
 
 			<!-- JSON Preview Toggle -->
-			<div class="json-preview-section mb-4">
-				<button type="button" class="btn btn-outline-secondary" (click)="toggleJsonPreview()">
-					<mat-icon>{{ showJsonPreview ? "visibility_off" : "visibility" }}</mat-icon>
-					{{ (showJsonPreview ? "modify.submit.hideJson" : "modify.submit.showJson") | translate }}
-				</button>
-
-				<div *ngIf="showJsonPreview" class="json-preview mt-3">
-					<pre class="json-content">{{ formattedJson }}</pre>
-				</div>
+			<div class="json-preview-section ob-mb-4">
+				<ob-collapse class="json-collapse">
+					<button type="button" [obButton]="'secondary'" obCollapseToggle>
+						<mat-icon>{{ "visibility" }}</mat-icon>
+						{{ "modify.submit.showJson" | translate }}
+					</button>
+					<div obCollapseContent class="json-preview ob-mt-3">
+						<pre class="json-content">{{ formattedJson }}</pre>
+					</div>
+				</ob-collapse>
 			</div>
 
 			<!-- Submit Actions -->
@@ -38,35 +39,35 @@
 
 				<!-- Primary Action: Open in GitHub -->
 				<div class="action-item primary-action">
-					<button type="button" [obButton]="'primary'" class="btn btn-primary btn-lg" (click)="openInGitHub()" [disabled]="!generatedJson">
+					<button type="button" [obButton]="'primary'" size="lg" (click)="openInGitHub()" [disabled]="!generatedJson">
 						<mat-icon>open_in_new</mat-icon>
 						{{ (isEditMode ? "modify.submit.editInGitHub" : "modify.submit.createInGitHub") | translate }}
 					</button>
-					<small class="text-muted d-block mt-1">
+					<small class="ob-text-muted ob-block ob-mt-1">
 						{{ "modify.submit.githubDescription" | translate }}
 					</small>
 				</div>
 
 				<!-- Alternative Actions -->
-				<div class="alternative-actions mt-4">
+				<div class="alternative-actions ob-mt-4">
 					<h6>{{ "modify.submit.alternatives" | translate }}</h6>
 
 					<div class="action-item">
-						<button type="button" class="btn btn-outline-secondary" (click)="copyJsonToClipboard()" [disabled]="!formattedJson">
+						<button type="button" [obButton]="'secondary'" (click)="copyJsonToClipboard()" [disabled]="!formattedJson">
 							<mat-icon>content_copy</mat-icon>
 							{{ "modify.submit.copyJson" | translate }}
 						</button>
-						<small class="text-muted d-block mt-1">
+						<small class="ob-text-muted ob-block ob-mt-1">
 							{{ "modify.submit.copyDescription" | translate }}
 						</small>
 					</div>
 
-					<div class="action-item mt-2">
-						<button type="button" class="btn btn-outline-secondary" (click)="downloadJson()" [disabled]="!generatedJson">
+					<div class="action-item ob-mt-2">
+						<button type="button" [obButton]="'secondary'" (click)="downloadJson()" [disabled]="!generatedJson">
 							<mat-icon>download</mat-icon>
 							{{ "modify.submit.downloadJson" | translate }}
 						</button>
-						<small class="text-muted d-block mt-1">
+						<small class="ob-text-muted ob-block ob-mt-1">
 							{{ "modify.submit.downloadDescription" | translate }}
 						</small>
 					</div>
@@ -74,14 +75,14 @@
 			</div>
 
 			<!-- Help Text -->
-			<div class="help-section mt-4 pt-3 border-top">
+			<div class="help-section ob-mt-4 ob-pt-3 ob-border-t">
 				<h6>{{ "modify.submit.help.title" | translate }}</h6>
-				<ul class="small text-muted">
+				<ul class="ob-text-sm ob-text-muted">
 					<li>{{ "modify.submit.help.github" | translate }}</li>
 					<li>{{ "modify.submit.help.review" | translate }}</li>
 					<li>{{ "modify.submit.help.commit" | translate }}</li>
 				</ul>
 			</div>
-		</div>
-	</div>
+		</mat-card-content>
+	</mat-card>
 </div>

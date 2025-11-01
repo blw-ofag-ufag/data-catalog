@@ -74,3 +74,73 @@
 	color: #495057;
 	margin-bottom: 0.5rem;
 }
+
+// Vertical stepper layout
+.stepper-layout {
+	gap: 2rem;
+	align-items: flex-start;
+
+	.vertical-stepper {
+		min-width: 280px;
+		flex-shrink: 0;
+
+		.mat-stepper-vertical {
+			.mat-step-header {
+				padding: 16px 24px;
+				min-height: 60px;
+
+				.mat-step-label {
+					font-weight: 500;
+					font-size: 0.9rem;
+				}
+			}
+
+			.mat-step-content {
+				padding: 0;
+				margin-left: 36px;
+				border-left: 1px solid #e0e0e0;
+				padding-left: 24px;
+				min-height: auto;
+			}
+		}
+	}
+
+	.step-content {
+		flex: 1;
+		max-width: 800px;
+		padding: 1.5rem;
+		background-color: #fff;
+		border-radius: 8px;
+		border: 1px solid #e3e7eb;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+	}
+}
+
+// Navigation buttons
+.step-navigation {
+	border-top: 1px solid #e9ecef;
+	padding-top: 1rem;
+	margin-top: 1.5rem;
+
+	.final-actions {
+		display: flex;
+		gap: 0.5rem;
+	}
+}
+
+// Responsive design for smaller screens
+@media (max-width: 992px) {
+	.stepper-layout {
+		flex-direction: column;
+
+		.vertical-stepper {
+			min-width: 100%;
+			order: 2;
+		}
+
+		.step-content {
+			order: 1;
+			margin-bottom: 1rem;
+		}
+	}
+}

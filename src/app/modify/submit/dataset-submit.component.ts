@@ -2,9 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslatePipe} from '@ngx-translate/core';
 import {ObButtonDirective} from '@oblique/oblique';
-import {ObAlertModule} from '@oblique/oblique';
+import {ObAlertModule, ObNotificationService, ObNotificationModule, ObCollapseModule} from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 import {GitHubAuthService} from '../../services/auth/github-auth.service';
 import {RepositoryCredentialsService} from '../../services/auth/repository-credentials.service';
 import {PublisherService} from '../../services/api/publisher.service';
@@ -15,7 +16,7 @@ import {Publisher} from '../../models/publisher.model';
 @Component({
 	selector: 'app-dataset-submit',
 	standalone: true,
-	imports: [CommonModule, TranslatePipe, ObButtonDirective, ObAlertModule, MatIconModule, MatButtonModule],
+	imports: [CommonModule, TranslatePipe, ObButtonDirective, ObAlertModule, ObNotificationModule, ObCollapseModule, MatIconModule, MatButtonModule, MatCardModule],
 	templateUrl: './dataset-submit.component.html',
 	styleUrl: './dataset-submit.component.scss'
 })
@@ -28,7 +29,6 @@ export class DatasetSubmitComponent implements OnInit {
 	formattedJson = '';
 	filePath = '';
 	isAuthenticated = false;
-	showJsonPreview = false;
 	selectedRepository: string | null = null;
 	selectedPublisher: Publisher | null = null;
 
@@ -36,7 +36,8 @@ export class DatasetSubmitComponent implements OnInit {
 		private readonly githubAuthService: GitHubAuthService,
 		private readonly repositoryCredentialsService: RepositoryCredentialsService,
 		private readonly publisherService: PublisherService,
-		private readonly datasetJsonService: DatasetJsonService
+		private readonly datasetJsonService: DatasetJsonService,
+		private readonly notificationService: ObNotificationService
 	) {}
 
 	ngOnInit(): void {
@@ -64,15 +65,19 @@ export class DatasetSubmitComponent implements OnInit {
 		}
 	}
 
-	toggleJsonPreview(): void {
-		this.showJsonPreview = !this.showJsonPreview;
-	}
 
 	copyJsonToClipboard(): void {
 		if (this.formattedJson) {
 			navigator.clipboard.writeText(this.formattedJson).then(() => {
-				// Could show a toast notification here
-				console.log('JSON copied to clipboard');
+				this.notificationService.success({
+					title: 'Copied to Clipboard',
+					message: 'Dataset JSON has been copied to your clipboard'
+				});
+			}).catch(() => {
+				this.notificationService.error({
+					title: 'Copy Failed',
+					message: 'Failed to copy JSON to clipboard'
+				});
 			});
 		}
 	}

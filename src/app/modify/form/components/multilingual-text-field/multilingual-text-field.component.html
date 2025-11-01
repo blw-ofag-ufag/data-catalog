@@ -7,7 +7,7 @@
 	<mat-tab-group>
 		<mat-tab *ngFor="let lang of languages" [label]="lang.label">
 			<div class="tab-content">
-				<mat-form-field class="w-100">
+				<mat-form-field class="ob-w-full">
 					<mat-label>{{ label | translate }} ({{ lang.label }})</mat-label>
 
 					<input
@@ -44,7 +44,7 @@
 	</mat-tab-group>
 
 	<div class="field-help" *ngIf="required">
-		<small class="text-muted">
+		<small class="ob-text-muted">
 			{{ "modify.auth.form.help.multilingualRequired" | translate }}
 		</small>
 	</div>

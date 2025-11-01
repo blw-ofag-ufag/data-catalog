@@ -8,10 +8,17 @@ import {ObButtonDirective} from '@oblique/oblique';
 import {ObErrorMessagesModule} from '@oblique/oblique';
 import {ObAlertModule} from '@oblique/oblique';
 import {ObSpinnerModule} from '@oblique/oblique';
+import {ObNotificationService, ObNotificationModule, ObInputClearModule} from '@oblique/oblique';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 import {GitHubAuthService, GitHubCredentials} from '../../services/auth/github-auth.service';
+import {RepositoryCredentialsService} from '../../services/auth/repository-credentials.service';
+import {PublisherService} from '../../services/api/publisher.service';
+import {Publisher} from '../../models/publisher.model';
 
 @Component({
 	selector: 'app-auth',
@@ -24,9 +31,14 @@ import {GitHubAuthService, GitHubCredentials} from '../../services/auth/github-a
 		ObErrorMessagesModule,
 		ObAlertModule,
 		ObSpinnerModule,
+		ObNotificationModule,
+		ObInputClearModule,
 		MatFormFieldModule,
 		MatInputModule,
-		MatProgressSpinnerModule
+		MatSelectModule,
+		MatProgressSpinnerModule,
+		MatCardModule,
+		MatButtonModule
 	],
 	templateUrl: './auth.component.html',
 	styleUrl: './auth.component.scss'
@@ -35,17 +47,35 @@ export class AuthComponent implements OnDestroy {
 	authForm: FormGroup;
 	isLoading = false;
 	errorMessage: string | null = null;
+	publishers: Publisher[] = [];
+	selectedRepository: string | null = null;
+	customRepositoryMode = false;
 	private readonly destroy$ = new Subject<void>();
 
 	constructor(
 		private readonly fb: FormBuilder,
 		private readonly githubAuthService: GitHubAuthService,
-		private readonly router: Router
+		private readonly repositoryCredentialsService: RepositoryCredentialsService,
+		private readonly publisherService: PublisherService,
+		private readonly router: Router,
+		private readonly notificationService: ObNotificationService
 	) {
+		this.publishers = this.publisherService.getPublishers();
+
 		this.authForm = this.fb.group({
+			repository: ['', [Validators.required]],
+			customRepository: [''],
 			username: ['', [Validators.required, Validators.minLength(1)]],
 			token: ['', [Validators.required, Validators.minLength(10)]]
 		});
+
+		// Set default repository to first publisher
+		if (this.publishers.length > 0) {
+			this.authForm.patchValue({
+				repository: this.publishers[0].githubRepo
+			});
+			this.selectedRepository = this.publishers[0].githubRepo;
+		}
 	}
 
 	ngOnDestroy(): void {
@@ -63,18 +93,33 @@ export class AuthComponent implements OnDestroy {
 				token: this.authForm.value.token.trim()
 			};
 
+			// Determine which repository to authenticate for
+			const repository = this.getSelectedRepository();
+
 			this.githubAuthService
-				.validateCredentials(credentials)
+				.validateCredentialsForRepository(credentials, repository)
 				.pipe(takeUntil(this.destroy$))
 				.subscribe({
 					next: user => {
 						this.isLoading = false;
-						// Redirect to the form
-						this.router.navigate(['/modify/form']);
+						// Set the authenticated repository as selected
+						this.repositoryCredentialsService.setSelectedRepository(repository);
+						// Show success notification
+						this.notificationService.success({
+							title: 'Authentication Successful',
+							message: `Successfully authenticated with ${repository}`
+						});
+						// Redirect to the form (or back to original destination)
+						this.router.navigate(['/modify']);
 					},
 					error: error => {
 						this.isLoading = false;
 						this.errorMessage = this.getErrorMessage(error.message);
+						// Show error notification
+						this.notificationService.error({
+							title: 'Authentication Failed',
+							message: this.getErrorMessage(error.message)
+						});
 					}
 				});
 		} else {
@@ -118,5 +163,29 @@ export class AuthComponent implements OnDestroy {
 
 	onCancel(): void {
 		this.router.navigate(['/']);
+	}
+
+	onRepositoryChange(): void {
+		const value = this.authForm.value.repository;
+		if (value === 'custom') {
+			this.customRepositoryMode = true;
+			this.authForm.get('customRepository')?.setValidators([Validators.required]);
+		} else {
+			this.customRepositoryMode = false;
+			this.authForm.get('customRepository')?.clearValidators();
+			this.selectedRepository = value;
+		}
+		this.authForm.get('customRepository')?.updateValueAndValidity();
+	}
+
+	getSelectedRepository(): string {
+		if (this.customRepositoryMode) {
+			return this.authForm.value.customRepository.trim();
+		}
+		return this.authForm.value.repository;
+	}
+
+	getPublisherByRepository(repository: string): Publisher | undefined {
+		return this.publishers.find(p => p.githubRepo === repository);
 	}
 }

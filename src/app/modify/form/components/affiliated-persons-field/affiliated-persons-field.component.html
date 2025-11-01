@@ -4,7 +4,7 @@
 			{{ label | translate }}
 			<span *ngIf="required" class="required-asterisk">*</span>
 		</label>
-		<button type="button" mat-button obButton="secondary" (click)="addPerson()" class="btn btn-outline-primary btn-sm">
+		<button type="button" [obButton]="'secondary'" (click)="addPerson()" class="btn-sm">
 			<mat-icon>add</mat-icon>
 			{{ 'modify.auth.form.buttons.addPerson' | translate }}
 		</button>
@@ -20,9 +20,9 @@
 				<h6 class="card-title mb-0">{{ 'modify.auth.form.labels.person' | translate }} {{ i + 1 }}</h6>
 				<button
 					type="button"
-					mat-icon-button
+					[obButton]="'secondary'"
 					(click)="removePerson(i)"
-					class="btn btn-outline-danger btn-sm"
+					class="btn-sm text-danger"
 					[disabled]="personsArray.length === 1 && required"
 				>
 					<mat-icon>delete</mat-icon>

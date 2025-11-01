@@ -4,13 +4,14 @@ import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Val
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {Subject, takeUntil} from 'rxjs';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {ObButtonDirective} from '@oblique/oblique';
-import {ObAlertModule} from '@oblique/oblique';
+import {ObAlertModule, ObButtonDirective, ObNotificationService, ObNotificationModule} from '@oblique/oblique';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
 import {GitHubAuthService} from '../services/auth/github-auth.service';
 import {RepositoryCredentialsService} from '../services/auth/repository-credentials.service';
 import {MultiDatasetService} from '../services/api/multi-dataset-service.service';
@@ -43,13 +44,16 @@ import {
 		ReactiveFormsModule,
 		RouterModule,
 		TranslatePipe,
-		ObButtonDirective,
 		ObAlertModule,
+		ObButtonDirective,
+		ObNotificationModule,
 		MatFormFieldModule,
 		MatInputModule,
 		MatDatepickerModule,
 		MatNativeDateModule,
 		MatCheckboxModule,
+		MatStepperModule,
+		MatButtonModule,
 		DatasetSubmitComponent,
 		MultilingualTextFieldComponent,
 		EnumSelectFieldComponent,
@@ -68,6 +72,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	isLoading = false;
 	showSubmitSection = false;
 	invalidFields: string[] = [];
+	isLinear = false;
 
 	// Enum options for dropdowns
 	readonly publishers = Publishers;
@@ -91,7 +96,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		private readonly datasetService: MultiDatasetService,
 		private readonly i14yThemeService: I14YThemeService,
 		private readonly publisherService: PublisherService,
-		private readonly translateService: TranslateService
+		private readonly translateService: TranslateService,
+		private readonly notificationService: ObNotificationService
 	) {
 		this.datasetForm = this.createForm();
 	}
@@ -275,10 +281,21 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			setTimeout(() => {
 				this.isLoading = false;
 				this.showSubmitSection = true;
+				// Show success notification
+				this.notificationService.success({
+					title: 'Form Validation Complete',
+					message: 'Dataset form is valid and ready for submission to GitHub'
+				});
 			}, 1000);
 		} else {
 			this.markFormGroupTouched(this.datasetForm);
 			this.collectInvalidFields();
+
+			// Show error notification
+			this.notificationService.warning({
+				title: 'Form Validation Failed',
+				message: `Please fix ${this.invalidFields.length} required fields to continue`
+			});
 
 			// Scroll to first error
 			this.scrollToFirstError();
@@ -377,5 +394,77 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			return publisher ? `${publisher.shortId} (${selectedRepo})` : selectedRepo;
 		}
 		return 'blw-ofag-ufag/metadata'; // Default fallback
+	}
+
+	// Step validation methods
+	isStepValid(stepIndex: number): boolean {
+		switch (stepIndex) {
+			case 0: return this.isBasicInfoStepValid();
+			case 1: return this.isAccessClassificationStepValid();
+			case 2: return this.isPublisherContactStepValid();
+			case 3: return this.isMetadataVersioningStepValid();
+			case 4: return this.isGovernanceStepValid();
+			case 5: return this.isExternalReferencesStepValid();
+			case 6: return this.isCoverageLegalStepValid();
+			case 7: return this.isBusinessContextStepValid();
+			case 8: return this.isAdditionalMetadataStepValid();
+			case 9: return this.isDistributionsStepValid();
+			default: return true;
+		}
+	}
+
+	private isBasicInfoStepValid(): boolean {
+		const titleControl = this.datasetForm.get('dct:title');
+		const descriptionControl = this.datasetForm.get('dct:description');
+		return !!(titleControl?.valid && descriptionControl?.valid);
+	}
+
+	private isAccessClassificationStepValid(): boolean {
+		const accessRightsControl = this.datasetForm.get('dct:accessRights');
+		const statusControl = this.datasetForm.get('adms:status');
+		const classificationControl = this.datasetForm.get('bv:classification');
+		const personalDataControl = this.datasetForm.get('bv:personalData');
+		return !!(accessRightsControl?.valid && statusControl?.valid && classificationControl?.valid && personalDataControl?.valid);
+	}
+
+	private isPublisherContactStepValid(): boolean {
+		const publisherControl = this.datasetForm.get('dct:publisher');
+		const contactPointControl = this.datasetForm.get('dcat:contactPoint');
+		return !!(publisherControl?.valid && contactPointControl?.valid);
+	}
+
+	private isMetadataVersioningStepValid(): boolean {
+		// No required fields in this step
+		return true;
+	}
+
+	private isGovernanceStepValid(): boolean {
+		// No required fields in this step
+		return true;
+	}
+
+	private isExternalReferencesStepValid(): boolean {
+		// No required fields in this step
+		return true;
+	}
+
+	private isCoverageLegalStepValid(): boolean {
+		// No required fields in this step
+		return true;
+	}
+
+	private isBusinessContextStepValid(): boolean {
+		// No required fields in this step
+		return true;
+	}
+
+	private isAdditionalMetadataStepValid(): boolean {
+		// No required fields in this step
+		return true;
+	}
+
+	private isDistributionsStepValid(): boolean {
+		// No required fields in this step
+		return true;
 	}
 }
