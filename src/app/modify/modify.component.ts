@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
-import {Subject, takeUntil} from 'rxjs';
+import {Observable, Subject, takeUntil} from 'rxjs';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {ObAlertModule, ObButtonDirective, ObNotificationService, ObNotificationModule} from '@oblique/oblique';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -35,6 +35,7 @@ import {
 	Publishers,
 	Statuses
 } from '../models/schemas/dataset';
+import {DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
 
 @Component({
 	selector: 'modify',
@@ -97,7 +98,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		private readonly i14yThemeService: I14YThemeService,
 		private readonly publisherService: PublisherService,
 		private readonly translateService: TranslateService,
-		private readonly notificationService: ObNotificationService
+		private readonly notificationService: ObNotificationService,
+		private readonly metadataService: DatasetMetadataService
 	) {
 		this.datasetForm = this.createForm();
 	}
@@ -105,6 +107,13 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	ngOnInit(): void {
 		// Load I14Y themes
 		this.i14yThemeService.loadThemes().pipe(takeUntil(this.destroy$)).subscribe();
+
+		// Initialize form with metadata
+		this.metadataService.getMetadata().pipe(takeUntil(this.destroy$)).subscribe(metadata => {
+			if (metadata && this.datasetForm) {
+				this.buildFormFromMetadata(this.datasetForm, metadata);
+			}
+		});
 
 		// Check if we're in edit mode - check both route params and query params
 		this.route.paramMap.pipe(takeUntil(this.destroy$)).subscribe(params => {
@@ -131,6 +140,21 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	private createForm(): FormGroup {
+		const formGroup = this.fb.group({});
+
+		// Subscribe to metadata to build form dynamically
+		this.metadataService.getMetadata().pipe(takeUntil(this.destroy$)).subscribe(metadata => {
+			if (metadata) {
+				this.buildFormFromMetadata(formGroup, metadata);
+			}
+		});
+
+		// Fallback form creation if metadata is not available immediately
+		return this.createFallbackForm();
+	}
+
+	private createFallbackForm(): FormGroup {
+		// Create a basic form structure that will be replaced when metadata loads
 		return this.fb.group({
 			'dct:title': [null, Validators.required],
 			'dct:description': [null, Validators.required],
@@ -183,6 +207,67 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			// Distributions
 			'dcat:distribution': [null]
 		});
+	}
+
+	private buildFormFromMetadata(formGroup: FormGroup, metadata: any): void {
+		// Clear existing controls
+		Object.keys(formGroup.controls).forEach(key => {
+			formGroup.removeControl(key);
+		});
+
+		// Build controls from metadata
+		metadata.fields.forEach((fieldMetadata: any, key: string) => {
+			const control = this.createControlForField(key, fieldMetadata);
+			formGroup.addControl(key, control);
+		});
+
+		// Replace the current form with the new one
+		this.datasetForm = formGroup;
+	}
+
+	private createControlForField(key: string, fieldMetadata: any): FormControl | FormGroup | FormArray {
+		const validators = fieldMetadata.validators || [];
+		let defaultValue = this.getDefaultValueForField(key, fieldMetadata);
+
+		// Handle special cases
+		switch (key) {
+			case 'dcat:contactPoint':
+				return this.fb.group({
+					'schema:name': ['', this.metadataService.getFieldValidators('schema:name')],
+					'schema:email': ['', this.metadataService.getFieldValidators('schema:email')]
+				});
+
+			case 'dct:temporal':
+				return this.fb.group({
+					'dcat:start_date': [null],
+					'dcat:end_date': [null]
+				});
+
+			case 'bv:externalCatalogs':
+				return this.fb.array([]);
+
+			case 'dcat:distribution':
+				return new FormControl(null);
+
+			default:
+				return new FormControl(defaultValue, validators);
+		}
+	}
+
+	private getDefaultValueForField(key: string, fieldMetadata: any): any {
+		// Set appropriate default values based on field type
+		switch (fieldMetadata.type) {
+			case 'boolean':
+				return false;
+			case 'array':
+				return null;
+			case 'number':
+				return null;
+			case 'date':
+				return null;
+			default:
+				return fieldMetadata.enum ? '' : null;
+		}
 	}
 
 	private initializeForm(): void {
@@ -466,5 +551,18 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	private isDistributionsStepValid(): boolean {
 		// No required fields in this step
 		return true;
+	}
+
+	// Helper methods for template access
+	getStepFields(stepId: number): Observable<any[]> {
+		return this.metadataService.getStepFields(stepId);
+	}
+
+	isFieldRequired(fieldKey: string): boolean {
+		return this.metadataService.getFieldValidators(fieldKey).some(v => v === Validators.required);
+	}
+
+	getSteps(): Observable<any[]> {
+		return this.metadataService.getSteps();
 	}
 }

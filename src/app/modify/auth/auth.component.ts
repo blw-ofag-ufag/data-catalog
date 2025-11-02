@@ -8,7 +8,7 @@ import {ObButtonDirective} from '@oblique/oblique';
 import {ObErrorMessagesModule} from '@oblique/oblique';
 import {ObAlertModule} from '@oblique/oblique';
 import {ObSpinnerModule} from '@oblique/oblique';
-import {ObNotificationService, ObNotificationModule, ObInputClearModule} from '@oblique/oblique';
+import {ObNotificationService, ObNotificationModule} from '@oblique/oblique';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -32,7 +32,6 @@ import {Publisher} from '../../models/publisher.model';
 		ObAlertModule,
 		ObSpinnerModule,
 		ObNotificationModule,
-		ObInputClearModule,
 		MatFormFieldModule,
 		MatInputModule,
 		MatSelectModule,

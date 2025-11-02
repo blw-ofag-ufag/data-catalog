@@ -431,3 +431,9 @@ export const enumTypes = [
 	'dcat:keyword',
 	'dcat:theme'
 ];
+
+// Fields that are enums but display as arrays in details
+export const enumArrayFields = [
+	'dcat:theme',
+	'dcat:keyword'
+];

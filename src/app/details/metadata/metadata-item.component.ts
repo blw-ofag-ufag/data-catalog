@@ -1,5 +1,5 @@
 import {Component, Injector, Input, OnDestroy, OnInit} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslateService, TranslatePipe} from '@ngx-translate/core';
 import {TextOrTranslatable} from '../../models/types/TextOrTranslatable';
 import {TranslateFieldPipe} from '../../translate-field.pipe';
 import {DatePipe, NgComponentOutlet, registerLocaleData} from '@angular/common';
@@ -9,7 +9,7 @@ import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import {MatChip, MatChipSet} from '@angular/material/chips';
-import {ContactPoint, TemporalCoverage, enumTypes} from '../../models/schemas/dataset';
+import {ContactPoint, TemporalCoverage, enumTypes, enumArrayFields} from '../../models/schemas/dataset';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 
 // Lokalisierung registrieren
@@ -20,7 +20,7 @@ registerLocaleData(localeIt);
 @Component({
 	templateUrl: './free-list-item.component.html',
 	styleUrl: '../details.component.scss',
-	imports: [MatChip, MatChipSet],
+	imports: [MatChip, MatChipSet, TranslatePipe],
 	standalone: true
 })
 export class FreeListItemComponent {
@@ -29,7 +29,20 @@ export class FreeListItemComponent {
 
 	constructor(private readonly injector: Injector) {
 		this.label = this.injector.get('label', '');
-		this.data = this.injector.get('data', '');
+		this.data = this.injector.get('data', []);
+	}
+
+	getTranslatedValue(item: string): string {
+		// For theme values, create a translation key
+		if (this.label === 'dcat:theme') {
+			return `choices.dataset.dcat:theme.${item}`;
+		}
+		// For keywords, return as-is (no translation needed)
+		if (this.label === 'dcat:keyword') {
+			return item;
+		}
+		// For other fields, return the value as-is or with appropriate translation key
+		return item;
 	}
 }
 
@@ -332,56 +345,62 @@ export class MetadataItemComponent {
 	) {}
 
 	decideComponent(label: string, data: any) {
-		// if label in array EnumTypes
+		// Handle boolean values
 		if (data === true) {
 			return YesComponent;
 		}
 		if (data === false) {
 			return NoComponent;
 		}
+
+		// Handle enum array fields FIRST (before other checks)
+		if (enumArrayFields.includes(label) && Array.isArray(data)) {
+			return FreeListItemComponent;
+		}
+
+		// Handle specific field types
+		switch (label) {
+			case 'dct:issued':
+			case 'dct:modified':
+			case 'bv:abrogation':
+				return DateMetadataItemComponent;
+			case 'dcat:inSeries':
+			case 'dct:replaces':
+				return DatasetLinkListComponent;
+			case 'dcat:contactPoint':
+				return ContactPointComponent;
+			case 'dct:temporal':
+				return TemporalComponent;
+			case 'prov:wasGeneratedBy':
+				return WasGeneratedByComponent;
+			case 'prov:wasDerivedFrom':
+				return WasDerivedFromComponent;
+		}
+
+		// Handle URL links
 		if (typeof data == 'string' && data.startsWith('http')) {
 			return LinkComponent;
 		}
 		if (Array.isArray(data) && data.every(item => typeof item === 'string' && item.startsWith('http'))) {
 			return LinkListComponent;
 		}
-		if (label === 'dcat:contactPoint') {
-			return ContactPointComponent;
-		}
+
+		// Handle numbers
 		if (typeof data === 'number') {
 			return NumberComponent;
 		}
-		if (label === 'dct:temporal') {
-			return TemporalComponent;
-		}
-		if (label === 'prov:wasGeneratedBy') {
-			return WasGeneratedByComponent;
-		}
-		if (label === 'prov:wasDerivedFrom') {
-			return WasDerivedFromComponent;
-		}
+
+		// Handle related resources (complex objects)
 		if (label === 'foaf:page' && Array.isArray(data) && data.length > 0 && typeof data[0] === 'object') {
 			return RelatedResourcesComponent;
 		}
-		if (enumTypes.includes(label)) {
+
+		// Handle enum types (single string values)
+		if (enumTypes.includes(label) && typeof data === 'string') {
 			return EnumComponent;
 		}
-		switch (label) {
-			case 'dct:issued':
-			case 'dct:modified':
-			case 'bv:abrogation':
-				return DateMetadataItemComponent;
-			case 'dcat:theme':
-				return FreeListItemComponent;
-			case 'dcat:inSeries':
-			case 'dct:replaces':
-				return DatasetLinkListComponent;
-			// case 'internal:rawData':
-			// 	return RawDataComponent;
-			default:
-				return DefaultMetadataItemComponent;
-		}
 
+		// Default fallback
 		return DefaultMetadataItemComponent;
 	}
 

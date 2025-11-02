@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {DatasetSchema, enumTypes} from '../models/schemas/dataset';
+import {DatasetSchema, enumTypes, enumArrayFields} from '../models/schemas/dataset';
 import {DatasetService} from '../services/api/api.service';
 import {Observable, Subject, startWith} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
@@ -11,6 +11,7 @@ import {OrgPipe} from '../org.pipe';
 import {TranslateFieldPipe} from '../translate-field.pipe';
 import {EnumComponent, MetadataItemComponent} from './metadata/metadata-item.component';
 import {NormalizedMetadataElement, filterAndNormalizeMetadata} from './details.helpers';
+import {DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
 import {MatAccordion, MatExpansionModule, MatExpansionPanel, MatExpansionPanelDescription, MatExpansionPanelHeader} from '@angular/material/expansion';
 import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.component';
 import {KeywordsComponent} from './keywords/keywords.component';
@@ -63,7 +64,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		private readonly route: ActivatedRoute,
 		private readonly router: Router,
 		private readonly translate: TranslateService,
-		private readonly publisherService: PublisherService
+		private readonly publisherService: PublisherService,
+		private readonly metadataService: DatasetMetadataService
 	) {
 		this.loading$ = this.datasetService.getLoadingState();
 		this.currentLang$ = this.translate.onLangChange.pipe(
@@ -83,10 +85,80 @@ export class DetailsComponent implements OnInit, OnDestroy {
 					if (!dataset) {
 						return [];
 					}
-					return filterAndNormalizeMetadata(dataset);
+					return this.filterMetadataWithSchema(dataset);
 				})
 			);
 		});
+	}
+
+	private filterMetadataWithSchema(dataset: DatasetSchema): NormalizedMetadataElement[] {
+		// Get field metadata from schema
+		const metadata = this.metadataService.getMetadata().pipe(
+			map(metadataConfig => {
+				if (!metadataConfig) {
+					// Fallback to the old method if metadata is not available
+					return filterAndNormalizeMetadata(dataset);
+				}
+
+				const normalizedMetadata: NormalizedMetadataElement[] = [];
+
+				// Process each field from the dataset using schema metadata
+				Object.entries(dataset).forEach(([key, value]) => {
+					const fieldMetadata = metadataConfig.fields.get(key);
+
+					// Only include fields that should be displayed in details
+					if (fieldMetadata?.displayInDetails && value != null) {
+						normalizedMetadata.push({
+							label: key,
+							data: value
+						});
+					}
+				});
+
+				// Sort by display order if specified
+				return normalizedMetadata.sort((a, b) => {
+					const aField = metadataConfig.fields.get(a.label);
+					const bField = metadataConfig.fields.get(b.label);
+					const aOrder = aField?.displayOrder || 999;
+					const bOrder = bField?.displayOrder || 999;
+					return aOrder - bOrder;
+				});
+			})
+		);
+
+		// Since this is synchronous and we need to return immediately,
+		// we'll use the current metadata if available, otherwise fallback
+		const currentMetadata = this.metadataService.getMetadata();
+		let result: NormalizedMetadataElement[] = [];
+
+		currentMetadata.subscribe(metadataConfig => {
+			if (metadataConfig) {
+				const normalizedMetadata: NormalizedMetadataElement[] = [];
+
+				Object.entries(dataset).forEach(([key, value]) => {
+					const fieldMetadata = metadataConfig.fields.get(key);
+
+					if (fieldMetadata?.displayInDetails && value != null) {
+						normalizedMetadata.push({
+							label: key,
+							data: value
+						});
+					}
+				});
+
+				result = normalizedMetadata.sort((a, b) => {
+					const aField = metadataConfig.fields.get(a.label);
+					const bField = metadataConfig.fields.get(b.label);
+					const aOrder = aField?.displayOrder || 999;
+					const bOrder = bField?.displayOrder || 999;
+					return aOrder - bOrder;
+				});
+			} else {
+				result = filterAndNormalizeMetadata(dataset);
+			}
+		}).unsubscribe(); // Immediately unsubscribe since we just want the current value
+
+		return result.length > 0 ? result : filterAndNormalizeMetadata(dataset);
 	}
 
 	ngOnDestroy() {
@@ -229,4 +301,5 @@ export class DetailsComponent implements OnInit, OnDestroy {
 	}
 
 	protected readonly enumTypes = enumTypes;
+	protected readonly enumArrayFields = enumArrayFields;
 }

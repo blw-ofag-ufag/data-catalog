@@ -1,25 +1,23 @@
 <div class="ob-container">
-	<div class="ob-grid ob-grid-cols-1">
-		<div>
-			<!-- Header -->
-			<div class="ob-flex ob-justify-between ob-items-center ob-mb-4">
-				<h1>
-					{{ (isEditMode ? "modify.auth.form.title.edit" : "modify.auth.form.title.new") | translate }}
-				</h1>
-				<div class="ob-flex ob-items-center ob-gap-2">
-					<small class="ob-text-muted">{{ "modify.auth.form.selectedRepository" | translate }}:</small>
-					<strong class="me-3">{{ getSelectedRepositoryDisplay() }}</strong>
-					<a routerLink="/modify/auth" [obButton]="'tertiary'" size="sm">
-						{{ "modify.auth.form.changeRepository" | translate }}
-					</a>
-				</div>
+	<div>
+		<!-- Header -->
+		<div class="ob-flex ob-justify-between ob-items-center ob-mb-4">
+			<h1>
+				{{ (isEditMode ? "modify.auth.form.title.edit" : "modify.auth.form.title.new") | translate }}
+			</h1>
+			<div class="ob-flex ob-items-center ob-gap-2">
+				<small class="ob-text-muted">{{ "modify.auth.form.selectedRepository" | translate }}:</small>
+				<strong class="me-3">{{ getSelectedRepositoryDisplay() }}</strong>
+				<a routerLink="/modify/auth" [obButton]="'tertiary'" size="sm">
+					{{ "modify.auth.form.changeRepository" | translate }}
+				</a>
 			</div>
+		</div>
 
-			<!-- Dataset Form -->
-			<div class="dataset-form-container" *ngIf="!showSubmitSection">
-				<form [formGroup]="datasetForm">
-					<div class="stepper-layout ob-flex">
-						<mat-stepper [linear]="isLinear" orientation="vertical" #stepper class="vertical-stepper">
+		<!-- Dataset Form -->
+		<div class="dataset-form-container" *ngIf="!showSubmitSection">
+			<form [formGroup]="datasetForm">
+				<mat-stepper [linear]="isLinear" orientation="vertical" #stepper class="vertical-stepper">
 						<!-- Step 1: Basic Information -->
 						<mat-step [completed]="isStepValid(0)" [optional]="false">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.basic" | translate }}</ng-template>
@@ -127,8 +125,8 @@
 							<div formGroupName="dcat:contactPoint">
 								<h5>{{ "labels.dcat:contactPoint" | translate }}</h5>
 
-								<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4">
-									<div class="md:ob-col-span-6">
+								<div class="ob-flex ob-flex-wrap ob-gap-4">
+									<div class="ob-flex-1 ob-min-w-0">
 										<mat-form-field class="ob-w-full">
 											<mat-label>{{ "modify.auth.form.contactName" | translate }} *</mat-label>
 											<input matInput formControlName="schema:name" required />
@@ -137,7 +135,7 @@
 											</mat-error>
 										</mat-form-field>
 									</div>
-									<div class="md:ob-col-span-6">
+									<div class="ob-flex-1 ob-min-w-0">
 										<mat-form-field class="ob-w-full">
 											<mat-label>{{ "modify.auth.form.contactEmail" | translate }} *</mat-label>
 											<input matInput type="email" formControlName="schema:email" required />
@@ -175,8 +173,8 @@
 					<mat-step [completed]="isStepValid(3)" [optional]="true">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.metadata" | translate }}</ng-template>
 							<div class="step-content">
-							<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4">
-								<div class="md:ob-col-span-4">
+							<div class="ob-flex ob-flex-wrap ob-gap-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.dct:issued" | translate }}</mat-label>
 										<input matInput [matDatepicker]="issuePicker" formControlName="dct:issued" />
@@ -184,7 +182,7 @@
 										<mat-datepicker #issuePicker></mat-datepicker>
 									</mat-form-field>
 								</div>
-								<div class="md:ob-col-span-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.dct:modified" | translate }}</mat-label>
 										<input matInput [matDatepicker]="modifiedPicker" formControlName="dct:modified" />
@@ -192,7 +190,7 @@
 										<mat-datepicker #modifiedPicker></mat-datepicker>
 									</mat-form-field>
 								</div>
-								<div class="md:ob-col-span-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.dcat:version" | translate }}</mat-label>
 										<input matInput formControlName="dcat:version" placeholder="e.g., 1.0.0" />
@@ -200,8 +198,8 @@
 								</div>
 							</div>
 
-							<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4">
-								<div class="md:ob-col-span-4">
+							<div class="ob-flex ob-flex-wrap ob-gap-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<app-enum-select-field
 										formControlName="dct:accrualPeriodicity"
 										[label]="'labels.dct:accrualPeriodicity'"
@@ -210,7 +208,7 @@
 									>
 									</app-enum-select-field>
 								</div>
-								<div class="md:ob-col-span-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<app-enum-select-field
 										formControlName="bv:typeOfData"
 										[label]="'labels.bv:typeOfData'"
@@ -219,7 +217,7 @@
 									>
 									</app-enum-select-field>
 								</div>
-								<div class="md:ob-col-span-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-checkbox formControlName="bv:archivalValue" class="mt-4">
 										{{ "labels.bv:archivalValue" | translate }}
 									</mat-checkbox>
@@ -241,8 +239,8 @@
 					<mat-step [completed]="isStepValid(5)" [optional]="true">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.external" | translate }}</ng-template>
 							<div class="step-content">
-							<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4">
-								<div class="md:ob-col-span-6">
+							<div class="ob-flex ob-flex-wrap ob-gap-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<div class="ob-form-group">
 										<label class="ob-form-label">{{ "labels.bv:externalCatalogs" | translate }}</label>
 										<div class="external-catalogs">
@@ -263,7 +261,7 @@
 										<small class="ob-text-muted">{{ "modify.auth.form.help.externalCatalogs" | translate }}</small>
 									</div>
 								</div>
-								<div class="md:ob-col-span-6">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.dcat:landingPage" | translate }}</mat-label>
 										<input matInput formControlName="dcat:landingPage" type="url" placeholder="https://example.com" />
@@ -277,16 +275,16 @@
 					<mat-step [completed]="isStepValid(6)" [optional]="true">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.coverage" | translate }}</ng-template>
 							<div class="step-content">
-							<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4">
-								<div class="col-md-12 mb-3">
+							<div class="ob-flex ob-flex-wrap ob-gap-4">
+								<div class="ob-flex-1 ob-min-w-0 ob-mb-3">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.dct:spatial" | translate }}</mat-label>
 										<input matInput formControlName="dct:spatial" placeholder="e.g., Switzerland, Canton Bern" />
 									</mat-form-field>
 								</div>
 							</div>
-							<div formGroupName="dct:temporal" class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4">
-								<div class="md:ob-col-span-6">
+							<div formGroupName="dct:temporal" class="ob-flex ob-flex-wrap ob-gap-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "modify.auth.form.labels.temporalStart" | translate }}</mat-label>
 										<input matInput [matDatepicker]="temporalStartPicker" formControlName="dcat:start_date" />
@@ -294,7 +292,7 @@
 										<mat-datepicker #temporalStartPicker></mat-datepicker>
 									</mat-form-field>
 								</div>
-								<div class="md:ob-col-span-6">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "modify.auth.form.labels.temporalEnd" | translate }}</mat-label>
 										<input matInput [matDatepicker]="temporalEndPicker" formControlName="dcat:end_date" />
@@ -310,20 +308,20 @@
 					<mat-step [completed]="isStepValid(7)" [optional]="true">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.business" | translate }}</ng-template>
 							<div class="step-content">
-							<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4">
-								<div class="md:ob-col-span-4">
+							<div class="ob-flex ob-flex-wrap ob-gap-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.bv:itSystem" | translate }}</mat-label>
 										<input matInput formControlName="bv:itSystem" [placeholder]="'modify.auth.form.placeholders.itSystem' | translate" />
 									</mat-form-field>
 								</div>
-								<div class="md:ob-col-span-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.bv:retentionPeriod" | translate }}</mat-label>
 										<input matInput type="number" formControlName="bv:retentionPeriod" [placeholder]="'modify.auth.form.placeholders.retentionPeriod' | translate" />
 									</mat-form-field>
 								</div>
-								<div class="md:ob-col-span-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<!-- Business Process field - could be expanded to textarea or array later -->
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.prov:wasGeneratedBy" | translate }}</mat-label>
@@ -338,28 +336,28 @@
 					<mat-step [completed]="isStepValid(8)" [optional]="true">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.additional" | translate }}</ng-template>
 							<div class="step-content">
-							<div class="row mb-3">
-								<div class="ob-col-span-full">
+							<div class="ob-grid ob-grid-cols-1 ob-gap-4 ob-mb-3">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.schema:comment" | translate }}</mat-label>
 										<textarea matInput formControlName="schema:comment" rows="3" [placeholder]="'modify.auth.form.placeholders.comment' | translate"></textarea>
 									</mat-form-field>
 								</div>
 							</div>
-							<div class="row mb-3">
-								<div class="md:ob-col-span-4">
+							<div class="ob-grid ob-grid-cols-1 ob-gap-4 ob-mb-3">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.bv:geoIdentifier" | translate }}</mat-label>
 										<input matInput formControlName="bv:geoIdentifier" [placeholder]="'modify.auth.form.placeholders.geoIdentifier' | translate" />
 									</mat-form-field>
 								</div>
-								<div class="md:ob-col-span-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "modify.auth.form.labels.imageUrl" | translate }}</mat-label>
 										<input matInput formControlName="schema:image" type="url" placeholder="https://example.com/image.jpg" />
 									</mat-form-field>
 								</div>
-								<div class="md:ob-col-span-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.bv:abrogation" | translate }}</mat-label>
 										<input matInput [matDatepicker]="abrogationPicker" formControlName="bv:abrogation" />
@@ -368,24 +366,24 @@
 									</mat-form-field>
 								</div>
 							</div>
-							<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4">
-								<div class="ob-col-span-full">
+							<div class="ob-flex ob-flex-wrap ob-gap-4">
+								<div class="ob-flex-1 ob-min-w-0">
 									<label class="ob-form-label">{{ "modify.auth.form.labels.relationships" | translate }}</label>
 									<small class="form-text text-muted d-block mb-2"> {{ 'modify.auth.form.help.relationships' | translate }} </small>
-									<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4">
-										<div class="md:ob-col-span-4">
+									<div class="ob-flex ob-flex-wrap ob-gap-4">
+										<div class="ob-flex-1 ob-min-w-0">
 											<mat-form-field class="ob-w-full">
 												<mat-label>{{ "labels.prov:wasDerivedFrom" | translate }}</mat-label>
 												<input matInput formControlName="prov:wasDerivedFrom" [placeholder]="'modify.auth.form.placeholders.derivedFrom' | translate" />
 											</mat-form-field>
 										</div>
-										<div class="md:ob-col-span-4">
+										<div class="ob-flex-1 ob-min-w-0">
 											<mat-form-field class="ob-w-full">
 												<mat-label>{{ "labels.dcat:inSeries" | translate }}</mat-label>
 												<input matInput formControlName="dcat:inSeries" [placeholder]="'modify.auth.form.placeholders.inSeries' | translate" />
 											</mat-form-field>
 										</div>
-										<div class="md:ob-col-span-4">
+										<div class="ob-flex-1 ob-min-w-0">
 											<mat-form-field class="ob-w-full">
 												<mat-label>{{ "labels.dct:replaces" | translate }}</mat-label>
 												<input matInput formControlName="dct:replaces" [placeholder]="'modify.auth.form.placeholders.replaces' | translate" />
@@ -422,29 +420,27 @@
 						</div>
 					</mat-step>
 						</mat-stepper>
-					</div>
 
 					<!-- Validation Summary -->
-					<ob-alert *ngIf="datasetForm.invalid && datasetForm.touched && invalidFields.length > 0" type="warning" class="mb-4">
+					<ob-alert *ngIf="datasetForm.invalid && datasetForm.touched && invalidFields.length > 0" type="warning" class="ob-mb-4">
 						<strong>{{ "modify.auth.form.validation.summary" | translate }}</strong>
-						<p class="mb-2">{{ "modify.auth.form.validation.fillRequired" | translate }}</p>
-						<ul class="mb-0">
+						<p class="ob-mb-2">{{ "modify.auth.form.validation.fillRequired" | translate }}</p>
+						<ul class="ob-mb-0">
 							<li *ngFor="let field of invalidFields">{{ field }}</li>
 						</ul>
 					</ob-alert>
 
 				</form>
-			</div>
+		</div>
 
-			<!-- Submit Section -->
-			<div *ngIf="showSubmitSection">
-				<app-dataset-submit [formData]="datasetForm.value" [isEditMode]="isEditMode" [datasetId]="datasetId"> </app-dataset-submit>
+		<!-- Submit Section -->
+		<div *ngIf="showSubmitSection">
+			<app-dataset-submit [formData]="datasetForm.value" [isEditMode]="isEditMode" [datasetId]="datasetId"> </app-dataset-submit>
 
-				<div class="ob-mt-3">
-					<button type="button" [obButton]="'secondary'" (click)="onFormReset()">
-						{{ "modify.auth.form.backToForm" | translate }}
-					</button>
-				</div>
+			<div class="ob-mt-3">
+				<button type="button" [obButton]="'secondary'" (click)="onFormReset()">
+					{{ "modify.auth.form.backToForm" | translate }}
+				</button>
 			</div>
 		</div>
 	</div>

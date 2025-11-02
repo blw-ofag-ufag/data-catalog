@@ -55,7 +55,7 @@
 						<!-- Custom Repository Field -->
 						<mat-form-field *ngIf="customRepositoryMode" class="ob-w-full ob-mb-3">
 							<mat-label>{{ "modify.auth.customRepositoryPlaceholder" | translate }}</mat-label>
-							<input matInput formControlName="customRepository" placeholder="owner/repository" [obInputClear]="authForm.get('customRepository')!" />
+							<input matInput formControlName="customRepository" placeholder="owner/repository" />
 							<mat-error *ngIf="authForm.get('customRepository')?.errors?.['required'] && authForm.get('customRepository')?.touched">
 								{{ "modify.auth.validation.customRepositoryRequired" | translate }}
 							</mat-error>
@@ -64,7 +64,7 @@
 						<!-- Username Field -->
 						<mat-form-field class="ob-w-full ob-mb-3">
 							<mat-label>{{ "modify.auth.username" | translate }}</mat-label>
-							<input matInput formControlName="username" [placeholder]="'modify.auth.usernamePlaceholder' | translate" autocomplete="username" [obInputClear]="authForm.get('username')!" />
+							<input matInput formControlName="username" [placeholder]="'modify.auth.usernamePlaceholder' | translate" autocomplete="username" />
 							<mat-error *ngIf="usernameControl?.errors?.['required'] && usernameControl?.touched">
 								{{ "modify.auth.validation.usernameRequired" | translate }}
 							</mat-error>
@@ -73,7 +73,7 @@
 						<!-- Token Field -->
 						<mat-form-field class="ob-w-full ob-mb-4">
 							<mat-label>{{ "modify.auth.token" | translate }}</mat-label>
-							<input matInput type="password" formControlName="token" [placeholder]="'modify.auth.tokenPlaceholder' | translate" autocomplete="new-password" [obInputClear]="authForm.get('token')!" />
+							<input matInput type="password" formControlName="token" [placeholder]="'modify.auth.tokenPlaceholder' | translate" autocomplete="new-password" />
 							<mat-error *ngIf="tokenControl?.errors?.['required'] && tokenControl?.touched">
 								{{ "modify.auth.validation.tokenRequired" | translate }}
 							</mat-error>
