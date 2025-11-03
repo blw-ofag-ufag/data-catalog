@@ -6,7 +6,7 @@
 		</mat-label>
 
 		<mat-select [formControl]="control" [placeholder]="placeholder | translate" (blur)="onBlur()">
-			<mat-option value="">
+			<mat-option *ngIf="!required" value="">
 				{{ "modify.auth.form.options.none" | translate }}
 			</mat-option>
 

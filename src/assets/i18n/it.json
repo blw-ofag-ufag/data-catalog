@@ -316,7 +316,13 @@
         "generateJson": "Genera JSON",
         "backToForm": "Torna al modulo",
         "authOptional": "Opzionale: Autenticazione",
-        "keywordArray": "Premi Invio o usa la virgola per aggiungere parole chiave"
+        "keywordArray": "Premi Invio o usa la virgola per aggiungere parole chiave",
+        "navigation": {
+          "next": "Avanti",
+          "previous": "Indietro"
+        },
+        "reset": "Ripristina",
+        "submit": "Invia"
       }
     }
   },

@@ -5,7 +5,9 @@
 			<span *ngIf="required" class="required-asterisk">*</span>
 		</label>
 		<button type="button" [obButton]="'secondary'" (click)="addDistribution()" size="sm">
-			<mat-icon>add</mat-icon>
+			<mat-icon svgIcon="plus">
+				<span class="ob-screen-reader-only">Add distribution</span>
+			</mat-icon>
 			{{ 'modify.auth.form.buttons.addDistribution' | translate }}
 		</button>
 	</div>
@@ -19,20 +21,22 @@
 			<div class="ob-flex ob-justify-between ob-items-start ob-mb-3">
 				<h6 class="ob-mb-0">{{ 'modify.auth.form.labels.distribution' | translate }} {{ i + 1 }}</h6>
 				<button type="button" [obButton]="'secondary'" (click)="removeDistribution(i)" size="sm" class="ob-text-danger">
-					<mat-icon>delete</mat-icon>
+					<mat-icon svgIcon="cancel-circle">
+						<span class="ob-screen-reader-only">Remove distribution</span>
+					</mat-icon>
 				</button>
 			</div>
 
 			<div [formGroup]="$any(distributionGroup)">
 				<!-- Required Fields -->
-				<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4 ob-mb-3">
-					<div class="md:ob-col-span-3">
+				<div class="ob-flex ob-flex-wrap ob-gap-4 ob-mb-3">
+					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ 'labels.dct:identifier' | translate }} *</mat-label>
 							<input matInput formControlName="dct:identifier" [placeholder]="'modify.auth.form.placeholders.distributionId' | translate" (blur)="onBlur()" />
 						</mat-form-field>
 					</div>
-					<div class="md:ob-col-span-3">
+					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ 'labels.adms:status' | translate }} *</mat-label>
 							<mat-select formControlName="adms:status" (blur)="onBlur()">
@@ -42,13 +46,13 @@
 							</mat-select>
 						</mat-form-field>
 					</div>
-					<div class="md:ob-col-span-3">
+					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ 'labels.dct:format' | translate }} *</mat-label>
 							<input matInput formControlName="dct:format" [placeholder]="'modify.auth.form.placeholders.format' | translate" (blur)="onBlur()" />
 						</mat-form-field>
 					</div>
-					<div class="md:ob-col-span-3">
+					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ 'labels.dct:modified' | translate }}</mat-label>
 							<input matInput [matDatepicker]="modifiedPicker" formControlName="dct:modified" />
@@ -59,15 +63,15 @@
 				</div>
 
 				<!-- URLs -->
-				<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4 ob-mb-3">
-					<div class="md:ob-col-span-6">
+				<div class="ob-flex ob-flex-wrap ob-gap-4 ob-mb-3">
+					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ 'labels.dcat:accessURL' | translate }} *</mat-label>
 							<input matInput type="url" formControlName="dcat:accessURL" [placeholder]="'modify.auth.form.placeholders.accessUrl' | translate" (blur)="onBlur()" />
 							<mat-hint>{{ 'modify.auth.form.help.accessUrl' | translate }}</mat-hint>
 						</mat-form-field>
 					</div>
-					<div class="md:ob-col-span-6">
+					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ 'labels.dcat:downloadURL' | translate }}</mat-label>
 							<input matInput type="url" formControlName="dcat:downloadURL" [placeholder]="'modify.auth.form.placeholders.downloadUrl' | translate" (blur)="onBlur()" />
@@ -77,14 +81,14 @@
 				</div>
 
 				<!-- Optional Metadata -->
-				<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4 ob-mb-3">
-					<div class="md:ob-col-span-4">
+				<div class="ob-flex ob-flex-wrap ob-gap-4 ob-mb-3">
+					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ 'labels.dct:title' | translate }}</mat-label>
 							<input matInput formControlName="dct:title" [placeholder]="'modify.auth.form.placeholders.distributionTitle' | translate" (blur)="onBlur()" />
 						</mat-form-field>
 					</div>
-					<div class="md:ob-col-span-4">
+					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ 'labels.dcatap:availability' | translate }}</mat-label>
 							<mat-select formControlName="dcatap:availability" (blur)="onBlur()">
@@ -94,7 +98,7 @@
 							</mat-select>
 						</mat-form-field>
 					</div>
-					<div class="md:ob-col-span-4">
+					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ 'labels.dct:license' | translate }}</mat-label>
 							<mat-select formControlName="dct:license" (blur)="onBlur()">
@@ -107,14 +111,14 @@
 				</div>
 
 				<!-- Description & Other Fields -->
-				<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4 ob-mb-3">
-					<div class="md:ob-col-span-6">
+				<div class="ob-flex ob-flex-wrap ob-gap-4 ob-mb-3">
+					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ 'labels.dct:description' | translate }}</mat-label>
 							<textarea matInput formControlName="dct:description" rows="2" [placeholder]="'modify.auth.form.placeholders.distributionDescription' | translate" (blur)="onBlur()"></textarea>
 						</mat-form-field>
 					</div>
-					<div class="md:ob-col-span-6">
+					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ 'labels.schema:comment' | translate }}</mat-label>
 							<textarea matInput formControlName="schema:comment" rows="2" [placeholder]="'modify.auth.form.placeholders.additionalComments' | translate" (blur)="onBlur()"></textarea>
@@ -123,13 +127,11 @@
 				</div>
 
 				<!-- Standards -->
-				<div class="ob-grid ob-grid-cols-1 md:ob-grid-cols-2 lg:ob-grid-cols-3 ob-gap-4">
-					<div class="md:ob-col-span-12">
-						<mat-form-field class="ob-w-full">
-							<mat-label>{{ 'labels.dct:conformsTo' | translate }}</mat-label>
-							<input matInput formControlName="dct:conformsTo" [placeholder]="'modify.auth.form.placeholders.conformsTo' | translate" (blur)="onBlur()" />
-						</mat-form-field>
-					</div>
+				<div class="ob-w-full">
+					<mat-form-field class="ob-w-full">
+						<mat-label>{{ 'labels.dct:conformsTo' | translate }}</mat-label>
+						<input matInput formControlName="dct:conformsTo" [placeholder]="'modify.auth.form.placeholders.conformsTo' | translate" (blur)="onBlur()" />
+					</mat-form-field>
 				</div>
 			</div>
 		</div>

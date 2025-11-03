@@ -4,8 +4,10 @@
 			{{ label | translate }}
 			<span *ngIf="required" class="required-asterisk">*</span>
 		</label>
-		<button type="button" [obButton]="'secondary'" (click)="addPerson()" class="btn-sm">
-			<mat-icon>add</mat-icon>
+		<button mat-button obButton="secondary" type="button" (click)="addPerson()" class="btn-sm">
+			<mat-icon svgIcon="plus">
+				<span class="ob-screen-reader-only">Add person</span>
+			</mat-icon>
 			{{ 'modify.auth.form.buttons.addPerson' | translate }}
 		</button>
 	</div>
@@ -25,7 +27,9 @@
 					class="btn-sm text-danger"
 					[disabled]="personsArray.length === 1 && required"
 				>
-					<mat-icon>delete</mat-icon>
+					<mat-icon svgIcon="cancel-circle">
+						<span class="ob-screen-reader-only">Remove person</span>
+					</mat-icon>
 				</button>
 			</div>
 

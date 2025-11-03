@@ -316,7 +316,13 @@
         "generateJson": "Générer le JSON",
         "backToForm": "Retour au formulaire",
         "authOptional": "Optionnel : Authentification",
-        "keywordArray": "Appuyez sur Entrée ou utilisez une virgule pour ajouter des mots-clés"
+        "keywordArray": "Appuyez sur Entrée ou utilisez une virgule pour ajouter des mots-clés",
+        "navigation": {
+          "next": "Suivant",
+          "previous": "Précédent"
+        },
+        "reset": "Réinitialiser",
+        "submit": "Soumettre"
       }
     }
   },

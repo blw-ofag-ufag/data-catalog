@@ -34,14 +34,20 @@
 }
 
 // Style the archival value checkbox
-.mt-4 {
-	margin-top: 1.5rem !important;
+.ob-checkbox-field {
+	margin-top: 1rem;
 
 	.mat-mdc-checkbox {
 		.mdc-form-field {
 			color: #495057;
 		}
 	}
+}
+
+.ob-form-field {
+	display: flex;
+	align-items: center;
+	min-height: 56px; // Match the height of mat-form-field
 }
 
 // Style external catalogs section

@@ -323,7 +323,13 @@
         "authOptional": "Optional: Authentication",
         "selectedRepository": "Selected Repository",
         "changeRepository": "Change Repository",
-        "keywordArray": "Press Enter or use comma to add keywords"
+        "keywordArray": "Press Enter or use comma to add keywords",
+        "navigation": {
+          "next": "Next",
+          "previous": "Previous"
+        },
+        "reset": "Reset",
+        "submit": "Submit"
       },
       "submit": {
         "title": "Submit Dataset",

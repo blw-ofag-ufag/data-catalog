@@ -8,7 +8,7 @@
 			<div class="ob-flex ob-items-center ob-gap-2">
 				<small class="ob-text-muted">{{ "modify.auth.form.selectedRepository" | translate }}:</small>
 				<strong class="me-3">{{ getSelectedRepositoryDisplay() }}</strong>
-				<a routerLink="/modify/auth" [obButton]="'tertiary'" size="sm">
+				<a routerLink="/modify/auth" mat-button obButton="secondary" size="sm">
 					{{ "modify.auth.form.changeRepository" | translate }}
 				</a>
 			</div>
@@ -50,11 +50,6 @@
 							>
 							</app-theme-select-field>
 
-							<div class="step-navigation ob-mt-3">
-								<button [obButton]="'primary'" matStepperNext>
-									{{ "modify.auth.form.navigation.next" | translate }}
-								</button>
-							</div>
 						</div>
 					</mat-step>
 
@@ -98,14 +93,6 @@
 							>
 							</app-enum-select-field>
 
-							<div class="step-navigation ob-mt-3 ob-flex ob-justify-between">
-								<button [obButton]="'secondary'" matStepperPrevious>
-									{{ "modify.auth.form.navigation.previous" | translate }}
-								</button>
-								<button [obButton]="'primary'" matStepperNext>
-									{{ "modify.auth.form.navigation.next" | translate }}
-								</button>
-							</div>
 						</div>
 					</mat-step>
 
@@ -158,14 +145,6 @@
 								</div>
 							</div>
 
-							<div class="step-navigation ob-mt-3 ob-flex ob-justify-between">
-								<button [obButton]="'secondary'" matStepperPrevious>
-									{{ "modify.auth.form.navigation.previous" | translate }}
-								</button>
-								<button [obButton]="'primary'" matStepperNext>
-									{{ "modify.auth.form.navigation.next" | translate }}
-								</button>
-							</div>
 						</div>
 					</mat-step>
 
@@ -218,9 +197,11 @@
 									</app-enum-select-field>
 								</div>
 								<div class="ob-flex-1 ob-min-w-0">
-									<mat-checkbox formControlName="bv:archivalValue" class="mt-4">
-										{{ "labels.bv:archivalValue" | translate }}
-									</mat-checkbox>
+									<div class="ob-form-field">
+										<mat-checkbox formControlName="bv:archivalValue" class="ob-checkbox-field">
+											{{ "labels.bv:archivalValue" | translate }}
+										</mat-checkbox>
+									</div>
 								</div>
 							</div>
 							</div>
@@ -336,15 +317,13 @@
 					<mat-step [completed]="isStepValid(8)" [optional]="true">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.additional" | translate }}</ng-template>
 							<div class="step-content">
-							<div class="ob-grid ob-grid-cols-1 ob-gap-4 ob-mb-3">
-								<div class="ob-flex-1 ob-min-w-0">
-									<mat-form-field class="ob-w-full">
-										<mat-label>{{ "labels.schema:comment" | translate }}</mat-label>
-										<textarea matInput formControlName="schema:comment" rows="3" [placeholder]="'modify.auth.form.placeholders.comment' | translate"></textarea>
-									</mat-form-field>
-								</div>
+							<div class="ob-w-full ob-mb-3">
+								<mat-form-field class="ob-w-full">
+									<mat-label>{{ "labels.schema:comment" | translate }}</mat-label>
+									<textarea matInput formControlName="schema:comment" rows="3" [placeholder]="'modify.auth.form.placeholders.comment' | translate"></textarea>
+								</mat-form-field>
 							</div>
-							<div class="ob-grid ob-grid-cols-1 ob-gap-4 ob-mb-3">
+							<div class="ob-flex ob-flex-wrap ob-gap-4">
 								<div class="ob-flex-1 ob-min-w-0">
 									<mat-form-field class="ob-w-full">
 										<mat-label>{{ "labels.bv:geoIdentifier" | translate }}</mat-label>
@@ -366,29 +345,27 @@
 									</mat-form-field>
 								</div>
 							</div>
-							<div class="ob-flex ob-flex-wrap ob-gap-4">
-								<div class="ob-flex-1 ob-min-w-0">
-									<label class="ob-form-label">{{ "modify.auth.form.labels.relationships" | translate }}</label>
-									<small class="form-text text-muted d-block mb-2"> {{ 'modify.auth.form.help.relationships' | translate }} </small>
-									<div class="ob-flex ob-flex-wrap ob-gap-4">
-										<div class="ob-flex-1 ob-min-w-0">
-											<mat-form-field class="ob-w-full">
-												<mat-label>{{ "labels.prov:wasDerivedFrom" | translate }}</mat-label>
-												<input matInput formControlName="prov:wasDerivedFrom" [placeholder]="'modify.auth.form.placeholders.derivedFrom' | translate" />
-											</mat-form-field>
-										</div>
-										<div class="ob-flex-1 ob-min-w-0">
-											<mat-form-field class="ob-w-full">
-												<mat-label>{{ "labels.dcat:inSeries" | translate }}</mat-label>
-												<input matInput formControlName="dcat:inSeries" [placeholder]="'modify.auth.form.placeholders.inSeries' | translate" />
-											</mat-form-field>
-										</div>
-										<div class="ob-flex-1 ob-min-w-0">
-											<mat-form-field class="ob-w-full">
-												<mat-label>{{ "labels.dct:replaces" | translate }}</mat-label>
-												<input matInput formControlName="dct:replaces" [placeholder]="'modify.auth.form.placeholders.replaces' | translate" />
-											</mat-form-field>
-										</div>
+							<div class="ob-w-full">
+								<label class="ob-form-label">{{ "modify.auth.form.labels.relationships" | translate }}</label>
+								<small class="form-text text-muted d-block mb-2"> {{ 'modify.auth.form.help.relationships' | translate }} </small>
+								<div class="ob-flex ob-flex-wrap ob-gap-4">
+									<div class="ob-flex-1 ob-min-w-0">
+										<mat-form-field class="ob-w-full">
+											<mat-label>{{ "labels.prov:wasDerivedFrom" | translate }}</mat-label>
+											<input matInput formControlName="prov:wasDerivedFrom" [placeholder]="'modify.auth.form.placeholders.derivedFrom' | translate" />
+										</mat-form-field>
+									</div>
+									<div class="ob-flex-1 ob-min-w-0">
+										<mat-form-field class="ob-w-full">
+											<mat-label>{{ "labels.dcat:inSeries" | translate }}</mat-label>
+											<input matInput formControlName="dcat:inSeries" [placeholder]="'modify.auth.form.placeholders.inSeries' | translate" />
+										</mat-form-field>
+									</div>
+									<div class="ob-flex-1 ob-min-w-0">
+										<mat-form-field class="ob-w-full">
+											<mat-label>{{ "labels.dct:replaces" | translate }}</mat-label>
+											<input matInput formControlName="dct:replaces" [placeholder]="'modify.auth.form.placeholders.replaces' | translate" />
+										</mat-form-field>
 									</div>
 								</div>
 							</div>
@@ -401,25 +378,22 @@
 						<div class="step-content">
 							<app-distribution-field formControlName="dcat:distribution" [label]="'labels.dcat:distribution'"> </app-distribution-field>
 
-							<div class="step-navigation ob-mt-3 ob-flex ob-justify-between">
-								<button [obButton]="'secondary'" matStepperPrevious>
-									{{ "modify.auth.form.navigation.previous" | translate }}
-								</button>
-								<div class="final-actions">
-									<button type="button" [obButton]="'secondary'" (click)="onFormReset()" class="me-2">
-										{{ "modify.auth.form.reset" | translate }}
-									</button>
-									<button type="button" [obButton]="'secondary'" (click)="onCancel()" class="me-2">
-										{{ "modify.auth.form.cancel" | translate }}
-									</button>
-									<button type="button" [obButton]="'primary'" (click)="onSubmit()" [disabled]="isLoading">
-										{{ "modify.auth.form.submit" | translate }}
-									</button>
-								</div>
-							</div>
 						</div>
 					</mat-step>
 						</mat-stepper>
+
+					<!-- Form Actions -->
+					<div class="final-actions ob-mt-4 ob-flex ob-justify-end ob-gap-3">
+						<button type="button" mat-button obButton="secondary" (click)="onFormReset()">
+							{{ "modify.auth.form.reset" | translate }}
+						</button>
+						<button type="button" mat-button obButton="secondary" (click)="onCancel()">
+							{{ "modify.auth.form.cancel" | translate }}
+						</button>
+						<button type="button" mat-button obButton="primary" (click)="onSubmit()" [disabled]="isLoading">
+							{{ "modify.auth.form.submit" | translate }}
+						</button>
+					</div>
 
 					<!-- Validation Summary -->
 					<ob-alert *ngIf="datasetForm.invalid && datasetForm.touched && invalidFields.length > 0" type="warning" class="ob-mb-4">
@@ -438,7 +412,7 @@
 			<app-dataset-submit [formData]="datasetForm.value" [isEditMode]="isEditMode" [datasetId]="datasetId"> </app-dataset-submit>
 
 			<div class="ob-mt-3">
-				<button type="button" [obButton]="'secondary'" (click)="onFormReset()">
+				<button type="button" mat-button obButton="secondary" (click)="onFormReset()">
 					{{ "modify.auth.form.backToForm" | translate }}
 				</button>
 			</div>

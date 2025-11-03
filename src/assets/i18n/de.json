@@ -353,6 +353,10 @@
           "addPerson": "Person hinzufügen",
           "addDistribution": "Distribution hinzufügen"
         },
+        "navigation": {
+          "next": "Weiter",
+          "previous": "Zurück"
+        },
         "messages": {
           "noPersons": "Noch keine verantwortlichen Personen hinzugefügt. Klicken Sie auf \"Person hinzufügen\", um eine hinzuzufügen.",
           "noDistributions": "Noch keine Distributionen hinzugefügt. Klicken Sie auf \"Distribution hinzufügen\", um eine hinzuzufügen."
@@ -363,7 +367,9 @@
         "backToForm": "Zurück zum Formular",
         "authOptional": "Optional: Authentifizierung",
         "selectedRepository": "Ausgewähltes Repository",
-        "changeRepository": "Repository wechseln"
+        "changeRepository": "Repository wechseln",
+        "reset": "Zurücksetzen",
+        "submit": "Einreichen"
       },
       "submit": {
         "title": "Datensatz einreichen",
