@@ -222,6 +222,110 @@
     "adminDirError": "Impossibile cercare in AdminDir",
     "adminDirLookup": "ID AdminDir"
   },
+  "modify": {
+    "auth": {
+      "title": "Autenticazione GitHub",
+      "description": "Autenticati con GitHub per creare o modificare set di dati.",
+      "username": "Nome utente GitHub",
+      "usernamePlaceholder": "Il tuo nome utente GitHub",
+      "token": "Token di accesso personale",
+      "tokenPlaceholder": "Il tuo token di accesso personale GitHub",
+      "validate": "Convalida credenziali",
+      "cancel": "Annulla",
+      "instructions": {
+        "title": "Istruzioni:",
+        "step1": "Vai su Impostazioni GitHub > Impostazioni sviluppatore > Token di accesso personali",
+        "step2": "Crea un nuovo token con permessi 'repo'",
+        "step3": "Inserisci il tuo nome utente e token qui sotto"
+      },
+      "validation": {
+        "usernameRequired": "Il nome utente è richiesto",
+        "tokenRequired": "Il token è richiesto",
+        "tokenMinLength": "Il token deve essere lungo almeno 10 caratteri"
+      },
+      "errors": {
+        "invalidToken": "Token non valido. Verifica il tuo token di accesso personale.",
+        "tokenExpired": "Il token è scaduto. Crea un nuovo token.",
+        "noWritePermission": "Il token non ha i permessi di scrittura per il repository.",
+        "repoNotFound": "Repository non trovato.",
+        "noRepoAccess": "Nessun accesso al repository.",
+        "networkError": "Errore di rete. Riprova più tardi.",
+        "unknown": "Errore sconosciuto."
+      },
+      "help": {
+        "title": "Hai bisogno di aiuto?",
+        "description": "Contatta il centro di competenza per la trasformazione digitale se hai bisogno di assistenza per creare un token di accesso personale.",
+        "learnMore": "Scopri di più sui token GitHub"
+      },
+      "form": {
+        "title": {
+          "new": "Crea nuovo set di dati",
+          "edit": "Modifica set di dati"
+        },
+        "comingSoon": "Il modulo è attualmente in fase di implementazione...",
+        "logout": "Disconnetti",
+        "cancel": "Annulla",
+        "create": "Crea set di dati",
+        "update": "Aggiorna set di dati",
+        "validation": {
+          "required": "Questo campo è obbligatorio",
+          "maxLength": "Lunghezza massima superata",
+          "email": "Inserisci un indirizzo email valido",
+          "summary": "Errori di validazione del modulo:",
+          "fillRequired": "Compila tutti i campi obbligatori contrassegnati con un asterisco (*)"
+        },
+        "confirmation": {
+          "unsavedChanges": "Hai modifiche non salvate. Sei sicuro di voler uscire? Tutte le modifiche andranno perse."
+        },
+        "help": {
+          "multilingualRequired": "Almeno tedesco e francese sono richiesti"
+        },
+        "options": {
+          "none": "Nessuna selezione"
+        },
+        "sections": {
+          "basic": "Informazioni di base",
+          "access": "Accesso e classificazione",
+          "publisher": "Editore e contatto",
+          "metadata": "Metadati e versioning",
+          "governance": "Governance e responsabilità",
+          "external": "Riferimenti esterni e collegamenti",
+          "coverage": "Copertura e aspetti legali",
+          "business": "Contesto aziendale",
+          "additional": "Metadati aggiuntivi e relazioni",
+          "distributions": "Distribuzioni"
+        },
+        "placeholders": {
+          "title": "Inserisci il titolo del set di dati",
+          "description": "Inserisci la descrizione del set di dati",
+          "keyword": "Aggiungi parola chiave",
+          "theme": "Seleziona tema"
+        },
+        "labels": {
+          "temporalStart": "Inizio copertura temporale",
+          "temporalEnd": "Fine copertura temporale",
+          "imageUrl": "URL immagine del set di dati",
+          "relationships": "Relazioni del set di dati"
+        },
+        "help": {
+          "externalCatalogs": "Seleziona i cataloghi esterni dove questo set di dati deve essere pubblicato",
+          "relationships": "Inserisci gli ID dei set di dati separati da virgole per i set di dati correlati"
+        },
+        "contactName": "Nome della persona di contatto",
+        "contactEmail": "Email della persona di contatto",
+        "generateJson": "Genera JSON",
+        "backToForm": "Torna al modulo",
+        "authOptional": "Opzionale: Autenticazione",
+        "keywordArray": "Premi Invio o usa la virgola per aggiungere parole chiave",
+        "navigation": {
+          "next": "Avanti",
+          "previous": "Indietro"
+        },
+        "reset": "Ripristina",
+        "submit": "Invia"
+      }
+    }
+  },
   "not-found": {
     "back-home": "Torna alla home",
     "message": "La pagina che stai cercando non esiste.",

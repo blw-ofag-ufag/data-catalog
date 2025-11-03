@@ -166,6 +166,7 @@
     "dcat:accessURL": "Zugriffs-URL",
     "dcat:catalog": "Katalog",
     "dcat:contactPoint": "Kontaktstelle",
+    "dcat:distribution": "Distributionen",
     "dcat:downloadURL": "Download-URL",
     "dcat:inSeries": "In dataset Serie",
     "dcat:keyword": "Schlüsselwörter",
@@ -221,6 +222,179 @@
   "msg": {
     "adminDirError": "AdminDir konnte nicht erreicht werden",
     "adminDirLookup": "AdminDir ID"
+  },
+  "modify": {
+    "auth": {
+      "title": "GitHub-Authentifizierung",
+      "description": "Authentifizieren Sie sich mit GitHub, um Datensätze zu erstellen oder zu bearbeiten.",
+      "repository": "Repository",
+      "customRepository": "Benutzerdefiniertes Repository",
+      "customRepositoryPlaceholder": "GitHub Repository (z.B. owner/repo)",
+      "username": "GitHub-Benutzername",
+      "usernamePlaceholder": "Ihr GitHub-Benutzername",
+      "token": "Personal Access Token",
+      "tokenPlaceholder": "Ihr GitHub Personal Access Token",
+      "validate": "Anmeldedaten prüfen",
+      "cancel": "Abbrechen",
+      "instructions": {
+        "title": "Anweisungen:",
+        "step1": "Gehen Sie zu GitHub Settings > Developer settings > Personal access tokens",
+        "step2": "Erstellen Sie einen neuen Token mit 'repo' Berechtigungen",
+        "step3": "Geben Sie Ihren Benutzername und Token unten ein"
+      },
+      "validation": {
+        "repositoryRequired": "Repository ist erforderlich",
+        "customRepositoryRequired": "Repository ist erforderlich",
+        "usernameRequired": "Benutzername ist erforderlich",
+        "tokenRequired": "Token ist erforderlich",
+        "tokenMinLength": "Token muss mindestens 10 Zeichen lang sein"
+      },
+      "errors": {
+        "invalidToken": "Ungültiges Token. Bitte überprüfen Sie Ihr Personal Access Token.",
+        "tokenExpired": "Token ist abgelaufen. Bitte erstellen Sie ein neues Token.",
+        "noWritePermission": "Token hat keine Schreibberechtigung für das Repository.",
+        "repoNotFound": "Repository nicht gefunden.",
+        "noRepoAccess": "Kein Zugriff auf das Repository.",
+        "networkError": "Netzwerkfehler. Bitte versuchen Sie es später erneut.",
+        "unknown": "Unbekannter Fehler aufgetreten."
+      },
+      "help": {
+        "title": "Hilfe benötigt?",
+        "description": "Wenden Sie sich an das Kompetenzzentrum für digitale Transformation, wenn Sie Hilfe bei der Erstellung eines Personal Access Tokens benötigen.",
+        "learnMore": "Mehr über GitHub Tokens erfahren"
+      },
+      "form": {
+        "title": {
+          "new": "Neuen Datensatz erstellen",
+          "edit": "Datensatz bearbeiten"
+        },
+        "comingSoon": "Das Formular wird derzeit implementiert...",
+        "logout": "Abmelden",
+        "cancel": "Abbrechen",
+        "create": "Datensatz erstellen",
+        "update": "Datensatz aktualisieren",
+        "validation": {
+          "required": "Dieses Feld ist erforderlich",
+          "maxLength": "Maximale Länge überschritten",
+          "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+          "summary": "Formularvalidierungsfehler:",
+          "fillRequired": "Bitte füllen Sie alle Pflichtfelder aus, die mit einem Sternchen (*) markiert sind"
+        },
+        "confirmation": {
+          "unsavedChanges": "Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie die Seite verlassen möchten? Alle Änderungen gehen verloren."
+        },
+        "help": {
+          "multilingualRequired": "Mindestens Deutsch und Französisch sind erforderlich"
+        },
+        "options": {
+          "none": "Keine Auswahl"
+        },
+        "sections": {
+          "basic": "Grundinformationen",
+          "access": "Zugriff & Klassifizierung",
+          "publisher": "Herausgeber & Kontakt",
+          "metadata": "Metadaten & Versionierung",
+          "governance": "Governance & Verantwortlichkeit",
+          "external": "Externe Referenzen & Links",
+          "coverage": "Abdeckung & Rechtliches",
+          "business": "Geschäftskontext",
+          "additional": "Zusätzliche Metadaten & Beziehungen",
+          "distributions": "Distributionen"
+        },
+        "placeholders": {
+          "title": "Titel des Datensatzes eingeben",
+          "description": "Beschreibung des Datensatzes eingeben",
+          "keyword": "Schlüsselwort hinzufügen",
+          "theme": "Thema auswählen",
+          "itSystem": "Name des IT-Systems",
+          "retentionPeriod": "z.B., 10",
+          "businessProcess": "Zugehöriger Geschäftsprozess",
+          "comment": "Zusätzliche Bemerkungen zu diesem Datensatz",
+          "geoIdentifier": "GeoIV-Identifikator",
+          "derivedFrom": "datensatz-id-1, datensatz-id-2",
+          "inSeries": "serie-id-1, serie-id-2",
+          "replaces": "alter-datensatz-id-1, alter-datensatz-id-2",
+          "adminDirId": "z.B., p-2959456",
+          "fullName": "Vollständiger Name",
+          "email": "email@beispiel.com",
+          "distributionId": "distribution-id",
+          "format": "z.B., CSV, JSON, XML",
+          "accessUrl": "https://beispiel.com/zugriff",
+          "downloadUrl": "https://beispiel.com/download.csv",
+          "distributionTitle": "Titel der Distribution",
+          "distributionDescription": "Beschreibung dieser Distribution",
+          "additionalComments": "Zusätzliche Bemerkungen",
+          "conformsTo": "Standard oder Spezifikation, dem diese Distribution entspricht"
+        },
+        "labels": {
+          "temporalStart": "Zeitraum Anfang",
+          "temporalEnd": "Zeitraum Ende",
+          "imageUrl": "Datensatz Bild-URL",
+          "relationships": "Datensatz-Beziehungen",
+          "person": "Person",
+          "adminDirId": "AdminDir ID",
+          "role": "Rolle",
+          "nameOptional": "Name (optional)",
+          "emailOptional": "E-Mail (optional)",
+          "distribution": "Distribution"
+        },
+        "help": {
+          "multilingualRequired": "Mindestens Deutsch und Französisch sind erforderlich",
+          "keywordArray": "Enter drücken oder Komma verwenden, um Schlüsselwörter hinzuzufügen",
+          "externalCatalogs": "Wählen Sie externe Kataloge aus, in denen dieser Datensatz veröffentlicht werden soll",
+          "relationships": "Geben Sie Datensatz-IDs durch Kommas getrennt für verwandte Datensätze ein",
+          "adminDirId": "Die AdminDir ID von der AdminDir-Seiten-URL der Person",
+          "personsRequired": "Mindestens eine verantwortliche Person ist erforderlich. AdminDir ID und Rolle sind für jede Person obligatorisch.",
+          "accessUrl": "URL zur Seite für den Zugriff auf diese Distribution",
+          "downloadUrl": "Direkte Download-URL (optional)",
+          "distributionsRequired": "Mindestens eine Distribution ist erforderlich. Identifikator, Zugriffs-URL, Status und Format sind für jede Distribution obligatorisch."
+        },
+        "buttons": {
+          "addPerson": "Person hinzufügen",
+          "addDistribution": "Distribution hinzufügen"
+        },
+        "navigation": {
+          "next": "Weiter",
+          "previous": "Zurück"
+        },
+        "messages": {
+          "noPersons": "Noch keine verantwortlichen Personen hinzugefügt. Klicken Sie auf \"Person hinzufügen\", um eine hinzuzufügen.",
+          "noDistributions": "Noch keine Distributionen hinzugefügt. Klicken Sie auf \"Distribution hinzufügen\", um eine hinzuzufügen."
+        },
+        "contactName": "Name der Kontaktperson",
+        "contactEmail": "E-Mail der Kontaktperson",
+        "generateJson": "JSON generieren",
+        "backToForm": "Zurück zum Formular",
+        "authOptional": "Optional: Authentifizierung",
+        "selectedRepository": "Ausgewähltes Repository",
+        "changeRepository": "Repository wechseln",
+        "reset": "Zurücksetzen",
+        "submit": "Einreichen"
+      },
+      "submit": {
+        "title": "Datensatz einreichen",
+        "authSuccess": "GitHub-Berechtigung verifiziert",
+        "authInfo": "Authentifizierung ist optional - GitHub wird nach Anmeldedaten fragen",
+        "authenticate": "Jetzt authentifizieren",
+        "showJson": "JSON anzeigen",
+        "hideJson": "JSON verbergen",
+        "options": "Einreichungsoptionen",
+        "createInGitHub": "In GitHub erstellen",
+        "editInGitHub": "In GitHub bearbeiten",
+        "githubDescription": "Öffnet GitHub mit vorausgefülltem Inhalt zum Review und Commit",
+        "alternatives": "Alternative Optionen",
+        "copyJson": "JSON kopieren",
+        "copyDescription": "Kopiert JSON in die Zwischenablage für manuelles Einfügen",
+        "downloadJson": "JSON herunterladen",
+        "downloadDescription": "Lädt JSON-Datei für lokale Speicherung herunter",
+        "help": {
+          "title": "Wie funktioniert es?",
+          "github": "Klicken Sie auf 'In GitHub erstellen' um GitHub mit vorausgefülltem Inhalt zu öffnen",
+          "review": "Überprüfen Sie die Änderungen in GitHubs Diff-Ansicht",
+          "commit": "Erstellen Sie den Commit direkt in GitHub oder erstellen Sie einen Pull Request"
+        }
+      }
+    }
   },
   "not-found": {
     "back-home": "Zurück zur Startseite",
