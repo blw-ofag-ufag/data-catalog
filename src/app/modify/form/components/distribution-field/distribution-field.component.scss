@@ -1,0 +1,53 @@
+.distribution-field {
+	.field-label {
+		font-weight: 500;
+		margin-bottom: 0.5rem;
+
+		.required-asterisk {
+			color: #dc3545;
+			margin-left: 0.25rem;
+		}
+	}
+
+	.distribution-card {
+		border-left: 4px solid #28a745;
+		position: relative;
+
+		.card-title {
+			color: #495057;
+			font-size: 0.9rem;
+		}
+
+		&:hover {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			transition: box-shadow 0.2s ease;
+		}
+	}
+
+	.no-distributions-message {
+		padding: 1rem;
+		background-color: #f8f9fa;
+		border: 1px dashed #dee2e6;
+		border-radius: 0.375rem;
+		text-align: center;
+	}
+
+	.field-help {
+		margin-top: 0.5rem;
+	}
+
+	// Group related fields visually
+	.row {
+		&.mb-3 {
+			&:not(:last-child) {
+				border-bottom: 1px solid #f1f3f5;
+				padding-bottom: 1rem;
+			}
+		}
+	}
+
+	// Make required field labels stand out
+	.mat-mdc-form-field-required-marker {
+		color: #dc3545;
+	}
+}

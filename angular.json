@@ -62,7 +62,6 @@
           },
           "configurations": {
             "development": {
-              "buildOptimizer": false,
               "vendorChunk": true
             },
             "production": {

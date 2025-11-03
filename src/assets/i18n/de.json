@@ -1,180 +1,27 @@
 {
   "app": {
-    "title": "DigiAgriFoodCH Datenkatalog",
-    "description": "Entdecken und nutzen Sie Schweizer landwirtschaftliche und ernährungsbezogene Datensätze von Bundesinstitutionen",
+    "description": "Durchsuchen Sie den gemeinsamen Datenkatalog des Bundesamtes für Landwirtschaft (BLW) und des Bundesamtes für Lebensmittelsicherheit und Veterinärwesen (BLV)",
     "navigation": {
-      "index": "Index",
-      "catalog": "Katalog",
       "about": "Über diesen Datenkatalog",
-      "handbook": "Handbuch"
-    }
-  },
-  "ui": {
-    "dataProducts": "Datenprodukte",
-    "dataSet": "Datensatz",
-    "filter": "Filter",
-    "keywords": "Schlüsselwörter",
-    "search": "Suchen",
-    "defaultSelect": "Standard Auswahl",
-    "newKeyword": "Neues Schlüsselwort...",
-    "remove": "Entfernen",
-    "reset": "zurücksetzen",
-    "cards": "Karten",
-    "list": "Liste",
-    "title": "Titel",
-    "issued": "Veröffentlicht",
-    "steward": "Datenverwalter",
-    "stewardOwnerContact": "Kontakt",
-    "addDataset": "Datensatz hinzufügen",
-    "editDataset": "Bearbeiten",
-    "hideFilters": "Filter verbergen",
-    "showFilters": "Filter anzeigen",
-    "sortBy": {
-      "relevance": "Nach Relevanz sortieren",
-      "title": "Nach Titel sortieren",
-      "oldest": "Älteste zuerst",
-      "newest": "Neueste zuerst",
-      "owner": "Nach Dateninhaber"
+      "catalog": "Katalog",
+      "handbook": "Handbuch",
+      "index": "Index"
     },
-    "issueDate": "Ausgabedatum",
-    "noResultsFound": "Keine Ergebnisse gefunden. Versuchen Sie allgemeinere Filter oder Suche."
-  },
-  "msg": {
-    "adminDirLookup": "AdminDir ID"
-  },
-  "labels": {
-    "image": "Bild",
-    "identifier": "Identifikator",
-    "title": "Titel",
-    "description": "Beschreibung",
-    "dct:identifier": "Identifikator",
-    "dct:title": "Titel",
-    "dct:description": "Beschreibung",
-    "accessRights": "Zugriffsrechte",
-    "dct:publisher": "Herausgeber",
-    "contactPoint": "Kontaktstelle",
-    "issued": "Ausgabedatum",
-    "dcatap:availability": "Verfügbarkeit",
-    "keyword": "Schlüsselwörter",
-    "accrualPeriodicity": "Aktualisierungsintervall",
-    "modified": "Änderungsdatum",
-    "version": "Version",
-    "qualitifedAttribution": "Verantwortliche Personen",
-    "status": "Status",
-    "classification": "Klassifizierung",
-    "personalData": "Personenbezogene Daten",
-    "typeOfData": "Datentyp",
-    "archivalValue": "Archivwürdig",
-    "externalCatalogs": "Veröffentlichung in externen Katalogen",
-    "theme": "Thema",
-    "landingPage": "Einstiegsseite",
-    "spatial": "Räumliche Abdeckung",
-    "temporal": "Zeitliche Abdeckung",
-    "applicableLegislation": "Rechtsgrundlage",
-    "prov:wasGeneratedBy": "Geschäftsprozess",
-    "bv:retentionPeriod": "Aufbewahrungsfrist",
-    "catalog": "Katalog",
-    "prov:wasDerivedFrom": "Abgeleitet von",
-    "geoIdentifier": "Identifikator GeoIV",
-    "page": "Verwandte Ressourcen",
-    "comment": "Zusätzliche Bemerkungen",
-    "bv:abrogation": "Aufhebungsdatum",
-    "bv:itSystem": "IT-System",
-    "inSeries": "In dataset Serie",
-    "replaces": "Ersetzt",
-    "accessURL": "Zugriffs-URL",
-    "format": "Dateiformat",
-    "downloadURL": "Download-URL",
-    "conformsTo": "Entspricht",
-    "license": "Lizenz",
-    "accessService": "Zugriffsdienst",
-    "dct:accessRights": "Zugriffsrechte",
-    "dcat:contactPoint": "Kontaktstelle",
-    "dct:issued": "Ausgabedatum",
-    "dcatap:availability": "Verfügbarkeit",
-    "dcat:keyword": "Schlüsselwörter",
-    "dct:accrualPeriodicity": "Aktualisierungsintervall",
-    "dct:modified": "Änderungsdatum",
-    "dcat:version": "Version",
-    "prov:qualifiedAttribution": "Verantwortliche Personen",
-    "adms:status": "Status",
-    "bv:classification": "Klassifizierung",
-    "bv:personalData": "Personenbezogene Daten",
-    "bv:typeOfData": "Datentyp",
-    "bv:archivalValue": "Archivwürdig",
-    "bv:externalCatalogs": "Veröffentlichung in externen Katalogen",
-    "dcat:theme": "Thema",
-    "dcat:landingPage": "Einstiegsseite",
-    "dct:spatial": "Räumliche Abdeckung",
-    "dct:temporal": "Zeitliche Abdeckung",
-    "dcatap:applicableLegislation": "Rechtsgrundlage",
-    "prov:wasGeneratedBy": "Geschäftsprozess",
-    "bv:retentionPeriod": "Aufbewahrungsfrist",
-    "dcat:catalog": "Katalog",
-    "prov:wasDerivedFrom": "Abgeleitet von",
-    "bv:geoIdentifier": "Identifikator GeoIV",
-    "foaf:page": "Verwandte Ressourcen",
-    "schema:comment": "Zusätzliche Bemerkungen",
-    "bv:abrogation": "Aufhebungsdatum",
-    "bv:itSystem": "IT-System",
-    "dcat:inSeries": "In dataset Serie",
-    "dct:replaces": "Ersetzt",
-    "dcat:accessURL": "Zugriffs-URL",
-    "dct:format": "Dateiformat",
-    "dcat:downloadURL": "Download-URL",
-    "dct:conformsTo": "Entspricht",
-    "dct:license": "Lizenz",
-    "dcat:accessService": "Zugriffsdienst"
+    "title": "Agri-Food-Datenkatalog"
   },
   "choices": {
     "dataset": {
       "adms:status": {
-        "workInProgress": "In Bearbeitung",
-        "validated": "Validiert",
-        "published": "Veröffentlicht",
+        "archived": "Archiviert",
         "deleted": "Gelöscht",
-        "archived": "Archiviert"
-      },
-      "dct:accessRights": {
-        "CONFIDENTIAL": "Vertraulich",
-        "NON_PUBLIC": "Nicht öffentlich",
-        "PUBLIC": "Öffentlich",
-        "RESTRICTED": "Eingeschränkt",
-        "SENSITIVE": "Sensibel"
-      },
-      "dct:publisher": {
-        "BLW-OFAG-UFAG-FOAG": "BLW",
-        "BLV-OSAV-USAV-FSVO": "BLV"
-      },
-      "dcatap:availability": {
-        "AVAILABLE": "Verfügbar",
-        "EXPERIMENTAL": "Experimentell",
-        "STABLE": "Stabil",
-        "TEMPORARY": "Temporär"
-      },
-      "dct:accrualPeriodicity": {
-        "OTHER": "Andere",
-        "HOURLY": "Stündlich",
-        "UNKNOWN": "Unbekannt",
-        "QUARTERLY": "Vierteljährlich",
-        "NEVER": "Nie",
-        "MONTHLY": "Monatlich",
-        "ANNUAL": "Jährlich",
-        "DAILY": "Täglich",
-        "AS_NEEDED": "Nach Bedarf",
-        "WEEKLY": "Wöchentlich",
-        "IRREG": "Unregelmässig",
-        "CONT": "Kontinuierlich (Echtzeit)"
-      },
-      "hadRole": {
-        "businessDataOwner": "Business Data Owner",
-        "dataSteward": "Data Steward",
-        "dataCustodian": "Data Custodian"
+        "published": "Veröffentlicht",
+        "validated": "Validiert",
+        "workInProgress": "In Bearbeitung"
       },
       "bv:classification": {
-        "none": "Keine",
-        "internal": "Intern",
         "confidential": "Vertraulich",
+        "internal": "Intern",
+        "none": "Keine",
         "secret": "Geheim"
       },
       "bv:personalData": {
@@ -183,47 +30,76 @@
         "sensitivePersonalData": "Besonders schutzenswerte Personendaten"
       },
       "bv:typeOfData": {
-        "primaryThematicData": "Primäre Fachdaten",
-        "secondaryThematicData": "Sekundäre Fachdaten",
-        "referenceData": "Referenzdaten",
         "masterData": "Stammdaten",
+        "primaryThematicData": "Primäre Fachdaten",
+        "referenceData": "Referenzdaten",
+        "secondaryThematicData": "Sekundäre Fachdaten",
         "unstructuredData": "Unstrukturierte Daten"
       },
       "dcat:theme": {
-        "work": "Arbeit",
+        "administration": "Verwaltung",
+        "agriculture": "Landwirtschaft",
         "construction": "Bau",
-        "population": "Bevölkerung",
+        "crime": "Kriminalität",
+        "culture": "Kultur",
         "education": "Bildung",
         "energy": "Energie",
         "finances": "Finanzen",
         "geography": "Geographie",
-        "legislation": "Gesetzgebung",
         "health": "Gesundheit",
-        "trade": "Handel",
         "industry": "Industrie",
-        "crime": "Kriminalität",
-        "culture": "Kultur",
-        "agriculture": "Landwirtschaft",
+        "legislation": "Gesetzgebung",
         "mobility": "Mobilität",
-        "public-order": "Öffentliche Ordnung",
+        "national-economy": "Volkswirtschaft",
         "politics": "Politik",
+        "population": "Bevölkerung",
         "prices": "Preise",
-        "territory": "Raum",
+        "public-order": "Öffentliche Ordnung",
         "social-security": "Soziale Sicherheit",
         "statistical-basis": "Statistische Grundlagen",
+        "territory": "Raum",
         "tourism": "Tourismus",
-        "administration": "Verwaltung",
-        "national-economy": "Volkswirtschaft"
+        "trade": "Handel",
+        "work": "Arbeit"
+      },
+      "dcatap:availability": {
+        "AVAILABLE": "Verfügbar",
+        "EXPERIMENTAL": "Experimentell",
+        "STABLE": "Stabil",
+        "TEMPORARY": "Temporär"
+      },
+      "dct:accessRights": {
+        "CONFIDENTIAL": "Vertraulich",
+        "NON_PUBLIC": "Nicht öffentlich",
+        "PUBLIC": "Öffentlich",
+        "RESTRICTED": "Eingeschränkt",
+        "SENSITIVE": "Sensibel"
+      },
+      "dct:accrualPeriodicity": {
+        "ANNUAL": "Jährlich",
+        "AS_NEEDED": "Nach Bedarf",
+        "CONT": "Kontinuierlich (Echtzeit)",
+        "DAILY": "Täglich",
+        "HOURLY": "Stündlich",
+        "IRREG": "Unregelmässig",
+        "MONTHLY": "Monatlich",
+        "NEVER": "Nie",
+        "OTHER": "Andere",
+        "QUARTERLY": "Vierteljährlich",
+        "UNKNOWN": "Unbekannt",
+        "WEEKLY": "Wöchentlich"
+      },
+      "dct:publisher": {
+        "BLV-OSAV-USAV-FSVO": "BLV",
+        "BLW-OFAG-UFAG-FOAG": "BLW"
+      },
+      "hadRole": {
+        "businessDataOwner": "Business Data Owner",
+        "dataCustodian": "Data Custodian",
+        "dataSteward": "Data Steward"
       }
     },
     "distribution": {
-      "status": {
-        "workInProgress": "In Bearbeitung",
-        "validated": "Validiert",
-        "published": "Veröffentlicht",
-        "deleted": "Gelöscht",
-        "archived": "Archiviert"
-      },
       "availability": {
         "AVAILABLE": "Verfügbar",
         "EXPERIMENTAL": "Experimentell",
@@ -231,35 +107,329 @@
         "TEMPORARY": "Temporär"
       },
       "license": {
-        "terms_open": "Offene Nutzung",
-        "terms_by": "Offene Nutzung. Quellenangabe erforderlich",
-        "terms_ask": "Offene Nutzung. Kommerzielle Nutzung bedarf der Zustimmung des Dateneigentümers",
-        "terms_by_ask": "Offene Nutzung. Quellenangabe erforderlich. Kommerzielle Nutzung bedarf der Zustimmung des Dateneigentümers",
-        "cc-zero": "CC0",
+        "cc-by-sa/4.0": "CC BY-SA 4.0",
         "cc-by/4.0": "CC BY 4.0",
-        "cc-by-sa/4.0": "CC BY-SA 4.0"
+        "cc-zero": "CC0",
+        "terms_ask": "Offene Nutzung. Kommerzielle Nutzung bedarf der Zustimmung des Dateneigentümers",
+        "terms_by": "Offene Nutzung. Quellenangabe erforderlich",
+        "terms_by_ask": "Offene Nutzung. Quellenangabe erforderlich. Kommerzielle Nutzung bedarf der Zustimmung des Dateneigentümers",
+        "terms_open": "Offene Nutzung"
+      },
+      "status": {
+        "archived": "Archiviert",
+        "deleted": "Gelöscht",
+        "published": "Veröffentlicht",
+        "validated": "Validiert",
+        "workInProgress": "In Bearbeitung"
       }
     }
   },
   "details": {
     "heading": {
       "affiliated": "Verantwortliche Personen",
-      "metadata": "Metadaten",
       "distributions": "Bereitstellungsformen",
       "externalCatalogs": "Veröffentlichung in externen Katalogen",
+      "metadata": "Metadaten",
       "publications": "Publikationen in externen Katalogen"
     },
     "noAffiliatedPersons": "Niemand fühlt sich für diesen Datensatz zuständig – höchste Zeit, jemandem diese Ehre zu erteilen!"
   },
   "footer": {
-    "version": "Version",
     "contact": "Kontakt: info@blw.admin.ch",
     "legalBasis": "Rechtliche Grundlagen",
-    "source": "Quellcode (GitHub)"
+    "source": "Quellcode (GitHub)",
+    "version": "Version"
+  },
+  "labels": {
+    "accessRights": "Zugriffsrechte",
+    "accessService": "Zugriffsdienst",
+    "accessURL": "Zugriffs-URL",
+    "accrualPeriodicity": "Aktualisierungsintervall",
+    "adms:status": "Status",
+    "applicableLegislation": "Rechtsgrundlage",
+    "archivalValue": "Archivwürdig",
+    "bv:abrogation": "Aufhebungsdatum",
+    "bv:archivalValue": "Archivwürdig",
+    "bv:classification": "Klassifizierung",
+    "bv:externalCatalogs": "Veröffentlichung in externen Katalogen",
+    "bv:geoIdentifier": "Identifikator GeoIV",
+    "bv:itSystem": "IT-System",
+    "bv:personalData": "Personenbezogene Daten",
+    "bv:retentionPeriod": "Aufbewahrungsfrist",
+    "bv:typeOfData": "Datentyp",
+    "catalog": "Katalog",
+    "classification": "Klassifizierung",
+    "comment": "Zusätzliche Bemerkungen",
+    "conformsTo": "Entspricht",
+    "contactPoint": "Kontaktstelle",
+    "dcat:accessService": "Zugriffsdienst",
+    "dcat:accessURL": "Zugriffs-URL",
+    "dcat:catalog": "Katalog",
+    "dcat:contactPoint": "Kontaktstelle",
+    "dcat:distribution": "Distributionen",
+    "dcat:downloadURL": "Download-URL",
+    "dcat:inSeries": "In dataset Serie",
+    "dcat:keyword": "Schlüsselwörter",
+    "dcat:landingPage": "Einstiegsseite",
+    "dcat:theme": "Thema",
+    "dcat:version": "Version",
+    "dcatap:applicableLegislation": "Rechtsgrundlage",
+    "dcatap:availability": "Verfügbarkeit",
+    "dct:accessRights": "Zugriffsrechte",
+    "dct:accrualPeriodicity": "Aktualisierungsintervall",
+    "dct:conformsTo": "Entspricht",
+    "dct:description": "Beschreibung",
+    "dct:format": "Dateiformat",
+    "dct:identifier": "Identifikator",
+    "dct:issued": "Ausgabedatum",
+    "dct:license": "Lizenz",
+    "dct:modified": "Änderungsdatum",
+    "dct:publisher": "Herausgeber",
+    "dct:replaces": "Ersetzt",
+    "dct:spatial": "Räumliche Abdeckung",
+    "dct:temporal": "Zeitliche Abdeckung",
+    "dct:title": "Titel",
+    "description": "Beschreibung",
+    "downloadURL": "Download-URL",
+    "externalCatalogs": "Veröffentlichung in externen Katalogen",
+    "foaf:page": "Verwandte Ressourcen",
+    "format": "Dateiformat",
+    "geoIdentifier": "Identifikator GeoIV",
+    "identifier": "Identifikator",
+    "image": "Bild",
+    "inSeries": "In dataset Serie",
+    "issued": "Ausgabedatum",
+    "keyword": "Schlüsselwörter",
+    "landingPage": "Einstiegsseite",
+    "license": "Lizenz",
+    "modified": "Änderungsdatum",
+    "page": "Verwandte Ressourcen",
+    "personalData": "Personenbezogene Daten",
+    "prov:qualifiedAttribution": "Verantwortliche Personen",
+    "prov:wasDerivedFrom": "Abgeleitet von",
+    "prov:wasGeneratedBy": "Geschäftsprozess",
+    "qualitifedAttribution": "Verantwortliche Personen",
+    "replaces": "Ersetzt",
+    "schema:comment": "Zusätzliche Bemerkungen",
+    "spatial": "Räumliche Abdeckung",
+    "status": "Status",
+    "temporal": "Zeitliche Abdeckung",
+    "theme": "Thema",
+    "title": "Titel",
+    "typeOfData": "Datentyp",
+    "version": "Version"
+  },
+  "msg": {
+    "adminDirError": "AdminDir konnte nicht erreicht werden",
+    "adminDirLookup": "AdminDir ID"
+  },
+  "modify": {
+    "auth": {
+      "title": "GitHub-Authentifizierung",
+      "description": "Authentifizieren Sie sich mit GitHub, um Datensätze zu erstellen oder zu bearbeiten.",
+      "repository": "Repository",
+      "customRepository": "Benutzerdefiniertes Repository",
+      "customRepositoryPlaceholder": "GitHub Repository (z.B. owner/repo)",
+      "username": "GitHub-Benutzername",
+      "usernamePlaceholder": "Ihr GitHub-Benutzername",
+      "token": "Personal Access Token",
+      "tokenPlaceholder": "Ihr GitHub Personal Access Token",
+      "validate": "Anmeldedaten prüfen",
+      "cancel": "Abbrechen",
+      "instructions": {
+        "title": "Anweisungen:",
+        "step1": "Gehen Sie zu GitHub Settings > Developer settings > Personal access tokens",
+        "step2": "Erstellen Sie einen neuen Token mit 'repo' Berechtigungen",
+        "step3": "Geben Sie Ihren Benutzername und Token unten ein"
+      },
+      "validation": {
+        "repositoryRequired": "Repository ist erforderlich",
+        "customRepositoryRequired": "Repository ist erforderlich",
+        "usernameRequired": "Benutzername ist erforderlich",
+        "tokenRequired": "Token ist erforderlich",
+        "tokenMinLength": "Token muss mindestens 10 Zeichen lang sein"
+      },
+      "errors": {
+        "invalidToken": "Ungültiges Token. Bitte überprüfen Sie Ihr Personal Access Token.",
+        "tokenExpired": "Token ist abgelaufen. Bitte erstellen Sie ein neues Token.",
+        "noWritePermission": "Token hat keine Schreibberechtigung für das Repository.",
+        "repoNotFound": "Repository nicht gefunden.",
+        "noRepoAccess": "Kein Zugriff auf das Repository.",
+        "networkError": "Netzwerkfehler. Bitte versuchen Sie es später erneut.",
+        "unknown": "Unbekannter Fehler aufgetreten."
+      },
+      "help": {
+        "title": "Hilfe benötigt?",
+        "description": "Wenden Sie sich an das Kompetenzzentrum für digitale Transformation, wenn Sie Hilfe bei der Erstellung eines Personal Access Tokens benötigen.",
+        "learnMore": "Mehr über GitHub Tokens erfahren"
+      },
+      "form": {
+        "title": {
+          "new": "Neuen Datensatz erstellen",
+          "edit": "Datensatz bearbeiten"
+        },
+        "comingSoon": "Das Formular wird derzeit implementiert...",
+        "logout": "Abmelden",
+        "cancel": "Abbrechen",
+        "create": "Datensatz erstellen",
+        "update": "Datensatz aktualisieren",
+        "validation": {
+          "required": "Dieses Feld ist erforderlich",
+          "maxLength": "Maximale Länge überschritten",
+          "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+          "summary": "Formularvalidierungsfehler:",
+          "fillRequired": "Bitte füllen Sie alle Pflichtfelder aus, die mit einem Sternchen (*) markiert sind"
+        },
+        "confirmation": {
+          "unsavedChanges": "Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie die Seite verlassen möchten? Alle Änderungen gehen verloren."
+        },
+        "help": {
+          "multilingualRequired": "Mindestens Deutsch und Französisch sind erforderlich"
+        },
+        "options": {
+          "none": "Keine Auswahl"
+        },
+        "sections": {
+          "basic": "Grundinformationen",
+          "access": "Zugriff & Klassifizierung",
+          "publisher": "Herausgeber & Kontakt",
+          "metadata": "Metadaten & Versionierung",
+          "governance": "Governance & Verantwortlichkeit",
+          "external": "Externe Referenzen & Links",
+          "coverage": "Abdeckung & Rechtliches",
+          "business": "Geschäftskontext",
+          "additional": "Zusätzliche Metadaten & Beziehungen",
+          "distributions": "Distributionen"
+        },
+        "placeholders": {
+          "title": "Titel des Datensatzes eingeben",
+          "description": "Beschreibung des Datensatzes eingeben",
+          "keyword": "Schlüsselwort hinzufügen",
+          "theme": "Thema auswählen",
+          "itSystem": "Name des IT-Systems",
+          "retentionPeriod": "z.B., 10",
+          "businessProcess": "Zugehöriger Geschäftsprozess",
+          "comment": "Zusätzliche Bemerkungen zu diesem Datensatz",
+          "geoIdentifier": "GeoIV-Identifikator",
+          "derivedFrom": "datensatz-id-1, datensatz-id-2",
+          "inSeries": "serie-id-1, serie-id-2",
+          "replaces": "alter-datensatz-id-1, alter-datensatz-id-2",
+          "adminDirId": "z.B., p-2959456",
+          "fullName": "Vollständiger Name",
+          "email": "email@beispiel.com",
+          "distributionId": "distribution-id",
+          "format": "z.B., CSV, JSON, XML",
+          "accessUrl": "https://beispiel.com/zugriff",
+          "downloadUrl": "https://beispiel.com/download.csv",
+          "distributionTitle": "Titel der Distribution",
+          "distributionDescription": "Beschreibung dieser Distribution",
+          "additionalComments": "Zusätzliche Bemerkungen",
+          "conformsTo": "Standard oder Spezifikation, dem diese Distribution entspricht"
+        },
+        "labels": {
+          "temporalStart": "Zeitraum Anfang",
+          "temporalEnd": "Zeitraum Ende",
+          "imageUrl": "Datensatz Bild-URL",
+          "relationships": "Datensatz-Beziehungen",
+          "person": "Person",
+          "adminDirId": "AdminDir ID",
+          "role": "Rolle",
+          "nameOptional": "Name (optional)",
+          "emailOptional": "E-Mail (optional)",
+          "distribution": "Distribution"
+        },
+        "help": {
+          "multilingualRequired": "Mindestens Deutsch und Französisch sind erforderlich",
+          "keywordArray": "Enter drücken oder Komma verwenden, um Schlüsselwörter hinzuzufügen",
+          "externalCatalogs": "Wählen Sie externe Kataloge aus, in denen dieser Datensatz veröffentlicht werden soll",
+          "relationships": "Geben Sie Datensatz-IDs durch Kommas getrennt für verwandte Datensätze ein",
+          "adminDirId": "Die AdminDir ID von der AdminDir-Seiten-URL der Person",
+          "personsRequired": "Mindestens eine verantwortliche Person ist erforderlich. AdminDir ID und Rolle sind für jede Person obligatorisch.",
+          "accessUrl": "URL zur Seite für den Zugriff auf diese Distribution",
+          "downloadUrl": "Direkte Download-URL (optional)",
+          "distributionsRequired": "Mindestens eine Distribution ist erforderlich. Identifikator, Zugriffs-URL, Status und Format sind für jede Distribution obligatorisch."
+        },
+        "buttons": {
+          "addPerson": "Person hinzufügen",
+          "addDistribution": "Distribution hinzufügen"
+        },
+        "navigation": {
+          "next": "Weiter",
+          "previous": "Zurück"
+        },
+        "messages": {
+          "noPersons": "Noch keine verantwortlichen Personen hinzugefügt. Klicken Sie auf \"Person hinzufügen\", um eine hinzuzufügen.",
+          "noDistributions": "Noch keine Distributionen hinzugefügt. Klicken Sie auf \"Distribution hinzufügen\", um eine hinzuzufügen."
+        },
+        "contactName": "Name der Kontaktperson",
+        "contactEmail": "E-Mail der Kontaktperson",
+        "generateJson": "JSON generieren",
+        "backToForm": "Zurück zum Formular",
+        "authOptional": "Optional: Authentifizierung",
+        "selectedRepository": "Ausgewähltes Repository",
+        "changeRepository": "Repository wechseln",
+        "reset": "Zurücksetzen",
+        "submit": "Einreichen"
+      },
+      "submit": {
+        "title": "Datensatz einreichen",
+        "authSuccess": "GitHub-Berechtigung verifiziert",
+        "authInfo": "Authentifizierung ist optional - GitHub wird nach Anmeldedaten fragen",
+        "authenticate": "Jetzt authentifizieren",
+        "showJson": "JSON anzeigen",
+        "hideJson": "JSON verbergen",
+        "options": "Einreichungsoptionen",
+        "createInGitHub": "In GitHub erstellen",
+        "editInGitHub": "In GitHub bearbeiten",
+        "githubDescription": "Öffnet GitHub mit vorausgefülltem Inhalt zum Review und Commit",
+        "alternatives": "Alternative Optionen",
+        "copyJson": "JSON kopieren",
+        "copyDescription": "Kopiert JSON in die Zwischenablage für manuelles Einfügen",
+        "downloadJson": "JSON herunterladen",
+        "downloadDescription": "Lädt JSON-Datei für lokale Speicherung herunter",
+        "help": {
+          "title": "Wie funktioniert es?",
+          "github": "Klicken Sie auf 'In GitHub erstellen' um GitHub mit vorausgefülltem Inhalt zu öffnen",
+          "review": "Überprüfen Sie die Änderungen in GitHubs Diff-Ansicht",
+          "commit": "Erstellen Sie den Commit direkt in GitHub oder erstellen Sie einen Pull Request"
+        }
+      }
+    }
   },
   "not-found": {
-    "title": "Seite nicht gefunden",
+    "back-home": "Zurück zur Startseite",
     "message": "Die gesuchte Seite existiert nicht.",
-    "back-home": "Zurück zur Startseite"
+    "title": "Seite nicht gefunden"
+  },
+  "ui": {
+    "addDataset": "Datensatz hinzufügen",
+    "cards": "Karten",
+    "dataProducts": "Datenprodukte",
+    "dataSet": "Datensatz",
+    "defaultSelect": "Standard Auswahl",
+    "editDataset": "Bearbeiten",
+    "filter": "Filter",
+    "hideFilters": "Filter verbergen",
+    "issued": "Veröffentlicht",
+    "issueDate": "Ausgabedatum",
+    "keywords": "Schlüsselwörter",
+    "list": "Liste",
+    "newKeyword": "Neues Schlüsselwort...",
+    "noResultsFound": "Keine Ergebnisse gefunden. Versuchen Sie allgemeinere Filter oder Suche.",
+    "remove": "Entfernen",
+    "reset": "zurücksetzen",
+    "search": "Suchen",
+    "showFilters": "Filter anzeigen",
+    "sort": "Sortieren",
+    "sortBy": {
+      "newest": "Neueste zuerst",
+      "oldest": "Älteste zuerst",
+      "owner": "Nach Dateninhaber",
+      "relevance": "Nach Relevanz sortieren",
+      "title": "Nach Titel sortieren"
+    },
+    "steward": "Datenverwalter",
+    "stewardOwnerContact": "Kontakt",
+    "title": "Titel"
   }
 }

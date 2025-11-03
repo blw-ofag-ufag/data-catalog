@@ -34,10 +34,12 @@ export class DatasetService {
 	private readonly searchTermSubject = new BehaviorSubject<string>('');
 	private readonly pageSubject = new BehaviorSubject<PageEvent>({pageIndex: 0, pageSize: 5, length: 0});
 	public filteredLength$ = new BehaviorSubject<number>(0);
-	private readonly sort$ = new BehaviorSubject<'title' | 'old' | 'new' | 'owner' | 'relevance'>('title');
+	private readonly sortSubject = new BehaviorSubject<'title' | 'old' | 'new' | 'owner' | 'relevance'>('title');
 
 	schemas$ = this.filteredDatasetsSubject.asObservable();
 	searchTerm$ = this.searchTermSubject.asObservable();
+	sort$ = this.sortSubject.asObservable();
+	page$ = this.pageSubject.asObservable();
 	private readonly filters$ = new BehaviorSubject<ActiveFilters>(allFiltersOff);
 
 	constructor(
@@ -47,9 +49,16 @@ export class DatasetService {
 		private readonly router: Router,
 		private readonly translate: TranslateService
 	) {
+		// Initialize sort from URL parameters if available
+		const initialSort = this.getInitialSortFromUrl();
+		this.sortSubject.next(initialSort);
+
+		// Initialize pagination from URL parameters if available
+		const initialPagination = this.getInitialPaginationFromUrl();
+		this.pageSubject.next(initialPagination);
 		const sortedSchemas$ = combineLatest([
 			this.multiDatasetService.datasets$.pipe(filter((schemas): schemas is DatasetSchema[] => schemas !== null)),
-			this.sort$
+			this.sortSubject
 		]).pipe(
 			map(([schemas, sort]) => {
 				const currentLang = this.translate.currentLang || 'en';
@@ -106,7 +115,7 @@ export class DatasetService {
 			})
 		);
 
-		combineLatest([sortedSchemas$, this.searchTermSubject, this.filters$, this.pageSubject, this.sort$]).subscribe(
+		combineLatest([sortedSchemas$, this.searchTermSubject, this.filters$, this.pageSubject, this.sortSubject]).subscribe(
 			([sortedSchemas, searchTerm, filters, page, currentSort]) => {
 				const unfiltered = sortedSchemas;
 				let filtered = unfiltered;
@@ -170,6 +179,30 @@ export class DatasetService {
 				this.searchTermSubject.next(searchParam);
 			}
 
+			// Handle sort parameter from URL
+			const sortParam = params['sort'] || 'title';
+			const validSorts: Array<'title' | 'old' | 'new' | 'owner' | 'relevance'> = ['title', 'old', 'new', 'owner', 'relevance'];
+			if (validSorts.includes(sortParam as any) && sortParam !== this.sortSubject.value) {
+				this.sortSubject.next(sortParam as 'title' | 'old' | 'new' | 'owner' | 'relevance');
+			}
+
+			// Handle pagination parameters from URL
+			const urlPageParam = parseInt(params['page'], 10) || 1; // Default to page 1 if not specified
+			const pageIndex = Math.max(0, urlPageParam - 1); // Convert 1-indexed URL to 0-indexed pageIndex
+			const pageSizeParam = parseInt(params['pageSize'], 10);
+			const currentPage = this.pageSubject.value;
+
+			if (pageIndex !== currentPage.pageIndex || (pageSizeParam && pageSizeParam !== currentPage.pageSize)) {
+				const validPageSizes = [5, 6, 9, 10, 18, 25, 36, 100, 200];
+				const newPageSize = pageSizeParam && validPageSizes.includes(pageSizeParam) ? pageSizeParam : currentPage.pageSize;
+
+				this.pageSubject.next({
+					pageIndex: pageIndex,
+					pageSize: newPageSize,
+					length: currentPage.length
+				});
+			}
+
 			if (!params['dataset']) {
 				this.multiDatasetService.onRouteChange(null);
 			} else {
@@ -205,16 +238,69 @@ export class DatasetService {
 		await this.router.navigate([], {queryParams, queryParamsHandling: 'merge'});
 	}
 
+	private async updateUrlWithSort(sortOrder: 'title' | 'old' | 'new' | 'owner' | 'relevance') {
+		const queryParams: any = {};
+		if (sortOrder && sortOrder !== 'title') {
+			queryParams['sort'] = sortOrder;
+		} else {
+			queryParams['sort'] = null;
+		}
+		await this.router.navigate([], {queryParams, queryParamsHandling: 'merge'});
+	}
+
+	private async updateUrlWithPagination(pageEvent: PageEvent) {
+		const queryParams: any = {};
+
+		// Only include page parameter if not on first page
+		// Convert 0-indexed pageIndex to 1-indexed page for user-friendly URLs
+		if (pageEvent.pageIndex > 0) {
+			queryParams['page'] = (pageEvent.pageIndex + 1).toString();
+		} else {
+			queryParams['page'] = null;
+		}
+
+		// Only include pageSize parameter if not default (5)
+		if (pageEvent.pageSize !== 5) {
+			queryParams['pageSize'] = pageEvent.pageSize.toString();
+		} else {
+			queryParams['pageSize'] = null;
+		}
+
+		await this.router.navigate([], {queryParams, queryParamsHandling: 'merge'});
+	}
+
 	onPageChange(event: PageEvent) {
 		this.pageSubject.next(event);
+		this.updateUrlWithPagination(event);
 	}
 
 	onPaginatorInitialized(pageSize: number) {
-		this.pageSubject.next({...this.pageSubject.value, pageSize});
+		const currentPage = this.pageSubject.value;
+		const newPageEvent = {...currentPage, pageSize};
+		this.pageSubject.next(newPageEvent);
+
+		// Only update URL if this is a user-initiated change, not during initial load
+		// Check if we have URL parameters that suggest we're still initializing
+		const currentParams = this.activatedRoute.snapshot.queryParams;
+		const hasPageSizeInUrl = currentParams['pageSize'];
+		const hasPageInUrl = currentParams['page'];
+
+		// If there are pagination params in URL, don't override them during initialization
+		if (!hasPageSizeInUrl && !hasPageInUrl) {
+			this.updateUrlWithPagination(newPageEvent);
+		}
 	}
 
 	setSort(order: 'title' | 'old' | 'new' | 'owner' | 'relevance') {
-		this.sort$.next(order);
+		this.sortSubject.next(order);
+		this.updateUrlWithSort(order);
+	}
+
+	setPageSize(pageSize: number) {
+		const currentPage = this.pageSubject.value;
+		const newPageEvent = {...currentPage, pageSize, pageIndex: 0}; // Reset to first page when changing page size
+		this.pageSubject.next(newPageEvent);
+		this.updateUrlWithPagination(newPageEvent);
 	}
 
 	async setFilters(filters: ActiveFilters) {
@@ -284,5 +370,47 @@ export class DatasetService {
 
 		// Final fallback to publisher
 		return dataset['dct:publisher'] || '';
+	}
+
+	/**
+	 * Get the initial sort value from URL parameters
+	 */
+	private getInitialSortFromUrl(): 'title' | 'old' | 'new' | 'owner' | 'relevance' {
+		const currentParams = this.activatedRoute.snapshot.queryParams;
+		const sortParam = currentParams['sort'] || 'title';
+		const validSorts: ('title' | 'old' | 'new' | 'owner' | 'relevance')[] = ['title', 'old', 'new', 'owner', 'relevance'];
+
+		if (validSorts.includes(sortParam as any)) {
+			return sortParam as 'title' | 'old' | 'new' | 'owner' | 'relevance';
+		}
+
+		return 'title'; // Default fallback
+	}
+
+	/**
+	 * Get the initial pagination values from URL parameters
+	 */
+	private getInitialPaginationFromUrl(): PageEvent {
+		const currentParams = this.activatedRoute.snapshot.queryParams;
+		const urlPageParam = parseInt(currentParams['page'], 10) || 1; // Default to page 1 if not specified
+		const pageSizeParam = currentParams['pageSize'] ? parseInt(currentParams['pageSize'], 10) : null;
+
+		// Convert 1-indexed URL page to 0-indexed pageIndex
+		const pageIndex = Math.max(0, urlPageParam - 1);
+
+		// Validate pageSize against reasonable values
+		const validPageSizes = [5, 6, 9, 10, 18, 25, 36, 100, 200];
+
+		let pageSize = 5; // Start with framework default
+		if (pageSizeParam && validPageSizes.includes(pageSizeParam)) {
+			pageSize = pageSizeParam; // Use URL value if valid
+		}
+		// Note: View-specific defaults (6/10) will be set by IndexOutletComponent if no URL override
+
+		return {
+			pageIndex: pageIndex,
+			pageSize: pageSize,
+			length: 0 // Will be updated when data loads
+		};
 	}
 }

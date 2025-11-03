@@ -428,6 +428,12 @@ export const enumTypes = [
 	'bv:classification',
 	'bv:personalData',
 	'bv:typeOfData',
+	'dcat:keyword',
+	'dcat:theme'
+];
+
+// Fields that are enums but display as arrays in details
+export const enumArrayFields = [
+	'dcat:theme',
 	'dcat:keyword'
-	// 'dcat:theme'
 ];

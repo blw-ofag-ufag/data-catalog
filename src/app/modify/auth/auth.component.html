@@ -1,0 +1,102 @@
+<div class="ob-container">
+	<div class="ob-flex ob-justify-center">
+		<div class="ob-w-1/2">
+			<mat-card>
+				<mat-card-header>
+					<mat-card-title>{{ "modify.auth.title" | translate }}</mat-card-title>
+				</mat-card-header>
+				<mat-card-content>
+					<p class="ob-mb-4">{{ "modify.auth.description" | translate }}</p>
+
+					<ob-alert type="info" class="ob-mb-4">
+						<h6 class="ob-mb-2">{{ "modify.auth.instructions.title" | translate }}</h6>
+						<ol class="ob-mb-3">
+							<li>{{ "modify.auth.instructions.step1" | translate }}</li>
+							<li>{{ "modify.auth.instructions.step2" | translate }}</li>
+							<li>{{ "modify.auth.instructions.step3" | translate }}</li>
+						</ol>
+
+						<h6 class="ob-mb-2">{{ "modify.auth.help.title" | translate }}</h6>
+						<p class="ob-text-sm ob-mb-3">
+							{{ "modify.auth.help.description" | translate }}
+						</p>
+						<div class="ob-flex ob-justify-start">
+							<a
+								href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token"
+								target="_blank"
+								mat-button
+								obButton="tertiary"
+							>
+								{{ "modify.auth.help.learnMore" | translate }}
+							</a>
+						</div>
+					</ob-alert>
+
+					<!-- Error Alert -->
+					<ob-alert *ngIf="errorMessage" type="error" class="ob-mb-4">
+						{{ errorMessage | translate }}
+					</ob-alert>
+
+					<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+						<!-- Repository Selection -->
+						<mat-form-field class="ob-w-full ob-mb-3">
+							<mat-label>{{ "modify.auth.repository" | translate }}</mat-label>
+							<mat-select formControlName="repository" (selectionChange)="onRepositoryChange()">
+								<mat-option *ngFor="let publisher of publishers" [value]="publisher.githubRepo">
+									{{ publisher.shortId }} ({{ publisher.githubRepo }})
+								</mat-option>
+								<mat-option value="custom">{{ "modify.auth.customRepository" | translate }}</mat-option>
+							</mat-select>
+							<mat-error *ngIf="authForm.get('repository')?.errors?.['required'] && authForm.get('repository')?.touched">
+								{{ "modify.auth.validation.repositoryRequired" | translate }}
+							</mat-error>
+						</mat-form-field>
+
+						<!-- Custom Repository Field -->
+						<mat-form-field *ngIf="customRepositoryMode" class="ob-w-full ob-mb-3">
+							<mat-label>{{ "modify.auth.customRepositoryPlaceholder" | translate }}</mat-label>
+							<input matInput formControlName="customRepository" placeholder="owner/repository" />
+							<mat-error *ngIf="authForm.get('customRepository')?.errors?.['required'] && authForm.get('customRepository')?.touched">
+								{{ "modify.auth.validation.customRepositoryRequired" | translate }}
+							</mat-error>
+						</mat-form-field>
+
+						<!-- Username Field -->
+						<mat-form-field class="ob-w-full ob-mb-3">
+							<mat-label>{{ "modify.auth.username" | translate }}</mat-label>
+							<input matInput formControlName="username" [placeholder]="'modify.auth.usernamePlaceholder' | translate" autocomplete="username" />
+							<mat-error *ngIf="usernameControl?.errors?.['required'] && usernameControl?.touched">
+								{{ "modify.auth.validation.usernameRequired" | translate }}
+							</mat-error>
+						</mat-form-field>
+
+						<!-- Token Field -->
+						<mat-form-field class="ob-w-full ob-mb-4">
+							<mat-label>{{ "modify.auth.token" | translate }}</mat-label>
+							<input matInput type="password" formControlName="token" [placeholder]="'modify.auth.tokenPlaceholder' | translate" autocomplete="new-password" />
+							<mat-error *ngIf="tokenControl?.errors?.['required'] && tokenControl?.touched">
+								{{ "modify.auth.validation.tokenRequired" | translate }}
+							</mat-error>
+							<mat-error *ngIf="tokenControl?.errors?.['minlength'] && tokenControl?.touched">
+								{{ "modify.auth.validation.tokenMinLength" | translate }}
+							</mat-error>
+						</mat-form-field>
+
+						<!-- Submit Button -->
+						<div class="ob-flex ob-justify-between ob-items-center">
+							<button type="button" mat-button obButton="secondary" (click)="onCancel()">
+								{{ "modify.auth.cancel" | translate }}
+							</button>
+
+							<button type="submit" mat-button obButton="primary" [disabled]="authForm.invalid || isLoading">
+								<ob-spinner *ngIf="isLoading" class="ob-me-2"></ob-spinner>
+								{{ "modify.auth.validate" | translate }}
+							</button>
+						</div>
+					</form>
+
+				</mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+</div>

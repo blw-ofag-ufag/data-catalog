@@ -1,0 +1,88 @@
+<div class="dataset-submit">
+	<mat-card>
+		<mat-card-header>
+			<mat-card-title>{{ "modify.submit.title" | translate }}</mat-card-title>
+		</mat-card-header>
+
+		<mat-card-content>
+			<!-- Authentication Status -->
+			<div class="auth-status ob-mb-3">
+				<ob-alert *ngIf="isAuthenticated" type="success">
+					<mat-icon>verified_user</mat-icon>
+					{{ "modify.submit.authSuccess" | translate }}
+				</ob-alert>
+				<ob-alert *ngIf="!isAuthenticated" type="info">
+					<mat-icon>info</mat-icon>
+					{{ "modify.submit.authInfo" | translate }}
+					<button type="button" [obButton]="'tertiary'" size="sm" class="ob-ms-2" (click)="openAuthDialog()">
+						{{ "modify.submit.authenticate" | translate }}
+					</button>
+				</ob-alert>
+			</div>
+
+			<!-- JSON Preview Toggle -->
+			<div class="json-preview-section ob-mb-4">
+				<ob-collapse class="json-collapse">
+					<button type="button" [obButton]="'secondary'" obCollapseToggle>
+						<mat-icon>{{ "visibility" }}</mat-icon>
+						{{ "modify.submit.showJson" | translate }}
+					</button>
+					<div obCollapseContent class="json-preview ob-mt-3">
+						<pre class="json-content">{{ formattedJson }}</pre>
+					</div>
+				</ob-collapse>
+			</div>
+
+			<!-- Submit Actions -->
+			<div class="submit-actions">
+				<h5>{{ "modify.submit.options" | translate }}</h5>
+
+				<!-- Primary Action: Open in GitHub -->
+				<div class="action-item primary-action">
+					<button type="button" [obButton]="'primary'" size="lg" (click)="openInGitHub()" [disabled]="!generatedJson">
+						<mat-icon>open_in_new</mat-icon>
+						{{ (isEditMode ? "modify.submit.editInGitHub" : "modify.submit.createInGitHub") | translate }}
+					</button>
+					<small class="ob-text-muted ob-block ob-mt-1">
+						{{ "modify.submit.githubDescription" | translate }}
+					</small>
+				</div>
+
+				<!-- Alternative Actions -->
+				<div class="alternative-actions ob-mt-4">
+					<h6>{{ "modify.submit.alternatives" | translate }}</h6>
+
+					<div class="action-item">
+						<button type="button" [obButton]="'secondary'" (click)="copyJsonToClipboard()" [disabled]="!formattedJson">
+							<mat-icon>content_copy</mat-icon>
+							{{ "modify.submit.copyJson" | translate }}
+						</button>
+						<small class="ob-text-muted ob-block ob-mt-1">
+							{{ "modify.submit.copyDescription" | translate }}
+						</small>
+					</div>
+
+					<div class="action-item ob-mt-2">
+						<button type="button" [obButton]="'secondary'" (click)="downloadJson()" [disabled]="!generatedJson">
+							<mat-icon>download</mat-icon>
+							{{ "modify.submit.downloadJson" | translate }}
+						</button>
+						<small class="ob-text-muted ob-block ob-mt-1">
+							{{ "modify.submit.downloadDescription" | translate }}
+						</small>
+					</div>
+				</div>
+			</div>
+
+			<!-- Help Text -->
+			<div class="help-section ob-mt-4 ob-pt-3 ob-border-t">
+				<h6>{{ "modify.submit.help.title" | translate }}</h6>
+				<ul class="ob-text-sm ob-text-muted">
+					<li>{{ "modify.submit.help.github" | translate }}</li>
+					<li>{{ "modify.submit.help.review" | translate }}</li>
+					<li>{{ "modify.submit.help.commit" | translate }}</li>
+				</ul>
+			</div>
+		</mat-card-content>
+	</mat-card>
+</div>

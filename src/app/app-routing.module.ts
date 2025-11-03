@@ -7,6 +7,8 @@ import {DetailsComponent} from './details/details.component';
 import {AboutComponent} from './about/about.component';
 import {HandbookComponent} from './handbook/handbook.component';
 import {ModifyComponent} from './modify/modify.component';
+import {AuthComponent} from './modify/auth/auth.component';
+import {GitHubAuthGuard} from './services/auth/github-auth.guard';
 
 const routes: Routes = [
 	{path: '', redirectTo: 'index', pathMatch: 'full'},
@@ -15,12 +17,20 @@ const routes: Routes = [
 	{path: 'details', component: DetailsComponent},
 	{path: 'about', component: AboutComponent},
 	{path: 'handbook', component: HandbookComponent},
-	{path: 'modify', component: ModifyComponent},
+	{
+		path: 'modify',
+		children: [
+			{path: '', component: ModifyComponent, canActivate: [GitHubAuthGuard]},
+			{path: 'auth', component: AuthComponent},
+			{path: 'form', component: ModifyComponent, canActivate: [GitHubAuthGuard]},
+			{path: ':id', component: ModifyComponent, canActivate: [GitHubAuthGuard]}
+		]
+	},
 	{path: '**', redirectTo: 'unknown-route'}
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes, { useHash: true }), ObUnknownRouteModule],
+	imports: [RouterModule.forRoot(routes, {useHash: true}), ObUnknownRouteModule],
 	exports: [RouterModule]
 })
 export class AppRoutingModule {}

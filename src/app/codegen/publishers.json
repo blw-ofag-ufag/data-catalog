@@ -4,5 +4,17 @@
     "shortId": "BLW",
     "githubRepo": "blw-ofag-ufag/metadata",
     "branch": "main"
+  },
+  {
+    "id": "BLV-OSAV-USAV-FSVO",
+    "shortId": "BLV",
+    "githubRepo": "BLV-OSAV-USAV/FSVO-Metadata",
+    "branch": "main"
+  },
+  {
+    "id": "ROLAND-TEST",
+    "shortId": "TEST",
+    "githubRepo": "bar9/metadata-publisher-test",
+    "branch": "main"
   }
 ]

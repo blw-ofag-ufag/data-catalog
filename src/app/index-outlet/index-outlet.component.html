@@ -11,7 +11,8 @@
 		@if (view === "tile") {
 			<div class="paginator-container">
 				<mat-paginator
-					pageSize="6"
+					[pageIndex]="(datasetService.page$ | async)?.pageIndex || 0"
+					[pageSize]="(datasetService.page$ | async)?.pageSize || 6"
 					(page)="onPageChange($event)"
 					aria-label="Select page"
 					[length]="datasetService.filteredLength$ | async"
@@ -21,7 +22,8 @@
 		} @else {
 			<div class="paginator-container">
 				<mat-paginator
-					pageSize="10"
+					[pageIndex]="(datasetService.page$ | async)?.pageIndex || 0"
+					[pageSize]="(datasetService.page$ | async)?.pageSize || 10"
 					(page)="onPageChange($event)"
 					aria-label="Select page"
 					[length]="datasetService.filteredLength$ | async"

@@ -4,10 +4,10 @@
 			<h3>{{ "ui.dataProducts" | translate }}</h3>
 		</div>
 		<div class="pull-right">
-			<a href="/modify" mat-button obButton="primary" type="button" matTooltip="add" disabled>
+			<button mat-button obButton="primary" type="button" matTooltip="add" (click)="openNewDatasetTab()">
 				{{ "ui.addDataset" | translate }}
 				<mat-icon svgIcon="plus" />
-			</a>
+			</button>
 		</div>
 	</div>
 
@@ -25,13 +25,13 @@
 			</mat-form-field>
 
 			<mat-form-field>
-				<mat-label>{{ "ui.defaultSelect" | translate }}</mat-label>
-				<mat-select>
-					<mat-option [value]="0" (click)="setSorting('relevance')">{{ "ui.sortBy.relevance" | translate }}</mat-option>
-					<mat-option [value]="1" (click)="setSorting('title')">{{ "ui.sortBy.title" | translate }}</mat-option>
-					<mat-option [value]="2" (click)="setSorting('old')">{{ "ui.sortBy.oldest" | translate }}</mat-option>
-					<mat-option [value]="3" (click)="setSorting('new')">{{ "ui.sortBy.newest" | translate }}</mat-option>
-					<mat-option [value]="4" (click)="setSorting('owner')">{{ "ui.sortBy.owner" | translate }}</mat-option>
+				<mat-label>{{ getSortLabel(datasetService.sort$ | async) | translate }}</mat-label>
+				<mat-select #sortSelect [value]="datasetService.sort$ | async" (selectionChange)="onSortChangeByType($event.value)">
+					<mat-option value="relevance">{{ "ui.sortBy.relevance" | translate }}</mat-option>
+					<mat-option value="title">{{ "ui.sortBy.title" | translate }}</mat-option>
+					<mat-option value="old">{{ "ui.sortBy.oldest" | translate }}</mat-option>
+					<mat-option value="new">{{ "ui.sortBy.newest" | translate }}</mat-option>
+					<mat-option value="owner">{{ "ui.sortBy.owner" | translate }}</mat-option>
 				</mat-select>
 			</mat-form-field>
 

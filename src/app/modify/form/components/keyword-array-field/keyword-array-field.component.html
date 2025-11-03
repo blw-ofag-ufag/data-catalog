@@ -1,0 +1,33 @@
+<div class="keyword-array-field">
+	<mat-form-field class="w-100">
+		<mat-label>{{ label | translate }}</mat-label>
+
+		<mat-chip-grid #chipGrid>
+			<mat-chip-row *ngFor="let keyword of sortedValues" [removable]="true" (removed)="removeKeyword(keyword)">
+				{{ keyword }}
+				<mat-icon matChipRemove>cancel</mat-icon>
+			</mat-chip-row>
+
+			<input
+				[placeholder]="placeholder | translate"
+				#keywordInput
+				[formControl]="inputControl"
+				[matChipInputFor]="chipGrid"
+				[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+				(matChipInputTokenEnd)="addKeyword($event)"
+				[matAutocomplete]="auto"
+				(blur)="onBlur()"
+			/>
+		</mat-chip-grid>
+
+		<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectSuggestion($event)">
+			<mat-option *ngFor="let suggestion of filteredSuggestions$ | async" [value]="suggestion">
+				{{ suggestion }}
+			</mat-option>
+		</mat-autocomplete>
+
+		<mat-hint>
+			{{ "modify.auth.form.help.keywordArray" | translate }}
+		</mat-hint>
+	</mat-form-field>
+</div>

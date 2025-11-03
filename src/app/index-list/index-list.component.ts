@@ -3,7 +3,7 @@ import {MatTableModule} from '@angular/material/table';
 import {Observable} from 'rxjs';
 import {DatasetSchema} from '../models/schemas/dataset';
 import {AsyncPipe, DatePipe} from '@angular/common';
-import {Router, RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MatChip} from '@angular/material/chips';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {TranslateFieldPipe} from '../translate-field.pipe';
@@ -19,7 +19,8 @@ export class IndexListComponent {
 
 	constructor(
 		private readonly router: Router,
-		public translate: TranslateService
+		public translate: TranslateService,
+		private readonly route: ActivatedRoute
 	) {}
 
 	async openDataset(publisher: string, dataset: string) {
@@ -32,8 +33,18 @@ export class IndexListComponent {
 	}
 
 	keywordFiltered(keyword: string) {
+		const currentParams = this.route.snapshot.queryParams;
+		const existingKeywords = currentParams['dcat:keyword'];
+
+		// If there are existing keywords, merge them
+		let keywordValue = keyword;
+		if (existingKeywords && !existingKeywords.split(',').includes(keyword)) {
+			keywordValue = existingKeywords + ',' + keyword;
+		}
+
 		return {
-			'dcat:keyword': keyword,
+			...currentParams,
+			'dcat:keyword': keywordValue,
 			view: 'table'
 		};
 	}

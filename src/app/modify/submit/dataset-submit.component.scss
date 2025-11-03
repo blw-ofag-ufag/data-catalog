@@ -1,0 +1,95 @@
+.dataset-submit {
+	.card {
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		border: none;
+
+		.card-header {
+			background-color: #f8f9fa;
+			border-bottom: 1px solid #dee2e6;
+
+			h3 {
+				margin: 0;
+				color: #333;
+			}
+		}
+	}
+
+	.auth-status {
+		.alert {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+
+			mat-icon {
+				font-size: 1.2rem;
+			}
+		}
+	}
+
+	.json-preview {
+		.json-content {
+			background-color: #f8f9fa;
+			border: 1px solid #e9ecef;
+			border-radius: 0.375rem;
+			padding: 1rem;
+			max-height: 400px;
+			overflow-y: auto;
+			font-size: 0.875rem;
+			color: #333;
+		}
+	}
+
+	.submit-actions {
+		.primary-action {
+			text-align: center;
+			margin-bottom: 1rem;
+
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				padding: 0.75rem 2rem;
+
+				mat-icon {
+					font-size: 1.25rem;
+				}
+			}
+		}
+
+		.alternative-actions {
+			.action-item {
+				margin-bottom: 0.75rem;
+
+				.btn {
+					display: inline-flex;
+					align-items: center;
+					gap: 0.5rem;
+					min-width: 200px;
+
+					mat-icon {
+						font-size: 1rem;
+					}
+				}
+			}
+		}
+	}
+
+	.help-section {
+		ul {
+			margin-bottom: 0;
+			padding-left: 1.2rem;
+
+			li {
+				margin-bottom: 0.25rem;
+			}
+		}
+	}
+
+	.border-top {
+		border-top: 1px solid #dee2e6 !important;
+	}
+
+	.text-muted {
+		color: #6c757d !important;
+	}
+}

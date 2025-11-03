@@ -1,0 +1,73 @@
+<div class="affiliated-persons-field">
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<label class="field-label">
+			{{ label | translate }}
+			<span *ngIf="required" class="required-asterisk">*</span>
+		</label>
+		<button mat-button obButton="secondary" type="button" (click)="addPerson()" class="btn-sm">
+			<mat-icon svgIcon="plus">
+				<span class="ob-screen-reader-only">Add person</span>
+			</mat-icon>
+			{{ 'modify.auth.form.buttons.addPerson' | translate }}
+		</button>
+	</div>
+
+	<div *ngIf="personsArray.length === 0" class="no-persons-message">
+		<small class="text-muted">{{ 'modify.auth.form.messages.noPersons' | translate }}</small>
+	</div>
+
+	<div *ngFor="let personGroup of personsArray.controls; let i = index" class="person-card card mb-3">
+		<div class="card-body">
+			<div class="d-flex justify-content-between align-items-start mb-3">
+				<h6 class="card-title mb-0">{{ 'modify.auth.form.labels.person' | translate }} {{ i + 1 }}</h6>
+				<button
+					type="button"
+					[obButton]="'secondary'"
+					(click)="removePerson(i)"
+					class="btn-sm text-danger"
+					[disabled]="personsArray.length === 1 && required"
+				>
+					<mat-icon svgIcon="cancel-circle">
+						<span class="ob-screen-reader-only">Remove person</span>
+					</mat-icon>
+				</button>
+			</div>
+
+			<div [formGroup]="$any(personGroup)" class="row">
+				<div class="col-md-6 mb-3">
+					<mat-form-field class="w-100">
+						<mat-label>{{ 'modify.auth.form.labels.adminDirId' | translate }} *</mat-label>
+						<input matInput formControlName="prov:agent" [placeholder]="'modify.auth.form.placeholders.adminDirId' | translate" (blur)="onBlur()" />
+						<mat-hint>{{ 'modify.auth.form.help.adminDirId' | translate }}</mat-hint>
+					</mat-form-field>
+				</div>
+				<div class="col-md-6 mb-3">
+					<mat-form-field class="w-100">
+						<mat-label>{{ 'modify.auth.form.labels.role' | translate }} *</mat-label>
+						<mat-select formControlName="dcat:hadRole" (blur)="onBlur()">
+							<mat-option *ngFor="let role of roles" [value]="role.value">
+								{{ role.label }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div class="col-md-6">
+					<mat-form-field class="w-100">
+						<mat-label>{{ 'modify.auth.form.labels.nameOptional' | translate }}</mat-label>
+						<input matInput formControlName="schema:name" [placeholder]="'modify.auth.form.placeholders.fullName' | translate" (blur)="onBlur()" />
+					</mat-form-field>
+				</div>
+				<div class="col-md-6">
+					<mat-form-field class="w-100">
+						<mat-label>{{ 'modify.auth.form.labels.emailOptional' | translate }}</mat-label>
+						<input matInput type="email" formControlName="schema:email" [placeholder]="'modify.auth.form.placeholders.email' | translate" (blur)="onBlur()" />
+					</mat-form-field>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="field-help" *ngIf="required">
+		<small class="text-muted">{{ 'modify.auth.form.help.personsRequired' | translate }}</small>
+	</div>
+</div>
