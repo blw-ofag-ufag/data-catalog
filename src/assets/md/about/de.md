@@ -48,6 +48,17 @@ Von einem Datenkatalog können unterschiedliche Gruppen profitieren. Hauptsächl
 - technische Teams, weil sie Systemintegrationen besser planen bzw. abschätzen können,
 - externe Interessensgruppen, weil sie bei Bedarf öffentlich verfügbare Daten finden können.
 
+# Was enthält der Datenkatalog?
+Der Datenkatalog umfasst Datenprodukte, die aktiv verwaltet und regelmässig genutzt werden sowie einen kontinuierlichen Mehrwert bieten. Beispiele hierfür sind:
+- Eine jährliche Excel-Datei mit aktualisierten Zahlen zur Milchproduktion
+- Ein BI-Report (Power BI, SAP BO) zur Verfolgung der Entwicklung der Einkommenssituation
+- Eine Data-Warehouse-Tabelle mit einer Zusammenfassung der Eierverkäufe nach Einzelhändlern
+- Ein Machine Learning Modell zur Vorhersage von Schädlingsrisiken basierend auf Wetter- und Anbaudaten
+- Ein öffentlich zugänglicher API-Dienst zur Echtzeitprognose der erwarteten Ernteerträge pro Kultur und Region
+
+Hinweis: Dateien mit Rohdaten, wie z. B. die Originalverkaufsdaten eines Einzelhändlers für einen bestimmten Zeitraum, sollten nicht als separate Datenprodukte aufgeführt werden. Stattdessen sollten diese Rohdaten in ein bestehendes Datenprodukt über den Verkauf integriert werden. 
+Darüber hinaus gelten temporäre Dateien, wie z. B. eine CSV-Datei für eine einmalige Analyse, nicht als relevante Datenprodukte.
+
 # Nächste Schritte
 
 Wir werden den Katalog weiter verfeinern, indem wir uns an die Dateneigentümer wenden, bestehende Einträge aktualisieren und die Integration mit anderen Plattformen prüfen.
