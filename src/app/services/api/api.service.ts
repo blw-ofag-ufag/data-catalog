@@ -35,6 +35,7 @@ export class DatasetService {
 	private readonly pageSubject = new BehaviorSubject<PageEvent>({pageIndex: 0, pageSize: 5, length: 0});
 	public filteredLength$ = new BehaviorSubject<number>(0);
 	private readonly sortSubject = new BehaviorSubject<'title' | 'old' | 'new' | 'owner' | 'relevance'>('title');
+	private isAdjustingPage = false;
 
 	schemas$ = this.filteredDatasetsSubject.asObservable();
 	searchTerm$ = this.searchTermSubject.asObservable();
@@ -120,6 +121,7 @@ export class DatasetService {
 				const unfiltered = sortedSchemas;
 				let filtered = unfiltered;
 
+
 				// Apply filters first
 				if (Object.keys(filters).length > 0) {
 					filtered = unfiltered.filter(schema => {
@@ -165,9 +167,39 @@ export class DatasetService {
 					}
 				}
 
+				// Check if current page is empty but we have results and we're not on the first page
+				let adjustedPageIndex = page.pageIndex;
+				let needsPageAdjustment = false;
+
+				if (filtered.length > 0 && page.pageIndex > 0 && !this.isAdjustingPage) {
+					const currentPageStart = page.pageIndex * page.pageSize;
+					const currentPageResults = filtered.slice(currentPageStart, currentPageStart + page.pageSize);
+
+					// If current page is empty, recursively find the last contentful page
+					if (currentPageResults.length === 0) {
+						adjustedPageIndex = this.findLastContentfulPage(filtered, page.pageSize, page.pageIndex);
+						needsPageAdjustment = true;
+					}
+				}
+
+				// Update filtered length first
 				this.filteredLength$.next(filtered.length);
 
-				const paginated = filtered.slice(page.pageIndex * page.pageSize, (page.pageIndex + 1) * page.pageSize);
+				// If we need to adjust the page, do it after updating the length
+				if (needsPageAdjustment) {
+					this.isAdjustingPage = true;
+					setTimeout(() => {
+						const newPageEvent = {...page, pageIndex: adjustedPageIndex, length: filtered.length};
+						this.pageSubject.next(newPageEvent);
+						void this.updateUrlWithPagination(newPageEvent);
+						// Reset the flag after a short delay to allow the subscription to complete
+						setTimeout(() => {
+							this.isAdjustingPage = false;
+						}, 10);
+					}, 0);
+				}
+
+				const paginated = filtered.slice(adjustedPageIndex * page.pageSize, (adjustedPageIndex + 1) * page.pageSize);
 				this.filteredDatasetsSubject.next(paginated);
 			}
 		);
@@ -385,6 +417,25 @@ export class DatasetService {
 		}
 
 		return 'title'; // Default fallback
+	}
+
+	/**
+	 * Recursively find the last page that has content
+	 */
+	private findLastContentfulPage(filteredResults: DatasetSchema[], pageSize: number, startPageIndex: number): number {
+		// Start from the given page and work backwards
+		for (let pageIndex = startPageIndex - 1; pageIndex >= 0; pageIndex--) {
+			const pageStart = pageIndex * pageSize;
+			const pageResults = filteredResults.slice(pageStart, pageStart + pageSize);
+
+			// If this page has content, return it
+			if (pageResults.length > 0) {
+				return pageIndex;
+			}
+		}
+
+		// If no previous pages have content, return 0 (first page)
+		return 0;
 	}
 
 	/**

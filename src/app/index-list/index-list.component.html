@@ -22,9 +22,9 @@
 					</div>
 				</td>
 				<td data-title="Keywords">
-					<div class="ob-flex ob-flex-wrap ob-gap-2">
+					<div>
 						@for (tag of dataset["dcat:keyword"]; track $index) {
-							<mat-chip (click)="onChipClick($event)" class="small-chip" style="display: inline-block; margin-right: 8px">
+							<mat-chip (click)="onChipClick($event)" class="small-chip">
 								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
 									{{ tag }}
 								</a>
