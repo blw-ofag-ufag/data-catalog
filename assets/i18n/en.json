@@ -140,7 +140,7 @@
     "source": "Source (GitHub)",
     "version": "Version"
   },
-    "tooltips" : {
+  "tooltips" : {
     "accessRights": "Information that indicates whether the data product is open data, has access restrictions or is not public.",
     "accessService": "A data service gives access to the distribution of the data product.",
     "accessURL": "The URL that gives access to a distribution of the data product. The resource at the access URL may contain information about how to get the Dataset. The URL provided must contain the information on the used protocol, i.e. https:// or http://",
