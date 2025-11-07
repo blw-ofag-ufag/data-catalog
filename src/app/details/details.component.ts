@@ -21,6 +21,7 @@ import { MatIcon } from "@angular/material/icon";
 import { MatButton } from "@angular/material/button";
 import { ObButtonDirective } from "@oblique/oblique";
 import {PublisherService} from '../services/api/publisher.service';
+import { MatTooltip } from "@angular/material/tooltip";
 
 @Component({
 	selector: 'app-details',
@@ -46,7 +47,8 @@ import {PublisherService} from '../services/api/publisher.service';
 		NotFoundComponent,
 		MatIcon,
 		ObButtonDirective,
-		MatButton
+		MatButton,
+		MatTooltip
 	],
 	styleUrl: './details.component.scss'
 })
@@ -131,32 +133,34 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		const currentMetadata = this.metadataService.getMetadata();
 		let result: NormalizedMetadataElement[] = [];
 
-		currentMetadata.subscribe(metadataConfig => {
-			if (metadataConfig) {
-				const normalizedMetadata: NormalizedMetadataElement[] = [];
+		currentMetadata
+			.subscribe(metadataConfig => {
+				if (metadataConfig) {
+					const normalizedMetadata: NormalizedMetadataElement[] = [];
 
-				Object.entries(dataset).forEach(([key, value]) => {
-					const fieldMetadata = metadataConfig.fields.get(key);
+					Object.entries(dataset).forEach(([key, value]) => {
+						const fieldMetadata = metadataConfig.fields.get(key);
 
-					if (fieldMetadata?.displayInDetails && value != null) {
-						normalizedMetadata.push({
-							label: key,
-							data: value
-						});
-					}
-				});
+						if (fieldMetadata?.displayInDetails && value != null) {
+							normalizedMetadata.push({
+								label: key,
+								data: value
+							});
+						}
+					});
 
-				result = normalizedMetadata.sort((a, b) => {
-					const aField = metadataConfig.fields.get(a.label);
-					const bField = metadataConfig.fields.get(b.label);
-					const aOrder = aField?.displayOrder || 999;
-					const bOrder = bField?.displayOrder || 999;
-					return aOrder - bOrder;
-				});
-			} else {
-				result = filterAndNormalizeMetadata(dataset);
-			}
-		}).unsubscribe(); // Immediately unsubscribe since we just want the current value
+					result = normalizedMetadata.sort((a, b) => {
+						const aField = metadataConfig.fields.get(a.label);
+						const bField = metadataConfig.fields.get(b.label);
+						const aOrder = aField?.displayOrder || 999;
+						const bOrder = bField?.displayOrder || 999;
+						return aOrder - bOrder;
+					});
+				} else {
+					result = filterAndNormalizeMetadata(dataset);
+				}
+			})
+			.unsubscribe(); // Immediately unsubscribe since we just want the current value
 
 		return result.length > 0 ? result : filterAndNormalizeMetadata(dataset);
 	}
@@ -218,84 +222,87 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
 	openEditTab(): void {
 		// Get current dataset from dataset$ observable
-		this.dataset$.pipe(takeUntil(this.destroy$)).subscribe(dataset => {
-			if (dataset && dataset['dct:identifier']) {
-				// Navigate to modify route with edit mode and dataset ID
-				this.router.navigate(['/modify'], {
-					queryParams: {
-						mode: 'edit',
-						dataset: dataset['dct:identifier']
-					}
-				});
-			}
-		}).unsubscribe(); // Unsubscribe immediately after getting the value
+		this.dataset$
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(dataset => {
+				if (dataset && dataset['dct:identifier']) {
+					// Navigate to modify route with edit mode and dataset ID
+					this.router.navigate(['/modify'], {
+						queryParams: {
+							mode: 'edit',
+							dataset: dataset['dct:identifier']
+						}
+					});
+				}
+			})
+			.unsubscribe(); // Unsubscribe immediately after getting the value
 	}
 
 	getFormatIcon(format: string): string {
 		if (!format) return 'file';
-		
+
 		const formatUpper = format.toUpperCase();
-		
+
 		// Web services
 		if (['WMS', 'WFS', 'WMTS'].includes(formatUpper)) {
 			return 'file-server';
 		}
-		
+
 		// Audio formats
 		if (['MP3', 'WAV', 'OGG', 'M4A', 'FLAC', 'AAC'].includes(formatUpper)) {
 			return 'file-audio';
 		}
-		
+
 		// CSV
 		if (formatUpper === 'CSV') {
 			return 'file-csv';
 		}
-		
+
 		// EPUB
 		if (formatUpper === 'EPUB') {
 			return 'file-epub';
 		}
-		
+
 		// Excel formats
 		if (['XLS', 'XLSX', 'XLSM', 'XLSB'].includes(formatUpper)) {
 			return 'file-excel';
 		}
-		
+
 		// Image formats
 		if (['JPG', 'JPEG', 'PNG', 'GIF', 'BMP', 'SVG', 'WEBP', 'TIFF', 'TIF'].includes(formatUpper)) {
 			return 'file-image';
 		}
-		
+
 		// JSON
 		if (formatUpper === 'JSON' || formatUpper === 'GEOJSON') {
 			return 'file-json';
 		}
-		
+
 		// PDF
 		if (formatUpper === 'PDF') {
 			return 'file-pdf';
 		}
-		
+
 		// PowerPoint formats
 		if (['PPT', 'PPTX', 'PPS', 'PPSX'].includes(formatUpper)) {
 			return 'file-ppt';
 		}
-		
+
 		// Video formats
 		if (['MP4', 'AVI', 'MOV', 'WMV', 'MKV', 'WEBM', 'FLV', 'MPG', 'MPEG'].includes(formatUpper)) {
 			return 'file-video';
 		}
-		
+
 		// Word formats
 		if (['DOC', 'DOCX', 'ODT', 'RTF'].includes(formatUpper)) {
 			return 'file-word';
 		}
-		
+
 		// Archive formats
 		if (['ZIP', 'RAR', '7Z', 'TAR', 'GZ', 'BZ2', 'XZ'].includes(formatUpper)) {
 			return 'file-zip';
 		}
-		
+
 		// Default
 		return 'file';
 	}

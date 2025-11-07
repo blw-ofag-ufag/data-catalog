@@ -28,7 +28,6 @@ export interface StepConfiguration {
 	key: string;
 	label: string;
 	fields: string[];
-	optional?: boolean;
 }
 
 export interface DatasetMetadataConfig {
@@ -65,36 +64,31 @@ export class DatasetMetadataService {
 			id: 4,
 			key: 'metadata',
 			label: 'modify.auth.form.sections.metadata',
-			fields: ['dct:issued', 'dct:modified', 'dcat:version', 'dct:accrualPeriodicity', 'bv:typeOfData', 'bv:archivalValue'],
-			optional: true
+			fields: ['dct:issued', 'dct:modified', 'dcat:version', 'dct:accrualPeriodicity', 'bv:typeOfData', 'bv:archivalValue']
 		},
 		{
 			id: 5,
 			key: 'governance',
 			label: 'modify.auth.form.sections.governance',
-			fields: ['prov:qualifiedAttribution'],
-			optional: true
+			fields: ['prov:qualifiedAttribution']
 		},
 		{
 			id: 6,
 			key: 'external',
 			label: 'modify.auth.form.sections.external',
-			fields: ['bv:externalCatalogs', 'dcat:landingPage'],
-			optional: true
+			fields: ['bv:externalCatalogs', 'dcat:landingPage']
 		},
 		{
 			id: 7,
 			key: 'coverage',
 			label: 'modify.auth.form.sections.coverage',
-			fields: ['dct:spatial', 'dct:temporal', 'dcatap:applicableLegislation'],
-			optional: true
+			fields: ['dct:spatial', 'dct:temporal', 'dcatap:applicableLegislation']
 		},
 		{
 			id: 8,
 			key: 'business',
 			label: 'modify.auth.form.sections.business',
-			fields: ['bv:itSystem', 'bv:retentionPeriod', 'prov:wasGeneratedBy'],
-			optional: true
+			fields: ['bv:itSystem', 'bv:retentionPeriod', 'prov:wasGeneratedBy']
 		},
 		{
 			id: 9,
@@ -108,15 +102,13 @@ export class DatasetMetadataService {
 				'prov:wasDerivedFrom',
 				'dcat:inSeries',
 				'dct:replaces'
-			],
-			optional: true
+			]
 		},
 		{
 			id: 10,
 			key: 'distributions',
 			label: 'modify.auth.form.sections.distributions',
-			fields: ['dcat:distribution'],
-			optional: true
+			fields: ['dcat:distribution']
 		}
 	];
 

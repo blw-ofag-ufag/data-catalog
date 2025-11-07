@@ -36,14 +36,14 @@
 						{{index + 1}}
 					</ng-template>
 						<!-- Step 1: Basic Information -->
-						<mat-step [completed]="isStepValid(0)" [optional]="isStepOptional(0)" [hasError]="!isStepValid(0) && (datasetForm.touched || submitAttempted)">
+						<mat-step [completed]="isStepValid(0)" [hasError]="!isStepValid(0) && (datasetForm.touched || submitAttempted)">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.basic" | translate }}</ng-template>
 							<div class="step-content">
 							<app-multilingual-text-field
 								formControlName="dct:title"
 								[label]="'labels.dct:title'"
 								[placeholder]="'modify.auth.form.placeholders.title'"
-								[required]="true"
+								[required]="isFieldRequired('dct:title')"
 							>
 							</app-multilingual-text-field>
 
@@ -51,7 +51,7 @@
 								formControlName="dct:description"
 								[label]="'labels.dct:description'"
 								[placeholder]="'modify.auth.form.placeholders.description'"
-								[required]="true"
+								[required]="isFieldRequired('dct:description')"
 								[textarea]="true"
 								[maxLength]="2000"
 							>
@@ -71,14 +71,14 @@
 					</mat-step>
 
 						<!-- Step 2: Access & Classification -->
-						<mat-step [completed]="isStepValid(1)" [optional]="isStepOptional(1)" [hasError]="!isStepValid(1) && (datasetForm.touched || submitAttempted)">
+						<mat-step [completed]="isStepValid(1)" [hasError]="!isStepValid(1) && (datasetForm.touched || submitAttempted)">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.access" | translate }}</ng-template>
 							<div class="step-content">
 							<app-enum-select-field
 								formControlName="dct:accessRights"
 								[label]="'labels.dct:accessRights'"
 								[options]="accessRights"
-								[required]="true"
+								[required]="isFieldRequired('dct:accessRights')"
 								[translationPath]="'choices.dataset.dct:accessRights'"
 							>
 							</app-enum-select-field>
@@ -87,7 +87,7 @@
 								formControlName="bv:classification"
 								[label]="'labels.bv:classification'"
 								[options]="classificationLevels"
-								[required]="true"
+								[required]="isFieldRequired('bv:classification')"
 								[translationPath]="'choices.dataset.bv:classification'"
 							>
 							</app-enum-select-field>
@@ -96,7 +96,7 @@
 								formControlName="bv:personalData"
 								[label]="'labels.bv:personalData'"
 								[options]="personalDataCategories"
-								[required]="true"
+								[required]="isFieldRequired('bv:personalData')"
 								[translationPath]="'choices.dataset.bv:personalData'"
 							>
 							</app-enum-select-field>
@@ -105,7 +105,7 @@
 								formControlName="adms:status"
 								[label]="'labels.adms:status'"
 								[options]="statuses"
-								[required]="true"
+								[required]="isFieldRequired('adms:status')"
 								[translationPath]="'choices.dataset.adms:status'"
 							>
 							</app-enum-select-field>
@@ -114,14 +114,14 @@
 					</mat-step>
 
 					<!-- Step 3: Publisher & Contact -->
-					<mat-step [completed]="isStepValid(2)" [optional]="isStepOptional(2)" [hasError]="!isStepValid(2) && (datasetForm.touched || submitAttempted)">
+					<mat-step [completed]="isStepValid(2)" [hasError]="!isStepValid(2) && (datasetForm.touched || submitAttempted)">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.publisher" | translate }}</ng-template>
 							<div class="step-content">
 							<app-enum-select-field
 								formControlName="dct:publisher"
 								[label]="'labels.dct:publisher'"
 								[options]="publishers"
-								[required]="true"
+								[required]="isFieldRequired('dct:publisher')"
 								[translationPath]="'choices.dataset.dct:publisher'"
 							>
 							</app-enum-select-field>
@@ -166,7 +166,7 @@
 					</mat-step>
 
 					<!-- Step 4: Metadata & Versioning -->
-					<mat-step [completed]="isStepValid(3)" [optional]="isStepOptional(3)" [hasError]="!isStepValid(3) && (datasetForm.touched || submitAttempted)">
+					<mat-step [completed]="isStepValid(3)" [hasError]="!isStepValid(3) && (datasetForm.touched || submitAttempted)">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.metadata" | translate }}</ng-template>
 							<div class="step-content">
 							<div class="ob-flex ob-flex-wrap ob-gap-4">
@@ -225,7 +225,7 @@
 						</mat-step>
 
 					<!-- Step 5: Governance -->
-					<mat-step [completed]="isStepValid(4)" [optional]="isStepOptional(4)" [hasError]="!isStepValid(4) && (datasetForm.touched || submitAttempted)">
+					<mat-step [completed]="isStepValid(4)" [hasError]="!isStepValid(4) && (datasetForm.touched || submitAttempted)">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.governance" | translate }}</ng-template>
 							<div class="step-content">
 							<app-affiliated-persons-field formControlName="prov:qualifiedAttribution" [label]="'labels.prov:qualifiedAttribution'">
@@ -234,7 +234,7 @@
 						</mat-step>
 
 					<!-- Step 6: External References -->
-					<mat-step [completed]="isStepValid(5)" [optional]="isStepOptional(5)" [hasError]="!isStepValid(5) && (datasetForm.touched || submitAttempted)">
+					<mat-step [completed]="isStepValid(5)" [hasError]="!isStepValid(5) && (datasetForm.touched || submitAttempted)">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.external" | translate }}</ng-template>
 							<div class="step-content">
 							<div class="ob-flex ob-flex-wrap ob-gap-4">
@@ -270,7 +270,7 @@
 					</mat-step>
 
 					<!-- Step 7: Coverage & Legal -->
-					<mat-step [completed]="isStepValid(6)" [optional]="isStepOptional(6)" [hasError]="!isStepValid(6) && (datasetForm.touched || submitAttempted)">
+					<mat-step [completed]="isStepValid(6)" [hasError]="!isStepValid(6) && (datasetForm.touched || submitAttempted)">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.coverage" | translate }}</ng-template>
 							<div class="step-content">
 							<div class="ob-flex ob-flex-wrap ob-gap-4">
@@ -303,7 +303,7 @@
 						</mat-step>
 
 					<!-- Step 8: Business Context -->
-					<mat-step [completed]="isStepValid(7)" [optional]="isStepOptional(7)" [hasError]="!isStepValid(7) && (datasetForm.touched || submitAttempted)">
+					<mat-step [completed]="isStepValid(7)" [hasError]="!isStepValid(7) && (datasetForm.touched || submitAttempted)">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.business" | translate }}</ng-template>
 							<div class="step-content">
 							<div class="ob-flex ob-flex-wrap ob-gap-4">
@@ -331,7 +331,7 @@
 						</mat-step>
 
 					<!-- Step 9: Additional Metadata & Relationships -->
-					<mat-step [completed]="isStepValid(8)" [optional]="isStepOptional(8)" [hasError]="!isStepValid(8) && (datasetForm.touched || submitAttempted)">
+					<mat-step [completed]="isStepValid(8)" [hasError]="!isStepValid(8) && (datasetForm.touched || submitAttempted)">
 							<ng-template matStepLabel>{{ "modify.auth.form.sections.additional" | translate }}</ng-template>
 							<div class="step-content">
 							<div class="ob-w-full ob-mb-3">
@@ -390,7 +390,7 @@
 					</mat-step>
 
 					<!-- Step 10: Distributions -->
-					<mat-step [completed]="isStepValid(9)" [optional]="isStepOptional(9)" [hasError]="!isStepValid(9) && (datasetForm.touched || submitAttempted)">
+					<mat-step [completed]="isStepValid(9)" [hasError]="!isStepValid(9) && (datasetForm.touched || submitAttempted)">
 						<ng-template matStepLabel>{{ "modify.auth.form.sections.distributions" | translate }}</ng-template>
 						<div class="step-content">
 							<app-distribution-field formControlName="dcat:distribution" [label]="'labels.dcat:distribution'"> </app-distribution-field>

@@ -84,7 +84,9 @@
 						@for (meta of metadata$ | async; track $index) {
 							<tr>
 								<td>
-									{{ "labels." + meta.label | translate }}
+									<span [matTooltip]="'tooltips.' + meta.label | translate">
+										{{ "labels." + meta.label | translate }}
+									</span>
 								</td>
 								<td>
 									@if (enumTypes.includes(meta.label) && meta.label !== "dcat:keyword" && !enumArrayFields.includes(meta.label)) {
