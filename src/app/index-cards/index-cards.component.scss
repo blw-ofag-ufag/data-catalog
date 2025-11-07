@@ -22,22 +22,53 @@ mat-card-title * {
 }
 
 .small-chip {
-	height: 30px;           /* default is ~32px, so smaller height */
-	font-size: 15px;        /* smaller font */
-	line-height: 30px;      /* vertically center text */
-	padding: 0 8px;         /* reduce horizontal padding */
+	height: 24px;           /* smaller height for tighter layout */
+	font-size: 12px;        /* smaller font */
+	line-height: 24px;      /* vertically center text */
+	padding: 0 6px;         /* tighter horizontal padding */
 	background-color: white !important; /* white background */
 	color: black !important; /* black text */
 	border: 1px solid #d1d5db !important; /* light grey border */
+	margin-right: 6px;      /* smaller gap between chips */
+	margin-bottom: 6px;     /* vertical gap when wrapping */
+	flex-shrink: 0;         /* prevent shrinking */
 }
 
 .chip-container {
-	display: flex;          /* place chips in a row */
-	overflow-x: auto;       /* enable horizontal scrolling */
-	white-space: nowrap;    /* prevent wrapping */
-	-webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-	padding-bottom: 4px;    /* optional: some space below */
-	scrollbar-width: thin;  /* Firefox scrollbar styling */
+	display: flex;
+	overflow: hidden;       /* hide overflow chips when collapsed */
+	padding-bottom: 4px;
+	align-items: flex-start;
+	transition: max-height 0.3s ease-in-out;
+}
+
+.chip-container.collapsed {
+	flex-wrap: nowrap;      /* single line when collapsed */
+	max-height: 32px;       /* height for one line of chips (24px + margin) */
+}
+
+.chip-container.expanded {
+	flex-wrap: wrap;        /* allow wrapping when expanded */
+	overflow: visible;      /* show all chips when expanded */
+	max-height: none;       /* no height restriction when expanded */
+}
+
+.more-chip {
+	height: 24px;
+	font-size: 12px;
+	line-height: 24px;
+	padding: 0 6px;
+	background-color: #f3f4f6 !important; /* light grey background */
+	color: #6b7280 !important; /* grey text */
+	border: 1px solid #d1d5db !important;
+	cursor: pointer;
+	user-select: none;
+	flex-shrink: 0;         /* prevent shrinking */
+	margin-bottom: 6px;     /* vertical gap when wrapping */
+}
+
+.more-chip:hover {
+	background-color: #e5e7eb !important;
 }
 
 .small-chip a {

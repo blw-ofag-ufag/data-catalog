@@ -37,6 +37,15 @@ export class IndexCardsComponent {
 	currentLang$: Observable<string>;
 	fallbackImageUrl = 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg';
 
+	// Default number of keywords to show (fallback when dynamic calculation isn't available)
+	private readonly defaultMaxKeywords = 4;
+
+	// Cache for dynamic keyword counts per dataset
+	private keywordCountCache = new Map<string, number>();
+
+	// Track which cards have expanded keywords
+	expandedCards = new Set<string>();
+
 	constructor(
 		private readonly router: Router,
 		private readonly translate: TranslateService,
@@ -84,4 +93,110 @@ export class IndexCardsComponent {
 		event.preventDefault();
 		event.stopPropagation();
 	}
+
+	/**
+	 * Toggle keyword expansion for a specific dataset
+	 */
+	toggleKeywordExpansion(datasetId: string, event: MouseEvent): void {
+		event.preventDefault();
+		event.stopPropagation();
+
+		if (this.expandedCards.has(datasetId)) {
+			this.expandedCards.delete(datasetId);
+		} else {
+			this.expandedCards.add(datasetId);
+		}
+	}
+
+	/**
+	 * Check if keywords are expanded for a dataset
+	 */
+	isExpanded(datasetId: string): boolean {
+		return this.expandedCards.has(datasetId);
+	}
+
+	/**
+	 * Calculate how many keywords can fit in the available width
+	 */
+	private calculateMaxVisibleKeywords(keywords: string[], datasetId: string): number {
+		if (!keywords || keywords.length === 0) return 0;
+
+		// Check cache first
+		if (this.keywordCountCache.has(datasetId)) {
+			return this.keywordCountCache.get(datasetId)!;
+		}
+
+		// Estimate character width and chip overhead
+		const avgCharWidth = 7; // Approximate width per character in 12px font
+		const chipPadding = 12; // 6px padding on each side
+		const chipMargin = 6; // Right margin between chips
+		const moreChipWidth = 30; // Approximate width for "+n" chip
+		const containerWidth = 280; // Approximate available width in card
+
+		let totalWidth = 0;
+		let visibleCount = 0;
+
+		for (let i = 0; i < keywords.length; i++) {
+			const keyword = keywords[i];
+			const chipWidth = (keyword.length * avgCharWidth) + chipPadding + chipMargin;
+
+			// Reserve space for "+n" chip if there will be hidden keywords
+			const needsMoreChip = i < keywords.length - 1;
+			const requiredWidth = totalWidth + chipWidth + (needsMoreChip ? moreChipWidth : 0);
+
+			if (requiredWidth > containerWidth) {
+				break;
+			}
+
+			totalWidth += chipWidth;
+			visibleCount++;
+		}
+
+		// Ensure we show at least 1 keyword and leave space for more chip if needed
+		if (visibleCount === 0 && keywords.length > 0) {
+			visibleCount = 1;
+		}
+
+		// Cache the result
+		this.keywordCountCache.set(datasetId, visibleCount);
+		return visibleCount;
+	}
+
+	/**
+	 * Get visible keywords for a dataset (dynamic based on available width)
+	 */
+	getVisibleKeywords(keywords: string[] | null | undefined, datasetId: string): string[] {
+		if (!keywords) return [];
+
+		const maxVisible = this.calculateMaxVisibleKeywords(keywords, datasetId);
+		return keywords.slice(0, maxVisible);
+	}
+
+	/**
+	 * Get hidden keywords for a dataset
+	 */
+	getHiddenKeywords(keywords: string[] | null | undefined, datasetId: string): string[] {
+		if (!keywords) return [];
+
+		const maxVisible = this.calculateMaxVisibleKeywords(keywords, datasetId);
+		return keywords.slice(maxVisible);
+	}
+
+	/**
+	 * Check if there are keywords to hide
+	 */
+	hasHiddenKeywords(keywords: string[] | null | undefined, datasetId: string): boolean {
+		if (!keywords) return false;
+
+		const maxVisible = this.calculateMaxVisibleKeywords(keywords, datasetId);
+		return keywords.length > maxVisible;
+	}
+
+	/**
+	 * Get CSS class for chip container based on expansion state
+	 */
+	getChipContainerClass(datasetId: string): string {
+		return this.isExpanded(datasetId) ? 'chip-container expanded' : 'chip-container collapsed';
+	}
+
 }

@@ -38,12 +38,38 @@
 			</mat-card-header>
 			<mat-card-content>
 				{{ "ui.issueDate" | translate }}: {{ dataset["dct:issued"] | date: "d. MMMM y" : "UTC" : (currentLang$ | async)! }} <br /><br />
-				<div class="chip-container">
-					@for (tag of dataset["dcat:keyword"]; track $index) {
-						<mat-chip (click)="onChipClick($event)" class="small-chip">
-							<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
-								{{ tag }}
-							</a>
+				<div [class]="getChipContainerClass(dataset['dct:identifier'])">
+					<!-- Show visible keywords when collapsed, or all keywords when expanded -->
+					@if (isExpanded(dataset['dct:identifier'])) {
+						<!-- Show all keywords when expanded -->
+						@for (tag of dataset["dcat:keyword"]; track $index) {
+							<mat-chip (click)="onChipClick($event)" class="small-chip">
+								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
+									{{ tag }}
+								</a>
+							</mat-chip>
+						}
+					} @else {
+						<!-- Show only visible keywords when collapsed -->
+						@for (tag of getVisibleKeywords(dataset["dcat:keyword"], dataset["dct:identifier"]); track $index) {
+							<mat-chip (click)="onChipClick($event)" class="small-chip">
+								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
+									{{ tag }}
+								</a>
+							</mat-chip>
+						}
+					}
+
+					<!-- +n chip to expand/collapse when there are hidden keywords -->
+					@if (hasHiddenKeywords(dataset["dcat:keyword"], dataset["dct:identifier"])) {
+						<mat-chip
+							(click)="toggleKeywordExpansion(dataset['dct:identifier'], $event)"
+							class="more-chip">
+							@if (isExpanded(dataset['dct:identifier'])) {
+								−
+							} @else {
+								+{{ getHiddenKeywords(dataset["dcat:keyword"], dataset["dct:identifier"]).length }}
+							}
 						</mat-chip>
 					}
 				</div>
