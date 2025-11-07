@@ -323,6 +323,29 @@
         },
         "reset": "Réinitialiser",
         "submit": "Soumettre"
+      },
+      "submit": {
+        "title": "Jeu de données prêt pour la soumission",
+        "authSuccess": "Authentifié avec succès",
+        "authInfo": "Veuillez vous authentifier pour apporter des modifications",
+        "authenticate": "S'authentifier",
+        "showJson": "Afficher l'aperçu JSON",
+        "hideJson": "Masquer JSON",
+        "options": "Options de soumission",
+        "createInGitHub": "Créer dans GitHub",
+        "editInGitHub": "Modifier dans GitHub",
+        "githubDescription": "Ouvre GitHub pour modifier ou créer le fichier directement",
+        "alternatives": "Options alternatives",
+        "copyJson": "Copier JSON",
+        "copyDescription": "Copie les données JSON dans le presse-papiers",
+        "downloadJson": "Télécharger JSON",
+        "downloadDescription": "Télécharge le fichier JSON sur votre ordinateur",
+        "help": {
+          "title": "Prochaines étapes",
+          "github": "Vérifiez les modifications dans GitHub",
+          "review": "Faites réviser les modifications par un collègue",
+          "commit": "Commitez les modifications dans le dépôt"
+        }
       }
     }
   },

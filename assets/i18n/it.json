@@ -323,6 +323,29 @@
         },
         "reset": "Ripristina",
         "submit": "Invia"
+      },
+      "submit": {
+        "title": "Set di dati pronto per l'invio",
+        "authSuccess": "Autenticato con successo",
+        "authInfo": "Si prega di autenticarsi per apportare modifiche",
+        "authenticate": "Autentica",
+        "showJson": "Mostra anteprima JSON",
+        "hideJson": "Nascondi JSON",
+        "options": "Opzioni di invio",
+        "createInGitHub": "Crea in GitHub",
+        "editInGitHub": "Modifica in GitHub",
+        "githubDescription": "Apre GitHub per modificare o creare il file direttamente",
+        "alternatives": "Opzioni alternative",
+        "copyJson": "Copia JSON",
+        "copyDescription": "Copia i dati JSON negli appunti",
+        "downloadJson": "Scarica JSON",
+        "downloadDescription": "Scarica il file JSON sul tuo computer",
+        "help": {
+          "title": "Prossimi passi",
+          "github": "Verifica le modifiche in GitHub",
+          "review": "Fai rivedere le modifiche da un collega",
+          "commit": "Committa le modifiche nel repository"
+        }
       }
     }
   },

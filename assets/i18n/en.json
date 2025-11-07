@@ -156,7 +156,7 @@
     "bv:itSystem": "What IT system is your data product used in? Please provide an URL.",
     "bv:personalData": "Does your data product contain personal data?",
     "bv:retentionPeriod": "How long does your data product need to be retained?",
-    "bv:typeOfData": "What type best describes your data product?"
+    "bv:typeOfData": "What type best describes your data product?",
     "classification": "What is the data products' information security classification?",
     "comment": "Is the other relevant information to this data product?",
     "conformsTo": "Does your data product conform to specific standards and/or specifications?",
@@ -326,6 +326,7 @@
       "errors": {
         "invalidToken": "Invalid token. Please check your Personal Access Token.",
         "tokenExpired": "Token has expired. Please create a new token.",
+        "usernameMismatch": "Username does not match the token owner.",
         "noWritePermission": "Token does not have write permission to the repository.",
         "repoNotFound": "Repository not found.",
         "noRepoAccess": "No access to the repository.",
@@ -407,26 +408,26 @@
         "submit": "Submit"
       },
       "submit": {
-        "title": "Submit Dataset",
-        "authSuccess": "GitHub permissions verified",
-        "authInfo": "Authentication is optional - GitHub will ask for credentials",
-        "authenticate": "Authenticate Now",
-        "showJson": "Show JSON",
+        "title": "Dataset Ready for Submission",
+        "authSuccess": "Successfully authenticated",
+        "authInfo": "Please authenticate to make changes",
+        "authenticate": "Authenticate",
+        "showJson": "Show JSON preview",
         "hideJson": "Hide JSON",
         "options": "Submission Options",
         "createInGitHub": "Create in GitHub",
         "editInGitHub": "Edit in GitHub",
-        "githubDescription": "Opens GitHub with pre-filled content for review and commit",
+        "githubDescription": "Opens GitHub to edit or create the file directly",
         "alternatives": "Alternative Options",
         "copyJson": "Copy JSON",
-        "copyDescription": "Copies JSON to clipboard for manual pasting",
+        "copyDescription": "Copies the JSON data to the clipboard",
         "downloadJson": "Download JSON",
-        "downloadDescription": "Downloads JSON file for local storage",
+        "downloadDescription": "Downloads the JSON file to your computer",
         "help": {
-          "title": "How does it work?",
-          "github": "Click 'Create in GitHub' to open GitHub with pre-filled content",
-          "review": "Review changes in GitHub's diff view",
-          "commit": "Create the commit directly in GitHub or create a pull request"
+          "title": "Next Steps",
+          "github": "Review the changes in GitHub",
+          "review": "Have the changes reviewed by a colleague",
+          "commit": "Commit the changes to the repository"
         }
       }
     }
