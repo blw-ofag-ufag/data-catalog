@@ -132,6 +132,8 @@ export class AuthComponent implements OnDestroy {
 				return 'modify.auth.errors.invalidToken';
 			case 'TOKEN_EXPIRED':
 				return 'modify.auth.errors.tokenExpired';
+			case 'USERNAME_MISMATCH':
+				return 'modify.auth.errors.usernameMismatch';
 			case 'NO_WRITE_PERMISSION':
 				return 'modify.auth.errors.noWritePermission';
 			case 'REPO_NOT_FOUND':

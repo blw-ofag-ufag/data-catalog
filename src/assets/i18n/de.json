@@ -140,7 +140,7 @@
     "source": "Quellcode (GitHub)",
     "version": "Version"
   },
-  "tooltips": {  
+  "tooltips": {
     "accessRights": "Informationen darüber, ob es sich bei dem Datenprodukt um offene Daten handelt, ob Zugangsbeschränkungen bestehen oder ob es nicht öffentlich ist.",
     "accessService": "Ein Datendienst ermöglicht den Zugang zur Verbreitung des Datenprodukts.",
     "accessURL": "Die URL, über die der Zugang zur Verbreitung des Datenprodukts erfolgt. Die Ressource unter der Zugangs-URL kann Informationen darüber enthalten, wie der Datensatz abgerufen werden kann. Die angegebene URL muss Informationen zum verwendeten Protokoll enthalten, d. h. https:// oder http://",
@@ -156,7 +156,7 @@
     "bv:itSystem": "In welchem IT-System wird Ihr Datenprodukt verwendet? Bitte geben Sie eine URL an.",
     "bv:personalData": "Enthält Ihr Datenprodukt personenbezogene Daten?",
     "bv:retentionPeriod": "Wie lange muss Ihr Datenprodukt aufbewahrt werden?",
-    "bv:typeOfData": "Welcher Typ beschreibt Ihr Datenprodukt am besten?"
+    "bv:typeOfData": "Welcher Typ beschreibt Ihr Datenprodukt am besten?",
     "classification": "Wie lautet die Informationssicherheitsklassifizierung des Datenprodukts?",
     "comment": "Gibt es weitere relevante Informationen zu diesem Datenprodukt?",
     "conformsTo": "Entspricht Ihr Datenprodukt bestimmten Standards und/oder Spezifikationen?",
@@ -448,26 +448,26 @@
         "submit": "Einreichen"
       },
       "submit": {
-        "title": "Datensatz einreichen",
-        "authSuccess": "GitHub-Berechtigung verifiziert",
-        "authInfo": "Authentifizierung ist optional - GitHub wird nach Anmeldedaten fragen",
-        "authenticate": "Jetzt authentifizieren",
-        "showJson": "JSON anzeigen",
+        "title": "Datensatz zur Übermittlung bereit",
+        "authSuccess": "Erfolgreich authentifiziert",
+        "authInfo": "Bitte authentifizieren Sie sich, um Änderungen vorzunehmen",
+        "authenticate": "Authentifizieren",
+        "showJson": "JSON-Vorschau anzeigen",
         "hideJson": "JSON verbergen",
-        "options": "Einreichungsoptionen",
+        "options": "Übermittlungsoptionen",
         "createInGitHub": "In GitHub erstellen",
         "editInGitHub": "In GitHub bearbeiten",
-        "githubDescription": "Öffnet GitHub mit vorausgefülltem Inhalt zum Review und Commit",
+        "githubDescription": "Öffnet GitHub, um die Datei direkt zu bearbeiten oder zu erstellen",
         "alternatives": "Alternative Optionen",
         "copyJson": "JSON kopieren",
-        "copyDescription": "Kopiert JSON in die Zwischenablage für manuelles Einfügen",
+        "copyDescription": "Kopiert die JSON-Daten in die Zwischenablage",
         "downloadJson": "JSON herunterladen",
-        "downloadDescription": "Lädt JSON-Datei für lokale Speicherung herunter",
+        "downloadDescription": "Lädt die JSON-Datei auf Ihren Computer herunter",
         "help": {
-          "title": "Wie funktioniert es?",
-          "github": "Klicken Sie auf 'In GitHub erstellen' um GitHub mit vorausgefülltem Inhalt zu öffnen",
-          "review": "Überprüfen Sie die Änderungen in GitHubs Diff-Ansicht",
-          "commit": "Erstellen Sie den Commit direkt in GitHub oder erstellen Sie einen Pull Request"
+          "title": "Nächste Schritte",
+          "github": "Überprüfen Sie die Änderungen in GitHub",
+          "review": "Lassen Sie die Änderungen von einem Kollegen überprüfen",
+          "commit": "Committen Sie die Änderungen ins Repository"
         }
       }
     }

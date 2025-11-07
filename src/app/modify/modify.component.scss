@@ -82,6 +82,37 @@
 				font-weight: 500;
 				font-size: 0.9rem;
 			}
+
+			// Configure Oblique icons for stepper
+			.mat-step-icon {
+				font-family: 'oblique-icons';
+
+				.mat-step-icon-content {
+					font-family: 'oblique-icons';
+					font-style: normal;
+					font-variant: normal;
+					text-rendering: auto;
+					-webkit-font-smoothing: antialiased;
+				}
+			}
+
+			// Style invalid step icons red when there are errors
+			&.mat-step-header-invalid {
+				.mat-step-icon {
+					background-color: #dc3545 !important;
+					color: white !important;
+				}
+			}
+
+			// Also style steps that aren't completed and have errors
+			&:not(.mat-step-header-completed) {
+				&.cdk-step-invalid {
+					.mat-step-icon {
+						background-color: #dc3545 !important;
+						color: white !important;
+					}
+				}
+			}
 		}
 
 		.mat-step-content {
@@ -112,6 +143,22 @@
 	.final-actions {
 		display: flex;
 		gap: 0.5rem;
+	}
+}
+
+// Required field asterisk styling
+.required-asterisk {
+	color: #dc3545;
+	font-weight: bold;
+	margin-left: 2px;
+}
+
+// Style mat-form-field labels for required fields
+mat-form-field.required {
+	mat-label::after {
+		content: ' *';
+		color: #dc3545;
+		font-weight: bold;
 	}
 }
 

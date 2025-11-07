@@ -20,9 +20,12 @@ import {I14YThemeService, I14YTheme} from '../../../../services/api/i14y-theme.s
 	],
 	template: `
 		<mat-form-field class="w-100">
-			<mat-label>{{ label | translate }}</mat-label>
+			<mat-label>
+				{{ label | translate }}
+				<span *ngIf="required" class="required-asterisk">*</span>
+			</mat-label>
 			<mat-select [formControl]="control" (blur)="onBlur()" [placeholder]="placeholder | translate">
-				<mat-option value="">{{ 'modify.auth.form.options.none' | translate }}</mat-option>
+<!--				<mat-option value="">{{ 'modify.auth.form.options.none' | translate }}</mat-option>-->
 				<mat-option *ngFor="let theme of themes" [value]="theme.code">
 					{{ getThemeLabel(theme) }}
 				</mat-option>
@@ -31,7 +34,8 @@ import {I14YThemeService, I14YTheme} from '../../../../services/api/i14y-theme.s
 				{{ getErrorMessage() | translate }}
 			</mat-error>
 		</mat-form-field>
-	`
+	`,
+	styleUrl: './theme-select-field.component.scss'
 })
 export class ThemeSelectFieldComponent implements ControlValueAccessor, OnInit, OnDestroy {
 	@Input() label = '';

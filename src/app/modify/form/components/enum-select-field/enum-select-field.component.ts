@@ -70,6 +70,10 @@ export class EnumSelectFieldComponent implements ControlValueAccessor, OnInit {
 		this.onTouched();
 	}
 
+	get filteredOptions(): readonly string[] {
+		return this.options.filter(option => option && option.trim() !== '');
+	}
+
 	getOptionTranslationKey(option: string): string {
 		if (this.translationPath) {
 			return `${this.translationPath}.${option}`;

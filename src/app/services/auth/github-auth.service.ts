@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
+import { map, catchError, tap, mergeMap } from 'rxjs/operators';
 import { RepositoryCredentialsService } from './repository-credentials.service';
+import { environment } from '../../../environments/environment';
 
 export interface GitHubCredentials {
 	username: string;
@@ -52,12 +53,20 @@ export class GitHubAuthService {
 
 		// First, verify the token by getting user info
 		return this.http.get<GitHubUser>(`${this.API_BASE}/user`, { headers }).pipe(
-			tap(() => {
-				// If user info succeeds, check repository permissions
-				this.checkRepositoryPermissionsForRepo(credentials.token, repository).subscribe();
+			tap(user => {
+				// Validate username matches token owner
+				if (user.login !== credentials.username) {
+					throw new Error('USERNAME_MISMATCH');
+				}
+			}),
+			mergeMap(user => {
+				// If user info succeeds and username matches, check repository permissions
+				return this.checkRepositoryPermissionsForRepo(credentials.token, repository).pipe(
+					map(() => user) // Return the user info if repo check succeeds
+				);
 			}),
 			tap(() => {
-				// Store credentials in the repository credentials service
+				// Store credentials only after ALL validations succeed
 				this.repositoryCredentialsService.setCredentials(repository, credentials, true);
 
 				// Also store in legacy subject for backward compatibility
@@ -71,8 +80,10 @@ export class GitHubAuthService {
 					return throwError(() => new Error('INVALID_TOKEN'));
 				} else if (error.status === 403) {
 					return throwError(() => new Error('TOKEN_EXPIRED'));
+				} else if (error.message === 'USERNAME_MISMATCH') {
+					return throwError(() => new Error('USERNAME_MISMATCH'));
 				}
-				return throwError(() => new Error('NETWORK_ERROR'));
+				return throwError(() => error);
 			})
 		);
 	}
@@ -124,6 +135,10 @@ export class GitHubAuthService {
 	 * Check if user is authenticated (legacy method)
 	 */
 	isAuthenticated(): boolean {
+		// Always return true in debug mode
+		if (environment.debugMode) {
+			return true;
+		}
 		return this.credentialsSubject.value !== null;
 	}
 

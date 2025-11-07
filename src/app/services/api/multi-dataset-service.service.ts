@@ -63,7 +63,13 @@ export class MultiDatasetService {
 
 		Promise.all(fetchPromises)
 			.then(results => {
-				const combinedDatasets: DatasetSchema[] = results.flat();
+				const combinedDatasets: DatasetSchema[] = results.flat().map(dataset => {
+					// Sort keywords within each dataset alphabetically
+					if (dataset['dcat:keyword'] && Array.isArray(dataset['dcat:keyword'])) {
+						dataset['dcat:keyword'] = [...dataset['dcat:keyword']].sort((a, b) => a.localeCompare(b));
+					}
+					return dataset;
+				});
 				this._datasetsSubject.next(combinedDatasets);
 			})
 			.catch(error => {
@@ -87,7 +93,7 @@ export class MultiDatasetService {
 
 		Promise.all(fetchKeywordsPromises)
 			.then(results => {
-				const combinedKeywords: string[] = Array.from(new Set(results.flatMap(entry => entry['dcat:keyword'])));
+				const combinedKeywords: string[] = Array.from(new Set(results.flatMap(entry => entry['dcat:keyword']))).sort((a, b) => a.localeCompare(b));
 				this._keywordsSubject.next(combinedKeywords);
 			})
 			.catch(error => {
@@ -103,6 +109,10 @@ export class MultiDatasetService {
 				response
 					.json()
 					.then(data => {
+						// Sort keywords within the dataset alphabetically
+						if (data && data['dcat:keyword'] && Array.isArray(data['dcat:keyword'])) {
+							data['dcat:keyword'] = [...data['dcat:keyword']].sort((a, b) => a.localeCompare(b));
+						}
 						this._selectedDatasetSubject.next(data);
 						this._loadingSubject.next(false);
 					})

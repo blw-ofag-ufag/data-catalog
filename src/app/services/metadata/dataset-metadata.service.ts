@@ -302,6 +302,11 @@ export class DatasetMetadataService {
 		);
 	}
 
+	// Get the current metadata config value synchronously
+	getMetadataValue(): DatasetMetadataConfig | null {
+		return this.metadata$.value;
+	}
+
 	// Get fields for details page display
 	getDetailsFields(): Observable<FieldMetadata[]> {
 		return this.metadata$.pipe(

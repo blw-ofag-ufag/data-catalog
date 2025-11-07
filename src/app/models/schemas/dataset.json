@@ -7,16 +7,17 @@
     "dct:identifier",
     "dct:title",
     "dct:description",
-    "dct:accessRights",
     "dct:publisher",
-    "dcat:contactPoint",
     "dct:issued",
-    "dct:accrualPeriodicity",
-    "dct:modified",
-    "prov:qualifiedAttribution",
     "adms:status",
     "bv:classification",
-    "bv:personalData",
+    "bv:personalData"
+  ],
+  "recommended": [
+    "dct:accessRights",
+    "dcat:contactPoint",
+    "dct:accrualPeriodicity",
+    "dct:modified",
     "bv:archivalValue"
   ],
   "properties": {
@@ -45,18 +46,22 @@
       "properties": {
         "de": {
           "type": "string",
+          "pattern": "[a-zA-Z0-9_\\-\\s]{10,75}",
           "title": "Deutsch"
         },
         "fr": {
           "type": "string",
+          "pattern": "[a-zA-Z0-9_\\-\\s]{10,75}",
           "title": "Français"
         },
         "it": {
           "type": "string",
+          "pattern": "[a-zA-Z0-9_\\-\\s]{10,75}",
           "title": "Italiano"
         },
         "en": {
           "type": "string",
+          "pattern": "[a-zA-Z0-9_\\-\\s]{10,75}",
           "title": "English"
         }
       }
@@ -91,7 +96,7 @@
     "dct:accessRights": {
       "type": "string",
       "title": "Access rights",
-      "description": "Defines the accessibility of the dataset (e.g., public, internal, etc.). You can find more information here: <a href='https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right'>DCAT-AP CH 3.0 – Access Rights Vocabulary</a>.",
+      "description": "**Recommended**. Defines the accessibility of the dataset (e.g., public, internal, etc.). You can find more information here: <a href='https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right'>DCAT-AP CH 3.0 – Access Rights Vocabulary</a>.",
       "enum": [
         "",
         "CONFIDENTIAL",
@@ -106,7 +111,6 @@
       "type": "string",
       "description": "Federal Office responsible for the data object",
       "enum": [
-        "",
         "BLW-OFAG-UFAG-FOAG",
         "BLV-OSAV-USAV-FSVO"
       ]
@@ -118,7 +122,7 @@
         "schema:email"
       ],
       "title": "Contact point",
-      "description": "Contact information for potential inquiries about the dataset.",
+      "description": "**Highly recommended**. Information for potential inquiries about the dataset.",
       "properties": {
         "schema:name": {
           "type": "string",
@@ -165,7 +169,7 @@
     "dct:accrualPeriodicity": {
       "type": "string",
       "title": "Accrual periodicity",
-      "description": "Frequency with which dataset is updated (e.g., 'Annual'). More information here: <a href='https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-frequency'>Available frequencies</a>.",
+      "description": "**Recommended**. Defines the frequency with which dataset is updated (e.g., 'Annual'). More information here: <a href='https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-frequency'>Available frequencies</a>.",
       "enum": [
         "",
         "OTHER",
@@ -189,7 +193,7 @@
       ],
       "format": "date",
       "title": "Last modification date",
-      "description": "Last modification date of the data in the dataset."
+      "description": "**Recommended**. Modification date of the data in the dataset."
     },
     "dcat:version": {
       "type": "string",
@@ -294,7 +298,7 @@
     "bv:archivalValue": {
       "type": "boolean",
       "title": "Archival value",
-      "description": "Indicates if this dataset has archival value and must be sent to the BAR."
+      "description": "**Recommended**. Indicates if this dataset has archival value and must be sent to the BAR."
     },
     "bv:externalCatalogs": {
       "title": "External catalogs",
@@ -542,11 +546,9 @@
       "items": {
         "type": "object",
         "required": [
-          "dct:identifier",
           "dcat:accessURL",
           "adms:status",
-          "dct:format",
-          "dct:modified"
+          "dct:format"
         ],
         "additionalProperties": false,
         "properties": {
@@ -620,18 +622,22 @@
             "properties": {
               "de": {
                 "type": "string",
+                "pattern": "[a-zA-Z0-9_\\-\\s]{10,75}",
                 "title": "Deutsch"
               },
               "fr": {
                 "type": "string",
+                "pattern": "[a-zA-Z0-9_\\-\\s]{10,75}",
                 "title": "Français"
               },
               "it": {
                 "type": "string",
+                "pattern": "[a-zA-Z0-9_\\-\\s]{10,75}",
                 "title": "Italiano"
               },
               "en": {
                 "type": "string",
+                "pattern": "[a-zA-Z0-9_\\-\\s]{10,75}",
                 "title": "English"
               }
             }
