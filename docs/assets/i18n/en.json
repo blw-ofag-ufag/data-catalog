@@ -467,5 +467,19 @@
     "steward": "Steward",
     "stewardOwnerContact": "Contact",
     "title": "Title"
+  },
+  "validation": {
+    "i14y": {
+      "description": "Additional requirements for publishing to the I14Y interoperability platform"
+    },
+    "ods": {
+      "description": "Additional requirements for publishing to Open Data Swiss"
+    },
+    "base": {
+      "description": "Basic requirements for all datasets"
+    },
+    "generic": {
+      "description": "Please check the following requirements"
+    }
   }
 }
