@@ -121,7 +121,6 @@ export class DatasetService {
 				const unfiltered = sortedSchemas;
 				let filtered = unfiltered;
 
-
 				// Apply filters first
 				if (Object.keys(filters).length > 0) {
 					filtered = unfiltered.filter(schema => {
@@ -213,8 +212,8 @@ export class DatasetService {
 
 			// Handle sort parameter from URL
 			const sortParam = params['sort'] || 'title';
-			const validSorts: Array<'title' | 'old' | 'new' | 'owner' | 'relevance'> = ['title', 'old', 'new', 'owner', 'relevance'];
-			if (validSorts.includes(sortParam as any) && sortParam !== this.sortSubject.value) {
+			const validSorts: ('title' | 'old' | 'new' | 'owner' | 'relevance')[] = ['title', 'old', 'new', 'owner', 'relevance'];
+			if (validSorts.includes(sortParam) && sortParam !== this.sortSubject.value) {
 				this.sortSubject.next(sortParam as 'title' | 'old' | 'new' | 'owner' | 'relevance');
 			}
 
@@ -229,7 +228,7 @@ export class DatasetService {
 				const newPageSize = pageSizeParam && validPageSizes.includes(pageSizeParam) ? pageSizeParam : currentPage.pageSize;
 
 				this.pageSubject.next({
-					pageIndex: pageIndex,
+					pageIndex,
 					pageSize: newPageSize,
 					length: currentPage.length
 				});
@@ -412,7 +411,7 @@ export class DatasetService {
 		const sortParam = currentParams['sort'] || 'title';
 		const validSorts: ('title' | 'old' | 'new' | 'owner' | 'relevance')[] = ['title', 'old', 'new', 'owner', 'relevance'];
 
-		if (validSorts.includes(sortParam as any)) {
+		if (validSorts.includes(sortParam)) {
 			return sortParam as 'title' | 'old' | 'new' | 'owner' | 'relevance';
 		}
 
@@ -459,8 +458,8 @@ export class DatasetService {
 		// Note: View-specific defaults (6/10) will be set by IndexOutletComponent if no URL override
 
 		return {
-			pageIndex: pageIndex,
-			pageSize: pageSize,
+			pageIndex,
+			pageSize,
 			length: 0 // Will be updated when data loads
 		};
 	}

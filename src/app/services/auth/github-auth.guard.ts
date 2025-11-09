@@ -8,8 +8,8 @@ import {environment} from '../../../environments/environment';
 })
 export class GitHubAuthGuard implements CanActivate {
 	constructor(
-		private githubAuthService: GitHubAuthService,
-		private router: Router
+		private readonly githubAuthService: GitHubAuthService,
+		private readonly router: Router
 	) {}
 
 	canActivate(): boolean {
@@ -21,10 +21,9 @@ export class GitHubAuthGuard implements CanActivate {
 
 		if (this.githubAuthService.isAuthenticated()) {
 			return true;
-		} else {
-			// Redirect to auth page if not authenticated
-			this.router.navigate(['/modify/auth']);
-			return false;
 		}
+		// Redirect to auth page if not authenticated
+		this.router.navigate(['/modify/auth']);
+		return false;
 	}
 }

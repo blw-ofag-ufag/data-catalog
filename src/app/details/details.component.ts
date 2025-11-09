@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {DatasetSchema, enumTypes, enumArrayFields} from '../models/schemas/dataset';
+import {DatasetSchema, enumArrayFields, enumTypes} from '../models/schemas/dataset';
 import {DatasetService} from '../services/api/api.service';
 import {Observable, Subject, startWith} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
@@ -17,11 +17,11 @@ import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.compon
 import {KeywordsComponent} from './keywords/keywords.component';
 import {DistributionComponent} from './distribution/distribution.component';
 import {NotFoundComponent} from '../not-found/not-found.component';
-import { MatIcon } from "@angular/material/icon";
-import { MatButton } from "@angular/material/button";
-import { ObButtonDirective } from "@oblique/oblique";
+import {MatIcon} from '@angular/material/icon';
+import {MatButton} from '@angular/material/button';
+import {ObButtonDirective} from '@oblique/oblique';
 import {PublisherService} from '../services/api/publisher.service';
-import { MatTooltip } from "@angular/material/tooltip";
+import {MatTooltip} from '@angular/material/tooltip';
 
 @Component({
 	selector: 'app-details',

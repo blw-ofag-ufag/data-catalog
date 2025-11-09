@@ -153,12 +153,111 @@
 	margin-left: 2px;
 }
 
+// Recommended field indicator styling
+.recommended-indicator {
+	color: #0066cc;
+	font-size: 0.85em;
+	font-weight: 500;
+	margin-left: 4px;
+	opacity: 0.8;
+}
+
 // Style mat-form-field labels for required fields
 mat-form-field.required {
 	mat-label::after {
 		content: ' *';
 		color: #dc3545;
 		font-weight: bold;
+	}
+}
+
+// Validation group styling
+.validation-groups {
+	margin-bottom: 1.5rem;
+
+	.validation-group {
+		margin-bottom: 1rem;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+// Field-level I14Y indicators
+.field-i14y-required {
+	position: relative;
+
+	&::after {
+		content: " (I14Y)";
+		color: #0066cc;
+		font-size: 0.85em;
+		font-weight: 500;
+		margin-left: 4px;
+		opacity: 0.8;
+	}
+
+	// Style the form field border when I14Y validation is active
+	.mat-mdc-form-field {
+		&.mat-form-field-invalid:not(.mat-form-field-disabled) {
+			.mat-mdc-text-field-wrapper {
+				.mat-mdc-form-field-flex {
+					.mat-mdc-form-field-infix {
+						border-bottom-color: #0066cc;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Field-level ODS indicators
+.field-ods-required {
+	position: relative;
+
+	&::after {
+		content: " (ODS)";
+		color: #e91e63;
+		font-size: 0.85em;
+		font-weight: 500;
+		margin-left: 4px;
+		opacity: 0.8;
+	}
+}
+
+// Enhanced external catalog styling
+.external-catalogs {
+	.mat-mdc-checkbox {
+		&.i14y-catalog {
+			.mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
+				background-color: #0066cc;
+				border-color: #0066cc;
+			}
+		}
+
+		&.ods-catalog {
+			.mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
+				background-color: #e91e63;
+				border-color: #e91e63;
+			}
+		}
+	}
+}
+
+// Validation section spacing
+.validation-section {
+	margin-top: 2rem !important;
+	padding-top: 1rem;
+	border-top: 1px solid #e9ecef;
+}
+
+// Validation alert spacing
+validation-alert {
+	display: block;
+	margin-bottom: 1rem;
+
+	&:last-child {
+		margin-bottom: 0;
 	}
 }
 

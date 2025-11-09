@@ -39,7 +39,7 @@ export class IndexListComponent {
 		// If there are existing keywords, merge them
 		let keywordValue = keyword;
 		if (existingKeywords && !existingKeywords.split(',').includes(keyword)) {
-			keywordValue = existingKeywords + ',' + keyword;
+			keywordValue = `${existingKeywords},${keyword}`;
 		}
 
 		return {

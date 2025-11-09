@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, of, BehaviorSubject} from 'rxjs';
-import {map, shareReplay, catchError} from 'rxjs/operators';
+import {BehaviorSubject, Observable, of} from 'rxjs';
+import {catchError, map, shareReplay} from 'rxjs/operators';
 import {Validators} from '@angular/forms';
 
 // Import the JSON schema directly
@@ -10,6 +10,7 @@ import * as datasetSchema from '../../models/schemas/dataset.json';
 export interface FieldMetadata {
 	key: string;
 	required: boolean;
+	recommended: boolean;
 	type: string;
 	label: string;
 	description?: string;
@@ -40,8 +41,8 @@ export interface DatasetMetadataConfig {
 	providedIn: 'root'
 })
 export class DatasetMetadataService {
-	private metadata$ = new BehaviorSubject<DatasetMetadataConfig | null>(null);
-	private stepConfig: StepConfiguration[] = [
+	private readonly metadata$ = new BehaviorSubject<DatasetMetadataConfig | null>(null);
+	private readonly stepConfig: StepConfiguration[] = [
 		{
 			id: 1,
 			key: 'basic',
@@ -94,15 +95,7 @@ export class DatasetMetadataService {
 			id: 9,
 			key: 'additional',
 			label: 'modify.auth.form.sections.additional',
-			fields: [
-				'schema:comment',
-				'bv:geoIdentifier',
-				'schema:image',
-				'bv:abrogation',
-				'prov:wasDerivedFrom',
-				'dcat:inSeries',
-				'dct:replaces'
-			]
+			fields: ['schema:comment', 'bv:geoIdentifier', 'schema:image', 'bv:abrogation', 'prov:wasDerivedFrom', 'dcat:inSeries', 'dct:replaces']
 		},
 		{
 			id: 10,
@@ -124,12 +117,14 @@ export class DatasetMetadataService {
 	private parseSchema(schema: any): DatasetMetadataConfig {
 		const fields = new Map<string, FieldMetadata>();
 		const requiredFields = schema.required || [];
+		const recommendedFields = schema.recommended || [];
 
 		// Parse each property from the schema
 		Object.entries(schema.properties || {}).forEach(([key, prop]: [string, any]) => {
 			const fieldMetadata: FieldMetadata = {
 				key,
 				required: requiredFields.includes(key),
+				recommended: recommendedFields.includes(key),
 				type: this.getFieldType(prop),
 				label: `labels.${key}`,
 				description: prop.description,
@@ -238,9 +233,7 @@ export class DatasetMetadataService {
 	}
 
 	getFieldMetadata(key: string): Observable<FieldMetadata | undefined> {
-		return this.metadata$.pipe(
-			map(config => config?.fields.get(key))
-		);
+		return this.metadata$.pipe(map(config => config?.fields.get(key)));
 	}
 
 	getStepFields(stepId: number): Observable<FieldMetadata[]> {
@@ -250,29 +243,30 @@ export class DatasetMetadataService {
 				const step = config.steps.find(s => s.id === stepId);
 				if (!step) return [];
 
-				return step.fields
-					.map(fieldKey => config.fields.get(fieldKey))
-					.filter((field): field is FieldMetadata => field !== undefined);
+				return step.fields.map(fieldKey => config.fields.get(fieldKey)).filter((field): field is FieldMetadata => field !== undefined);
 			})
 		);
 	}
 
 	getRequiredFields(): Observable<string[]> {
-		return this.metadata$.pipe(
-			map(config => config?.requiredFields || [])
-		);
+		return this.metadata$.pipe(map(config => config?.requiredFields || []));
 	}
 
 	isFieldRequired(key: string): Observable<boolean> {
+		return this.metadata$.pipe(map(config => config?.requiredFields.includes(key) || false));
+	}
+
+	isFieldRecommended(key: string): Observable<boolean> {
 		return this.metadata$.pipe(
-			map(config => config?.requiredFields.includes(key) || false)
+			map(config => {
+				const field = config?.fields.get(key);
+				return field?.recommended || false;
+			})
 		);
 	}
 
 	getSteps(): Observable<StepConfiguration[]> {
-		return this.metadata$.pipe(
-			map(config => config?.steps || [])
-		);
+		return this.metadata$.pipe(map(config => config?.steps || []));
 	}
 
 	// Get validators for a specific field

@@ -32,6 +32,7 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, OnD
 	@Input() label = '';
 	@Input() placeholder = '';
 	@Input() required = false;
+	@Input() recommended = false;
 	@Input() textarea = false;
 	@Input() maxLength?: number;
 

@@ -4,7 +4,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Val
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {Observable, Subject, takeUntil} from 'rxjs';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {ObAlertModule, ObButtonDirective, ObNotificationService, ObNotificationModule, ObIconModule} from '@oblique/oblique';
+import {ObAlertModule, ObButtonDirective, ObIconModule, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -24,6 +24,7 @@ import {ThemeSelectFieldComponent} from './form/components/theme-select-field/th
 import {KeywordArrayFieldComponent} from './form/components/keyword-array-field/keyword-array-field.component';
 import {AffiliatedPersonsFieldComponent} from './form/components/affiliated-persons-field/affiliated-persons-field.component';
 import {DistributionFieldComponent} from './form/components/distribution-field/distribution-field.component';
+import {ValidationAlertComponent} from './components/validation-alert/validation-alert.component';
 import {
 	AccessRights,
 	AccrualPeriocicites,
@@ -36,6 +37,8 @@ import {
 	Statuses
 } from '../models/schemas/dataset';
 import {DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
+import {ValidationSchemaService, ValidationSchemaType} from '../services/validation/validation-schema.service';
+import {ValidationGroup} from './components/validation-alert/validation-alert.component';
 import {environment} from '../../environments/environment';
 import {MatIconModule} from '@angular/material/icon';
 
@@ -65,6 +68,7 @@ import {MatIconModule} from '@angular/material/icon';
 		KeywordArrayFieldComponent,
 		AffiliatedPersonsFieldComponent,
 		DistributionFieldComponent,
+		ValidationAlertComponent,
 		MatIconModule
 	],
 	templateUrl: './modify.component.html',
@@ -79,6 +83,10 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	invalidFields: string[] = [];
 	isLinear = false;
 	submitAttempted = false;
+
+	// Validation groups
+	activeValidationSchemas: Set<ValidationSchemaType> = new Set(['base']);
+	validationErrors: Map<ValidationSchemaType, string[]> = new Map();
 
 	// Store original dataset for reset functionality in edit mode
 	private originalDataset: any = null;
@@ -110,7 +118,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		private readonly publisherService: PublisherService,
 		private readonly translateService: TranslateService,
 		private readonly notificationService: ObNotificationService,
-		private readonly metadataService: DatasetMetadataService
+		private readonly metadataService: DatasetMetadataService,
+		private readonly validationSchemaService: ValidationSchemaService
 	) {
 		this.datasetForm = this.createForm();
 	}
@@ -180,7 +189,6 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	private buildFormFromMetadata(formGroup: FormGroup, metadata: any): void {
-
 		// Clear existing controls
 		Object.keys(formGroup.controls).forEach(key => {
 			formGroup.removeControl(key);
@@ -198,7 +206,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 	private createControlForField(key: string, fieldMetadata: any): FormControl | FormGroup | FormArray {
 		const validators = fieldMetadata.validators || [];
-		let defaultValue = this.getDefaultValueForField(key, fieldMetadata);
+		const defaultValue = this.getDefaultValueForField(key, fieldMetadata);
 
 		// Handle special cases
 		switch (key) {
@@ -266,9 +274,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	private populateForm(dataset: any): void {
-
 		// Store original dataset for reset functionality
-		this.originalDataset = { ...dataset };
+		this.originalDataset = {...dataset};
 
 		// Populate the form with dataset values
 		const patchData: any = {};
@@ -281,7 +288,6 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		});
 
 		this.datasetForm.patchValue(patchData);
-
 	}
 
 	onCancel(): void {
@@ -308,6 +314,9 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 	onSubmit(): void {
 		this.submitAttempted = true;
+
+		// Update validation errors for all active schemas
+		this.updateValidationErrors();
 
 		// Capture form validity at the exact moment of submission
 		const isFormValid = this.datasetForm.valid;
@@ -337,54 +346,6 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			// Scroll to first error
 			this.scrollToFirstError();
 		}
-	}
-
-	// Debug helper method
-	private getFormValidationErrors(form: FormGroup): any {
-		const result: any = {};
-
-		const checkControl = (control: any, path: string = '') => {
-			if (control instanceof FormGroup) {
-				Object.keys(control.controls).forEach(key => {
-					const fullPath = path ? `${path}.${key}` : key;
-					const childControl = control.get(key);
-
-					if (childControl?.errors) {
-						result[fullPath] = {
-							errors: childControl.errors,
-							value: childControl.value,
-							valid: childControl.valid,
-							touched: childControl.touched,
-							dirty: childControl.dirty
-						};
-					}
-
-					if (childControl instanceof FormGroup || childControl instanceof FormArray) {
-						checkControl(childControl, fullPath);
-					}
-				});
-			} else if (control instanceof FormArray) {
-				control.controls.forEach((arrayControl, index) => {
-					const fullPath = `${path}[${index}]`;
-					if (arrayControl.errors) {
-						result[fullPath] = {
-							errors: arrayControl.errors,
-							value: arrayControl.value,
-							valid: arrayControl.valid,
-							touched: arrayControl.touched,
-							dirty: arrayControl.dirty
-						};
-					}
-
-					if (arrayControl instanceof FormGroup) {
-						checkControl(arrayControl, fullPath);
-					}
-				});
-			}
-		};
-
-		checkControl(form);
-		return result;
 	}
 
 
@@ -481,6 +442,116 @@ export class ModifyComponent implements OnInit, OnDestroy {
 				formArray.removeAt(index);
 			}
 		}
+
+		// Handle validation schema changes
+		this.handleValidationSchemaChanges(catalogValue, isChecked);
+	}
+
+	private handleValidationSchemaChanges(catalogValue: string, isChecked: boolean): void {
+		const schemaMap: Record<string, ValidationSchemaType> = {
+			I14Y: 'i14y',
+			'opendata.swiss': 'ods'
+		};
+
+		const schemaType = schemaMap[catalogValue];
+		if (!schemaType) return;
+
+		if (isChecked) {
+			this.activeValidationSchemas.add(schemaType);
+			this.applySchemaValidation(schemaType);
+		} else {
+			this.activeValidationSchemas.delete(schemaType);
+			this.removeSchemaValidation(schemaType);
+		}
+
+		// Update validation errors
+		this.updateValidationErrors();
+	}
+
+	private applySchemaValidation(schemaType: ValidationSchemaType): void {
+		const schema = this.validationSchemaService.getSchema(schemaType);
+		if (!schema) return;
+
+		// Apply validators to form fields
+		Object.keys(schema.fields).forEach(fieldKey => {
+			const control = this.datasetForm.get(fieldKey);
+			if (control) {
+				const validators = this.validationSchemaService.getCombinedValidators(fieldKey, Array.from(this.activeValidationSchemas));
+				control.setValidators(validators);
+				control.updateValueAndValidity();
+			}
+		});
+	}
+
+	private removeSchemaValidation(schemaType: ValidationSchemaType): void {
+		const schema = this.validationSchemaService.getSchema(schemaType);
+		if (!schema) return;
+
+		// Reapply only remaining schema validators
+		Object.keys(schema.fields).forEach(fieldKey => {
+			const control = this.datasetForm.get(fieldKey);
+			if (control) {
+				const validators = this.validationSchemaService.getCombinedValidators(fieldKey, Array.from(this.activeValidationSchemas));
+				control.setValidators(validators);
+				control.updateValueAndValidity();
+			}
+		});
+	}
+
+	private updateValidationErrors(): void {
+		this.validationErrors.clear();
+
+		Array.from(this.activeValidationSchemas).forEach(schemaType => {
+			const errors = this.validationSchemaService.getFilteredSchemaValidationErrors(
+				schemaType,
+				this.datasetForm.value
+			);
+			this.validationErrors.set(schemaType, errors);
+		});
+	}
+
+	// Getter methods for template
+	get baseValidationErrors(): string[] {
+		return this.validationErrors.get('base') || [];
+	}
+
+	get i14yValidationErrors(): string[] {
+		return this.validationErrors.get('i14y') || [];
+	}
+
+	get odsValidationErrors(): string[] {
+		return this.validationErrors.get('ods') || [];
+	}
+
+	// Get validation groups for template
+	get activeValidationGroups(): ValidationGroup[] {
+		const groups: ValidationGroup[] = [];
+
+		Array.from(this.activeValidationSchemas).forEach(schemaType => {
+			const schema = this.validationSchemaService.getSchema(schemaType);
+			const errors = this.validationErrors.get(schemaType) || [];
+
+			if (schema) {
+				groups.push({
+					name: schema.name,
+					color: schema.color,
+					alertType: schema.alertType,
+					errors,
+					icon: this.getSchemaIcon(schemaType)
+				});
+			}
+		});
+
+		return groups;
+	}
+
+	private getSchemaIcon(schemaType: ValidationSchemaType): string {
+		const icons: Record<ValidationSchemaType, string> = {
+			base: 'warning',
+			i14y: 'public',
+			ods: 'open_in_new'
+		};
+		return icons[schemaType] || 'info';
 	}
 
 	isExternalCatalogSelected(catalogValue: string): boolean {
@@ -601,6 +672,13 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		return fieldMetadata?.required === true;
 	}
 
+	isFieldRecommended(fieldKey: string): boolean {
+		const metadata = this.metadataService.getMetadataValue();
+		if (!metadata) return false;
+
+		const fieldMetadata = metadata.fields.get(fieldKey);
+		return fieldMetadata?.recommended === true;
+	}
 
 	getSteps(): Observable<any[]> {
 		return this.metadataService.getSteps();

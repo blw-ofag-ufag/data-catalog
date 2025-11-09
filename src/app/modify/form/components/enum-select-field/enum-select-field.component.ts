@@ -23,6 +23,7 @@ export class EnumSelectFieldComponent implements ControlValueAccessor, OnInit {
 	@Input() label = '';
 	@Input() options: readonly string[] = [];
 	@Input() required = false;
+	@Input() recommended = false;
 	@Input() translationPath = '';
 	@Input() placeholder = '';
 

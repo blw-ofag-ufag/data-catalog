@@ -2,6 +2,7 @@
 	<label class="field-label" *ngIf="label">
 		{{ label | translate }}
 		<span *ngIf="required" class="required-asterisk">*</span>
+		<span *ngIf="recommended && !required" class="recommended-indicator">(recommended)</span>
 	</label>
 
 	<mat-tab-group>

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, of } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable, of} from 'rxjs';
+import {catchError, map, tap} from 'rxjs/operators';
 
 export interface I14YTheme {
 	code: string;
@@ -20,11 +20,11 @@ export class I14YThemeService {
 	private readonly I14Y_API_BASE = 'https://www.i14y.admin.ch/api';
 	private readonly THEMES_CONCEPT_ID = '08da58dc-4dc8-f9cb-b6f2-7d16b3fa0cde';
 
-	private themesSubject = new BehaviorSubject<I14YTheme[]>([]);
+	private readonly themesSubject = new BehaviorSubject<I14YTheme[]>([]);
 	public themes$ = this.themesSubject.asObservable();
 
 	// Fallback themes based on current implementation
-	private fallbackThemes: I14YTheme[] = [
+	private readonly fallbackThemes: I14YTheme[] = [
 		{
 			code: 'administration',
 			labels: {
@@ -243,7 +243,7 @@ export class I14YThemeService {
 		}
 	];
 
-	constructor(private http: HttpClient) {
+	constructor(private readonly http: HttpClient) {
 		// Initialize with fallback themes
 		this.themesSubject.next(this.fallbackThemes);
 	}
@@ -285,7 +285,6 @@ export class I14YThemeService {
 	private parseI14YResponse(response: any): I14YTheme[] {
 		// This would need to be implemented based on the actual I14Y API response structure
 		// For now, return fallback themes
-		console.log('I14Y API response:', response);
 		return this.fallbackThemes;
 	}
 

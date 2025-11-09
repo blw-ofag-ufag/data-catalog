@@ -1,11 +1,11 @@
-import {Component, Input, OnInit, OnDestroy, forwardRef} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import {I14YThemeService, I14YTheme} from '../../../../services/api/i14y-theme.service';
+import {I14YTheme, I14YThemeService} from '../../../../services/api/i14y-theme.service';
 
 @Component({
 	selector: 'app-theme-select-field',
@@ -25,7 +25,7 @@ import {I14YThemeService, I14YTheme} from '../../../../services/api/i14y-theme.s
 				<span *ngIf="required" class="required-asterisk">*</span>
 			</mat-label>
 			<mat-select [formControl]="control" (blur)="onBlur()" [placeholder]="placeholder | translate">
-<!--				<mat-option value="">{{ 'modify.auth.form.options.none' | translate }}</mat-option>-->
+				<!--				<mat-option value="">{{ 'modify.auth.form.options.none' | translate }}</mat-option>-->
 				<mat-option *ngFor="let theme of themes" [value]="theme.code">
 					{{ getThemeLabel(theme) }}
 				</mat-option>
@@ -49,8 +49,8 @@ export class ThemeSelectFieldComponent implements ControlValueAccessor, OnInit, 
 	private onTouched = () => {};
 
 	constructor(
-		private i14yThemeService: I14YThemeService,
-		private translateService: TranslateService
+		private readonly i14yThemeService: I14YThemeService,
+		private readonly translateService: TranslateService
 	) {
 		this.control = new FormControl('');
 	}
@@ -105,10 +105,7 @@ export class ThemeSelectFieldComponent implements ControlValueAccessor, OnInit, 
 		const currentLang = this.translateService.currentLang || 'de';
 
 		// Try to get label in current language, fallback to German, then English
-		const label = theme.labels[currentLang as keyof typeof theme.labels] ||
-					  theme.labels.de ||
-					  theme.labels.en ||
-					  theme.code;
+		const label = theme.labels[currentLang as keyof typeof theme.labels] || theme.labels.de || theme.labels.en || theme.code;
 
 		return label;
 	}

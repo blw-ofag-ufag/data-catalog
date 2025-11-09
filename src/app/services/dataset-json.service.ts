@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
-import { DatasetSchema } from '../models/schemas/dataset';
+import {Injectable} from '@angular/core';
+import {DatasetSchema} from '../models/schemas/dataset';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class DatasetJsonService {
-
 	/**
 	 * Generate dataset JSON from form data
 	 */
@@ -35,9 +34,9 @@ export class DatasetJsonService {
 	 * Generate a UUID v4
 	 */
 	private generateUUID(): string {
-		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-			const r = Math.random() * 16 | 0;
-			const v = c === 'x' ? r : (r & 0x3 | 0x8);
+		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+			const r = (Math.random() * 16) | 0;
+			const v = c === 'x' ? r : (r & 0x3) | 0x8;
 			return v.toString(16);
 		});
 	}
@@ -51,9 +50,7 @@ export class DatasetJsonService {
 		}
 
 		if (Array.isArray(obj)) {
-			const filtered = obj
-				.map(item => this.removeEmptyValues(item))
-				.filter(item => item !== null && item !== undefined && item !== '');
+			const filtered = obj.map(item => this.removeEmptyValues(item)).filter(item => item !== null && item !== undefined && item !== '');
 			return filtered.length > 0 ? filtered : null;
 		}
 
@@ -186,6 +183,6 @@ export class DatasetJsonService {
 	 */
 	createJsonBlob(data: any): Blob {
 		const jsonString = this.formatJsonForDisplay(data);
-		return new Blob([jsonString], { type: 'application/json' });
+		return new Blob([jsonString], {type: 'application/json'});
 	}
 }

@@ -13,7 +13,7 @@ describe('DatasetMetadataService', () => {
 		expect(service).toBeTruthy();
 	});
 
-	it('should extract required fields from schema', (done) => {
+	it('should extract required fields from schema', done => {
 		service.getRequiredFields().subscribe(requiredFields => {
 			expect(requiredFields.length).toBeGreaterThan(0);
 			expect(requiredFields).toContain('dct:title');
@@ -23,7 +23,7 @@ describe('DatasetMetadataService', () => {
 		});
 	});
 
-	it('should provide field metadata', (done) => {
+	it('should provide field metadata', done => {
 		service.getFieldMetadata('dct:title').subscribe(fieldMetadata => {
 			expect(fieldMetadata).toBeTruthy();
 			expect(fieldMetadata?.required).toBe(true);
@@ -33,7 +33,7 @@ describe('DatasetMetadataService', () => {
 		});
 	});
 
-	it('should organize fields into steps', (done) => {
+	it('should organize fields into steps', done => {
 		service.getSteps().subscribe(steps => {
 			expect(steps.length).toBeGreaterThan(0);
 			const basicStep = steps.find(s => s.key === 'basic');
@@ -44,15 +44,11 @@ describe('DatasetMetadataService', () => {
 		});
 	});
 
-	it('should identify fields for details display', (done) => {
+	it('should identify fields for details display', done => {
 		service.getDetailsFields().subscribe(detailFields => {
 			expect(detailFields.length).toBeGreaterThan(0);
 			// These fields should NOT be in details
-			const hasExcludedField = detailFields.some(f =>
-				f.key.startsWith('schema:image') ||
-				f.key.startsWith('dct:identifier') ||
-				f.key.startsWith('dct:title')
-			);
+			const hasExcludedField = detailFields.some(f => f.key.startsWith('schema:image') || f.key.startsWith('dct:identifier') || f.key.startsWith('dct:title'));
 			expect(hasExcludedField).toBe(false);
 			done();
 		});

@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges, OnDestroy} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
 import {IndexCardsComponent} from '../index-cards/index-cards.component';
 import {IndexListComponent} from '../index-list/index-list.component';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
@@ -18,7 +18,7 @@ export class IndexOutletComponent implements OnChanges, OnDestroy {
 	@Input() view: 'table' | 'tile' = 'tile';
 	@Input() dataset$!: Observable<DatasetSchema[] | null>;
 
-	private pageSubscription?: Subscription;
+	private readonly pageSubscription?: Subscription;
 	private currentPageSize = 5;
 
 	constructor(protected readonly datasetService: DatasetService) {

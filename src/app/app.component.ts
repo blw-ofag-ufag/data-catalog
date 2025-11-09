@@ -1,4 +1,4 @@
-import {Component, OnDestroy, AfterViewInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject} from 'rxjs';

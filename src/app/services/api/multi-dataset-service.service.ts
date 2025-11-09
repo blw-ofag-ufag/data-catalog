@@ -110,7 +110,7 @@ export class MultiDatasetService {
 					.json()
 					.then(data => {
 						// Sort keywords within the dataset alphabetically
-						if (data && data['dcat:keyword'] && Array.isArray(data['dcat:keyword'])) {
+						if (data?.['dcat:keyword'] && Array.isArray(data['dcat:keyword'])) {
 							data['dcat:keyword'] = [...data['dcat:keyword']].sort((a, b) => a.localeCompare(b));
 						}
 						this._selectedDatasetSubject.next(data);

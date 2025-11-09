@@ -41,7 +41,7 @@ export class IndexCardsComponent {
 	private readonly defaultMaxKeywords = 4;
 
 	// Cache for dynamic keyword counts per dataset
-	private keywordCountCache = new Map<string, number>();
+	private readonly keywordCountCache = new Map<string, number>();
 
 	// Track which cards have expanded keywords
 	expandedCards = new Set<string>();
@@ -68,7 +68,7 @@ export class IndexCardsComponent {
 		// If there are existing keywords, merge them
 		let keywordValue = keyword;
 		if (existingKeywords && !existingKeywords.split(',').includes(keyword)) {
-			keywordValue = existingKeywords + ',' + keyword;
+			keywordValue = `${existingKeywords},${keyword}`;
 		}
 
 		return {
@@ -138,7 +138,7 @@ export class IndexCardsComponent {
 
 		for (let i = 0; i < keywords.length; i++) {
 			const keyword = keywords[i];
-			const chipWidth = (keyword.length * avgCharWidth) + chipPadding + chipMargin;
+			const chipWidth = keyword.length * avgCharWidth + chipPadding + chipMargin;
 
 			// Reserve space for "+n" chip if there will be hidden keywords
 			const needsMoreChip = i < keywords.length - 1;
@@ -198,5 +198,4 @@ export class IndexCardsComponent {
 	getChipContainerClass(datasetId: string): string {
 		return this.isExpanded(datasetId) ? 'chip-container expanded' : 'chip-container collapsed';
 	}
-
 }

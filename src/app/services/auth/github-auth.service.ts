@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { map, catchError, tap, mergeMap } from 'rxjs/operators';
-import { RepositoryCredentialsService } from './repository-credentials.service';
-import { environment } from '../../../environments/environment';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
+import {catchError, map, mergeMap, tap} from 'rxjs/operators';
+import {RepositoryCredentialsService} from './repository-credentials.service';
+import {environment} from '../../../environments/environment';
 
 export interface GitHubCredentials {
 	username: string;
@@ -26,12 +26,12 @@ export class GitHubAuthService {
 	private readonly REPO_OWNER = 'blw-ofag-ufag';
 	private readonly REPO_NAME = 'metadata';
 
-	private credentialsSubject = new BehaviorSubject<GitHubCredentials | null>(null);
+	private readonly credentialsSubject = new BehaviorSubject<GitHubCredentials | null>(null);
 	public credentials$ = this.credentialsSubject.asObservable();
 
 	constructor(
-		private http: HttpClient,
-		private repositoryCredentialsService: RepositoryCredentialsService
+		private readonly http: HttpClient,
+		private readonly repositoryCredentialsService: RepositoryCredentialsService
 	) {}
 
 	/**
@@ -47,12 +47,12 @@ export class GitHubAuthService {
 	 */
 	validateCredentialsForRepository(credentials: GitHubCredentials, repository: string): Observable<GitHubUser> {
 		const headers = new HttpHeaders({
-			'Authorization': `token ${credentials.token}`,
-			'Accept': 'application/vnd.github.v3+json'
+			Authorization: `token ${credentials.token}`,
+			Accept: 'application/vnd.github.v3+json'
 		});
 
 		// First, verify the token by getting user info
-		return this.http.get<GitHubUser>(`${this.API_BASE}/user`, { headers }).pipe(
+		return this.http.get<GitHubUser>(`${this.API_BASE}/user`, {headers}).pipe(
 			tap(user => {
 				// Validate username matches token owner
 				if (user.login !== credentials.username) {
@@ -101,14 +101,14 @@ export class GitHubAuthService {
 	 */
 	private checkRepositoryPermissionsForRepo(token: string, repository: string): Observable<boolean> {
 		const headers = new HttpHeaders({
-			'Authorization': `token ${token}`,
-			'Accept': 'application/vnd.github.v3+json'
+			Authorization: `token ${token}`,
+			Accept: 'application/vnd.github.v3+json'
 		});
 
-		return this.http.get<any>(`${this.API_BASE}/repos/${repository}`, { headers }).pipe(
+		return this.http.get<any>(`${this.API_BASE}/repos/${repository}`, {headers}).pipe(
 			map(repo => {
 				const permissions = repo.permissions;
-				if (!permissions || !permissions.push) {
+				if (!permissions?.push) {
 					throw new Error('NO_WRITE_PERMISSION');
 				}
 				return true;

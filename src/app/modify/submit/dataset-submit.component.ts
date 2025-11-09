@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslatePipe} from '@ngx-translate/core';
 import {ObButtonDirective} from '@oblique/oblique';
-import {ObAlertModule, ObNotificationService, ObNotificationModule, ObCollapseModule} from '@oblique/oblique';
+import {ObAlertModule, ObCollapseModule, ObNotificationModule, ObNotificationService} from '@oblique/oblique';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
@@ -16,7 +16,17 @@ import {Publisher} from '../../models/publisher.model';
 @Component({
 	selector: 'app-dataset-submit',
 	standalone: true,
-	imports: [CommonModule, TranslatePipe, ObButtonDirective, ObAlertModule, ObNotificationModule, ObCollapseModule, MatIconModule, MatButtonModule, MatCardModule],
+	imports: [
+		CommonModule,
+		TranslatePipe,
+		ObButtonDirective,
+		ObAlertModule,
+		ObNotificationModule,
+		ObCollapseModule,
+		MatIconModule,
+		MatButtonModule,
+		MatCardModule
+	],
 	templateUrl: './dataset-submit.component.html',
 	styleUrl: './dataset-submit.component.scss'
 })
@@ -65,20 +75,22 @@ export class DatasetSubmitComponent implements OnInit {
 		}
 	}
 
-
 	copyJsonToClipboard(): void {
 		if (this.formattedJson) {
-			navigator.clipboard.writeText(this.formattedJson).then(() => {
-				this.notificationService.success({
-					title: 'Copied to Clipboard',
-					message: 'Dataset JSON has been copied to your clipboard'
+			navigator.clipboard
+				.writeText(this.formattedJson)
+				.then(() => {
+					this.notificationService.success({
+						title: 'Copied to Clipboard',
+						message: 'Dataset JSON has been copied to your clipboard'
+					});
+				})
+				.catch(() => {
+					this.notificationService.error({
+						title: 'Copy Failed',
+						message: 'Failed to copy JSON to clipboard'
+					});
 				});
-			}).catch(() => {
-				this.notificationService.error({
-					title: 'Copy Failed',
-					message: 'Failed to copy JSON to clipboard'
-				});
-			});
 		}
 	}
 
@@ -105,11 +117,7 @@ export class DatasetSubmitComponent implements OnInit {
 				// Use selected repository and publisher configuration
 				if (this.isEditMode && this.datasetId) {
 					// Edit existing file
-					githubUrl = this.githubAuthService.generateEditFileUrlForRepository(
-						this.selectedRepository,
-						this.selectedPublisher.branch,
-						this.filePath
-					);
+					githubUrl = this.githubAuthService.generateEditFileUrlForRepository(this.selectedRepository, this.selectedPublisher.branch, this.filePath);
 				} else {
 					// Create new file
 					githubUrl = this.githubAuthService.generateCreateFileUrlForRepository(
