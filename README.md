@@ -3,23 +3,18 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/blw-ofag-ufag/data-catalog.svg)](https://github.com/blw-ofag-ufag/data-catalog/commits)
 [![GitHub issues](https://img.shields.io/github/issues/blw-ofag-ufag/data-catalog.svg)](https://github.com/blw-ofag-ufag/data-catalog/issues)
 
-Agri-Food Data Catalog
-======================
+🐮 Agri-Food Data Catalog
+==========================
 
 This data catalog was built in a joint effort by the Federal Office for Agriculture FOAG and the Federal Food Safety and Veterinary Office FSVO.
 It aims to showcase the offices datasets in a user-friendly way and in one place while maintaining interoperability with broader metadata platforms.
 
-> [!IMPORTANT]
-> We are currently migrating the application to angular. The current state of this is alpha, but we will be up to feature parity with the previous version in May/June 2025.
-
-> [!IMPORTANT]
-> While the code and metadata are publicly available, some dataset links point to internal services and require the right credentials to access.
-
-# ✨ Why is this data catalog special?
-
 This data catalog directly supports the principles of DigiAgriFoodCH, Switzerland’s [digital strategy for the agri-food sector](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie) — including Once Only, Open by Default, and Innovation First — while ensuring seamless interoperability by aligning its metadata structure with both [I14Y](https://www.i14y.admin.ch/) and [opendata.swiss](https://opendata.swiss) standards for frictionless data exchange.
 Each dataset includes clear ownership and provenance information, empowering data owners and analysts to collaborate more effectively and streamline data governance.
 Ultimately, everyone benefits: managers and decision-makers make strategic calls faster with trusted data; technical teams simplify system integrations and metadata maintenance; and external stakeholders can easily access public datasets for research or community-driven projects.
+
+> [!IMPORTANT]
+> While the code and metadata are publicly available, some dataset links point to internal services and require the right credentials to access.
 
 # ⚡ What are the key features?
 
@@ -28,14 +23,21 @@ Ultimately, everyone benefits: managers and decision-makers make strategic calls
 3. **Interoperability by design:** Metadata follows recognized standards and is compatible with both [I14Y](https://www.i14y.admin.ch/) and [opendata.swiss](https://opendata.swiss), ensuring seamless data exchange across platforms.
 4. **Open source collaboration:** We welcome pull requests and community-driven improvements. Join our open source culture by sharing your ideas, reporting issues, or enhancing features for the benefit of all users.
 
+# 🔗 Useful links
+
+- [Data catalog hosted as GitHub pages](https://blw-ofag-ufag.github.io/data-catalog/#/index)
+- [Oblique documentation](https://oblique.bit.admin.ch/introductions/welcome)
+- [Original figma design](https://www.figma.com/design/Nxnu7VCDCmiGCazmu689vc/DigiAgriFoodCH-Data-Catalog?node-id=14574-13069&p=f&t=IUnnNbYTltWaVDTr-0)
+
 # 🚀 Quick start
+
 (Github Actions are currently work in progress)
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
 
 Prerequisites to run locally: node.js and globally installed angular CLI
 
 1. **Explore the data catalog online:** Head over to our [GitHub page](https://blw-ofag-ufag.github.io/data-catalog/index.html?lang=en&sort=issued-desc) to see the development version of the data catalog in action. Not that the main version is deployed on an Azure instance.
-2. **Clone & Run Locally**  
+2. **Clone & run locally:**  
    ```bash
    git clone https://github.com/blw-ofag-ufag/data-catalog.git
    cd data-catalog
@@ -44,13 +46,6 @@ Prerequisites to run locally: node.js and globally installed angular CLI
    ```
    
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Useful links
-* Oblique docs: https://oblique.bit.admin.ch/introductions/welcome
-* Figma design: https://www.figma.com/design/Nxnu7VCDCmiGCazmu689vc/DigiAgriFoodCH-Data-Catalog?node-id=14574-13069&p=f&t=IUnnNbYTltWaVDTr-0
-
-[//]: # (Previous version: https://blw-ofag-ufag.github.io/data-catalog/index.html?lang=en&sort=issued-desc&view=tile&page=1)
-
 
 ## Code scaffolding
 
@@ -77,33 +72,30 @@ ng build
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
 # Github actions / production build
+
 There is a `develop` workflow which builds the angular application as a SPA, the resulting build is just an `index.html` with colocated js bundles. For environment backwards compatibility reasons, this build is located under `docs`.
 The base url is fixed to `data-catalog` and is not configurable. A deployment should check out the code, point a web server document root to `/docs` and serve `index.html` under `<domain>/data-catalog/`.
 
 # Configuration (publishers)
+
 The set of publishers is configurable, this can be declared in `config/publishers.yaml`. `npm run prebuild` applies the config (generates some code).
 All publishers can provide a data repository adhering to the same structure as the BLW repo and JSON schema, for the index we query all and merge them, so an instance of the data catalog can serve multiple sources at once.
 
 # Docker
+
 The Dockerfile in the project root builds the angular application and copies the (html, css, js)-files
 to the default document root of an nginx web server.
 The image doesn't contain any node.js runtime anymore.
 
 
 ## 🚀 Build the Docker Image
+
 ```bash
 docker build -t yourusername/data-catalog:latest .
 ```
 
-## run the container
-```docker run -p yourusername/data-catalog:latest```
+## Run the container
 
-# 🤝 Contributing
-
-We believe a vibrant open-source community drives creativity.
-Whether you’re a data geek or a UI/UX wizard, your input helps make agricultural data more accessible and impactful.
-Check out our issues for tasks big or small, or open your own suggestions.
-
-# 📜 License
-
-All resources in this repository are available under the Creative Commons Attribution 4.0 License. Feel free to reuse and remix — just give us credit!
+```
+docker run -p yourusername/data-catalog:latest
+```
