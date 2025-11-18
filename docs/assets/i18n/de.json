@@ -170,7 +170,6 @@
     "dcat:keyword": "Welche Schlüsselwörter sind hilfreich, um Ihr Datenprodukt zu finden? Es ist einfacher, Ihr Datenprodukt zu finden, wenn Sie mehrere Schlüsselwörter angeben, die auch in den Datenprodukten Ihrer Kollegen vorkommen. Wenn Sie einen Vorschlag für ein Stichwort haben, das der Liste hinzugefügt werden sollte, wenden Sie sich bitte an kompetenzzentrumdigitaletransformation@blw.admin.ch",
     "dcat:landingPage": "Wo finden Datenbenutzer zusätzliche Informationen zu Ihrem Datenprodukt oder der verantwortlichen Organisation?",
     "dcat:theme": "Thema, das zur Klassifizierung der Datenprodukte im Katalog verwendet wird.",
-
     "dcat:version": "Um welche Version handelt es sich? Bitte verwenden Sie semantische Versionsnummern in der Form X.Y.Z, wobei eine Erhöhung von X auf größere Änderungen, Y auf kleinere Änderungen und Z auf einfache Korrekturen wie Tippfehler hinweist.",
     "dcatap:applicableLegislation": "Diese Eigenschaft bezieht sich auf die Rechtsgrundlage des Datenprodukts.",
     "dcatap:availability": "Ist die Verfügbarkeit Ihres Datenprodukts vorübergehend, stabil oder experimentell?",
