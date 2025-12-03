@@ -82,7 +82,7 @@ export class DatasetService {
 						});
 
 					case 'owner':
-						// Sort by data owner/steward/contact
+						// Sort by Data Owner/steward/contact
 						return [...schemas].sort((a, b) => {
 							const ownerA = this.getDatasetOwner(a).toLowerCase();
 							const ownerB = this.getDatasetOwner(b).toLowerCase();
@@ -386,9 +386,9 @@ export class DatasetService {
 			}
 		}
 
-		// Fallback to businessDataOwner
-		if ((dataset as any)['businessDataOwner']) {
-			return (dataset as any)['businessDataOwner'];
+		// Fallback to dataOwner
+		if ((dataset as any)['dataOwner']) {
+			return (dataset as any)['dataOwner'];
 		}
 
 		// Fallback to contact point

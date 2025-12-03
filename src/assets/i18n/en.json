@@ -94,7 +94,7 @@
         "BLW-OFAG-UFAG-FOAG": "FOAG"
       },
       "hadRole": {
-        "businessDataOwner": "Business Data Owner",
+        "dataOwner": "Data Owner",
         "dataCustodian": "Data Custodian",
         "dataSteward": "Data Steward"
       }
@@ -110,9 +110,9 @@
         "cc-by-sa/4.0": "CC BY-SA 4.0",
         "cc-by/4.0": "CC BY 4.0",
         "cc-zero": "CC0",
-        "terms_ask": "Open use. Use for commercial purposes requires permission of the data owner",
+        "terms_ask": "Open use. Use for commercial purposes requires permission of the Data Owner",
         "terms_by": "Open use. Must provide the source",
-        "terms_by_ask": "Open use. Must provide the source. Use for commercial purposes requires permission of the data owner",
+        "terms_by_ask": "Open use. Must provide the source. Use for commercial purposes requires permission of the Data Owner",
         "terms_open": "Open use"
       },
       "status": {

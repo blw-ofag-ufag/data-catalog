@@ -229,7 +229,7 @@
                         "title": "Role",
                         "description": "Role this person has for this dataset.",
                         "enum": [
-                            "businessDataOwner",
+                            "dataOwner",
                             "dataSteward",
                             "dataCustodian"
                         ]
@@ -241,7 +241,7 @@
                 "type": "object",
                 "properties": {
                     "dcat:hadRole": {
-                        "const": "businessDataOwner"
+                        "const": "dataOwner"
                     }
                 }
             }
@@ -747,7 +747,7 @@
                     "prov:agent": "p-1234567",
                     "schema:name": "Anna Beispiel",
                     "schema:email": "anna.beispiel@blw.admin.ch",
-                    "dcat:hadRole": "businessDataOwner"
+                    "dcat:hadRole": "dataOwner"
                 }
             ],
             "adms:status": "published",

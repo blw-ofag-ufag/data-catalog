@@ -94,7 +94,7 @@
         "BLW-OFAG-UFAG-FOAG": "OFAG"
       },
       "hadRole": {
-        "businessDataOwner": "Propriétaire des données métier",
+        "dataOwner": "Propriétaire des données métier",
         "dataCustodian": "Conservateur des données",
         "dataSteward": "Gestionnaire des données"
       }

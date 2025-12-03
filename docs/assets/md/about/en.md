@@ -57,7 +57,7 @@ Note: Raw data files, such as a retailer’s original sales data for a specific 
 
 # Next Steps
 
-We will refine the catalog further by engaging data owners, updating existing entries, and examining integration with other platforms.
+We will refine the catalog further by engaging Data Owners, updating existing entries, and examining integration with other platforms.
 Over time, we aim to establish this tool as an indispensable resource for internal and external partners, enabling data-driven innovation across all areas.
 
 # Additional Information

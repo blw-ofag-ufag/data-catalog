@@ -62,9 +62,9 @@ export class IndexListComponent {
 			}
 		}
 
-		// Fallback 1: Use businessDataOwner field (current data structure)
-		if ((dataset as any)['businessDataOwner']) {
-			return [(dataset as any)['businessDataOwner']];
+		// Fallback 1: Use dataOwner field (current data structure)
+		if ((dataset as any)['dataOwner']) {
+			return [(dataset as any)['dataOwner']];
 		}
 
 		// Fallback 2: Use dcat:contactPoint if available

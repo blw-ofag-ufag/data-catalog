@@ -10,7 +10,7 @@ This data catalog was built in a joint effort by the Federal Office for Agricult
 It aims to showcase the offices datasets in a user-friendly way and in one place while maintaining interoperability with broader metadata platforms.
 
 This data catalog directly supports the principles of DigiAgriFoodCH, Switzerland’s [digital strategy for the agri-food sector](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie) — including Once Only, Open by Default, and Innovation First — while ensuring seamless interoperability by aligning its metadata structure with both [I14Y](https://www.i14y.admin.ch/) and [opendata.swiss](https://opendata.swiss) standards for frictionless data exchange.
-Each dataset includes clear ownership and provenance information, empowering data owners and analysts to collaborate more effectively and streamline data governance.
+Each dataset includes clear ownership and provenance information, empowering Data Owners and analysts to collaborate more effectively and streamline data governance.
 Ultimately, everyone benefits: managers and decision-makers make strategic calls faster with trusted data; technical teams simplify system integrations and metadata maintenance; and external stakeholders can easily access public datasets for research or community-driven projects.
 
 > [!IMPORTANT]

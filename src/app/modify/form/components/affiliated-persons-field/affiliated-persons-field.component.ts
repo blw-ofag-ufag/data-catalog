@@ -51,7 +51,7 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, On
 	private onTouched = () => {};
 
 	readonly roles = [
-		{value: 'businessDataOwner', label: 'Business Data Owner'},
+		{value: 'dataOwner', label: 'Data Owner'},
 		{value: 'dataSteward', label: 'Data Steward'},
 		{value: 'dataCustodian', label: 'Data Custodian'}
 	];

@@ -94,7 +94,7 @@
         "BLW-OFAG-UFAG-FOAG": "BLW"
       },
       "hadRole": {
-        "businessDataOwner": "Business Data Owner",
+        "dataOwner": "Data Owner",
         "dataCustodian": "Data Custodian",
         "dataSteward": "Data Steward"
       }
