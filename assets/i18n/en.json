@@ -351,6 +351,9 @@
         "validation": {
           "required": "This field is required",
           "maxLength": "Maximum length exceeded",
+          "minLength": "Minimum {{minLength}} characters required",
+          "pattern": "Invalid format",
+          "titlePattern": "Only letters A-Z, numbers 0-9, spaces, hyphens and underscores allowed",
           "email": "Please enter a valid email address",
           "summary": "Form validation errors:",
           "fillRequired": "Please fill out all required fields marked with an asterisk (*)"
@@ -360,6 +363,11 @@
         },
         "help": {
           "multilingualRequired": "At least German and French are required"
+        },
+        "retrySchemaLoad": "Retry Loading Schemas",
+        "loadingSchemas": "Loading validation schemas...",
+        "errors": {
+          "schemaLoadFailed": "Unable to load validation schemas from remote server. Using minimal validation rules. Please check your internet connection and try again."
         },
         "options": {
           "none": "No selection"
