@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, OnChanges, OnDestroy, forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validators} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, ValidationErrors, Validator, Validators} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
 import {TranslatePipe} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -23,12 +23,17 @@ export interface MultilingualText {
 			provide: NG_VALUE_ACCESSOR,
 			useExisting: forwardRef(() => MultilingualTextFieldComponent),
 			multi: true
+		},
+		{
+			provide: NG_VALIDATORS,
+			useExisting: forwardRef(() => MultilingualTextFieldComponent),
+			multi: true
 		}
 	],
 	templateUrl: './multilingual-text-field.component.html',
 	styleUrl: './multilingual-text-field.component.scss'
 })
-export class MultilingualTextFieldComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
+export class MultilingualTextFieldComponent implements ControlValueAccessor, Validator, OnInit, OnChanges, OnDestroy {
 	@Input() label = '';
 	@Input() placeholder = '';
 	@Input() required = false;
@@ -43,6 +48,7 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, OnI
 	private readonly destroy$ = new Subject<void>();
 	private onChange = (value: MultilingualText | null) => {};
 	private onTouched = () => {};
+	private onValidatorChange = () => {};
 
 	readonly languages = [
 		{code: 'de', label: 'Deutsch'},
@@ -100,6 +106,9 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, OnI
 				control.updateValueAndValidity();
 			}
 		});
+
+		// Notify that validation has changed
+		this.onValidatorChange();
 	}
 
 	ngOnDestroy(): void {
@@ -168,5 +177,29 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, OnI
 	isLanguageRequired(language: string): boolean {
 		return this.requiredLanguages.includes(language) ||
 		       (this.required && (language === 'de' || language === 'fr'));
+	}
+
+	validate(control: AbstractControl): ValidationErrors | null {
+		// If the internal form group is invalid, return the errors
+		if (this.formGroup && this.formGroup.invalid) {
+			const errors: ValidationErrors = {};
+
+			// Check each required language
+			this.requiredLanguages.forEach(lang => {
+				const langControl = this.formGroup.get(lang);
+				if (langControl?.invalid) {
+					errors[`${lang}Required`] = true;
+				}
+			});
+
+			// Return errors if any
+			return Object.keys(errors).length > 0 ? errors : null;
+		}
+
+		return null;
+	}
+
+	registerOnValidatorChange(fn: () => void): void {
+		this.onValidatorChange = fn;
 	}
 }

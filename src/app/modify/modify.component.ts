@@ -206,8 +206,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		// Create a minimal form structure that will be replaced when metadata loads
 		return this.fb.group({
 			'dct:identifier': [''],
-			'dct:title': [null],
-			'dct:description': [null]
+			'dct:title': [{de: '', fr: '', it: '', en: ''}],
+			'dct:description': [{de: '', fr: '', it: '', en: ''}]
 		});
 	}
 
@@ -257,6 +257,11 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	private getDefaultValueForField(key: string, fieldMetadata: any): any {
+		// Handle multilingual fields
+		if (key === 'dct:title' || key === 'dct:description') {
+			return {de: '', fr: '', it: '', en: ''};
+		}
+
 		// Set appropriate default values based on field type
 		switch (fieldMetadata.type) {
 			case 'boolean':
@@ -274,25 +279,47 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 	private initializeForm(): void {
 		if (this.isEditMode && this.datasetId) {
-			// First, ensure data is loaded if needed
-			this.datasetService.datasets$.pipe(takeUntil(this.destroy$)).subscribe(datasets => {
-				if (datasets && datasets.length > 0) {
-					const foundDataset = datasets.find(d => d['dct:identifier'] === this.datasetId);
-					if (foundDataset) {
-						this.populateForm(foundDataset);
-					}
-				} else {
-					// If no datasets loaded yet, trigger loading
-					this.datasetService.loadIndex();
-				}
-			});
+			// Load the dataset index
+			this.datasetService.loadIndex();
+			this.isLoading = true;
 
-			// Also subscribe to the selected dataset from the service
-			this.datasetService.selectedDataset$.pipe(takeUntil(this.destroy$)).subscribe(dataset => {
-				if (dataset && dataset['dct:identifier'] === this.datasetId) {
-					this.populateForm(dataset);
-				}
-			});
+			// Subscribe to datasets to find the one we need to edit
+			this.datasetService.datasets$
+				.pipe(takeUntil(this.destroy$))
+				.subscribe(datasets => {
+					if (datasets && datasets.length > 0) {
+						// Find the dataset with matching identifier
+						const foundDataset = datasets.find(d => d['dct:identifier'] === this.datasetId);
+						if (foundDataset) {
+							// Get publisher ID from dataset (it's a string like 'BLW-OFAG-UFAG-FOAG')
+							const publisherId = foundDataset['dct:publisher'];
+
+							// Find the publisher configuration by ID
+							const publisherConfig = this.publisherService.getPublishers().find(p => p.id === publisherId);
+
+							if (publisherConfig && this.datasetId) {
+								// Use the GitHub repo from publisher config as the first parameter
+								// The klass is typically 'datasets' for dataset objects
+								const klass = 'datasets';
+
+								// Load full dataset details
+								// loadDetail expects (publisher: string, klass: string, id: string)
+								// where publisher is actually the GitHub repo identifier
+								this.datasetService.loadDetail(publisherConfig.githubRepo, klass, this.datasetId);
+							}
+						}
+					}
+				});
+
+			// Subscribe to selected dataset to populate the form once it's loaded
+			this.datasetService.selectedDataset$
+				.pipe(takeUntil(this.destroy$))
+				.subscribe(dataset => {
+					if (dataset && dataset['dct:identifier'] === this.datasetId) {
+						this.populateForm(dataset);
+						this.isLoading = false;
+					}
+				});
 		}
 	}
 
@@ -347,10 +374,10 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		console.log('Form Valid (Angular):', this.datasetForm.valid);
 		console.log('Form Errors:', this.datasetForm.errors);
 
-		// Log each control's validation state
+		// Log each control's validation state (only if there are actual errors)
 		Object.keys(this.datasetForm.controls).forEach(key => {
 			const control = this.datasetForm.get(key);
-			if (control?.invalid) {
+			if (control?.invalid && control.errors && Object.keys(control.errors).length > 0) {
 				console.log(`Field "${key}" is INVALID:`, {
 					value: control.value,
 					errors: control.errors,

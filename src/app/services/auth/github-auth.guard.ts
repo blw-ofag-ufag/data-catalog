@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, Router} from '@angular/router';
+import {CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {GitHubAuthService} from './github-auth.service';
 import {environment} from '../../../environments/environment';
 
@@ -12,7 +12,7 @@ export class GitHubAuthGuard implements CanActivate {
 		private readonly router: Router
 	) {}
 
-	canActivate(): boolean {
+	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 		// Bypass auth in debug mode
 		if (environment.debugMode) {
 			console.log('🛠️ Debug mode: Bypassing GitHub authentication');
@@ -22,8 +22,15 @@ export class GitHubAuthGuard implements CanActivate {
 		if (this.githubAuthService.isAuthenticated()) {
 			return true;
 		}
-		// Redirect to auth page if not authenticated
-		this.router.navigate(['/modify/auth']);
+
+		// Store the attempted URL for redirecting after authentication
+		// Include the full URL with query parameters
+		const returnUrl = state.url;
+
+		// Redirect to auth page with return URL
+		this.router.navigate(['/modify/auth'], {
+			queryParams: { returnUrl: returnUrl }
+		});
 		return false;
 	}
 }
