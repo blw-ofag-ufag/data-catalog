@@ -1,0 +1,32 @@
+[
+  {
+    "id": "base",
+    "name": "Base Requirements",
+    "githubRepo": "blw-ofag-ufag/metadata",
+    "branch": "main",
+    "path": "data/schemas/dataset.json",
+    "color": "#ff9800",
+    "alertType": "warning",
+    "icon": "warning"
+  },
+  {
+    "id": "i14y",
+    "name": "I14Y Requirements",
+    "githubRepo": "blw-ofag-ufag/metadata",
+    "branch": "main",
+    "path": "data/schema_strict/strict-i14y-dataset.json",
+    "color": "#0066cc",
+    "alertType": "info",
+    "icon": "public"
+  },
+  {
+    "id": "ods",
+    "name": "Open Data Swiss Requirements",
+    "githubRepo": "blw-ofag-ufag/metadata",
+    "branch": "main",
+    "path": "data/schema_strict/strict-ods-dataset.json",
+    "color": "#e91e63",
+    "alertType": "warning",
+    "icon": "open_in_new"
+  }
+]

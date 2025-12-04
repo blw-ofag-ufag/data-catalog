@@ -88,31 +88,39 @@ export class SchemaParserUtil {
 	private static generateValidators(key: string, prop: any, isRequired: boolean): ValidatorFn[] {
 		const validators: ValidatorFn[] = [];
 
+		// For multilingual fields, don't apply pattern/length validators to the object
+		// These will be handled at the individual language level
+		const isMultilingual = prop.type === 'object' && prop.properties &&
+			Object.keys(prop.properties).some(k => ['de', 'fr', 'it', 'en'].includes(k));
+
 		if (isRequired) {
 			validators.push(Validators.required);
 		}
 
-		// Email validation for contact point
-		if (key === 'schema:email' || prop.format === 'email') {
-			validators.push(Validators.email);
-		}
+		// Skip pattern/length validators for multilingual fields
+		if (!isMultilingual) {
+			// Email validation for contact point
+			if (key === 'schema:email' || prop.format === 'email') {
+				validators.push(Validators.email);
+			}
 
-		// URL validation
-		if (prop.format === 'uri' || prop.format === 'url') {
-			validators.push(Validators.pattern(/^https?:\/\/.+/));
-		}
+			// URL validation
+			if (prop.format === 'uri' || prop.format === 'url') {
+				validators.push(Validators.pattern(/^https?:\/\/.+/));
+			}
 
-		// Pattern validation
-		if (prop.pattern) {
-			validators.push(Validators.pattern(prop.pattern));
-		}
+			// Pattern validation
+			if (prop.pattern) {
+				validators.push(Validators.pattern(prop.pattern));
+			}
 
-		// Min/max length validation
-		if (prop.minLength) {
-			validators.push(Validators.minLength(prop.minLength));
-		}
-		if (prop.maxLength) {
-			validators.push(Validators.maxLength(prop.maxLength));
+			// Min/max length validation
+			if (prop.minLength) {
+				validators.push(Validators.minLength(prop.minLength));
+			}
+			if (prop.maxLength) {
+				validators.push(Validators.maxLength(prop.maxLength));
+			}
 		}
 
 		return validators;
@@ -176,10 +184,13 @@ export class SchemaParserUtil {
 	private static extractPatternInfo(pattern: string): string {
 		// Common pattern interpretations
 		if (pattern === '[a-zA-Z0-9_\\-\\s]{10,75}') {
-			return '10-75 characters, alphanumeric and spaces only';
+			return '10-75 characters, only letters A-Z, numbers 0-9, spaces, hyphens and underscores';
 		}
 		if (pattern.includes('{10,75}')) {
 			return '10-75 characters';
+		}
+		if (pattern.includes('{10,')) {
+			return 'minimum 10 characters';
 		}
 		return '';
 	}

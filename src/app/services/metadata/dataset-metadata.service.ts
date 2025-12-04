@@ -175,6 +175,16 @@ export class DatasetMetadataService {
 	private generateValidators(key: string, prop: any, isRequired: boolean): any[] {
 		const validators: any[] = [];
 
+		// For multilingual fields, don't apply validators here - they'll be handled by the component
+		if (prop.type === 'object' && prop.properties &&
+		    Object.keys(prop.properties).some(k => ['de', 'fr', 'it', 'en'].includes(k))) {
+			// Skip validators for multilingual fields - handled by MultilingualTextFieldComponent
+			if (isRequired) {
+				validators.push(Validators.required);
+			}
+			return validators;
+		}
+
 		if (isRequired) {
 			validators.push(Validators.required);
 		}

@@ -87,6 +87,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	// Validation groups
 	activeValidationSchemas: Set<ValidationSchemaType> = new Set(['base']);
 	validationErrors: Map<ValidationSchemaType, string[]> = new Map();
+	schemaLoadError: string | null = null;
+	schemasLoading = true;
 
 	// Store original dataset for reset functionality in edit mode
 	private originalDataset: any = null;
@@ -128,6 +130,23 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		// Load I14Y themes
 		this.i14yThemeService.loadThemes().pipe(takeUntil(this.destroy$)).subscribe();
 
+		// Wait for validation schemas to be loaded
+		this.validationSchemaService.isLoaded().pipe(takeUntil(this.destroy$)).subscribe(loaded => {
+			this.schemasLoading = !loaded;
+			if (loaded) {
+				// Apply base schema validation immediately
+				this.applySchemaValidation('base');
+			}
+		});
+
+		// Monitor schema load errors
+		this.validationSchemaService.getLoadError().pipe(takeUntil(this.destroy$)).subscribe(error => {
+			this.schemaLoadError = error;
+			if (error) {
+				this.notificationService.error(error);
+			}
+		});
+
 		// Initialize form with metadata
 		this.metadataService
 			.getMetadata()
@@ -135,6 +154,10 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			.subscribe(metadata => {
 				if (metadata && this.datasetForm) {
 					this.buildFormFromMetadata(this.datasetForm, metadata);
+					// Apply base validation after form is built
+					if (this.validationSchemaService.getSchema('base')) {
+						this.applySchemaValidation('base');
+					}
 				}
 			});
 
@@ -318,10 +341,45 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		// Update validation errors for all active schemas
 		this.updateValidationErrors();
 
-		// Capture form validity at the exact moment of submission
+		// Debug: Log form values
+		console.log('=== VALIDATION DEBUG START ===');
+		console.log('Form Values:', this.datasetForm.value);
+		console.log('Form Valid (Angular):', this.datasetForm.valid);
+		console.log('Form Errors:', this.datasetForm.errors);
+
+		// Log each control's validation state
+		Object.keys(this.datasetForm.controls).forEach(key => {
+			const control = this.datasetForm.get(key);
+			if (control?.invalid) {
+				console.log(`Field "${key}" is INVALID:`, {
+					value: control.value,
+					errors: control.errors,
+					status: control.status
+				});
+			}
+		});
+
+		// Check both form validation and schema validation
 		const isFormValid = this.datasetForm.valid;
 
-		if (isFormValid) {
+		// Debug schema validation
+		console.log('Active Validation Schemas:', Array.from(this.activeValidationSchemas));
+		const schemaErrors: any = {};
+		const hasSchemaErrors = Array.from(this.activeValidationSchemas).some(schemaType => {
+			const errors = this.validationSchemaService.getFilteredSchemaValidationErrors(
+				schemaType,
+				this.datasetForm.value
+			);
+			schemaErrors[schemaType] = errors;
+			console.log(`Schema "${schemaType}" errors:`, errors);
+			return errors.length > 0;
+		});
+
+		console.log('Has Schema Errors:', hasSchemaErrors);
+		console.log('All Schema Errors:', schemaErrors);
+		console.log('=== VALIDATION DEBUG END ===');
+
+		if (isFormValid && !hasSchemaErrors) {
 			this.isLoading = true;
 			// Simulate processing time
 			setTimeout(() => {
@@ -336,6 +394,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		} else {
 			this.markFormGroupTouched(this.datasetForm);
 			this.collectInvalidFields();
+
+			console.log('Invalid Fields List:', this.invalidFields);
 
 			// Show error notification
 			this.notificationService.warning({
@@ -476,8 +536,25 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		Object.keys(schema.fields).forEach(fieldKey => {
 			const control = this.datasetForm.get(fieldKey);
 			if (control) {
-				const validators = this.validationSchemaService.getCombinedValidators(fieldKey, Array.from(this.activeValidationSchemas));
-				control.setValidators(validators);
+				// Check if this is a multilingual field
+				const fieldValue = control.value;
+				const isMultilingual = fieldValue && typeof fieldValue === 'object' &&
+					('de' in fieldValue || 'fr' in fieldValue || 'it' in fieldValue || 'en' in fieldValue);
+
+				if (isMultilingual) {
+					// For multilingual fields, only apply required validator at the object level
+					// Pattern and other validators are handled by the MultilingualTextFieldComponent
+					const fieldValidation = schema.fields[fieldKey];
+					if (fieldValidation?.required) {
+						control.setValidators([Validators.required]);
+					} else {
+						control.clearValidators();
+					}
+				} else {
+					// For non-multilingual fields, apply all validators
+					const validators = this.validationSchemaService.getCombinedValidators(fieldKey, Array.from(this.activeValidationSchemas));
+					control.setValidators(validators);
+				}
 				control.updateValueAndValidity();
 			}
 		});
@@ -491,8 +568,24 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		Object.keys(schema.fields).forEach(fieldKey => {
 			const control = this.datasetForm.get(fieldKey);
 			if (control) {
-				const validators = this.validationSchemaService.getCombinedValidators(fieldKey, Array.from(this.activeValidationSchemas));
-				control.setValidators(validators);
+				// Check if this is a multilingual field
+				const fieldValue = control.value;
+				const isMultilingual = fieldValue && typeof fieldValue === 'object' &&
+					('de' in fieldValue || 'fr' in fieldValue || 'it' in fieldValue || 'en' in fieldValue);
+
+				if (isMultilingual) {
+					// For multilingual fields, check if still required in remaining schemas
+					const isRequired = this.validationSchemaService.isFieldRequired(fieldKey, Array.from(this.activeValidationSchemas));
+					if (isRequired) {
+						control.setValidators([Validators.required]);
+					} else {
+						control.clearValidators();
+					}
+				} else {
+					// For non-multilingual fields, apply all remaining validators
+					const validators = this.validationSchemaService.getCombinedValidators(fieldKey, Array.from(this.activeValidationSchemas));
+					control.setValidators(validators);
+				}
 				control.updateValueAndValidity();
 			}
 		});
@@ -572,6 +665,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			'bv:personalData': this.translateService.instant('labels.bv:personalData')
 		};
 
+		// Collect form validation errors
 		Object.keys(this.datasetForm.controls).forEach(key => {
 			// Skip auto-generated fields
 			if (this.autoGeneratedFields.includes(key)) {
@@ -597,6 +691,20 @@ export class ModifyComponent implements OnInit, OnDestroy {
 					this.invalidFields.push(labelMap[key] || key);
 				}
 			}
+		});
+
+		// Also collect schema validation errors
+		Array.from(this.activeValidationSchemas).forEach(schemaType => {
+			const errors = this.validationSchemaService.getFilteredSchemaValidationErrors(
+				schemaType,
+				this.datasetForm.value
+			);
+			// Add unique errors that aren't already in the list
+			errors.forEach(error => {
+				if (!this.invalidFields.some(field => field === error)) {
+					this.invalidFields.push(error);
+				}
+			});
 		});
 	}
 
@@ -682,5 +790,11 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 	getSteps(): Observable<any[]> {
 		return this.metadataService.getSteps();
+	}
+
+	retrySchemaLoading(): void {
+		this.schemaLoadError = null;
+		this.schemasLoading = true;
+		this.validationSchemaService.retryLoadingSchemas();
 	}
 }

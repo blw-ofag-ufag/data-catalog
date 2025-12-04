@@ -1,0 +1,28 @@
+import {Component} from '@angular/core';
+import {FieldType, FieldTypeConfig} from '@ngx-formly/core';
+import {KeywordArrayFieldComponent} from '../../modify/form/components/keyword-array-field/keyword-array-field.component';
+
+@Component({
+	selector: 'formly-field-keyword-array',
+	standalone: true,
+	imports: [KeywordArrayFieldComponent],
+	template: `
+		<app-keyword-array-field
+			[formControl]="formControl"
+			[label]="props['label'] || ''"
+			[placeholder]="props['placeholder'] || ''"
+			[required]="props['required'] || false"
+			[recommended]="props['recommended'] || false"
+		></app-keyword-array-field>
+	`
+})
+export class KeywordArrayFieldType extends FieldType<FieldTypeConfig> {
+	override defaultOptions = {
+		props: {
+			label: '',
+			placeholder: '',
+			required: false,
+			recommended: false
+		}
+	};
+}

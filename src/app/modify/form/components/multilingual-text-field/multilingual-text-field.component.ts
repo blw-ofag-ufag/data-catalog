@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, forwardRef} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, OnDestroy, forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
@@ -28,13 +28,16 @@ export interface MultilingualText {
 	templateUrl: './multilingual-text-field.component.html',
 	styleUrl: './multilingual-text-field.component.scss'
 })
-export class MultilingualTextFieldComponent implements ControlValueAccessor, OnDestroy {
+export class MultilingualTextFieldComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
 	@Input() label = '';
 	@Input() placeholder = '';
 	@Input() required = false;
 	@Input() recommended = false;
 	@Input() textarea = false;
 	@Input() maxLength?: number;
+	@Input() requiredLanguages: string[] = [];
+	@Input() pattern?: string;
+	@Input() minLength?: number;
 
 	formGroup: FormGroup;
 	private readonly destroy$ = new Subject<void>();
@@ -49,11 +52,9 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, OnD
 	];
 
 	constructor() {
-		const validators = this.required ? [Validators.required] : [];
-
 		this.formGroup = new FormGroup({
-			de: new FormControl('', validators),
-			fr: new FormControl('', validators),
+			de: new FormControl(''),
+			fr: new FormControl(''),
 			it: new FormControl(''),
 			en: new FormControl('')
 		});
@@ -61,6 +62,43 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, OnD
 		// Subscribe to form changes
 		this.formGroup.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
 			this.onChange(value);
+		});
+	}
+
+	ngOnInit(): void {
+		this.updateValidators();
+	}
+
+	ngOnChanges(changes: any): void {
+		if (changes['requiredLanguages'] || changes['required']) {
+			this.updateValidators();
+		}
+	}
+
+	private updateValidators(): void {
+		// Set validators based on requiredLanguages or general required setting
+		const languages = ['de', 'fr', 'it', 'en'];
+		languages.forEach(lang => {
+			const control = this.formGroup.get(lang);
+			if (control) {
+				const validators = [];
+				// Check if this specific language is required
+				if (this.requiredLanguages.includes(lang) ||
+				    (this.required && (lang === 'de' || lang === 'fr'))) {
+					validators.push(Validators.required);
+				}
+				if (this.minLength) {
+					validators.push(Validators.minLength(this.minLength));
+				}
+				if (this.maxLength) {
+					validators.push(Validators.maxLength(this.maxLength));
+				}
+				if (this.pattern) {
+					validators.push(Validators.pattern(this.pattern));
+				}
+				control.setValidators(validators);
+				control.updateValueAndValidity();
+			}
 		});
 	}
 
@@ -109,11 +147,26 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, OnD
 	getErrorMessage(language: string): string {
 		const control = this.getControl(language);
 		if (control.hasError('required')) {
-			return `modify.auth.form.validation.required`;
+			return 'modify.auth.form.validation.required';
+		}
+		if (control.hasError('minlength')) {
+			return 'modify.auth.form.validation.minLength';
 		}
 		if (control.hasError('maxlength')) {
-			return `modify.auth.form.validation.maxLength`;
+			return 'modify.auth.form.validation.maxLength';
+		}
+		if (control.hasError('pattern')) {
+			// Return translation key for pattern validation
+			if (this.label.includes('title')) {
+				return 'modify.auth.form.validation.titlePattern';
+			}
+			return 'modify.auth.form.validation.pattern';
 		}
 		return '';
+	}
+
+	isLanguageRequired(language: string): boolean {
+		return this.requiredLanguages.includes(language) ||
+		       (this.required && (language === 'de' || language === 'fr'));
 	}
 }

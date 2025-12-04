@@ -3,7 +3,7 @@
   "version": "2.1.6",
   "scripts": {
     "start": "ng serve",
-    "prebuild": "node config/convert-yaml.js",
+    "prebuild": "node config/convert-yaml.js && node config/convert-schemas.js",
     "build": "ng build --base-href /data-catalog/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -23,6 +23,8 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@ngx-formly/core": "^7.0.1",
+    "@ngx-formly/material": "^7.0.1",
     "@ngx-translate/core": "^16.0.0",
     "@oblique/oblique": "^13.2.1",
     "@popperjs/core": "^2.0.0",

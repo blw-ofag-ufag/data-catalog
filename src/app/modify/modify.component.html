@@ -14,6 +14,25 @@
 			</div>
 		</div>
 
+			<!-- Schema Loading Indicator -->
+		<ob-alert type="info" *ngIf="schemasLoading && !schemaLoadError" class="ob-mb-4">
+			<div class="ob-flex ob-items-center">
+				<mat-icon svgIcon="spinner" class="ob-mr-2 ob-animate-spin"></mat-icon>
+				<span>{{ "modify.auth.form.loadingSchemas" | translate }}</span>
+			</div>
+		</ob-alert>
+
+		<!-- Schema Load Error Alert -->
+		<ob-alert type="error" *ngIf="schemaLoadError" class="ob-mb-4">
+			<p>{{ schemaLoadError }}</p>
+			<p class="ob-mt-2">
+				<button mat-button obButton="secondary" size="sm" (click)="retrySchemaLoading()">
+					<mat-icon svgIcon="repeat" class="ob-mr-1"></mat-icon>
+					{{ "modify.auth.form.retrySchemaLoad" | translate }}
+				</button>
+			</p>
+		</ob-alert>
+
 		<!-- Dataset Form -->
 		<div class="dataset-form-container" *ngIf="!showSubmitSection">
 			<form [formGroup]="datasetForm">
@@ -45,6 +64,10 @@
 								[placeholder]="'modify.auth.form.placeholders.title'"
 								[required]="isFieldRequired('dct:title')"
 								[recommended]="isFieldRecommended('dct:title')"
+								[requiredLanguages]="['de', 'fr']"
+								[pattern]="'^[a-zA-Z0-9_\\-\\s]+$'"
+								[minLength]="10"
+								[maxLength]="75"
 							>
 							</app-multilingual-text-field>
 
@@ -54,6 +77,7 @@
 								[placeholder]="'modify.auth.form.placeholders.description'"
 								[required]="isFieldRequired('dct:description')"
 								[recommended]="isFieldRecommended('dct:description')"
+								[requiredLanguages]="['de', 'fr']"
 								[textarea]="true"
 								[maxLength]="2000"
 							>
