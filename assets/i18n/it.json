@@ -322,10 +322,11 @@
           "previous": "Indietro"
         },
         "reset": "Ripristina",
-        "submit": "Invia"
+        "submit": "Verifica"
       },
       "submit": {
         "title": "Set di dati pronto per l'invio",
+        "selectedRepository": "Repository selezionato",
         "authSuccess": "Autenticato con successo",
         "authInfo": "Si prega di autenticarsi per apportare modifiche",
         "authenticate": "Autentica",
