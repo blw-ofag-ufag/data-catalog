@@ -86,6 +86,11 @@
 			// Configure Oblique icons for stepper
 			.mat-step-icon {
 				font-family: 'oblique-icons';
+				// Make bubbles slightly larger to fit double-digit numbers
+				width: 28px !important;
+				height: 28px !important;
+				min-width: 28px !important;
+				min-height: 28px !important;
 
 				.mat-step-icon-content {
 					font-family: 'oblique-icons';
@@ -93,6 +98,11 @@
 					font-variant: normal;
 					text-rendering: auto;
 					-webkit-font-smoothing: antialiased;
+					// Smaller font size for numbers
+					font-size: 14px !important;
+					line-height: 28px !important;
+					// Prevent number wrapping
+					white-space: nowrap !important;
 				}
 			}
 
@@ -261,3 +271,6 @@ validation-alert {
 	}
 }
 
+.mat-step-icon-content {
+	white-space: nowrap;
+}

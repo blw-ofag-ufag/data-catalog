@@ -413,10 +413,11 @@
           "previous": "Previous"
         },
         "reset": "Reset",
-        "submit": "Submit"
+        "submit": "Check"
       },
       "submit": {
         "title": "Dataset Ready for Submission",
+        "selectedRepository": "Selected repository",
         "authSuccess": "Successfully authenticated",
         "authInfo": "Please authenticate to make changes",
         "authenticate": "Authenticate",

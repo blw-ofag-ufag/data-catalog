@@ -11,6 +11,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {ObButtonDirective} from '@oblique/oblique';
+import {MultilingualTextFieldComponent} from '../multilingual-text-field/multilingual-text-field.component';
+
+export interface MultilingualText {
+	de: string;
+	fr: string;
+	it?: string;
+	en?: string;
+}
 
 export interface Distribution {
 	'dct:identifier': string;
@@ -20,8 +28,8 @@ export interface Distribution {
 	'dct:format': string;
 	'dct:modified': string | null;
 	'dcat:downloadURL'?: string;
-	'dct:title'?: string;
-	'dct:description'?: string;
+	'dct:title'?: MultilingualText;
+	'dct:description'?: MultilingualText;
 	'dct:conformsTo'?: string;
 	'dct:license'?: string;
 	'schema:comment'?: string;
@@ -41,7 +49,8 @@ export interface Distribution {
 		MatIconModule,
 		MatDatepickerModule,
 		MatNativeDateModule,
-		ObButtonDirective
+		ObButtonDirective,
+		MultilingualTextFieldComponent
 	],
 	providers: [
 		{
@@ -140,16 +149,26 @@ export class DistributionFieldComponent implements ControlValueAccessor, OnDestr
 	}
 
 	private createDistributionGroup(distribution?: Distribution): FormGroup {
+		// Handle date conversion - if it's a string, convert to Date object
+		let modifiedDate = null;
+		if (distribution?.['dct:modified']) {
+			if (typeof distribution['dct:modified'] === 'string') {
+				modifiedDate = new Date(distribution['dct:modified']);
+			} else {
+				modifiedDate = distribution['dct:modified'];
+			}
+		}
+
 		return this.fb.group({
 			'dct:identifier': [distribution?.['dct:identifier'] || '', Validators.required],
 			'dcat:accessURL': [distribution?.['dcat:accessURL'] || '', [Validators.required, Validators.pattern(/^https?:\/\/.+/)]],
 			'adms:status': [distribution?.['adms:status'] || '', Validators.required],
 			'dcatap:availability': [distribution?.['dcatap:availability'] || ''],
 			'dct:format': [distribution?.['dct:format'] || '', Validators.required],
-			'dct:modified': [distribution?.['dct:modified'] || null],
+			'dct:modified': [modifiedDate],
 			'dcat:downloadURL': [distribution?.['dcat:downloadURL'] || '', Validators.pattern(/^https?:\/\/.+/)],
-			'dct:title': [distribution?.['dct:title'] || ''],
-			'dct:description': [distribution?.['dct:description'] || ''],
+			'dct:title': [distribution?.['dct:title'] || null],
+			'dct:description': [distribution?.['dct:description'] || null],
 			'dct:conformsTo': [distribution?.['dct:conformsTo'] || ''],
 			'dct:license': [distribution?.['dct:license'] || ''],
 			'schema:comment': [distribution?.['schema:comment'] || '']

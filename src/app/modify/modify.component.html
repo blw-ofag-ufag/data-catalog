@@ -1,4 +1,4 @@
-<div class="ob-container">
+<div class="ob-container" xmlns="http://www.w3.org/1999/html">
 	<div>
 		<!-- Header -->
 		<div class="ob-flex ob-justify-between ob-items-center ob-mb-4">
@@ -52,7 +52,7 @@
 					</ng-template>
 
 					<ng-template matStepperIcon="number" let-index="index">
-						{{ index + 1 }}
+						<span style="white-space: nowrap">{{ index + 1 }}</span>
 					</ng-template>
 					<!-- Step 1: Basic Information -->
 					<mat-step [completed]="isStepValid(0)" [hasError]="!isStepValid(0) && (datasetForm.touched || submitAttempted)">
@@ -436,6 +436,8 @@
 						</div>
 					</mat-step>
 				</mat-stepper>
+
+				<br>
 
 				<!-- Form Actions -->
 				<div class="final-actions ob-mt-4 ob-flex ob-justify-end ob-gap-3">

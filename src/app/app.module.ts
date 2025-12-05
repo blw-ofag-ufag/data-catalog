@@ -1,14 +1,14 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ObButtonModule, ObExternalLinkModule, ObMasterLayoutConfig, ObMasterLayoutModule, provideObliqueConfiguration} from '@oblique/oblique';
+import {ObButtonModule, ObExternalLinkModule, ObMasterLayoutConfig, ObMasterLayoutModule, provideObliqueConfiguration, multiTranslateLoader} from '@oblique/oblique';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {registerLocaleData} from '@angular/common';
 import localeDECH from '@angular/common/locales/de-CH';
 import localeFRCH from '@angular/common/locales/fr-CH';
 import localeITCH from '@angular/common/locales/it-CH';
-import {TranslateModule} from '@ngx-translate/core';
-import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {provideHttpClient, withInterceptorsFromDi, HttpClient} from '@angular/common/http';
 import {HomeComponent} from './home/home.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -35,7 +35,13 @@ registerLocaleData(localeITCH);
 		ObMasterLayoutModule,
 		BrowserAnimationsModule,
 		ObButtonModule,
-		TranslateModule,
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: multiTranslateLoader,
+				deps: [HttpClient]
+			}
+		}),
 		MatButtonModule,
 		MatIconModule,
 		ObExternalLinkModule,

@@ -93,13 +93,18 @@
 				</div>
 
 				<!-- Optional Metadata -->
+				<div class="ob-mb-3">
+					<!-- Title as multilingual field -->
+					<app-multilingual-text-field
+						formControlName="dct:title"
+						[label]="'labels.dct:title'"
+						[placeholder]="'modify.auth.form.placeholders.distributionTitle'"
+						[required]="false"
+						[requiredLanguages]="[]"
+					></app-multilingual-text-field>
+				</div>
+
 				<div class="ob-flex ob-flex-wrap ob-gap-4 ob-mb-3">
-					<div class="ob-flex-1 ob-min-w-0">
-						<mat-form-field class="ob-w-full">
-							<mat-label>{{ "labels.dct:title" | translate }}</mat-label>
-							<input matInput formControlName="dct:title" [placeholder]="'modify.auth.form.placeholders.distributionTitle' | translate" (blur)="onBlur()" />
-						</mat-form-field>
-					</div>
 					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
 							<mat-label>{{ "labels.dcatap:availability" | translate }}</mat-label>
@@ -122,32 +127,30 @@
 					</div>
 				</div>
 
-				<!-- Description & Other Fields -->
-				<div class="ob-flex ob-flex-wrap ob-gap-4 ob-mb-3">
-					<div class="ob-flex-1 ob-min-w-0">
-						<mat-form-field class="ob-w-full">
-							<mat-label>{{ "labels.dct:description" | translate }}</mat-label>
-							<textarea
-								matInput
-								formControlName="dct:description"
-								rows="2"
-								[placeholder]="'modify.auth.form.placeholders.distributionDescription' | translate"
-								(blur)="onBlur()"
-							></textarea>
-						</mat-form-field>
-					</div>
-					<div class="ob-flex-1 ob-min-w-0">
-						<mat-form-field class="ob-w-full">
-							<mat-label>{{ "labels.schema:comment" | translate }}</mat-label>
-							<textarea
-								matInput
-								formControlName="schema:comment"
-								rows="2"
-								[placeholder]="'modify.auth.form.placeholders.additionalComments' | translate"
-								(blur)="onBlur()"
-							></textarea>
-						</mat-form-field>
-					</div>
+				<!-- Description as multilingual field & Other Fields -->
+				<div class="ob-mb-3">
+					<!-- Description as multilingual field -->
+					<app-multilingual-text-field
+						formControlName="dct:description"
+						[label]="'labels.dct:description'"
+						[placeholder]="'modify.auth.form.placeholders.distributionDescription'"
+						[required]="false"
+						[requiredLanguages]="[]"
+						[textarea]="true"
+					></app-multilingual-text-field>
+				</div>
+
+				<div class="ob-mb-3">
+					<mat-form-field class="ob-w-full">
+						<mat-label>{{ "labels.schema:comment" | translate }}</mat-label>
+						<textarea
+							matInput
+							formControlName="schema:comment"
+							rows="2"
+							[placeholder]="'modify.auth.form.placeholders.additionalComments' | translate"
+							(blur)="onBlur()"
+						></textarea>
+					</mat-form-field>
 				</div>
 
 				<!-- Standards -->

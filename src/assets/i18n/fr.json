@@ -322,10 +322,11 @@
           "previous": "Précédent"
         },
         "reset": "Réinitialiser",
-        "submit": "Soumettre"
+        "submit": "Vérifier"
       },
       "submit": {
         "title": "Jeu de données prêt pour la soumission",
+        "selectedRepository": "Dépôt sélectionné",
         "authSuccess": "Authentifié avec succès",
         "authInfo": "Veuillez vous authentifier pour apporter des modifications",
         "authenticate": "S'authentifier",
