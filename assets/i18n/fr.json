@@ -377,6 +377,10 @@
     "message": "La page que vous recherchez n'existe pas.",
     "title": "Page non trouvée"
   },
+  "common": {
+    "yes": "Oui",
+    "no": "Non"
+  },
   "ui": {
     "addDataset": "Ajouter un jeu de données",
     "cards": "Cartes",
