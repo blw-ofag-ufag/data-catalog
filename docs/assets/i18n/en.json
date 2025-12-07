@@ -356,7 +356,8 @@
           "titlePattern": "Only letters A-Z, numbers 0-9, spaces, hyphens and underscores allowed",
           "email": "Please enter a valid email address",
           "summary": "Form validation errors:",
-          "fillRequired": "Please fill out all required fields marked with an asterisk (*)"
+          "fillRequired": "Please fill out all required fields marked with an asterisk (*)",
+          "recommended": "(recommended)"
         },
         "confirmation": {
           "unsavedChanges": "You have unsaved changes. Are you sure you want to leave? All changes will be lost."
@@ -370,7 +371,10 @@
           "schemaLoadFailed": "Unable to load validation schemas from remote server. Using minimal validation rules. Please check your internet connection and try again."
         },
         "options": {
-          "none": "No selection"
+          "none": "No selection",
+          "selectStatus": "Select Status",
+          "selectAvailability": "Select Availability",
+          "selectLicense": "Select License"
         },
         "sections": {
           "basic": "Basic Information",
@@ -388,17 +392,29 @@
           "title": "Enter dataset title",
           "description": "Enter dataset description",
           "keyword": "Add keyword",
-          "theme": "Select theme"
+          "theme": "Select theme",
+          "distributionId": "e.g. dist-001",
+          "format": "e.g. CSV, JSON, XML",
+          "accessUrl": "https://example.com/api/dataset",
+          "downloadUrl": "https://example.com/download/data.csv",
+          "distributionTitle": "Enter distribution title",
+          "distributionDescription": "Enter distribution description",
+          "additionalComments": "Additional comments about this distribution",
+          "conformsTo": "e.g. ISO 19115"
         },
         "labels": {
           "temporalStart": "Temporal Coverage Start",
           "temporalEnd": "Temporal Coverage End",
           "imageUrl": "Dataset Image URL",
-          "relationships": "Dataset Relationships"
+          "relationships": "Dataset Relationships",
+          "distribution": "Distribution"
         },
         "help": {
           "externalCatalogs": "Select external catalogs where this dataset should be published",
-          "relationships": "Enter dataset IDs separated by commas for related datasets"
+          "relationships": "Enter dataset IDs separated by commas for related datasets",
+          "accessUrl": "URL where the distribution can be accessed",
+          "downloadUrl": "Direct download URL for the distribution file",
+          "distributionsRequired": "At least one distribution is required"
         },
         "contactName": "Contact person name",
         "contactEmail": "Contact person email",
@@ -413,7 +429,13 @@
           "previous": "Previous"
         },
         "reset": "Reset",
-        "submit": "Check"
+        "submit": "Check",
+        "buttons": {
+          "addDistribution": "Add Distribution"
+        },
+        "messages": {
+          "noDistributions": "No distributions added yet"
+        }
       },
       "submit": {
         "title": "Dataset Ready for Submission",
@@ -479,16 +501,37 @@
   },
   "validation": {
     "i14y": {
+      "name": "I14Y Requirements",
       "description": "Additional requirements for publishing to the I14Y interoperability platform"
     },
     "ods": {
+      "name": "Open Data Swiss Requirements",
       "description": "Additional requirements for publishing to Open Data Swiss"
     },
     "base": {
+      "name": "Base Requirements",
+      "nameOffline": "Base Requirements (Offline)",
       "description": "Basic requirements for all datasets"
     },
     "generic": {
       "description": "Please check the following requirements"
+    },
+    "errors": {
+      "fieldRequired": "{{field}} is required for {{schema}}",
+      "fieldRequiredPattern": "{{field}}: {{languages}} text must be {{pattern}}",
+      "fieldMissingLanguages": "{{field}} must have text in {{languages}}{{pattern}}",
+      "formatInvalid": "{{field}} format is invalid for {{schema}}",
+      "validationError": "{{field}} has validation errors for {{schema}}"
+    },
+    "formStatus": {
+      "complete": {
+        "title": "Form Validation Complete",
+        "message": "Dataset form is valid and ready for submission to GitHub"
+      },
+      "failed": {
+        "title": "Form Validation Failed",
+        "message": "Please fix {{count}} required fields to continue"
+      }
     }
   }
 }

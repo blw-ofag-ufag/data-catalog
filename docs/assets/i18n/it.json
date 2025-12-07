@@ -272,7 +272,8 @@
           "maxLength": "Lunghezza massima superata",
           "email": "Inserisci un indirizzo email valido",
           "summary": "Errori di validazione del modulo:",
-          "fillRequired": "Compila tutti i campi obbligatori contrassegnati con un asterisco (*)"
+          "fillRequired": "Compila tutti i campi obbligatori contrassegnati con un asterisco (*)",
+          "recommended": "(raccomandato)"
         },
         "confirmation": {
           "unsavedChanges": "Hai modifiche non salvate. Sei sicuro di voler uscire? Tutte le modifiche andranno perse."
@@ -281,7 +282,10 @@
           "multilingualRequired": "Almeno tedesco e francese sono richiesti"
         },
         "options": {
-          "none": "Nessuna selezione"
+          "none": "Nessuna selezione",
+          "selectStatus": "Seleziona stato",
+          "selectAvailability": "Seleziona disponibilità",
+          "selectLicense": "Seleziona licenza"
         },
         "sections": {
           "basic": "Informazioni di base",
@@ -299,17 +303,29 @@
           "title": "Inserisci il titolo del set di dati",
           "description": "Inserisci la descrizione del set di dati",
           "keyword": "Aggiungi parola chiave",
-          "theme": "Seleziona tema"
+          "theme": "Seleziona tema",
+          "distributionId": "es. dist-001",
+          "format": "es. CSV, JSON, XML",
+          "accessUrl": "https://esempio.com/api/dataset",
+          "downloadUrl": "https://esempio.com/download/data.csv",
+          "distributionTitle": "Titolo della distribuzione",
+          "distributionDescription": "Descrizione della distribuzione",
+          "additionalComments": "Commenti aggiuntivi",
+          "conformsTo": "es. ISO 19115"
         },
         "labels": {
           "temporalStart": "Inizio copertura temporale",
           "temporalEnd": "Fine copertura temporale",
           "imageUrl": "URL immagine del set di dati",
-          "relationships": "Relazioni del set di dati"
+          "relationships": "Relazioni del set di dati",
+          "distribution": "Distribuzione"
         },
         "help": {
           "externalCatalogs": "Seleziona i cataloghi esterni dove questo set di dati deve essere pubblicato",
-          "relationships": "Inserisci gli ID dei set di dati separati da virgole per i set di dati correlati"
+          "relationships": "Inserisci gli ID dei set di dati separati da virgole per i set di dati correlati",
+          "accessUrl": "URL dove è possibile accedere alla distribuzione",
+          "downloadUrl": "URL di download diretto del file",
+          "distributionsRequired": "Almeno una distribuzione è richiesta"
         },
         "contactName": "Nome della persona di contatto",
         "contactEmail": "Email della persona di contatto",
@@ -322,7 +338,13 @@
           "previous": "Indietro"
         },
         "reset": "Ripristina",
-        "submit": "Verifica"
+        "submit": "Verifica",
+        "buttons": {
+          "addDistribution": "Aggiungi distribuzione"
+        },
+        "messages": {
+          "noDistributions": "Nessuna distribuzione aggiunta finora"
+        }
       },
       "submit": {
         "title": "Set di dati pronto per l'invio",
@@ -385,5 +407,40 @@
     "steward": "Responsabile",
     "stewardOwnerContact": "Contatto",
     "title": "Titolo"
+  },
+  "validation": {
+    "i14y": {
+      "name": "Requisiti I14Y",
+      "description": "Requisiti aggiuntivi per la pubblicazione sulla piattaforma di interoperabilità I14Y"
+    },
+    "ods": {
+      "name": "Requisiti Open Data Swiss",
+      "description": "Requisiti aggiuntivi per la pubblicazione su Open Data Swiss"
+    },
+    "base": {
+      "name": "Requisiti di base",
+      "nameOffline": "Requisiti di base (Offline)",
+      "description": "Requisiti di base per tutti i set di dati"
+    },
+    "generic": {
+      "description": "Controllare i seguenti requisiti"
+    },
+    "errors": {
+      "fieldRequired": "{{field}} è richiesto per {{schema}}",
+      "fieldRequiredPattern": "{{field}}: il testo {{languages}} deve essere {{pattern}}",
+      "fieldMissingLanguages": "{{field}} deve avere testo in {{languages}}{{pattern}}",
+      "formatInvalid": "Il formato di {{field}} non è valido per {{schema}}",
+      "validationError": "{{field}} ha errori di validazione per {{schema}}"
+    },
+    "formStatus": {
+      "complete": {
+        "title": "Validazione del modulo completata",
+        "message": "Il modulo del set di dati è valido e pronto per l'invio a GitHub"
+      },
+      "failed": {
+        "title": "Validazione del modulo fallita",
+        "message": "Correggere {{count}} campi obbligatori per continuare"
+      }
+    }
   }
 }
