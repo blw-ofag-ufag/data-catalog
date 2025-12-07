@@ -2,7 +2,7 @@ import {Component, Input, OnDestroy, forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ControlValueAccessor, FormArray, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -71,40 +71,29 @@ export class DistributionFieldComponent implements ControlValueAccessor, OnDestr
 	private onChange = (value: Distribution[] | null) => {};
 	private onTouched = () => {};
 
-	readonly statuses = [
-		{value: '', label: 'Select Status'},
-		{value: 'workInProgress', label: 'Work in Progress'},
-		{value: 'validated', label: 'Validated'},
-		{value: 'published', label: 'Published'},
-		{value: 'deleted', label: 'Deleted'},
-		{value: 'archived', label: 'Archived'}
-	];
+	statuses: Array<{value: string; label: string}> = [];
 
-	readonly availabilities = [
-		{value: '', label: 'Select Availability'},
-		{value: 'AVAILABLE', label: 'Available'},
-		{value: 'EXPERIMENTAL', label: 'Experimental'},
-		{value: 'STABLE', label: 'Stable'},
-		{value: 'TEMPORARY', label: 'Temporary'}
-	];
+	availabilities: Array<{value: string; label: string}> = [];
 
-	readonly licenses = [
-		{value: '', label: 'Select License'},
-		{value: 'terms_open', label: 'Open use'},
-		{value: 'terms_by', label: 'Open use. Must provide the source'},
-		{value: 'terms_ask', label: 'Open use. Use for commercial purposes requires permission'},
-		{value: 'terms_by_ask', label: 'Open use. Must provide source. Commercial use requires permission'},
-		{value: 'cc-zero', label: 'CC0'},
-		{value: 'cc-by/4.0', label: 'CC BY 4.0'},
-		{value: 'cc-by-sa/4.0', label: 'CC BY-SA 4.0'}
-	];
+	licenses: Array<{value: string; label: string}> = [];
 
-	constructor(private readonly fb: FormBuilder) {
+	constructor(
+		private readonly fb: FormBuilder,
+		private readonly translateService: TranslateService
+	) {
 		this.distributionsArray = this.fb.array([]);
+
+		// Initialize translation arrays
+		this.initializeTranslations();
 
 		// Subscribe to form changes
 		this.distributionsArray.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
 			this.onChange(value.length > 0 ? value : null);
+		});
+
+		// Update translations when language changes
+		this.translateService.onLangChange.pipe(takeUntil(this.destroy$)).subscribe(() => {
+			this.initializeTranslations();
 		});
 	}
 
@@ -177,5 +166,35 @@ export class DistributionFieldComponent implements ControlValueAccessor, OnDestr
 
 	onBlur(): void {
 		this.onTouched();
+	}
+
+	private initializeTranslations(): void {
+		this.statuses = [
+			{value: '', label: this.translateService.instant('modify.auth.form.options.selectStatus')},
+			{value: 'workInProgress', label: this.translateService.instant('choices.dataset.adms:status.workInProgress')},
+			{value: 'validated', label: this.translateService.instant('choices.dataset.adms:status.validated')},
+			{value: 'published', label: this.translateService.instant('choices.dataset.adms:status.published')},
+			{value: 'deleted', label: this.translateService.instant('choices.dataset.adms:status.deleted')},
+			{value: 'archived', label: this.translateService.instant('choices.dataset.adms:status.archived')}
+		];
+
+		this.availabilities = [
+			{value: '', label: this.translateService.instant('modify.auth.form.options.selectAvailability')},
+			{value: 'AVAILABLE', label: this.translateService.instant('choices.dataset.dcatap:availability.AVAILABLE')},
+			{value: 'EXPERIMENTAL', label: this.translateService.instant('choices.dataset.dcatap:availability.EXPERIMENTAL')},
+			{value: 'STABLE', label: this.translateService.instant('choices.dataset.dcatap:availability.STABLE')},
+			{value: 'TEMPORARY', label: this.translateService.instant('choices.dataset.dcatap:availability.TEMPORARY')}
+		];
+
+		this.licenses = [
+			{value: '', label: this.translateService.instant('modify.auth.form.options.selectLicense')},
+			{value: 'terms_open', label: this.translateService.instant('choices.distribution.license.terms_open')},
+			{value: 'terms_by', label: this.translateService.instant('choices.distribution.license.terms_by')},
+			{value: 'terms_ask', label: this.translateService.instant('choices.distribution.license.terms_ask')},
+			{value: 'terms_by_ask', label: this.translateService.instant('choices.distribution.license.terms_by_ask')},
+			{value: 'cc-zero', label: this.translateService.instant('choices.distribution.license.cc-zero')},
+			{value: 'cc-by/4.0', label: this.translateService.instant('choices.distribution.license.cc-by/4.0')},
+			{value: 'cc-by-sa/4.0', label: this.translateService.instant('choices.distribution.license.cc-by-sa/4.0')}
+		];
 	}
 }

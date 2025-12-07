@@ -131,21 +131,27 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		this.i14yThemeService.loadThemes().pipe(takeUntil(this.destroy$)).subscribe();
 
 		// Wait for validation schemas to be loaded
-		this.validationSchemaService.isLoaded().pipe(takeUntil(this.destroy$)).subscribe(loaded => {
-			this.schemasLoading = !loaded;
-			if (loaded) {
-				// Apply base schema validation immediately
-				this.applySchemaValidation('base');
-			}
-		});
+		this.validationSchemaService
+			.isLoaded()
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(loaded => {
+				this.schemasLoading = !loaded;
+				if (loaded) {
+					// Apply base schema validation immediately
+					this.applySchemaValidation('base');
+				}
+			});
 
 		// Monitor schema load errors
-		this.validationSchemaService.getLoadError().pipe(takeUntil(this.destroy$)).subscribe(error => {
-			this.schemaLoadError = error;
-			if (error) {
-				this.notificationService.error(error);
-			}
-		});
+		this.validationSchemaService
+			.getLoadError()
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(error => {
+				this.schemaLoadError = error;
+				if (error) {
+					this.notificationService.error(error);
+				}
+			});
 
 		// Initialize form with metadata
 		this.metadataService
@@ -284,42 +290,38 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			this.isLoading = true;
 
 			// Subscribe to datasets to find the one we need to edit
-			this.datasetService.datasets$
-				.pipe(takeUntil(this.destroy$))
-				.subscribe(datasets => {
-					if (datasets && datasets.length > 0) {
-						// Find the dataset with matching identifier
-						const foundDataset = datasets.find(d => d['dct:identifier'] === this.datasetId);
-						if (foundDataset) {
-							// Get publisher ID from dataset (it's a string like 'BLW-OFAG-UFAG-FOAG')
-							const publisherId = foundDataset['dct:publisher'];
+			this.datasetService.datasets$.pipe(takeUntil(this.destroy$)).subscribe(datasets => {
+				if (datasets && datasets.length > 0) {
+					// Find the dataset with matching identifier
+					const foundDataset = datasets.find(d => d['dct:identifier'] === this.datasetId);
+					if (foundDataset) {
+						// Get publisher ID from dataset (it's a string like 'BLW-OFAG-UFAG-FOAG')
+						const publisherId = foundDataset['dct:publisher'];
 
-							// Find the publisher configuration by ID
-							const publisherConfig = this.publisherService.getPublishers().find(p => p.id === publisherId);
+						// Find the publisher configuration by ID
+						const publisherConfig = this.publisherService.getPublishers().find(p => p.id === publisherId);
 
-							if (publisherConfig && this.datasetId) {
-								// Use the GitHub repo from publisher config as the first parameter
-								// The klass is typically 'datasets' for dataset objects
-								const klass = 'datasets';
+						if (publisherConfig && this.datasetId) {
+							// Use the GitHub repo from publisher config as the first parameter
+							// The klass is typically 'datasets' for dataset objects
+							const klass = 'datasets';
 
-								// Load full dataset details
-								// loadDetail expects (publisher: string, klass: string, id: string)
-								// where publisher is actually the GitHub repo identifier
-								this.datasetService.loadDetail(publisherConfig.githubRepo, klass, this.datasetId);
-							}
+							// Load full dataset details
+							// loadDetail expects (publisher: string, klass: string, id: string)
+							// where publisher is actually the GitHub repo identifier
+							this.datasetService.loadDetail(publisherConfig.githubRepo, klass, this.datasetId);
 						}
 					}
-				});
+				}
+			});
 
 			// Subscribe to selected dataset to populate the form once it's loaded
-			this.datasetService.selectedDataset$
-				.pipe(takeUntil(this.destroy$))
-				.subscribe(dataset => {
-					if (dataset && dataset['dct:identifier'] === this.datasetId) {
-						this.populateForm(dataset);
-						this.isLoading = false;
-					}
-				});
+			this.datasetService.selectedDataset$.pipe(takeUntil(this.destroy$)).subscribe(dataset => {
+				if (dataset && dataset['dct:identifier'] === this.datasetId) {
+					this.populateForm(dataset);
+					this.isLoading = false;
+				}
+			});
 		}
 	}
 
@@ -393,10 +395,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		console.log('Active Validation Schemas:', Array.from(this.activeValidationSchemas));
 		const schemaErrors: any = {};
 		const hasSchemaErrors = Array.from(this.activeValidationSchemas).some(schemaType => {
-			const errors = this.validationSchemaService.getFilteredSchemaValidationErrors(
-				schemaType,
-				this.datasetForm.value
-			);
+			const errors = this.validationSchemaService.getFilteredSchemaValidationErrors(schemaType, this.datasetForm.value);
 			schemaErrors[schemaType] = errors;
 			console.log(`Schema "${schemaType}" errors:`, errors);
 			return errors.length > 0;
@@ -414,8 +413,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 				this.showSubmitSection = true;
 				// Show success notification
 				this.notificationService.success({
-					title: 'Form Validation Complete',
-					message: 'Dataset form is valid and ready for submission to GitHub'
+					title: this.translateService.instant('validation.formStatus.complete.title'),
+					message: this.translateService.instant('validation.formStatus.complete.message')
 				});
 			}, 1000);
 		} else {
@@ -426,15 +425,14 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 			// Show error notification
 			this.notificationService.warning({
-				title: 'Form Validation Failed',
-				message: `Please fix ${this.invalidFields.length} required fields to continue`
+				title: this.translateService.instant('validation.formStatus.failed.title'),
+				message: this.translateService.instant('validation.formStatus.failed.message', {count: this.invalidFields.length})
 			});
 
 			// Scroll to first error
 			this.scrollToFirstError();
 		}
 	}
-
 
 	onFormReset(): void {
 		this.showSubmitSection = false;
@@ -565,8 +563,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			if (control) {
 				// Check if this is a multilingual field
 				const fieldValue = control.value;
-				const isMultilingual = fieldValue && typeof fieldValue === 'object' &&
-					('de' in fieldValue || 'fr' in fieldValue || 'it' in fieldValue || 'en' in fieldValue);
+				const isMultilingual =
+					fieldValue && typeof fieldValue === 'object' && ('de' in fieldValue || 'fr' in fieldValue || 'it' in fieldValue || 'en' in fieldValue);
 
 				if (isMultilingual) {
 					// For multilingual fields, only apply required validator at the object level
@@ -597,8 +595,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			if (control) {
 				// Check if this is a multilingual field
 				const fieldValue = control.value;
-				const isMultilingual = fieldValue && typeof fieldValue === 'object' &&
-					('de' in fieldValue || 'fr' in fieldValue || 'it' in fieldValue || 'en' in fieldValue);
+				const isMultilingual =
+					fieldValue && typeof fieldValue === 'object' && ('de' in fieldValue || 'fr' in fieldValue || 'it' in fieldValue || 'en' in fieldValue);
 
 				if (isMultilingual) {
 					// For multilingual fields, check if still required in remaining schemas
@@ -622,10 +620,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		this.validationErrors.clear();
 
 		Array.from(this.activeValidationSchemas).forEach(schemaType => {
-			const errors = this.validationSchemaService.getFilteredSchemaValidationErrors(
-				schemaType,
-				this.datasetForm.value
-			);
+			const errors = this.validationSchemaService.getFilteredSchemaValidationErrors(schemaType, this.datasetForm.value);
 			this.validationErrors.set(schemaType, errors);
 		});
 	}
@@ -667,11 +662,11 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 	private getSchemaIcon(schemaType: ValidationSchemaType): string {
 		const icons: Record<ValidationSchemaType, string> = {
-			base: 'warning',
-			i14y: 'public',
-			ods: 'open_in_new'
+			base: 'warning-triangle',
+			i14y: 'info-circle',
+			ods: 'checkmark-circle'
 		};
-		return icons[schemaType] || 'info';
+		return icons[schemaType] || 'info-circle';
 	}
 
 	isExternalCatalogSelected(catalogValue: string): boolean {
@@ -722,10 +717,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 		// Also collect schema validation errors
 		Array.from(this.activeValidationSchemas).forEach(schemaType => {
-			const errors = this.validationSchemaService.getFilteredSchemaValidationErrors(
-				schemaType,
-				this.datasetForm.value
-			);
+			const errors = this.validationSchemaService.getFilteredSchemaValidationErrors(schemaType, this.datasetForm.value);
 			// Add unique errors that aren't already in the list
 			errors.forEach(error => {
 				if (!this.invalidFields.some(field => field === error)) {

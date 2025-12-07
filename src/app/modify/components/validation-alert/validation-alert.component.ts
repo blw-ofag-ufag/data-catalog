@@ -19,7 +19,7 @@ export interface ValidationGroup {
 	template: `
 		<ob-alert *ngIf="validationGroup && validationGroup.errors.length > 0" [type]="validationGroup.alertType" [ngClass]="getValidationCssClass()">
 			<div class="validation-header">
-				<mat-icon *ngIf="validationGroup.icon" class="validation-icon">{{ validationGroup.icon }}</mat-icon>
+				<mat-icon *ngIf="validationGroup.icon" [svgIcon]="validationGroup.icon" class="validation-icon"></mat-icon>
 				<strong>{{ validationGroup.name | translate }}</strong>
 				<span class="error-count">({{ validationGroup.errors.length }})</span>
 			</div>

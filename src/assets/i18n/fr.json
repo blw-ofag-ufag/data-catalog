@@ -272,7 +272,8 @@
           "maxLength": "Longueur maximale dépassée",
           "email": "Veuillez saisir une adresse e-mail valide",
           "summary": "Erreurs de validation du formulaire :",
-          "fillRequired": "Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*)"
+          "fillRequired": "Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*)",
+          "recommended": "(recommandé)"
         },
         "confirmation": {
           "unsavedChanges": "Vous avez des modifications non enregistrées. Êtes-vous sûr de vouloir quitter ? Toutes les modifications seront perdues."
@@ -281,7 +282,10 @@
           "multilingualRequired": "Au moins l'allemand et le français sont requis"
         },
         "options": {
-          "none": "Aucune sélection"
+          "none": "Aucune sélection",
+          "selectStatus": "Sélectionner le statut",
+          "selectAvailability": "Sélectionner la disponibilité",
+          "selectLicense": "Sélectionner la licence"
         },
         "sections": {
           "basic": "Informations de base",
@@ -299,17 +303,29 @@
           "title": "Saisir le titre du jeu de données",
           "description": "Saisir la description du jeu de données",
           "keyword": "Ajouter un mot-clé",
-          "theme": "Sélectionner un thème"
+          "theme": "Sélectionner un thème",
+          "distributionId": "p.ex. dist-001",
+          "format": "p.ex. CSV, JSON, XML",
+          "accessUrl": "https://exemple.com/api/dataset",
+          "downloadUrl": "https://exemple.com/download/data.csv",
+          "distributionTitle": "Titre de la distribution",
+          "distributionDescription": "Description de la distribution",
+          "additionalComments": "Commentaires supplémentaires",
+          "conformsTo": "p.ex. ISO 19115"
         },
         "labels": {
           "temporalStart": "Début de la couverture temporelle",
           "temporalEnd": "Fin de la couverture temporelle",
           "imageUrl": "URL de l'image du jeu de données",
-          "relationships": "Relations du jeu de données"
+          "relationships": "Relations du jeu de données",
+          "distribution": "Distribution"
         },
         "help": {
           "externalCatalogs": "Sélectionnez les catalogues externes où ce jeu de données doit être publié",
-          "relationships": "Saisissez les IDs des jeux de données séparés par des virgules pour les jeux de données liés"
+          "relationships": "Saisissez les IDs des jeux de données séparés par des virgules pour les jeux de données liés",
+          "accessUrl": "URL où la distribution peut être accédée",
+          "downloadUrl": "URL de téléchargement direct du fichier",
+          "distributionsRequired": "Au moins une distribution est requise"
         },
         "contactName": "Nom de la personne de contact",
         "contactEmail": "E-mail de la personne de contact",
@@ -322,7 +338,13 @@
           "previous": "Précédent"
         },
         "reset": "Réinitialiser",
-        "submit": "Vérifier"
+        "submit": "Vérifier",
+        "buttons": {
+          "addDistribution": "Ajouter une distribution"
+        },
+        "messages": {
+          "noDistributions": "Aucune distribution ajoutée pour le moment"
+        }
       },
       "submit": {
         "title": "Jeu de données prêt pour la soumission",
@@ -385,5 +407,40 @@
     "steward": "Gestionnaire",
     "stewardOwnerContact": "Contact",
     "title": "Titre"
+  },
+  "validation": {
+    "i14y": {
+      "name": "Exigences I14Y",
+      "description": "Exigences supplémentaires pour la publication sur la plateforme d'interopérabilité I14Y"
+    },
+    "ods": {
+      "name": "Exigences Open Data Swiss",
+      "description": "Exigences supplémentaires pour la publication sur Open Data Swiss"
+    },
+    "base": {
+      "name": "Exigences de base",
+      "nameOffline": "Exigences de base (Hors ligne)",
+      "description": "Exigences de base pour tous les jeux de données"
+    },
+    "generic": {
+      "description": "Veuillez vérifier les exigences suivantes"
+    },
+    "errors": {
+      "fieldRequired": "{{field}} est requis pour {{schema}}",
+      "fieldRequiredPattern": "{{field}}: le texte {{languages}} doit être {{pattern}}",
+      "fieldMissingLanguages": "{{field}} doit avoir du texte en {{languages}}{{pattern}}",
+      "formatInvalid": "Le format de {{field}} est invalide pour {{schema}}",
+      "validationError": "{{field}} a des erreurs de validation pour {{schema}}"
+    },
+    "formStatus": {
+      "complete": {
+        "title": "Validation du formulaire terminée",
+        "message": "Le formulaire du jeu de données est valide et prêt pour la soumission à GitHub"
+      },
+      "failed": {
+        "title": "Échec de la validation du formulaire",
+        "message": "Veuillez corriger {{count}} champs obligatoires pour continuer"
+      }
+    }
   }
 }

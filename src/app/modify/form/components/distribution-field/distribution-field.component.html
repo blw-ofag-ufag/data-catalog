@@ -1,10 +1,10 @@
 <div class="distribution-field">
-	<div class="ob-flex ob-justify-between ob-items-center ob-ob-mb-3">
+	<div class="ob-flex ob-justify-between ob-items-center ob-mb-3">
 		<label class="field-label">
 			{{ label | translate }}
 			<span *ngIf="required" class="required-asterisk">*</span>
 		</label>
-		<button type="button" [obButton]="'secondary'" (click)="addDistribution()" size="sm">
+		<button type="button" mat-button obButton="secondary" (click)="addDistribution()" size="sm">
 			<mat-icon svgIcon="plus">
 				<span class="ob-screen-reader-only">Add distribution</span>
 			</mat-icon>
@@ -16,29 +16,27 @@
 		<small class="ob-text-muted">{{ "modify.auth.form.messages.noDistributions" | translate }}</small>
 	</div>
 
-	<div *ngFor="let distributionGroup of distributionsArray.controls; let i = index" class="distribution-card ob-mb-4 ob-border ob-rounded ob-p-4">
-		<div>
-			<div class="ob-flex ob-justify-between ob-items-start ob-mb-3">
-				<h6 class="ob-mb-0">{{ "modify.auth.form.labels.distribution" | translate }} {{ i + 1 }}</h6>
-				<button type="button" [obButton]="'secondary'" (click)="removeDistribution(i)" size="sm" class="ob-text-danger">
-					<mat-icon svgIcon="cancel-circle">
-						<span class="ob-screen-reader-only">Remove distribution</span>
-					</mat-icon>
-				</button>
-			</div>
+	<div *ngFor="let distributionGroup of distributionsArray.controls; let i = index" class="distribution-card ob-card ob-mb-4">
+		<div class="ob-card-header">
+			<h6 class="ob-card-title ob-mb-0">{{ "modify.auth.form.labels.distribution" | translate }} {{ i + 1 }}</h6>
+			<button type="button" mat-icon-button class="ob-card-close" (click)="removeDistribution(i)" aria-label="Remove distribution">
+				<mat-icon svgIcon="cancel-circle"></mat-icon>
+			</button>
+		</div>
+		<div class="ob-card-body">
 
 			<div [formGroup]="$any(distributionGroup)">
 				<!-- Required Fields -->
 				<div class="ob-flex ob-flex-wrap ob-gap-4 ob-mb-3">
 					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
-							<mat-label>{{ "labels.dct:identifier" | translate }} *</mat-label>
+							<mat-label>{{ "labels.dct:identifier" | translate }}</mat-label>
 							<input matInput formControlName="dct:identifier" [placeholder]="'modify.auth.form.placeholders.distributionId' | translate" (blur)="onBlur()" />
 						</mat-form-field>
 					</div>
 					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
-							<mat-label>{{ "labels.adms:status" | translate }} *</mat-label>
+							<mat-label>{{ "labels.adms:status" | translate }}</mat-label>
 							<mat-select formControlName="adms:status" (blur)="onBlur()">
 								<mat-option *ngFor="let status of statuses" [value]="status.value">
 									{{ status.label }}
@@ -48,7 +46,7 @@
 					</div>
 					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
-							<mat-label>{{ "labels.dct:format" | translate }} *</mat-label>
+							<mat-label>{{ "labels.dct:format" | translate }}</mat-label>
 							<input matInput formControlName="dct:format" [placeholder]="'modify.auth.form.placeholders.format' | translate" (blur)="onBlur()" />
 						</mat-form-field>
 					</div>
@@ -66,7 +64,7 @@
 				<div class="ob-flex ob-flex-wrap ob-gap-4 ob-mb-3">
 					<div class="ob-flex-1 ob-min-w-0">
 						<mat-form-field class="ob-w-full">
-							<mat-label>{{ "labels.dcat:accessURL" | translate }} *</mat-label>
+							<mat-label>{{ "labels.dcat:accessURL" | translate }}</mat-label>
 							<input
 								matInput
 								type="url"

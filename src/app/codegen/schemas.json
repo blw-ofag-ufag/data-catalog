@@ -7,7 +7,7 @@
     "path": "data/schemas/dataset.json",
     "color": "#ff9800",
     "alertType": "warning",
-    "icon": "warning"
+    "icon": "warning-triangle"
   },
   {
     "id": "i14y",
@@ -17,7 +17,7 @@
     "path": "data/schema_strict/strict-i14y-dataset.json",
     "color": "#0066cc",
     "alertType": "info",
-    "icon": "public"
+    "icon": "info-circle"
   },
   {
     "id": "ods",
@@ -27,6 +27,6 @@
     "path": "data/schema_strict/strict-ods-dataset.json",
     "color": "#e91e63",
     "alertType": "warning",
-    "icon": "open_in_new"
+    "icon": "checkmark-circle"
   }
 ]

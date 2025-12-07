@@ -153,12 +153,12 @@
 							<div formGroupName="dcat:contactPoint">
 								<h5>
 									{{ "labels.dcat:contactPoint" | translate }}
-									<span *ngIf="isFieldRecommended('dcat:contactPoint')" class="recommended-indicator">(recommended)</span>
+									<span *ngIf="isFieldRecommended('dcat:contactPoint')" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
 								</h5>
 
 								<div class="ob-flex ob-flex-wrap ob-gap-4">
 									<div class="ob-flex-1 ob-min-w-0">
-										<mat-form-field class="ob-w-full required">
+										<mat-form-field class="ob-w-full">
 											<mat-label>{{ "modify.auth.form.contactName" | translate }}</mat-label>
 											<input matInput formControlName="schema:name" required />
 											<mat-error *ngIf="datasetForm.get('dcat:contactPoint.schema:name')?.invalid && datasetForm.get('dcat:contactPoint.schema:name')?.touched">
@@ -167,7 +167,7 @@
 										</mat-form-field>
 									</div>
 									<div class="ob-flex-1 ob-min-w-0">
-										<mat-form-field class="ob-w-full required">
+										<mat-form-field class="ob-w-full">
 											<mat-label>{{ "modify.auth.form.contactEmail" | translate }}</mat-label>
 											<input matInput type="email" formControlName="schema:email" required />
 											<mat-error
@@ -208,7 +208,7 @@
 									<mat-form-field class="ob-w-full">
 										<mat-label>
 											{{ "labels.dct:modified" | translate }}
-											<span *ngIf="isFieldRecommended('dct:modified')" class="recommended-indicator">(recommended)</span>
+											<span *ngIf="isFieldRecommended('dct:modified')" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
 										</mat-label>
 										<input matInput [matDatepicker]="modifiedPicker" formControlName="dct:modified" />
 										<mat-datepicker-toggle matIconSuffix [for]="modifiedPicker"></mat-datepicker-toggle>
@@ -250,7 +250,7 @@
 									<div class="ob-form-field">
 										<mat-checkbox formControlName="bv:archivalValue" class="ob-checkbox-field">
 											{{ "labels.bv:archivalValue" | translate }}
-											<span *ngIf="isFieldRecommended('bv:archivalValue')" class="recommended-indicator">(recommended)</span>
+											<span *ngIf="isFieldRecommended('bv:archivalValue')" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
 										</mat-checkbox>
 									</div>
 								</div>

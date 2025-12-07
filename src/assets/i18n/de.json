@@ -353,7 +353,8 @@
           "maxLength": "Maximale Länge überschritten",
           "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
           "summary": "Formularvalidierungsfehler:",
-          "fillRequired": "Bitte füllen Sie alle Pflichtfelder aus, die mit einem Sternchen (*) markiert sind"
+          "fillRequired": "Bitte füllen Sie alle Pflichtfelder aus, die mit einem Sternchen (*) markiert sind",
+          "recommended": "(empfohlen)"
         },
         "confirmation": {
           "unsavedChanges": "Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie die Seite verlassen möchten? Alle Änderungen gehen verloren."
@@ -362,7 +363,10 @@
           "multilingualRequired": "Mindestens Deutsch und Französisch sind erforderlich"
         },
         "options": {
-          "none": "Keine Auswahl"
+          "none": "Keine Auswahl",
+          "selectStatus": "Status auswählen",
+          "selectAvailability": "Verfügbarkeit auswählen",
+          "selectLicense": "Lizenz auswählen"
         },
         "sections": {
           "basic": "Grundinformationen",
@@ -506,5 +510,40 @@
     "steward": "Datenverwalter",
     "stewardOwnerContact": "Kontakt",
     "title": "Titel"
+  },
+  "validation": {
+    "i14y": {
+      "name": "I14Y-Anforderungen",
+      "description": "Zusätzliche Anforderungen für die Veröffentlichung auf der I14Y-Interoperabilitätsplattform"
+    },
+    "ods": {
+      "name": "Open Data Swiss-Anforderungen",
+      "description": "Zusätzliche Anforderungen für die Veröffentlichung auf Open Data Swiss"
+    },
+    "base": {
+      "name": "Basisanforderungen",
+      "nameOffline": "Basisanforderungen (Offline)",
+      "description": "Grundlegende Anforderungen für alle Datensätze"
+    },
+    "generic": {
+      "description": "Bitte prüfen Sie die folgenden Anforderungen"
+    },
+    "errors": {
+      "fieldRequired": "{{field}} ist erforderlich für {{schema}}",
+      "fieldRequiredPattern": "{{field}}: {{languages}}-Text muss {{pattern}} sein",
+      "fieldMissingLanguages": "{{field}} muss Text in {{languages}}{{pattern}} enthalten",
+      "formatInvalid": "{{field}}-Format ist ungültig für {{schema}}",
+      "validationError": "{{field}} hat Validierungsfehler für {{schema}}"
+    },
+    "formStatus": {
+      "complete": {
+        "title": "Formularvalidierung abgeschlossen",
+        "message": "Datensatzformular ist gültig und bereit für die Übermittlung an GitHub"
+      },
+      "failed": {
+        "title": "Formularvalidierung fehlgeschlagen",
+        "message": "Bitte beheben Sie {{count}} erforderliche Felder, um fortzufahren"
+      }
+    }
   }
 }

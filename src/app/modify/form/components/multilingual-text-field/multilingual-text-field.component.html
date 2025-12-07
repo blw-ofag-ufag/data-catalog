@@ -1,8 +1,7 @@
 <div class="multilingual-field">
 	<label class="field-label" *ngIf="label">
 		{{ label | translate }}
-		<span *ngIf="required" class="required-asterisk">*</span>
-		<span *ngIf="recommended && !required" class="recommended-indicator">(recommended)</span>
+		<span *ngIf="recommended && !required" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
 	</label>
 
 	<mat-tab-group>
@@ -11,7 +10,6 @@
 				<mat-form-field class="ob-w-full">
 					<mat-label>
 						{{ label | translate }} ({{ lang.label }})
-						<span *ngIf="isLanguageRequired(lang.code)" class="required-asterisk">*</span>
 					</mat-label>
 
 					<input
