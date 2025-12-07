@@ -377,6 +377,10 @@
     "message": "La pagina che stai cercando non esiste.",
     "title": "Pagina non trovata"
   },
+  "common": {
+    "yes": "Sì",
+    "no": "No"
+  },
   "ui": {
     "addDataset": "Aggiungi set di dati",
     "cards": "Schede",

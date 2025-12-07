@@ -1,1 +1,0 @@
-(()=>{var e=document.createElement("div").style;window.localStorage&&void 0!==e.flex&&void 0!==e.grid&&"".startsWith&&[].includes&&Object.values&&document.querySelectorAll("c").forEach||document.querySelector(".ob-compatibility").removeAttribute("hidden")})();
