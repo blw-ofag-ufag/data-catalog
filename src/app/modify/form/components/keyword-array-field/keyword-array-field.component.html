@@ -5,7 +5,7 @@
 		<mat-chip-grid #chipGrid>
 			<mat-chip-row *ngFor="let keyword of sortedValues" [removable]="true" (removed)="removeKeyword(keyword)">
 				{{ keyword }}
-				<mat-icon matChipRemove svgIcon="cancel-circle" />
+				<mat-icon matChipRemove svgIcon="delete" />
 			</mat-chip-row>
 
 			<input

@@ -468,6 +468,10 @@
     "message": "The page you are looking for does not exist.",
     "title": "Page not found"
   },
+  "common": {
+    "yes": "Yes",
+    "no": "No"
+  },
   "ui": {
     "addDataset": "Add Dataset",
     "cards": "Cards",

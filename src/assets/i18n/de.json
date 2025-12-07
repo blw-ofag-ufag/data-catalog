@@ -480,6 +480,10 @@
     "message": "Die gesuchte Seite existiert nicht.",
     "title": "Seite nicht gefunden"
   },
+  "common": {
+    "yes": "Ja",
+    "no": "Nein"
+  },
   "ui": {
     "addDataset": "Datensatz hinzufügen",
     "cards": "Karten",

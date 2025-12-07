@@ -60,7 +60,7 @@ export class DistributionItemComponent {
 		private readonly router: Router
 	) {}
 
-	decideComponent(label: string, data: any) {
+	decideComponent(label: string, data: any): any {
 		// Handle URLs
 		if (typeof data === 'string' && data.startsWith('http')) {
 			return DistributionLinkComponent;

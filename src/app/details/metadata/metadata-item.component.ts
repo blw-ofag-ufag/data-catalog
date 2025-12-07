@@ -315,14 +315,16 @@ export class DatasetLinkListComponent {
 }
 
 @Component({
-	template: '<p>Yes</p>',
-	standalone: true
+	template: '{{ "common.yes" | translate }}',
+	standalone: true,
+	imports: [TranslatePipe]
 })
 export class YesComponent {}
 
 @Component({
-	template: '<p>No</p>',
-	standalone: true
+	template: '{{ "common.no" | translate }}',
+	standalone: true,
+	imports: [TranslatePipe]
 })
 export class NoComponent {}
 

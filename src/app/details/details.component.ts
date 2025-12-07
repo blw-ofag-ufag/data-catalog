@@ -245,62 +245,62 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
 		// Web services
 		if (['WMS', 'WFS', 'WMTS'].includes(formatUpper)) {
-			return 'file-server';
+			return 'file_server';
 		}
 
 		// Audio formats
 		if (['MP3', 'WAV', 'OGG', 'M4A', 'FLAC', 'AAC'].includes(formatUpper)) {
-			return 'file-audio';
+			return 'file_audio';
 		}
 
 		// CSV
 		if (formatUpper === 'CSV') {
-			return 'file-csv';
+			return 'file_csv';
 		}
 
 		// EPUB
 		if (formatUpper === 'EPUB') {
-			return 'file-epub';
+			return 'file_epub';
 		}
 
 		// Excel formats
 		if (['XLS', 'XLSX', 'XLSM', 'XLSB'].includes(formatUpper)) {
-			return 'file-excel';
+			return 'file_excel';
 		}
 
 		// Image formats
 		if (['JPG', 'JPEG', 'PNG', 'GIF', 'BMP', 'SVG', 'WEBP', 'TIFF', 'TIF'].includes(formatUpper)) {
-			return 'file-image';
+			return 'file_image';
 		}
 
 		// JSON
 		if (formatUpper === 'JSON' || formatUpper === 'GEOJSON') {
-			return 'file-json';
+			return 'file_json';
 		}
 
 		// PDF
 		if (formatUpper === 'PDF') {
-			return 'file-pdf';
+			return 'file_pdf';
 		}
 
 		// PowerPoint formats
 		if (['PPT', 'PPTX', 'PPS', 'PPSX'].includes(formatUpper)) {
-			return 'file-ppt';
+			return 'file_ppt';
 		}
 
 		// Video formats
 		if (['MP4', 'AVI', 'MOV', 'WMV', 'MKV', 'WEBM', 'FLV', 'MPG', 'MPEG'].includes(formatUpper)) {
-			return 'file-video';
+			return 'file_video';
 		}
 
 		// Word formats
 		if (['DOC', 'DOCX', 'ODT', 'RTF'].includes(formatUpper)) {
-			return 'file-word';
+			return 'file:word';
 		}
 
 		// Archive formats
 		if (['ZIP', 'RAR', '7Z', 'TAR', 'GZ', 'BZ2', 'XZ'].includes(formatUpper)) {
-			return 'file-zip';
+			return 'file_zip';
 		}
 
 		// Default

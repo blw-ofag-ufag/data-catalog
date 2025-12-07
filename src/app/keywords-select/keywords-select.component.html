@@ -4,7 +4,7 @@
 		<mat-chip-row *ngFor="let keyword of value" (removed)="remove(keyword)">
 			{{ keyword }}
 			<button matChipRemove [attr.aria-label]="('ui.remove' | translate) + ' ' + keyword">
-				<mat-icon svgIcon="cancel-circle" />
+				<mat-icon svgIcon="delete" />
 			</button>
 		</mat-chip-row>
 
