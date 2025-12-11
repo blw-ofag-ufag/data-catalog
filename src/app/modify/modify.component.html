@@ -160,7 +160,7 @@
 									<div class="ob-flex-1 ob-min-w-0">
 										<mat-form-field class="ob-w-full">
 											<mat-label>{{ "modify.auth.form.contactName" | translate }}</mat-label>
-											<input matInput formControlName="schema:name" required />
+											<input matInput formControlName="schema:name" />
 											<mat-error *ngIf="datasetForm.get('dcat:contactPoint.schema:name')?.invalid && datasetForm.get('dcat:contactPoint.schema:name')?.touched">
 												{{ "modify.auth.form.validation.required" | translate }}
 											</mat-error>
@@ -169,7 +169,7 @@
 									<div class="ob-flex-1 ob-min-w-0">
 										<mat-form-field class="ob-w-full">
 											<mat-label>{{ "modify.auth.form.contactEmail" | translate }}</mat-label>
-											<input matInput type="email" formControlName="schema:email" required />
+											<input matInput type="email" formControlName="schema:email"/>
 											<mat-error
 												*ngIf="
 													datasetForm.get('dcat:contactPoint.schema:email')?.hasError('required') && datasetForm.get('dcat:contactPoint.schema:email')?.touched

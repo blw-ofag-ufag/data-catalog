@@ -254,7 +254,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			case 'dcat:contactPoint':
 				return this.fb.group({
 					'schema:name': ['', this.metadataService.getFieldValidators('schema:name')],
-					'schema:email': ['', this.metadataService.getFieldValidators('schema:email')]
+					'schema:email': ['', this.emailOrBlankValidator()]
 				});
 
 			case 'dct:temporal':
@@ -862,5 +862,22 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		this.schemaLoadError = null;
 		this.schemasLoading = true;
 		this.validationSchemaService.retryLoadingSchemas();
+	}
+
+	/**
+	 * Custom validator for email field that allows blank values
+	 * but validates email format when a value is provided
+	 */
+	private emailOrBlankValidator() {
+		return [(control: FormControl) => {
+			const value = control.value;
+			// Allow blank/empty values
+			if (!value || value.trim() === '') {
+				return null;
+			}
+			// Validate email format when value is provided
+			const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+			return emailRegex.test(value) ? null : { email: true };
+		}];
 	}
 }
