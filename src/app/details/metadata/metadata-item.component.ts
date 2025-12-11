@@ -9,8 +9,9 @@ import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import {MatChip, MatChipSet} from '@angular/material/chips';
-import {ContactPoint, TemporalCoverage, enumArrayFields, enumTypes} from '../../models/schemas/dataset';
+import {ContactPoint, DatasetSchema, TemporalCoverage, enumArrayFields, enumTypes} from '../../models/schemas/dataset';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import {MultiDatasetService} from '../../services/api/multi-dataset-service.service';
 
 // Lokalisierung registrieren
 registerLocaleData(localeDe);
@@ -285,22 +286,62 @@ export class DatasetIdListComponent {
 	template: `<ul>
 		@for (id of data; track $index) {
 			<li>
-				<a (mouseup)="navigateToDataset(id)" style="cursor: pointer; text-decoration: underline">{{ id }}</a>
+				<a (mouseup)="navigateToDataset(id)" style="cursor: pointer; text-decoration: underline; color: #0066cc;">{{ getDatasetTitle(id) || id }}</a>
 			</li>
 		}
 	</ul>`,
 	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
 	standalone: true
 })
-export class DatasetLinkListComponent {
+export class DatasetLinkListComponent implements OnInit, OnDestroy {
 	data: string[] = [];
 	private readonly route: ActivatedRoute;
 	private readonly router: Router;
+	private readonly multiDatasetService: MultiDatasetService;
+	private readonly translateService: TranslateService;
+	private datasets: DatasetSchema[] = [];
+	private readonly destroy$ = new Subject<void>();
 
 	constructor(private readonly injector: Injector) {
 		this.data = this.injector.get('data', []);
 		this.route = this.injector.get(ActivatedRoute);
 		this.router = this.injector.get(Router);
+		this.multiDatasetService = this.injector.get(MultiDatasetService);
+		this.translateService = this.injector.get(TranslateService);
+	}
+
+	ngOnInit(): void {
+		// Subscribe to datasets to lookup titles
+		this.multiDatasetService.datasets$
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(datasets => {
+				this.datasets = datasets;
+			});
+	}
+
+	ngOnDestroy(): void {
+		this.destroy$.next();
+		this.destroy$.complete();
+	}
+
+	getDatasetTitle(datasetId: string): string {
+		const dataset = this.datasets.find(d => d['dct:identifier'] === datasetId);
+		if (dataset && dataset['dct:title']) {
+			const currentLang = this.translateService.currentLang || 'de';
+			const title = dataset['dct:title'];
+
+			// Try to get title in current language, fallback to German, then French
+			if (typeof title === 'object' && title !== null) {
+				const titleObj = title as any;
+				return titleObj[currentLang] ||
+					   titleObj.de ||
+					   titleObj.fr ||
+					   titleObj.it ||
+					   titleObj.en ||
+					   '';
+			}
+		}
+		return '';
 	}
 
 	navigateToDataset(datasetId: string) {
