@@ -454,6 +454,13 @@
         "copyDescription": "Copies the JSON data to the clipboard",
         "downloadJson": "Download JSON",
         "downloadDescription": "Downloads the JSON file to your computer",
+        "commitDirectly": "Commit Changes Directly",
+        "createDirectly": "Create Dataset Directly",
+        "committing": "Committing...",
+        "commitDirectDescription": "Commit directly to GitHub using your authenticated token (recommended for large datasets)",
+        "commitSuccess": "Dataset successfully committed to GitHub!",
+        "commitFailed": "Commit failed",
+        "githubWebEditorDescription": "Opens GitHub web editor (requires manual copy/paste for large datasets)",
         "help": {
           "title": "Next Steps",
           "github": "Review the changes in GitHub",

@@ -466,6 +466,13 @@
         "copyDescription": "Kopiert die JSON-Daten in die Zwischenablage",
         "downloadJson": "JSON herunterladen",
         "downloadDescription": "Lädt die JSON-Datei auf Ihren Computer herunter",
+        "commitDirectly": "Änderungen direkt committen",
+        "createDirectly": "Datensatz direkt erstellen",
+        "committing": "Wird committet...",
+        "commitDirectDescription": "Direkt zu GitHub committen mit Ihrem authentifizierten Token (empfohlen für große Datensätze)",
+        "commitSuccess": "Datensatz erfolgreich zu GitHub committet!",
+        "commitFailed": "Commit fehlgeschlagen",
+        "githubWebEditorDescription": "Öffnet den GitHub Web-Editor (erfordert manuelles Kopieren/Einfügen für große Datensätze)",
         "help": {
           "title": "Nächste Schritte",
           "github": "Überprüfen Sie die Änderungen in GitHub",
