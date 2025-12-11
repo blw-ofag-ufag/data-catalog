@@ -398,40 +398,12 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		// Update validation errors for all active schemas
 		this.updateValidationErrors();
 
-		// Debug: Log form values
-		console.log('=== VALIDATION DEBUG START ===');
-		console.log('Form Values:', this.datasetForm.value);
-		console.log('Form Valid (Angular):', this.datasetForm.valid);
-		console.log('Form Errors:', this.datasetForm.errors);
-
-		// Log each control's validation state (only if there are actual errors)
-		Object.keys(this.datasetForm.controls).forEach(key => {
-			const control = this.datasetForm.get(key);
-			if (control?.invalid && control.errors && Object.keys(control.errors).length > 0) {
-				console.log(`Field "${key}" is INVALID:`, {
-					value: control.value,
-					errors: control.errors,
-					status: control.status
-				});
-			}
-		});
-
 		// Check both form validation and schema validation
 		const isFormValid = this.datasetForm.valid;
-
-		// Debug schema validation
-		console.log('Active Validation Schemas:', Array.from(this.activeValidationSchemas));
-		const schemaErrors: any = {};
 		const hasSchemaErrors = Array.from(this.activeValidationSchemas).some(schemaType => {
 			const errors = this.validationSchemaService.getFilteredSchemaValidationErrors(schemaType, this.datasetForm.value);
-			schemaErrors[schemaType] = errors;
-			console.log(`Schema "${schemaType}" errors:`, errors);
 			return errors.length > 0;
 		});
-
-		console.log('Has Schema Errors:', hasSchemaErrors);
-		console.log('All Schema Errors:', schemaErrors);
-		console.log('=== VALIDATION DEBUG END ===');
 
 		if (isFormValid && !hasSchemaErrors) {
 			this.isLoading = true;

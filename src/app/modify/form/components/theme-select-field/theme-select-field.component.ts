@@ -24,8 +24,12 @@ import {I14YTheme, I14YThemeService} from '../../../../services/api/i14y-theme.s
 				{{ label | translate }}
 				<span *ngIf="required" class="required-asterisk">*</span>
 			</mat-label>
-			<mat-select [formControl]="control" (blur)="onBlur()" [placeholder]="placeholder | translate">
-				<!--				<mat-option value="">{{ 'modify.auth.form.options.none' | translate }}</mat-option>-->
+			<mat-select [formControl]="control" (blur)="onBlur()" [placeholder]="placeholder | translate" multiple>
+				<mat-select-trigger>
+					<span *ngIf="control.value?.length > 0">
+						{{ getSelectedThemesDisplay() }}
+					</span>
+				</mat-select-trigger>
 				<mat-option *ngFor="let theme of themes" [value]="theme.code">
 					{{ getThemeLabel(theme) }}
 				</mat-option>
@@ -45,14 +49,14 @@ export class ThemeSelectFieldComponent implements ControlValueAccessor, OnInit, 
 	control: FormControl;
 	themes: I14YTheme[] = [];
 	private readonly destroy$ = new Subject<void>();
-	private onChange = (value: string | null) => {};
+	private onChange = (value: string[] | null) => {};
 	private onTouched = () => {};
 
 	constructor(
 		private readonly i14yThemeService: I14YThemeService,
 		private readonly translateService: TranslateService
 	) {
-		this.control = new FormControl('');
+		this.control = new FormControl([]);
 	}
 
 	ngOnInit(): void {
@@ -77,11 +81,21 @@ export class ThemeSelectFieldComponent implements ControlValueAccessor, OnInit, 
 		this.destroy$.complete();
 	}
 
-	writeValue(value: string | null): void {
-		this.control.setValue(value, {emitEvent: false});
+	writeValue(value: string[] | string | null): void {
+		// Handle both array and single string for backward compatibility
+		if (value === null || value === undefined) {
+			this.control.setValue([], {emitEvent: false});
+		} else if (Array.isArray(value)) {
+			this.control.setValue(value, {emitEvent: false});
+		} else if (typeof value === 'string') {
+			// Convert single string to array for backward compatibility
+			this.control.setValue(value ? [value] : [], {emitEvent: false});
+		} else {
+			this.control.setValue([], {emitEvent: false});
+		}
 	}
 
-	registerOnChange(fn: (value: string | null) => void): void {
+	registerOnChange(fn: (value: string[] | null) => void): void {
 		this.onChange = fn;
 	}
 
@@ -119,5 +133,22 @@ export class ThemeSelectFieldComponent implements ControlValueAccessor, OnInit, 
 			return 'modify.auth.form.validation.required';
 		}
 		return '';
+	}
+
+	getSelectedThemesDisplay(): string {
+		if (!this.control.value || this.control.value.length === 0) {
+			return '';
+		}
+
+		// Get labels for all selected theme codes
+		const selectedLabels = this.control.value
+			.map((code: string) => {
+				const theme = this.themes.find(t => t.code === code);
+				return theme ? this.getThemeLabel(theme) : code;
+			})
+			.filter((label: string) => label);
+
+		// Join with comma and space
+		return selectedLabels.join(', ');
 	}
 }

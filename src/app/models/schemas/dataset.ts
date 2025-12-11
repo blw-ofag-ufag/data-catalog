@@ -332,7 +332,7 @@ export interface DatasetSchema {
 	'bv:typeOfData'?: DataType;
 	'bv:archivalValue': ArchivalValue;
 	'bv:externalCatalogs'?: ExternalCatalogs;
-	'dcat:theme'?: DatasetTheme;
+	'dcat:theme'?: DatasetTheme[] | DatasetTheme;
 	'dcat:landingPage'?: LandingPage;
 	'dct:spatial'?: SpatialCoverage;
 	'dct:temporal'?: TemporalCoverage;

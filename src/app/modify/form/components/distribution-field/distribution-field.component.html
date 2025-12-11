@@ -97,8 +97,8 @@
 						formControlName="dct:title"
 						[label]="'labels.dct:title'"
 						[placeholder]="'modify.auth.form.placeholders.distributionTitle'"
-						[required]="false"
-						[requiredLanguages]="[]"
+						[required]="true"
+						[requiredLanguages]="['de', 'fr']"
 					></app-multilingual-text-field>
 				</div>
 
@@ -132,8 +132,8 @@
 						formControlName="dct:description"
 						[label]="'labels.dct:description'"
 						[placeholder]="'modify.auth.form.placeholders.distributionDescription'"
-						[required]="false"
-						[requiredLanguages]="[]"
+						[required]="true"
+						[requiredLanguages]="['de', 'fr']"
 						[textarea]="true"
 					></app-multilingual-text-field>
 				</div>

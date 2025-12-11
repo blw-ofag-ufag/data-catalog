@@ -1,6 +1,6 @@
 import {Component, Input, OnDestroy, forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ControlValueAccessor, FormArray, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validators} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormArray, FormBuilder, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, ValidationErrors, Validator, Validators} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -57,12 +57,17 @@ export interface Distribution {
 			provide: NG_VALUE_ACCESSOR,
 			useExisting: forwardRef(() => DistributionFieldComponent),
 			multi: true
+		},
+		{
+			provide: NG_VALIDATORS,
+			useExisting: forwardRef(() => DistributionFieldComponent),
+			multi: true
 		}
 	],
 	templateUrl: './distribution-field.component.html',
 	styleUrl: './distribution-field.component.scss'
 })
-export class DistributionFieldComponent implements ControlValueAccessor, OnDestroy {
+export class DistributionFieldComponent implements ControlValueAccessor, Validator, OnDestroy {
 	@Input() label = 'Distributions';
 	@Input() required = false;
 
@@ -70,6 +75,7 @@ export class DistributionFieldComponent implements ControlValueAccessor, OnDestr
 	private readonly destroy$ = new Subject<void>();
 	private onChange = (value: Distribution[] | null) => {};
 	private onTouched = () => {};
+	private onValidatorChange = () => {};
 
 	statuses: Array<{value: string; label: string}> = [];
 
@@ -89,6 +95,7 @@ export class DistributionFieldComponent implements ControlValueAccessor, OnDestr
 		// Subscribe to form changes
 		this.distributionsArray.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
 			this.onChange(value.length > 0 ? value : null);
+			this.onValidatorChange(); // Notify that validation state may have changed
 		});
 
 		// Update translations when language changes
@@ -130,11 +137,13 @@ export class DistributionFieldComponent implements ControlValueAccessor, OnDestr
 	addDistribution(): void {
 		this.distributionsArray.push(this.createDistributionGroup());
 		this.onTouched();
+		this.onValidatorChange(); // Notify that validation state has changed
 	}
 
 	removeDistribution(index: number): void {
 		this.distributionsArray.removeAt(index);
 		this.onTouched();
+		this.onValidatorChange(); // Notify that validation state has changed
 	}
 
 	private createDistributionGroup(distribution?: Distribution): FormGroup {
@@ -156,8 +165,8 @@ export class DistributionFieldComponent implements ControlValueAccessor, OnDestr
 			'dct:format': [distribution?.['dct:format'] || '', Validators.required],
 			'dct:modified': [modifiedDate],
 			'dcat:downloadURL': [distribution?.['dcat:downloadURL'] || '', Validators.pattern(/^https?:\/\/.+/)],
-			'dct:title': [distribution?.['dct:title'] || null],
-			'dct:description': [distribution?.['dct:description'] || null],
+			'dct:title': [distribution?.['dct:title'] || null, Validators.required],
+			'dct:description': [distribution?.['dct:description'] || null, Validators.required],
 			'dct:conformsTo': [distribution?.['dct:conformsTo'] || ''],
 			'dct:license': [distribution?.['dct:license'] || ''],
 			'schema:comment': [distribution?.['schema:comment'] || '']
@@ -166,6 +175,38 @@ export class DistributionFieldComponent implements ControlValueAccessor, OnDestr
 
 	onBlur(): void {
 		this.onTouched();
+	}
+
+	validate(control: AbstractControl): ValidationErrors | null {
+		// Check if the FormArray is valid
+		if (this.distributionsArray && this.distributionsArray.invalid) {
+			// Collect errors from all invalid distributions
+			const errors: any = {};
+			let hasErrors = false;
+
+			this.distributionsArray.controls.forEach((distributionGroup, index) => {
+				if (distributionGroup.invalid) {
+					hasErrors = true;
+					// Check specifically for title and description validation
+					const titleControl = distributionGroup.get('dct:title');
+					const descControl = distributionGroup.get('dct:description');
+
+					if (titleControl?.invalid) {
+						errors[`distribution_${index}_title`] = 'Title requires German and French';
+					}
+					if (descControl?.invalid) {
+						errors[`distribution_${index}_description`] = 'Description requires German and French';
+					}
+				}
+			});
+
+			return hasErrors ? errors : null;
+		}
+		return null;
+	}
+
+	registerOnValidatorChange(fn: () => void): void {
+		this.onValidatorChange = fn;
 	}
 
 	private initializeTranslations(): void {
