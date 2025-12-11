@@ -41,6 +41,7 @@ import {ValidationSchemaService, ValidationSchemaType} from '../services/validat
 import {ValidationGroup} from './components/validation-alert/validation-alert.component';
 import {environment} from '../../environments/environment';
 import {MatIconModule} from '@angular/material/icon';
+import {FormCacheService} from '../services/form-cache.service';
 
 @Component({
 	selector: 'modify',
@@ -121,7 +122,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		private readonly translateService: TranslateService,
 		private readonly notificationService: ObNotificationService,
 		private readonly metadataService: DatasetMetadataService,
-		private readonly validationSchemaService: ValidationSchemaService
+		private readonly validationSchemaService: ValidationSchemaService,
+		private readonly formCacheService: FormCacheService
 	) {
 		this.datasetForm = this.createForm();
 	}
@@ -187,6 +189,16 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
+		// Save form state when component is destroyed (e.g., navigating away)
+		// Only save if we have unsaved changes and we're not in submit section
+		if (this.datasetForm.dirty && !this.showSubmitSection) {
+			this.formCacheService.saveFormData(
+				this.datasetForm.value,
+				this.datasetId,
+				this.isEditMode
+			);
+		}
+
 		this.destroy$.next();
 		this.destroy$.complete();
 	}
@@ -284,6 +296,9 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	private initializeForm(): void {
+		// Check for cached form data first
+		const cachedData = this.formCacheService.getFormData(this.datasetId);
+
 		if (this.isEditMode && this.datasetId) {
 			// Load the dataset index
 			this.datasetService.loadIndex();
@@ -318,10 +333,23 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			// Subscribe to selected dataset to populate the form once it's loaded
 			this.datasetService.selectedDataset$.pipe(takeUntil(this.destroy$)).subscribe(dataset => {
 				if (dataset && dataset['dct:identifier'] === this.datasetId) {
-					this.populateForm(dataset);
+					// If we have cached data, use it instead of the loaded dataset
+					// This preserves user's unsaved changes when navigating back from submit
+					if (cachedData && !this.showSubmitSection) {
+						this.datasetForm.patchValue(cachedData);
+						// Store the original dataset for reset functionality
+						this.originalDataset = {...dataset};
+					} else {
+						this.populateForm(dataset);
+					}
 					this.isLoading = false;
 				}
 			});
+		} else {
+			// For new datasets, check if there's cached data
+			if (cachedData && !this.showSubmitSection) {
+				this.datasetForm.patchValue(cachedData);
+			}
 		}
 	}
 
@@ -407,6 +435,14 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 		if (isFormValid && !hasSchemaErrors) {
 			this.isLoading = true;
+
+			// Save form data to cache before showing submit section
+			this.formCacheService.saveFormData(
+				this.datasetForm.value,
+				this.datasetId,
+				this.isEditMode
+			);
+
 			// Simulate processing time
 			setTimeout(() => {
 				this.isLoading = false;
@@ -435,7 +471,16 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	onFormReset(): void {
-		this.showSubmitSection = false;
+		// When returning from submit section to form, don't reset the data
+		// The cached data is already loaded, just hide the submit section
+		if (this.showSubmitSection) {
+			this.showSubmitSection = false;
+			this.submitAttempted = false;
+			// Form data is already cached and will be preserved
+			return;
+		}
+
+		// This is an actual reset (from the Reset button on the form)
 		this.submitAttempted = false;
 
 		if (this.isEditMode && this.originalDataset) {
@@ -451,6 +496,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			if (externalCatalogsArray) {
 				externalCatalogsArray.clear();
 			}
+			// Clear the cache for new datasets when explicitly resetting
+			this.formCacheService.clearFormData(null);
 		}
 	}
 
