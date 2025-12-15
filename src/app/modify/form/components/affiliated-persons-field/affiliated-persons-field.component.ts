@@ -1,6 +1,6 @@
 import {Component, Input, OnDestroy, forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ControlValueAccessor, FormArray, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validators} from '@angular/forms';
+import {AbstractControl, ControlValueAccessor, FormArray, FormBuilder, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, ValidationErrors, Validator, ValidatorFn, Validators} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
 import {TranslatePipe} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -36,12 +36,17 @@ export interface AffiliatedPerson {
 			provide: NG_VALUE_ACCESSOR,
 			useExisting: forwardRef(() => AffiliatedPersonsFieldComponent),
 			multi: true
+		},
+		{
+			provide: NG_VALIDATORS,
+			useExisting: forwardRef(() => AffiliatedPersonsFieldComponent),
+			multi: true
 		}
 	],
 	templateUrl: './affiliated-persons-field.component.html',
 	styleUrl: './affiliated-persons-field.component.scss'
 })
-export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, OnDestroy {
+export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Validator, OnDestroy {
 	@Input() label = 'Affiliated Persons';
 	@Input() required = false;
 
@@ -49,6 +54,7 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, On
 	private readonly destroy$ = new Subject<void>();
 	private onChange = (value: AffiliatedPerson[] | null) => {};
 	private onTouched = () => {};
+	private onValidatorChange = () => {};
 
 	readonly roles = [
 		{value: 'businessDataOwner', label: 'Business Data Owner'},
@@ -57,11 +63,12 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, On
 	];
 
 	constructor(private readonly fb: FormBuilder) {
-		this.personsArray = this.fb.array([]);
+		this.personsArray = this.fb.array([], this.roleRequirementsValidator());
 
 		// Subscribe to form changes
 		this.personsArray.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
 			this.onChange(value.length > 0 ? value : null);
+			this.onValidatorChange(); // Notify that validation state may have changed
 		});
 	}
 
@@ -98,11 +105,13 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, On
 	addPerson(): void {
 		this.personsArray.push(this.createPersonGroup());
 		this.onTouched();
+		this.onValidatorChange(); // Notify that validation state has changed
 	}
 
 	removePerson(index: number): void {
 		this.personsArray.removeAt(index);
 		this.onTouched();
+		this.onValidatorChange(); // Notify that validation state has changed
 	}
 
 	private createPersonGroup(person?: AffiliatedPerson): FormGroup {
@@ -116,5 +125,101 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, On
 
 	onBlur(): void {
 		this.onTouched();
+	}
+
+	validate(control: AbstractControl): ValidationErrors | null {
+		if (!this.personsArray || this.personsArray.length === 0) {
+			if (this.required) {
+				return { required: true, message: 'Qualified attribution is required' };
+			}
+			return null;
+		}
+
+		const persons = this.personsArray.value as AffiliatedPerson[];
+		const businessDataOwners = persons.filter(p => p['dcat:hadRole'] === 'businessDataOwner');
+		const dataStewards = persons.filter(p => p['dcat:hadRole'] === 'dataSteward');
+
+		const errors: ValidationErrors = {};
+
+		if (businessDataOwners.length !== 1) {
+			errors['businessDataOwnerCount'] = {
+				required: 1,
+				actual: businessDataOwners.length,
+				message: businessDataOwners.length === 0
+					? 'Exactly one Business Data Owner is required'
+					: `Only one Business Data Owner is allowed (currently ${businessDataOwners.length})`
+			};
+		}
+
+		if (dataStewards.length < 1) {
+			errors['dataStewardCount'] = {
+				required: 1,
+				actual: dataStewards.length,
+				message: 'At least one Data Steward is required'
+			};
+		}
+
+		return Object.keys(errors).length > 0 ? errors : null;
+	}
+
+	private roleRequirementsValidator(): ValidatorFn {
+		return (control: AbstractControl): ValidationErrors | null => {
+			const formArray = control as FormArray;
+			const persons = formArray.value as AffiliatedPerson[];
+
+			if (!persons || persons.length === 0) {
+				return null; // Let required validator handle empty case
+			}
+
+			const businessDataOwners = persons.filter(p => p['dcat:hadRole'] === 'businessDataOwner');
+			const dataStewards = persons.filter(p => p['dcat:hadRole'] === 'dataSteward');
+
+			const errors: ValidationErrors = {};
+
+			if (businessDataOwners.length !== 1) {
+				errors['businessDataOwnerCount'] = {
+					required: 1,
+					actual: businessDataOwners.length
+				};
+			}
+
+			if (dataStewards.length < 1) {
+				errors['dataStewardCount'] = {
+					required: 1,
+					actual: dataStewards.length
+				};
+			}
+
+			return Object.keys(errors).length > 0 ? errors : null;
+		};
+	}
+
+	get hasRoleErrors(): boolean {
+		return this.personsArray.hasError('businessDataOwnerCount') ||
+			   this.personsArray.hasError('dataStewardCount');
+	}
+
+	get businessDataOwnerError(): string | null {
+		if (this.personsArray.hasError('businessDataOwnerCount')) {
+			const error = this.personsArray.getError('businessDataOwnerCount');
+			if (error.actual === 0) {
+				return 'A Business Data Owner is required';
+			} else if (error.actual > 1) {
+				return `Only one Business Data Owner is allowed (currently ${error.actual})`;
+			}
+		}
+		return null;
+	}
+
+	get dataStewardError(): string | null {
+		if (this.personsArray.hasError('dataStewardCount')) {
+			const error = this.personsArray.getError('dataStewardCount');
+			return 'At least one Data Steward is required';
+		}
+		return null;
+	}
+
+	registerOnValidatorChange(fn: () => void): void {
+		this.onValidatorChange = fn;
 	}
 }

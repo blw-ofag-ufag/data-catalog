@@ -1,4 +1,14 @@
 .affiliated-persons-field {
+	&.has-error {
+		.field-label {
+			color: #dc3545;
+		}
+
+		.person-card {
+			border-color: #dc3545;
+		}
+	}
+
 	.field-label {
 		font-weight: 500;
 		margin-bottom: 0.5rem;

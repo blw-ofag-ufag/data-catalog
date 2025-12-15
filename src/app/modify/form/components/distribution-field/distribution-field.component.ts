@@ -182,6 +182,7 @@ export class DistributionFieldComponent implements ControlValueAccessor, Validat
 		if (this.distributionsArray && this.distributionsArray.invalid) {
 			// Collect errors from all invalid distributions
 			const errors: any = {};
+			const errorMessages: string[] = [];
 			let hasErrors = false;
 
 			this.distributionsArray.controls.forEach((distributionGroup, index) => {
@@ -192,15 +193,20 @@ export class DistributionFieldComponent implements ControlValueAccessor, Validat
 					const descControl = distributionGroup.get('dct:description');
 
 					if (titleControl?.invalid) {
-						errors[`distribution_${index}_title`] = 'Title requires German and French';
+						errors[`distribution_${index}_title`] = true;
+						errorMessages.push(`Distribution ${index + 1}: Title requires German and French`);
 					}
 					if (descControl?.invalid) {
-						errors[`distribution_${index}_description`] = 'Description requires German and French';
+						errors[`distribution_${index}_description`] = true;
+						errorMessages.push(`Distribution ${index + 1}: Description requires German and French`);
 					}
 				}
 			});
 
-			return hasErrors ? errors : null;
+			if (hasErrors) {
+				errors['message'] = errorMessages.join(', ');
+				return errors;
+			}
 		}
 		return null;
 	}

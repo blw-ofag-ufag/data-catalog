@@ -1,4 +1,4 @@
-<div class="affiliated-persons-field">
+<div class="affiliated-persons-field" [class.has-error]="hasRoleErrors && personsArray.touched">
 	<div class="ob-flex ob-justify-between ob-items-center ob-mb-3">
 		<label class="field-label">
 			{{ label | translate }}

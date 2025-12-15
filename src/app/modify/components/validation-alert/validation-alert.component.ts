@@ -37,11 +37,22 @@ export interface ValidationGroup {
 	`,
 	styles: [
 		`
+			ob-alert {
+				user-select: text !important;
+				-webkit-user-select: text !important;
+				-moz-user-select: text !important;
+				-ms-user-select: text !important;
+			}
+
 			.validation-header {
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
 				margin-bottom: 0.5rem;
+				user-select: text;
+				-webkit-user-select: text;
+				-moz-user-select: text;
+				-ms-user-select: text;
 			}
 
 			.validation-icon {
@@ -60,16 +71,29 @@ export interface ValidationGroup {
 				margin: 0.5rem 0;
 				font-size: 0.9rem;
 				opacity: 0.9;
+				user-select: text;
+				-webkit-user-select: text;
+				-moz-user-select: text;
+				-ms-user-select: text;
 			}
 
 			.validation-errors {
 				margin: 0.5rem 0 0 0;
 				padding-left: 1.2rem;
+				user-select: text;
+				-webkit-user-select: text;
+				-moz-user-select: text;
+				-ms-user-select: text;
 			}
 
 			.validation-error-item {
 				margin-bottom: 0.25rem;
 				font-size: 0.9rem;
+				user-select: text;
+				-webkit-user-select: text;
+				-moz-user-select: text;
+				-ms-user-select: text;
+				cursor: text;
 			}
 
 			/* I14Y-specific styling */

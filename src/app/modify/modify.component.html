@@ -262,7 +262,7 @@
 					<mat-step [completed]="isStepValid(4)" [hasError]="!isStepValid(4) && (datasetForm.touched || submitAttempted)">
 						<ng-template matStepLabel>{{ "modify.auth.form.sections.governance" | translate }}</ng-template>
 						<div class="step-content">
-							<app-affiliated-persons-field formControlName="prov:qualifiedAttribution" [label]="'labels.prov:qualifiedAttribution'">
+							<app-affiliated-persons-field formControlName="prov:qualifiedAttribution" [label]="'labels.prov:qualifiedAttribution'" [required]="true">
 							</app-affiliated-persons-field>
 						</div>
 					</mat-step>

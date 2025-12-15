@@ -1,4 +1,4 @@
-<div class="distribution-field">
+<div class="distribution-field" [class.has-error]="distributionsArray.invalid && distributionsArray.touched">
 	<div class="ob-flex ob-justify-between ob-items-center ob-mb-3">
 		<label class="field-label">
 			{{ label | translate }}
