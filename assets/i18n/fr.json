@@ -303,6 +303,8 @@
           "title": "Saisir le titre du jeu de données",
           "description": "Saisir la description du jeu de données",
           "keyword": "Ajouter un mot-clé",
+          "keywordKey": "p.ex., animal, vache, agriculture",
+          "keywordTranslation": "Saisir la traduction du mot-clé",
           "theme": "Sélectionner un thème",
           "distributionId": "p.ex. dist-001",
           "format": "p.ex. CSV, JSON, XML",
@@ -318,7 +320,16 @@
           "temporalEnd": "Fin de la couverture temporelle",
           "imageUrl": "URL de l'image du jeu de données",
           "relationships": "Relations du jeu de données",
-          "distribution": "Distribution"
+          "distribution": "Distribution",
+          "keyword": "Mot-clé",
+          "keywordKey": "Clé du mot-clé",
+          "keywordTranslations": "Traductions du mot-clé"
+        },
+        "addKeyword": "Ajouter un mot-clé",
+        "removeKeyword": "Supprimer le mot-clé",
+        "noKeywords": "Aucun mot-clé ajouté pour le moment",
+        "hints": {
+          "keywordKey": "Identifiant unique pour le mot-clé (minuscules, sans espaces)"
         },
         "help": {
           "externalCatalogs": "Sélectionnez les catalogues externes où ce jeu de données doit être publié",

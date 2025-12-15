@@ -303,6 +303,8 @@
           "title": "Inserisci il titolo del set di dati",
           "description": "Inserisci la descrizione del set di dati",
           "keyword": "Aggiungi parola chiave",
+          "keywordKey": "es., animale, mucca, agricoltura",
+          "keywordTranslation": "Inserisci la traduzione della parola chiave",
           "theme": "Seleziona tema",
           "distributionId": "es. dist-001",
           "format": "es. CSV, JSON, XML",
@@ -318,7 +320,16 @@
           "temporalEnd": "Fine copertura temporale",
           "imageUrl": "URL immagine del set di dati",
           "relationships": "Relazioni del set di dati",
-          "distribution": "Distribuzione"
+          "distribution": "Distribuzione",
+          "keyword": "Parola chiave",
+          "keywordKey": "Chiave della parola chiave",
+          "keywordTranslations": "Traduzioni della parola chiave"
+        },
+        "addKeyword": "Aggiungi parola chiave",
+        "removeKeyword": "Rimuovi parola chiave",
+        "noKeywords": "Nessuna parola chiave aggiunta ancora",
+        "hints": {
+          "keywordKey": "Identificatore unico per la parola chiave (minuscolo, senza spazi)"
         },
         "help": {
           "externalCatalogs": "Seleziona i cataloghi esterni dove questo set di dati deve essere pubblicato",

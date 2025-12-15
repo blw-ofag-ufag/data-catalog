@@ -384,6 +384,8 @@
           "title": "Titel des Datensatzes eingeben",
           "description": "Beschreibung des Datensatzes eingeben",
           "keyword": "Schlüsselwort hinzufügen",
+          "keywordKey": "z.B., tier, kuh, landwirtschaft",
+          "keywordTranslation": "Schlüsselwort-Übersetzung eingeben",
           "theme": "Thema auswählen",
           "itSystem": "Name des IT-Systems",
           "retentionPeriod": "z.B., 10",
@@ -415,7 +417,16 @@
           "role": "Rolle",
           "nameOptional": "Name (optional)",
           "emailOptional": "E-Mail (optional)",
-          "distribution": "Distribution"
+          "distribution": "Distribution",
+          "keyword": "Schlüsselwort",
+          "keywordKey": "Schlüsselwort-Schlüssel",
+          "keywordTranslations": "Schlüsselwort-Übersetzungen"
+        },
+        "addKeyword": "Schlüsselwort hinzufügen",
+        "removeKeyword": "Schlüsselwort entfernen",
+        "noKeywords": "Noch keine Schlüsselwörter hinzugefügt",
+        "hints": {
+          "keywordKey": "Eindeutige Kennung für das Schlüsselwort (Kleinbuchstaben, keine Leerzeichen)"
         },
         "help": {
           "multilingualRequired": "Mindestens Deutsch und Französisch sind erforderlich",
