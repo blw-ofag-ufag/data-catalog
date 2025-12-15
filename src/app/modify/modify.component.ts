@@ -21,7 +21,7 @@ import {DatasetSubmitComponent} from './submit/dataset-submit.component';
 import {MultilingualTextFieldComponent} from './form/components/multilingual-text-field/multilingual-text-field.component';
 import {EnumSelectFieldComponent} from './form/components/enum-select-field/enum-select-field.component';
 import {ThemeSelectFieldComponent} from './form/components/theme-select-field/theme-select-field.component';
-import {KeywordArrayFieldComponent} from './form/components/keyword-array-field/keyword-array-field.component';
+import {KeywordsFieldComponent} from './form/components/keywords-field/keywords-field.component';
 import {AffiliatedPersonsFieldComponent} from './form/components/affiliated-persons-field/affiliated-persons-field.component';
 import {DistributionFieldComponent} from './form/components/distribution-field/distribution-field.component';
 import {ValidationAlertComponent} from './components/validation-alert/validation-alert.component';
@@ -66,7 +66,7 @@ import {FormCacheService} from '../services/form-cache.service';
 		MultilingualTextFieldComponent,
 		EnumSelectFieldComponent,
 		ThemeSelectFieldComponent,
-		KeywordArrayFieldComponent,
+		KeywordsFieldComponent,
 		AffiliatedPersonsFieldComponent,
 		DistributionFieldComponent,
 		ValidationAlertComponent,

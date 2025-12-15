@@ -134,7 +134,7 @@ export class DatasetService {
 
 							if (category === 'dcat:keyword') {
 								// For keywords, check if ANY of the selected keywords match ANY of the dataset keywords
-								const datasetKeywords = schema['dcat:keyword'] || [];
+								const datasetKeywords = this.getKeywordsArray(schema);
 								categoryMatches = choices.some(choice => datasetKeywords.includes(choice));
 							} else {
 								// For other categories, check if the schema value matches any of the choices
@@ -369,6 +369,94 @@ export class DatasetService {
 			return title[lang] || title['en'] || title['de'] || title['fr'] || title['it'] || '';
 		}
 		return '';
+	}
+
+	/**
+	 * Get keywords as a normalized array for filtering and display
+	 * Handles both legacy string[] format and new multilingual format
+	 */
+	public getKeywordsArray(dataset: DatasetSchema): string[] {
+		const keywords = dataset['dcat:keyword'];
+		if (!keywords) return [];
+
+		// Legacy format: string[]
+		if (Array.isArray(keywords)) {
+			return keywords;
+		}
+
+		// New multilingual format
+		if (typeof keywords === 'object') {
+			// Return the keys for filtering purposes
+			return Object.keys(keywords);
+		}
+
+		return [];
+	}
+
+	/**
+	 * Get localized keywords for display
+	 * Returns an array of keyword strings in the current language
+	 */
+	public getLocalizedKeywords(dataset: DatasetSchema, lang?: string): string[] {
+		const keywords = dataset['dcat:keyword'];
+		if (!keywords) return [];
+
+		const currentLang = lang || this.translate.currentLang || 'en';
+
+		// Legacy format: string[]
+		if (Array.isArray(keywords)) {
+			return keywords;
+		}
+
+		// New multilingual format
+		if (typeof keywords === 'object') {
+			const localizedKeywords: string[] = [];
+			Object.entries(keywords).forEach(([key, translations]) => {
+				// Try current language, then fallbacks
+				const translation = translations[currentLang as keyof typeof translations] ||
+					translations['en'] ||
+					translations['de'] ||
+					translations['fr'] ||
+					translations['it'] ||
+					key; // Fallback to the key itself
+				localizedKeywords.push(translation);
+			});
+			return localizedKeywords.sort();
+		}
+
+		return [];
+	}
+
+	/**
+	 * Check if dataset keywords match the search term
+	 * Searches across all language translations
+	 */
+	private keywordsMatchSearch(dataset: DatasetSchema, searchTerm: string): boolean {
+		const keywords = dataset['dcat:keyword'];
+		if (!keywords) return false;
+
+		const lowerSearchTerm = searchTerm.toLowerCase();
+
+		// Legacy format: string[]
+		if (Array.isArray(keywords)) {
+			return keywords.some(kw => kw.toLowerCase().includes(lowerSearchTerm));
+		}
+
+		// New multilingual format
+		if (typeof keywords === 'object') {
+			// Check keys and all translations
+			return Object.entries(keywords).some(([key, translations]) => {
+				// Check if key matches
+				if (key.toLowerCase().includes(lowerSearchTerm)) return true;
+
+				// Check all translations
+				return Object.values(translations).some(translation =>
+					translation && translation.toLowerCase().includes(lowerSearchTerm)
+				);
+			});
+		}
+
+		return false;
 	}
 
 	/**

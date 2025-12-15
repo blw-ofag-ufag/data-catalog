@@ -392,6 +392,8 @@
           "title": "Enter dataset title",
           "description": "Enter dataset description",
           "keyword": "Add keyword",
+          "keywordKey": "e.g., animal, cow, agriculture",
+          "keywordTranslation": "Enter keyword translation",
           "theme": "Select theme",
           "distributionId": "e.g. dist-001",
           "format": "e.g. CSV, JSON, XML",
@@ -407,7 +409,16 @@
           "temporalEnd": "Temporal Coverage End",
           "imageUrl": "Dataset Image URL",
           "relationships": "Dataset Relationships",
-          "distribution": "Distribution"
+          "distribution": "Distribution",
+          "keyword": "Keyword",
+          "keywordKey": "Keyword Key",
+          "keywordTranslations": "Keyword Translations"
+        },
+        "addKeyword": "Add Keyword",
+        "removeKeyword": "Remove Keyword",
+        "noKeywords": "No keywords added yet",
+        "hints": {
+          "keywordKey": "Unique identifier for the keyword (lowercase, no spaces)"
         },
         "help": {
           "externalCatalogs": "Select external catalogs where this dataset should be published",

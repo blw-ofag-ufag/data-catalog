@@ -7,6 +7,7 @@ import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MatChip} from '@angular/material/chips';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {TranslateFieldPipe} from '../translate-field.pipe';
+import {DatasetService} from '../services/api/api.service';
 
 @Component({
 	selector: 'index-list',
@@ -20,7 +21,8 @@ export class IndexListComponent {
 	constructor(
 		private readonly router: Router,
 		public translate: TranslateService,
-		private readonly route: ActivatedRoute
+		private readonly route: ActivatedRoute,
+		private readonly datasetService: DatasetService
 	) {}
 
 	async openDataset(publisher: string, dataset: string) {
@@ -30,6 +32,13 @@ export class IndexListComponent {
 	onChipClick(event: MouseEvent): void {
 		event.preventDefault();
 		event.stopPropagation();
+	}
+
+	/**
+	 * Get localized keywords for a dataset
+	 */
+	getLocalizedKeywords(dataset: DatasetSchema): string[] {
+		return this.datasetService.getLocalizedKeywords(dataset);
 	}
 
 	keywordFiltered(keyword: string) {

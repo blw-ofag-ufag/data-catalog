@@ -23,7 +23,7 @@
 				</td>
 				<td data-title="Keywords">
 					<div>
-						@for (tag of dataset["dcat:keyword"]; track $index) {
+						@for (tag of getLocalizedKeywords(dataset); track $index) {
 							<mat-chip (click)="onChipClick($event)" class="small-chip">
 								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
 									{{ tag }}

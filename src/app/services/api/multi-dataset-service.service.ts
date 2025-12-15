@@ -93,7 +93,21 @@ export class MultiDatasetService {
 
 		Promise.all(fetchKeywordsPromises)
 			.then(results => {
-				const combinedKeywords: string[] = Array.from(new Set(results.flatMap(entry => entry['dcat:keyword']))).sort((a, b) => a.localeCompare(b));
+				const allKeywords = new Set<string>();
+				results.forEach(entry => {
+					const keywords = entry['dcat:keyword'];
+					if (!keywords) return;
+
+					// Handle legacy string[] format
+					if (Array.isArray(keywords)) {
+						keywords.forEach(kw => allKeywords.add(kw));
+					}
+					// Handle new multilingual format
+					else if (typeof keywords === 'object') {
+						Object.keys(keywords).forEach(key => allKeywords.add(key));
+					}
+				});
+				const combinedKeywords: string[] = Array.from(allKeywords).sort((a, b) => a.localeCompare(b));
 				this._keywordsSubject.next(combinedKeywords);
 			})
 			.catch(error => {
@@ -109,10 +123,8 @@ export class MultiDatasetService {
 				response
 					.json()
 					.then(data => {
-						// Sort keywords within the dataset alphabetically
-						if (data?.['dcat:keyword'] && Array.isArray(data['dcat:keyword'])) {
-							data['dcat:keyword'] = [...data['dcat:keyword']].sort((a, b) => a.localeCompare(b));
-						}
+						// Note: Keywords sorting is now handled by display components
+						// to respect the current language
 						this._selectedDatasetSubject.next(data);
 						this._loadingSubject.next(false);
 					})

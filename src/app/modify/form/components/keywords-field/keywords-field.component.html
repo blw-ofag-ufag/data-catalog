@@ -1,0 +1,42 @@
+<div class="keywords-field">
+	<div class="field-header ob-mb-3">
+		<label class="ob-font-medium">
+			{{ label | translate }}
+			<span *ngIf="required" class="ob-text-error">*</span>
+			<span *ngIf="!required && recommended" class="ob-text-warning">({{ "labels.recommended" | translate }})</span>
+		</label>
+		<button mat-button obButton="secondary" size="sm" (click)="addKeyword()" type="button" class="ob-mt-2">
+			<mat-icon svgIcon="add" class="ob-mr-1"></mat-icon>
+			{{ "modify.auth.form.addKeyword" | translate }}
+		</button>
+	</div>
+
+	<div class="keywords-grid" *ngIf="keywordsArray.length > 0">
+		<div *ngFor="let keywordGroup of keywordsArray.controls; let i = index; trackBy: trackByIndex" class="keyword-item ob-card">
+			<button type="button" mat-icon-button class="delete-button" (click)="removeKeyword(i)" [attr.aria-label]="'modify.auth.form.removeKeyword' | translate">
+				<mat-icon svgIcon="delete"></mat-icon>
+			</button>
+			<div class="ob-card-body" [formGroup]="asFormGroup(keywordGroup)">
+				<!-- Hidden field for auto-generated key -->
+				<input type="hidden" formControlName="key" />
+
+				<app-multilingual-text-field
+					formControlName="translations"
+					[hideLabel]="true"
+					[placeholder]="'modify.auth.form.placeholders.keywordTranslation'"
+					[required]="false"
+					[recommended]="true"
+					[requiredLanguages]="['de', 'fr']"
+					[minLength]="2"
+					[maxLength]="50"
+					[hideHelp]="true"
+				>
+				</app-multilingual-text-field>
+			</div>
+		</div>
+	</div>
+
+	<div *ngIf="keywordsArray.length === 0" class="ob-text-muted ob-py-4">
+		{{ "modify.auth.form.noKeywords" | translate }}
+	</div>
+</div>

@@ -9,6 +9,7 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
 import {TranslateFieldPipe} from '../translate-field.pipe';
+import {DatasetService} from '../services/api/api.service';
 
 @Component({
 	standalone: true,
@@ -49,7 +50,8 @@ export class IndexCardsComponent {
 	constructor(
 		private readonly router: Router,
 		private readonly translate: TranslateService,
-		private readonly route: ActivatedRoute
+		private readonly route: ActivatedRoute,
+		private readonly datasetService: DatasetService
 	) {
 		this.currentLang$ = this.translate.onLangChange.pipe(
 			map(event => event.lang),
@@ -163,9 +165,17 @@ export class IndexCardsComponent {
 	}
 
 	/**
+	 * Get localized keywords for a dataset
+	 */
+	getLocalizedKeywords(dataset: DatasetSchema): string[] {
+		return this.datasetService.getLocalizedKeywords(dataset);
+	}
+
+	/**
 	 * Get visible keywords for a dataset (dynamic based on available width)
 	 */
-	getVisibleKeywords(keywords: string[] | null | undefined, datasetId: string): string[] {
+	getVisibleKeywords(dataset: DatasetSchema, datasetId: string): string[] {
+		const keywords = this.getLocalizedKeywords(dataset);
 		if (!keywords) return [];
 
 		const maxVisible = this.calculateMaxVisibleKeywords(keywords, datasetId);
@@ -175,7 +185,8 @@ export class IndexCardsComponent {
 	/**
 	 * Get hidden keywords for a dataset
 	 */
-	getHiddenKeywords(keywords: string[] | null | undefined, datasetId: string): string[] {
+	getHiddenKeywords(dataset: DatasetSchema, datasetId: string): string[] {
+		const keywords = this.getLocalizedKeywords(dataset);
 		if (!keywords) return [];
 
 		const maxVisible = this.calculateMaxVisibleKeywords(keywords, datasetId);
@@ -185,7 +196,8 @@ export class IndexCardsComponent {
 	/**
 	 * Check if there are keywords to hide
 	 */
-	hasHiddenKeywords(keywords: string[] | null | undefined, datasetId: string): boolean {
+	hasHiddenKeywords(dataset: DatasetSchema, datasetId: string): boolean {
+		const keywords = this.getLocalizedKeywords(dataset);
 		if (!keywords) return false;
 
 		const maxVisible = this.calculateMaxVisibleKeywords(keywords, datasetId);

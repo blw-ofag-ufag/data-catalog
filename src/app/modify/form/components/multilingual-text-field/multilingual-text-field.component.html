@@ -1,5 +1,5 @@
 <div class="multilingual-field">
-	<label class="field-label" *ngIf="label">
+	<label class="field-label" *ngIf="label && !hideLabel">
 		{{ label | translate }}
 		<span *ngIf="recommended && !required" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
 	</label>
@@ -9,7 +9,7 @@
 			<div class="tab-content">
 				<mat-form-field class="ob-w-full">
 					<mat-label>
-						{{ label | translate }} ({{ lang.label }})
+						<span *ngIf="!hideLabel">{{ label | translate }}</span> ({{ lang.label }})
 					</mat-label>
 
 					<input
@@ -41,7 +41,7 @@
 		</mat-tab>
 	</mat-tab-group>
 
-	<div class="field-help" *ngIf="required || requiredLanguages.length > 0 || minLength">
+	<div class="field-help" *ngIf="!hideHelp && (required || requiredLanguages.length > 0 || minLength)">
 		<small class="ob-text-muted">
 			<span *ngIf="requiredLanguages.includes('de') && requiredLanguages.includes('fr')">
 				Mindestens Deutsch und Französisch sind erforderlich<span *ngIf="minLength"> (min. {{ minLength }} Zeichen)</span>

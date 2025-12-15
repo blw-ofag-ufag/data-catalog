@@ -34,8 +34,9 @@ export const DatasetAvailabilities = ['', 'AVAILABLE', 'EXPERIMENTAL', 'STABLE',
 export type DatasetAvailability = (typeof DatasetAvailabilities)[number];
 /**
  * Keywords describing the dataset.
+ * Supports both legacy format (string[]) and new multilingual format.
  */
-export type Keywords = string[] | null;
+export type Keywords = string[] | { [key: string]: { de?: string; fr?: string; it?: string; en?: string } } | null;
 /**
  * Frequency with which dataset is updated (e.g., 'Annual'). More information here: <a href='https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-frequency'>Available frequencies</a>.
  */

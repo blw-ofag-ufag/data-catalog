@@ -1,6 +1,17 @@
 import {Component, Input, OnInit, OnChanges, OnDestroy, forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AbstractControl, ControlValueAccessor, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, ValidationErrors, Validator, Validators} from '@angular/forms';
+import {
+	AbstractControl,
+	ControlValueAccessor,
+	FormControl,
+	FormGroup,
+	NG_VALIDATORS,
+	NG_VALUE_ACCESSOR,
+	ReactiveFormsModule,
+	ValidationErrors,
+	Validator,
+	Validators
+} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
 import {TranslatePipe} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -43,6 +54,8 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, Val
 	@Input() requiredLanguages: string[] = [];
 	@Input() pattern?: string;
 	@Input() minLength?: number;
+	@Input() hideLabel = false;
+	@Input() hideHelp = false;
 
 	formGroup: FormGroup;
 	private readonly destroy$ = new Subject<void>();
@@ -89,8 +102,7 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, Val
 			if (control) {
 				const validators = [];
 				// Check if this specific language is required
-				if (this.requiredLanguages.includes(lang) ||
-				    (this.required && (lang === 'de' || lang === 'fr'))) {
+				if (this.requiredLanguages.includes(lang) || (this.required && (lang === 'de' || lang === 'fr'))) {
 					validators.push(Validators.required);
 				}
 				if (this.minLength) {
@@ -175,8 +187,7 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, Val
 	}
 
 	isLanguageRequired(language: string): boolean {
-		return this.requiredLanguages.includes(language) ||
-		       (this.required && (language === 'de' || language === 'fr'));
+		return this.requiredLanguages.includes(language) || (this.required && (language === 'de' || language === 'fr'));
 	}
 
 	validate(control: AbstractControl): ValidationErrors | null {
