@@ -451,8 +451,8 @@
           "noPersons": "Noch keine verantwortlichen Personen hinzugefügt. Klicken Sie auf \"Person hinzufügen\", um eine hinzuzufügen.",
           "noDistributions": "Noch keine Distributionen hinzugefügt. Klicken Sie auf \"Distribution hinzufügen\", um eine hinzuzufügen."
         },
-        "contactName": "Name der Kontaktperson",
-        "contactEmail": "E-Mail der Kontaktperson",
+        "contactName": "Name der Kontaktstelle (Organisation)",
+        "contactEmail": "E-Mail der Kontaktstelle (Organisation)",
         "generateJson": "JSON generieren",
         "backToForm": "Zurück zum Formular",
         "authOptional": "Optional: Authentifizierung",
