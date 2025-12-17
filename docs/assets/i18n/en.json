@@ -167,7 +167,7 @@
     "dcat:distribution": "An instance of the data product that can be viewed or consumed. For example a table containing the identic information can be provided as an excel-, csv- or json-file. The three files are distributions of the same data product.",
     "dcat:downloadURL": "Where can your data product be accessed?",
     "dcat:inSeries": "Is your data product part of a dataset series? Which one?",
-    "dcat:keyword": "What keywords are helpful to find your dataproduct? It is easier to find your data product if you provide several keywords that are shared with your collegues data products. If you have a proposition of a keyword that should be added to the list, please contact kompetenzzentrumdigitaletransformation@blw.admin.ch",
+    "dcat:keyword": "What keywords are helpful to find your dataproduct? It is easier to find your data product if you provide several keywords that are shared with your collegues data products.",
     "dcat:landingPage": "Where can a data user find additional context to your data product or the responsible organization?",
     "dcat:theme": "Theme used to classify the catalogue's data products.",
     "dcat:version": "What version is this? Please use semantic versioning in the form of X.Y.Z where increases of X indicate major changes, Y minor changes and Z simple corrections such as typos.",
