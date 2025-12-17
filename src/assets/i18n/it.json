@@ -338,8 +338,8 @@
           "downloadUrl": "URL di download diretto del file",
           "distributionsRequired": "Almeno una distribuzione è richiesta"
         },
-        "contactName": "Nome della punto di contatto",
-        "contactEmail": "Email della punto di contatto",
+        "contactName": "Nome della punto di contatto (organizzazione)",
+        "contactEmail": "Email della punto di contatto (organizzazione)",
         "generateJson": "Genera JSON",
         "backToForm": "Torna al modulo",
         "authOptional": "Opzionale: Autenticazione",

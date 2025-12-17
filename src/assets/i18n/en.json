@@ -427,8 +427,8 @@
           "downloadUrl": "Direct download URL for the distribution file",
           "distributionsRequired": "At least one distribution is required"
         },
-        "contactName": "Contact point name",
-        "contactEmail": "Contact point email",
+        "contactName": "Name of contact point (organization)",
+        "contactEmail": "Email address of contact point (organization)",
         "generateJson": "Generate JSON",
         "backToForm": "Back to Form",
         "authOptional": "Optional: Authentication",
