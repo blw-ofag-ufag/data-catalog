@@ -8,10 +8,10 @@
   shortId: BLV
   githubRepo: BLV-OSAV-USAV/FSVO-Metadata
   readBranch: main
-  writeBranch: drafts
+  writeBranch: main
 
 - id: ROLAND-TEST
   shortId: TEST
   githubRepo: bar9/metadata-publisher-test
   readBranch: main
-  writeBranch: drafts
+  writeBranch: main
