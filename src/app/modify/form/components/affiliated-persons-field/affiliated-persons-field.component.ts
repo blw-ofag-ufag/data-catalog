@@ -57,7 +57,7 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 	private onValidatorChange = () => {};
 
 	readonly roles = [
-		{value: 'businessDataOwner', label: 'Business Data Owner'},
+		{value: 'dataOwner', label: 'Data Owner'},
 		{value: 'dataSteward', label: 'Data Steward'},
 		{value: 'dataCustodian', label: 'Data Custodian'}
 	];
@@ -136,18 +136,18 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 		}
 
 		const persons = this.personsArray.value as AffiliatedPerson[];
-		const businessDataOwners = persons.filter(p => p['dcat:hadRole'] === 'businessDataOwner');
+		const dataOwners = persons.filter(p => p['dcat:hadRole'] === 'dataOwner');
 		const dataStewards = persons.filter(p => p['dcat:hadRole'] === 'dataSteward');
 
 		const errors: ValidationErrors = {};
 
-		if (businessDataOwners.length !== 1) {
-			errors['businessDataOwnerCount'] = {
+		if (dataOwners.length !== 1) {
+			errors['dataOwnerCount'] = {
 				required: 1,
-				actual: businessDataOwners.length,
-				message: businessDataOwners.length === 0
-					? 'Exactly one Business Data Owner is required'
-					: `Only one Business Data Owner is allowed (currently ${businessDataOwners.length})`
+				actual: dataOwners.length,
+				message: dataOwners.length === 0
+					? 'Exactly one Data Owner is required'
+					: `Only one Data Owner is allowed (currently ${dataOwners.length})`
 			};
 		}
 
@@ -171,15 +171,15 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 				return null; // Let required validator handle empty case
 			}
 
-			const businessDataOwners = persons.filter(p => p['dcat:hadRole'] === 'businessDataOwner');
+			const dataOwners = persons.filter(p => p['dcat:hadRole'] === 'dataOwner');
 			const dataStewards = persons.filter(p => p['dcat:hadRole'] === 'dataSteward');
 
 			const errors: ValidationErrors = {};
 
-			if (businessDataOwners.length !== 1) {
-				errors['businessDataOwnerCount'] = {
+			if (dataOwners.length !== 1) {
+				errors['dataOwnerCount'] = {
 					required: 1,
-					actual: businessDataOwners.length
+					actual: dataOwners.length
 				};
 			}
 
@@ -195,17 +195,17 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 	}
 
 	get hasRoleErrors(): boolean {
-		return this.personsArray.hasError('businessDataOwnerCount') ||
+		return this.personsArray.hasError('dataOwnerCount') ||
 			   this.personsArray.hasError('dataStewardCount');
 	}
 
-	get businessDataOwnerError(): string | null {
-		if (this.personsArray.hasError('businessDataOwnerCount')) {
-			const error = this.personsArray.getError('businessDataOwnerCount');
+	get dataOwnerError(): string | null {
+		if (this.personsArray.hasError('dataOwnerCount')) {
+			const error = this.personsArray.getError('dataOwnerCount');
 			if (error.actual === 0) {
-				return 'A Business Data Owner is required';
+				return 'A Data Owner is required';
 			} else if (error.actual > 1) {
-				return `Only one Business Data Owner is allowed (currently ${error.actual})`;
+				return `Only one Data Owner is allowed (currently ${error.actual})`;
 			}
 		}
 		return null;

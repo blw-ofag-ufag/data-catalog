@@ -705,8 +705,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 						if (controlErrors['message']) {
 							// Handle fields that provide a custom message
 							errors.push(controlErrors['message']);
-						} else if (controlErrors['businessDataOwnerCount']) {
-							errors.push(controlErrors['businessDataOwnerCount'].message);
+						} else if (controlErrors['dataOwnerCount']) {
+							errors.push(controlErrors['dataOwnerCount'].message);
 						} else if (controlErrors['dataStewardCount']) {
 							errors.push(controlErrors['dataStewardCount'].message);
 						} else {
@@ -816,8 +816,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 						if (errors['message']) {
 							// Handle fields that provide a custom message
 							this.invalidFields.push(errors['message']);
-						} else if (errors['businessDataOwnerCount']) {
-							this.invalidFields.push(errors['businessDataOwnerCount'].message);
+						} else if (errors['dataOwnerCount']) {
+							this.invalidFields.push(errors['dataOwnerCount'].message);
 						} else if (errors['dataStewardCount']) {
 							this.invalidFields.push(errors['dataStewardCount'].message);
 						} else {
