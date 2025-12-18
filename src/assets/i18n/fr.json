@@ -94,7 +94,7 @@
         "BLW-OFAG-UFAG-FOAG": "OFAG"
       },
       "hadRole": {
-        "businessDataOwner": "Propriétaire des données métier",
+        "dataOwner": "Propriétaire des données",
         "dataCustodian": "Conservateur des données",
         "dataSteward": "Gestionnaire des données"
       }
@@ -214,7 +214,7 @@
     "title": "Titre de votre produit de données",
     "typeOfData": "Quel type décrit le mieux votre produit de données ?",
     "version": "De quelle version s'agit-il ? Veuillez utiliser des numéros de version sémantiques sous la forme X.Y.Z, où une augmentation de X indique des modifications importantes, Y des modifications mineures et Z des corrections simples telles que des fautes de frappe."
-},
+  },
   "labels": {
     "accessRights": "Droits d'accès",
     "accessService": "Service d'accès",
