@@ -423,6 +423,7 @@
           "next": "Avanti",
           "previous": "Indietro"
         },
+        "changeRepository": "Cambiare repository",
         "reset": "Ripristina",
         "submit": "Verifica",
         "buttons": {
