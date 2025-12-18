@@ -423,6 +423,7 @@
           "next": "Suivant",
           "previous": "Précédent"
         },
+        "changeRepository": "Changer le dépôt",
         "reset": "Réinitialiser",
         "submit": "Vérifier",
         "buttons": {
