@@ -7,7 +7,7 @@ export interface SchemaConfig {
 	id: string;
 	name: string;
 	githubRepo: string;
-	readBranch: string;
+	branch: string;
 	path: string;
 	color: string;
 	alertType: 'info' | 'warning' | 'error';
@@ -40,7 +40,7 @@ export class ValidationSchemaFetcherService {
 	 * Get the GitHub raw content URL for a schema
 	 */
 	private getSchemaUrl(config: SchemaConfig): string {
-		return `https://raw.githubusercontent.com/${config.githubRepo}/refs/heads/${config.readBranch}/${config.path}`;
+		return `https://raw.githubusercontent.com/${config.githubRepo}/refs/heads/${config.branch}/${config.path}`;
 	}
 
 	/**
