@@ -21,7 +21,9 @@ import {MatIcon} from '@angular/material/icon';
 import {MatButton} from '@angular/material/button';
 import {ObButtonDirective} from '@oblique/oblique';
 import {PublisherService} from '../services/api/publisher.service';
-import {MatTooltip} from '@angular/material/tooltip';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {ObPopoverModule} from '@oblique/oblique';
+import {PopoverLinksDirective} from '../directives/popover-links.directive';
 
 @Component({
 	selector: 'app-details',
@@ -48,7 +50,8 @@ import {MatTooltip} from '@angular/material/tooltip';
 		MatIcon,
 		ObButtonDirective,
 		MatButton,
-		MatTooltip
+		ObPopoverModule,
+		PopoverLinksDirective
 	],
 	styleUrl: './details.component.scss'
 })
@@ -67,7 +70,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		private readonly router: Router,
 		private readonly translate: TranslateService,
 		private readonly publisherService: PublisherService,
-		private readonly metadataService: DatasetMetadataService
+		private readonly metadataService: DatasetMetadataService,
+		private readonly sanitizer: DomSanitizer
 	) {
 		this.loading$ = this.datasetService.getLoadingState();
 		this.currentLang$ = this.translate.onLangChange.pipe(
@@ -305,6 +309,31 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
 		// Default
 		return 'file';
+	}
+
+	getTooltipHtml(label: string): SafeHtml {
+		// Get the translated tooltip text
+		const translationKey = `tooltips.${label}`;
+		let translatedText = this.translate.instant(translationKey);
+
+		// Replace <a> tags with <span> elements that have data attributes
+		// This is needed because Oblique popover seems to block link clicks
+		translatedText = translatedText.replace(
+			/<a\s+href=["']([^"']+)["']([^>]*)>([^<]*)<\/a>/gi,
+			'<span class="popover-link" data-href="$1" style="color: #007bff; text-decoration: underline; cursor: pointer;"$2>$3</span>'
+		);
+
+		// Bypass sanitization to allow HTML content from trusted translation files
+		return this.sanitizer.bypassSecurityTrustHtml(translatedText);
+	}
+
+	hasTooltip(label: string): boolean {
+		// Check if a tooltip exists for this label
+		const translationKey = `tooltips.${label}`;
+		const translatedText = this.translate.instant(translationKey);
+
+		// Return true if the translation exists (not the same as the key)
+		return translatedText !== translationKey && translatedText !== '';
 	}
 
 	protected readonly enumTypes = enumTypes;
