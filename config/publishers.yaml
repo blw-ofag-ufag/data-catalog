@@ -1,17 +1,17 @@
 - id: BLW-OFAG-UFAG-FOAG
   shortId: BLW
   githubRepo: blw-ofag-ufag/metadata
-  read-branch: main
-  write-branch: drafts
+  readBranch: main
+  writeBranch: drafts
 
 - id: BLV-OSAV-USAV-FSVO
   shortId: BLV
   githubRepo: BLV-OSAV-USAV/FSVO-Metadata
-  read-branch: main
-  write-branch: main
+  readBranch: main
+  writeBranch: main
 
 - id: ROLAND-TEST
   shortId: TEST
   githubRepo: bar9/metadata-publisher-test
-  read-branch: main
-  write-branch: main
+  readBranch: main
+  writeBranch: main
