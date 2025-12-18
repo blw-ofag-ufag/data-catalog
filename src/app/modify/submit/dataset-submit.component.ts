@@ -179,7 +179,7 @@ export class DatasetSubmitComponent implements OnInit, OnDestroy {
 		// Call the commit service
 		this.githubAuthService.commitFileToRepository(
 			this.selectedRepository,
-			this.selectedPublisher.branch,
+			this.selectedPublisher.writeBranch,
 			this.filePath,
 			this.formattedJson,
 			commitMessage,
@@ -294,7 +294,7 @@ export class DatasetSubmitComponent implements OnInit, OnDestroy {
 
 		// Use repository-specific URL generation if available
 		if (this.selectedRepository && this.selectedPublisher) {
-			const branch = this.selectedPublisher.branch;
+			const branch = this.selectedPublisher.writeBranch;
 
 			if (this.isEditMode && this.datasetId) {
 				// Edit existing file - pass the new content to pre-fill the edit form

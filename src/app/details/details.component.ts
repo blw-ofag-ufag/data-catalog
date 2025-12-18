@@ -191,7 +191,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		const publisher = this.publisherService.getPublishers().find(p => p.id === publisherId);
 		if (!publisher) return '';
 
-		return `https://github.com/${publisher.githubRepo}/blob/${publisher.branch}/data/raw/datasets/${datasetId}.json`;
+		return `https://github.com/${publisher.githubRepo}/blob/${publisher.readBranch}/data/raw/datasets/${datasetId}.json`;
 	}
 
 	getRawJsonUrl(): string {
