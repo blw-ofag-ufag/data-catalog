@@ -5,12 +5,15 @@
 			<h1>
 				{{ (isEditMode ? "modify.auth.form.title.edit" : "modify.auth.form.title.new") | translate }}
 			</h1>
-			<div class="ob-flex ob-items-center ob-gap-2">
-				<small class="ob-text-muted">{{ "modify.auth.form.selectedRepository" | translate }}:</small>
-				<strong class="me-3">{{ getSelectedRepositoryDisplay() }}</strong>
-				<a routerLink="/modify/auth" mat-button obButton="secondary" size="sm" *ngIf="!isDebugMode()">
-					{{ "modify.auth.form.changeRepository" | translate }}
-				</a>
+			<div class="ob-flex ob-flex-wrap ob-items-center ob-gap-2">
+				<div style="text-align: right">
+					<small class="ob-text-muted ob-block">{{ "modify.auth.form.selectedRepository" | translate }}:&nbsp;</small>
+					<strong>{{ getSelectedRepositoryDisplay() }}</strong>
+					<br>
+					<a routerLink="/modify/auth" mat-button obButton="secondary" size="sm" *ngIf="!isDebugMode()">
+						{{ "modify.auth.form.changeRepository" | translate }}
+					</a>
+				</div>
 			</div>
 		</div>
 
