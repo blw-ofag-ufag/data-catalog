@@ -853,10 +853,6 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	getSelectedRepositoryDisplay(): string {
-		// In debug mode, show debug info
-		if (environment.debugMode) {
-			return `${environment.mockRepository} (🛠️ Debug Mode)`;
-		}
 
 		const selectedRepo = this.repositoryCredentialsService.getSelectedRepository();
 		if (selectedRepo) {

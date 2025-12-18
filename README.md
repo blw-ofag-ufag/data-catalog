@@ -99,3 +99,28 @@ docker build -t yourusername/data-catalog:latest .
 ```
 docker run -p yourusername/data-catalog:latest
 ```
+
+## 💡 Contribute to the data catalog
+
+<img src="https://github.com/user-attachments/assets/2995fa0b-db7a-4141-bbb8-91a9301cd474" align="right" width="40%" alt="PAT Settings">
+
+To interact with this project's repositories (i.e., add or edit metadata) in the **blw-ofag-ufag** organization, you need to generate a Fine-grained Personal Access Token (PAT).
+
+#### **1. Navigate to Settings**
+* Go to GitHub **Settings** > **Developer settings**.
+* Select **Personal access tokens** > **Fine-grained tokens** (see image).
+
+#### **2. Configuration**
+* **Resource owner**: Select **blw-ofag-ufag**.
+* **Token name**: e.g., `Metadata Repo`.
+* **Expiration**: 90 days.
+
+#### **3. Access & Permissions**
+* **Repository access**: Choose **Only select repositories** and pick your metadata repo.
+* **Permissions**: Set **Contents** to `Read and write`.
+
+#### **4. Save Securely**
+* Click **Generate token**.
+* **Copy immediately** and store it in **KeePass**.
+
+<br clear="right"/>

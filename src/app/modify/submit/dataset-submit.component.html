@@ -63,22 +63,6 @@
 				</ob-alert>
 			</div>
 
-			<!-- Fallback Action: Open in GitHub (for manual edit) -->
-			<div class="ob-mb-4 ob-text-center">
-				<button
-					type="button"
-					mat-button
-					[obButton]="isAuthenticated ? 'secondary' : 'primary'"
-					(click)="openInGitHub()"
-					[disabled]="!generatedJson">
-					<mat-icon svgIcon="github" />
-					{{ (isEditMode ? "modify.auth.submit.editInGitHub" : "modify.auth.submit.createInGitHub") | translate }}
-				</button>
-				<p class="ob-text-muted ob-text-sm ob-mt-2">
-					{{ isAuthenticated ? ("modify.auth.submit.githubWebEditorDescription" | translate) : ("modify.auth.submit.githubDescription" | translate) }}
-				</p>
-			</div>
-
 			<!-- Alternative Actions -->
 			<div>
 				<h4 class="ob-text-base ob-font-medium ob-mb-3">{{ "modify.auth.submit.alternatives" | translate }}</h4>
