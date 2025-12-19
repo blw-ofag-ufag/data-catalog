@@ -4,11 +4,12 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModul
 import {TranslatePipe} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
 
 @Component({
 	selector: 'app-enum-select-field',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatSelectModule],
+	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatSelectModule, FormFieldTooltipComponent],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
@@ -26,6 +27,7 @@ export class EnumSelectFieldComponent implements ControlValueAccessor, OnInit {
 	@Input() recommended = false;
 	@Input() translationPath = '';
 	@Input() placeholder = '';
+	@Input() fieldName?: string;
 
 	control: FormControl;
 	private onChange = (value: string | null) => {};

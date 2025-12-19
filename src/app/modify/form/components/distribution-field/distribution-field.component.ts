@@ -12,6 +12,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {ObButtonDirective} from '@oblique/oblique';
 import {MultilingualTextFieldComponent} from '../multilingual-text-field/multilingual-text-field.component';
+import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
 
 export interface MultilingualText {
 	de: string;
@@ -50,7 +51,8 @@ export interface Distribution {
 		MatDatepickerModule,
 		MatNativeDateModule,
 		ObButtonDirective,
-		MultilingualTextFieldComponent
+		MultilingualTextFieldComponent,
+		FormFieldTooltipComponent
 	],
 	providers: [
 		{
@@ -70,6 +72,7 @@ export interface Distribution {
 export class DistributionFieldComponent implements ControlValueAccessor, Validator, OnDestroy {
 	@Input() label = 'Distributions';
 	@Input() required = false;
+	@Input() fieldName?: string;
 
 	distributionsArray: FormArray;
 	private readonly destroy$ = new Subject<void>();

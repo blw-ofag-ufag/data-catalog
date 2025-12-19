@@ -6,11 +6,12 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {I14YTheme, I14YThemeService} from '../../../../services/api/i14y-theme.service';
+import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
 
 @Component({
 	selector: 'app-theme-select-field',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatSelectModule],
+	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatSelectModule, FormFieldTooltipComponent],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
@@ -19,25 +20,28 @@ import {I14YTheme, I14YThemeService} from '../../../../services/api/i14y-theme.s
 		}
 	],
 	template: `
-		<mat-form-field class="w-100">
-			<mat-label>
-				{{ label | translate }}
-				<span *ngIf="required" class="required-asterisk">*</span>
-			</mat-label>
-			<mat-select [formControl]="control" (blur)="onBlur()" [placeholder]="placeholder | translate" multiple>
-				<mat-select-trigger>
-					<span *ngIf="control.value?.length > 0">
-						{{ getSelectedThemesDisplay() }}
-					</span>
-				</mat-select-trigger>
-				<mat-option *ngFor="let theme of themes" [value]="theme.code">
-					{{ getThemeLabel(theme) }}
-				</mat-option>
-			</mat-select>
-			<mat-error *ngIf="hasError('required')">
-				{{ getErrorMessage() | translate }}
-			</mat-error>
-		</mat-form-field>
+		<div class="theme-select-field field-with-tooltip">
+			<mat-form-field class="w-100">
+				<mat-label>
+					{{ label | translate }}
+					<span *ngIf="required" class="required-asterisk">*</span>
+				</mat-label>
+				<mat-select [formControl]="control" (blur)="onBlur()" [placeholder]="placeholder | translate" multiple>
+					<mat-select-trigger>
+						<span *ngIf="control.value?.length > 0">
+							{{ getSelectedThemesDisplay() }}
+						</span>
+					</mat-select-trigger>
+					<mat-option *ngFor="let theme of themes" [value]="theme.code">
+						{{ getThemeLabel(theme) }}
+					</mat-option>
+				</mat-select>
+				<mat-error *ngIf="hasError('required')">
+					{{ getErrorMessage() | translate }}
+				</mat-error>
+			</mat-form-field>
+			<app-form-field-tooltip [fieldName]="fieldName || label.replace('labels.', '')"></app-form-field-tooltip>
+		</div>
 	`,
 	styleUrl: './theme-select-field.component.scss'
 })
@@ -45,6 +49,7 @@ export class ThemeSelectFieldComponent implements ControlValueAccessor, OnInit, 
 	@Input() label = '';
 	@Input() required = false;
 	@Input() placeholder = '';
+	@Input() fieldName?: string;
 
 	control: FormControl;
 	themes: I14YTheme[] = [];

@@ -1,4 +1,4 @@
-<div class="enum-select-field">
+<div class="enum-select-field field-with-tooltip">
 	<mat-form-field class="ob-w-full">
 		<mat-label>
 			{{ label | translate }}
@@ -15,4 +15,5 @@
 			{{ getErrorMessage() | translate }}
 		</mat-error>
 	</mat-form-field>
+	<app-form-field-tooltip [fieldName]="fieldName || label.replace('labels.', '')"></app-form-field-tooltip>
 </div>

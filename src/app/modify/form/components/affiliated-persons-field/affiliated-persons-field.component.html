@@ -3,6 +3,7 @@
 		<label class="field-label">
 			{{ label | translate }}
 			<span *ngIf="required" class="required-asterisk">*</span>
+			<app-form-field-tooltip [fieldName]="fieldName || label.replace('labels.', '')"></app-form-field-tooltip>
 		</label>
 		<button type="button" mat-button obButton="secondary" (click)="addPerson()" size="sm">
 			<mat-icon svgIcon="plus">

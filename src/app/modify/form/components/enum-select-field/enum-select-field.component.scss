@@ -1,6 +1,23 @@
 .enum-select-field {
 	margin-bottom: 1.5rem;
 
+	&.field-with-tooltip {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+
+		mat-form-field {
+			flex: 1;
+		}
+
+		app-form-field-tooltip {
+			display: flex;
+			align-items: center;
+			height: 56px;
+			padding-top: 4px;
+		}
+	}
+
 	mat-form-field {
 		width: 100%;
 	}

@@ -17,6 +17,7 @@ import {TranslatePipe} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
+import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
 
 export interface MultilingualText {
 	de: string;
@@ -28,7 +29,7 @@ export interface MultilingualText {
 @Component({
 	selector: 'app-multilingual-text-field',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatInputModule, MatTabsModule],
+	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatInputModule, MatTabsModule, FormFieldTooltipComponent],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
@@ -56,6 +57,7 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, Val
 	@Input() minLength?: number;
 	@Input() hideLabel = false;
 	@Input() hideHelp = false;
+	@Input() fieldName?: string;
 
 	formGroup: FormGroup;
 	private readonly destroy$ = new Subject<void>();

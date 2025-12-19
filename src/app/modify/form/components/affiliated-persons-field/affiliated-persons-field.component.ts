@@ -9,6 +9,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {ObButtonDirective} from '@oblique/oblique';
+import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
 
 export interface AffiliatedPerson {
 	'prov:agent': string;
@@ -29,7 +30,8 @@ export interface AffiliatedPerson {
 		MatSelectModule,
 		MatButtonModule,
 		MatIconModule,
-		ObButtonDirective
+		ObButtonDirective,
+		FormFieldTooltipComponent
 	],
 	providers: [
 		{
@@ -48,6 +50,7 @@ export interface AffiliatedPerson {
 })
 export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Validator, OnDestroy {
 	@Input() label = 'Affiliated Persons';
+	@Input() fieldName?: string;
 	@Input() required = false;
 
 	personsArray: FormArray;

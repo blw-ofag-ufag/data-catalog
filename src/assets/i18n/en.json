@@ -141,13 +141,7 @@
     "version": "Version"
   },
   "tooltips": {
-    "accessRights": "Information that indicates whether the data product is open data, has access restrictions or is not public.",
-    "accessService": "A data service gives access to the distribution of the data product.",
-    "accessURL": "The URL that gives access to a distribution of the data product. The resource at the access URL may contain information about how to get the Dataset. The URL provided must contain the information on the used protocol, i.e. https:// or http://",
-    "accrualPeriodicity": "Frequency at which the data product is updated.",
     "adms:status": "Status of the data product: Is it work in progress, finished etc.",
-    "applicableLegislation": "This property refers to the legal basis of the data product.",
-    "archivalValue": "Does the data product have ongoing usefulness or significance, based on the administrative, legal, fiscal, evidential, or historical information they contain, which justifies their continued preservation.",
     "bv:abrogation": "What is the abrogation date?",
     "bv:archivalValue": "Does the data product have ongoing usefulness or significance, based on the administrative, legal, fiscal, evidential, or historical information they contain, which justifies their continued preservation.",
     "bv:classification": "What is the data products' information security classification?",
@@ -157,10 +151,6 @@
     "bv:personalData": "Does your data product contain personal data?",
     "bv:retentionPeriod": "How long does your data product need to be retained?",
     "bv:typeOfData": "What type best describes your data product?",
-    "classification": "What is the data products' information security classification?",
-    "comment": "Is the other relevant information to this data product?",
-    "conformsTo": "Does your data product conform to specific standards and/or specifications?",
-    "contactPoint": "Who should be contacted if the data user has questions or comments concerning the data products content. Please refer to an organizations contact information.",
     "dcat:accessService": "A data service gives access to the distribution of the data product.",
     "dcat:accessURL": "The URL that gives access to a distribution of the data product. The resource at the access URL may contain information about how to get the Dataset. The URL provided must contain the information on the used protocol, i.e. https:// or http://",
     "dcat:contactPoint": "Who should be contacted if the data user has questions or comments concerning the data products content. Please refer to an organizations contact information",
@@ -186,34 +176,12 @@
     "dct:spatial": "What geographic region is covered by the data product?",
     "dct:temporal": "What time period is covered in your data product",
     "dct:title": "Title of your data product",
-    "description": "Please provide a description so that the data user understand what the data product contains, who is a potential user, and what the data product is used for.",
-    "downloadURL": "Where can your data product be accessed?",
-    "externalCatalogs": "Shall the data product be published on other plattforms such as i14y and or opendata.swiss?",
     "foaf:page": "What other data products are linked to this one?",
-    "format": "What file format does this distribution have.",
-    "geoIdentifier": "What is the corresponding geoidentifier according to Geoinformationsverordnung, Appendix 1.",
-    "image": "If a picture shall be displayed, please add the URL",
-    "inSeries": "Is your data product part of a dataset series? Which one?",
-    "issued": "When was the data product originally issued?",
-    "keyword": "What keywords are helpful to find your dataproduct? It is easier to find your data product if you provide several keywords that are shared with your collegues data products. If you have a proposition of a keyword that should be added to the list, please contact kompetenzzentrumdigitaletransformation@blw.admin.ch",
-    "landingPage": "Where can a data user find additional context to your data product or the responsible organization?",
-    "license": "Under what license can the data product be used?",
-    "modified": "When was the data product originally issued?",
-    "page": "What other data products are linked to this one?",
-    "personalData": "Does your data product contain personal data?",
     "prov:qualifiedAttribution": "Who has which role for this data product?",
     "prov:wasDerivedFrom": "What other data product whas this data product derived from?",
     "prov:wasGeneratedBy": "What business process has generated this data product?",
     "qualitifedAttribution": "Who has which role for this data product?",
-    "replaces": "Which  data product is replaced?",
-    "schema:comment": "Is the other relevant information to this data product?",
-    "spatial": "What geographic region is covered by the data product?",
-    "status": "Status of the data product: Is it work in progress, finished etc.",
-    "temporal": "What time period is covered in your data product",
-    "theme": "Theme used to classify the catalogue's data products.",
-    "title": "Title of your data product",
-    "typeOfData": "What type best describes your data product?",
-    "version": "What version is this? Please use semantic versioning in the form of X.Y.Z where increases of X indicate major changes, Y minor changes and Z simple corrections such as typos."
+    "schema:comment": "Is the other relevant information to this data product?"
   },
   "labels": {
     "accessRights": "Access rights",
@@ -363,7 +331,11 @@
           "unsavedChanges": "You have unsaved changes. Are you sure you want to leave? All changes will be lost."
         },
         "help": {
-          "multilingualRequired": "At least German and French are required"
+          "externalCatalogs": "Select external catalogs where this dataset should be published",
+          "relationships": "Enter dataset IDs separated by commas for related datasets",
+          "accessUrl": "URL where the distribution can be accessed",
+          "downloadUrl": "Direct download URL for the distribution file",
+          "distributionsRequired": "At least one distribution is required"
         },
         "retrySchemaLoad": "Retry Loading Schemas",
         "loadingSchemas": "Loading validation schemas...",
@@ -419,13 +391,6 @@
         "noKeywords": "No keywords added yet",
         "hints": {
           "keywordKey": "Unique identifier for the keyword (lowercase, no spaces)"
-        },
-        "help": {
-          "externalCatalogs": "Select external catalogs where this dataset should be published",
-          "relationships": "Enter dataset IDs separated by commas for related datasets",
-          "accessUrl": "URL where the distribution can be accessed",
-          "downloadUrl": "Direct download URL for the distribution file",
-          "distributionsRequired": "At least one distribution is required"
         },
         "contactName": "Name of contact point (organization)",
         "contactEmail": "Email address of contact point (organization)",

@@ -84,7 +84,7 @@
 						@for (meta of metadata$ | async; track $index) {
 							<tr>
 								<td>
-									<div style="display: flex; align-items: center; gap: 8px;">
+									<div style="display: flex; align-items: center; gap: 8px">
 										@if (hasTooltip(meta.label)) {
 											<button
 												type="button"
@@ -92,15 +92,12 @@
 												[obPopover]="popoverTemplate"
 												placement="top"
 												[appendToBody]="true"
-												style="padding: 0; background: none; border: none; cursor: pointer; display: inline-flex; align-items: center;">
-												<mat-icon svgIcon="info_circle" style="width: 18px; height: 18px; font-size: 18px;"></mat-icon>
+												style="padding: 0; background: none; border: none; cursor: pointer; display: inline-flex; align-items: center"
+											>
+												<mat-icon svgIcon="info_circle" style="width: 18px; height: 18px; font-size: 18px"></mat-icon>
 											</button>
 											<ng-template #popoverTemplate>
-												<div
-													[innerHTML]="getTooltipHtml(meta.label)"
-													appPopoverLinks
-													style="max-width: 400px">
-												</div>
+												<div [innerHTML]="getTooltipHtml(meta.label)" appPopoverLinks style="max-width: 400px"></div>
 											</ng-template>
 										}
 										<span>{{ "labels." + meta.label | translate }}</span>

@@ -42,6 +42,7 @@ import {ValidationGroup} from './components/validation-alert/validation-alert.co
 import {environment} from '../../environments/environment';
 import {MatIconModule} from '@angular/material/icon';
 import {FormCacheService} from '../services/form-cache.service';
+import {FormFieldTooltipComponent} from './form/components/form-field-tooltip/form-field-tooltip.component';
 
 @Component({
 	selector: 'modify',
@@ -70,7 +71,8 @@ import {FormCacheService} from '../services/form-cache.service';
 		AffiliatedPersonsFieldComponent,
 		DistributionFieldComponent,
 		ValidationAlertComponent,
-		MatIconModule
+		MatIconModule,
+		FormFieldTooltipComponent
 	],
 	templateUrl: './modify.component.html',
 	styleUrl: './modify.component.scss'

@@ -2,6 +2,7 @@
 	<label class="field-label" *ngIf="label && !hideLabel">
 		{{ label | translate }}
 		<span *ngIf="recommended && !required" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
+		<app-form-field-tooltip [fieldName]="fieldName || label.replace('labels.', '')"></app-form-field-tooltip>
 	</label>
 
 	<mat-tab-group>

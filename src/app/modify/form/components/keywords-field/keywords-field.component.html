@@ -4,6 +4,7 @@
 			{{ label | translate }}
 			<span *ngIf="required" class="ob-text-error">*</span>
 			<span *ngIf="!required && recommended" class="ob-text-warning">({{ "labels.recommended" | translate }})</span>
+			<app-form-field-tooltip [fieldName]="fieldName || label.replace('labels.', '')"></app-form-field-tooltip>
 		</label>
 		<button mat-button obButton="secondary" size="sm" (click)="addKeyword()" type="button" class="ob-mt-2">
 			<mat-icon svgIcon="plus" class="ob-mr-1"></mat-icon>
