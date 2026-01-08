@@ -12,6 +12,7 @@ import {DistributionFieldComponent} from '../../modify/form/components/distribut
 			[label]="props['label'] || ''"
 			[required]="props['required'] || false"
 			[recommended]="props['recommended'] || false"
+			[fieldName]="key?.toString() || ''"
 		></app-distribution-field>
 	`
 })

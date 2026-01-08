@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {ObButtonDirective} from '@oblique/oblique';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
+import {FieldDebugOverlayComponent} from '../field-debug-overlay/field-debug-overlay.component';
 
 export interface AffiliatedPerson {
 	'prov:agent': string;
@@ -31,7 +32,8 @@ export interface AffiliatedPerson {
 		MatButtonModule,
 		MatIconModule,
 		ObButtonDirective,
-		FormFieldTooltipComponent
+		FormFieldTooltipComponent,
+		FieldDebugOverlayComponent
 	],
 	providers: [
 		{

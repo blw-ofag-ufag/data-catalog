@@ -18,6 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
+import {FieldDebugOverlayComponent} from '../field-debug-overlay/field-debug-overlay.component';
 
 export interface MultilingualText {
 	de: string;
@@ -29,7 +30,7 @@ export interface MultilingualText {
 @Component({
 	selector: 'app-multilingual-text-field',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatInputModule, MatTabsModule, FormFieldTooltipComponent],
+	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatInputModule, MatTabsModule, FormFieldTooltipComponent, FieldDebugOverlayComponent],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,

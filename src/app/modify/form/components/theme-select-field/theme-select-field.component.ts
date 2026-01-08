@@ -7,11 +7,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {I14YTheme, I14YThemeService} from '../../../../services/api/i14y-theme.service';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
+import {FieldDebugOverlayComponent} from '../field-debug-overlay/field-debug-overlay.component';
 
 @Component({
 	selector: 'app-theme-select-field',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatSelectModule, FormFieldTooltipComponent],
+	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatSelectModule, FormFieldTooltipComponent, FieldDebugOverlayComponent],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
@@ -20,7 +21,8 @@ import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-toolti
 		}
 	],
 	template: `
-		<div class="theme-select-field field-with-tooltip">
+		<div class="theme-select-field field-with-tooltip" style="position: relative;">
+			<app-field-debug-overlay [label]="label" [fieldName]="fieldName || ''"></app-field-debug-overlay>
 			<mat-form-field class="w-100">
 				<mat-label>
 					{{ label | translate }}

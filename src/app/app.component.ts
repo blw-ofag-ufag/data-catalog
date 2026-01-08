@@ -5,6 +5,7 @@ import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ObINavigationLink} from '@oblique/oblique';
 import {VersionService} from './services/version.service';
+import {DebugService} from './services/debug.service';
 
 @Component({
 	selector: 'root',
@@ -24,10 +25,14 @@ export class AppComponent implements OnDestroy, AfterViewInit {
 		private readonly activatedRoute: ActivatedRoute,
 		private readonly translate: TranslateService,
 		private readonly router: Router,
-		private readonly versionService: VersionService
+		private readonly versionService: VersionService,
+		private readonly debugService: DebugService
 	) {
 		this.version$ = this.versionService.getVersion();
 		this.updateNavigation();
+
+		// Expose toggleDebug() to window for developer use
+		(window as any).toggleDebug = () => this.debugService.toggleDebug();
 
 		activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
 			const langFromUrl = params['lang'] || 'en';

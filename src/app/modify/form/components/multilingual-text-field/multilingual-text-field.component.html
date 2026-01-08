@@ -1,4 +1,5 @@
-<div class="multilingual-field">
+<div class="multilingual-field" style="position: relative;">
+	<app-field-debug-overlay [label]="label" [fieldName]="fieldName || ''"></app-field-debug-overlay>
 	<label class="field-label" *ngIf="label && !hideLabel">
 		{{ label | translate }}
 		<span *ngIf="recommended && !required" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>

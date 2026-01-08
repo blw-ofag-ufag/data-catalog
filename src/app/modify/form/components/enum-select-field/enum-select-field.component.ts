@@ -5,11 +5,12 @@ import {TranslatePipe} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
+import {FieldDebugOverlayComponent} from '../field-debug-overlay/field-debug-overlay.component';
 
 @Component({
 	selector: 'app-enum-select-field',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatSelectModule, FormFieldTooltipComponent],
+	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatSelectModule, FormFieldTooltipComponent, FieldDebugOverlayComponent],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,

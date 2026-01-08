@@ -13,6 +13,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {ObButtonDirective} from '@oblique/oblique';
 import {MultilingualTextFieldComponent} from '../multilingual-text-field/multilingual-text-field.component';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
+import {FieldDebugOverlayComponent} from '../field-debug-overlay/field-debug-overlay.component';
 
 export interface MultilingualText {
 	de: string;
@@ -52,7 +53,8 @@ export interface Distribution {
 		MatNativeDateModule,
 		ObButtonDirective,
 		MultilingualTextFieldComponent,
-		FormFieldTooltipComponent
+		FormFieldTooltipComponent,
+		FieldDebugOverlayComponent
 	],
 	providers: [
 		{
