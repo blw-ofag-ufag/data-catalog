@@ -12,6 +12,7 @@ import {AffiliatedPersonsFieldComponent} from '../../modify/form/components/affi
 			[label]="props['label'] || ''"
 			[required]="props['required'] || false"
 			[recommended]="props['recommended'] || false"
+			[fieldName]="key?.toString() || ''"
 		></app-affiliated-persons-field>
 	`
 })

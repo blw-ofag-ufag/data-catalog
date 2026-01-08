@@ -18,6 +18,7 @@ import {MultilingualTextFieldComponent} from '../../modify/form/components/multi
 			[minLength]="props['minLength']"
 			[maxLength]="props['maxLength']"
 			[textarea]="props['textarea'] || false"
+			[fieldName]="key?.toString() || ''"
 		></app-multilingual-text-field>
 	`
 })

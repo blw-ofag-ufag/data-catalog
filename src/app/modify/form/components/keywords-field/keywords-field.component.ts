@@ -9,6 +9,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {ObButtonDirective} from '@oblique/oblique';
 import {MultilingualTextFieldComponent} from '../multilingual-text-field/multilingual-text-field.component';
+import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
+import {FieldDebugOverlayComponent} from '../field-debug-overlay/field-debug-overlay.component';
 
 export interface MultilingualKeyword {
 	de?: string;
@@ -31,7 +33,9 @@ export type KeywordsData = string[] | {[key: string]: MultilingualKeyword} | nul
 		MatButtonModule,
 		MatIconModule,
 		ObButtonDirective,
-		MultilingualTextFieldComponent
+		MultilingualTextFieldComponent,
+		FormFieldTooltipComponent,
+		FieldDebugOverlayComponent
 	],
 	providers: [
 		{
@@ -48,6 +52,7 @@ export class KeywordsFieldComponent implements ControlValueAccessor, OnDestroy {
 	@Input() placeholder = '';
 	@Input() required = false;
 	@Input() recommended = false;
+	@Input() fieldName?: string;
 
 	keywordsArray: FormArray;
 	private readonly destroy$ = new Subject<void>();

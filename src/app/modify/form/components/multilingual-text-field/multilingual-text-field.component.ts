@@ -17,6 +17,9 @@ import {TranslatePipe} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
+import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
+import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from '../field-debug-overlay/field-debug-overlay.component';
+import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
 
 export interface MultilingualText {
 	de: string;
@@ -28,7 +31,7 @@ export interface MultilingualText {
 @Component({
 	selector: 'app-multilingual-text-field',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatInputModule, MatTabsModule],
+	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatInputModule, MatTabsModule, FormFieldTooltipComponent, FieldDebugOverlayComponent],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
@@ -56,6 +59,7 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, Val
 	@Input() minLength?: number;
 	@Input() hideLabel = false;
 	@Input() hideHelp = false;
+	@Input() fieldName?: string;
 
 	formGroup: FormGroup;
 	private readonly destroy$ = new Subject<void>();
@@ -70,7 +74,7 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, Val
 		{code: 'en', label: 'English'}
 	];
 
-	constructor() {
+	constructor(private readonly validationSchemaService: ValidationSchemaService) {
 		this.formGroup = new FormGroup({
 			de: new FormControl(''),
 			fr: new FormControl(''),
@@ -82,6 +86,45 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, Val
 		this.formGroup.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
 			this.onChange(value);
 		});
+	}
+
+	getValidationDebugInfo(): FieldValidationDebugInfo {
+		// Get schema-based validation info using the field name
+		const schemaFieldKey = this.fieldName || this.label.replace('labels.', '');
+		const schemaInfo = this.validationSchemaService.getFieldDebugInfo(schemaFieldKey);
+
+		// Add component-level validation messages
+		const componentMessages: {text: string; source: 'hardcoded'}[] = [];
+
+		if (this.requiredLanguages.length > 0) {
+			componentMessages.push({
+				text: `Required languages: ${this.requiredLanguages.join(', ').toUpperCase()}`,
+				source: 'hardcoded'
+			});
+		}
+		if (this.pattern) {
+			componentMessages.push({
+				text: `Pattern validation: ${this.pattern}`,
+				source: 'hardcoded'
+			});
+		}
+		if (this.minLength) {
+			componentMessages.push({
+				text: `Min length: ${this.minLength}`,
+				source: 'hardcoded'
+			});
+		}
+		if (this.maxLength) {
+			componentMessages.push({
+				text: `Max length: ${this.maxLength}`,
+				source: 'hardcoded'
+			});
+		}
+
+		return {
+			...schemaInfo,
+			componentMessages: componentMessages.length > 0 ? componentMessages : undefined
+		};
 	}
 
 	ngOnInit(): void {

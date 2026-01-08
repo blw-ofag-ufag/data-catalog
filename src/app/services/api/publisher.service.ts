@@ -11,9 +11,9 @@ export class PublisherService {
 	constructor() {
 		this.publishers = (publisherData as any).default as Publisher[];
 		for (const publisher of this.publishers) {
-			publisher.getProcessedUrl = () => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.branch}/data/processed/datasets.json`;
-			publisher.getKeywordUrl = () => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.branch}/data/processed/keywords.json`;
-			publisher.getDetailUrl = id => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.branch}/data/raw/datasets/${id}.json`;
+			publisher.getProcessedUrl = () => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.readBranch}/data/processed/datasets.json`;
+			publisher.getKeywordUrl = () => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.readBranch}/data/processed/keywords.json`;
+			publisher.getDetailUrl = id => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.readBranch}/data/raw/datasets/${id}.json`;
 		}
 	}
 

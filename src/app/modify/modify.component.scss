@@ -274,3 +274,22 @@ validation-alert {
 .mat-step-icon-content {
 	white-space: nowrap;
 }
+
+// Field with tooltip layout
+.field-with-tooltip {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	width: 100%;
+
+	mat-form-field {
+		flex: 1;
+	}
+
+	app-form-field-tooltip {
+		display: flex;
+		align-items: center;
+		height: 56px;
+		padding-top: 4px;
+	}
+}

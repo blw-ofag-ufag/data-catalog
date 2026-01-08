@@ -42,6 +42,8 @@ import {ValidationGroup} from './components/validation-alert/validation-alert.co
 import {environment} from '../../environments/environment';
 import {MatIconModule} from '@angular/material/icon';
 import {FormCacheService} from '../services/form-cache.service';
+import {FormFieldTooltipComponent} from './form/components/form-field-tooltip/form-field-tooltip.component';
+import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from './form/components/field-debug-overlay/field-debug-overlay.component';
 
 @Component({
 	selector: 'modify',
@@ -70,7 +72,9 @@ import {FormCacheService} from '../services/form-cache.service';
 		AffiliatedPersonsFieldComponent,
 		DistributionFieldComponent,
 		ValidationAlertComponent,
-		MatIconModule
+		MatIconModule,
+		FormFieldTooltipComponent,
+		FieldDebugOverlayComponent
 	],
 	templateUrl: './modify.component.html',
 	styleUrl: './modify.component.scss'
@@ -705,8 +709,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 						if (controlErrors['message']) {
 							// Handle fields that provide a custom message
 							errors.push(controlErrors['message']);
-						} else if (controlErrors['businessDataOwnerCount']) {
-							errors.push(controlErrors['businessDataOwnerCount'].message);
+						} else if (controlErrors['dataOwnerCount']) {
+							errors.push(controlErrors['dataOwnerCount'].message);
 						} else if (controlErrors['dataStewardCount']) {
 							errors.push(controlErrors['dataStewardCount'].message);
 						} else {
@@ -816,8 +820,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 						if (errors['message']) {
 							// Handle fields that provide a custom message
 							this.invalidFields.push(errors['message']);
-						} else if (errors['businessDataOwnerCount']) {
-							this.invalidFields.push(errors['businessDataOwnerCount'].message);
+						} else if (errors['dataOwnerCount']) {
+							this.invalidFields.push(errors['dataOwnerCount'].message);
 						} else if (errors['dataStewardCount']) {
 							this.invalidFields.push(errors['dataStewardCount'].message);
 						} else {
@@ -853,10 +857,6 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	getSelectedRepositoryDisplay(): string {
-		// In debug mode, show debug info
-		if (environment.debugMode) {
-			return `${environment.mockRepository} (🛠️ Debug Mode)`;
-		}
 
 		const selectedRepo = this.repositoryCredentialsService.getSelectedRepository();
 		if (selectedRepo) {
@@ -933,6 +933,10 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 		const fieldMetadata = metadata.fields.get(fieldKey);
 		return fieldMetadata?.recommended === true;
+	}
+
+	getFieldValidationDebugInfo(fieldKey: string): FieldValidationDebugInfo {
+		return this.validationSchemaService.getFieldDebugInfo(fieldKey);
 	}
 
 	getSteps(): Observable<any[]> {

@@ -13,6 +13,7 @@ import {ThemeSelectFieldComponent} from '../../modify/form/components/theme-sele
 			[placeholder]="props['placeholder'] || ''"
 			[required]="props['required'] || false"
 			[recommended]="props['recommended'] || false"
+			[fieldName]="key?.toString() || ''"
 		></app-theme-select-field>
 	`
 })

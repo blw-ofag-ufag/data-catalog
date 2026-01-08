@@ -28,7 +28,7 @@ export class MultiDatasetService {
 		this.indexUrls = publisherService.getPublishers().map(publisher => publisher.getProcessedUrl());
 		this.keywordsUrls = publisherService.getPublishers().map(publisher => publisher.getKeywordUrl());
 		this.detailUrls = publisherService.getPublishers().reduce((acc: {[publisherId: string]: (id: string) => string}, publisher) => {
-			acc[publisher.id] = publisher.getDetailUrl;
+			acc[publisher.id] = (id: string) => publisher.getDetailUrl(id);
 			return acc;
 		}, {});
 	}

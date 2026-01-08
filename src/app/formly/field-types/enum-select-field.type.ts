@@ -15,6 +15,7 @@ import {EnumSelectFieldComponent} from '../../modify/form/components/enum-select
 			[recommended]="props['recommended'] || false"
 			[translationPath]="props['translationPath']"
 			[multiple]="props['multiple'] || false"
+			[fieldName]="key?.toString() || ''"
 		></app-enum-select-field>
 	`
 })

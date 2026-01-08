@@ -6,6 +6,7 @@ import {ValidationSchemaFetcherService, SchemaConfig} from './validation-schema-
 import {BehaviorSubject, Observable, forkJoin, of} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import * as schemaConfigs from '../../codegen/schemas.json';
+import {FieldValidationDebugInfo, SchemaValidationInfo, ValidationMessage} from '../../modify/form/components/field-debug-overlay/field-debug-overlay.component';
 
 export type ValidationSchemaType = 'base' | 'i14y' | 'ods';
 
@@ -93,6 +94,72 @@ export class ValidationSchemaService {
 			const fieldValidation = this.getFieldValidation(schemaType, fieldKey);
 			return fieldValidation?.required || false;
 		});
+	}
+
+	/**
+	 * Get debug information for a field (used by FieldDebugOverlayComponent)
+	 */
+	getFieldDebugInfo(fieldKey: string): FieldValidationDebugInfo {
+		const bySchema: SchemaValidationInfo[] = [];
+
+		const schemaTypes: ValidationSchemaType[] = ['base', 'i14y', 'ods'];
+		for (const schemaType of schemaTypes) {
+			const schema = this.schemas.get(schemaType);
+			if (!schema) continue;
+
+			const fieldValidation = schema.fields[fieldKey];
+			const messages: ValidationMessage[] = [];
+
+			if (fieldValidation) {
+				// Add required message if field is required
+				if (fieldValidation.required) {
+					messages.push({
+						text: 'Field is required',
+						source: 'schema'
+					});
+				}
+
+				// Add pattern message if pattern exists
+				if (fieldValidation.pattern) {
+					messages.push({
+						text: `Pattern: ${fieldValidation.pattern}`,
+						source: 'schema'
+					});
+				}
+
+				// Add minLength message if minLength exists
+				if (fieldValidation.minLength) {
+					messages.push({
+						text: `Min length: ${fieldValidation.minLength}`,
+						source: 'schema'
+					});
+				}
+
+				// Add maxLength message if maxLength exists
+				if (fieldValidation.maxLength) {
+					messages.push({
+						text: `Max length: ${fieldValidation.maxLength}`,
+						source: 'schema'
+					});
+				}
+
+				// Add custom message if exists
+				if (fieldValidation.customMessage) {
+					messages.push({
+						text: fieldValidation.customMessage,
+						source: 'schema'
+					});
+				}
+			}
+
+			bySchema.push({
+				schema: schemaType,
+				required: fieldValidation?.required || false,
+				messages
+			});
+		}
+
+		return {bySchema};
 	}
 
 	/**

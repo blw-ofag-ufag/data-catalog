@@ -93,7 +93,7 @@ export type Email = string;
 /**
  * Role this person has for this dataset.
  */
-export type Role = 'businessDataOwner' | 'dataSteward' | 'dataCustodian';
+export type Role = 'dataOwner' | 'dataSteward' | 'dataCustodian';
 /**
  * Current status of the dataset.
  */

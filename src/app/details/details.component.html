@@ -84,9 +84,24 @@
 						@for (meta of metadata$ | async; track $index) {
 							<tr>
 								<td>
-									<span [matTooltip]="'tooltips.' + meta.label | translate">
-										{{ "labels." + meta.label | translate }}
-									</span>
+									<div style="display: flex; align-items: center; gap: 8px">
+										@if (hasTooltip(meta.label)) {
+											<button
+												type="button"
+												class="ob-button-icon"
+												[obPopover]="popoverTemplate"
+												placement="top"
+												[appendToBody]="true"
+												style="padding: 0; background: none; border: none; cursor: pointer; display: inline-flex; align-items: center"
+											>
+												<mat-icon svgIcon="info_circle" style="width: 18px; height: 18px; font-size: 18px"></mat-icon>
+											</button>
+											<ng-template #popoverTemplate>
+												<div [innerHTML]="getTooltipHtml(meta.label)" appPopoverLinks style="max-width: 400px"></div>
+											</ng-template>
+										}
+										<span>{{ "labels." + meta.label | translate }}</span>
+									</div>
 								</td>
 								<td>
 									@if (enumTypes.includes(meta.label) && meta.label !== "dcat:keyword" && !enumArrayFields.includes(meta.label)) {
