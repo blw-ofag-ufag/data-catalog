@@ -142,6 +142,8 @@
   },
   "tooltips": {
     "adms:status": "Statut du produit de données : en cours de traitement, terminé, etc.",
+    "applicableLegislation": "Cette propriété se rapporte à la base juridique du produit de données.",
+    "archivalValue": "Le produit de données a-t-il une utilité ou une importance durable qui justifie sa conservation en raison des informations administratives, juridiques, fiscales, probantes ou historiques qu'il contient ?",
     "bv:abrogation": "Quelle est la date d'abrogation ?",
     "bv:archivalValue": "Le produit de données présente-t-il, en raison des informations administratives, juridiques, fiscales, probantes ou historiques qu'il contient, une utilité ou une importance durable qui justifie sa conservation ?",
     "bv:classification": "Quelle est la classification de sécurité des informations du produit de données ?",
@@ -180,8 +182,17 @@
     "prov:qualifiedAttribution": "Qui joue quel rôle dans ce produit de données ?",
     "prov:wasDerivedFrom": "De quel autre produit de données ce produit de données est-il dérivé ?",
     "prov:wasGeneratedBy": "Par quel processus métier ce produit de données a-t-il été généré ?",
-    "schema:comment": "Votre produit de données est-il conforme à certaines normes et/ou spécifications ?"
-  },
+    "qualifiedAttribution": "Qui joue quel rôle dans ce produit de données ?",
+    "replaces": "Quel produit de données est remplacé ?",
+    "schema:comment": "Votre produit de données est-il conforme à certaines normes et/ou spécifications ?",
+    "spatial": "Quelle zone géographique couvre le produit de données ?",
+    "status": "Statut du produit de données : en cours de traitement, terminé, etc.",
+    "temporal": "Quelle période votre produit de données couvre-t-il ?",
+    "theme": "Thème utilisé pour classer les produits de données dans le catalogue.",
+    "title": "Titre de votre produit de données",
+    "typeOfData": "Quel type décrit le mieux votre produit de données ?",
+    "version": "De quelle version s'agit-il ? Veuillez utiliser des numéros de version sémantiques sous la forme X.Y.Z, où une augmentation de X indique des modifications importantes, Y des modifications mineures et Z des corrections simples telles que des fautes de frappe."
+},
   "labels": {
     "adms:status": "Statut",
     "bv:abrogation": "Date d'abrogation",
