@@ -43,7 +43,7 @@ export class KeywordService {
 				})
 				.catch(error => {
 					console.error(`Error fetching keywords from ${url}:`, error);
-					return {'dcat:keyword': {}};
+					return {};
 				})
 		);
 
@@ -52,8 +52,7 @@ export class KeywordService {
 				.then(results => {
 					const allKeywords = new Map<string, Keyword>();
 
-					results.forEach(entry => {
-						const keywords = entry['dcat:keyword'];
+					results.forEach(keywords => {
 						if (!keywords || typeof keywords !== 'object' || Array.isArray(keywords)) {
 							return;
 						}

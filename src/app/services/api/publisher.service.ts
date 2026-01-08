@@ -12,7 +12,7 @@ export class PublisherService {
 		this.publishers = (publisherData as any).default as Publisher[];
 		for (const publisher of this.publishers) {
 			publisher.getProcessedUrl = () => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.readBranch}/data/processed/datasets.json`;
-			publisher.getKeywordUrl = () => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.readBranch}/data/processed/keywords.json`;
+			publisher.getKeywordUrl = () => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.readBranch}/data/schemas/keywords.json`;
 			publisher.getDetailUrl = id => `https://raw.githubusercontent.com/${publisher.githubRepo}/refs/heads/${publisher.readBranch}/data/raw/datasets/${id}.json`;
 		}
 	}
