@@ -1,8 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {MatChip} from '@angular/material/chips';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import {RouterLink} from '@angular/router';
 import {DatasetSchema} from '../../models/schemas/dataset';
 import {DatasetService} from '../../services/api/api.service';
+import {KeywordService} from '../../services/api/keyword.service';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -13,11 +14,10 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class KeywordsComponent {
 	@Input() dataset: DatasetSchema | null = null;
-	@Input() keywords: string[] | { [key: string]: any } | null = null; // Support both formats
 
 	constructor(
-		private readonly route: ActivatedRoute,
 		private readonly datasetService: DatasetService,
+		private readonly keywordService: KeywordService,
 		private readonly translate: TranslateService
 	) {}
 
@@ -25,20 +25,15 @@ export class KeywordsComponent {
 	 * Get localized keywords for display
 	 */
 	getLocalizedKeywords(): string[] {
-		// Use new dataset input if available
 		if (this.dataset) {
 			return this.datasetService.getLocalizedKeywords(this.dataset);
-		}
-		// Fall back to legacy keywords input
-		if (Array.isArray(this.keywords)) {
-			return this.keywords;
 		}
 		return [];
 	}
 
 	/**
 	 * Get keyword key for filtering
-	 * When keywords are multilingual, we need to find the key from the value
+	 * Since keywords are stored as codes, we need to find the code from the display value
 	 */
 	getKeywordKey(displayValue: string): string {
 		if (!this.dataset || !this.dataset['dcat:keyword']) {
@@ -46,28 +41,23 @@ export class KeywordsComponent {
 		}
 
 		const keywords = this.dataset['dcat:keyword'];
-
-		// If it's the legacy format, return the value as-is
-		if (Array.isArray(keywords)) {
+		if (!Array.isArray(keywords)) {
 			return displayValue;
 		}
 
-		// For multilingual format, find the key that has this display value
+		// Find the keyword code that matches this display value
 		const currentLang = this.translate.currentLang || 'en';
-		for (const [key, translations] of Object.entries(keywords)) {
-			// Check if any translation matches the display value
-			if (Object.values(translations).includes(displayValue)) {
-				return key;
-			}
-			// Also check if the localized value for current language matches
-			const localizedValue = translations[currentLang as keyof typeof translations] ||
-				translations['en'] ||
-				translations['de'] ||
-				translations['fr'] ||
-				translations['it'] ||
-				key;
-			if (localizedValue === displayValue) {
-				return key;
+		for (const code of keywords) {
+			const labels = this.keywordService.getKeywordLabels(code);
+			if (labels) {
+				const label =
+					labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || code;
+				if (label === displayValue) {
+					return code;
+				}
+			} else if (code === displayValue) {
+				// No translation found, the display value is the code itself
+				return code;
 			}
 		}
 

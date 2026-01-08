@@ -108,7 +108,7 @@
 										<enum [label]="meta.label" [data]="meta.data"></enum>
 									}
 									@if (meta.label === "dcat:keyword") {
-										<keywords [dataset]="dataset" [keywords]="dataset['dcat:keyword'] || []"></keywords>
+										<keywords [dataset]="dataset"></keywords>
 									}
 									@if (
 										(!enumTypes.includes(meta.label) && meta.label !== "dcat:keyword") ||

@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, map} from 'rxjs';
 import {DatasetSchema} from '../../models/schemas/dataset';
 import {PublisherService} from './publisher.service';
+import {KeywordService} from './keyword.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -9,24 +10,29 @@ import {PublisherService} from './publisher.service';
 export class MultiDatasetService {
 	datasets$: Observable<DatasetSchema[]>;
 	selectedDataset$: Observable<DatasetSchema | null>;
+	/**
+	 * @deprecated Use KeywordService.keywords$ instead for full keyword objects with translations.
+	 * This observable only provides keyword codes for backward compatibility.
+	 */
 	keywords$: Observable<string[]>;
 	loading$: Observable<boolean>;
 	private readonly _datasetsSubject = new BehaviorSubject<DatasetSchema[]>([]);
-	private readonly _keywordsSubject = new BehaviorSubject<string[]>([]);
 	private readonly _selectedDatasetSubject = new BehaviorSubject<DatasetSchema | null>(null);
 	private readonly _loadingSubject = new BehaviorSubject<boolean>(false);
 	private readonly indexUrls: string[] = [];
-	private readonly keywordsUrls: string[] = [];
 	private readonly detailUrls: {[publisherId: string]: (datasetId: string) => string} = {};
 	private indexLoaded = false;
 
-	constructor(private readonly publisherService: PublisherService) {
+	constructor(
+		private readonly publisherService: PublisherService,
+		private readonly keywordService: KeywordService
+	) {
 		this.datasets$ = this._datasetsSubject.asObservable();
 		this.selectedDataset$ = this._selectedDatasetSubject.asObservable();
-		this.keywords$ = this._keywordsSubject.asObservable();
+		// Delegate keywords$ to KeywordService, mapping to just codes for backward compatibility
+		this.keywords$ = this.keywordService.keywords$.pipe(map(keywords => keywords.map(k => k.code)));
 		this.loading$ = this._loadingSubject.asObservable();
 		this.indexUrls = publisherService.getPublishers().map(publisher => publisher.getProcessedUrl());
-		this.keywordsUrls = publisherService.getPublishers().map(publisher => publisher.getKeywordUrl());
 		this.detailUrls = publisherService.getPublishers().reduce((acc: {[publisherId: string]: (id: string) => string}, publisher) => {
 			acc[publisher.id] = (id: string) => publisher.getDetailUrl(id);
 			return acc;
@@ -77,43 +83,8 @@ export class MultiDatasetService {
 				this._datasetsSubject.next([]);
 			});
 
-		const fetchKeywordsPromises = this.keywordsUrls.map(url =>
-			fetch(url)
-				.then(response => {
-					if (!response.ok) {
-						throw new Error(`Failed to fetch keywords from ${url}`);
-					}
-					return response.json();
-				})
-				.catch(error => {
-					console.error(`Error fetching keywords from ${url}:`, error);
-					return [];
-				})
-		);
-
-		Promise.all(fetchKeywordsPromises)
-			.then(results => {
-				const allKeywords = new Set<string>();
-				results.forEach(entry => {
-					const keywords = entry['dcat:keyword'];
-					if (!keywords) return;
-
-					// Handle legacy string[] format
-					if (Array.isArray(keywords)) {
-						keywords.forEach(kw => allKeywords.add(kw));
-					}
-					// Handle new multilingual format
-					else if (typeof keywords === 'object') {
-						Object.keys(keywords).forEach(key => allKeywords.add(key));
-					}
-				});
-				const combinedKeywords: string[] = Array.from(allKeywords).sort((a, b) => a.localeCompare(b));
-				this._keywordsSubject.next(combinedKeywords);
-			})
-			.catch(error => {
-				console.error('Error fetching keywords from all sources:', error);
-				this._keywordsSubject.next([]);
-			});
+		// Load keywords via KeywordService (which handles fetching and merging from all publishers)
+		this.keywordService.loadKeywords().subscribe();
 	}
 
 	loadDetail(publisher: string, klass: string, id: string) {

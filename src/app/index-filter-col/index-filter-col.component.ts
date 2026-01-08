@@ -22,12 +22,12 @@ import {CommonModule} from '@angular/common';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import {DatasetService} from '../services/api/api.service';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatTooltip} from '@angular/material/tooltip';
 import {MatButton} from '@angular/material/button';
 import {ActivatedRoute} from '@angular/router';
-import {ActiveFilters, createActiveFiltersFromParams} from '../models/ActiveFilters';
-import {MultiDatasetService} from '../services/api/multi-dataset-service.service';
+import {ActiveFilters} from '../models/ActiveFilters';
+import {Keyword, KeywordService} from '../services/api/keyword.service';
 
 @Component({
 	selector: 'index-filter-col',
@@ -69,29 +69,25 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 
 	separatorKeysCodes: number[] = [ENTER, COMMA];
 	keywordControl = new FormControl('');
-	filteredKeywords$: Observable<string[]>;
-	// allKeywords$: Observable<string[]>;
-	keywords: string[] = [];
-	allKeywords: string[] = [];
+	filteredKeywords$: Observable<Keyword[]>;
+	keywords: string[] = []; // Stores keyword codes for filtering
+	allKeywords: Keyword[] = []; // Full keyword objects with translations
 	@Input() activatedFilters$!: BehaviorSubject<ActiveFilters>;
 	activatedFilters: ActiveFilters = {};
 
 	constructor(
-		private readonly keywordService: MultiDatasetService,
+		private readonly keywordService: KeywordService,
 		private readonly filterService: DatasetService,
-		private readonly route: ActivatedRoute
+		private readonly route: ActivatedRoute,
+		private readonly translateService: TranslateService
 	) {
 		this.filteredKeywords$ = this.keywordControl.valueChanges.pipe(
 			startWith(null),
-			map((keyword: string | null) => (keyword ? this.filterKeywords(keyword) : this.allKeywords.slice()))
+			map((searchValue: string | null) => (searchValue ? this.filterKeywords(searchValue) : this.allKeywords.slice()))
 		);
 
-		// Remove the subscription to filteredKeywords$ as it causes issues
-		// The keywords are handled via add/remove/selected methods instead
-
+		// Subscribe to keyword changes from KeywordService
 		this.keywordService.keywords$.pipe(takeUntil(this.destroy$)).subscribe(keywords => (this.allKeywords = keywords));
-
-		// this.activatedFilters$.subscribe(filters => this.activatedFilters = filters);
 	}
 
 	ngOnInit() {
@@ -131,9 +127,13 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 	add(event: MatChipInputEvent): void {
 		const value = (event.value || '').trim();
 
-		// Add our keyword
-		if (value && !this.keywords.includes(value)) {
-			this.keywords.push(value);
+		// Find the keyword code from the input value (which could be a label)
+		const keyword = this.findKeywordByLabelOrCode(value);
+		const code = keyword ? keyword.code : value;
+
+		// Add our keyword code
+		if (code && !this.keywords.includes(code)) {
+			this.keywords.push(code);
 			this.onCategoryChange('dcat:keyword', this.keywords);
 		}
 
@@ -143,8 +143,8 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 		this.keywordControl.setValue(null);
 	}
 
-	remove(keyword: string): void {
-		const index = this.keywords.indexOf(keyword);
+	remove(keywordCode: string): void {
+		const index = this.keywords.indexOf(keywordCode);
 
 		if (index >= 0) {
 			this.keywords.splice(index, 1);
@@ -153,18 +153,54 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 	}
 
 	selected(event: MatAutocompleteSelectedEvent): void {
-		const keyword = event.option.viewValue;
-		if (!this.keywords.includes(keyword)) {
-			this.keywords.push(keyword);
+		// The value is the keyword code (set via [value] in the template)
+		const keywordCode = event.option.value;
+		if (!this.keywords.includes(keywordCode)) {
+			this.keywords.push(keywordCode);
 			this.onCategoryChange('dcat:keyword', this.keywords);
 		}
 		this.keywordControl.setValue(null);
 	}
 
-	private filterKeywords(value: string): string[] {
-		const filterValue = value.toLowerCase();
+	private filterKeywords(searchValue: string): Keyword[] {
+		const filterValue = searchValue.toLowerCase();
 
-		return this.allKeywords.filter(keyword => keyword.toLowerCase().includes(filterValue));
+		return this.allKeywords.filter(keyword => {
+			// Search in code and all translations
+			if (keyword.code.toLowerCase().includes(filterValue)) return true;
+			return Object.values(keyword.labels).some(label => label.toLowerCase().includes(filterValue));
+		});
+	}
+
+	/**
+	 * Get localized label for a keyword code
+	 */
+	getKeywordLabel(code: string): string {
+		const labels = this.keywordService.getKeywordLabels(code);
+		if (labels) {
+			const currentLang = this.translateService.currentLang || 'de';
+			return labels[currentLang as keyof typeof labels] || labels.de || labels.en || code;
+		}
+		return code;
+	}
+
+	/**
+	 * Get localized label for a keyword object
+	 */
+	getKeywordObjectLabel(keyword: Keyword): string {
+		const currentLang = this.translateService.currentLang || 'de';
+		return keyword.labels[currentLang as keyof typeof keyword.labels] || keyword.labels.de || keyword.labels.en || keyword.code;
+	}
+
+	/**
+	 * Find keyword by label or code
+	 */
+	private findKeywordByLabelOrCode(value: string): Keyword | undefined {
+		const lowerValue = value.toLowerCase();
+		return this.allKeywords.find(keyword => {
+			if (keyword.code.toLowerCase() === lowerValue) return true;
+			return Object.values(keyword.labels).some(label => label.toLowerCase() === lowerValue);
+		});
 	}
 
 	onCategoryChange(category: string, selectedOptions: string[]): void {

@@ -12,6 +12,7 @@ import {MatChip, MatChipSet} from '@angular/material/chips';
 import {ContactPoint, DatasetSchema, TemporalCoverage, enumArrayFields, enumTypes} from '../../models/schemas/dataset';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MultiDatasetService} from '../../services/api/multi-dataset-service.service';
+import {KeywordService} from '../../services/api/keyword.service';
 
 // Lokalisierung registrieren
 registerLocaleData(localeDe);
@@ -27,10 +28,14 @@ registerLocaleData(localeIt);
 export class FreeListItemComponent {
 	data: string[] = [];
 	label: string = '';
+	private readonly keywordService: KeywordService;
+	private readonly translateService: TranslateService;
 
 	constructor(private readonly injector: Injector) {
 		this.label = this.injector.get('label', '');
 		this.data = this.injector.get('data', []);
+		this.keywordService = this.injector.get(KeywordService);
+		this.translateService = this.injector.get(TranslateService);
 	}
 
 	getTranslatedValue(item: string): string {
@@ -38,8 +43,13 @@ export class FreeListItemComponent {
 		if (this.label === 'dcat:theme') {
 			return `choices.dataset.dcat:theme.${item}`;
 		}
-		// For keywords, return as-is (no translation needed)
+		// For keywords, translate using KeywordService
 		if (this.label === 'dcat:keyword') {
+			const labels = this.keywordService.getKeywordLabels(item);
+			if (labels) {
+				const currentLang = this.translateService.currentLang || 'en';
+				return labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || item;
+			}
 			return item;
 		}
 		// For other fields, return the value as-is or with appropriate translation key

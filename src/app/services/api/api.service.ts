@@ -9,6 +9,7 @@ import Fuse from 'fuse.js';
 import {MultiDatasetService} from './multi-dataset-service.service';
 import {ActiveFilters} from '../../models/ActiveFilters';
 import {TranslateService} from '@ngx-translate/core';
+import {KeywordService} from './keyword.service';
 
 const fuseOptions = {
 	threshold: 0.4,
@@ -48,7 +49,8 @@ export class DatasetService {
 		private readonly activatedRoute: ActivatedRoute,
 		private readonly multiDatasetService: MultiDatasetService,
 		private readonly router: Router,
-		private readonly translate: TranslateService
+		private readonly translate: TranslateService,
+		private readonly keywordService: KeywordService
 	) {
 		// Initialize sort from URL parameters if available
 		const initialSort = this.getInitialSortFromUrl();
@@ -372,22 +374,15 @@ export class DatasetService {
 	}
 
 	/**
-	 * Get keywords as a normalized array for filtering and display
-	 * Handles both legacy string[] format and new multilingual format
+	 * Get keywords as a normalized array for filtering
+	 * Keywords are stored as string array of codes
 	 */
 	public getKeywordsArray(dataset: DatasetSchema): string[] {
 		const keywords = dataset['dcat:keyword'];
 		if (!keywords) return [];
 
-		// Legacy format: string[]
 		if (Array.isArray(keywords)) {
 			return keywords;
-		}
-
-		// New multilingual format
-		if (typeof keywords === 'object') {
-			// Return the keys for filtering purposes
-			return Object.keys(keywords);
 		}
 
 		return [];
@@ -396,6 +391,7 @@ export class DatasetService {
 	/**
 	 * Get localized keywords for display
 	 * Returns an array of keyword strings in the current language
+	 * Keywords are stored as string array of codes, translations come from KeywordService
 	 */
 	public getLocalizedKeywords(dataset: DatasetSchema, lang?: string): string[] {
 		const keywords = dataset['dcat:keyword'];
@@ -403,25 +399,21 @@ export class DatasetService {
 
 		const currentLang = lang || this.translate.currentLang || 'en';
 
-		// Legacy format: string[]
+		// Keywords should be string[] of codes
 		if (Array.isArray(keywords)) {
-			return keywords;
-		}
-
-		// New multilingual format
-		if (typeof keywords === 'object') {
-			const localizedKeywords: string[] = [];
-			Object.entries(keywords).forEach(([key, translations]) => {
-				// Try current language, then fallbacks
-				const translation = translations[currentLang as keyof typeof translations] ||
-					translations['en'] ||
-					translations['de'] ||
-					translations['fr'] ||
-					translations['it'] ||
-					key; // Fallback to the key itself
-				localizedKeywords.push(translation);
-			});
-			return localizedKeywords.sort();
+			return keywords
+				.map(code => {
+					// Look up translation from KeywordService
+					const labels = this.keywordService.getKeywordLabels(code);
+					if (labels) {
+						return (
+							labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || code
+						);
+					}
+					// Fallback to the code itself if not found in KeywordService
+					return code;
+				})
+				.sort();
 		}
 
 		return [];
@@ -429,34 +421,26 @@ export class DatasetService {
 
 	/**
 	 * Check if dataset keywords match the search term
-	 * Searches across all language translations
+	 * Searches keyword codes and all language translations via KeywordService
 	 */
 	private keywordsMatchSearch(dataset: DatasetSchema, searchTerm: string): boolean {
 		const keywords = dataset['dcat:keyword'];
-		if (!keywords) return false;
+		if (!keywords || !Array.isArray(keywords)) return false;
 
 		const lowerSearchTerm = searchTerm.toLowerCase();
 
-		// Legacy format: string[]
-		if (Array.isArray(keywords)) {
-			return keywords.some(kw => kw.toLowerCase().includes(lowerSearchTerm));
-		}
+		return keywords.some(code => {
+			// Check if code matches
+			if (code.toLowerCase().includes(lowerSearchTerm)) return true;
 
-		// New multilingual format
-		if (typeof keywords === 'object') {
-			// Check keys and all translations
-			return Object.entries(keywords).some(([key, translations]) => {
-				// Check if key matches
-				if (key.toLowerCase().includes(lowerSearchTerm)) return true;
+			// Check all translations via KeywordService
+			const labels = this.keywordService.getKeywordLabels(code);
+			if (labels) {
+				return Object.values(labels).some(translation => translation && translation.toLowerCase().includes(lowerSearchTerm));
+			}
 
-				// Check all translations
-				return Object.values(translations).some(translation =>
-					translation && translation.toLowerCase().includes(lowerSearchTerm)
-				);
-			});
-		}
-
-		return false;
+			return false;
+		});
 	}
 
 	/**
