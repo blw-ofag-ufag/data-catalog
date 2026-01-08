@@ -43,6 +43,7 @@ import {environment} from '../../environments/environment';
 import {MatIconModule} from '@angular/material/icon';
 import {FormCacheService} from '../services/form-cache.service';
 import {FormFieldTooltipComponent} from './form/components/form-field-tooltip/form-field-tooltip.component';
+import {FieldDebugOverlayComponent} from './form/components/field-debug-overlay/field-debug-overlay.component';
 
 @Component({
 	selector: 'modify',
@@ -72,7 +73,8 @@ import {FormFieldTooltipComponent} from './form/components/form-field-tooltip/fo
 		DistributionFieldComponent,
 		ValidationAlertComponent,
 		MatIconModule,
-		FormFieldTooltipComponent
+		FormFieldTooltipComponent,
+		FieldDebugOverlayComponent
 	],
 	templateUrl: './modify.component.html',
 	styleUrl: './modify.component.scss'
