@@ -44,9 +44,8 @@ export class FieldDebugOverlayComponent {
 
 	getEnglishLabel(): string {
 		// Get the English translation for the label
-		// TranslateService.instant uses current language, so we temporarily switch
-		const currentLang = this.translate.currentLang;
-		const translations = this.translate.translations['en'];
+		// Safely access translations object with optional chaining
+		const translations = this.translate.translations?.['en'];
 		if (translations) {
 			// Navigate the translation object using the label key
 			const keys = this.label.split('.');
