@@ -43,6 +43,9 @@ export class FieldDebugOverlayComponent {
 	}
 
 	getEnglishLabel(): string {
+		if (!this.label) {
+			return '';
+		}
 		// Get the English translation for the label
 		// Safely access translations object with optional chaining
 		const translations = this.translate.translations?.['en'];
