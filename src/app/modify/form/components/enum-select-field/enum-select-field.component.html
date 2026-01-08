@@ -1,5 +1,5 @@
 <div class="enum-select-field field-with-tooltip" style="position: relative;">
-	<app-field-debug-overlay [label]="label" [fieldName]="fieldName || ''"></app-field-debug-overlay>
+	<app-field-debug-overlay [label]="label" [fieldName]="fieldName || ''" [required]="required" [validationInfo]="getValidationDebugInfo()"></app-field-debug-overlay>
 	<mat-form-field class="ob-w-full">
 		<mat-label>
 			{{ label | translate }}

@@ -13,7 +13,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {ObButtonDirective} from '@oblique/oblique';
 import {MultilingualTextFieldComponent} from '../multilingual-text-field/multilingual-text-field.component';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
-import {FieldDebugOverlayComponent} from '../field-debug-overlay/field-debug-overlay.component';
+import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from '../field-debug-overlay/field-debug-overlay.component';
+import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
 
 export interface MultilingualText {
 	de: string;
@@ -90,7 +91,8 @@ export class DistributionFieldComponent implements ControlValueAccessor, Validat
 
 	constructor(
 		private readonly fb: FormBuilder,
-		private readonly translateService: TranslateService
+		private readonly translateService: TranslateService,
+		private readonly validationSchemaService: ValidationSchemaService
 	) {
 		this.distributionsArray = this.fb.array([]);
 
@@ -107,6 +109,64 @@ export class DistributionFieldComponent implements ControlValueAccessor, Validat
 		this.translateService.onLangChange.pipe(takeUntil(this.destroy$)).subscribe(() => {
 			this.initializeTranslations();
 		});
+	}
+
+	getValidationDebugInfo(): FieldValidationDebugInfo {
+		const schemaFieldKey = this.fieldName || this.label.replace('labels.', '');
+		const schemaInfo = this.validationSchemaService.getFieldDebugInfo(schemaFieldKey);
+
+		// Add component-level hardcoded validation messages
+		const componentMessages: {text: string; source: 'hardcoded'}[] = [
+			{text: 'Title requires German and French', source: 'hardcoded'},
+			{text: 'Description requires German and French', source: 'hardcoded'}
+		];
+
+		return {
+			...schemaInfo,
+			componentMessages
+		};
+	}
+
+	getSubfieldValidationDebugInfo(subfieldKey: string): FieldValidationDebugInfo {
+		const parentFieldKey = this.fieldName || this.label.replace('labels.', '');
+		const fullFieldKey = `${parentFieldKey}.${subfieldKey}`;
+		const schemaInfo = this.validationSchemaService.getFieldDebugInfo(fullFieldKey);
+
+		// Add component-level validation for subfields
+		const componentMessages: {text: string; source: 'hardcoded'}[] = [];
+
+		// Based on createDistributionGroup validators
+		if (subfieldKey === 'dct:identifier') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'dcat:accessURL') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+			componentMessages.push({text: 'URL pattern validation', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'adms:status') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'dct:format') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'dcat:downloadURL') {
+			componentMessages.push({text: 'URL pattern validation', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'dct:title') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'dct:description') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+
+		return {
+			...schemaInfo,
+			componentMessages: componentMessages.length > 0 ? componentMessages : undefined
+		};
+	}
+
+	isSubfieldRequired(subfieldKey: string): boolean {
+		return ['dct:identifier', 'dcat:accessURL', 'adms:status', 'dct:format', 'dct:title', 'dct:description'].includes(subfieldKey);
 	}
 
 	ngOnDestroy(): void {

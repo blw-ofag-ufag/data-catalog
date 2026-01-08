@@ -7,7 +7,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {I14YTheme, I14YThemeService} from '../../../../services/api/i14y-theme.service';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
-import {FieldDebugOverlayComponent} from '../field-debug-overlay/field-debug-overlay.component';
+import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from '../field-debug-overlay/field-debug-overlay.component';
+import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
 
 @Component({
 	selector: 'app-theme-select-field',
@@ -22,7 +23,7 @@ import {FieldDebugOverlayComponent} from '../field-debug-overlay/field-debug-ove
 	],
 	template: `
 		<div class="theme-select-field field-with-tooltip" style="position: relative;">
-			<app-field-debug-overlay [label]="label" [fieldName]="fieldName || ''"></app-field-debug-overlay>
+			<app-field-debug-overlay [label]="label" [fieldName]="fieldName || ''" [required]="required" [validationInfo]="getValidationDebugInfo()"></app-field-debug-overlay>
 			<mat-form-field class="w-100">
 				<mat-label>
 					{{ label | translate }}
@@ -61,9 +62,26 @@ export class ThemeSelectFieldComponent implements ControlValueAccessor, OnInit, 
 
 	constructor(
 		private readonly i14yThemeService: I14YThemeService,
-		private readonly translateService: TranslateService
+		private readonly translateService: TranslateService,
+		private readonly validationSchemaService: ValidationSchemaService
 	) {
 		this.control = new FormControl([]);
+	}
+
+	getValidationDebugInfo(): FieldValidationDebugInfo {
+		const schemaFieldKey = this.fieldName || this.label.replace('labels.', '');
+		const schemaInfo = this.validationSchemaService.getFieldDebugInfo(schemaFieldKey);
+
+		// Add component-level validation messages
+		const componentMessages: {text: string; source: 'hardcoded'}[] = [];
+		if (this.required) {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+
+		return {
+			...schemaInfo,
+			componentMessages: componentMessages.length > 0 ? componentMessages : undefined
+		};
 	}
 
 	ngOnInit(): void {

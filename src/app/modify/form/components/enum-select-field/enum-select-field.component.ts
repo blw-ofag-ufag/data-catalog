@@ -5,7 +5,8 @@ import {TranslatePipe} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
-import {FieldDebugOverlayComponent} from '../field-debug-overlay/field-debug-overlay.component';
+import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from '../field-debug-overlay/field-debug-overlay.component';
+import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
 
 @Component({
 	selector: 'app-enum-select-field',
@@ -34,8 +35,24 @@ export class EnumSelectFieldComponent implements ControlValueAccessor, OnInit {
 	private onChange = (value: string | null) => {};
 	private onTouched = () => {};
 
-	constructor() {
+	constructor(private readonly validationSchemaService: ValidationSchemaService) {
 		this.control = new FormControl('');
+	}
+
+	getValidationDebugInfo(): FieldValidationDebugInfo {
+		const schemaFieldKey = this.fieldName || this.label.replace('labels.', '');
+		const schemaInfo = this.validationSchemaService.getFieldDebugInfo(schemaFieldKey);
+
+		// Add component-level validation messages
+		const componentMessages: {text: string; source: 'hardcoded'}[] = [];
+		if (this.required) {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+
+		return {
+			...schemaInfo,
+			componentMessages: componentMessages.length > 0 ? componentMessages : undefined
+		};
 	}
 
 	ngOnInit(): void {

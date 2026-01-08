@@ -10,7 +10,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {ObButtonDirective} from '@oblique/oblique';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
-import {FieldDebugOverlayComponent} from '../field-debug-overlay/field-debug-overlay.component';
+import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from '../field-debug-overlay/field-debug-overlay.component';
+import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
 
 export interface AffiliatedPerson {
 	'prov:agent': string;
@@ -67,7 +68,10 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 		{value: 'dataCustodian', label: 'Data Custodian'}
 	];
 
-	constructor(private readonly fb: FormBuilder) {
+	constructor(
+		private readonly fb: FormBuilder,
+		private readonly validationSchemaService: ValidationSchemaService
+	) {
 		this.personsArray = this.fb.array([], this.roleRequirementsValidator());
 
 		// Subscribe to form changes
@@ -75,6 +79,50 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 			this.onChange(value.length > 0 ? value : null);
 			this.onValidatorChange(); // Notify that validation state may have changed
 		});
+	}
+
+	getValidationDebugInfo(): FieldValidationDebugInfo {
+		const schemaFieldKey = this.fieldName || this.label.replace('labels.', '');
+		const schemaInfo = this.validationSchemaService.getFieldDebugInfo(schemaFieldKey);
+
+		// Add component-level hardcoded validation messages
+		const componentMessages: {text: string; source: 'hardcoded'}[] = [
+			{text: 'Exactly one Data Owner is required', source: 'hardcoded'},
+			{text: 'At least one Data Steward is required', source: 'hardcoded'}
+		];
+
+		return {
+			...schemaInfo,
+			componentMessages
+		};
+	}
+
+	getSubfieldValidationDebugInfo(subfieldKey: string): FieldValidationDebugInfo {
+		const parentFieldKey = this.fieldName || this.label.replace('labels.', '');
+		const fullFieldKey = `${parentFieldKey}.${subfieldKey}`;
+		const schemaInfo = this.validationSchemaService.getFieldDebugInfo(fullFieldKey);
+
+		// Add component-level validation for subfields
+		const componentMessages: {text: string; source: 'hardcoded'}[] = [];
+
+		if (subfieldKey === 'prov:agent') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'schema:email') {
+			componentMessages.push({text: 'Email validation', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'dcat:hadRole') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+
+		return {
+			...schemaInfo,
+			componentMessages: componentMessages.length > 0 ? componentMessages : undefined
+		};
+	}
+
+	isSubfieldRequired(subfieldKey: string): boolean {
+		return subfieldKey === 'prov:agent' || subfieldKey === 'dcat:hadRole';
 	}
 
 	ngOnDestroy(): void {

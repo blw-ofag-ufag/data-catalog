@@ -169,7 +169,7 @@
 								<div class="ob-flex ob-flex-wrap ob-gap-4">
 									<div class="ob-flex-1 ob-min-w-0">
 										<div class="field-with-tooltip" style="position: relative;">
-											<app-field-debug-overlay label="modify.auth.form.contactName" fieldName="dcat:contactPoint.schema:name"></app-field-debug-overlay>
+											<app-field-debug-overlay label="modify.auth.form.contactName" fieldName="dcat:contactPoint.schema:name" [required]="false" [validationInfo]="getFieldValidationDebugInfo('dcat:contactPoint.schema:name')"></app-field-debug-overlay>
 											<mat-form-field class="ob-w-full">
 												<mat-label>{{ "modify.auth.form.contactName" | translate }}</mat-label>
 												<input matInput formControlName="schema:name" />
@@ -182,7 +182,7 @@
 									</div>
 									<div class="ob-flex-1 ob-min-w-0">
 										<div class="field-with-tooltip" style="position: relative;">
-											<app-field-debug-overlay label="modify.auth.form.contactEmail" fieldName="dcat:contactPoint.schema:email"></app-field-debug-overlay>
+											<app-field-debug-overlay label="modify.auth.form.contactEmail" fieldName="dcat:contactPoint.schema:email" [required]="false" [validationInfo]="getFieldValidationDebugInfo('dcat:contactPoint.schema:email')"></app-field-debug-overlay>
 											<mat-form-field class="ob-w-full">
 												<mat-label>{{ "modify.auth.form.contactEmail" | translate }}</mat-label>
 												<input matInput type="email" formControlName="schema:email"/>
@@ -216,7 +216,7 @@
 							<div class="ob-flex ob-flex-wrap ob-gap-4">
 								<div class="ob-flex-1 ob-min-w-0">
 									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.dct:issued" fieldName="dct:issued"></app-field-debug-overlay>
+										<app-field-debug-overlay label="labels.dct:issued" fieldName="dct:issued" [required]="isFieldRequired('dct:issued')" [validationInfo]="getFieldValidationDebugInfo('dct:issued')"></app-field-debug-overlay>
 										<mat-form-field class="ob-w-full">
 											<mat-label>{{ "labels.dct:issued" | translate }}</mat-label>
 											<input matInput [matDatepicker]="issuePicker" formControlName="dct:issued" />
@@ -228,7 +228,7 @@
 								</div>
 								<div class="ob-flex-1 ob-min-w-0">
 									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.dct:modified" fieldName="dct:modified"></app-field-debug-overlay>
+										<app-field-debug-overlay label="labels.dct:modified" fieldName="dct:modified" [required]="isFieldRequired('dct:modified')" [validationInfo]="getFieldValidationDebugInfo('dct:modified')"></app-field-debug-overlay>
 										<mat-form-field class="ob-w-full">
 											<mat-label>
 												{{ "labels.dct:modified" | translate }}
@@ -243,7 +243,7 @@
 								</div>
 								<div class="ob-flex-1 ob-min-w-0">
 									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.dcat:version" fieldName="dcat:version"></app-field-debug-overlay>
+										<app-field-debug-overlay label="labels.dcat:version" fieldName="dcat:version" [required]="isFieldRequired('dcat:version')" [validationInfo]="getFieldValidationDebugInfo('dcat:version')"></app-field-debug-overlay>
 										<mat-form-field class="ob-w-full">
 											<mat-label>{{ "labels.dcat:version" | translate }}</mat-label>
 											<input matInput formControlName="dcat:version" placeholder="e.g., 1.0.0" />

@@ -1,5 +1,5 @@
 <div class="affiliated-persons-field" [class.has-error]="hasRoleErrors && personsArray.touched" style="position: relative;">
-	<app-field-debug-overlay [label]="label" [fieldName]="fieldName || ''"></app-field-debug-overlay>
+	<app-field-debug-overlay [label]="label" [fieldName]="fieldName || ''" [required]="required" [validationInfo]="getValidationDebugInfo()"></app-field-debug-overlay>
 	<div class="ob-flex ob-justify-between ob-items-center ob-mb-3">
 		<label class="field-label">
 			{{ label | translate }}
@@ -29,48 +29,40 @@
 
 			<div [formGroup]="$any(personGroup)">
 				<div class="ob-flex ob-flex-wrap ob-gap-4 ob-mb-3">
-					<div class="ob-flex-1 ob-min-w-0">
-						<div class="field-with-tooltip" style="position: relative;">
-							<app-field-debug-overlay label="modify.auth.form.labels.adminDirId" fieldName="prov:qualifiedAttribution.prov:agent"></app-field-debug-overlay>
-							<mat-form-field class="ob-w-full">
-								<mat-label>{{ "modify.auth.form.labels.adminDirId" | translate }}</mat-label>
-								<input matInput formControlName="prov:agent" [placeholder]="'modify.auth.form.placeholders.adminDirId' | translate" (blur)="onBlur()" />
-								<mat-hint>{{ "modify.auth.form.help.adminDirId" | translate }}</mat-hint>
-							</mat-form-field>
-						</div>
+					<div class="ob-flex-1 ob-min-w-0" style="position: relative;">
+						<app-field-debug-overlay label="modify.auth.form.labels.adminDirId" [fieldName]="(fieldName || label.replace('labels.', '')) + '.prov:agent'" [required]="isSubfieldRequired('prov:agent')" [validationInfo]="getSubfieldValidationDebugInfo('prov:agent')"></app-field-debug-overlay>
+						<mat-form-field class="ob-w-full">
+							<mat-label>{{ "modify.auth.form.labels.adminDirId" | translate }}</mat-label>
+							<input matInput formControlName="prov:agent" [placeholder]="'modify.auth.form.placeholders.adminDirId' | translate" (blur)="onBlur()" />
+							<mat-hint>{{ "modify.auth.form.help.adminDirId" | translate }}</mat-hint>
+						</mat-form-field>
 					</div>
-					<div class="ob-flex-1 ob-min-w-0">
-						<div class="field-with-tooltip" style="position: relative;">
-							<app-field-debug-overlay label="modify.auth.form.labels.role" fieldName="prov:qualifiedAttribution.dcat:hadRole"></app-field-debug-overlay>
-							<mat-form-field class="ob-w-full">
-								<mat-label>{{ "modify.auth.form.labels.role" | translate }}</mat-label>
-								<mat-select formControlName="dcat:hadRole" (blur)="onBlur()">
-									<mat-option *ngFor="let role of roles" [value]="role.value">
-										{{ role.label }}
-									</mat-option>
-								</mat-select>
-							</mat-form-field>
-						</div>
+					<div class="ob-flex-1 ob-min-w-0" style="position: relative;">
+						<app-field-debug-overlay label="modify.auth.form.labels.role" [fieldName]="(fieldName || label.replace('labels.', '')) + '.dcat:hadRole'" [required]="isSubfieldRequired('dcat:hadRole')" [validationInfo]="getSubfieldValidationDebugInfo('dcat:hadRole')"></app-field-debug-overlay>
+						<mat-form-field class="ob-w-full">
+							<mat-label>{{ "modify.auth.form.labels.role" | translate }}</mat-label>
+							<mat-select formControlName="dcat:hadRole" (blur)="onBlur()">
+								<mat-option *ngFor="let role of roles" [value]="role.value">
+									{{ role.label }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
 					</div>
 				</div>
 				<div class="ob-flex ob-flex-wrap ob-gap-4">
-					<div class="ob-flex-1 ob-min-w-0">
-						<div class="field-with-tooltip" style="position: relative;">
-							<app-field-debug-overlay label="modify.auth.form.labels.nameOptional" fieldName="prov:qualifiedAttribution.schema:name"></app-field-debug-overlay>
-							<mat-form-field class="ob-w-full">
-								<mat-label>{{ "modify.auth.form.labels.nameOptional" | translate }}</mat-label>
-								<input matInput formControlName="schema:name" [placeholder]="'modify.auth.form.placeholders.fullName' | translate" (blur)="onBlur()" />
-							</mat-form-field>
-						</div>
+					<div class="ob-flex-1 ob-min-w-0" style="position: relative;">
+						<app-field-debug-overlay label="modify.auth.form.labels.nameOptional" [fieldName]="(fieldName || label.replace('labels.', '')) + '.schema:name'" [required]="isSubfieldRequired('schema:name')" [validationInfo]="getSubfieldValidationDebugInfo('schema:name')"></app-field-debug-overlay>
+						<mat-form-field class="ob-w-full">
+							<mat-label>{{ "modify.auth.form.labels.nameOptional" | translate }}</mat-label>
+							<input matInput formControlName="schema:name" [placeholder]="'modify.auth.form.placeholders.fullName' | translate" (blur)="onBlur()" />
+						</mat-form-field>
 					</div>
-					<div class="ob-flex-1 ob-min-w-0">
-						<div class="field-with-tooltip" style="position: relative;">
-							<app-field-debug-overlay label="modify.auth.form.labels.emailOptional" fieldName="prov:qualifiedAttribution.schema:email"></app-field-debug-overlay>
-							<mat-form-field class="ob-w-full">
-								<mat-label>{{ "modify.auth.form.labels.emailOptional" | translate }}</mat-label>
-								<input matInput type="email" formControlName="schema:email" [placeholder]="'modify.auth.form.placeholders.email' | translate" (blur)="onBlur()" />
-							</mat-form-field>
-						</div>
+					<div class="ob-flex-1 ob-min-w-0" style="position: relative;">
+						<app-field-debug-overlay label="modify.auth.form.labels.emailOptional" [fieldName]="(fieldName || label.replace('labels.', '')) + '.schema:email'" [required]="isSubfieldRequired('schema:email')" [validationInfo]="getSubfieldValidationDebugInfo('schema:email')"></app-field-debug-overlay>
+						<mat-form-field class="ob-w-full">
+							<mat-label>{{ "modify.auth.form.labels.emailOptional" | translate }}</mat-label>
+							<input matInput type="email" formControlName="schema:email" [placeholder]="'modify.auth.form.placeholders.email' | translate" (blur)="onBlur()" />
+						</mat-form-field>
 					</div>
 				</div>
 			</div>

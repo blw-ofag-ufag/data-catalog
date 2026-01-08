@@ -3,6 +3,23 @@ import {CommonModule} from '@angular/common';
 import {TranslateService} from '@ngx-translate/core';
 import {DebugService} from '../../../../services/debug.service';
 
+export interface ValidationMessage {
+	text: string;
+	source: 'translation' | 'schema' | 'hardcoded';
+	key?: string;
+}
+
+export interface SchemaValidationInfo {
+	schema: 'base' | 'i14y' | 'ods';
+	required: boolean;
+	messages: ValidationMessage[];
+}
+
+export interface FieldValidationDebugInfo {
+	bySchema: SchemaValidationInfo[];
+	componentMessages?: {text: string; source: 'hardcoded'}[];
+}
+
 @Component({
 	selector: 'app-field-debug-overlay',
 	standalone: true,
@@ -12,7 +29,9 @@ import {DebugService} from '../../../../services/debug.service';
 			<pre class="field-debug-overlay">Form Field (en): {{ getEnglishLabel() }}
 i18n Label Key: {{ label }}
 Schema Field: {{ schemaField }}
-Tooltip Key: {{ tooltipKey }}</pre>
+Tooltip Key: {{ tooltipKey }}
+Required: {{ getRequiredDisplay() }}
+{{ getValidationDisplay() }}</pre>
 		}
 	`,
 	styleUrl: './field-debug-overlay.component.scss'
@@ -20,6 +39,8 @@ Tooltip Key: {{ tooltipKey }}</pre>
 export class FieldDebugOverlayComponent {
 	@Input() label = '';
 	@Input() fieldName = '';
+	@Input() required: boolean | null = null;
+	@Input() validationInfo: FieldValidationDebugInfo | null = null;
 
 	constructor(
 		public readonly debugService: DebugService,
@@ -63,5 +84,61 @@ export class FieldDebugOverlayComponent {
 		// Fallback to current language translation
 		const translation = this.translate.instant(this.label);
 		return translation !== this.label ? translation : this.label;
+	}
+
+	getRequiredDisplay(): string {
+		// If we have schema-based validation info, show which schemas require this field
+		if (this.validationInfo?.bySchema?.length) {
+			const requiredSchemas = this.validationInfo.bySchema.filter(s => s.required).map(s => s.schema);
+			if (requiredSchemas.length > 0) {
+				return `Yes (${requiredSchemas.join(', ')})`;
+			}
+			return 'No';
+		}
+		// Fall back to component-level required input
+		if (this.required === true) {
+			return 'Yes [hardcoded]';
+		}
+		if (this.required === false) {
+			return 'No [hardcoded]';
+		}
+		return '-';
+	}
+
+	getValidationDisplay(): string {
+		if (!this.validationInfo) {
+			return '';
+		}
+
+		const lines: string[] = [];
+
+		// Schema-based validation messages
+		for (const schemaInfo of this.validationInfo.bySchema) {
+			if (schemaInfo.messages.length > 0) {
+				for (const msg of schemaInfo.messages) {
+					const sourceTag = this.formatSourceTag(msg);
+					lines.push(`Validation (${schemaInfo.schema}): ${msg.text} ${sourceTag}`);
+				}
+			}
+		}
+
+		// Component-level hardcoded messages
+		if (this.validationInfo.componentMessages?.length) {
+			for (const msg of this.validationInfo.componentMessages) {
+				lines.push(`Validation (component): ${msg.text} [hardcoded]`);
+			}
+		}
+
+		return lines.length > 0 ? lines.join('\n') : '';
+	}
+
+	private formatSourceTag(msg: ValidationMessage): string {
+		if (msg.source === 'translation' && msg.key) {
+			return `[translation: ${msg.key}]`;
+		}
+		if (msg.source === 'schema') {
+			return '[schema]';
+		}
+		return '[hardcoded]';
 	}
 }
