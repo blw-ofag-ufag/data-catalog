@@ -10,6 +10,7 @@ import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
 import {TranslateFieldPipe} from '../translate-field.pipe';
 import {DatasetService} from '../services/api/api.service';
+import {KeywordService} from '../services/api/keyword.service';
 
 @Component({
 	standalone: true,
@@ -51,7 +52,8 @@ export class IndexCardsComponent {
 		private readonly router: Router,
 		private readonly translate: TranslateService,
 		private readonly route: ActivatedRoute,
-		private readonly datasetService: DatasetService
+		private readonly datasetService: DatasetService,
+		private readonly keywordService: KeywordService
 	) {
 		this.currentLang$ = this.translate.onLangChange.pipe(
 			map(event => event.lang),
@@ -63,14 +65,40 @@ export class IndexCardsComponent {
 		await this.router.navigate(['details'], {queryParams: {publisher, dataset}, queryParamsHandling: 'replace'});
 	}
 
-	keywordFiltered(keyword: string) {
+	/**
+	 * Get keyword code from display label
+	 */
+	private getKeywordKey(displayValue: string, dataset: DatasetSchema): string {
+		const keywords = dataset['dcat:keyword'];
+		if (!keywords || !Array.isArray(keywords)) {
+			return displayValue;
+		}
+
+		const currentLang = this.translate.currentLang || 'en';
+		for (const code of keywords) {
+			const labels = this.keywordService.getKeywordLabels(code);
+			if (labels) {
+				const label =
+					labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || code;
+				if (label === displayValue) {
+					return code;
+				}
+			} else if (code === displayValue) {
+				return code;
+			}
+		}
+		return displayValue;
+	}
+
+	keywordFiltered(keyword: string, dataset: DatasetSchema) {
+		const keywordCode = this.getKeywordKey(keyword, dataset);
 		const currentParams = this.route.snapshot.queryParams;
 		const existingKeywords = currentParams['dcat:keyword'];
 
 		// If there are existing keywords, merge them
-		let keywordValue = keyword;
-		if (existingKeywords && !existingKeywords.split(',').includes(keyword)) {
-			keywordValue = `${existingKeywords},${keyword}`;
+		let keywordValue = keywordCode;
+		if (existingKeywords && !existingKeywords.split(',').includes(keywordCode)) {
+			keywordValue = `${existingKeywords},${keywordCode}`;
 		}
 
 		return {

@@ -25,7 +25,7 @@
 					<div>
 						@for (tag of getLocalizedKeywords(dataset); track $index) {
 							<mat-chip (click)="onChipClick($event)" class="small-chip">
-								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
+								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag, dataset)">
 									{{ tag }}
 								</a>
 							</mat-chip>

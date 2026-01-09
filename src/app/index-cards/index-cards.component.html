@@ -44,7 +44,7 @@
 						<!-- Show all keywords when expanded -->
 						@for (tag of getLocalizedKeywords(dataset); track $index) {
 							<mat-chip (click)="onChipClick($event)" class="small-chip">
-								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
+								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag, dataset)">
 									{{ tag }}
 								</a>
 							</mat-chip>
@@ -53,7 +53,7 @@
 						<!-- Show only visible keywords when collapsed -->
 						@for (tag of getVisibleKeywords(dataset, dataset["dct:identifier"]); track $index) {
 							<mat-chip (click)="onChipClick($event)" class="small-chip">
-								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
+								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag, dataset)">
 									{{ tag }}
 								</a>
 							</mat-chip>
