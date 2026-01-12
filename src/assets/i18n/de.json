@@ -146,7 +146,7 @@
     "archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen eine anhaltende Nützlichkeit oder Bedeutung, die seine weitere Aufbewahrung rechtfertigt?",
     "bv:abrogation": "Was ist das Aufhebungdatum?",
     "bv:archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen einen anhaltenden Nutzen oder eine anhaltende Bedeutung, die seine weitere Aufbewahrung rechtfertigen?",
-    "bv:classification": "Wie lautet die Informationssicherheitsklassifizierung des Datenprodukts?",
+    "bv:classification": "Was ist die Klassifizierungsstufen der Datensammlung gemäss Informationssicherheitsgesetz (siehe Art. 13 ISG)?",
     "bv:externalCatalogs": "Soll das Datenprodukt auf anderen Plattformen wie i14y und/oder opendata.swiss veröffentlicht werden?",
     "bv:geoIdentifier": "Wie lautet der entsprechende Geoidentifikator gemäss Geoinformationsverordnung, Anhang 1?",
     "bv:itSystem": "In welchem IT-System wird Ihr Datenprodukt verwendet? Bitte geben Sie eine URL an.",
