@@ -25,9 +25,9 @@
         "secret": "Segreto"
       },
       "bv:personalData": {
-        "none": "Nessuno",
+        "none": "Nessun dato personale",
         "personalData": "Dati personali",
-        "sensitivePersonalData": "Dati personali sensibili"
+        "sensitivePersonalData": "Dati degni di particolare protezione"
       },
       "bv:typeOfData": {
         "masterData": "Dati master",

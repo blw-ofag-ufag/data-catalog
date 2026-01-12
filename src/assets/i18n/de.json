@@ -25,9 +25,9 @@
         "secret": "Geheim"
       },
       "bv:personalData": {
-        "none": "Keine",
-        "personalData": "Personenbezogene Daten",
-        "sensitivePersonalData": "Besonders schutzenswerte Personendaten"
+        "none": "Keine Personendaten",
+        "personalData": "Personendaten",
+        "sensitivePersonalData": "Besonders schützenswerte Personendaten"
       },
       "bv:typeOfData": {
         "masterData": "Stammdaten",

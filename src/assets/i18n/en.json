@@ -25,7 +25,7 @@
         "secret": "Secret"
       },
       "bv:personalData": {
-        "none": "None",
+        "none": "No personal data",
         "personalData": "Personal data",
         "sensitivePersonalData": "Sensitive personal data"
       },

@@ -24,10 +24,10 @@
         "none": "Aucun",
         "secret": "Secret"
       },
-      "bv:personalData": {
-        "none": "Aucun",
+"bv:personalData": {
+        "none": "Pas de données personnelles",
         "personalData": "Données personnelles",
-        "sensitivePersonalData": "Données personnelles sensibles"
+        "sensitivePersonalData": "Données sensibles"
       },
       "bv:typeOfData": {
         "masterData": "Données de base",
