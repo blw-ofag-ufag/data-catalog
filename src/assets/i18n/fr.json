@@ -150,7 +150,7 @@
     "bv:externalCatalogs": "Le produit de données doit-il être publié sur d'autres plateformes telles que i14y et/ou opendata.swiss ?",
     "bv:geoIdentifier": "Quel est le géo-identificateur correspondant selon l'annexe 1 de l'ordonnance sur la géoinformation ?",
     "bv:itSystem": "Dans quel système informatique votre produit de données est-il utilisé ? Veuillez indiquer une URL.",
-    "bv:personalData": "Quel est le classement de la collecte de données selon la loi sur la protection des données (voir art. 5 LPD) ?",
+    "bv:personalData": "Quel est le classification de la collecte de données selon la loi sur la protection des données (voir art. 5 LPD) ?",
     "bv:retentionPeriod": "Combien de temps votre produit de données doit-il être conservé ?",
     "bv:typeOfData": "Quel type décrit le mieux votre produit de données ?",
     "dcat:accessService": "Un service de données permet d'accéder à la diffusion du produit de données.",
