@@ -24,10 +24,10 @@
         "none": "Aucun",
         "secret": "Secret"
       },
-      "bv:personalData": {
-        "none": "Aucun",
+"bv:personalData": {
+        "none": "Pas de données personnelles",
         "personalData": "Données personnelles",
-        "sensitivePersonalData": "Données personnelles sensibles"
+        "sensitivePersonalData": "Données sensibles"
       },
       "bv:typeOfData": {
         "masterData": "Données de base",
@@ -146,11 +146,11 @@
     "archivalValue": "Le produit de données a-t-il une utilité ou une importance durable qui justifie sa conservation en raison des informations administratives, juridiques, fiscales, probantes ou historiques qu'il contient ?",
     "bv:abrogation": "Quelle est la date d'abrogation ?",
     "bv:archivalValue": "Le produit de données présente-t-il, en raison des informations administratives, juridiques, fiscales, probantes ou historiques qu'il contient, une utilité ou une importance durable qui justifie sa conservation ?",
-    "bv:classification": "Quelle est la classification de sécurité des informations du produit de données ?",
+    "bv:classification": "Quelle est la classification de la collecte de données selon la loi sur la sécurité de l'information (voir art. 13 LSI) ?",
     "bv:externalCatalogs": "Le produit de données doit-il être publié sur d'autres plateformes telles que i14y et/ou opendata.swiss ?",
     "bv:geoIdentifier": "Quel est le géo-identificateur correspondant selon l'annexe 1 de l'ordonnance sur la géoinformation ?",
     "bv:itSystem": "Dans quel système informatique votre produit de données est-il utilisé ? Veuillez indiquer une URL.",
-    "bv:personalData": "Votre produit contient-il des données à caractère personnel ?",
+    "bv:personalData": "Quel est le classification de la collecte de données selon la loi sur la protection des données (voir art. 5 LPD) ?",
     "bv:retentionPeriod": "Combien de temps votre produit de données doit-il être conservé ?",
     "bv:typeOfData": "Quel type décrit le mieux votre produit de données ?",
     "dcat:accessService": "Un service de données permet d'accéder à la diffusion du produit de données.",
@@ -197,11 +197,11 @@
     "adms:status": "Statut",
     "bv:abrogation": "Date d'abrogation",
     "bv:archivalValue": "Valeur archivistique",
-    "bv:classification": "Classification",
+    "bv:classification": "Classification selon la LSI",
+    "bv:personalData": "Classification selon la LPD",
     "bv:externalCatalogs": "Publication dans les catalogues externes",
     "bv:geoIdentifier": "Identifiant GeoIV",
     "bv:itSystem": "Système informatique",
-    "bv:personalData": "Données personnelles",
     "bv:retentionPeriod": "Durée de conservation",
     "bv:typeOfData": "Type de données",
     "dcat:accessService": "Service d'accès",

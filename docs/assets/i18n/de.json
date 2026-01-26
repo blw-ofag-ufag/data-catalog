@@ -25,9 +25,9 @@
         "secret": "Geheim"
       },
       "bv:personalData": {
-        "none": "Keine",
-        "personalData": "Personenbezogene Daten",
-        "sensitivePersonalData": "Besonders schutzenswerte Personendaten"
+        "none": "Keine Personendaten",
+        "personalData": "Personendaten",
+        "sensitivePersonalData": "Besonders schützenswerte Personendaten"
       },
       "bv:typeOfData": {
         "masterData": "Stammdaten",
@@ -146,11 +146,11 @@
     "archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen eine anhaltende Nützlichkeit oder Bedeutung, die seine weitere Aufbewahrung rechtfertigt?",
     "bv:abrogation": "Was ist das Aufhebungdatum?",
     "bv:archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen einen anhaltenden Nutzen oder eine anhaltende Bedeutung, die seine weitere Aufbewahrung rechtfertigen?",
-    "bv:classification": "Wie lautet die Informationssicherheitsklassifizierung des Datenprodukts?",
+    "bv:classification": "Was ist die Klassifizierung der Datensammlung gemäss Informationssicherheitsgesetz (siehe Art. 13 ISG)?",
     "bv:externalCatalogs": "Soll das Datenprodukt auf anderen Plattformen wie i14y und/oder opendata.swiss veröffentlicht werden?",
     "bv:geoIdentifier": "Wie lautet der entsprechende Geoidentifikator gemäss Geoinformationsverordnung, Anhang 1?",
     "bv:itSystem": "In welchem IT-System wird Ihr Datenprodukt verwendet? Bitte geben Sie eine URL an.",
-    "bv:personalData": "Enthält Ihr Datenprodukt personenbezogene Daten?",
+    "bv:personalData": "Was ist die Einordnung der Datensammlung gemäss Datenschutzgesetz (siehe Art. 5 DSG)?",
     "bv:retentionPeriod": "Wie lange muss Ihr Datenprodukt aufbewahrt werden?",
     "bv:typeOfData": "Welcher Typ beschreibt Ihr Datenprodukt am besten?",
     "dcat:accessService": "Ein Datendienst ermöglicht den Zugriff auf die Verbreitung des Datenprodukts.",
@@ -197,11 +197,11 @@
     "adms:status": "Status",
     "bv:abrogation": "Aufhebungsdatum",
     "bv:archivalValue": "Archivwürdig",
-    "bv:classification": "Klassifizierung",
+    "bv:classification": "Klassifizierung nach ISG",
+    "bv:personalData": "Klassifizierung nach DSG",
     "bv:externalCatalogs": "Veröffentlichung in externen Katalogen",
     "bv:geoIdentifier": "Identifikator GeoIV",
     "bv:itSystem": "IT-System",
-    "bv:personalData": "Personenbezogene Daten",
     "bv:retentionPeriod": "Aufbewahrungsfrist",
     "bv:typeOfData": "Datentyp",
     "dcat:accessService": "Zugriffsdienst",
