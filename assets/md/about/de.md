@@ -56,8 +56,9 @@ Der Datenkatalog umfasst Datenprodukte, die aktiv verwaltet und regelmässig gen
 - Ein Machine Learning Modell zur Vorhersage von Schädlingsrisiken basierend auf Wetter- und Anbaudaten
 - Ein öffentlich zugänglicher API-Dienst zur Echtzeitprognose der erwarteten Ernteerträge pro Kultur und Region
 
-Hinweis: Dateien mit Rohdaten, wie z. B. die Originalverkaufsdaten eines Einzelhändlers für einen bestimmten Zeitraum, sollten nicht als separate Datenprodukte aufgeführt werden. Stattdessen sollten diese Rohdaten in ein bestehendes Datenprodukt über den Verkauf integriert werden. 
-Darüber hinaus gelten temporäre Dateien, wie z. B. eine CSV-Datei für eine einmalige Analyse, nicht als relevante Datenprodukte.
+Hinweis: 
+- Dateien mit Rohdaten, wie z. B. die Originalverkaufsdaten eines Einzelhändlers für einen bestimmten Zeitraum, sollten nicht als separate Datenprodukte aufgeführt werden. Stattdessen sollten diese Rohdaten in ein bestehendes Datenprodukt über den Verkauf integriert werden. 
+- Temporäre Dateien, wie z. B. eine CSV-Datei für eine einmalige Analyse,  gelten nicht als relevante Datenprodukte.
 
 # Nächste Schritte
 
