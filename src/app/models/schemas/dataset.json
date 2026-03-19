@@ -322,7 +322,8 @@
               "",
               "I14Y",
               "opendata.swiss",
-              "geocat.ch"
+              "geocat.ch", 
+              "datenportal_BLW"
             ]
           },
           "dct:identifier": {
