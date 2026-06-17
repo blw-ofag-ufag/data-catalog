@@ -18,7 +18,7 @@ describe('DatasetMetadataService', () => {
 			expect(requiredFields.length).toBeGreaterThan(0);
 			expect(requiredFields).toContain('dct:title');
 			expect(requiredFields).toContain('dct:description');
-			expect(requiredFields).toContain('dct:accessRights');
+			expect(requiredFields).toContain('dct:publisher');
 			done();
 		});
 	});
