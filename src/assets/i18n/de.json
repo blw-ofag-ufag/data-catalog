@@ -298,7 +298,10 @@
           "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
           "summary": "Formularvalidierungsfehler:",
           "fillRequired": "Bitte füllen Sie alle Pflichtfelder aus, die mit einem Sternchen (*) markiert sind",
-          "recommended": "(empfohlen)"
+          "recommended": "(empfohlen)",
+          "invalidDate": "Bitte ein gültiges Datum eingeben (TT.MM.JJJJ)",
+          "dateOrderIssuedModified": "Das Ausstellungsdatum muss vor oder am Änderungsdatum liegen.",
+          "dateOrderStartEnd": "Das Startdatum muss vor oder am Enddatum liegen."
         },
         "confirmation": {
           "unsavedChanges": "Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie die Seite verlassen möchten? Alle Änderungen gehen verloren."
