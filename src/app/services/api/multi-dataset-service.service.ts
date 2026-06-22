@@ -44,11 +44,22 @@ export class MultiDatasetService {
 			// path.publisher = 'BLW-OFAG-UFAG-FOAG';
 			this.loadDetail(path.publisher, path.klass, path.id);
 		} else {
-			if (!this.indexLoaded) {
-				this.loadIndex();
-				this.indexLoaded = true;
-			}
+			this.ensureIndexLoaded();
 		}
+	}
+
+	/**
+	 * Loads the full dataset index once (idempotent). Used both on the index route
+	 * and by detail-page components that need to resolve dataset references (e.g.
+	 * titles for prov:wasDerivedFrom / dcat:inSeries / dct:replaces) when the page
+	 * was deep-linked without first visiting the index.
+	 */
+	ensureIndexLoaded() {
+		if (this.indexLoaded) {
+			return;
+		}
+		this.indexLoaded = true;
+		this.loadIndex();
 	}
 
 	loadIndex() {
