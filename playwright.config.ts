@@ -19,8 +19,10 @@ export default defineConfig({
 	},
 	projects: [{name: 'chromium', use: {...devices['Desktop Chrome']}}],
 	webServer: {
+		// `ng serve` answers history-fallback only for Accept: text/html, so the
+		// readiness probe (Accept: */*) must hit the static index at root, not /data-catalog/.
 		command: 'npm start',
-		url: 'http://localhost:4200/data-catalog/',
+		url: 'http://localhost:4200',
 		reuseExistingServer: !process.env['CI'],
 		timeout: 180_000
 	}
