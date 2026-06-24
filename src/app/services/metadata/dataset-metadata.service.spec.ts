@@ -1,11 +1,22 @@
 import {TestBed} from '@angular/core/testing';
+import {of} from 'rxjs';
 import {DatasetMetadataService} from './dataset-metadata.service';
+import {ValidationSchemaFetcherService} from '../validation/validation-schema-fetcher.service';
+import * as datasetSchemaFixture from './__fixtures__/dataset-schema.fixture.json';
 
 describe('DatasetMetadataService', () => {
 	let service: DatasetMetadataService;
 
 	beforeEach(() => {
-		TestBed.configureTestingModule({});
+		// Mock the schema fetcher so form metadata is built from a fixed schema
+		// fixture synchronously (mirrors the runtime base-schema fetch).
+		const fetcherMock = {
+			fetchSchema: () => of((datasetSchemaFixture as any).default ?? datasetSchemaFixture)
+		};
+
+		TestBed.configureTestingModule({
+			providers: [{provide: ValidationSchemaFetcherService, useValue: fetcherMock}]
+		});
 		service = TestBed.inject(DatasetMetadataService);
 	});
 
@@ -62,6 +73,17 @@ describe('DatasetMetadataService', () => {
 		expect(optionalValidators.length).toBe(0);
 	});
 
+	it('derives enum options from the schema', () => {
+		// scalar enum
+		expect(service.getEnumOptions('dct:accessRights')).toContain('PUBLIC');
+		// array enum (items.enum) - dcat:theme
+		expect(service.getEnumOptions('dcat:theme').length).toBeGreaterThan(0);
+		// empty string is filtered out
+		expect(service.getEnumOptions('dct:accessRights')).not.toContain('');
+		// unknown field -> empty
+		expect(service.getEnumOptions('does:notExist')).toEqual([]);
+	});
+
 	describe('field-type detection', () => {
 		const cases: Array<[string, string]> = [
 			['dct:title', 'object'],
@@ -101,9 +123,8 @@ describe('DatasetMetadataService', () => {
 			['prov:qualifiedAttribution', 5],
 			['bv:externalCatalogs', 6],
 			['dct:spatial', 7],
-			['bv:itSystem', 8],
-			['prov:wasDerivedFrom', 9],
-			['dcat:distribution', 10]
+			['prov:wasDerivedFrom', 8],
+			['dcat:distribution', 9]
 		];
 
 		stepCases.forEach(([key, stepId]) => {
@@ -124,8 +145,8 @@ describe('DatasetMetadataService', () => {
 
 		it('exposes the configured steps via getSteps', done => {
 			service.getSteps().subscribe(steps => {
-				expect(steps.length).toBe(10);
-				expect(steps.map(s => s.id)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+				expect(steps.length).toBe(9);
+				expect(steps.map(s => s.id)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 				const step1 = steps.find(s => s.id === 1);
 				expect(step1?.key).toBe('basic');
 				expect(step1?.fields).toContain('dct:title');

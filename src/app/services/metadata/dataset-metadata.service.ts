@@ -1,11 +1,14 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable, of} from 'rxjs';
-import {catchError, map, shareReplay} from 'rxjs/operators';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {Validators} from '@angular/forms';
 
-// Import the JSON schema directly
-import * as datasetSchema from '../../models/schemas/dataset.json';
+import {ValidationSchemaFetcherService, SchemaConfig} from '../validation/validation-schema-fetcher.service';
+import {seedEnumFieldsFromSchema} from '../../models/enum-fields';
+import * as schemaConfigs from '../../codegen/schemas.json';
+
+// Shared empty options array so template bindings get a stable reference.
+const EMPTY_OPTIONS: string[] = [];
 
 export interface FieldMetadata {
 	key: string;
@@ -87,40 +90,59 @@ export class DatasetMetadataService {
 		},
 		{
 			id: 8,
-			key: 'business',
-			label: 'modify.auth.form.sections.business',
-			fields: ['bv:itSystem', 'bv:retentionPeriod', 'prov:wasGeneratedBy']
-		},
-		{
-			id: 9,
 			key: 'additional',
 			label: 'modify.auth.form.sections.additional',
 			fields: ['schema:comment', 'bv:geoIdentifier', 'schema:image', 'bv:abrogation', 'prov:wasDerivedFrom', 'dcat:inSeries', 'dct:replaces']
 		},
 		{
-			id: 10,
+			id: 9,
 			key: 'distributions',
 			label: 'modify.auth.form.sections.distributions',
 			fields: ['dcat:distribution']
 		}
 	];
 
-	constructor() {
+	constructor(private readonly schemaFetcher: ValidationSchemaFetcherService) {
 		this.initializeMetadata();
 	}
 
 	private initializeMetadata(): void {
-		const config = this.parseSchema(datasetSchema);
-		this.metadata$.next(config);
+		// Build form metadata from the runtime-fetched base schema (single source of
+		// truth), rather than a static local copy. The fetcher caches per config id,
+		// so this shares the same request as ValidationSchemaService.
+		const configs = (schemaConfigs as any).default as SchemaConfig[];
+		const baseConfig = configs.find(c => c.id === 'base');
+		if (!baseConfig) {
+			console.error('No "base" schema configured; cannot build form metadata.');
+			this.metadata$.next(null);
+			return;
+		}
+
+		this.schemaFetcher.fetchSchema(baseConfig).subscribe({
+			next: schema => this.metadata$.next(this.parseSchema(schema)),
+			error: error => {
+				// Leave metadata null so the form does not build; the schema load
+				// error is surfaced to the user via ValidationSchemaService.
+				console.error('Failed to load base schema for form metadata:', error);
+				this.metadata$.next(null);
+			}
+		});
 	}
 
 	private parseSchema(schema: any): DatasetMetadataConfig {
+		// Re-derive enum-field classification (enumTypes/enumArrayFields) from the
+		// authoritative runtime schema.
+		seedEnumFieldsFromSchema(schema);
+
 		const fields = new Map<string, FieldMetadata>();
 		const requiredFields = schema.required || [];
 		const recommendedFields = schema.recommended || [];
 
 		// Parse each property from the schema
 		Object.entries(schema.properties || {}).forEach(([key, prop]: [string, any]) => {
+			// Enum option lists come from the schema. Scalar enums live on `enum`;
+			// array enums (e.g. dcat:theme) live on `items.enum`.
+			const optionList: string[] | undefined = prop.enum || prop.items?.enum;
 			const fieldMetadata: FieldMetadata = {
 				key,
 				required: requiredFields.includes(key),
@@ -129,7 +151,7 @@ export class DatasetMetadataService {
 				label: `labels.${key}`,
 				description: prop.description,
 				validators: this.generateValidators(key, prop, requiredFields.includes(key)),
-				enum: prop.enum?.filter((e: string) => e !== ''), // Filter out empty string from enums
+				enum: optionList?.filter((e: string) => e !== ''), // Filter out empty string from enums
 				format: prop.format
 			};
 
@@ -286,6 +308,13 @@ export class DatasetMetadataService {
 
 		const field = config.fields.get(key);
 		return field?.validators || [];
+	}
+
+	// Get the schema-derived enum option list for a field (empty-string filtered).
+	// Returns a stable [] when the field has no options or metadata is not loaded yet.
+	getEnumOptions(key: string): string[] {
+		const field = this.metadata$.value?.fields.get(key);
+		return field?.enum ?? EMPTY_OPTIONS;
 	}
 
 	// Get all field metadata for form generation
