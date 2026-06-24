@@ -102,7 +102,7 @@
 							<app-enum-select-field
 								formControlName="dct:accessRights"
 								[label]="'labels.dct:accessRights'"
-								[options]="accessRights"
+								[options]="getEnumOptions('dct:accessRights')"
 								[required]="isFieldRequired('dct:accessRights')"
 								[recommended]="isFieldRecommended('dct:accessRights')"
 								[translationPath]="'choices.dataset.dct:accessRights'"
@@ -113,7 +113,7 @@
 							<app-enum-select-field
 								formControlName="bv:classification"
 								[label]="'labels.bv:classification'"
-								[options]="classificationLevels"
+								[options]="getEnumOptions('bv:classification')"
 								[required]="isFieldRequired('bv:classification')"
 								[recommended]="isFieldRecommended('bv:classification')"
 								[translationPath]="'choices.dataset.bv:classification'"
@@ -124,7 +124,7 @@
 							<app-enum-select-field
 								formControlName="bv:personalData"
 								[label]="'labels.bv:personalData'"
-								[options]="personalDataCategories"
+								[options]="getEnumOptions('bv:personalData')"
 								[required]="isFieldRequired('bv:personalData')"
 								[recommended]="isFieldRecommended('bv:personalData')"
 								[translationPath]="'choices.dataset.bv:personalData'"
@@ -135,7 +135,7 @@
 							<app-enum-select-field
 								formControlName="adms:status"
 								[label]="'labels.adms:status'"
-								[options]="statuses"
+								[options]="getEnumOptions('adms:status')"
 								[required]="isFieldRequired('adms:status')"
 								[recommended]="isFieldRecommended('adms:status')"
 								[translationPath]="'choices.dataset.adms:status'"
@@ -152,7 +152,7 @@
 							<app-enum-select-field
 								formControlName="dct:publisher"
 								[label]="'labels.dct:publisher'"
-								[options]="publishers"
+								[options]="getEnumOptions('dct:publisher')"
 								[required]="isFieldRequired('dct:publisher')"
 								[recommended]="isFieldRecommended('dct:publisher')"
 								[translationPath]="'choices.dataset.dct:publisher'"
@@ -258,7 +258,7 @@
 									<app-enum-select-field
 										formControlName="dct:accrualPeriodicity"
 										[label]="'labels.dct:accrualPeriodicity'"
-										[options]="accrualPeriocicites"
+										[options]="getEnumOptions('dct:accrualPeriodicity')"
 										[required]="isFieldRequired('dct:accrualPeriodicity')"
 										[recommended]="isFieldRecommended('dct:accrualPeriodicity')"
 										[translationPath]="'choices.dataset.dct:accrualPeriodicity'"
@@ -270,7 +270,7 @@
 									<app-enum-select-field
 										formControlName="bv:typeOfData"
 										[label]="'labels.bv:typeOfData'"
-										[options]="dataTypes"
+										[options]="getEnumOptions('bv:typeOfData')"
 										[required]="isFieldRequired('bv:typeOfData')"
 										[recommended]="isFieldRecommended('bv:typeOfData')"
 										[translationPath]="'choices.dataset.bv:typeOfData'"

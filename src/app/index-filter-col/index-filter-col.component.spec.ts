@@ -6,7 +6,15 @@ import {IndexFilterColComponent} from './index-filter-col.component';
 import {DatasetService} from '../services/api/api.service';
 import {KeywordService, Keyword} from '../services/api/keyword.service';
 import {ActiveFilters} from '../models/ActiveFilters';
+import {DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
 import {provideTranslateTesting} from '../../../tests/helpers/translate-testing';
+
+// Minimal schema-derived metadata: facetable enum fields carry an `enum` array.
+const ENUM_OPTIONS: Record<string, string[]> = {
+	'dct:accessRights': ['PUBLIC', 'NON_PUBLIC'],
+	'dct:publisher': ['BLW-OFAG-UFAG-FOAG', 'BLV-OSAV-USAV-FSVO'],
+	'dcat:theme': ['work', 'energy']
+};
 
 const KEYWORDS: Keyword[] = [
 	{code: 'agri', labels: {de: 'Landwirtschaft', fr: 'agriculture', it: 'agricoltura', en: 'agriculture'}},
@@ -32,6 +40,18 @@ describe('IndexFilterColComponent', () => {
 		snapshot: {queryParams: {}}
 	} as any;
 
+	const metadataServiceStub = {
+		getMetadata: () =>
+			of({
+				fields: new Map(
+					Object.entries(ENUM_OPTIONS).map(([key, options]) => [key, {key, enum: options}])
+				),
+				steps: [],
+				requiredFields: []
+			}),
+		getEnumOptions: (key: string) => ENUM_OPTIONS[key] ?? []
+	} as any;
+
 	beforeEach(async () => {
 		datasetServiceStub.setFilters.mockClear();
 
@@ -40,7 +60,8 @@ describe('IndexFilterColComponent', () => {
 			providers: [
 				{provide: KeywordService, useValue: keywordServiceStub},
 				{provide: DatasetService, useValue: datasetServiceStub},
-				{provide: ActivatedRoute, useValue: routeStub}
+				{provide: ActivatedRoute, useValue: routeStub},
+				{provide: DatasetMetadataService, useValue: metadataServiceStub}
 			]
 		}).compileComponents();
 
@@ -60,6 +81,8 @@ describe('IndexFilterColComponent', () => {
 	});
 
 	it('exposes the available filter categories', () => {
+		// Facets are derived from the schema metadata on init.
+		fixture.detectChanges();
 		expect(component.availableFilters).toContain('dct:publisher');
 		expect(component.availableFilters).toContain('dcat:theme');
 	});

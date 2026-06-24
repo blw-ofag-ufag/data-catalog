@@ -1,14 +1,3 @@
-import {
-	AccessRights,
-	AccrualPeriocicites,
-	CategorizationsDSG,
-	ClassificationLevels,
-	DataTypes,
-	DatasetAvailabilities,
-	DatasetThemes,
-	Publishers,
-	Statuses
-} from '../models/schemas/dataset';
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
@@ -28,6 +17,7 @@ import {MatButton} from '@angular/material/button';
 import {ActivatedRoute} from '@angular/router';
 import {ActiveFilters} from '../models/ActiveFilters';
 import {Keyword, KeywordService} from '../services/api/keyword.service';
+import {DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
 
 @Component({
 	selector: 'index-filter-col',
@@ -49,18 +39,10 @@ import {Keyword, KeywordService} from '../services/api/keyword.service';
 	styleUrl: './index-filter-col.component.scss'
 })
 export class IndexFilterColComponent implements OnInit, OnDestroy {
-	private readonly _availableFilters: {[key: string]: readonly string[]} = {
-		'dct:accessRights': AccessRights,
-		'dct:publisher': Publishers,
-		'dcatap:availability': DatasetAvailabilities,
-		'dct:accrualPeriodicity': AccrualPeriocicites,
-		'adms:status': Statuses,
-		'bv:classification': ClassificationLevels,
-		'bv:personalData': CategorizationsDSG,
-		'bv:typeOfData': DataTypes,
-		'dcat:theme': DatasetThemes
-		// class: ['dataset']
-	};
+	// Facetable enum fields, derived from the runtime schema (fields that carry enum
+	// options). dcat:keyword is intentionally absent here - it has no schema enum and
+	// is handled via the dedicated keyword chip/autocomplete UI below.
+	private _availableFilterKeys: string[] = [];
 	private readonly _selectedFilters: ActiveFilters = {};
 	private readonly destroy$ = new Subject<void>();
 	// @Input() set availableFilters(filters: string[]) {
@@ -79,7 +61,8 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 		private readonly keywordService: KeywordService,
 		private readonly filterService: DatasetService,
 		private readonly route: ActivatedRoute,
-		private readonly translateService: TranslateService
+		private readonly translateService: TranslateService,
+		private readonly metadataService: DatasetMetadataService
 	) {
 		this.filteredKeywords$ = this.keywordControl.valueChanges.pipe(
 			startWith(null),
@@ -91,6 +74,17 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
+		// Derive the facetable enum fields from the runtime schema once it loads.
+		this.metadataService
+			.getMetadata()
+			.pipe(takeUntil(this.destroy$))
+			.subscribe(config => {
+				if (!config) return;
+				this._availableFilterKeys = Array.from(config.fields.values())
+					.filter(field => (field.enum?.length ?? 0) > 0)
+					.map(field => field.key);
+			});
+
 		this.activatedFilters$
 			.pipe(
 				takeUntil(this.destroy$),
@@ -117,11 +111,12 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 	}
 
 	get availableFilters(): string[] {
-		return Object.keys(this._availableFilters);
+		return this._availableFilterKeys;
 	}
 
 	filterChoices(_filterkey: string): readonly string[] {
-		return this._availableFilters[_filterkey].filter(f => f !== '');
+		// Options come from the runtime schema (already empty-string filtered).
+		return this.metadataService.getEnumOptions(_filterkey);
 	}
 
 	add(event: MatChipInputEvent): void {
