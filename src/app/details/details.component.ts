@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {DatasetSchema, enumArrayFields, enumTypes} from '../models/schemas/dataset';
+import {DatasetSchema} from '../models/schemas/dataset';
+import {enumArrayFields, enumTypes} from '../models/enum-fields';
 import {DatasetService} from '../services/api/api.service';
 import {Observable, Subject, startWith} from 'rxjs';
 import {AsyncPipe} from '@angular/common';

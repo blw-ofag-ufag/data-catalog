@@ -1,5 +1,5 @@
 import {Params} from '@angular/router';
-import {enumTypes} from '../models/schemas/dataset';
+import {enumTypes} from '../models/enum-fields';
 
 export type ActiveFilters = {[key: string]: {[key: string]: boolean}};
 
