@@ -73,6 +73,12 @@ export interface Distribution {
 	styleUrl: './distribution-field.component.scss'
 })
 export class DistributionFieldComponent implements ControlValueAccessor, Validator, OnDestroy {
+	// TODO(#225/#265): cross-field constraint not yet enforced. The metadata-repo
+	// schema defines `bv:internalPath` and `dcat:accessURL` at distribution level;
+	// they should be mutually exclusive (XOR), and `bv:internalPath` should be
+	// disallowed when publishing to external portals (I14Y / opendata.swiss). This
+	// is a per-distribution cross-field rule the plain JSON schema cannot express;
+	// implement once the augmentation-layer vehicle (config/form-layout.yaml) lands.
 	@Input() label = 'Distributions';
 	@Input() required = false;
 	@Input() fieldName?: string;

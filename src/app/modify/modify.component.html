@@ -36,8 +36,8 @@
 			</p>
 		</ob-alert>
 
-		<!-- Dataset Form -->
-		<div class="dataset-form-container" *ngIf="!showSubmitSection">
+		<!-- Dataset Form (blocked while schemas load or on a hard load error) -->
+		<div class="dataset-form-container" *ngIf="!showSubmitSection && !schemasLoading && !schemaLoadError">
 			<form [formGroup]="datasetForm">
 				<mat-stepper [linear]="isLinear" orientation="vertical" #stepper class="vertical-stepper">
 					<ng-template matStepperIcon="edit">

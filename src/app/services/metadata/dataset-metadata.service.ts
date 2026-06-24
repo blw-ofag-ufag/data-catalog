@@ -194,6 +194,10 @@ export class DatasetMetadataService {
 		return 'string';
 	}
 
+	// TODO(08-schema): this duplicates SchemaParserUtil's validator generation used by
+	// ValidationSchemaService. Both now parse the same runtime schema. Consolidate by
+	// deferring form-field validators to ValidationSchemaService once the form-build /
+	// validation interplay (modify.component.applySchemaValidation) is safe to simplify.
 	private generateValidators(key: string, prop: any, isRequired: boolean): any[] {
 		const validators: any[] = [];
 
