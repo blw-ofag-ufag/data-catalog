@@ -316,14 +316,14 @@ export class ModifyComponent implements OnInit, OnDestroy {
 						const publisherConfig = this.publisherService.getPublishers().find(p => p.id === publisherId);
 
 						if (publisherConfig && this.datasetId) {
-							// Use the GitHub repo from publisher config as the first parameter
 							// The klass is typically 'datasets' for dataset objects
 							const klass = 'datasets';
 
-							// Load full dataset details
-							// loadDetail expects (publisher: string, klass: string, id: string)
-							// where publisher is actually the GitHub repo identifier
-							this.datasetService.loadDetail(publisherConfig.githubRepo, klass, this.datasetId);
+							// Load full dataset details. loadDetail keys its detail-URL map by
+							// publisher *id* (see MultiDatasetService.detailUrls); passing the
+							// githubRepo here yields detailUrls[repo] === undefined and the edit
+							// form never loads the dataset.
+							this.datasetService.loadDetail(publisherConfig.id, klass, this.datasetId);
 						}
 					}
 				}
@@ -342,6 +342,9 @@ export class ModifyComponent implements OnInit, OnDestroy {
 						this.populateForm(dataset);
 					}
 					this.isLoading = false;
+					// loadDetail uses native fetch() (outside Angular's zone), so patched values
+					// would not render until a stray click without an explicit CD pass (see #237).
+					this.cdr.detectChanges();
 				}
 			});
 		} else {

@@ -442,7 +442,8 @@ describe('ModifyComponent', () => {
 
 			// Provide the index entry so loadDetail is triggered.
 			datasetsSubject.next([{'dct:identifier': 'dataset-123', 'dct:publisher': 'BLW-OFAG-UFAG-FOAG'}]);
-			expect(multiDatasetServiceStub.loadDetail).toHaveBeenCalledWith('blw-ofag-ufag/metadata', 'datasets', 'dataset-123');
+			// loadDetail is keyed by publisher *id* (not githubRepo) in MultiDatasetService.detailUrls.
+			expect(multiDatasetServiceStub.loadDetail).toHaveBeenCalledWith('BLW-OFAG-UFAG-FOAG', 'datasets', 'dataset-123');
 
 			// Now the full dataset arrives -> form is populated.
 			selectedDatasetSubject.next({'dct:identifier': 'dataset-123', 'dct:title': {de: 'Geladen', fr: 'Charge', it: '', en: ''}, 'dct:spatial': 'Bern'});
