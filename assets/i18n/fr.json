@@ -293,7 +293,10 @@
           "email": "Veuillez saisir une adresse e-mail valide",
           "summary": "Erreurs de validation du formulaire :",
           "fillRequired": "Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*)",
-          "recommended": "(recommandé)"
+          "recommended": "(recommandé)",
+          "invalidDate": "Veuillez saisir une date valide (JJ.MM.AAAA)",
+          "dateOrderIssuedModified": "La date de publication doit être antérieure ou égale à la date de modification.",
+          "dateOrderStartEnd": "La date de début doit être antérieure ou égale à la date de fin."
         },
         "confirmation": {
           "unsavedChanges": "Vous avez des modifications non enregistrées. Êtes-vous sûr de vouloir quitter ? Toutes les modifications seront perdues."
