@@ -10,6 +10,9 @@ export interface ValidationGroup {
 	alertType: 'info' | 'warning' | 'error';
 	errors: string[];
 	icon?: string;
+	// When true, these issues are advisory only (the matching external catalog is not
+	// selected) and do not block submission. They block once the catalog is activated.
+	advisory?: boolean;
 }
 
 @Component({
@@ -24,7 +27,11 @@ export interface ValidationGroup {
 				<span class="error-count">({{ validationGroup.errors.length }})</span>
 			</div>
 
-			<p class="validation-description">
+			<p *ngIf="validationGroup.advisory" class="validation-advisory">
+					{{ 'validation.advisory' | translate }}
+				</p>
+
+				<p class="validation-description">
 				{{ getValidationDescription() | translate }}
 			</p>
 
@@ -67,7 +74,14 @@ export interface ValidationGroup {
 				font-size: 0.9rem;
 			}
 
-			.validation-description {
+			.validation-advisory {
+					margin: 0.5rem 0;
+					font-size: 0.85rem;
+					font-style: italic;
+					opacity: 0.85;
+				}
+
+				.validation-description {
 				margin: 0.5rem 0;
 				font-size: 0.9rem;
 				opacity: 0.9;

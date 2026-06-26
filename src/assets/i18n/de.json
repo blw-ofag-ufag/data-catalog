@@ -491,6 +491,7 @@
     "generic": {
       "description": "Bitte prüfen Sie die folgenden Anforderungen"
     },
+    "advisory": "Nur als Hinweis – diese Anforderungen blockieren die Übermittlung erst, wenn Sie auf diesem Katalog veröffentlichen.",
     "errors": {
       "fieldRequired": "{{field}} ist erforderlich für {{schema}}",
       "fieldRequiredPattern": "{{field}}: {{languages}}-Text muss {{pattern}} sein",

@@ -627,14 +627,17 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	private updateValidationErrors(): void {
 		this.validationErrors.clear();
 
-		Array.from(this.activeValidationSchemas).forEach(schemaType => {
+		// Evaluate base plus both strict profiles regardless of activation: base is always
+		// blocking, while i14y/ods are advisory until their matching external catalog is
+		// selected (see the validationGroups getter and onSubmit's blocking check).
+		const allSchemaTypes: ValidationSchemaType[] = ['base', 'i14y', 'ods'];
+		allSchemaTypes.forEach(schemaType => {
 			const errors = this.validationSchemaService.getFilteredSchemaValidationErrors(schemaType, this.datasetForm.value);
 
 			// For the base schema, also include form validation errors
 			if (schemaType === 'base' && this.datasetForm.invalid) {
 				const formErrors = this.getFormValidationErrors();
-				const combinedErrors = [...errors, ...formErrors];
-				this.validationErrors.set(schemaType, combinedErrors);
+				this.validationErrors.set(schemaType, [...errors, ...formErrors]);
 			} else {
 				this.validationErrors.set(schemaType, errors);
 			}
@@ -718,23 +721,29 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		return this.validationErrors.get('ods') || [];
 	}
 
-	// Get validation groups for template
-	get activeValidationGroups(): ValidationGroup[] {
+	// Get validation groups for template. Includes base (always) plus i14y/ods whenever they
+	// have issues; i14y/ods render as advisory (non-blocking) unless their matching external
+	// catalog is selected, in which case they block submission (see onSubmit).
+	get validationGroups(): ValidationGroup[] {
 		const groups: ValidationGroup[] = [];
+		const allSchemaTypes: ValidationSchemaType[] = ['base', 'i14y', 'ods'];
 
-		Array.from(this.activeValidationSchemas).forEach(schemaType => {
+		allSchemaTypes.forEach(schemaType => {
 			const schema = this.validationSchemaService.getSchema(schemaType);
 			const errors = this.validationErrors.get(schemaType) || [];
-
-			if (schema) {
-				groups.push({
-					name: schema.name,
-					color: schema.color,
-					alertType: schema.alertType,
-					errors,
-					icon: this.getSchemaIcon(schemaType)
-				});
+			if (!schema || errors.length === 0) {
+				return;
 			}
+
+			const advisory = !this.activeValidationSchemas.has(schemaType);
+			groups.push({
+				name: schema.name,
+				color: schema.color,
+				alertType: advisory ? 'info' : schema.alertType,
+				errors,
+				icon: this.getSchemaIcon(schemaType),
+				advisory
+			});
 		});
 
 		return groups;

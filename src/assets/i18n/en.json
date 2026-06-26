@@ -480,6 +480,7 @@
     "generic": {
       "description": "Please check the following requirements"
     },
+    "advisory": "Advisory only — these requirements block submission once you publish to this catalog.",
     "errors": {
       "fieldRequired": "{{field}} is required for {{schema}}",
       "fieldRequiredPattern": "{{field}}: {{languages}} text must be {{pattern}}",

@@ -449,6 +449,7 @@
     "generic": {
       "description": "Controllare i seguenti requisiti"
     },
+    "advisory": "Solo a titolo indicativo: questi requisiti bloccano l'invio solo quando si pubblica su questo catalogo.",
     "errors": {
       "fieldRequired": "{{field}} è richiesto per {{schema}}",
       "fieldRequiredPattern": "{{field}}: il testo {{languages}} deve essere {{pattern}}",

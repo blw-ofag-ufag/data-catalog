@@ -546,14 +546,14 @@
 
 				<!-- Validation Summary - Schema-based Validation -->
 				<div class="validation-section" style="margin-top: 2rem;">
-					<div *ngFor="let validationGroup of activeValidationGroups" class="ob-mb-3">
+					<div *ngFor="let validationGroup of validationGroups" class="ob-mb-3">
 						<validation-alert [validationGroup]="validationGroup"></validation-alert>
 					</div>
 				</div>
 
 				<!-- Legacy Validation Summary (fallback) -->
 				<ob-alert
-					*ngIf="datasetForm.invalid && datasetForm.touched && invalidFields.length > 0 && activeValidationGroups.length === 0"
+					*ngIf="datasetForm.invalid && datasetForm.touched && invalidFields.length > 0 && validationGroups.length === 0"
 					type="warning"
 					class="ob-mb-4"
 				>

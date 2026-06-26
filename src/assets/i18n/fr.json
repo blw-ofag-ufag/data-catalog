@@ -458,6 +458,7 @@
     "generic": {
       "description": "Veuillez vérifier les exigences suivantes"
     },
+    "advisory": "À titre indicatif – ces exigences ne bloquent l'envoi que lorsque vous publiez sur ce catalogue.",
     "errors": {
       "fieldRequired": "{{field}} est requis pour {{schema}}",
       "fieldRequiredPattern": "{{field}}: le texte {{languages}} doit être {{pattern}}",
