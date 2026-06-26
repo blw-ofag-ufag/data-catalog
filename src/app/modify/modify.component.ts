@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
@@ -105,7 +105,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		private readonly notificationService: ObNotificationService,
 		private readonly metadataService: DatasetMetadataService,
 		private readonly validationSchemaService: ValidationSchemaService,
-		private readonly formCacheService: FormCacheService
+		private readonly formCacheService: FormCacheService,
+		private readonly cdr: ChangeDetectorRef
 	) {
 		this.datasetForm = this.createForm();
 	}
@@ -119,11 +120,15 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			.isLoaded()
 			.pipe(takeUntil(this.destroy$))
 			.subscribe(loaded => {
-				this.schemasLoading = !loaded;
 				if (loaded) {
 					// Apply base schema validation immediately
 					this.applySchemaValidation('base');
 				}
+				// Note: the loading flag is cleared in the metadata subscription below, once the
+				// form controls actually exist. Revealing the form here (before build) would render
+				// the stepper against missing controls (_rawValidators of null) and leave it blank
+				// until a stray click (see #237).
+				this.cdr.detectChanges();
 			});
 
 		// Monitor schema load errors
@@ -135,6 +140,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 				if (error) {
 					this.notificationService.error(error);
 				}
+				this.cdr.detectChanges();
 			});
 
 		// Initialize form with metadata
@@ -148,6 +154,10 @@ export class ModifyComponent implements OnInit, OnDestroy {
 					if (this.validationSchemaService.getSchema('base')) {
 						this.applySchemaValidation('base');
 					}
+					// Reveal the form only now that its controls exist, then force change
+					// detection so it renders without requiring a stray click (see #237).
+					this.schemasLoading = false;
+					this.cdr.detectChanges();
 				}
 			});
 

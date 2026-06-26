@@ -387,54 +387,8 @@
 						</div>
 					</mat-step>
 
-					<!-- Step 8: Business Context -->
+					<!-- Step 8: Additional Metadata & Relationships -->
 					<mat-step [completed]="isStepValid(7)" [hasError]="!isStepValid(7) && (datasetForm.touched || submitAttempted)">
-						<ng-template matStepLabel>{{ "modify.auth.form.sections.business" | translate }}</ng-template>
-						<div class="step-content">
-							<div class="ob-flex ob-flex-wrap ob-gap-4">
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.bv:itSystem" fieldName="bv:itSystem"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.bv:itSystem" | translate }}</mat-label>
-											<input matInput formControlName="bv:itSystem" [placeholder]="'modify.auth.form.placeholders.itSystem' | translate" />
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="bv:itSystem"></app-form-field-tooltip>
-									</div>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.bv:retentionPeriod" fieldName="bv:retentionPeriod"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.bv:retentionPeriod" | translate }}</mat-label>
-											<input
-												min="0"
-												matInput
-												type="number"
-												formControlName="bv:retentionPeriod"
-												[placeholder]="'modify.auth.form.placeholders.retentionPeriod' | translate"
-											/>
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="bv:retentionPeriod"></app-form-field-tooltip>
-									</div>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<!-- Business Process field - could be expanded to textarea or array later -->
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.prov:wasGeneratedBy" fieldName="prov:wasGeneratedBy"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.prov:wasGeneratedBy" | translate }}</mat-label>
-											<input matInput formControlName="prov:wasGeneratedBy" [placeholder]="'modify.auth.form.placeholders.businessProcess' | translate" />
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="prov:wasGeneratedBy"></app-form-field-tooltip>
-									</div>
-								</div>
-							</div>
-						</div>
-					</mat-step>
-
-					<!-- Step 9: Additional Metadata & Relationships -->
-					<mat-step [completed]="isStepValid(8)" [hasError]="!isStepValid(8) && (datasetForm.touched || submitAttempted)">
 						<ng-template matStepLabel>{{ "modify.auth.form.sections.additional" | translate }}</ng-template>
 						<div class="step-content">
 							<div class="ob-w-full ob-mb-3">
@@ -520,8 +474,8 @@
 						</div>
 					</mat-step>
 
-					<!-- Step 10: Distributions -->
-					<mat-step [completed]="isStepValid(9)" [hasError]="!isStepValid(9) && (datasetForm.touched || submitAttempted)">
+					<!-- Step 9: Distributions -->
+					<mat-step [completed]="isStepValid(8)" [hasError]="!isStepValid(8) && (datasetForm.touched || submitAttempted)">
 						<ng-template matStepLabel>{{ "modify.auth.form.sections.distributions" | translate }}</ng-template>
 						<div class="step-content">
 							<app-distribution-field formControlName="dcat:distribution" [label]="'labels.dcat:distribution'" fieldName="dcat:distribution"> </app-distribution-field>
