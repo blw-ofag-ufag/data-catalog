@@ -6,6 +6,7 @@ import {ValidationSchemaFetcherService, SchemaConfig} from '../validation/valida
 import {SchemaParserUtil} from '../validation/schema-parser.util';
 import {seedEnumFieldsFromSchema} from '../../models/enum-fields';
 import * as schemaConfigs from '../../codegen/schemas.json';
+import * as formLayout from '../../codegen/form-layout.json';
 
 // Shared empty options array so template bindings get a stable reference.
 const EMPTY_OPTIONS: string[] = [];
@@ -45,62 +46,10 @@ export interface DatasetMetadataConfig {
 })
 export class DatasetMetadataService {
 	private readonly metadata$ = new BehaviorSubject<DatasetMetadataConfig | null>(null);
-	private readonly stepConfig: StepConfiguration[] = [
-		{
-			id: 1,
-			key: 'basic',
-			label: 'modify.auth.form.sections.basic',
-			fields: ['dct:title', 'dct:description', 'dcat:keyword', 'dcat:theme']
-		},
-		{
-			id: 2,
-			key: 'access',
-			label: 'modify.auth.form.sections.access',
-			fields: ['dct:accessRights', 'bv:classification', 'bv:personalData', 'adms:status']
-		},
-		{
-			id: 3,
-			key: 'publisher',
-			label: 'modify.auth.form.sections.publisher',
-			fields: ['dct:publisher', 'dcat:contactPoint']
-		},
-		{
-			id: 4,
-			key: 'metadata',
-			label: 'modify.auth.form.sections.metadata',
-			fields: ['dct:issued', 'dct:modified', 'dcat:version', 'dct:accrualPeriodicity', 'bv:typeOfData', 'bv:archivalValue']
-		},
-		{
-			id: 5,
-			key: 'governance',
-			label: 'modify.auth.form.sections.governance',
-			fields: ['prov:qualifiedAttribution']
-		},
-		{
-			id: 6,
-			key: 'external',
-			label: 'modify.auth.form.sections.external',
-			fields: ['bv:externalCatalogs', 'dcat:landingPage']
-		},
-		{
-			id: 7,
-			key: 'coverage',
-			label: 'modify.auth.form.sections.coverage',
-			fields: ['dct:spatial', 'dct:temporal', 'dcatap:applicableLegislation']
-		},
-		{
-			id: 8,
-			key: 'additional',
-			label: 'modify.auth.form.sections.additional',
-			fields: ['schema:comment', 'bv:geoIdentifier', 'schema:image', 'bv:abrogation', 'prov:wasDerivedFrom', 'dcat:inSeries', 'dct:replaces']
-		},
-		{
-			id: 9,
-			key: 'distributions',
-			label: 'modify.auth.form.sections.distributions',
-			fields: ['dcat:distribution']
-		}
-	];
+	// Step grouping/order come from the augmentation overlay (config/form-layout.yaml →
+	// codegen/form-layout.json), not the runtime schema. Field types/enums/validation still
+	// come from the schema; this only owns presentation the schema can't express.
+	private readonly stepConfig: StepConfiguration[] = ((formLayout as any).default ?? formLayout).steps;
 
 	constructor(private readonly schemaFetcher: ValidationSchemaFetcherService) {
 		this.initializeMetadata();

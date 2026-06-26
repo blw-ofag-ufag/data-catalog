@@ -3,7 +3,7 @@
   "version": "2.1.6",
   "scripts": {
     "start": "ng serve",
-    "prebuild": "node config/convert-yaml.js && node config/convert-schemas.js",
+    "prebuild": "node config/convert-yaml.js && node config/convert-schemas.js && node config/convert-form-layout.js",
     "build": "ng build --base-href /data-catalog/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
