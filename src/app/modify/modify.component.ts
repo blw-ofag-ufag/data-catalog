@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
 import {DateAdapter} from '@angular/material/core';
@@ -133,7 +133,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		private readonly metadataService: DatasetMetadataService,
 		private readonly validationSchemaService: ValidationSchemaService,
 		private readonly formCacheService: FormCacheService,
-		private readonly dateAdapter: DateAdapter<Date>
+		private readonly dateAdapter: DateAdapter<Date>,
+		private readonly cdr: ChangeDetectorRef
 	) {
 		this.datasetForm = this.createForm();
 	}
@@ -472,6 +473,9 @@ export class ModifyComponent implements OnInit, OnDestroy {
 					title: this.translateService.instant('validation.formStatus.complete.title'),
 					message: this.translateService.instant('validation.formStatus.complete.message')
 				});
+				// Force change detection so the submit section renders without
+				// requiring a user interaction (see #237).
+				this.cdr.detectChanges();
 			}, 1000);
 		} else {
 			this.markFormGroupTouched(this.datasetForm);
