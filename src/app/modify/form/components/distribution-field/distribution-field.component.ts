@@ -9,12 +9,12 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
 import {ObButtonDirective} from '@oblique/oblique';
 import {MultilingualTextFieldComponent} from '../multilingual-text-field/multilingual-text-field.component';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
 import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from '../field-debug-overlay/field-debug-overlay.component';
 import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
+import {parseLocalDate} from '../../../../shared/date-only.util';
 
 export interface MultilingualText {
 	de: string;
@@ -51,7 +51,6 @@ export interface Distribution {
 		MatButtonModule,
 		MatIconModule,
 		MatDatepickerModule,
-		MatNativeDateModule,
 		ObButtonDirective,
 		MultilingualTextFieldComponent,
 		FormFieldTooltipComponent,
@@ -212,15 +211,9 @@ export class DistributionFieldComponent implements ControlValueAccessor, Validat
 	}
 
 	private createDistributionGroup(distribution?: Distribution): FormGroup {
-		// Handle date conversion - if it's a string, convert to Date object
-		let modifiedDate = null;
-		if (distribution?.['dct:modified']) {
-			if (typeof distribution['dct:modified'] === 'string') {
-				modifiedDate = new Date(distribution['dct:modified']);
-			} else {
-				modifiedDate = distribution['dct:modified'];
-			}
-		}
+		// Handle date conversion - if it's a string, convert to a local Date object
+		// (parseLocalDate avoids the UTC-midnight off-by-one, issue #259).
+		const modifiedDate = parseLocalDate(distribution?.['dct:modified']);
 
 		return this.fb.group({
 			'dct:identifier': [distribution?.['dct:identifier'] || '', Validators.required],

@@ -25,10 +25,28 @@ import {IndexSwitchComponent} from './index-switch/index-switch.component';
 import {MatTable} from '@angular/material/table';
 import {FooterComponent} from './footer/footer.component';
 import {MatNavList} from '@angular/material/list';
+import {MAT_DATE_LOCALE, MatDateFormats} from '@angular/material/core';
+import {provideDateFnsAdapter} from '@angular/material-date-fns-adapter';
+import {de} from 'date-fns/locale';
 
 registerLocaleData(localeDECH);
 registerLocaleData(localeFRCH);
 registerLocaleData(localeITCH);
+
+// Explicit Swiss date format so dates can be typed manually (issue #238) with an
+// unambiguous parse/display format. Calendar labels are still localized via the
+// active date-fns locale, which is updated on language change (issue #224).
+export const APP_DATE_FORMATS: MatDateFormats = {
+	parse: {
+		dateInput: 'dd.MM.yyyy'
+	},
+	display: {
+		dateInput: 'dd.MM.yyyy',
+		monthYearLabel: 'MMM yyyy',
+		dateA11yLabel: 'dd.MM.yyyy',
+		monthYearA11yLabel: 'MMMM yyyy'
+	}
+};
 
 @NgModule({
 	declarations: [AppComponent, HomeComponent, IndexComponent, AboutComponent, HandbookComponent, LandingHeaderComponent],
@@ -62,6 +80,8 @@ registerLocaleData(localeITCH);
 	],
 	providers: [
 		{provide: LOCALE_ID, useValue: 'de-CH'},
+		provideDateFnsAdapter(APP_DATE_FORMATS),
+		{provide: MAT_DATE_LOCALE, useValue: de},
 		provideObliqueTranslations(),
 		provideObliqueConfiguration({
 			accessibilityStatement: {

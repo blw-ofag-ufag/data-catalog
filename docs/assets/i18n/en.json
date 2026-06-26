@@ -302,7 +302,10 @@
           "email": "Please enter a valid email address",
           "summary": "Form validation errors:",
           "fillRequired": "Please fill out all required fields marked with an asterisk (*)",
-          "recommended": "(recommended)"
+          "recommended": "(recommended)",
+          "invalidDate": "Please enter a valid date (DD.MM.YYYY)",
+          "dateOrderIssuedModified": "The issued date must be on or before the modified date.",
+          "dateOrderStartEnd": "The start date must be on or before the end date."
         },
         "confirmation": {
           "unsavedChanges": "You have unsaved changes. Are you sure you want to leave? All changes will be lost."

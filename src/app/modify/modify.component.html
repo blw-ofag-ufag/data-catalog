@@ -219,12 +219,25 @@
 										<app-field-debug-overlay label="labels.dct:issued" fieldName="dct:issued" [required]="isFieldRequired('dct:issued')" [validationInfo]="getFieldValidationDebugInfo('dct:issued')"></app-field-debug-overlay>
 										<mat-form-field class="ob-w-full">
 											<mat-label>{{ "labels.dct:issued" | translate }}</mat-label>
-											<input matInput [matDatepicker]="issuePicker" formControlName="dct:issued" />
+											<input matInput [matDatepicker]="issuePicker" formControlName="dct:issued" [errorStateMatcher]="issuedModifiedErrorMatcher" />
 											<mat-datepicker-toggle matIconSuffix [for]="issuePicker"></mat-datepicker-toggle>
 											<mat-datepicker #issuePicker></mat-datepicker>
+											<mat-error *ngIf="datasetForm.get('dct:issued')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
 										</mat-form-field>
 										<app-form-field-tooltip fieldName="dct:issued"></app-form-field-tooltip>
 									</div>
+								</div>
+								<div class="ob-flex-1 ob-min-w-0">
+									<app-enum-select-field
+										formControlName="dcatap:availability"
+										[label]="'labels.dcatap:availability'"
+										[options]="availabilities"
+										[required]="isFieldRequired('dcatap:availability')"
+										[recommended]="isFieldRecommended('dcatap:availability')"
+										[translationPath]="'choices.dataset.dcatap:availability'"
+										fieldName="dcatap:availability"
+									>
+									</app-enum-select-field>
 								</div>
 								<div class="ob-flex-1 ob-min-w-0">
 									<div class="field-with-tooltip" style="position: relative;">
@@ -234,9 +247,11 @@
 												{{ "labels.dct:modified" | translate }}
 												<span *ngIf="isFieldRecommended('dct:modified')" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
 											</mat-label>
-											<input matInput [matDatepicker]="modifiedPicker" formControlName="dct:modified" />
+											<input matInput [matDatepicker]="modifiedPicker" formControlName="dct:modified" [errorStateMatcher]="issuedModifiedErrorMatcher" />
 											<mat-datepicker-toggle matIconSuffix [for]="modifiedPicker"></mat-datepicker-toggle>
 											<mat-datepicker #modifiedPicker></mat-datepicker>
+											<mat-error *ngIf="datasetForm.get('dct:modified')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
+											<mat-error *ngIf="datasetForm.hasError('issuedAfterModified') && !datasetForm.get('dct:modified')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.dateOrderIssuedModified" | translate }}</mat-error>
 										</mat-form-field>
 										<app-form-field-tooltip fieldName="dct:modified"></app-form-field-tooltip>
 									</div>
@@ -364,9 +379,10 @@
 										<app-field-debug-overlay label="modify.auth.form.labels.temporalStart" fieldName="dct:temporal.dcat:start_date"></app-field-debug-overlay>
 										<mat-form-field class="ob-w-full">
 											<mat-label>{{ "modify.auth.form.labels.temporalStart" | translate }}</mat-label>
-											<input matInput [matDatepicker]="temporalStartPicker" formControlName="dcat:start_date" />
+											<input matInput [matDatepicker]="temporalStartPicker" formControlName="dcat:start_date" [errorStateMatcher]="temporalRangeErrorMatcher" />
 											<mat-datepicker-toggle matIconSuffix [for]="temporalStartPicker"></mat-datepicker-toggle>
 											<mat-datepicker #temporalStartPicker></mat-datepicker>
+											<mat-error *ngIf="datasetForm.get('dct:temporal.dcat:start_date')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
 										</mat-form-field>
 										<app-form-field-tooltip fieldName="dct:temporal"></app-form-field-tooltip>
 									</div>
@@ -376,9 +392,11 @@
 										<app-field-debug-overlay label="modify.auth.form.labels.temporalEnd" fieldName="dct:temporal.dcat:end_date"></app-field-debug-overlay>
 										<mat-form-field class="ob-w-full">
 											<mat-label>{{ "modify.auth.form.labels.temporalEnd" | translate }}</mat-label>
-											<input matInput [matDatepicker]="temporalEndPicker" formControlName="dcat:end_date" />
+											<input matInput [matDatepicker]="temporalEndPicker" formControlName="dcat:end_date" [errorStateMatcher]="temporalRangeErrorMatcher" />
 											<mat-datepicker-toggle matIconSuffix [for]="temporalEndPicker"></mat-datepicker-toggle>
 											<mat-datepicker #temporalEndPicker></mat-datepicker>
+											<mat-error *ngIf="datasetForm.get('dct:temporal.dcat:end_date')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
+											<mat-error *ngIf="datasetForm.get('dct:temporal')?.hasError('startAfterEnd') && !datasetForm.get('dct:temporal.dcat:end_date')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.dateOrderStartEnd" | translate }}</mat-error>
 										</mat-form-field>
 										<app-form-field-tooltip fieldName="dct:temporal"></app-form-field-tooltip>
 									</div>

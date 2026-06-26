@@ -1,6 +1,8 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
+import {DateAdapter} from '@angular/material/core';
+import {RelationErrorStateMatcher} from '../shared/relation-error-state-matcher';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {Observable, Subject, takeUntil} from 'rxjs';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
@@ -8,7 +10,6 @@ import {ObAlertModule, ObButtonDirective, ObIconModule, ObNotificationModule, Ob
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
@@ -60,7 +61,6 @@ import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from './form/compo
 		MatFormFieldModule,
 		MatInputModule,
 		MatDatepickerModule,
-		MatNativeDateModule,
 		MatCheckboxModule,
 		MatStepperModule,
 		MatButtonModule,
@@ -112,6 +112,11 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	readonly accrualPeriocicites = AccrualPeriocicites;
 	readonly dataTypes = DataTypes;
 
+	// Mark the issued/modified and temporal start/end inputs red when their cross-field
+	// relation is violated (the error lives on the form group, issue #231).
+	readonly issuedModifiedErrorMatcher = new RelationErrorStateMatcher(() => this.datasetForm.hasError('issuedAfterModified'));
+	readonly temporalRangeErrorMatcher = new RelationErrorStateMatcher(() => !!this.datasetForm.get('dct:temporal')?.hasError('startAfterEnd'));
+
 	private readonly destroy$ = new Subject<void>();
 
 	constructor(
@@ -128,6 +133,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		private readonly metadataService: DatasetMetadataService,
 		private readonly validationSchemaService: ValidationSchemaService,
 		private readonly formCacheService: FormCacheService,
+		private readonly dateAdapter: DateAdapter<Date>,
 		private readonly cdr: ChangeDetectorRef
 	) {
 		this.datasetForm = this.createForm();
@@ -250,8 +256,39 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			formGroup.addControl(key, control);
 		});
 
+		// Enforce date relations: issued <= modified, temporal start <= end (issue #231)
+		formGroup.addValidators(this.dateRelationValidator());
+		const temporal = formGroup.get('dct:temporal');
+		if (temporal) {
+			temporal.addValidators(this.temporalRangeValidator());
+		}
+
 		// Replace the current form with the new one
 		this.datasetForm = formGroup;
+	}
+
+	// dct:issued must be on or before dct:modified (issue #231).
+	private dateRelationValidator() {
+		return (group: AbstractControl): ValidationErrors | null => {
+			const issued = group.get('dct:issued')?.value as Date | null;
+			const modified = group.get('dct:modified')?.value as Date | null;
+			if (issued && modified && this.dateAdapter.compareDate(issued, modified) > 0) {
+				return {issuedAfterModified: true};
+			}
+			return null;
+		};
+	}
+
+	// dcat:start_date must be on or before dcat:end_date (issue #231).
+	private temporalRangeValidator() {
+		return (group: AbstractControl): ValidationErrors | null => {
+			const start = group.get('dcat:start_date')?.value as Date | null;
+			const end = group.get('dcat:end_date')?.value as Date | null;
+			if (start && end && this.dateAdapter.compareDate(start, end) > 0) {
+				return {startAfterEnd: true};
+			}
+			return null;
+		};
 	}
 
 	private createControlForField(key: string, fieldMetadata: any): FormControl | FormGroup | FormArray {
@@ -669,6 +706,15 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 	private getFormValidationErrors(): string[] {
 		const errors: string[] = [];
+
+		// Cross-field date relation errors (issue #231) live on the form group / temporal group.
+		if (this.datasetForm.errors?.['issuedAfterModified']) {
+			errors.push(this.translateService.instant('modify.auth.form.validation.dateOrderIssuedModified'));
+		}
+		if (this.datasetForm.get('dct:temporal')?.errors?.['startAfterEnd']) {
+			errors.push(this.translateService.instant('modify.auth.form.validation.dateOrderStartEnd'));
+		}
+
 		const labelMap: {[key: string]: string} = {
 			'dct:title': this.translateService.instant('labels.dct:title'),
 			'dct:description': this.translateService.instant('labels.dct:description'),
@@ -892,6 +938,15 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			}
 			// Also check if the control itself is valid (role requirements met)
 			return qualifiedAttrControl?.valid ?? false;
+		}
+
+		// Cross-field date relations (issue #231) aren't attached to a single control,
+		// so reflect them on the step that contains the involved fields.
+		if (step.fields.includes('dct:modified') && this.datasetForm.hasError('issuedAfterModified')) {
+			return false;
+		}
+		if (step.fields.includes('dct:temporal') && this.datasetForm.get('dct:temporal')?.hasError('startAfterEnd')) {
+			return false;
 		}
 
 		// Check if all required fields in this step are valid
