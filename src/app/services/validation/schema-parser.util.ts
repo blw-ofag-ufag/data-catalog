@@ -83,9 +83,10 @@ export class SchemaParserUtil {
 	}
 
 	/**
-	 * Generate validators based on schema property definition
+	 * Generate validators based on schema property definition.
+	 * Shared with DatasetMetadataService so form-build and validation use one implementation.
 	 */
-	private static generateValidators(key: string, prop: any, isRequired: boolean): ValidatorFn[] {
+	static generateValidators(key: string, prop: any, isRequired: boolean): ValidatorFn[] {
 		const validators: ValidatorFn[] = [];
 
 		// For multilingual fields, don't apply pattern/length validators to the object

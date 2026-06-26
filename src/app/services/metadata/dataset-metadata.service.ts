@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {Validators} from '@angular/forms';
 
 import {ValidationSchemaFetcherService, SchemaConfig} from '../validation/validation-schema-fetcher.service';
+import {SchemaParserUtil} from '../validation/schema-parser.util';
 import {seedEnumFieldsFromSchema} from '../../models/enum-fields';
 import * as schemaConfigs from '../../codegen/schemas.json';
 
@@ -150,7 +150,7 @@ export class DatasetMetadataService {
 				type: this.getFieldType(prop),
 				label: `labels.${key}`,
 				description: prop.description,
-				validators: this.generateValidators(key, prop, requiredFields.includes(key)),
+				validators: SchemaParserUtil.generateValidators(key, prop, requiredFields.includes(key)),
 				enum: optionList?.filter((e: string) => e !== ''), // Filter out empty string from enums
 				format: prop.format
 			};
@@ -192,53 +192,6 @@ export class DatasetMetadataService {
 		if (prop.format === 'uri' || prop.format === 'url') return 'url';
 		if (prop.enum) return 'enum';
 		return 'string';
-	}
-
-	// TODO(08-schema): this duplicates SchemaParserUtil's validator generation used by
-	// ValidationSchemaService. Both now parse the same runtime schema. Consolidate by
-	// deferring form-field validators to ValidationSchemaService once the form-build /
-	// validation interplay (modify.component.applySchemaValidation) is safe to simplify.
-	private generateValidators(key: string, prop: any, isRequired: boolean): any[] {
-		const validators: any[] = [];
-
-		// For multilingual fields, don't apply validators here - they'll be handled by the component
-		if (prop.type === 'object' && prop.properties &&
-		    Object.keys(prop.properties).some(k => ['de', 'fr', 'it', 'en'].includes(k))) {
-			// Skip validators for multilingual fields - handled by MultilingualTextFieldComponent
-			if (isRequired) {
-				validators.push(Validators.required);
-			}
-			return validators;
-		}
-
-		if (isRequired) {
-			validators.push(Validators.required);
-		}
-
-		// Email validation for contact point
-		if (key === 'schema:email' || prop.format === 'email') {
-			validators.push(Validators.email);
-		}
-
-		// URL validation
-		if (prop.format === 'uri' || prop.format === 'url') {
-			validators.push(Validators.pattern(/^https?:\/\/.+/));
-		}
-
-		// Min/max length if specified
-		if (prop.minLength) {
-			validators.push(Validators.minLength(prop.minLength));
-		}
-		if (prop.maxLength) {
-			validators.push(Validators.maxLength(prop.maxLength));
-		}
-
-		// Pattern if specified
-		if (prop.pattern) {
-			validators.push(Validators.pattern(prop.pattern));
-		}
-
-		return validators;
 	}
 
 	private shouldDisplayInDetails(key: string): boolean {
