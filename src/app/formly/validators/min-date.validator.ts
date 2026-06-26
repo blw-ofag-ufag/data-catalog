@@ -1,15 +1,16 @@
 import {AbstractControl} from '@angular/forms';
 import {FormlyFieldConfig} from '@ngx-formly/core';
+import {parseLocalDate} from '../../shared/date-only.util';
 
 export function minDateValidator(control: AbstractControl, field: FormlyFieldConfig): any {
 	if (!control.value || !field.props?.['minDate']) {
 		return null;
 	}
 
-	const inputDate = new Date(control.value);
-	const minDate = new Date(field.props['minDate']);
+	const inputDate = parseLocalDate(control.value);
+	const minDate = parseLocalDate(field.props['minDate']);
 
-	if (inputDate < minDate) {
+	if (inputDate && minDate && inputDate < minDate) {
 		return {
 			minDate: {
 				minDate: field.props['minDate'],
