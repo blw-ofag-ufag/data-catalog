@@ -33,6 +33,12 @@ export interface DataProductTypeConfig {
 	referenceFields: string[];
 	/** i18n key prefix for this type's enum choices (`choices.{type}.*`). */
 	i18nPrefix: string;
+	/**
+	 * Whether the publisher pipeline produces a `data/processed/{segment}.json` catalogue index for
+	 * this type yet. Only `dataset` does today; flip to true once the new-type indexes are published
+	 * so the catalogue starts loading them (avoids fetching known-missing indexes in the meantime).
+	 */
+	hasProcessedIndex: boolean;
 }
 
 export const DATA_PRODUCT_TYPES: DataProductType[] = ['dataset', 'dataService', 'datasetSeries'];
@@ -43,21 +49,24 @@ export const DATA_PRODUCT_TYPE_REGISTRY: Record<DataProductType, DataProductType
 		segment: 'datasets',
 		schemaPath: 'data/schemas/dataset.json',
 		referenceFields: ['prov:wasDerivedFrom', 'dcat:inSeries', 'dct:replaces'],
-		i18nPrefix: 'choices.dataset'
+		i18nPrefix: 'choices.dataset',
+		hasProcessedIndex: true
 	},
 	dataService: {
 		type: 'dataService',
 		segment: 'dataServices',
 		schemaPath: 'data/schemas/dataService.json',
 		referenceFields: ['dcat:servesDataset'],
-		i18nPrefix: 'choices.dataService'
+		i18nPrefix: 'choices.dataService',
+		hasProcessedIndex: false
 	},
 	datasetSeries: {
 		type: 'datasetSeries',
 		segment: 'datasetSeries',
 		schemaPath: 'data/schemas/datasetSeries.json',
 		referenceFields: ['dcat:dataset'],
-		i18nPrefix: 'choices.datasetSeries'
+		i18nPrefix: 'choices.datasetSeries',
+		hasProcessedIndex: false
 	}
 };
 

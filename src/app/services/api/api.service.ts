@@ -240,7 +240,8 @@ export class DatasetService {
 			if (!params['dataset']) {
 				this.multiDatasetService.onRouteChange(null);
 			} else {
-				this.multiDatasetService.onRouteChange({publisher: params['publisher'], klass: 'dataset', id: params['dataset']});
+				// `type` defaults to 'dataset' for back-compat with existing URLs/bookmarks (#221).
+				this.multiDatasetService.onRouteChange({publisher: params['publisher'], klass: params['type'] || 'dataset', id: params['dataset']});
 			}
 		});
 	}
@@ -253,8 +254,8 @@ export class DatasetService {
 		return this.multiDatasetService.loading$;
 	}
 
-	loadDatasetById(publisher: string, id: string): void {
-		this.multiDatasetService.loadDetail(publisher, 'dataset', id);
+	loadDatasetById(publisher: string, id: string, type = 'dataset'): void {
+		this.multiDatasetService.loadDetail(publisher, type, id);
 	}
 
 	search(query: string) {

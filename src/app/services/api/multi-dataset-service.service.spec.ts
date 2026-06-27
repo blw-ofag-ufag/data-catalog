@@ -42,21 +42,22 @@ describe('MultiDatasetService', () => {
 	});
 
 	describe('loadIndex', () => {
-		it('combines datasets fetched from every publisher index URL', async () => {
-			const fetchSpy = mockFetchJson([{'dct:identifier': 'a'}, {'dct:identifier': 'b'}]);
+		it('combines datasets from each publisher dataset index and tags them with productType', async () => {
+			// Only dataset indexes are fetched today (new types have hasProcessedIndex: false).
+			const datasetUrls = publisherService.getPublishers().map(p => p.getProcessedUrl());
+			const fetchSpy = mockFetchByUrl(datasetUrls.map(url => ({match: url, payload: [{'dct:identifier': 'a'}, {'dct:identifier': 'b'}]})));
 
 			service.loadIndex();
 			await flush();
 
-			// Each publisher index URL is fetched (keyword URLs are fetched too).
-			const indexUrls = publisherService.getPublishers().map(p => p.getProcessedUrl());
-			for (const url of indexUrls) {
+			for (const url of datasetUrls) {
 				expect(fetchSpy).toHaveBeenCalledWith(url);
 			}
 
 			const datasets = await new Promise<any[]>(resolve => service.datasets$.subscribe(resolve));
-			// 2 entries per publisher index.
-			expect(datasets.length).toBe(indexUrls.length * 2);
+			// 2 entries per publisher dataset index; new-type indexes contribute nothing (404).
+			expect(datasets.length).toBe(datasetUrls.length * 2);
+			expect(datasets.every(d => d['productType'] === 'dataset')).toBe(true);
 		});
 
 		it('sorts dcat:keyword arrays within each dataset alphabetically', async () => {
@@ -90,7 +91,8 @@ describe('MultiDatasetService', () => {
 			await flush();
 
 			const selected = await new Promise<any>(resolve => service.selectedDataset$.subscribe(resolve));
-			expect(selected).toEqual(payload);
+			// The service tags the loaded record with its resolved product type.
+			expect(selected).toEqual({...payload, productType: 'dataset'});
 
 			const loading = await new Promise<boolean>(resolve => service.loading$.subscribe(resolve));
 			expect(loading).toBe(false);

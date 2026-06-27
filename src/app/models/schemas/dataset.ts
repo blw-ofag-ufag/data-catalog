@@ -1,3 +1,5 @@
+import {DataProductType} from '../data-product-type';
+
 /**
  * URL for an image to be displayed in the data catalog. Choose an image that is related to the dataset's content.
  */
@@ -262,7 +264,7 @@ export type AccessService = string[] | null;
 /**
  * A JSON schema for a dataset file in the data catalog.
  */
-export interface DatasetSchema {
+export interface DatasetSchema extends DataProduct {
 	'schema:image'?: ImageURL;
 	'dct:identifier': DatasetIdentifier;
 	'dct:title': DatasetTitle;
@@ -380,6 +382,8 @@ export interface DataProduct {
 	'dct:identifier': DatasetIdentifier;
 	'dct:title': DatasetTitle;
 	'dct:publisher': Publisher;
+	/** Resolved product type, tagged onto each item at load time (#221). */
+	productType?: DataProductType;
 
 	[k: string]: unknown;
 }
