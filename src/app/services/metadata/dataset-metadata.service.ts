@@ -7,6 +7,7 @@ import {SchemaParserUtil} from '../validation/schema-parser.util';
 import {seedEnumFieldsFromSchema} from '../../models/enum-fields';
 import * as schemaConfigs from '../../codegen/schemas.json';
 import * as formLayout from '../../codegen/form-layout.json';
+import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPE_REGISTRY} from '../../models/data-product-type';
 
 // Shared empty options array so template bindings get a stable reference.
 const EMPTY_OPTIONS: string[] = [];
@@ -46,39 +47,63 @@ export interface DatasetMetadataConfig {
 })
 export class DatasetMetadataService {
 	private readonly metadata$ = new BehaviorSubject<DatasetMetadataConfig | null>(null);
-	// Step grouping/order come from the augmentation overlay (config/form-layout.yaml →
-	// codegen/form-layout.json), not the runtime schema. Field types/enums/validation still
-	// come from the schema; this only owns presentation the schema can't express.
-	private readonly stepConfig: StepConfiguration[] = ((formLayout as any).default ?? formLayout).steps;
+	private activeType: DataProductType = DEFAULT_DATA_PRODUCT_TYPE;
 
 	constructor(private readonly schemaFetcher: ValidationSchemaFetcherService) {
-		this.initializeMetadata();
+		// Build dataset form metadata by default (back-compat); the modify form requests a
+		// specific type via loadForType() when editing a non-dataset product (#221).
+		this.loadForType(DEFAULT_DATA_PRODUCT_TYPE);
 	}
 
-	private initializeMetadata(): void {
-		// Build form metadata from the runtime-fetched base schema (single source of
-		// truth), rather than a static local copy. The fetcher caches per config id,
-		// so this shares the same request as ValidationSchemaService.
-		const configs = (schemaConfigs as any).default as SchemaConfig[];
-		const baseConfig = configs.find(c => c.id === 'base');
-		if (!baseConfig) {
-			console.error('No "base" schema configured; cannot build form metadata.');
+	/**
+	 * Build form metadata for a given product type from its runtime-fetched schema (single source
+	 * of truth) merged with the per-type step layout. Defaults to 'dataset'.
+	 */
+	loadForType(type: DataProductType = DEFAULT_DATA_PRODUCT_TYPE): void {
+		const config = this.schemaConfigForType(type);
+		if (!config) {
 			this.metadata$.next(null);
 			return;
 		}
-
-		this.schemaFetcher.fetchSchema(baseConfig).subscribe({
-			next: schema => this.metadata$.next(this.parseSchema(schema)),
+		this.activeType = type;
+		this.schemaFetcher.fetchSchema(config).subscribe({
+			next: schema => this.metadata$.next(this.parseSchema(schema, type)),
 			error: error => {
-				// Leave metadata null so the form does not build; the schema load
-				// error is surfaced to the user via ValidationSchemaService.
-				console.error('Failed to load base schema for form metadata:', error);
+				// Leave metadata null so the form does not build; the schema load error is
+				// surfaced to the user via ValidationSchemaService.
+				console.error(`Failed to load ${type} schema for form metadata:`, error);
 				this.metadata$.next(null);
 			}
 		});
 	}
 
-	private parseSchema(schema: any): DatasetMetadataConfig {
+	getActiveType(): DataProductType {
+		return this.activeType;
+	}
+
+	// Build a fetch config for the type's product schema, reusing the base config's repo/branch.
+	private schemaConfigForType(type: DataProductType): SchemaConfig | null {
+		const configs = (schemaConfigs as any).default as SchemaConfig[];
+		const base = configs.find(c => c.id === 'base');
+		if (!base) {
+			console.error('No "base" schema configured; cannot build form metadata.');
+			return null;
+		}
+		if (type === DEFAULT_DATA_PRODUCT_TYPE) {
+			return base; // base config already points at the dataset schema
+		}
+		return {...base, id: type, name: type, path: DATA_PRODUCT_TYPE_REGISTRY[type].schemaPath};
+	}
+
+	// Step grouping/order come from the augmentation overlay (config/form-layout.yaml →
+	// codegen/form-layout.json), per product type. Field types/enums/validation come from the schema.
+	private stepsForType(type: DataProductType): StepConfiguration[] {
+		const layout = ((formLayout as any).default ?? formLayout) as Record<string, {steps: StepConfiguration[]}>;
+		return (layout[type]?.steps ?? layout[DEFAULT_DATA_PRODUCT_TYPE].steps) as StepConfiguration[];
+	}
+
+	private parseSchema(schema: any, type: DataProductType): DatasetMetadataConfig {
+		const steps = this.stepsForType(type);
 		// Re-derive enum-field classification (enumTypes/enumArrayFields) from the
 		// authoritative runtime schema.
 		seedEnumFieldsFromSchema(schema);
@@ -116,7 +141,7 @@ export class DatasetMetadataService {
 			fieldMetadata.displayInDetails = this.shouldDisplayInDetails(key);
 
 			// Assign to step
-			const step = this.findStepForField(key);
+			const step = steps.find(s => s.fields.includes(key));
 			if (step) {
 				fieldMetadata.step = step.id;
 				fieldMetadata.group = step.key;
@@ -127,7 +152,7 @@ export class DatasetMetadataService {
 
 		return {
 			fields,
-			steps: this.stepConfig,
+			steps,
 			requiredFields
 		};
 	}
@@ -159,10 +184,6 @@ export class DatasetMetadataService {
 		];
 
 		return !excludedFromDetails.some(excluded => key.startsWith(excluded));
-	}
-
-	private findStepForField(key: string): StepConfiguration | undefined {
-		return this.stepConfig.find(step => step.fields.includes(key));
 	}
 
 	// Public methods
