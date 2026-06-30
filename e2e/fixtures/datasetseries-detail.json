@@ -1,0 +1,21 @@
+{
+  "dct:identifier": "ds-series-001",
+  "dct:publisher": "BLW-OFAG-UFAG-FOAG",
+  "dct:title": {
+    "de": "Apferernte Zeitreihe DE",
+    "fr": "Serie temporelle recolte pommes FR",
+    "it": "Serie temporale raccolto mele IT",
+    "en": "Apple Harvest Time Series EN"
+  },
+  "dct:description": {
+    "de": "Zeitreihe der jährlichen Apferernte.",
+    "fr": "Serie temporelle de la recolte annuelle de pommes.",
+    "it": "Serie temporale del raccolto annuale di mele.",
+    "en": "Time series of annual apple harvest data."
+  },
+  "dct:issued": "2023-01-15",
+  "dcat:keyword": ["apples", "harvest", "time-series"],
+  "dcat:seriesMember": ["2022", "2023", "2024"],
+  "dct:periodicity": "http://purl.org/ckan/1/P1Y",
+  "productType": "datasetSeries"
+}

@@ -1,0 +1,24 @@
+{
+  "dct:identifier": "ds-service-001",
+  "dct:publisher": "BLW-OFAG-UFAG-FOAG",
+  "dct:title": {
+    "de": "Apfel API Service DE",
+    "fr": "Service API Pommes FR",
+    "it": "Servizio API Mele IT",
+    "en": "Apple API Service EN"
+  },
+  "dct:description": {
+    "de": "Ein Service für Apfeldaten.",
+    "fr": "Un service pour les donnees de pommes.",
+    "it": "Un servizio per i dati delle mele.",
+    "en": "A service for apple data access."
+  },
+  "dct:issued": "2023-06-20",
+  "dcat:keyword": ["apples", "api", "service"],
+  "dcat:endpointURL": "https://example.org/apple-api",
+  "dcat:endpointDescription": {
+    "de": "REST API für Apfeldaten",
+    "en": "REST API for apple data"
+  },
+  "productType": "dataService"
+}

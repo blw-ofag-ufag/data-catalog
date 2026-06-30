@@ -40,6 +40,7 @@ function fulfillJson(route: Route, body: string) {
  * localhost / asset requests fall through untouched.
  *
  * `installApiMocks` accepts either a BrowserContext or a Page.
+ * This is the default mode using original dataset-only fixtures (backward compatible).
  */
 export async function installApiMocks(target: BrowserContext | Page): Promise<void> {
 	const datasets = readFixture('datasets.json');
@@ -61,6 +62,46 @@ export async function installApiMocks(target: BrowserContext | Page): Promise<vo
 
 	// Single dataset detail.
 	await target.route('**/data/raw/datasets/*.json', route => fulfillJson(route, detail));
+
+	// i14y themes: return [] so the app falls back to its built-in themes, while
+	// avoiding the slow external call.
+	await target.route('**/www.i14y.admin.ch/**', route => fulfillJson(route, '[]'));
+}
+
+/**
+ * Install mocks for multi-type product testing (dataset, dataService, datasetSeries).
+ * Uses mixed-products.json for the index and routes specific product IDs to their fixtures.
+ */
+export async function installMultiTypeApiMocks(target: BrowserContext | Page): Promise<void> {
+	const mixedProducts = readFixture('mixed-products.json');
+	const keywords = readFixture('keywords.json');
+	const datasetDetail = readFixture('dataset-detail.json');
+	const serviceDetail = readFixture('dataservice-detail.json');
+	const seriesDetail = readFixture('datasetseries-detail.json');
+
+	// Index: served only for the BLW publisher repo with all product types.
+	await target.route('**/data/processed/datasets.json', route => {
+		const url = route.request().url();
+		if (url.includes('blw-ofag-ufag/metadata')) {
+			return fulfillJson(route, mixedProducts);
+		}
+		return fulfillJson(route, '[]');
+	});
+
+	// Keyword list (same payload for every publisher repo).
+	await target.route('**/data/schemas/keywords.json', route => fulfillJson(route, keywords));
+
+	// Route detail requests based on product identifier to correct fixture.
+	await target.route('**/data/raw/datasets/*.json', route => {
+		const url = route.request().url();
+		if (url.includes('ds-service-001')) {
+			return fulfillJson(route, serviceDetail);
+		} else if (url.includes('ds-series-001')) {
+			return fulfillJson(route, seriesDetail);
+		}
+		// Default to dataset for ds-001 or any other ID
+		return fulfillJson(route, datasetDetail);
+	});
 
 	// i14y themes: return [] so the app falls back to its built-in themes, while
 	// avoiding the slow external call.
