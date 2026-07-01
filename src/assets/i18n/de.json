@@ -334,6 +334,8 @@
         },
         "sections": {
           "basic": "Grundinformationen",
+          "service": "Service",
+          "series": "Serie",
           "access": "Zugriff & Klassifizierung",
           "publisher": "Herausgeber & Kontakt",
           "metadata": "Metadaten & Versionierung",

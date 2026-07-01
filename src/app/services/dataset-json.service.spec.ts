@@ -87,6 +87,11 @@ describe('DatasetJsonService', () => {
 			expect(service.generateFilePath('abc')).toBe('data/raw/datasets/abc.json');
 		});
 
+		it('generateFilePath uses the per-type folder segment', () => {
+			expect(service.generateFilePath('abc', 'dataService')).toBe('data/raw/dataServices/abc.json');
+			expect(service.generateFilePath('abc', 'datasetSeries')).toBe('data/raw/datasetSeries/abc.json');
+		});
+
 		it('formatJsonForDisplay pretty-prints with 2-space indent', () => {
 			expect(service.formatJsonForDisplay({a: 1})).toBe('{\n  "a": 1\n}');
 		});

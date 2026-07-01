@@ -25,6 +25,7 @@ import {ThemeSelectFieldComponent} from './form/components/theme-select-field/th
 import {KeywordSelectFieldComponent} from './form/components/keyword-select-field/keyword-select-field.component';
 import {AffiliatedPersonsFieldComponent} from './form/components/affiliated-persons-field/affiliated-persons-field.component';
 import {DistributionFieldComponent} from './form/components/distribution-field/distribution-field.component';
+import {DatasetPickerFieldComponent} from './form/components/dataset-picker-field/dataset-picker-field.component';
 import {ValidationAlertComponent} from './components/validation-alert/validation-alert.component';
 import {DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
 import {ValidationSchemaService, ValidationSchemaType} from '../services/validation/validation-schema.service';
@@ -61,6 +62,7 @@ import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from './form/compo
 		KeywordSelectFieldComponent,
 		AffiliatedPersonsFieldComponent,
 		DistributionFieldComponent,
+		DatasetPickerFieldComponent,
 		ValidationAlertComponent,
 		MatIconModule,
 		FormFieldTooltipComponent,
@@ -336,14 +338,20 @@ export class ModifyComponent implements OnInit, OnDestroy {
 						const publisherConfig = this.publisherService.getPublishers().find(p => p.id === publisherId);
 
 						if (publisherConfig && this.datasetId) {
-							// The klass is typically 'datasets' for dataset objects
-							const klass = 'datasets';
+							// Edit the record as its own product type (#221): the index item is tagged with
+							// productType at load time. Switch the form's schema/steps to that type *before*
+							// the record fetch resolves, so the rebuilt controls exist when populateForm patches
+							// (a later metadata rebuild would otherwise wipe patched values).
+							const type = (foundDataset['productType'] as DataProductType) || DEFAULT_DATA_PRODUCT_TYPE;
+							if (this.productType !== type) {
+								this.productType = type;
+								this.metadataService.loadForType(type);
+							}
 
-							// Load full dataset details. loadDetail keys its detail-URL map by
-							// publisher *id* (see MultiDatasetService.detailUrls); passing the
-							// githubRepo here yields detailUrls[repo] === undefined and the edit
-							// form never loads the dataset.
-							this.datasetService.loadDetail(publisherConfig.id, klass, this.datasetId);
+							// Load full record details. loadDetail resolves the per-type detail URL and keys
+							// its URL map by publisher *id* (passing githubRepo would yield undefined). The
+							// klass is the type discriminator ('dataset'|'dataService'|'datasetSeries').
+							this.datasetService.loadDetail(publisherConfig.id, type, this.datasetId);
 						}
 					}
 				}
@@ -900,8 +908,9 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		const step = metadata.steps[stepIndex];
 		if (!step) return true;
 
-		// Special handling for Governance step (index 4)
-		if (stepIndex === 4) {
+		// Special handling for the Governance step: detect it by its field (not a numeric index),
+		// since step counts/order differ per product type (#221).
+		if (step.fields.includes('prov:qualifiedAttribution')) {
 			const qualifiedAttrControl = this.datasetForm.get('prov:qualifiedAttribution');
 			const value = qualifiedAttrControl?.value;
 			// Check if the field has at least one person
@@ -964,6 +973,57 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 	getFieldValidationDebugInfo(fieldKey: string): FieldValidationDebugInfo {
 		return this.validationSchemaService.getFieldDebugInfo(fieldKey);
+	}
+
+	// --- Dynamic stepper support (#221) -------------------------------------------------
+	// The stepper renders whatever the active product type's layout declares, rather than a
+	// hardcoded dataset form. Steps come from the per-type form-layout; fields dispatch to a
+	// widget via fieldKind().
+
+	/** Steps for the active product type (empty until metadata is loaded). */
+	get steps(): any[] {
+		return this.metadataService.getMetadataValue()?.steps ?? [];
+	}
+
+	/** A step's fields, restricted to those actually present in the loaded schema (layout may
+	 *  list fields a given type doesn't have — those are skipped so no orphan control is bound). */
+	stepFields(step: any): string[] {
+		const metadata = this.metadataService.getMetadataValue();
+		if (!metadata || !step?.fields) return [];
+		return step.fields.filter((key: string) => metadata.fields.has(key));
+	}
+
+	/** Decide which form widget renders a field. Composite/known fields dispatch by key; the rest
+	 *  fall back to the schema-derived field type (multilingual object, enum, boolean, date, text). */
+	fieldKind(fieldKey: string): string {
+		switch (fieldKey) {
+			// Container member-dataset arrays (datasetSeries / dataService) render as a tile picker (#221).
+			case 'dcat:dataset':
+			case 'dcat:servesDataset':
+				return 'datasetPicker';
+			case 'dcat:contactPoint':
+				return 'contactPoint';
+			case 'dct:temporal':
+				return 'temporal';
+			case 'bv:externalCatalogs':
+				return 'externalCatalogs';
+			case 'prov:qualifiedAttribution':
+				return 'affiliated';
+			case 'dcat:distribution':
+				return 'distribution';
+			case 'dcat:keyword':
+				return 'keyword';
+			case 'dcat:theme':
+				return 'theme';
+			case 'schema:comment':
+				return 'textarea';
+		}
+		const field = this.metadataService.getMetadataValue()?.fields.get(fieldKey);
+		if (field?.multilingualFields?.length) return 'multilingual';
+		if (field?.type === 'enum') return 'enum';
+		if (field?.type === 'boolean') return 'boolean';
+		if (field?.type === 'date') return 'date';
+		return 'text';
 	}
 
 	getSteps(): Observable<any[]> {

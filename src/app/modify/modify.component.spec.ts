@@ -136,6 +136,8 @@ describe('ModifyComponent', () => {
 		metadataServiceStub = {
 			getMetadata: jest.fn(() => metadataSubject.asObservable()),
 			getMetadataValue: jest.fn(() => metadataSubject.value),
+			loadForType: jest.fn(),
+			getEnumOptions: jest.fn(() => []),
 			getStepFields: jest.fn(() => of([])),
 			getSteps: jest.fn(() => of(metadataConfig.steps)),
 			getFieldValidators: jest.fn((key: string) => (REQUIRED_FIELDS.includes(key) ? [Validators.required] : [])),
@@ -442,14 +444,27 @@ describe('ModifyComponent', () => {
 
 			// Provide the index entry so loadDetail is triggered.
 			datasetsSubject.next([{'dct:identifier': 'dataset-123', 'dct:publisher': 'BLW-OFAG-UFAG-FOAG'}]);
-			// loadDetail is keyed by publisher *id* (not githubRepo) in MultiDatasetService.detailUrls.
-			expect(multiDatasetServiceStub.loadDetail).toHaveBeenCalledWith('BLW-OFAG-UFAG-FOAG', 'datasets', 'dataset-123');
+			// loadDetail is keyed by publisher *id* (not githubRepo) and the klass is the product-type
+			// discriminator; the untagged index entry defaults to 'dataset' (#221).
+			expect(multiDatasetServiceStub.loadDetail).toHaveBeenCalledWith('BLW-OFAG-UFAG-FOAG', 'dataset', 'dataset-123');
 
 			// Now the full dataset arrives -> form is populated.
 			selectedDatasetSubject.next({'dct:identifier': 'dataset-123', 'dct:title': {de: 'Geladen', fr: 'Charge', it: '', en: ''}, 'dct:spatial': 'Bern'});
 			expect(component.datasetForm.get('dct:title')?.value).toEqual({de: 'Geladen', fr: 'Charge', it: '', en: ''});
 			expect(component.datasetForm.get('dct:spatial')?.value).toBe('Bern');
 			expect(component.isLoading).toBe(false);
+		});
+
+		it('loads a non-dataset record as its own product type (#221)', () => {
+			paramMapValue.set('id', 'svc-1');
+			fixture.detectChanges(); // ngOnInit reads paramMap
+
+			// Index entry tagged as a dataService -> form must switch to that type and load from its folder.
+			datasetsSubject.next([{'dct:identifier': 'svc-1', 'dct:publisher': 'BLW-OFAG-UFAG-FOAG', productType: 'dataService'}]);
+
+			expect(component.productType).toBe('dataService');
+			expect(metadataServiceStub.loadForType).toHaveBeenCalledWith('dataService');
+			expect(multiDatasetServiceStub.loadDetail).toHaveBeenCalledWith('BLW-OFAG-UFAG-FOAG', 'dataService', 'svc-1');
 		});
 
 		it('stays in create mode when no id is present', () => {

@@ -325,6 +325,8 @@
         },
         "sections": {
           "basic": "Informations de base",
+          "service": "Service",
+          "series": "Série",
           "access": "Accès et classification",
           "publisher": "Éditeur et contact",
           "metadata": "Métadonnées et versioning",

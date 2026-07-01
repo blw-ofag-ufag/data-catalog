@@ -339,6 +339,8 @@
         },
         "sections": {
           "basic": "Basic Information",
+          "service": "Service",
+          "series": "Series",
           "access": "Access & Classification",
           "publisher": "Publisher & Contact",
           "metadata": "Metadata & Versioning",

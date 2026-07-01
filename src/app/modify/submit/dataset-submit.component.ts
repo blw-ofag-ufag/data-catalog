@@ -21,6 +21,7 @@ import {FormCacheService} from '../../services/form-cache.service';
 // Models
 import {DatasetSchema} from '../../models/schemas/dataset';
 import {Publisher} from '../../models/publisher.model';
+import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE} from '../../models/data-product-type';
 
 @Component({
 	selector: 'app-dataset-submit',
@@ -41,6 +42,7 @@ export class DatasetSubmitComponent implements OnInit, OnDestroy {
 	@Input() formData: Record<string, unknown> = {};
 	@Input() isEditMode = false;
 	@Input() datasetId?: string | null;
+	@Input() productType: DataProductType = DEFAULT_DATA_PRODUCT_TYPE;
 
 	// State
 	generatedJson: DatasetSchema | null = null;
@@ -268,10 +270,10 @@ export class DatasetSubmitComponent implements OnInit, OnDestroy {
 		// Format for display
 		this.formattedJson = this.datasetJsonService.formatJsonForDisplay(this.generatedJson);
 
-		// Generate file path
+		// Generate file path (per product type folder)
 		const datasetId = this.getDatasetId();
 		if (datasetId) {
-			this.filePath = this.datasetJsonService.generateFilePath(datasetId);
+			this.filePath = this.datasetJsonService.generateFilePath(datasetId, this.productType);
 		}
 	}
 
