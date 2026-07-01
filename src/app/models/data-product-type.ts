@@ -58,7 +58,7 @@ export const DATA_PRODUCT_TYPE_REGISTRY: Record<DataProductType, DataProductType
 		schemaPath: 'data/schemas/dataService.json',
 		referenceFields: ['dcat:servesDataset'],
 		i18nPrefix: 'choices.dataService',
-		hasProcessedIndex: false
+		hasProcessedIndex: true
 	},
 	datasetSeries: {
 		type: 'datasetSeries',
@@ -66,7 +66,7 @@ export const DATA_PRODUCT_TYPE_REGISTRY: Record<DataProductType, DataProductType
 		schemaPath: 'data/schemas/datasetSeries.json',
 		referenceFields: ['dcat:dataset'],
 		i18nPrefix: 'choices.datasetSeries',
-		hasProcessedIndex: false
+		hasProcessedIndex: true
 	}
 };
 
