@@ -8,6 +8,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ActivatedRoute, Router, provideRouter} from '@angular/router';
 import {
+	DatasetLinkListComponent,
 	DateMetadataItemComponent,
 	DefaultMetadataItemComponent,
 	EnumComponent,
@@ -52,6 +53,11 @@ describe('MetadataItemComponent', () => {
 
 		it('returns WasDerivedFromComponent for prov:wasDerivedFrom', () => {
 			expect(component.decideComponent('prov:wasDerivedFrom', ['title', 'id'])).toBe(WasDerivedFromComponent);
+		});
+
+		it('returns DatasetLinkListComponent for dataset reference fields', () => {
+			expect(component.decideComponent('dcat:inSeries', ['id-1'])).toBe(DatasetLinkListComponent);
+			expect(component.decideComponent('dct:replaces', ['id-1'])).toBe(DatasetLinkListComponent);
 		});
 
 		it('returns LinkComponent for http string values', () => {

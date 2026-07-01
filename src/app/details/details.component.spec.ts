@@ -10,6 +10,7 @@ import {ActivatedRoute, Router, provideRouter} from '@angular/router';
 import {of} from 'rxjs';
 import {DetailsComponent} from './details.component';
 import {DatasetService} from '../services/api/api.service';
+import {MultiDatasetService} from '../services/api/multi-dataset-service.service';
 import {PublisherService} from '../services/api/publisher.service';
 import {DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
 import {provideTranslateTesting} from '../../../tests/helpers/translate-testing';
@@ -61,11 +62,20 @@ function stubPublisherService(): any {
 	};
 }
 
-// DatasetMetadataService.getMetadata() returns null in this stub so the component
-// uses the schema-less fallback (filterAndNormalizeMetadata).
+// DatasetMetadataService stubs return null so the component uses the schema-less fallback
+// (filterAndNormalizeMetadata).
 function stubMetadataService(): any {
 	return {
-		getMetadata: jest.fn().mockReturnValue(of(null))
+		getMetadata: jest.fn().mockReturnValue(of(null)),
+		getMetadataForType: jest.fn().mockReturnValue(of(null))
+	};
+}
+
+// MultiDatasetService stub: only datasets$ is used by DetailsComponent (for the Data Sets tile
+// section); stubbing it avoids constructing the real KeywordService/PublisherService chain.
+function stubMultiDatasetService(): any {
+	return {
+		datasets$: of([])
 	};
 }
 
@@ -79,6 +89,7 @@ function configure(dataset: any, queryParams: Record<string, string> = {publishe
 		providers: [
 			provideRouter([]),
 			{provide: DatasetService, useValue: stubDatasetService(dataset)},
+			{provide: MultiDatasetService, useValue: stubMultiDatasetService()},
 			{provide: PublisherService, useValue: stubPublisherService()},
 			{provide: DatasetMetadataService, useValue: stubMetadataService()},
 			{provide: ActivatedRoute, useValue: route}
@@ -174,6 +185,7 @@ describe('DetailsComponent', () => {
 			providers: [
 				provideRouter([]),
 				{provide: DatasetService, useValue: svc},
+				{provide: MultiDatasetService, useValue: stubMultiDatasetService()},
 				{provide: PublisherService, useValue: stubPublisherService()},
 				{provide: DatasetMetadataService, useValue: stubMetadataService()},
 				{provide: ActivatedRoute, useValue: route}

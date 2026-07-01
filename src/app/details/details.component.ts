@@ -1,18 +1,21 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {DatasetSchema} from '../models/schemas/dataset';
+import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
 import {enumArrayFields, enumTypes} from '../models/enum-fields';
 import {DatasetService} from '../services/api/api.service';
-import {Observable, Subject, startWith} from 'rxjs';
+import {MultiDatasetService} from '../services/api/multi-dataset-service.service';
+import {IndexCardsComponent} from '../index-cards/index-cards.component';
+import {Observable, Subject, startWith, of, combineLatest} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {map, takeUntil} from 'rxjs/operators';
+import {map, switchMap, takeUntil} from 'rxjs/operators';
+import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE} from '../models/data-product-type';
 import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
 import {TranslateFieldPipe} from '../translate-field.pipe';
 import {EnumComponent, MetadataItemComponent} from './metadata/metadata-item.component';
 import {NormalizedMetadataElement, filterAndNormalizeMetadata} from './details.helpers';
-import {DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
+import {DatasetMetadataService, DatasetMetadataConfig} from '../services/metadata/dataset-metadata.service';
 import {MatAccordion, MatExpansionModule, MatExpansionPanel, MatExpansionPanelDescription, MatExpansionPanelHeader} from '@angular/material/expansion';
 import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.component';
 import {KeywordsComponent} from './keywords/keywords.component';
@@ -52,21 +55,26 @@ import {PopoverLinksDirective} from '../directives/popover-links.directive';
 		ObButtonDirective,
 		MatButton,
 		ObPopoverModule,
-		PopoverLinksDirective
+		PopoverLinksDirective,
+		IndexCardsComponent
 	],
 	styleUrl: './details.component.scss'
 })
 export class DetailsComponent implements OnInit, OnDestroy {
 	dataset: string = '';
-	dataset$: Observable<DatasetSchema | null> = new Observable();
+	dataset$: Observable<DataProduct | null> = new Observable();
 	loading$: Observable<boolean>;
 	// lang$: Observable<string> = new Observable();
 	currentLang$: Observable<string>;
 	metadata$: Observable<NormalizedMetadataElement[]> = new Observable();
+	// Contained/served datasets for container types (dataService/datasetSeries), rendered as a
+	// dedicated "Data Sets" tile section (#221, Figma).
+	subDatasets$: Observable<DataProduct[]> = of([]);
 	private readonly destroy$ = new Subject<void>();
 
 	constructor(
 		private readonly datasetService: DatasetService,
+		private readonly multiDatasetService: MultiDatasetService,
 		private readonly route: ActivatedRoute,
 		private readonly router: Router,
 		private readonly translate: TranslateService,
@@ -87,87 +95,60 @@ export class DetailsComponent implements OnInit, OnDestroy {
 			this.dataset = params['dataset'];
 			this.dataset$ = this.datasetService.getDatasetById(this.dataset);
 
+			// Render the record against the metadata for its own product type, so dataService /
+			// datasetSeries detail pages show their type-specific fields (#221).
 			this.metadata$ = this.dataset$.pipe(
-				map(dataset => {
+				switchMap(dataset => {
 					if (!dataset) {
+						return of([] as NormalizedMetadataElement[]);
+					}
+					const type = (dataset.productType as DataProductType) || DEFAULT_DATA_PRODUCT_TYPE;
+					return this.metadataService.getMetadataForType(type).pipe(map(metadataConfig => this.buildDetailFields(dataset, metadataConfig)));
+				})
+			);
+
+			// Resolve the container's contained/served dataset IDs to full datasets for the
+			// dedicated "Data Sets" tile section (#221).
+			this.subDatasets$ = combineLatest([this.dataset$, this.multiDatasetService.datasets$]).pipe(
+				map(([record, all]) => {
+					if (!record) {
 						return [];
 					}
-					return this.filterMetadataWithSchema(dataset);
+					const ids = ((record['dcat:servesDataset'] ?? record['dcat:dataset']) as string[] | null) ?? [];
+					return ids.map(id => all.find(d => d['dct:identifier'] === id)).filter((d): d is DataProduct => !!d);
 				})
 			);
 		});
 	}
 
-	private filterMetadataWithSchema(dataset: DatasetSchema): NormalizedMetadataElement[] {
-		// Get field metadata from schema
-		const metadata = this.metadataService.getMetadata().pipe(
-			map(metadataConfig => {
-				if (!metadataConfig) {
-					// Fallback to the old method if metadata is not available
-					return filterAndNormalizeMetadata(dataset);
-				}
+	// Build the displayed detail fields for a record against the metadata for its product type.
+	// Falls back to the schema-less normaliser if metadata isn't available.
+	private buildDetailFields(dataset: DataProduct, metadataConfig: DatasetMetadataConfig | null): NormalizedMetadataElement[] {
+		if (!metadataConfig) {
+			return filterAndNormalizeMetadata(dataset);
+		}
 
-				const normalizedMetadata: NormalizedMetadataElement[] = [];
+		// Container reference arrays render in the dedicated "Data Sets" tile section, not as a
+		// Metadata row (#221).
+		const containerFields = ['dcat:servesDataset', 'dcat:dataset'];
+		const normalized: NormalizedMetadataElement[] = [];
+		Object.entries(dataset).forEach(([key, value]) => {
+			if (containerFields.includes(key)) {
+				return;
+			}
+			const fieldMetadata = metadataConfig.fields.get(key);
+			if (fieldMetadata?.displayInDetails && value != null) {
+				normalized.push({label: key, data: value});
+			}
+		});
 
-				// Process each field from the dataset using schema metadata
-				Object.entries(dataset).forEach(([key, value]) => {
-					const fieldMetadata = metadataConfig.fields.get(key);
+		const sorted = normalized.sort((a, b) => {
+			const aOrder = metadataConfig.fields.get(a.label)?.displayOrder || 999;
+			const bOrder = metadataConfig.fields.get(b.label)?.displayOrder || 999;
+			return aOrder - bOrder;
+		});
 
-					// Only include fields that should be displayed in details
-					if (fieldMetadata?.displayInDetails && value != null) {
-						normalizedMetadata.push({
-							label: key,
-							data: value
-						});
-					}
-				});
-
-				// Sort by display order if specified
-				return normalizedMetadata.sort((a, b) => {
-					const aField = metadataConfig.fields.get(a.label);
-					const bField = metadataConfig.fields.get(b.label);
-					const aOrder = aField?.displayOrder || 999;
-					const bOrder = bField?.displayOrder || 999;
-					return aOrder - bOrder;
-				});
-			})
-		);
-
-		// Since this is synchronous and we need to return immediately,
-		// we'll use the current metadata if available, otherwise fallback
-		const currentMetadata = this.metadataService.getMetadata();
-		let result: NormalizedMetadataElement[] = [];
-
-		currentMetadata
-			.subscribe(metadataConfig => {
-				if (metadataConfig) {
-					const normalizedMetadata: NormalizedMetadataElement[] = [];
-
-					Object.entries(dataset).forEach(([key, value]) => {
-						const fieldMetadata = metadataConfig.fields.get(key);
-
-						if (fieldMetadata?.displayInDetails && value != null) {
-							normalizedMetadata.push({
-								label: key,
-								data: value
-							});
-						}
-					});
-
-					result = normalizedMetadata.sort((a, b) => {
-						const aField = metadataConfig.fields.get(a.label);
-						const bField = metadataConfig.fields.get(b.label);
-						const aOrder = aField?.displayOrder || 999;
-						const bOrder = bField?.displayOrder || 999;
-						return aOrder - bOrder;
-					});
-				} else {
-					result = filterAndNormalizeMetadata(dataset);
-				}
-			})
-			.unsubscribe(); // Immediately unsubscribe since we just want the current value
-
-		return result.length > 0 ? result : filterAndNormalizeMetadata(dataset);
+		return sorted.length > 0 ? sorted : filterAndNormalizeMetadata(dataset);
 	}
 
 	ngOnDestroy() {

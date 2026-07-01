@@ -23,7 +23,7 @@
 			<div class="content-side">
 				<div class="content-wrapper">
 					<div class="content-area">
-						<p class="description">{{ ["dct:description", dataset["dct:description"]] | translateField }}</p>
+						<p class="description">{{ ["dct:description", $any(dataset)["dct:description"]] | translateField }}</p>
 						<div class="tags">
 							<mat-chip>
 								<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
@@ -52,10 +52,10 @@
 				<!-- persons -->
 				<h3>{{ "details.heading.affiliated" | translate }}</h3>
 				<hr />
-				@if (dataset["prov:qualifiedAttribution"] && dataset["prov:qualifiedAttribution"].length > 0) {
+				@if ($any(dataset)["prov:qualifiedAttribution"] && $any(dataset)["prov:qualifiedAttribution"].length > 0) {
 					<table class="ob-table ob-table-plain">
 						<tbody>
-							@for (person of dataset["prov:qualifiedAttribution"]; track $index) {
+							@for (person of $any(dataset)["prov:qualifiedAttribution"]; track $index) {
 								<tr>
 									<td>
 										@if (person["prov:agent"]) {
@@ -123,12 +123,19 @@
 					</tbody>
 				</table>
 
+				<!-- data sets (contained/served datasets for container types) -->
+				@if ((subDatasets$ | async)?.length) {
+					<h3>{{ "details.heading.dataSets" | translate }}</h3>
+					<hr />
+					<index-cards [datasets$]="subDatasets$"></index-cards>
+				}
+
 				<!-- distribution -->
-				@if (dataset["dcat:distribution"] && dataset["dcat:distribution"].length > 0) {
+				@if ($any(dataset)["dcat:distribution"] && $any(dataset)["dcat:distribution"].length > 0) {
 					<h3>{{ "details.heading.distributions" | translate }}</h3>
 					<hr />
 					<mat-accordion>
-						@for (dist of dataset["dcat:distribution"]; track $index) {
+						@for (dist of $any(dataset)["dcat:distribution"]; track $index) {
 							<mat-expansion-panel>
 								<mat-expansion-panel-header>
 									<mat-panel-title>
@@ -147,12 +154,12 @@
 					</mat-accordion>
 				}
 
-				@if (dataset["bv:externalCatalogs"] && dataset["bv:externalCatalogs"].length > 0) {
+				@if ($any(dataset)["bv:externalCatalogs"] && $any(dataset)["bv:externalCatalogs"].length > 0) {
 					<h3>{{ "details.heading.publications" | translate }}</h3>
 					<hr />
 					<table class="ob-table ob-table-plain">
 						<tbody>
-							@for (pub of dataset["bv:externalCatalogs"]; track $index) {
+							@for (pub of $any(dataset)["bv:externalCatalogs"]; track $index) {
 								<tr>
 									<td>{{ pub["dcat:catalog"] }}</td>
 									<td>{{ pub["dct:identifier"] }}</td>
