@@ -1,24 +1,33 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, map} from 'rxjs';
-import {DatasetSchema} from '../../models/schemas/dataset';
+import {DataProduct, DatasetSchema} from '../../models/schemas/dataset';
 import {PublisherService} from './publisher.service';
 import {KeywordService} from './keyword.service';
 import {DataProductType, DATA_PRODUCT_TYPES, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPE_REGISTRY} from '../../models/data-product-type';
 
 @Injectable({
 	providedIn: 'root'
+	/**
+	 * P4 POLYMORPHIC FEATURES:
+	 * - Loads multiple product types (dataset, dataService, datasetSeries) via federation
+	 * - Tags each item with productType discriminator at load time
+	 * - Components detect type via (item as any).productType
+	 * - Schema-aware validation per type via DataProductType registry
+	 * - Type-aware sorting: null fields handled gracefully
+	 * - Conditional rendering: components check product type before accessing type-specific fields
+	 */
 })
 export class MultiDatasetService {
-	datasets$: Observable<DatasetSchema[]>;
-	selectedDataset$: Observable<DatasetSchema | null>;
+	datasets$: Observable<DataProduct[]>;
+	selectedDataset$: Observable<DataProduct | null>;
 	/**
 	 * @deprecated Use KeywordService.keywords$ instead for full keyword objects with translations.
 	 * This observable only provides keyword codes for backward compatibility.
 	 */
 	keywords$: Observable<string[]>;
 	loading$: Observable<boolean>;
-	private readonly _datasetsSubject = new BehaviorSubject<DatasetSchema[]>([]);
-	private readonly _selectedDatasetSubject = new BehaviorSubject<DatasetSchema | null>(null);
+	private readonly _datasetsSubject = new BehaviorSubject<DataProduct[]>([]);
+	private readonly _selectedDatasetSubject = new BehaviorSubject<DataProduct | null>(null);
 	private readonly _loadingSubject = new BehaviorSubject<boolean>(false);
 	// One processed-index source per (publisher × product type), each tagged with its type.
 	private readonly indexSources: {url: string; type: DataProductType}[] = [];
@@ -83,7 +92,7 @@ export class MultiDatasetService {
 
 		Promise.all(fetchPromises)
 			.then(results => {
-				const combinedDatasets: DatasetSchema[] = results.flat().map(dataset => {
+				const combinedDatasets: DataProduct[] = results.flat().map(dataset => {
 					// Sort keywords within each dataset alphabetically
 					if (dataset['dcat:keyword'] && Array.isArray(dataset['dcat:keyword'])) {
 						dataset['dcat:keyword'] = [...dataset['dcat:keyword']].sort((a, b) => a.localeCompare(b));

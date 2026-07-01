@@ -12,7 +12,7 @@ import {MatOption} from '@angular/material/core';
 import {MatSelect} from '@angular/material/select';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {DatasetSchema} from '../models/schemas/dataset';
+import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
 import {enumTypes} from '../models/enum-fields';
 import {DatasetService} from '../services/api/api.service';
 import {MatBadge} from '@angular/material/badge';
@@ -49,7 +49,7 @@ import {TranslatePipe} from '@ngx-translate/core';
 export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 	view: 'table' | 'tile' = 'tile';
 	showFilters = false;
-	@Input() datasets$: Observable<DatasetSchema[] | null> = new Observable();
+	@Input() datasets$: Observable<DataProduct[] | null> = new Observable();
 	activatedFilters$: BehaviorSubject<ActiveFilters> = new BehaviorSubject({});
 	@ViewChild(MatSelect) sortSelect!: MatSelect;
 	private readonly destroy$ = new Subject<void>();

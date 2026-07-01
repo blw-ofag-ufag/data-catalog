@@ -3,7 +3,7 @@ import {IndexCardsComponent} from '../index-cards/index-cards.component';
 import {IndexListComponent} from '../index-list/index-list.component';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {Observable, Subscription} from 'rxjs';
-import {DatasetSchema} from '../models/schemas/dataset';
+import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
 import {DatasetService} from '../services/api/api.service';
 import {AsyncPipe} from '@angular/common';
 import {TranslatePipe} from '@ngx-translate/core';
@@ -16,7 +16,7 @@ import {TranslatePipe} from '@ngx-translate/core';
 })
 export class IndexOutletComponent implements OnChanges, OnDestroy {
 	@Input() view: 'table' | 'tile' = 'tile';
-	@Input() dataset$!: Observable<DatasetSchema[] | null>;
+	@Input() dataset$!: Observable<DataProduct[] | null>;
 
 	private readonly pageSubscription?: Subscription;
 	private currentPageSize = 5;

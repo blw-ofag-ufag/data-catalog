@@ -1,10 +1,11 @@
 import {Component, Input} from '@angular/core';
 import {MatChip} from '@angular/material/chips';
 import {RouterLink} from '@angular/router';
-import {DatasetSchema} from '../../models/schemas/dataset';
+import {DataProduct, DatasetSchema} from '../../models/schemas/dataset';
 import {DatasetService} from '../../services/api/api.service';
 import {KeywordService} from '../../services/api/keyword.service';
 import {TranslateService} from '@ngx-translate/core';
+import {DataProductType} from '../../models/data-product-type';
 
 @Component({
 	selector: 'keywords',
@@ -13,7 +14,7 @@ import {TranslateService} from '@ngx-translate/core';
 	styleUrl: './keywords.component.scss'
 })
 export class KeywordsComponent {
-	@Input() dataset: DatasetSchema | null = null;
+	@Input() dataset: DataProduct | null = null;
 
 	constructor(
 		private readonly datasetService: DatasetService,
@@ -22,10 +23,22 @@ export class KeywordsComponent {
 	) {}
 
 	/**
+	 * Check if this product type supports keywords
+	 * Keywords (dcat:keyword) are currently dataset-specific
+	 */
+	hasKeywordSupport(): boolean {
+		if (!this.dataset) return false;
+		// Check if product type has dcat:keyword field (dataset-specific)
+		const productType = (this.dataset as any).productType as DataProductType;
+		return productType === 'dataset' || !productType; // Default to dataset for backward compat
+	}
+
+	/**
 	 * Get localized keywords for display
+	 * Only available for datasets
 	 */
 	getLocalizedKeywords(): string[] {
-		if (this.dataset) {
+		if (this.dataset && this.hasKeywordSupport()) {
 			return this.datasetService.getLocalizedKeywords(this.dataset);
 		}
 		return [];
@@ -34,13 +47,14 @@ export class KeywordsComponent {
 	/**
 	 * Get keyword key for filtering
 	 * Since keywords are stored as codes, we need to find the code from the display value
+	 * Only applicable for datasets
 	 */
 	getKeywordKey(displayValue: string): string {
-		if (!this.dataset || !this.dataset['dcat:keyword']) {
+		if (!this.dataset || !this.hasKeywordSupport() || !this.dataset['dcat:keyword']) {
 			return displayValue;
 		}
 
-		const keywords = this.dataset['dcat:keyword'];
+		const keywords = this.dataset['dcat:keyword'] as string[];
 		if (!Array.isArray(keywords)) {
 			return displayValue;
 		}
