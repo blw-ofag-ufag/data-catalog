@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {ValidationSchemaFetcherService, SchemaConfig} from '../validation/validation-schema-fetcher.service';
@@ -47,6 +47,10 @@ export interface DatasetMetadataConfig {
 })
 export class DatasetMetadataService {
 	private readonly metadata$ = new BehaviorSubject<DatasetMetadataConfig | null>(null);
+	// Stable catalogue (dataset) metadata for index/filter consumers. Built once for 'dataset' and
+	// never overwritten when the modify form loads a non-dataset type, so the catalogue keeps the full
+	// dataset filter set even after editing a dataService/datasetSeries (#221 filter regression).
+	private readonly catalogueMetadata$ = new BehaviorSubject<DatasetMetadataConfig | null>(null);
 	private activeType: DataProductType = DEFAULT_DATA_PRODUCT_TYPE;
 
 	constructor(private readonly schemaFetcher: ValidationSchemaFetcherService) {
@@ -67,7 +71,16 @@ export class DatasetMetadataService {
 		}
 		this.activeType = type;
 		this.schemaFetcher.fetchSchema(config).subscribe({
-			next: schema => this.metadata$.next(this.parseSchema(schema, type)),
+			next: schema => {
+				const isCatalogueType = type === DEFAULT_DATA_PRODUCT_TYPE;
+				const parsed = this.parseSchema(schema, type, isCatalogueType);
+				this.metadata$.next(parsed);
+				// Keep the catalogue channel pinned to dataset so a non-dataset form load can't
+				// shrink the index filters (#221).
+				if (isCatalogueType) {
+					this.catalogueMetadata$.next(parsed);
+				}
+			},
 			error: error => {
 				// Leave metadata null so the form does not build; the schema load error is
 				// surfaced to the user via ValidationSchemaService.
@@ -79,6 +92,33 @@ export class DatasetMetadataService {
 
 	getActiveType(): DataProductType {
 		return this.activeType;
+	}
+
+	// Per-type metadata cache for read-only consumers (e.g. the detail page), built without mutating
+	// the shared metadata$ singleton or the global enum classification (#221).
+	private readonly typeMetadataCache = new Map<DataProductType, DatasetMetadataConfig>();
+
+	/**
+	 * Get the field metadata for a specific product type without affecting the form singleton or the
+	 * catalogue's global enum dispatch. Used by the detail page so dataService/datasetSeries records
+	 * render their own fields. Cached per type (the underlying schema fetch is also cached).
+	 */
+	getMetadataForType(type: DataProductType): Observable<DatasetMetadataConfig | null> {
+		const cached = this.typeMetadataCache.get(type);
+		if (cached) {
+			return of(cached);
+		}
+		const config = this.schemaConfigForType(type);
+		if (!config) {
+			return of(null);
+		}
+		return this.schemaFetcher.fetchSchema(config).pipe(
+			map(schema => {
+				const parsed = this.parseSchema(schema, type, false);
+				this.typeMetadataCache.set(type, parsed);
+				return parsed;
+			})
+		);
 	}
 
 	// Build a fetch config for the type's product schema, reusing the base config's repo/branch.
@@ -102,11 +142,15 @@ export class DatasetMetadataService {
 		return (layout[type]?.steps ?? layout[DEFAULT_DATA_PRODUCT_TYPE].steps) as StepConfiguration[];
 	}
 
-	private parseSchema(schema: any, type: DataProductType): DatasetMetadataConfig {
+	private parseSchema(schema: any, type: DataProductType, seedGlobalEnums = false): DatasetMetadataConfig {
 		const steps = this.stepsForType(type);
-		// Re-derive enum-field classification (enumTypes/enumArrayFields) from the
-		// authoritative runtime schema.
-		seedEnumFieldsFromSchema(schema);
+		// Re-derive the *global* enum-field classification (enumTypes/enumArrayFields, used app-wide for
+		// catalogue facets and detail render-dispatch) only from the catalogue/dataset schema. Building
+		// per-type metadata (form or detail) must NOT reseed it, or it would point at a non-dataset
+		// type's enums and break the index filters/dispatch (#221).
+		if (seedGlobalEnums) {
+			seedEnumFieldsFromSchema(schema);
+		}
 
 		const fields = new Map<string, FieldMetadata>();
 		const requiredFields = schema.required || [];
@@ -189,6 +233,12 @@ export class DatasetMetadataService {
 	// Public methods
 	getMetadata(): Observable<DatasetMetadataConfig | null> {
 		return this.metadata$.asObservable();
+	}
+
+	// Stable dataset metadata for catalogue consumers (index filters), independent of the form's
+	// active product type so a non-dataset form load can't shrink the catalogue filters (#221).
+	getCatalogueMetadata(): Observable<DatasetMetadataConfig | null> {
+		return this.catalogueMetadata$.asObservable();
 	}
 
 	getFieldMetadata(key: string): Observable<FieldMetadata | undefined> {
