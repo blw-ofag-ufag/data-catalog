@@ -116,7 +116,7 @@ describe('IndexListComponent', () => {
 		const navigate = jest.spyOn(router, 'navigate').mockResolvedValue(true);
 		await component.openDataset('PUB', 'id-1');
 		expect(navigate).toHaveBeenCalledWith(['details'], {
-			queryParams: {publisher: 'PUB', dataset: 'id-1'},
+			queryParams: {publisher: 'PUB', dataset: 'id-1', type: 'dataset'},
 			queryParamsHandling: 'replace'
 		});
 	});

@@ -1,7 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 import {Observable} from 'rxjs';
-import {DatasetSchema} from '../models/schemas/dataset';
+import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
+	import {DataProductType} from '../models/data-product-type';
 import {AsyncPipe, DatePipe} from '@angular/common';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MatChip} from '@angular/material/chips';
@@ -17,7 +18,7 @@ import {KeywordService} from '../services/api/keyword.service';
 	imports: [MatTableModule, AsyncPipe, MatChip, RouterLink, TranslatePipe, TranslateFieldPipe, DatePipe]
 })
 export class IndexListComponent {
-	@Input() datasets$!: Observable<DatasetSchema[] | null>;
+	@Input() datasets$!: Observable<DataProduct[] | null>;
 
 	constructor(
 		private readonly router: Router,
@@ -27,8 +28,25 @@ export class IndexListComponent {
 		private readonly keywordService: KeywordService
 	) {}
 
-	async openDataset(publisher: string, dataset: string) {
-		await this.router.navigate(['details'], {queryParams: {publisher, dataset}, queryParamsHandling: 'replace'});
+	async openDataset(publisher: string, dataset: string, type: string = 'dataset') {
+		// Carry the product type so the detail page loads from the right segment (#221).
+		await this.router.navigate(['details'], {queryParams: {publisher, dataset, type}, queryParamsHandling: 'replace'});
+	}
+
+	/**
+	 * Check if product type supports keywords (dataset-specific)
+	 */
+	hasKeywordSupport(dataset: DataProduct): boolean {
+		const productType = (dataset as any).productType as DataProductType;
+		return productType === 'dataset' || !productType;
+	}
+
+	/**
+	 * Check if product type supports qualified attribution/stewards (dataset-specific)
+	 */
+	hasStewardsSupport(dataset: DataProduct): boolean {
+		const productType = (dataset as any).productType as DataProductType;
+		return productType === 'dataset' || !productType;
 	}
 
 	onChipClick(event: MouseEvent): void {
@@ -39,14 +57,14 @@ export class IndexListComponent {
 	/**
 	 * Get localized keywords for a dataset
 	 */
-	getLocalizedKeywords(dataset: DatasetSchema): string[] {
+	getLocalizedKeywords(dataset: DataProduct): string[] {
 		return this.datasetService.getLocalizedKeywords(dataset);
 	}
 
 	/**
 	 * Get keyword code from display label
 	 */
-	private getKeywordKey(displayValue: string, dataset: DatasetSchema): string {
+	private getKeywordKey(displayValue: string, dataset: DataProduct): string {
 		const keywords = dataset['dcat:keyword'];
 		if (!keywords || !Array.isArray(keywords)) {
 			return displayValue;
@@ -68,7 +86,7 @@ export class IndexListComponent {
 		return displayValue;
 	}
 
-	keywordFiltered(keyword: string, dataset: DatasetSchema) {
+	keywordFiltered(keyword: string, dataset: DataProduct) {
 		const keywordCode = this.getKeywordKey(keyword, dataset);
 		const currentParams = this.route.snapshot.queryParams;
 		const existingKeywords = currentParams['dcat:keyword'];
@@ -86,7 +104,7 @@ export class IndexListComponent {
 		};
 	}
 
-	getStewards(dataset: DatasetSchema): string[] {
+	getStewards(dataset: DataProduct): string[] {
 		// First, try to get from prov:qualifiedAttribution (new structure)
 		if (dataset['prov:qualifiedAttribution'] && Array.isArray(dataset['prov:qualifiedAttribution'])) {
 			const stewards = dataset['prov:qualifiedAttribution']
