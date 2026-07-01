@@ -14,6 +14,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import {GitHubAuthService} from '../services/auth/github-auth.service';
 import {RepositoryCredentialsService} from '../services/auth/repository-credentials.service';
+import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE} from '../models/data-product-type';
 import {MultiDatasetService} from '../services/api/multi-dataset-service.service';
 import {I14YThemeService} from '../services/api/i14y-theme.service';
 import {PublisherService} from '../services/api/publisher.service';
@@ -77,6 +78,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	invalidFields: string[] = [];
 	isLinear = false;
 	submitAttempted = false;
+
+	productType: DataProductType | null = null; // Tracks the product type being edited
 
 	// Validation groups
 	activeValidationSchemas: Set<ValidationSchemaType> = new Set(['base']);
@@ -182,6 +185,23 @@ export class ModifyComponent implements OnInit, OnDestroy {
 				this.updateValidationErrors();
 			}
 		});
+	}
+
+
+
+	/**
+	 * Handle product type selection change in form
+	 * Loads appropriate schema and form structure for the selected type
+	 */
+	onProductTypeChange(event: any): void {
+		const newType = event?.target?.value || this.productType;
+		if (newType) {
+			this.productType = newType;
+			// Load schema for the selected product type
+			this.metadataService.loadForType(newType);
+			// Reset form to apply new schema's validation rules
+			this.datasetForm.reset();
+		}
 	}
 
 	ngOnDestroy(): void {
@@ -450,12 +470,14 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		if (this.showSubmitSection) {
 			this.showSubmitSection = false;
 			this.submitAttempted = false;
+
 			// Form data is already cached and will be preserved
 			return;
 		}
 
 		// This is an actual reset (from the Reset button on the form)
 		this.submitAttempted = false;
+
 
 		if (this.isEditMode && this.originalDataset) {
 			// For edit mode: restore original dataset state

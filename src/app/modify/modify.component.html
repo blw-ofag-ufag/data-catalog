@@ -17,6 +17,23 @@
 			</div>
 		</div>
 
+		<!-- Product type selector (create mode only) -->
+		@if (!isEditMode) {
+			<div class="ob-mb-4">
+				<label for="productTypeSelect" class="ob-block ob-mb-1">Product type</label>
+				<select
+					id="productTypeSelect"
+					[value]="productType || 'dataset'"
+					(change)="onProductTypeChange($event)"
+					style="padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; max-width: 320px;"
+				>
+					<option value="dataset">Dataset</option>
+					<option value="dataService">Data service</option>
+					<option value="datasetSeries">Dataset series</option>
+				</select>
+			</div>
+		}
+
 			<!-- Schema Loading Indicator -->
 		<ob-alert type="info" *ngIf="schemasLoading && !schemaLoadError" class="ob-mb-4">
 			<div class="ob-flex ob-items-center">
