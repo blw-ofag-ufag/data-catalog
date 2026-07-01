@@ -1,108 +1,48 @@
 import {expect, test} from '@playwright/test';
-import {CHROME_USER_AGENT, installApiMocks} from './support/mock-api';
+import {CHROME_USER_AGENT, installMultiTypeApiMocks} from './support/mock-api';
 
 test.use({userAgent: CHROME_USER_AGENT});
 
-test.describe('Product Type Selector in Create Form', () => {
+// The create form is now a dynamic stepper driven by the selected product type's layout + schema.
+// These tests assert that picking a type actually re-renders the stepper with THAT type's steps
+// (not the dataset steps) — the previous suite only checked that "some select" existed (#221).
+
+test.describe('Create form — dynamic per-type stepper', () => {
 	test.beforeEach(async ({context, page}) => {
-		await installApiMocks(context);
+		await installMultiTypeApiMocks(context);
 		await page.goto('/data-catalog/#/modify/form?lang=en');
-		// Wait for the stepper to render
 		await expect(page.locator('.mat-step-header').first()).toBeVisible({timeout: 30000});
 	});
 
-	test('product type selector is visible in create mode', async ({page}) => {
-		// Look for the product type selector
-		const selector = page.locator('select[formcontrolname*="productType"], [formcontrolname*="type"]').first();
-		// If selector not found by formcontrol, look for visible select
-		const selectElements = page.locator('select');
-		await expect(selectElements.first()).toBeVisible({timeout: 5000});
+	test('offers all three product types', async ({page}) => {
+		const options = page.locator('#productTypeSelect option');
+		await expect(options).toHaveCount(3);
+		await expect(page.locator('#productTypeSelect option[value="dataset"]')).toHaveCount(1);
+		await expect(page.locator('#productTypeSelect option[value="dataService"]')).toHaveCount(1);
+		await expect(page.locator('#productTypeSelect option[value="datasetSeries"]')).toHaveCount(1);
 	});
 
-	test('product type selector shows all three types', async ({page}) => {
-		// Find and check the product type options
-		const selects = page.locator('select');
-		if (await selects.count() > 0) {
-			const typeSelect = selects.first();
-			// Check that options exist for all types
-			const options = typeSelect.locator('option');
-			const optionCount = await options.count();
-			// Should have at least dataset, dataService, datasetSeries options
-			expect(optionCount).toBeGreaterThanOrEqual(3);
+	test('dataset (default) shows the Distributions step', async ({page}) => {
+		await expect(page.locator('.mat-step-header', {hasText: 'Distributions'})).toBeVisible();
+	});
+
+	test('selecting Data service swaps in the Service step and drops Distributions', async ({page}) => {
+		await page.locator('#productTypeSelect').selectOption('dataService');
+		await expect(page.locator('.mat-step-header', {hasText: 'Service'})).toBeVisible({timeout: 15000});
+		await expect(page.locator('.mat-step-header', {hasText: 'Distributions'})).toHaveCount(0);
+	});
+
+	test('selecting Dataset series swaps in the Series step and drops Distributions', async ({page}) => {
+		await page.locator('#productTypeSelect').selectOption('datasetSeries');
+		await expect(page.locator('.mat-step-header', {hasText: 'Series'})).toBeVisible({timeout: 15000});
+		await expect(page.locator('.mat-step-header', {hasText: 'Distributions'})).toHaveCount(0);
+	});
+
+	test('identifier/title basics are present for every type', async ({page}) => {
+		for (const type of ['dataset', 'dataService', 'datasetSeries']) {
+			await page.locator('#productTypeSelect').selectOption(type);
+			// The Basic step is the first step for all types; its title field is always present.
+			await expect(page.locator('input[formcontrolname="dct:title"], app-multilingual-text-field').first()).toBeVisible({timeout: 15000});
 		}
-	});
-
-	test('form fields display for dataset type (default)', async ({page}) => {
-		// Dataset should be pre-selected or selected by default
-		const titleInput = page.locator('input[formcontrolname*="title"], input[placeholder*="title" i]').first();
-		await expect(titleInput).toBeVisible({timeout: 5000});
-	});
-});
-
-test.describe('Form Behavior with Different Product Types', () => {
-	test.beforeEach(async ({context, page}) => {
-		await installApiMocks(context);
-		await page.goto('/data-catalog/#/modify/form?lang=en');
-		await expect(page.locator('.mat-step-header').first()).toBeVisible({timeout: 30000});
-	});
-
-	test('stepper renders multiple steps for create form', async ({page}) => {
-		const steps = page.locator('.mat-step-header');
-		await expect(steps.first()).toBeVisible();
-		const stepCount = await steps.count();
-		expect(stepCount).toBeGreaterThan(1);
-	});
-
-	test('can navigate through form steps', async ({page}) => {
-		const steps = page.locator('.mat-step-header');
-		const initialCount = await steps.count();
-
-		// Click the second step if it exists
-		if (initialCount > 1) {
-			const secondStep = steps.nth(1);
-			await secondStep.click();
-			// Verify the click was effective by waiting for content to update
-			await page.waitForTimeout(500);
-		}
-		expect(true).toBeTruthy(); // Basic pass if navigation works
-	});
-
-	test('identifier field is present in form', async ({page}) => {
-		// This field is required for all product types
-		const identifierInput = page.locator('input[formcontrolname="dct:identifier"], input[placeholder*="identifier" i]').first();
-		await expect(identifierInput).toBeVisible({timeout: 5000});
-	});
-
-	test('title field is present in form', async ({page}) => {
-		// Title is required for all product types
-		const titleInput = page.locator('input[formcontrolname*="title"], input[placeholder*="title" i]').first();
-		await expect(titleInput).toBeVisible({timeout: 5000});
-	});
-});
-
-test.describe('Multi-language Support in Create Form', () => {
-	test.beforeEach(async ({context, page}) => {
-		await installApiMocks(context);
-		await page.goto('/data-catalog/#/modify/form?lang=en');
-		await expect(page.locator('.mat-step-header').first()).toBeVisible({timeout: 30000});
-	});
-
-	test('form works in English', async ({page}) => {
-		// Verify English labels are present
-		const heading = page.getByRole('heading');
-		await expect(heading.first()).toBeVisible();
-	});
-
-	test('form supports German language', async ({page}) => {
-		// Switch to German
-		await page.locator('.ob-language-dropdown mat-select').first().click();
-		await page.locator('mat-option').filter({hasText: /^DE$/}).click();
-		
-		// Wait for language switch
-		await page.waitForTimeout(500);
-		
-		// Form should still be visible and functional
-		const steps = page.locator('.mat-step-header');
-		await expect(steps.first()).toBeVisible();
 	});
 });

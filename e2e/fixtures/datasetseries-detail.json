@@ -17,5 +17,6 @@
   "dcat:keyword": ["apples", "harvest", "time-series"],
   "dcat:seriesMember": ["2022", "2023", "2024"],
   "dct:periodicity": "http://purl.org/ckan/1/P1Y",
+  "dcat:dataset": ["ds-001"],
   "productType": "datasetSeries"
 }

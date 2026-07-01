@@ -70,38 +70,57 @@ export async function installApiMocks(target: BrowserContext | Page): Promise<vo
 
 /**
  * Install mocks for multi-type product testing (dataset, dataService, datasetSeries).
- * Uses mixed-products.json for the index and routes specific product IDs to their fixtures.
+ *
+ * Unlike the earlier version (which served every type through the single datasets.json index and
+ * the datasets/ raw folder), this wires each product type to its OWN real URLs so the tests
+ * exercise the true per-type routing (#221):
+ *  - data/processed/{datasets,dataServices,datasetSeries}.json  — one index per type, each holding
+ *    only that type's items (so loadIndex tags them with the correct productType).
+ *  - data/raw/{datasets,dataServices,datasetSeries}/<id>.json    — one detail folder per type.
+ *  - data/schemas/{dataset,dataService,datasetSeries}.json       — one schema per type, so the
+ *    detail metadata table and the edit/create form render each type's real fields offline.
+ * Only the BLW publisher repo serves data; every other publisher returns empty so the catalogue is
+ * deterministic.
  */
 export async function installMultiTypeApiMocks(target: BrowserContext | Page): Promise<void> {
-	const mixedProducts = readFixture('mixed-products.json');
+	const mixed: any[] = JSON.parse(readFixture('mixed-products.json'));
 	const keywords = readFixture('keywords.json');
-	const datasetDetail = readFixture('dataset-detail.json');
-	const serviceDetail = readFixture('dataservice-detail.json');
-	const seriesDetail = readFixture('datasetseries-detail.json');
+	const details: Record<string, string> = {
+		datasets: readFixture('dataset-detail.json'),
+		dataServices: readFixture('dataservice-detail.json'),
+		datasetSeries: readFixture('datasetseries-detail.json')
+	};
+	const schemas: Record<string, string> = {
+		dataset: readFixture('dataset-schema.json'),
+		dataService: readFixture('dataservice-schema.json'),
+		datasetSeries: readFixture('datasetseries-schema.json')
+	};
 
-	// Index: served only for the BLW publisher repo with all product types.
-	await target.route('**/data/processed/datasets.json', route => {
-		const url = route.request().url();
-		if (url.includes('blw-ofag-ufag/metadata')) {
-			return fulfillJson(route, mixedProducts);
-		}
-		return fulfillJson(route, '[]');
-	});
+	const isBlw = (route: Route) => route.request().url().includes('blw-ofag-ufag/metadata');
+	const indexFor = (type: string) => JSON.stringify(mixed.filter(p => p.productType === type));
+
+	// Per-type processed indexes (segment -> productType). Only BLW serves items.
+	const indexRoutes: [string, string][] = [
+		['datasets', 'dataset'],
+		['dataServices', 'dataService'],
+		['datasetSeries', 'datasetSeries']
+	];
+	for (const [segment, type] of indexRoutes) {
+		await target.route(`**/data/processed/${segment}.json`, route => fulfillJson(route, isBlw(route) ? indexFor(type) : '[]'));
+	}
 
 	// Keyword list (same payload for every publisher repo).
 	await target.route('**/data/schemas/keywords.json', route => fulfillJson(route, keywords));
 
-	// Route detail requests based on product identifier to correct fixture.
-	await target.route('**/data/raw/datasets/*.json', route => {
-		const url = route.request().url();
-		if (url.includes('ds-service-001')) {
-			return fulfillJson(route, serviceDetail);
-		} else if (url.includes('ds-series-001')) {
-			return fulfillJson(route, seriesDetail);
-		}
-		// Default to dataset for ds-001 or any other ID
-		return fulfillJson(route, datasetDetail);
-	});
+	// Per-type schemas.
+	for (const [type, body] of Object.entries(schemas)) {
+		await target.route(`**/data/schemas/${type}.json`, route => fulfillJson(route, body));
+	}
+
+	// Per-type raw detail folders.
+	for (const [segment, body] of Object.entries(details)) {
+		await target.route(`**/data/raw/${segment}/*.json`, route => fulfillJson(route, body));
+	}
 
 	// i14y themes: return [] so the app falls back to its built-in themes, while
 	// avoiding the slow external call.

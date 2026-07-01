@@ -20,5 +20,6 @@
     "de": "REST API für Apfeldaten",
     "en": "REST API for apple data"
   },
+  "dcat:servesDataset": ["ds-001"],
   "productType": "dataService"
 }

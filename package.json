@@ -10,6 +10,7 @@
     "test:ci": "ng test --ci",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
+    "test:e2e:local": "playwright test --config=playwright.local.config.ts",
     "lint": "ng lint",
     "format": "",
     "format-old": "npm run lint -- --fix",
