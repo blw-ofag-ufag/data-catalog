@@ -61,10 +61,19 @@ export class MultiDatasetService {
 			// path.publisher = 'BLW-OFAG-UFAG-FOAG';
 			this.loadDetail(path.publisher, path.klass, path.id);
 		} else {
-			if (!this.indexLoaded) {
-				this.loadIndex();
-				this.indexLoaded = true;
-			}
+			this.ensureIndexLoaded();
+		}
+	}
+
+	/**
+	 * Load the catalogue index once (idempotent). The detail page calls this so a container type's
+	 * contained/served datasets can be resolved from the store even on a deep link / refresh, when
+	 * the index route was never visited (#221).
+	 */
+	ensureIndexLoaded() {
+		if (!this.indexLoaded) {
+			this.loadIndex();
+			this.indexLoaded = true;
 		}
 	}
 

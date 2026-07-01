@@ -120,8 +120,9 @@ describe('IndexCardsComponent', () => {
 		});
 	});
 
-	it('datasetFiltered and publisherFiltered build filter params', () => {
-		expect(component.datasetFiltered()).toEqual({class: 'dataset'});
+	it('typeFiltered and publisherFiltered build filter params', () => {
+		expect(component.typeFiltered('dataService')).toEqual({productType: 'dataService'});
+		expect(component.typeFiltered()).toEqual({productType: 'dataset'});
 		expect(component.publisherFiltered('PUB')).toEqual({'dct:publisher': 'PUB'});
 	});
 

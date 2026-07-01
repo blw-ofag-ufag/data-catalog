@@ -7,6 +7,8 @@ jest.mock('@angular/common/locales/it', () => ({__esModule: true, default: ['it'
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ActivatedRoute, Router, provideRouter} from '@angular/router';
+import {of} from 'rxjs';
+import {MultiDatasetService} from '../../services/api/multi-dataset-service.service';
 import {
 	DatasetLinkListComponent,
 	DateMetadataItemComponent,
@@ -113,13 +115,15 @@ describe('WasDerivedFromComponent', () => {
 			imports: [WasDerivedFromComponent, provideTranslateTesting()],
 			providers: [
 				{provide: Router, useValue: {navigate}},
-				{provide: ActivatedRoute, useValue: route}
+				{provide: ActivatedRoute, useValue: route},
+				{provide: MultiDatasetService, useValue: {datasets$: of([])}}
 			]
 		});
 		const fixture = TestBed.createComponent(WasDerivedFromComponent);
 		fixture.componentInstance.navigateToDataset('new-id');
+		// Referenced record not in the (empty) store → falls back to current publisher + default type.
 		expect(navigate).toHaveBeenCalledWith(['/details'], {
-			queryParams: {publisher: 'PUB', dataset: 'new-id', lang: 'de'}
+			queryParams: {publisher: 'PUB', dataset: 'new-id', type: 'dataset', lang: 'de'}
 		});
 	});
 });

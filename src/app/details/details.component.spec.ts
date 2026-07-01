@@ -75,7 +75,8 @@ function stubMetadataService(): any {
 // section); stubbing it avoids constructing the real KeywordService/PublisherService chain.
 function stubMultiDatasetService(): any {
 	return {
-		datasets$: of([])
+		datasets$: of([]),
+		ensureIndexLoaded: jest.fn()
 	};
 }
 
@@ -252,16 +253,17 @@ describe('DetailsComponent', () => {
 			const navigate = jest.spyOn(router, 'navigate').mockResolvedValue(true);
 			fixture.componentInstance.openEditTab();
 			expect(navigate).toHaveBeenCalledWith(['/modify'], {
-				queryParams: {mode: 'edit', dataset: 'ds-1'}
+				queryParams: {mode: 'edit', dataset: 'ds-1', type: 'dataset'}
 			});
 		});
 	});
 
 	describe('filter helpers', () => {
-		it('datasetFiltered returns the dataset class filter', async () => {
+		it('typeFiltered returns the productType filter for the record type', async () => {
 			await configure(STUB_DATASET).compileComponents();
 			fixture = TestBed.createComponent(DetailsComponent);
-			expect(fixture.componentInstance.datasetFiltered()).toEqual({class: 'dataset'});
+			expect(fixture.componentInstance.typeFiltered('datasetSeries')).toEqual({productType: 'datasetSeries'});
+			expect(fixture.componentInstance.typeFiltered()).toEqual({productType: 'dataset'});
 		});
 
 		it('publisherFiltered returns the publisher filter', async () => {

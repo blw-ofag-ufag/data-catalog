@@ -15,8 +15,8 @@
 				<div style="position: absolute; top: 8px; left: 8px; z-index: 2">
 					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px">
 						<!--						{{dataset['class']?.[ (currentLang$ | async)! ]}}-->
-						<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
-							{{ "ui.dataSet" | translate }}
+						<a [routerLink]="['/index']" [queryParams]="typeFiltered(dataset['productType'])">
+							{{ "choices.productType." + (dataset["productType"] || "dataset") | translate }}
 						</a>
 					</mat-chip>
 					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px">

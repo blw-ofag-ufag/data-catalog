@@ -2,7 +2,6 @@ import {Component, Input} from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 import {Observable} from 'rxjs';
 import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
-	import {DataProductType} from '../models/data-product-type';
 import {AsyncPipe, DatePipe} from '@angular/common';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MatChip} from '@angular/material/chips';
@@ -34,19 +33,21 @@ export class IndexListComponent {
 	}
 
 	/**
-	 * Check if product type supports keywords (dataset-specific)
+	 * Show keyword chips whenever the record actually carries keywords, regardless of product type
+	 * (all three types can have dcat:keyword) (#221).
 	 */
 	hasKeywordSupport(dataset: DataProduct): boolean {
-		const productType = (dataset as any).productType as DataProductType;
-		return productType === 'dataset' || !productType;
+		const keywords = dataset['dcat:keyword'];
+		return Array.isArray(keywords) && keywords.length > 0;
 	}
 
 	/**
-	 * Check if product type supports qualified attribution/stewards (dataset-specific)
+	 * Show steward chips whenever the record actually carries qualified attribution, regardless of
+	 * product type (#221).
 	 */
 	hasStewardsSupport(dataset: DataProduct): boolean {
-		const productType = (dataset as any).productType as DataProductType;
-		return productType === 'dataset' || !productType;
+		const attribution = dataset['prov:qualifiedAttribution'];
+		return Array.isArray(attribution) && attribution.length > 0;
 	}
 
 	onChipClick(event: MouseEvent): void {

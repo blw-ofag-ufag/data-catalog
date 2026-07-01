@@ -9,7 +9,7 @@ import {Observable, Subject, startWith, of, combineLatest} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {map, switchMap, takeUntil} from 'rxjs/operators';
-import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE} from '../models/data-product-type';
+import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPES, DATA_PRODUCT_TYPE_REGISTRY} from '../models/data-product-type';
 import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
 import {TranslateFieldPipe} from '../translate-field.pipe';
@@ -107,6 +107,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
 				})
 			);
 
+			// Ensure the catalogue index is loaded so container references resolve to full datasets
+			// even on a deep link / refresh (the index route may never have been visited) (#221).
+			this.multiDatasetService.ensureIndexLoaded();
+
 			// Resolve the container's contained/served dataset IDs to full datasets for the
 			// dedicated "Data Sets" tile section (#221).
 			this.subDatasets$ = combineLatest([this.dataset$, this.multiDatasetService.datasets$]).pipe(
@@ -156,9 +160,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		this.destroy$.complete();
 	}
 
-	datasetFiltered() {
+	// Filter the index by a product type; used by the hero type chip so it links to the record's own
+	// type (dataset / dataService / datasetSeries), matching the productType facet (#221).
+	typeFiltered(type?: string) {
 		return {
-			class: 'dataset'
+			productType: type || 'dataset'
 		};
 	}
 
@@ -166,6 +172,13 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		return {
 			'dct:publisher': publisher
 		};
+	}
+
+	// Resolve the product type from the route so the GitHub/raw links point at the correct
+	// per-type folder (data/raw/{segment}) rather than always 'datasets' (#221).
+	private currentType(): DataProductType {
+		const klass = this.route.snapshot.queryParams['type'];
+		return (DATA_PRODUCT_TYPES as string[]).includes(klass) ? (klass as DataProductType) : DEFAULT_DATA_PRODUCT_TYPE;
 	}
 
 	getGitHubFileUrl(): string {
@@ -177,7 +190,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		const publisher = this.publisherService.getPublishers().find(p => p.id === publisherId);
 		if (!publisher) return '';
 
-		return `https://github.com/${publisher.githubRepo}/blob/${publisher.readBranch}/data/raw/datasets/${datasetId}.json`;
+		const segment = DATA_PRODUCT_TYPE_REGISTRY[this.currentType()].segment;
+		return `https://github.com/${publisher.githubRepo}/blob/${publisher.readBranch}/data/raw/${segment}/${datasetId}.json`;
 	}
 
 	getRawJsonUrl(): string {
@@ -189,7 +203,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		const publisher = this.publisherService.getPublishers().find(p => p.id === publisherId);
 		if (!publisher) return '';
 
-		return publisher.getDetailUrl(datasetId);
+		return publisher.getDetailUrl(datasetId, this.currentType());
 	}
 
 	openGitHubFile(): void {
@@ -212,11 +226,12 @@ export class DetailsComponent implements OnInit, OnDestroy {
 			.pipe(takeUntil(this.destroy$))
 			.subscribe(dataset => {
 				if (dataset && dataset['dct:identifier']) {
-					// Navigate to modify route with edit mode and dataset ID
+					// Navigate to modify route with edit mode, dataset ID and product type (#221).
 					this.router.navigate(['/modify'], {
 						queryParams: {
 							mode: 'edit',
-							dataset: dataset['dct:identifier']
+							dataset: dataset['dct:identifier'],
+							type: (dataset.productType as string) || DEFAULT_DATA_PRODUCT_TYPE
 						}
 					});
 				}

@@ -3,7 +3,7 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {TextOrTranslatable} from '../../models/types/TextOrTranslatable';
 import {TranslateFieldPipe} from '../../translate-field.pipe';
 import {DatePipe, NgComponentOutlet, registerLocaleData} from '@angular/common';
-import {Subject} from 'rxjs';
+import {Subject, take} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
@@ -242,18 +242,27 @@ export class WasDerivedFromComponent {
 	data: string[] = [];
 	private readonly route: ActivatedRoute;
 	private readonly router: Router;
+	private readonly multiDatasetService: MultiDatasetService;
 
 	constructor(private readonly injector: Injector) {
 		this.data = this.injector.get('data', []);
 		this.route = this.injector.get(ActivatedRoute);
 		this.router = this.injector.get(Router);
+		this.multiDatasetService = this.injector.get(MultiDatasetService);
 	}
 
 	navigateToDataset(datasetId: string) {
 		const currentParams = this.route.snapshot.queryParams;
+		// Resolve the referenced record's own publisher + type so a derived-from link to a
+		// non-dataset product (or another publisher's record) loads correctly (#221). The store is a
+		// BehaviorSubject, so take(1) reads the current value synchronously.
+		let datasets: DataProduct[] = [];
+		this.multiDatasetService.datasets$.pipe(take(1)).subscribe(d => (datasets = d));
+		const ref = datasets.find(d => d['dct:identifier'] === datasetId);
 		const queryParams = {
-			publisher: currentParams['publisher'],
+			publisher: (ref?.['dct:publisher'] as string) ?? currentParams['publisher'],
 			dataset: datasetId,
+			type: (ref?.['productType'] as string) ?? 'dataset',
 			lang: currentParams['lang']
 		};
 		this.router.navigate(['/details'], {queryParams});

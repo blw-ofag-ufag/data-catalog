@@ -12,7 +12,6 @@ import {TranslateFieldPipe} from '../translate-field.pipe';
 import {DatasetService} from '../services/api/api.service';
 import {KeywordService} from '../services/api/keyword.service';
 
-	import {DataProductType} from '../models/data-product-type';
 
 @Component({
 	standalone: true,
@@ -39,7 +38,9 @@ import {KeywordService} from '../services/api/keyword.service';
 export class IndexCardsComponent {
 	@Input() datasets$!: Observable<DataProduct[] | null>;
 	currentLang$: Observable<string>;
-	fallbackImageUrl = 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg';
+	// Bundled local placeholder (served under the app base-href); used when a record has no
+	// schema:image. Replaces a dead external URL that returned 404 (imageless records showed nothing).
+	fallbackImageUrl = 'assets/images/placeholder.svg';
 
 	// Default number of keywords to show (fallback when dynamic calculation isn't available)
 	private readonly defaultMaxKeywords = 4;
@@ -69,11 +70,12 @@ export class IndexCardsComponent {
 	}
 
 	/**
-	 * Check if product type supports keywords (dataset-specific)
+	 * Show keyword chips whenever the record actually carries keywords, regardless of product type
+	 * (all three types can have dcat:keyword) (#221).
 	 */
 	hasKeywordSupport(dataset: DataProduct): boolean {
-		const productType = (dataset as any).productType as DataProductType;
-		return productType === 'dataset' || !productType;
+		const keywords = dataset['dcat:keyword'];
+		return Array.isArray(keywords) && keywords.length > 0;
 	}
 
 	/**
@@ -118,9 +120,11 @@ export class IndexCardsComponent {
 		};
 	}
 
-	datasetFiltered() {
+	// Filter the index by a product type; used by the type chip so each tile links to its own type
+	// (dataset / dataService / datasetSeries), matching the productType facet (#221).
+	typeFiltered(type?: string) {
 		return {
-			class: 'dataset'
+			productType: type || 'dataset'
 		};
 	}
 
