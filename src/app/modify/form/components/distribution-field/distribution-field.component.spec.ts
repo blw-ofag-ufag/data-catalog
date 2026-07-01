@@ -1,5 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {provideNativeDateAdapter} from '@angular/material/core';
 import {DistributionFieldComponent, Distribution} from './distribution-field.component';
 import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
 import {TranslateService} from '@ngx-translate/core';
@@ -25,6 +26,7 @@ describe('DistributionFieldComponent', () => {
 		await TestBed.configureTestingModule({
 			imports: [DistributionFieldComponent, NoopAnimationsModule, provideTranslateTesting()],
 			providers: [
+				provideNativeDateAdapter(),
 				{provide: ValidationSchemaService, useValue: stubValidationSchemaService()},
 				{provide: TranslateService, useValue: stubTranslateService()}
 			]

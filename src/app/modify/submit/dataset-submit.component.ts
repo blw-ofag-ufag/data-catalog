@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnDestroy} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit, OnDestroy} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -65,7 +65,8 @@ export class DatasetSubmitComponent implements OnInit, OnDestroy {
 		private readonly datasetJsonService: DatasetJsonService,
 		private readonly notificationService: ObNotificationService,
 		private readonly translateService: TranslateService,
-		private readonly formCacheService: FormCacheService
+		private readonly formCacheService: FormCacheService,
+		private readonly cdr: ChangeDetectorRef
 	) {}
 
 	ngOnInit(): void {
@@ -200,6 +201,10 @@ export class DatasetSubmitComponent implements OnInit, OnDestroy {
 					message: `Dataset successfully ${this.isEditMode ? 'updated' : 'created'} in GitHub`
 				});
 
+				// Force change detection so the success state renders without
+				// requiring a user interaction (see #237).
+				this.cdr.detectChanges();
+
 				// Open the file in GitHub after a short delay
 				setTimeout(() => {
 					if (response.htmlUrl) {
@@ -235,6 +240,10 @@ export class DatasetSubmitComponent implements OnInit, OnDestroy {
 					title: 'Commit Failed',
 					message: errorMessage
 				});
+
+				// Force change detection so the error state renders without
+				// requiring a user interaction (see #237).
+				this.cdr.detectChanges();
 
 				console.error('Commit error:', error);
 			}

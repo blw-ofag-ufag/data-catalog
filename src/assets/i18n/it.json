@@ -296,7 +296,10 @@
           "email": "Inserisci un indirizzo email valido",
           "summary": "Errori di validazione del modulo:",
           "fillRequired": "Compila tutti i campi obbligatori contrassegnati con un asterisco (*)",
-          "recommended": "(raccomandato)"
+          "recommended": "(raccomandato)",
+          "invalidDate": "Inserire una data valida (GG.MM.AAAA)",
+          "dateOrderIssuedModified": "La data di pubblicazione deve essere precedente o uguale alla data di modifica.",
+          "dateOrderStartEnd": "La data di inizio deve essere precedente o uguale alla data di fine."
         },
         "confirmation": {
           "unsavedChanges": "Hai modifiche non salvate. Sei sicuro di voler uscire? Tutte le modifiche andranno perse."

@@ -2,6 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule, FormArray, Validators} from '@angular/forms';
+import {provideNativeDateAdapter} from '@angular/material/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {of, BehaviorSubject} from 'rxjs';
 
@@ -194,6 +195,7 @@ describe('ModifyComponent', () => {
 		await TestBed.configureTestingModule({
 			imports: [ModifyComponent, NoopAnimationsModule, provideTranslateTesting()],
 			providers: [
+				provideNativeDateAdapter(),
 				{provide: DatasetMetadataService, useValue: metadataServiceStub},
 				{provide: ValidationSchemaService, useValue: validationSchemaServiceStub},
 				{provide: FormCacheService, useValue: formCacheServiceStub},

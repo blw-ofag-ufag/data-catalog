@@ -3,7 +3,7 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {TextOrTranslatable} from '../../models/types/TextOrTranslatable';
 import {TranslateFieldPipe} from '../../translate-field.pipe';
 import {DatePipe, NgComponentOutlet, registerLocaleData} from '@angular/common';
-import {Subject, take} from 'rxjs';
+import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
@@ -235,42 +235,6 @@ export class WasGeneratedByComponent {
 
 @Component({
 	template:
-		'<p>{{ data[0] }} - <a (mouseup)="navigateToDataset(data[1])" style="cursor: pointer; text-decoration: underline; color: #0066cc;">{{ data[1] }}</a></p>',
-	standalone: true
-})
-export class WasDerivedFromComponent {
-	data: string[] = [];
-	private readonly route: ActivatedRoute;
-	private readonly router: Router;
-	private readonly multiDatasetService: MultiDatasetService;
-
-	constructor(private readonly injector: Injector) {
-		this.data = this.injector.get('data', []);
-		this.route = this.injector.get(ActivatedRoute);
-		this.router = this.injector.get(Router);
-		this.multiDatasetService = this.injector.get(MultiDatasetService);
-	}
-
-	navigateToDataset(datasetId: string) {
-		const currentParams = this.route.snapshot.queryParams;
-		// Resolve the referenced record's own publisher + type so a derived-from link to a
-		// non-dataset product (or another publisher's record) loads correctly (#221). The store is a
-		// BehaviorSubject, so take(1) reads the current value synchronously.
-		let datasets: DataProduct[] = [];
-		this.multiDatasetService.datasets$.pipe(take(1)).subscribe(d => (datasets = d));
-		const ref = datasets.find(d => d['dct:identifier'] === datasetId);
-		const queryParams = {
-			publisher: (ref?.['dct:publisher'] as string) ?? currentParams['publisher'],
-			dataset: datasetId,
-			type: (ref?.['productType'] as string) ?? 'dataset',
-			lang: currentParams['lang']
-		};
-		this.router.navigate(['/details'], {queryParams});
-	}
-}
-
-@Component({
-	template:
 		'<ul>@for (item of data; track $index) {<li><a [href]="item.uri" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event, item.uri)" style="cursor: pointer;">{{item.alias || item.uri}}</a></li>}</ul>',
 	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
 	standalone: true
@@ -306,12 +270,13 @@ export class DatasetIdListComponent {
 	template: `<ul>
 		@for (id of data; track $index) {
 			<li>
-				<a (mouseup)="navigateToDataset(id)" style="cursor: pointer; text-decoration: underline; color: #0066cc;">{{ getDatasetTitle(id) || id }}</a>
+				<a [routerLink]="['/details']" [queryParams]="getQueryParams(id)" (mouseup)="navigateToDataset(id)" style="cursor: pointer;">{{ getDatasetTitle(id) || id }}</a>
 			</li>
 		}
 	</ul>`,
 	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
-	standalone: true
+	standalone: true,
+	imports: [RouterLink]
 })
 export class DatasetLinkListComponent implements OnInit, OnDestroy {
 	data: string[] = [];
@@ -331,6 +296,10 @@ export class DatasetLinkListComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
+		// Ensure the dataset index is available so reference IDs can be resolved to
+		// titles even when the details page was deep-linked (index never visited).
+		this.multiDatasetService.ensureIndexLoaded();
+
 		// Subscribe to datasets to lookup titles
 		this.multiDatasetService.datasets$
 			.pipe(takeUntil(this.destroy$))
@@ -364,18 +333,25 @@ export class DatasetLinkListComponent implements OnInit, OnDestroy {
 		return '';
 	}
 
-	navigateToDataset(datasetId: string) {
+	getQueryParams(datasetId: string) {
 		const currentParams = this.route.snapshot.queryParams;
-		// Resolve the referenced dataset's own publisher + type so cross-publisher links (e.g. a
-		// dataService/datasetSeries referencing datasets from another publisher) load correctly (#221).
+		// Resolve the referenced record's own publisher + product type so cross-publisher /
+		// non-dataset references load the correct detail page (#221); falls back to the current
+		// context when the reference isn't in the store.
 		const ref = this.datasets.find(d => d['dct:identifier'] === datasetId);
-		const queryParams = {
+		return {
 			publisher: (ref?.['dct:publisher'] as string) ?? currentParams['publisher'],
 			dataset: datasetId,
-			type: (ref?.['productType'] as string) ?? 'dataset',
+			type: ((ref as any)?.['productType'] as string) ?? 'dataset',
 			lang: currentParams['lang']
 		};
-		this.router.navigate(['/details'], {queryParams});
+	}
+
+	// Navigation happens on mouseup (matching the other detail-page links), since
+	// plain click navigation is intercepted in this view. routerLink is kept only
+	// to render a real href so the anchor gets normal link styling (hover/visited).
+	navigateToDataset(datasetId: string) {
+		this.router.navigate(['/details'], {queryParams: this.getQueryParams(datasetId)});
 	}
 }
 
@@ -433,6 +409,7 @@ export class MetadataItemComponent {
 				return DateMetadataItemComponent;
 			case 'dcat:inSeries':
 			case 'dct:replaces':
+			case 'prov:wasDerivedFrom':
 				return DatasetLinkListComponent;
 			case 'dcat:contactPoint':
 				return ContactPointComponent;
@@ -440,8 +417,6 @@ export class MetadataItemComponent {
 				return TemporalComponent;
 			case 'prov:wasGeneratedBy':
 				return WasGeneratedByComponent;
-			case 'prov:wasDerivedFrom':
-				return WasDerivedFromComponent;
 		}
 
 		// Handle URL links

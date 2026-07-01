@@ -45,3 +45,5 @@ Thumbs.db
 /test-results
 /playwright-report
 /playwright/.cache
+# Project analysis / requirements docs (local only)
+/requirements

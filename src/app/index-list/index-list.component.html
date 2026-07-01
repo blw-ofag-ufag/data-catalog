@@ -11,7 +11,7 @@
 		@for (dataset of datasets$ | async; track $index) {
 			<tr (click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'], dataset['productType'])" style="cursor: pointer">
 				<td data-title="Title">{{ ["dct:title", dataset["dct:title"]] | translateField }}</td>
-				<td data-title="Issued" class="no-wrap">{{ $any(dataset)["dct:issued"] | date: "shortDate" : translate.currentLang }}</td>
+				<td data-title="Issued" class="no-wrap">{{ $any(dataset)["dct:issued"] | date: "shortDate" : "UTC" : translate.currentLang }}</td>
 				<td data-title="Steward" class="no-wrap">
 					<div class="ob-flex ob-flex-wrap ob-gap-2">
 						@for (steward of getStewards(dataset); track $index) {

@@ -6,6 +6,7 @@ import {of} from 'rxjs';
 import {AppComponent} from './app.component';
 import {VersionService} from './services/version.service';
 import {DebugService} from './services/debug.service';
+import {provideNativeDateAdapter} from '@angular/material/core';
 import {provideTranslateTesting} from '../../tests/helpers/translate-testing';
 
 /**
@@ -30,6 +31,7 @@ describe('AppComponent', () => {
 			declarations: [AppComponent],
 			imports: [NoopAnimationsModule, provideTranslateTesting()],
 			providers: [
+				provideNativeDateAdapter(),
 				provideRouter([]),
 				{provide: ActivatedRoute, useValue: activatedRouteStub},
 				{provide: VersionService, useValue: versionStub},

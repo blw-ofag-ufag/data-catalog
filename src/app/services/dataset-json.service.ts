@@ -50,6 +50,18 @@ export class DatasetJsonService {
 			return obj;
 		}
 
+		// Preserve Date values (e.g. from datepickers) as YYYY-MM-DD strings.
+		// Without this, a Date passes the typeof === 'object' check below, gets
+		// recursed into (it has no own enumerable keys) and is reduced to null,
+		// silently dropping fields like dct:issued. Use local date parts rather
+		// than toISOString() to avoid a timezone-induced off-by-one day shift.
+		if (obj instanceof Date) {
+			const y = obj.getFullYear();
+			const m = String(obj.getMonth() + 1).padStart(2, '0');
+			const d = String(obj.getDate()).padStart(2, '0');
+			return `${y}-${m}-${d}`;
+		}
+
 		if (Array.isArray(obj)) {
 			const filtered = obj.map(item => this.removeEmptyValues(item)).filter(item => item !== null && item !== undefined && item !== '');
 			return filtered.length > 0 ? filtered : null;

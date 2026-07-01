@@ -18,7 +18,6 @@ import {
 	MetadataItemComponent,
 	NoComponent,
 	NumberComponent,
-	WasDerivedFromComponent,
 	YesComponent
 } from './metadata-item.component';
 import {provideTranslateTesting} from '../../../../tests/helpers/translate-testing';
@@ -53,13 +52,10 @@ describe('MetadataItemComponent', () => {
 			expect(component.decideComponent('dct:modified', '2024-01-01')).toBe(DateMetadataItemComponent);
 		});
 
-		it('returns WasDerivedFromComponent for prov:wasDerivedFrom', () => {
-			expect(component.decideComponent('prov:wasDerivedFrom', ['title', 'id'])).toBe(WasDerivedFromComponent);
-		});
-
 		it('returns DatasetLinkListComponent for dataset reference fields', () => {
 			expect(component.decideComponent('dcat:inSeries', ['id-1'])).toBe(DatasetLinkListComponent);
 			expect(component.decideComponent('dct:replaces', ['id-1'])).toBe(DatasetLinkListComponent);
+			expect(component.decideComponent('prov:wasDerivedFrom', ['id-1'])).toBe(DatasetLinkListComponent);
 		});
 
 		it('returns LinkComponent for http string values', () => {
@@ -107,23 +103,23 @@ describe('MetadataItemComponent', () => {
 	});
 });
 
-describe('WasDerivedFromComponent', () => {
-	it('navigates to /details preserving publisher and lang query params', () => {
-		const navigate = jest.fn();
+describe('DatasetLinkListComponent', () => {
+	it('builds /details query params, falling back to current publisher + default type when the ref is not in the store', () => {
 		const route: any = {snapshot: {queryParams: {publisher: 'PUB', lang: 'de', dataset: 'old'}}};
 		TestBed.configureTestingModule({
-			imports: [WasDerivedFromComponent, provideTranslateTesting()],
+			imports: [DatasetLinkListComponent, provideTranslateTesting()],
 			providers: [
-				{provide: Router, useValue: {navigate}},
+				{provide: Router, useValue: {navigate: jest.fn()}},
 				{provide: ActivatedRoute, useValue: route},
-				{provide: MultiDatasetService, useValue: {datasets$: of([])}}
+				{provide: MultiDatasetService, useValue: {datasets$: of([]), ensureIndexLoaded: jest.fn()}}
 			]
 		});
-		const fixture = TestBed.createComponent(WasDerivedFromComponent);
-		fixture.componentInstance.navigateToDataset('new-id');
-		// Referenced record not in the (empty) store → falls back to current publisher + default type.
-		expect(navigate).toHaveBeenCalledWith(['/details'], {
-			queryParams: {publisher: 'PUB', dataset: 'new-id', type: 'dataset', lang: 'de'}
+		const fixture = TestBed.createComponent(DatasetLinkListComponent);
+		expect(fixture.componentInstance.getQueryParams('new-id')).toEqual({
+			publisher: 'PUB',
+			dataset: 'new-id',
+			type: 'dataset',
+			lang: 'de'
 		});
 	});
 });

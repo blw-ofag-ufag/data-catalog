@@ -72,6 +72,23 @@ describe('DatasetJsonService', () => {
 			const result: any = service.generateDatasetJson({'dct:identifier': 'id', 'dct:title': {de: '', fr: '', it: '', en: ''}});
 			expect(result['dct:title']).toBeUndefined();
 		});
+
+		// Date handling (develop #264/#259): datepicker Date values must serialize as YYYY-MM-DD
+		// (local parts) instead of being dropped or timezone-shifted.
+		it('serializes a Date value (e.g. dct:issued) to a YYYY-MM-DD string instead of dropping it', () => {
+			const json = service.generateDatasetJson({'dct:identifier': 'test-id', 'dct:issued': new Date(2024, 0, 5)});
+			expect(json['dct:issued']).toBe('2024-01-05');
+		});
+
+		it('uses local date parts so the day is not shifted by timezone', () => {
+			const json = service.generateDatasetJson({'dct:identifier': 'test-id', 'dct:issued': new Date(2024, 11, 31, 23, 30, 0)});
+			expect(json['dct:issued']).toBe('2024-12-31');
+		});
+
+		it('persists dcatap:availability when set', () => {
+			const json = service.generateDatasetJson({'dct:identifier': 'test-id', 'dcatap:availability': 'STABLE'});
+			expect(json['dcatap:availability']).toBe('STABLE');
+		});
 	});
 
 	describe('generateUUID (via generated identifiers)', () => {
