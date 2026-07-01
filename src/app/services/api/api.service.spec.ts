@@ -137,4 +137,21 @@ describe('DatasetService (api.service)', () => {
 			expect(router.navigate).toHaveBeenCalled();
 		});
 	});
+
+	describe('setFilters (URL sync)', () => {
+		function lastNavQueryParams(): Record<string, unknown> {
+			const calls = router.navigate.mock.calls;
+			return calls[calls.length - 1][1].queryParams;
+		}
+
+		it('nulls the synthetic productType facet when it is not active, so a deselected/absent klass filter is cleared from the URL (#221 pagination bug)', async () => {
+			await service.setFilters({});
+			expect(lastNavQueryParams()).toHaveProperty('productType', null);
+		});
+
+		it('writes the productType value when the klass facet is active', async () => {
+			await service.setFilters({productType: {dataService: true}});
+			expect(lastNavQueryParams()['productType']).toBe('dataService');
+		});
+	});
 });

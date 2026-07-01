@@ -344,9 +344,14 @@ export class DatasetService {
 	async setFilters(filters: ActiveFilters) {
 		this.filters$.next(filters);
 
-		const emptyFilters = Object.values(enumTypes).reduce(
-			(acc, enumKey) => {
-				acc[enumKey] = null;
+		// Reset set for the URL: every facet must be explicitly nulled to be cleared under
+		// queryParamsHandling: 'merge'. `productType` is a synthetic facet (not a schema enum, so not
+		// in enumTypes) — include it here or a deselected/absent klass filter stays stale in the URL
+		// and gets re-applied on the next navigation (pagination/sort/view-switch) (#221).
+		const facetKeys = [...enumTypes, 'productType'];
+		const emptyFilters = facetKeys.reduce(
+			(acc, key) => {
+				acc[key] = null;
 				return acc;
 			},
 			{} as Record<string, string | null>
