@@ -10,6 +10,11 @@
     "title": "Agri-Food Data Catalog"
   },
   "choices": {
+    "productType": {
+      "dataset": "Dataset",
+      "dataService": "Data service",
+      "datasetSeries": "Dataset series"
+    },
     "dataset": {
       "adms:status": {
         "archived": "Archived",
@@ -130,6 +135,7 @@
       "distributions": "Distributions",
       "externalCatalogs": "Publication in external catalogs",
       "metadata": "Metadata",
+      "dataSets": "Data Sets",
       "publications": "Publication in external catalogs"
     },
     "noAffiliatedPersons": "Nobody's claiming this dataset yet—how about giving it some love by assigning a responsible human?"
@@ -194,6 +200,12 @@
     "version": "What version is this? Please use semantic versioning in the form of X.Y.Z where increases of X indicate major changes, Y minor changes and Z simple corrections such as typos."
     },
   "labels": {
+    "dcat:endpointURL": "Endpoint URL",
+    "dcat:endpointDescription": "Endpoint description",
+    "dcat:servesDataset": "Serves datasets",
+    "adms:versionNotes": "Version notes",
+    "dcat:dataset": "Datasets in series",
+    "dct:creator": "Creator",
     "adms:status": "Status",
     "bv:abrogation": "Abrogation date",
     "bv:archivalValue": "Archival value",
@@ -444,6 +456,7 @@
     "issued": "Issued",
     "issueDate": "Issue Date",
     "keywords": "Keywords",
+    "productType": "Type",
     "list": "List",
     "newKeyword": "New Keyword...",
     "noResultsFound": "No results found. Try more general filters or search.",

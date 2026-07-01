@@ -10,6 +10,11 @@
     "title": "Catalogo dei dati agroalimentari"
   },
   "choices": {
+    "productType": {
+      "dataset": "Set di dati",
+      "dataService": "Servizio di dati",
+      "datasetSeries": "Serie di set di dati"
+    },
     "dataset": {
       "adms:status": {
         "archived": "Archiviato",
@@ -130,6 +135,7 @@
       "distributions": "Distribuzioni",
       "externalCatalogs": "Pubblicazione in cataloghi esterni",
       "metadata": "Metadati",
+      "dataSets": "Set di dati",
       "publications": "Pubblicazione in cataloghi esterni"
     },
     "noAffiliatedPersons": "Nessuno ha ancora rivendicato questo set di dati—che ne dici di dargli un po' di cura assegnando una persona responsabile?"
@@ -185,6 +191,12 @@
     "schema:comment": "Esistono ulteriori informazioni rilevanti su questo prodotto di dati?"
   },
   "labels": {
+    "dcat:endpointURL": "URL endpoint",
+    "dcat:endpointDescription": "Descrizione endpoint",
+    "dcat:servesDataset": "Fornisce i set di dati",
+    "adms:versionNotes": "Note di versione",
+    "dcat:dataset": "Set di dati della serie",
+    "dct:creator": "Creatore",
     "adms:status": "Stato",
     "bv:abrogation": "Data di abrogazione",
     "bv:archivalValue": "Valore archivistico",
@@ -413,6 +425,7 @@
     "issued": "Pubblicato",
     "issueDate": "Data di pubblicazione",
     "keywords": "Parole chiave",
+    "productType": "Tipo",
     "list": "Lista",
     "newKeyword": "Nuova parola chiave...",
     "noResultsFound": "Nessun risultato trovato. Prova con filtri o ricerche più generali.",

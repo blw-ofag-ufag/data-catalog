@@ -10,6 +10,11 @@
     "title": "Catalogue de données agroalimentaires"
   },
   "choices": {
+    "productType": {
+      "dataset": "Jeu de données",
+      "dataService": "Service de données",
+      "datasetSeries": "Série de jeux de données"
+    },
     "dataset": {
       "adms:status": {
         "archived": "Archivé",
@@ -130,6 +135,7 @@
       "distributions": "Distributions",
       "externalCatalogs": "Publication dans les catalogues externes",
       "metadata": "Métadonnées",
+      "dataSets": "Jeux de données",
       "publications": "Publication dans les catalogues externes"
     },
     "noAffiliatedPersons": "Personne n'a encore revendiqué cet ensemble de données — que diriez-vous de lui accorder de l'attention en attribuant une personne responsable ?"
@@ -194,6 +200,12 @@
     "version": "De quelle version s'agit-il ? Veuillez utiliser des numéros de version sémantiques sous la forme X.Y.Z, où une augmentation de X indique des modifications importantes, Y des modifications mineures et Z des corrections simples telles que des fautes de frappe."
 },
   "labels": {
+    "dcat:endpointURL": "URL du point d'accès",
+    "dcat:endpointDescription": "Description du point d'accès",
+    "dcat:servesDataset": "Fournit les jeux de données",
+    "adms:versionNotes": "Notes de version",
+    "dcat:dataset": "Jeux de données de la série",
+    "dct:creator": "Créateur",
     "adms:status": "Statut",
     "bv:abrogation": "Date d'abrogation",
     "bv:archivalValue": "Valeur archivistique",
@@ -422,6 +434,7 @@
     "issued": "Publié",
     "issueDate": "Date de publication",
     "keywords": "Mots-clés",
+    "productType": "Type",
     "list": "Liste",
     "newKeyword": "Nouveau mot-clé...",
     "noResultsFound": "Aucun résultat trouvé. Essayez des filtres plus généraux ou une recherche.",
