@@ -40,15 +40,15 @@ describe('IndexFilterColComponent', () => {
 		snapshot: {queryParams: {}}
 	} as any;
 
+	const metadataConfigStub = {
+		fields: new Map(Object.entries(ENUM_OPTIONS).map(([key, options]) => [key, {key, enum: options}])),
+		steps: [],
+		requiredFields: []
+	};
 	const metadataServiceStub = {
-		getMetadata: () =>
-			of({
-				fields: new Map(
-					Object.entries(ENUM_OPTIONS).map(([key, options]) => [key, {key, enum: options}])
-				),
-				steps: [],
-				requiredFields: []
-			}),
+		getMetadata: () => of(metadataConfigStub),
+		// Catalogue (dataset) metadata channel the filter column now reads (#221).
+		getCatalogueMetadata: () => of(metadataConfigStub),
 		getEnumOptions: (key: string) => ENUM_OPTIONS[key] ?? []
 	} as any;
 
@@ -90,8 +90,8 @@ describe('IndexFilterColComponent', () => {
 	it('renders a select per available filter category', () => {
 		fixture.detectChanges();
 		const fields = fixture.nativeElement.querySelectorAll('mat-form-field');
-		// one keyword field + one per available filter
-		expect(fields.length).toBe(component.availableFilters.length + 1);
+		// keyword field + product-type facet + one per available filter
+		expect(fields.length).toBe(component.availableFilters.length + 2);
 	});
 
 	it('hydrates keyword chips from activated filters on init', () => {

@@ -17,7 +17,8 @@ import {MatButton} from '@angular/material/button';
 import {ActivatedRoute} from '@angular/router';
 import {ActiveFilters} from '../models/ActiveFilters';
 import {Keyword, KeywordService} from '../services/api/keyword.service';
-import {DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
+import {DatasetMetadataService, DatasetMetadataConfig} from '../services/metadata/dataset-metadata.service';
+import {DATA_PRODUCT_TYPES} from '../models/data-product-type';
 
 @Component({
 	selector: 'index-filter-col',
@@ -40,9 +41,20 @@ import {DatasetMetadataService} from '../services/metadata/dataset-metadata.serv
 })
 export class IndexFilterColComponent implements OnInit, OnDestroy {
 	// Facetable enum fields, derived from the runtime schema (fields that carry enum
+	/**
+	 * P5 SCHEMA-AWARE FILTERS:
+	 * - Filters are derived from runtime metadata schema (already implemented in constructor)
+	 * - Only enum fields from metadata are shown as filter options
+	 * - Non-enum fields are not filterable
+	 * - Future: Could add type-aware filter UI that shows different filters per product type
+	 * - Keyword filtering works for all types (keyword codes are product-agnostic)
+	 */
 	// options). dcat:keyword is intentionally absent here - it has no schema enum and
 	// is handled via the dedicated keyword chip/autocomplete UI below.
 	private _availableFilterKeys: string[] = [];
+	// Stable dataset (catalogue) metadata; filter keys + choices come from here so the form's active
+	// product type can't shrink the catalogue filters (#221).
+	private catalogueConfig: DatasetMetadataConfig | null = null;
 	private readonly _selectedFilters: ActiveFilters = {};
 	private readonly destroy$ = new Subject<void>();
 	// @Input() set availableFilters(filters: string[]) {
@@ -74,12 +86,15 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-		// Derive the facetable enum fields from the runtime schema once it loads.
+		// Derive the facetable enum fields from the stable catalogue (dataset) schema. Using the
+		// catalogue channel (not the form's mutable metadata$) keeps the full filter set even after
+		// the modify form has loaded a non-dataset product type (#221).
 		this.metadataService
-			.getMetadata()
+			.getCatalogueMetadata()
 			.pipe(takeUntil(this.destroy$))
 			.subscribe(config => {
 				if (!config) return;
+				this.catalogueConfig = config;
 				this._availableFilterKeys = Array.from(config.fields.values())
 					.filter(field => (field.enum?.length ?? 0) > 0)
 					.map(field => field.key);
@@ -114,9 +129,18 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 		return this._availableFilterKeys;
 	}
 
+	// Product-type ("klass") facet options — filter the catalogue between the data-product types (#221).
+	// Matching is generic: api.service matches the selected values against each item's `productType` tag.
+	readonly productTypeOptions = DATA_PRODUCT_TYPES;
+
+	productTypeLabel(type: string): string {
+		return `choices.productType.${type}`;
+	}
+
 	filterChoices(_filterkey: string): readonly string[] {
-		// Options come from the runtime schema (already empty-string filtered).
-		return this.metadataService.getEnumOptions(_filterkey);
+		// Options come from the stable catalogue (dataset) schema (already empty-string filtered),
+		// not the form's mutable metadata, so choices stay correct regardless of the active form type.
+		return this.catalogueConfig?.fields.get(_filterkey)?.enum ?? [];
 	}
 
 	add(event: MatChipInputEvent): void {
