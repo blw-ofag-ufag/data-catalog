@@ -14,7 +14,7 @@ jobs:
                 with:
                     node-version: 22
             -   name: Install Dependencies
-                run: npm install --legacy-peer-deps
+                run: npm install
             -   name: Build Angular App
                 run: |
                     npm run prebuild

@@ -105,10 +105,10 @@ The report lists each advisory's severity, the affected package, and whether a f
 ```bash
 # 1. Refresh the lockfile from package.json. Because our dependency ranges (e.g. ^21.0.0)
 #    already allow patched releases, most alerts are cleared just by regenerating the lockfile.
-rm package-lock.json && npm install --legacy-peer-deps   # --legacy-peer-deps matches our CI
+rm package-lock.json && npm install   # peers resolve cleanly (no --legacy-peer-deps needed)
 
 # 2. Apply non-breaking fixes for anything left.
-npm audit fix --legacy-peer-deps
+npm audit fix
 
 # 3. Re-scan.
 npm audit
@@ -121,23 +121,25 @@ proposes destructive toolchain downgrades) and can break the build.
 
 If a vulnerable package is pulled in indirectly and `npm audit fix` cannot reach it without a
 breaking change, pin a patched version with an [`overrides`](https://docs.npmjs.com/cli/v10/configuring-npm/package-json#overrides)
-block in `package.json`, then reinstall:
+block in `package.json`, then reinstall. Overrides can be global or scoped to a single consumer (use
+the `"."` key to also pin the consumer's own version):
 
 ```jsonc
 // package.json
 "overrides": {
-  "esbuild": "^0.28.1"
+  "esbuild": "^0.28.1",
+  "@angular/build": { "undici": "^7.28.0", "piscina": "^5.2.0" }
 }
 ```
 
 ```bash
-npm install --legacy-peer-deps
+npm install
 ```
 
 ## After updating, always verify
 
 ```bash
-npm ci --legacy-peer-deps   # the lockfile installs cleanly from scratch
+npm ci                      # the lockfile installs cleanly from scratch
 npm run build               # the app still builds
 npm test                    # tests still pass
 ```

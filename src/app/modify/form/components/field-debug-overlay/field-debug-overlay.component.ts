@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslateService, TranslateStore} from '@ngx-translate/core';
 import {DebugService} from '../../../../services/debug.service';
 
 export interface ValidationMessage {
@@ -44,7 +44,9 @@ export class FieldDebugOverlayComponent {
 
 	constructor(
 		public readonly debugService: DebugService,
-		private readonly translate: TranslateService
+		private readonly translate: TranslateService,
+		// ngx-translate v17 removed the public `translations` map; the loaded per-language set now lives on TranslateStore.
+		private readonly translateStore: TranslateStore
 	) {}
 
 	get schemaField(): string {
@@ -69,7 +71,7 @@ export class FieldDebugOverlayComponent {
 		}
 		// Get the English translation for the label
 		// Safely access translations object with optional chaining
-		const translations = this.translate.translations?.['en'];
+		const translations = this.translateStore.getTranslations('en') as Record<string, any>;
 		if (translations) {
 			// Navigate the translation object using the label key
 			const keys = this.label.split('.');
