@@ -8,4 +8,5 @@ export interface Publisher {
 	getDetailUrl: (id: string) => string;
 
 	getKeywordUrl: () => string;
+	getDimensionUrl: () => string;
 }
