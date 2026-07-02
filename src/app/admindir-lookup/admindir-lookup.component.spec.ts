@@ -46,8 +46,8 @@ describe('AdmindirLookupComponent', () => {
 		expect(fetchMock).toHaveBeenCalledWith('https://admindir.verzeichnisse.admin.ch/api/person/12345');
 
 		// flush the promise chain.
-		await Promise.resolve();
-		await Promise.resolve();
+		// flush the full microtask queue (fetch -> json() -> then), robust across jest versions.
+		await new Promise(resolve => setTimeout(resolve));
 
 		expect(component.person['schema:name']).toBe('John Smith');
 		expect(component.person['schema:email']).toBe('john.smith@admin.ch');
@@ -63,8 +63,8 @@ describe('AdmindirLookupComponent', () => {
 		component.person = {'prov:agent': '999'};
 		fixture.detectChanges();
 
-		await Promise.resolve();
-		await Promise.resolve();
+		// flush the full microtask queue (fetch -> json() -> then), robust across jest versions.
+		await new Promise(resolve => setTimeout(resolve));
 
 		expect(component.adminDirError).toBe(true);
 	});

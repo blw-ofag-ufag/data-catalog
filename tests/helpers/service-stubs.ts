@@ -30,7 +30,10 @@ export function stubTranslateService(overrides: Record<string, unknown> = {}): a
 		use: jest.fn((lang: string) => of(lang)),
 		onLangChange: of({lang: 'de', translations: {}}),
 		onTranslationChange: of({}),
+		// ngx-translate v17 renamed onDefaultLangChange -> onFallbackLangChange (the TranslatePipe
+		// subscribes to it); keep both so stubs work regardless of which the consumer reads.
 		onDefaultLangChange: of({}),
+		onFallbackLangChange: of({}),
 		...overrides
 	};
 }
