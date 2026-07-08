@@ -97,6 +97,11 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 	// Mark the issued/modified and temporal start/end inputs red when their cross-field
 	// relation is violated (the error lives on the form group, issue #231).
+	// Upper bound for dct:issued / dct:modified: those dates can't be in the future. JSON Schema
+	// can't express this, so it's enforced in the template via the datepicker's [max] (#221 —
+	// restores a guard lost in the Formly → custom-form migration).
+	readonly today = new Date();
+
 	readonly issuedModifiedErrorMatcher = new RelationErrorStateMatcher(() => this.datasetForm.hasError('issuedAfterModified'));
 	readonly temporalRangeErrorMatcher = new RelationErrorStateMatcher(() => !!this.datasetForm.get('dct:temporal')?.hasError('startAfterEnd'));
 	private readonly defaultErrorMatcher = new ErrorStateMatcher();

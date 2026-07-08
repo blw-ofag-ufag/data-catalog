@@ -312,6 +312,7 @@
           "fillRequired": "Bitte füllen Sie alle Pflichtfelder aus, die mit einem Sternchen (*) markiert sind",
           "recommended": "(empfohlen)",
           "invalidDate": "Bitte ein gültiges Datum eingeben (TT.MM.JJJJ)",
+          "dateNotFuture": "Das Datum darf nicht in der Zukunft liegen.",
           "dateOrderIssuedModified": "Das Ausstellungsdatum muss vor oder am Änderungsdatum liegen.",
           "dateOrderStartEnd": "Das Startdatum muss vor oder am Enddatum liegen."
         },

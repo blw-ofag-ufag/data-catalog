@@ -298,6 +298,7 @@
           "fillRequired": "Compila tutti i campi obbligatori contrassegnati con un asterisco (*)",
           "recommended": "(raccomandato)",
           "invalidDate": "Inserire una data valida (GG.MM.AAAA)",
+          "dateNotFuture": "La data non può essere nel futuro.",
           "dateOrderIssuedModified": "La data di pubblicazione deve essere precedente o uguale alla data di modifica.",
           "dateOrderStartEnd": "La data di inizio deve essere precedente o uguale alla data di fine."
         },

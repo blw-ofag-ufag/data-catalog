@@ -94,10 +94,17 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 			.pipe(takeUntil(this.destroy$))
 			.subscribe(config => {
 				if (!config) return;
-				this.catalogueConfig = config;
-				this._availableFilterKeys = Array.from(config.fields.values())
+				const enumKeys = Array.from(config.fields.values())
 					.filter(field => (field.enum?.length ?? 0) > 0)
 					.map(field => field.key);
+				// A failed/offline schema fetch yields an empty {properties:{}} fallback with zero enum
+				// fields. Don't let that wipe an already-derived filter set — keep the last good facets so
+				// the catalogue stays filterable after a transient fetch failure (#221).
+				if (enumKeys.length === 0 && this._availableFilterKeys.length > 0) {
+					return;
+				}
+				this.catalogueConfig = config;
+				this._availableFilterKeys = enumKeys;
 			});
 
 		this.activatedFilters$

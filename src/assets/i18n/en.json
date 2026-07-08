@@ -316,6 +316,7 @@
           "fillRequired": "Please fill out all required fields marked with an asterisk (*)",
           "recommended": "(recommended)",
           "invalidDate": "Please enter a valid date (DD.MM.YYYY)",
+          "dateNotFuture": "The date cannot be in the future.",
           "dateOrderIssuedModified": "The issued date must be on or before the modified date.",
           "dateOrderStartEnd": "The start date must be on or before the end date."
         },

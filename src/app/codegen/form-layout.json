@@ -18,6 +18,7 @@
         "label": "modify.auth.form.sections.access",
         "fields": [
           "dct:accessRights",
+          "dcatap:availability",
           "bv:classification",
           "bv:personalData",
           "adms:status"

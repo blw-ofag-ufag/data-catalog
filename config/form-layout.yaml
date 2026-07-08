@@ -16,7 +16,7 @@ dataset:
     - id: 2
       key: access
       label: modify.auth.form.sections.access
-      fields: ['dct:accessRights', 'bv:classification', 'bv:personalData', 'adms:status']
+      fields: ['dct:accessRights', 'dcatap:availability', 'bv:classification', 'bv:personalData', 'adms:status']
     - id: 3
       key: publisher
       label: modify.auth.form.sections.publisher

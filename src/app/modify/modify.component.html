@@ -252,10 +252,11 @@
 														{{ ('labels.' + fieldKey) | translate }}
 														<span *ngIf="isFieldRecommended(fieldKey)" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
 													</mat-label>
-													<input matInput [matDatepicker]="datePicker" [formControlName]="fieldKey" [errorStateMatcher]="dateErrorMatcher(fieldKey)" />
+													<input matInput [matDatepicker]="datePicker" [max]="(fieldKey === 'dct:issued' || fieldKey === 'dct:modified') ? today : null" [formControlName]="fieldKey" [errorStateMatcher]="dateErrorMatcher(fieldKey)" />
 													<mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
 													<mat-datepicker #datePicker></mat-datepicker>
 													<mat-error *ngIf="datasetForm.get(fieldKey)?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
+													<mat-error *ngIf="datasetForm.get(fieldKey)?.hasError('matDatepickerMax')">{{ "modify.auth.form.validation.dateNotFuture" | translate }}</mat-error>
 													<mat-error *ngIf="fieldKey === 'dct:modified' && datasetForm.hasError('issuedAfterModified') && !datasetForm.get('dct:modified')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.dateOrderIssuedModified" | translate }}</mat-error>
 												</mat-form-field>
 												<app-form-field-tooltip [fieldName]="fieldKey"></app-form-field-tooltip>

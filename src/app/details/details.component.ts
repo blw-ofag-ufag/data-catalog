@@ -70,6 +70,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
 	// Contained/served datasets for container types (dataService/datasetSeries), rendered as a
 	// dedicated "Data Sets" tile section (#221, Figma).
 	subDatasets$: Observable<DataProduct[]> = of([]);
+	// The record's own product type, captured once the record loads. Deep links/bookmarks may omit
+	// the `type` query param, so the GitHub/raw URL builders derive the type from the loaded record
+	// (falling back to the route param, then the default) rather than always 'dataset' (#221).
+	private resolvedType: DataProductType | null = null;
 	private readonly destroy$ = new Subject<void>();
 
 	constructor(
@@ -93,6 +97,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		// this.lang$ = new BehaviorSubject(this.route.snapshot.queryParams['lang'] || 'en');
 		this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
 			this.dataset = params['dataset'];
+			this.resolvedType = null; // reset per navigation; re-captured once the new record loads
 			this.dataset$ = this.datasetService.getDatasetById(this.dataset);
 
 			// Render the record against the metadata for its own product type, so dataService /
@@ -103,6 +108,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 						return of([] as NormalizedMetadataElement[]);
 					}
 					const type = (dataset.productType as DataProductType) || DEFAULT_DATA_PRODUCT_TYPE;
+					this.resolvedType = type; // so the GitHub/raw URL builders use the record's real type
 					return this.metadataService.getMetadataForType(type).pipe(map(metadataConfig => this.buildDetailFields(dataset, metadataConfig)));
 				})
 			);
@@ -174,9 +180,14 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		};
 	}
 
-	// Resolve the product type from the route so the GitHub/raw links point at the correct
-	// per-type folder (data/raw/{segment}) rather than always 'datasets' (#221).
+	// Resolve the product type so the GitHub/raw links point at the correct per-type folder
+	// (data/raw/{segment}) rather than always 'datasets' (#221). Prefer the loaded record's own
+	// productType (deep links/bookmarks may omit the `type` query param); fall back to the route
+	// param, then the default.
 	private currentType(): DataProductType {
+		if (this.resolvedType) {
+			return this.resolvedType;
+		}
 		const klass = this.route.snapshot.queryParams['type'];
 		return (DATA_PRODUCT_TYPES as string[]).includes(klass) ? (klass as DataProductType) : DEFAULT_DATA_PRODUCT_TYPE;
 	}
