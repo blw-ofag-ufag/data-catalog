@@ -85,4 +85,33 @@ describe('KeywordsComponent', () => {
 		component.dataset = {} as any;
 		expect(component.getKeywordKey('Soil')).toBe('Soil');
 	});
+
+	// #221 regression: keyword support was gated on `productType === 'dataset'`, so dataService /
+	// datasetSeries records rendered the '—' placeholder on the detail page even though the very
+	// same records showed their chips in the index cards/list. The gate is presence-based now.
+	describe('keyword support is presence-based, not product-type based (#221)', () => {
+		it.each(['dataService', 'datasetSeries', 'dataset'])('renders keyword chips for a %s record', async productType => {
+			await setup(['Agriculture']);
+			component.dataset = {'dcat:keyword': ['agri'], productType} as any;
+			fixture.detectChanges();
+
+			expect(component.hasKeywordSupport()).toBe(true);
+			expect(component.getLocalizedKeywords()).toEqual(['Agriculture']);
+			expect(fixture.nativeElement.querySelectorAll('mat-chip').length).toBe(1);
+		});
+
+		it.each(['dataService', 'datasetSeries', 'dataset'])('reports no keyword support for a %s record with no keywords', async productType => {
+			await setup([]);
+			component.dataset = {productType} as any;
+
+			expect(component.hasKeywordSupport()).toBe(false);
+			expect(component.getLocalizedKeywords()).toEqual([]);
+		});
+
+		it('reports no keyword support for an empty keyword array', async () => {
+			await setup([]);
+			component.dataset = {'dcat:keyword': [], productType: 'dataService'} as any;
+			expect(component.hasKeywordSupport()).toBe(false);
+		});
+	});
 });

@@ -21,7 +21,11 @@ export default defineConfig({
 	webServer: {
 		// `ng serve` answers history-fallback only for Accept: text/html, so the
 		// readiness probe (Accept: */*) must hit the static index at root, not /data-catalog/.
-		command: 'npm start',
+		//
+		// Served under the `e2e` configuration, which swaps in environment.e2e.ts (debugMode: true)
+		// so the GitHubAuthGuard lets the /modify specs through. Keeps the suite hermetic — no
+		// hand-editing of the committed environment.ts (see src/environments/environment.e2e.ts).
+		command: 'npm run start:e2e',
 		url: 'http://localhost:4200',
 		reuseExistingServer: !process.env['CI'],
 		timeout: 180_000

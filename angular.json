@@ -65,6 +65,15 @@
             "development": {
               "vendorChunk": true
             },
+            "e2e": {
+              "vendorChunk": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.e2e.ts"
+                }
+              ]
+            },
             "production": {
               "budgets": [
                 {
@@ -106,6 +115,9 @@
             },
             "development": {
               "buildTarget": "DigiAgriFoodDB:build:development"
+            },
+            "e2e": {
+              "buildTarget": "DigiAgriFoodDB:build:e2e"
             }
           },
           "defaultConfiguration": "development"

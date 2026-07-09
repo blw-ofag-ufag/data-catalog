@@ -176,3 +176,68 @@ describe('IndexFilterColComponent', () => {
 		expect(datasetServiceStub.setFilters).toHaveBeenCalledWith({});
 	});
 });
+
+// #221 regression: filter facets are derived from the runtime-fetched dataset schema. When that
+// fetch fails, ValidationSchemaFetcherService hands back an empty `{properties:{}}` fallback, which
+// parses to zero enum fields. That must not wipe an already-derived facet set — otherwise the
+// catalogue silently loses every filter (access rights, availability, status, theme, publisher).
+describe('IndexFilterColComponent — empty schema fallback', () => {
+	const goodConfig = {
+		fields: new Map(Object.entries(ENUM_OPTIONS).map(([key, options]) => [key, {key, enum: options}])),
+		steps: [],
+		requiredFields: []
+	};
+	const emptyConfig = {fields: new Map(), steps: [], requiredFields: []};
+
+	async function setupWith(catalogue$: BehaviorSubject<any>): Promise<ComponentFixture<IndexFilterColComponent>> {
+		await TestBed.resetTestingModule()
+			.configureTestingModule({
+				imports: [IndexFilterColComponent, NoopAnimationsModule, provideTranslateTesting()],
+				providers: [
+					{provide: KeywordService, useValue: {keywords$: of([]), getKeywordLabels: jest.fn()} as any},
+					{provide: DatasetService, useValue: {setFilters: jest.fn()} as any},
+					{provide: ActivatedRoute, useValue: {queryParams: of({}), snapshot: {queryParams: {}}} as any},
+					{
+						provide: DatasetMetadataService,
+						useValue: {
+							getMetadata: () => catalogue$.asObservable(),
+							getCatalogueMetadata: () => catalogue$.asObservable(),
+							getEnumOptions: (key: string) => ENUM_OPTIONS[key] ?? []
+						} as any
+					}
+				]
+			})
+			.compileComponents();
+
+		const f = TestBed.createComponent(IndexFilterColComponent);
+		f.componentInstance.activatedFilters$ = new BehaviorSubject<ActiveFilters>({});
+		return f;
+	}
+
+	it('keeps the last good facet set when an empty fallback schema arrives', async () => {
+		const catalogue$ = new BehaviorSubject<any>(goodConfig);
+		const f = await setupWith(catalogue$);
+		f.detectChanges();
+
+		expect(f.componentInstance.availableFilters).toHaveLength(3);
+
+		// Schema refetch fails -> empty fallback emitted.
+		catalogue$.next(emptyConfig);
+
+		expect(f.componentInstance.availableFilters).toHaveLength(3);
+		expect(f.componentInstance.filterChoices('dct:accessRights')).toEqual(['PUBLIC', 'NON_PUBLIC']);
+	});
+
+	it('still adopts a good schema when the first emission was empty (cold start, offline then online)', async () => {
+		const catalogue$ = new BehaviorSubject<any>(emptyConfig);
+		const f = await setupWith(catalogue$);
+		f.detectChanges();
+
+		expect(f.componentInstance.availableFilters).toHaveLength(0);
+
+		catalogue$.next(goodConfig);
+
+		expect(f.componentInstance.availableFilters).toHaveLength(3);
+		expect(f.componentInstance.filterChoices('dcat:theme')).toEqual(['work', 'energy']);
+	});
+});

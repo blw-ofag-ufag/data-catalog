@@ -224,6 +224,44 @@ describe('DetailsComponent', () => {
 			expect(fixture.componentInstance.getGitHubFileUrl()).toBe('');
 			expect(fixture.componentInstance.getRawJsonUrl()).toBe('');
 		});
+
+		// #221 regression: the URL builders resolved the type from the `type` query param, which a
+		// deep link / bookmark omits. The record rendered as a dataService but its GitHub/raw links
+		// pointed at data/raw/datasets/... and 404'd. The type now comes from the loaded record.
+		describe('deep link without a `type` query param', () => {
+			const NO_TYPE_PARAM = {publisher: 'BLW-OFAG-UFAG-FOAG', dataset: 'ds-1', lang: 'de'};
+
+			it.each([
+				['dataService', 'dataServices'],
+				['datasetSeries', 'datasetSeries'],
+				['dataset', 'datasets']
+			])('builds the %s GitHub URL from the record productType', async (productType, segment) => {
+				await configure({...STUB_DATASET, productType}, NO_TYPE_PARAM).compileComponents();
+				fixture = TestBed.createComponent(DetailsComponent);
+				fixture.detectChanges();
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
+					`https://github.com/org/repo/blob/main/data/raw/${segment}/ds-1.json`
+				);
+			});
+
+			it('falls back to the default type when the record carries no productType', async () => {
+				await configure(STUB_DATASET, NO_TYPE_PARAM).compileComponents();
+				fixture = TestBed.createComponent(DetailsComponent);
+				fixture.detectChanges();
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
+					'https://github.com/org/repo/blob/main/data/raw/datasets/ds-1.json'
+				);
+			});
+
+			it("prefers the record's productType over a stale `type` query param", async () => {
+				await configure({...STUB_DATASET, productType: 'datasetSeries'}, {...NO_TYPE_PARAM, type: 'dataset'}).compileComponents();
+				fixture = TestBed.createComponent(DetailsComponent);
+				fixture.detectChanges();
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
+					'https://github.com/org/repo/blob/main/data/raw/datasetSeries/ds-1.json'
+				);
+			});
+		});
 	});
 
 	describe('getFormatIcon', () => {

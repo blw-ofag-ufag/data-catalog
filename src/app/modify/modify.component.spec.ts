@@ -435,6 +435,26 @@ describe('ModifyComponent', () => {
 		});
 	});
 
+	// #221 regression: the Formly date field bound [max]=maxDate (=today) plus a maxDateValidator.
+	// The custom form dropped both, so a dct:issued of 2099 submitted as valid. JSON Schema cannot
+	// express "not in the future", so the bound is applied via the datepicker's [max].
+	describe('future-date guard', () => {
+		beforeEach(() => fixture.detectChanges());
+
+		it.each(['dct:issued', 'dct:modified'])('bounds %s at today', fieldKey => {
+			expect(component.maxDateFor(fieldKey)).toBe(component.today);
+		});
+
+		it.each(['bv:abrogation', 'dcat:version', 'dct:spatial'])('leaves %s unbounded', fieldKey => {
+			// bv:abrogation is legitimately a future (planned) date, so it must not be capped.
+			expect(component.maxDateFor(fieldKey)).toBeNull();
+		});
+
+		it('the bound is not itself in the future', () => {
+			expect(component.today.getTime()).toBeLessThanOrEqual(Date.now());
+		});
+	});
+
 	describe('edit-mode pre-fill', () => {
 		it('loads an existing dataset when an :id route param is present', async () => {
 			paramMapValue.set('id', 'dataset-123');
@@ -455,6 +475,52 @@ describe('ModifyComponent', () => {
 			expect(component.datasetForm.get('dct:title')?.value).toEqual({de: 'Geladen', fr: 'Charge', it: '', en: ''});
 			expect(component.datasetForm.get('dct:spatial')?.value).toBe('Bern');
 			expect(component.isLoading).toBe(false);
+		});
+
+		// #221 regression: editing a non-dataset record fires loadForType() (async per-type schema
+		// fetch -> metadata emission -> buildFormFromMetadata recreates every control with defaults)
+		// and loadDetail() (async record fetch -> populateForm patch) concurrently. On a cold schema
+		// cache the record could win, and the late rebuild then wiped the just-patched values, leaving
+		// the user staring at a blank edit form. The patch is now re-applied after every rebuild.
+		it('keeps patched record values when the per-type schema resolves after the record', () => {
+			paramMapValue.set('id', 'dataset-123');
+			fixture.detectChanges();
+
+			datasetsSubject.next([{'dct:identifier': 'dataset-123', 'dct:publisher': 'BLW-OFAG-UFAG-FOAG'}]);
+			// Record resolves first and is patched into the form.
+			selectedDatasetSubject.next({'dct:identifier': 'dataset-123', 'dct:spatial': 'Bern', 'dcat:version': '1.2.3'});
+			expect(component.datasetForm.get('dct:spatial')?.value).toBe('Bern');
+
+			// The per-type schema resolves afterwards -> metadata re-emits -> controls are rebuilt.
+			metadataSubject.next(buildMetadataConfig());
+
+			expect(component.datasetForm.get('dct:spatial')?.value).toBe('Bern');
+			expect(component.datasetForm.get('dcat:version')?.value).toBe('1.2.3');
+		});
+
+		it('keeps cached unsaved edits across a late metadata rebuild', () => {
+			formCacheServiceStub.getFormData.mockReturnValue({'dct:spatial': 'Unsaved Edit'});
+			paramMapValue.set('id', 'dataset-123');
+			fixture.detectChanges();
+
+			datasetsSubject.next([{'dct:identifier': 'dataset-123', 'dct:publisher': 'BLW-OFAG-UFAG-FOAG'}]);
+			selectedDatasetSubject.next({'dct:identifier': 'dataset-123', 'dct:spatial': 'Stored Region'});
+			expect(component.datasetForm.get('dct:spatial')?.value).toBe('Unsaved Edit');
+
+			metadataSubject.next(buildMetadataConfig());
+
+			expect(component.datasetForm.get('dct:spatial')?.value).toBe('Unsaved Edit');
+		});
+
+		it('does not resurrect the previous type\'s values after an explicit product-type switch', () => {
+			fixture.detectChanges();
+			component.datasetForm.get('dct:spatial')?.setValue('Bern');
+
+			component.onProductTypeChange({target: {value: 'dataService'}} as any);
+			// The type switch triggers a schema load; its metadata emission rebuilds the controls.
+			metadataSubject.next(buildMetadataConfig());
+
+			expect(component.datasetForm.get('dct:spatial')?.value).toBeFalsy();
 		});
 
 		it('loads a non-dataset record as its own product type (#221)', () => {

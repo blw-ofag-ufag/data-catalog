@@ -21,22 +21,23 @@ export interface DataProductTypeConfig {
 	 * Path segment used in the publisher repo: `data/processed/{segment}.json` (catalogue index)
 	 * and `data/raw/{segment}/{id}.json` (single record).
 	 *
-	 * NOTE: only `datasets` exists in the metadata repo today; the processed indexes for the new
-	 * types are produced by the publisher's pipeline and do not exist yet (#221 §5). The segment
-	 * names below are the expected values — adjust here once the pipeline lands. Consumers must
-	 * degrade gracefully (404 → empty) so missing indexes never break loading.
+	 * NOTE: on the production publishers only `datasets.json` exists; `dataServices.json` and
+	 * `datasetSeries.json` still 404 (their pipeline hasn't landed — #221 §5). Only the ROLAND-TEST
+	 * dev publisher serves all three today. Consumers must degrade gracefully (404 → empty) so the
+	 * missing indexes never break loading.
 	 */
 	segment: string;
 	/** Product schema path in the metadata repo (`data/schemas/{...}.json`). */
 	schemaPath: string;
 	/** Reference fields that hold arrays of dataset IDs (rendered as links / picked via select). */
 	referenceFields: string[];
-	/** i18n key prefix for this type's enum choices (`choices.{type}.*`). */
-	i18nPrefix: string;
 	/**
-	 * Whether the publisher pipeline produces a `data/processed/{segment}.json` catalogue index for
-	 * this type yet. Only `dataset` does today; flip to true once the new-type indexes are published
-	 * so the catalogue starts loading them (avoids fetching known-missing indexes in the meantime).
+	 * Whether the catalogue should fetch this type's `data/processed/{segment}.json` index.
+	 *
+	 * All three are true so the ROLAND-TEST dev publisher (the only one serving dataService /
+	 * datasetSeries indexes today) surfaces the new types. The production publishers still 404 on
+	 * those two; loadIndex swallows the 404 (→ empty), so this costs a wasted request per publisher
+	 * until the upstream pipeline lands. Do NOT read this as "the indexes exist".
 	 */
 	hasProcessedIndex: boolean;
 }
@@ -49,7 +50,6 @@ export const DATA_PRODUCT_TYPE_REGISTRY: Record<DataProductType, DataProductType
 		segment: 'datasets',
 		schemaPath: 'data/schemas/dataset.json',
 		referenceFields: ['prov:wasDerivedFrom', 'dcat:inSeries', 'dct:replaces'],
-		i18nPrefix: 'choices.dataset',
 		hasProcessedIndex: true
 	},
 	dataService: {
@@ -57,7 +57,6 @@ export const DATA_PRODUCT_TYPE_REGISTRY: Record<DataProductType, DataProductType
 		segment: 'dataServices',
 		schemaPath: 'data/schemas/dataService.json',
 		referenceFields: ['dcat:servesDataset'],
-		i18nPrefix: 'choices.dataService',
 		hasProcessedIndex: true
 	},
 	datasetSeries: {
@@ -65,7 +64,6 @@ export const DATA_PRODUCT_TYPE_REGISTRY: Record<DataProductType, DataProductType
 		segment: 'datasetSeries',
 		schemaPath: 'data/schemas/datasetSeries.json',
 		referenceFields: ['dcat:dataset'],
-		i18nPrefix: 'choices.datasetSeries',
 		hasProcessedIndex: true
 	}
 };

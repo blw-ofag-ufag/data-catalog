@@ -89,6 +89,27 @@ describe('DatasetJsonService', () => {
 			const json = service.generateDatasetJson({'dct:identifier': 'test-id', 'dcatap:availability': 'STABLE'});
 			expect(json['dcatap:availability']).toBe('STABLE');
 		});
+
+		// Issue #259 asked why dct:modified goes missing. This is intended: unlike dct:issued it is
+		// not a schema-required field (only recommended), so a blank value is omitted rather than
+		// written as null/"". A value that IS set must always survive.
+		it('omits dct:modified when blank, but keeps dct:issued', () => {
+			const json = service.generateDatasetJson({
+				'dct:identifier': 'test-id',
+				'dct:issued': new Date(2026, 6, 2),
+				'dct:modified': null
+			});
+			expect(json['dct:issued']).toBe('2026-07-02');
+			expect(json).not.toHaveProperty('dct:modified');
+		});
+
+		it.each([
+			['a Date', new Date(2026, 6, 5), '2026-07-05'],
+			['a date-only string', '2026-07-05', '2026-07-05']
+		])('keeps dct:modified when set as %s', (_label, value, expected) => {
+			const json = service.generateDatasetJson({'dct:identifier': 'test-id', 'dct:modified': value});
+			expect(json['dct:modified']).toBe(expected);
+		});
 	});
 
 	describe('generateUUID (via generated identifiers)', () => {

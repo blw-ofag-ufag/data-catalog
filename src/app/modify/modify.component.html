@@ -104,6 +104,12 @@
 											</app-multilingual-text-field>
 										}
 										@case ('enum') {
+											<!-- `choices.dataset.*` is the SHARED enum-choice namespace, keyed by field rather than by
+											     product type. Every enum field on dataService/datasetSeries (dct:accessRights, adms:status,
+											     dct:publisher, dct:accrualPeriodicity) is shared with the dataset schema and uses identical
+											     codes, and the new types will never carry their own codes. Do NOT switch this to a per-type
+											     prefix: `choices.dataService.*` / `choices.datasetSeries.*` do not exist in the i18n files,
+											     so doing so would drop the labels these dropdowns render today (#221). -->
 											<app-enum-select-field
 												[formControlName]="fieldKey"
 												[label]="'labels.' + fieldKey"
@@ -252,7 +258,7 @@
 														{{ ('labels.' + fieldKey) | translate }}
 														<span *ngIf="isFieldRecommended(fieldKey)" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
 													</mat-label>
-													<input matInput [matDatepicker]="datePicker" [max]="(fieldKey === 'dct:issued' || fieldKey === 'dct:modified') ? today : null" [formControlName]="fieldKey" [errorStateMatcher]="dateErrorMatcher(fieldKey)" />
+													<input matInput [matDatepicker]="datePicker" [max]="maxDateFor(fieldKey)" [formControlName]="fieldKey" [errorStateMatcher]="dateErrorMatcher(fieldKey)" />
 													<mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
 													<mat-datepicker #datePicker></mat-datepicker>
 													<mat-error *ngIf="datasetForm.get(fieldKey)?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>

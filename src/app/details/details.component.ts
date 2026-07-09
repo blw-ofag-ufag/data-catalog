@@ -8,7 +8,7 @@ import {IndexCardsComponent} from '../index-cards/index-cards.component';
 import {Observable, Subject, startWith, of, combineLatest} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {map, switchMap, takeUntil} from 'rxjs/operators';
+import {map, switchMap, takeUntil, tap} from 'rxjs/operators';
 import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPES, DATA_PRODUCT_TYPE_REGISTRY} from '../models/data-product-type';
 import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
@@ -98,7 +98,12 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
 			this.dataset = params['dataset'];
 			this.resolvedType = null; // reset per navigation; re-captured once the new record loads
-			this.dataset$ = this.datasetService.getDatasetById(this.dataset);
+			// Capture the record's own product type as it flows through, so the GitHub/raw URL builders
+			// use it rather than the `type` query param (absent on deep links/bookmarks). Done in a tap
+			// on dataset$ so it holds for any subscriber, independent of whether metadata$ is used (#221).
+			this.dataset$ = this.datasetService
+				.getDatasetById(this.dataset)
+				.pipe(tap(record => (this.resolvedType = record ? ((record.productType as DataProductType) || DEFAULT_DATA_PRODUCT_TYPE) : null)));
 
 			// Render the record against the metadata for its own product type, so dataService /
 			// datasetSeries detail pages show their type-specific fields (#221).
@@ -108,7 +113,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
 						return of([] as NormalizedMetadataElement[]);
 					}
 					const type = (dataset.productType as DataProductType) || DEFAULT_DATA_PRODUCT_TYPE;
-					this.resolvedType = type; // so the GitHub/raw URL builders use the record's real type
 					return this.metadataService.getMetadataForType(type).pipe(map(metadataConfig => this.buildDetailFields(dataset, metadataConfig)));
 				})
 			);
@@ -344,6 +348,15 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		return translatedText !== translationKey && translatedText !== '';
 	}
 
-	protected readonly enumTypes = enumTypes;
-	protected readonly enumArrayFields = enumArrayFields;
+	// Read the live module bindings rather than snapshotting them: seedEnumFieldsFromSchema()
+	// reassigns these exports once the runtime dataset schema resolves. A snapshot taken at
+	// construction (e.g. on a deep link that builds this component before the schema lands) would
+	// keep the compiled-in defaults and dispatch enum rows against a stale classification (#221).
+	protected get enumTypes(): string[] {
+		return enumTypes;
+	}
+
+	protected get enumArrayFields(): string[] {
+		return enumArrayFields;
+	}
 }
