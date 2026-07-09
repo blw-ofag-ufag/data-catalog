@@ -14,7 +14,7 @@ export default defineConfig({
 	workers: process.env['CI'] ? 1 : undefined,
 	reporter: process.env['CI'] ? [['html', {open: 'never'}], ['list']] : 'list',
 	use: {
-		baseURL: 'http://localhost:4200/data-catalog/',
+		baseURL: 'http://localhost:4300/data-catalog/',
 		trace: 'on-first-retry'
 	},
 	projects: [{name: 'chromium', use: {...devices['Desktop Chrome']}}],
@@ -25,8 +25,12 @@ export default defineConfig({
 		// Served under the `e2e` configuration, which swaps in environment.e2e.ts (debugMode: true)
 		// so the GitHubAuthGuard lets the /modify specs through. Keeps the suite hermetic — no
 		// hand-editing of the committed environment.ts (see src/environments/environment.e2e.ts).
+		//
+		// Deliberately on its own port: with reuseExistingServer, a developer's plain `npm start` on
+		// :4200 (debugMode: false) would be adopted instead, and the /modify specs would fail the
+		// auth guard for reasons that look like product bugs.
 		command: 'npm run start:e2e',
-		url: 'http://localhost:4200',
+		url: 'http://localhost:4300',
 		reuseExistingServer: !process.env['CI'],
 		timeout: 180_000
 	}

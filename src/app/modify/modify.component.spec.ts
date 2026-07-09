@@ -453,6 +453,25 @@ describe('ModifyComponent', () => {
 		it('the bound is not itself in the future', () => {
 			expect(component.today.getTime()).toBeLessThanOrEqual(Date.now());
 		});
+
+		it('returns a stable Date instance within the same day (so [max] does not churn change detection)', () => {
+			expect(component.today).toBe(component.today);
+		});
+
+		// A form left open past midnight must not keep capping issued/modified at yesterday.
+		it('refreshes the bound when the calendar day rolls over', () => {
+			jest.useFakeTimers();
+			try {
+				jest.setSystemTime(new Date(2026, 6, 8, 23, 59, 0));
+				expect(component.today.getDate()).toBe(8);
+
+				jest.setSystemTime(new Date(2026, 6, 9, 0, 1, 0));
+				expect(component.today.getDate()).toBe(9);
+				expect(component.maxDateFor('dct:issued')?.getDate()).toBe(9);
+			} finally {
+				jest.useRealTimers();
+			}
+		});
 	});
 
 	describe('edit-mode pre-fill', () => {
@@ -515,9 +534,50 @@ describe('ModifyComponent', () => {
 		it('does not resurrect the previous type\'s values after an explicit product-type switch', () => {
 			fixture.detectChanges();
 			component.datasetForm.get('dct:spatial')?.setValue('Bern');
+			component.datasetForm.markAsDirty();
 
 			component.onProductTypeChange({target: {value: 'dataService'}} as any);
 			// The type switch triggers a schema load; its metadata emission rebuilds the controls.
+			metadataSubject.next(buildMetadataConfig());
+
+			expect(component.datasetForm.get('dct:spatial')?.value).toBeFalsy();
+		});
+
+		// The user may type while the per-type schema is still loading. buildFormFromMetadata destroys
+		// every control, so those edits must be folded into the staged data and re-applied, not lost.
+		it('preserves in-progress edits made while the schema was still loading', () => {
+			paramMapValue.set('id', 'dataset-123');
+			fixture.detectChanges();
+
+			datasetsSubject.next([{'dct:identifier': 'dataset-123', 'dct:publisher': 'BLW-OFAG-UFAG-FOAG'}]);
+			selectedDatasetSubject.next({'dct:identifier': 'dataset-123', 'dct:spatial': 'Bern', 'dcat:version': '1.0.0'});
+
+			// User edits a field before the per-type schema resolves.
+			component.datasetForm.get('dcat:version')?.setValue('2.0.0');
+			component.datasetForm.markAsDirty();
+
+			metadataSubject.next(buildMetadataConfig());
+
+			expect(component.datasetForm.get('dcat:version')?.value).toBe('2.0.0'); // edit survives
+			expect(component.datasetForm.get('dct:spatial')?.value).toBe('Bern'); // record value survives
+		});
+
+		// The modify route reuses one ModifyComponent instance across records, so staged data from the
+		// previous record must not leak into the next one's form.
+		it('drops data staged for a previous record when switching to another record', () => {
+			paramMapValue.set('id', 'dataset-A');
+			fixture.detectChanges();
+
+			datasetsSubject.next([{'dct:identifier': 'dataset-A', 'dct:publisher': 'BLW-OFAG-UFAG-FOAG'}]);
+			selectedDatasetSubject.next({'dct:identifier': 'dataset-A', 'dct:spatial': 'Record A Region'});
+			expect(component.datasetForm.get('dct:spatial')?.value).toBe('Record A Region');
+
+			// Navigate to record B (same component instance, no ngOnDestroy).
+			paramMapValue.set('id', 'dataset-B');
+			component.datasetId = 'dataset-B';
+			(component as any).initializeForm();
+
+			// Record B's fetch has not resolved; a metadata rebuild must not re-patch record A's values.
 			metadataSubject.next(buildMetadataConfig());
 
 			expect(component.datasetForm.get('dct:spatial')?.value).toBeFalsy();

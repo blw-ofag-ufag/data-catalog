@@ -261,6 +261,42 @@ describe('DetailsComponent', () => {
 					'https://github.com/org/repo/blob/main/data/raw/datasetSeries/ds-1.json'
 				);
 			});
+
+			// getDatasetById ignores its id and returns the shared selectedDataset$ subject, which still
+			// replays the PREVIOUS record until the new detail fetch resolves. Adopting that record's
+			// type would stamp the wrong per-type segment onto the new page's links (a 404).
+			it('ignores a replayed record belonging to a different dataset', async () => {
+				const staleOtherRecord = {...STUB_DATASET, 'dct:identifier': 'other-id', productType: 'dataService'};
+				await configure(staleOtherRecord, NO_TYPE_PARAM).compileComponents();
+				fixture = TestBed.createComponent(DetailsComponent);
+				fixture.detectChanges();
+
+				// Route asks for ds-1; the replayed record is other-id -> fall back to the route/default,
+				// not the stale record's dataService type.
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
+					'https://github.com/org/repo/blob/main/data/raw/datasets/ds-1.json'
+				);
+			});
+
+			it('falls back to the `type` query param while the requested record has not loaded', async () => {
+				const staleOtherRecord = {...STUB_DATASET, 'dct:identifier': 'other-id', productType: 'dataset'};
+				await configure(staleOtherRecord, {...NO_TYPE_PARAM, type: 'dataService'}).compileComponents();
+				fixture = TestBed.createComponent(DetailsComponent);
+				fixture.detectChanges();
+
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
+					'https://github.com/org/repo/blob/main/data/raw/dataServices/ds-1.json'
+				);
+			});
+
+			it('ignores an unrecognised productType and falls back to the default', async () => {
+				await configure({...STUB_DATASET, productType: 'bogusType'}, NO_TYPE_PARAM).compileComponents();
+				fixture = TestBed.createComponent(DetailsComponent);
+				fixture.detectChanges();
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
+					'https://github.com/org/repo/blob/main/data/raw/datasets/ds-1.json'
+				);
+			});
 		});
 	});
 

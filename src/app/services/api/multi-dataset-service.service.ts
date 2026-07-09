@@ -3,7 +3,7 @@ import {BehaviorSubject, Observable, map} from 'rxjs';
 import {DataProduct, DatasetSchema} from '../../models/schemas/dataset';
 import {PublisherService} from './publisher.service';
 import {KeywordService} from './keyword.service';
-import {DataProductType, DATA_PRODUCT_TYPES, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPE_REGISTRY} from '../../models/data-product-type';
+import {DataProductType, DATA_PRODUCT_TYPES, DATA_PRODUCT_TYPE_REGISTRY, resolveDataProductType} from '../../models/data-product-type';
 
 @Injectable({
 	providedIn: 'root'
@@ -143,6 +143,6 @@ export class MultiDatasetService {
 	}
 
 	private resolveType(klass: string): DataProductType {
-		return (DATA_PRODUCT_TYPES as string[]).includes(klass) ? (klass as DataProductType) : DEFAULT_DATA_PRODUCT_TYPE;
+		return resolveDataProductType(klass).type;
 	}
 }

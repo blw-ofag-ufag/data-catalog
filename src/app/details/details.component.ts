@@ -9,7 +9,7 @@ import {Observable, Subject, startWith, of, combineLatest} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {map, switchMap, takeUntil, tap} from 'rxjs/operators';
-import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPES, DATA_PRODUCT_TYPE_REGISTRY} from '../models/data-product-type';
+import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPE_REGISTRY, resolveDataProductType} from '../models/data-product-type';
 import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
 import {TranslateFieldPipe} from '../translate-field.pipe';
@@ -97,13 +97,15 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		// this.lang$ = new BehaviorSubject(this.route.snapshot.queryParams['lang'] || 'en');
 		this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
 			this.dataset = params['dataset'];
-			this.resolvedType = null; // reset per navigation; re-captured once the new record loads
+			this.resolvedType = null; // reset per navigation; re-captured once *this* record loads
 			// Capture the record's own product type as it flows through, so the GitHub/raw URL builders
 			// use it rather than the `type` query param (absent on deep links/bookmarks). Done in a tap
-			// on dataset$ so it holds for any subscriber, independent of whether metadata$ is used (#221).
-			this.dataset$ = this.datasetService
-				.getDatasetById(this.dataset)
-				.pipe(tap(record => (this.resolvedType = record ? ((record.productType as DataProductType) || DEFAULT_DATA_PRODUCT_TYPE) : null)));
+			// on dataset$ so it holds for any subscriber, independent of whether metadata$ is used.
+			//
+			// getDatasetById ignores its argument and hands back the shared selectedDataset$ subject,
+			// which still replays the PREVIOUS record until the new detail fetch resolves. Guard on the
+			// identifier so a stale record can't stamp the wrong type onto the new page's links (#221).
+			this.dataset$ = this.datasetService.getDatasetById(this.dataset).pipe(tap(record => (this.resolvedType = this.typeOfRequestedRecord(record))));
 
 			// Render the record against the metadata for its own product type, so dataService /
 			// datasetSeries detail pages show their type-specific fields (#221).
@@ -112,7 +114,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 					if (!dataset) {
 						return of([] as NormalizedMetadataElement[]);
 					}
-					const type = (dataset.productType as DataProductType) || DEFAULT_DATA_PRODUCT_TYPE;
+					const type = resolveDataProductType(dataset.productType as string).type;
 					return this.metadataService.getMetadataForType(type).pipe(map(metadataConfig => this.buildDetailFields(dataset, metadataConfig)));
 				})
 			);
@@ -184,16 +186,24 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		};
 	}
 
+	/**
+	 * The product type of the record currently being requested, or null while it hasn't loaded.
+	 * `selectedDataset$` replays the previously viewed record, so anything whose identifier doesn't
+	 * match the requested one is treated as "not loaded yet" rather than adopted (#221).
+	 */
+	private typeOfRequestedRecord(record: DataProduct | null): DataProductType | null {
+		if (!record || record['dct:identifier'] !== this.dataset) {
+			return null;
+		}
+		return resolveDataProductType(record.productType as string).type;
+	}
+
 	// Resolve the product type so the GitHub/raw links point at the correct per-type folder
 	// (data/raw/{segment}) rather than always 'datasets' (#221). Prefer the loaded record's own
 	// productType (deep links/bookmarks may omit the `type` query param); fall back to the route
 	// param, then the default.
 	private currentType(): DataProductType {
-		if (this.resolvedType) {
-			return this.resolvedType;
-		}
-		const klass = this.route.snapshot.queryParams['type'];
-		return (DATA_PRODUCT_TYPES as string[]).includes(klass) ? (klass as DataProductType) : DEFAULT_DATA_PRODUCT_TYPE;
+		return this.resolvedType ?? resolveDataProductType(this.route.snapshot.queryParams['type']).type;
 	}
 
 	getGitHubFileUrl(): string {

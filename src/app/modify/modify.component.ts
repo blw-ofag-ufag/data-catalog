@@ -102,10 +102,27 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 	// Mark the issued/modified and temporal start/end inputs red when their cross-field
 	// relation is violated (the error lives on the form group, issue #231).
-	// Upper bound for dct:issued / dct:modified: those dates can't be in the future. JSON Schema
-	// can't express this, so it's enforced in the template via the datepicker's [max] (#221 —
-	// restores a guard lost in the Formly → custom-form migration).
-	readonly today = new Date();
+	private todayValue = new Date();
+
+	/**
+	 * Today, as the upper bound for dct:issued / dct:modified (those dates can't be in the future).
+	 *
+	 * Recomputed when the calendar day rolls over — a form left open past midnight would otherwise
+	 * keep capping at yesterday and reject a legitimate same-day value. The *same* Date instance is
+	 * returned within a day so the [max] binding keeps a stable reference; handing the datepicker a
+	 * fresh Date on every change-detection pass would re-run its validators each cycle.
+	 */
+	get today(): Date {
+		const now = new Date();
+		if (!this.isSameDay(now, this.todayValue)) {
+			this.todayValue = now;
+		}
+		return this.todayValue;
+	}
+
+	private isSameDay(a: Date, b: Date): boolean {
+		return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+	}
 
 	readonly issuedModifiedErrorMatcher = new RelationErrorStateMatcher(() => this.datasetForm.hasError('issuedAfterModified'));
 	readonly temporalRangeErrorMatcher = new RelationErrorStateMatcher(() => !!this.datasetForm.get('dct:temporal')?.hasError('startAfterEnd'));
@@ -190,13 +207,25 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			.pipe(takeUntil(this.destroy$))
 			.subscribe(metadata => {
 				if (metadata && this.datasetForm) {
-					this.buildFormFromMetadata(this.datasetForm, metadata);
-					// buildFormFromMetadata recreates every control with default values, so any data
-					// already loaded into the form must be re-applied. The per-type schema fetch and the
-					// record fetch race on a cold cache; re-patching here makes the outcome independent
+					// buildFormFromMetadata recreates every control with default values, so anything the
+					// form is currently showing must be re-applied afterwards. The per-type schema fetch
+					// and the record fetch race on a cold cache; re-patching makes the outcome independent
 					// of which one resolves first (#221).
+					//
+					// Fold any in-progress edits into the staged data first: the user may have typed while
+					// the schema was still loading, and those edits die with the old controls otherwise.
+					const wasDirty = this.datasetForm.dirty;
+					if (wasDirty) {
+						this.pendingFormData = {...(this.pendingFormData ?? {}), ...this.datasetForm.value};
+					}
+
+					this.buildFormFromMetadata(this.datasetForm, metadata);
+
 					if (this.pendingFormData) {
 						this.patchIntoForm(this.pendingFormData);
+						if (wasDirty) {
+							this.datasetForm.markAsDirty();
+						}
 					}
 					// Apply base validation after form is built
 					if (this.validationSchemaService.getSchema('base')) {
@@ -242,13 +271,13 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		const newType = event?.target?.value || this.productType;
 		if (newType) {
 			this.productType = newType;
-			// The user deliberately switched type: drop any data staged for re-patching, otherwise the
-			// rebuild triggered by loadForType below would restore the previous type's values (#221).
+			// The user deliberately switched type: drop the staged data and clear the form BEFORE loading
+			// the new schema. A cached schema emits synchronously, and the metadata subscription folds any
+			// still-dirty values back into pendingFormData — which would resurrect the previous type's
+			// values the switch was meant to discard (#221).
 			this.pendingFormData = null;
-			// Load schema for the selected product type
-			this.metadataService.loadForType(newType);
-			// Reset form to apply new schema's validation rules
 			this.datasetForm.reset();
+			this.metadataService.loadForType(newType);
 		}
 	}
 
@@ -267,20 +296,16 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		this.destroy$.complete();
 	}
 
+	/**
+	 * Minimal form to bind against until the schema-driven metadata arrives; the ngOnInit metadata
+	 * subscription then rebuilds it in place.
+	 *
+	 * Note: this used to register a *second* getMetadata() subscription that rebuilt a different
+	 * FormGroup and reassigned this.datasetForm. It ran before the ngOnInit handler, so every
+	 * emission rebuilt the form twice and swapped in a pristine group — discarding the dirty state
+	 * (and any in-progress edits) before the ngOnInit handler could preserve them.
+	 */
 	private createForm(): FormGroup {
-		const formGroup = this.fb.group({});
-
-		// Subscribe to metadata to build form dynamically
-		this.metadataService
-			.getMetadata()
-			.pipe(takeUntil(this.destroy$))
-			.subscribe(metadata => {
-				if (metadata) {
-					this.buildFormFromMetadata(formGroup, metadata);
-				}
-			});
-
-		// Fallback form creation if metadata is not available immediately
 		return this.createFallbackForm();
 	}
 
@@ -394,6 +419,12 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	private initializeForm(): void {
+		// The router reuses this component across records (/modify?dataset=A -> ?dataset=B) without
+		// destroying it, so data staged for the previous record must be dropped here. Otherwise a
+		// metadata rebuild would re-patch record A's values into record B's form — and if B's fetch
+		// fails, the user would silently be editing A's values under B's identifier (#221).
+		this.pendingFormData = null;
+
 		// Check for cached form data first
 		const cachedData = this.formCacheService.getFormData(this.datasetId);
 
