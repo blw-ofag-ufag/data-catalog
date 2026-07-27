@@ -78,7 +78,7 @@ describe('MetadataItemComponent', () => {
 	describe('rendering via the outlet', () => {
 		it('renders a default item label/value through translateField', () => {
 			component.label = 'dcat:version';
-			component.data = '2.0' as any;
+			component.data = '2.0';
 			fixture.detectChanges();
 			// translateField echoes the raw string when no translation exists
 			expect(fixture.nativeElement.textContent).toContain('2.0');
@@ -86,7 +86,7 @@ describe('MetadataItemComponent', () => {
 
 		it('renders an http value as an anchor link', () => {
 			component.label = 'dcat:landingPage';
-			component.data = 'https://example.org/page' as any;
+			component.data = 'https://example.org/page';
 			fixture.detectChanges();
 			const anchor = fixture.nativeElement.querySelector('a');
 			expect(anchor).toBeTruthy();
@@ -95,7 +95,7 @@ describe('MetadataItemComponent', () => {
 
 		it('renders the boolean "yes" component', () => {
 			component.label = 'bv:archivalValue';
-			component.data = true as any;
+			component.data = true;
 			fixture.detectChanges();
 			// translate pipe echoes the key
 			expect(fixture.nativeElement.textContent).toContain('common.yes');

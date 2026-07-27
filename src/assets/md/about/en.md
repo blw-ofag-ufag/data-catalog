@@ -12,7 +12,7 @@ Certain data might pertain to milk production, while others address nitrogen los
 
 With this constantly growing volume of data, it is essential for FOAG to provide a tool that allows for clear and structured data management.
 This is fundamentally the goal of a comprehensive and up-to-date data catalog.
-As a result, it directly contributes to adherence to the principles of the [digitalization strategy](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie), such as *Once Only*, *Open by Default*, *Security & Privacy by Default*, and *Innovation First*.
+As a result, it directly contributes to adherence to the principles of the [digitalization strategy](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie), such as _Once Only_, _Open by Default_, _Security & Privacy by Default_, and _Innovation First_.
 
 For FOAG as a whole and individual users, the data catalog ensures that:
 
@@ -47,6 +47,7 @@ Different groups can benefit significantly from a data catalog, especially:
 # What does the Data Catalog contain?
 
 The Data Catalog includes data products that are actively managed, regularly used, and provide ongoing value. Examples include:
+
 - An Excel file with updated milk production figures per year
 - A BI report (Power BI, SAP BO) tracking the development of the income situation
 - A data warehouse table summarizing egg sales by retailer

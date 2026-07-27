@@ -31,7 +31,7 @@ describe('FormFieldTooltipComponent', () => {
 	describe('hasTooltip', () => {
 		it('is false when fieldName is missing', () => {
 			setup();
-			component.fieldName = '' as any;
+			component.fieldName = '';
 			expect(component.hasTooltip()).toBe(false);
 		});
 

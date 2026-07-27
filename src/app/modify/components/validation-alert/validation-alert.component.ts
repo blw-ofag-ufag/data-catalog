@@ -28,10 +28,10 @@ export interface ValidationGroup {
 			</div>
 
 			<p *ngIf="validationGroup.advisory" class="validation-advisory">
-					{{ 'validation.advisory' | translate }}
-				</p>
+				{{ 'validation.advisory' | translate }}
+			</p>
 
-				<p class="validation-description">
+			<p class="validation-description">
 				{{ getValidationDescription() | translate }}
 			</p>
 
@@ -75,13 +75,13 @@ export interface ValidationGroup {
 			}
 
 			.validation-advisory {
-					margin: 0.5rem 0;
-					font-size: 0.85rem;
-					font-style: italic;
-					opacity: 0.85;
-				}
+				margin: 0.5rem 0;
+				font-size: 0.85rem;
+				font-style: italic;
+				opacity: 0.85;
+			}
 
-				.validation-description {
+			.validation-description {
 				margin: 0.5rem 0;
 				font-size: 0.9rem;
 				opacity: 0.9;

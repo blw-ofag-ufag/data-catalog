@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges, OnDestroy, forwardRef} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit, forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
 	AbstractControl,
@@ -31,7 +31,16 @@ export interface MultilingualText {
 @Component({
 	selector: 'app-multilingual-text-field',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatInputModule, MatTabsModule, FormFieldTooltipComponent, FieldDebugOverlayComponent],
+	imports: [
+		CommonModule,
+		ReactiveFormsModule,
+		TranslatePipe,
+		MatFormFieldModule,
+		MatInputModule,
+		MatTabsModule,
+		FormFieldTooltipComponent,
+		FieldDebugOverlayComponent
+	],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,

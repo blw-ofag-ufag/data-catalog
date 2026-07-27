@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {provideHttpClient} from '@angular/common/http';
 import {HttpTestingController, provideHttpClientTesting} from '@angular/common/http/testing';
-import {ValidationSchemaFetcherService, SchemaConfig} from './validation-schema-fetcher.service';
+import {SchemaConfig, ValidationSchemaFetcherService} from './validation-schema-fetcher.service';
 
 const config: SchemaConfig = {
 	id: 'dataset',

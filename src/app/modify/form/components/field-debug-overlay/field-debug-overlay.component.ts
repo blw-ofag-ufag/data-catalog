@@ -26,7 +26,8 @@ export interface FieldValidationDebugInfo {
 	imports: [CommonModule],
 	template: `
 		@if (debugService.isDebugEnabled$ | async) {
-			<pre class="field-debug-overlay">Form Field (en): {{ getEnglishLabel() }}
+			<pre class="field-debug-overlay">
+Form Field (en): {{ getEnglishLabel() }}
 i18n Label Key: {{ label }}
 Schema Field: {{ schemaField }}
 Tooltip Key: {{ tooltipKey }}

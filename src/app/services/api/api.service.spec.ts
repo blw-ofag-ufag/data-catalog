@@ -6,7 +6,7 @@ import {BehaviorSubject, of} from 'rxjs';
 import {DatasetService} from './api.service';
 import {MultiDatasetService} from './multi-dataset-service.service';
 import {KeywordService} from './keyword.service';
-import {stubTranslateService, stubKeywordService} from '../../../../tests/helpers/service-stubs';
+import {stubKeywordService, stubTranslateService} from '../../../../tests/helpers/service-stubs';
 
 describe('DatasetService (api.service)', () => {
 	let service: DatasetService;

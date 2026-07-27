@@ -18,7 +18,10 @@ test.use({userAgent: CHROME_USER_AGENT});
 /** Switch the UI language via the Oblique mat-select language switcher (DE/FR/IT/EN). */
 async function switchLanguage(page: Page, code: 'DE' | 'FR' | 'IT' | 'EN'): Promise<void> {
 	await page.locator('.ob-language-dropdown mat-select').first().click();
-	await page.locator('mat-option').filter({hasText: new RegExp(`^${code}$`)}).click();
+	await page
+		.locator('mat-option')
+		.filter({hasText: new RegExp(`^${code}$`)})
+		.click();
 }
 
 test.beforeEach(async ({context, page}) => {
@@ -36,7 +39,10 @@ test('the multi-step stepper renders', async ({page}) => {
 
 test('can reach the Distributions step and add a distribution', async ({page}) => {
 	// Click the Distributions step header to navigate to it.
-	const distributionsStep = page.locator('.mat-step-header').filter({hasText: /Distributions/i}).first();
+	const distributionsStep = page
+		.locator('.mat-step-header')
+		.filter({hasText: /Distributions/i})
+		.first();
 	await distributionsStep.click();
 
 	// Add a distribution.
@@ -53,10 +59,19 @@ test('German issued-date label is "Ausgabedatum" (not "Veröffentlichungsdatum")
 	// Switch the UI to German using the header language switcher.
 	await switchLanguage(page, 'DE');
 	// Step labels become German once the language is applied.
-	await expect(page.locator('.mat-step-header').filter({hasText: /Metadaten/i}).first()).toBeVisible();
+	await expect(
+		page
+			.locator('.mat-step-header')
+			.filter({hasText: /Metadaten/i})
+			.first()
+	).toBeVisible();
 
 	// Open the Metadata & Versioning step, which contains the issued-date field.
-	await page.locator('.mat-step-header').filter({hasText: /Metadaten/i}).first().click();
+	await page
+		.locator('.mat-step-header')
+		.filter({hasText: /Metadaten/i})
+		.first()
+		.click();
 
 	// The issued-date label uses translation key labels.dct:issued, which in the
 	// current develop German translations is "Ausgabedatum".

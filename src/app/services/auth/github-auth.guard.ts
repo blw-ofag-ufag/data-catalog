@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {GitHubAuthService} from './github-auth.service';
 import {environment} from '../../../environments/environment';
 
@@ -29,7 +29,7 @@ export class GitHubAuthGuard implements CanActivate {
 
 		// Redirect to auth page with return URL
 		this.router.navigate(['/modify/auth'], {
-			queryParams: { returnUrl: returnUrl }
+			queryParams: {returnUrl}
 		});
 		return false;
 	}

@@ -147,9 +147,7 @@ describe('DatasetSubmitComponent', () => {
 
 			expect(component.isCommitting).toBe(false);
 			expect(component.commitError).toBe('PERMISSION_DENIED');
-			expect(notification.error).toHaveBeenCalledWith(
-				expect.objectContaining({message: 'You do not have permission to write to this repository.'})
-			);
+			expect(notification.error).toHaveBeenCalledWith(expect.objectContaining({message: 'You do not have permission to write to this repository.'}));
 		});
 
 		it('warns and opens auth when not authenticated', async () => {

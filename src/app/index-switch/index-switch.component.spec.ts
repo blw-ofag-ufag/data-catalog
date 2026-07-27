@@ -35,11 +35,7 @@ describe('IndexSwitchComponent', () => {
 
 		await TestBed.configureTestingModule({
 			imports: [IndexSwitchComponent, NoopAnimationsModule, provideTranslateTesting()],
-			providers: [
-				provideRouter([]),
-				{provide: DatasetService, useValue: datasetServiceStub},
-				{provide: ActivatedRoute, useValue: routeStub}
-			]
+			providers: [provideRouter([]), {provide: DatasetService, useValue: datasetServiceStub}, {provide: ActivatedRoute, useValue: routeStub}]
 		})
 			// Oblique directives and the filter/outlet children are not the unit under test;
 			// render an empty template and exercise the component logic directly.

@@ -28,8 +28,8 @@ export class ValidationSchemaFetcherService {
 	private readonly RETRY_COUNT = 3;
 	private readonly RETRY_DELAY = 1000; // 1 second
 
-	private schemaCache = new Map<string, CachedSchema>();
-	private loadingSchemas = new Map<string, Observable<any>>();
+	private readonly schemaCache = new Map<string, CachedSchema>();
+	private readonly loadingSchemas = new Map<string, Observable<any>>();
 
 	constructor(private readonly http: HttpClient) {
 		// Load from localStorage if available (for offline support)
@@ -111,11 +111,7 @@ export class ValidationSchemaFetcherService {
 	 * Fetch all schemas based on provided configurations
 	 */
 	fetchAllSchemas(configs: SchemaConfig[]): Observable<Map<string, any>> {
-		const requests = configs.map(config =>
-			this.fetchSchema(config).pipe(
-				map(schema => ({id: config.id, schema, config}))
-			)
-		);
+		const requests = configs.map(config => this.fetchSchema(config).pipe(map(schema => ({id: config.id, schema, config}))));
 
 		// Use Promise.allSettled equivalent for observables
 		return new Observable(observer => {

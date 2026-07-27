@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
-import {KeywordService, Keyword} from './keyword.service';
+import {Keyword, KeywordService} from './keyword.service';
 import {PublisherService} from './publisher.service';
-import {mockFetchJson, mockFetchByUrl, restoreFetch} from '../../../../tests/helpers/fetch-mock';
+import {mockFetchByUrl, mockFetchJson, restoreFetch} from '../../../../tests/helpers/fetch-mock';
 
 describe('KeywordService', () => {
 	let service: KeywordService;

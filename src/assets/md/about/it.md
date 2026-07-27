@@ -8,7 +8,7 @@ L'Ufficio federale dell'agricoltura (UFAG) si impegna a promuovere un settore ag
 
 I dati assumono diverse forme: da semplici fogli Excel a database complessi. Alcuni dati riguardano persone e pertanto comportano rischi di sicurezza; altri dati non necessitano di protezione e sono destinati alla pubblicazione. Alcuni dati possono riguardare la produzione di latte, altri trattano le perdite di azoto in agricoltura.
 
-Data questa crescente quantità di dati, è essenziale per l'UFAG disporre di uno strumento che consenta una gestione chiara e strutturata dei dati stessi. Questo è l'obiettivo fondamentale di un catalogo dei dati completo e aggiornato, contribuendo direttamente al rispetto dei principi della [strategia di digitalizzazione](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie), quali *Once Only*, *Open by Default*, *Security & Privacy by Default* e *Innovation First*.
+Data questa crescente quantità di dati, è essenziale per l'UFAG disporre di uno strumento che consenta una gestione chiara e strutturata dei dati stessi. Questo è l'obiettivo fondamentale di un catalogo dei dati completo e aggiornato, contribuendo direttamente al rispetto dei principi della [strategia di digitalizzazione](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie), quali _Once Only_, _Open by Default_, _Security & Privacy by Default_ e _Innovation First_.
 
 Per l'UFAG e per i singoli utenti, il catalogo dei dati garantisce:
 
@@ -41,7 +41,9 @@ Diversi gruppi possono beneficiare significativamente di un catalogo dei dati, i
 - **Parti interessate esterne:** Accedere facilmente ai dati pubblici in caso di necessità.
 
 # Cosa contiene il catalogo dei dati?
+
 Il catalogo dei dati comprende prodotti di dati che vengono gestiti attivamente e utilizzati regolarmente e che offrono un valore aggiunto continuo. Alcuni esempi:
+
 - Un file Excel annuale con dati aggiornati sulla produzione di latte
 - Un rapporto BI (Power BI, SAP BO) per monitorare l'evoluzione della situazione reddituale
 - Una tabella di data warehouse con un riepilogo delle vendite di uova per singolo rivenditore

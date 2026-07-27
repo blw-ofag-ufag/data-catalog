@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {Observable, startWith} from 'rxjs';
-import {DataProduct, DatasetSchema, DatasetIdentifier} from '../models/schemas/dataset';
+import {DataProduct, DatasetIdentifier, DatasetSchema} from '../models/schemas/dataset';
 import {AsyncPipe, DatePipe, NgOptimizedImage} from '@angular/common';
 import {map} from 'rxjs/operators';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
@@ -11,7 +11,6 @@ import {OrgPipe} from '../org.pipe';
 import {TranslateFieldPipe} from '../translate-field.pipe';
 import {DatasetService} from '../services/api/api.service';
 import {KeywordService} from '../services/api/keyword.service';
-
 
 @Component({
 	standalone: true,
@@ -91,8 +90,7 @@ export class IndexCardsComponent {
 		for (const code of keywords) {
 			const labels = this.keywordService.getKeywordLabels(code);
 			if (labels) {
-				const label =
-					labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || code;
+				const label = labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || code;
 				if (label === displayValue) {
 					return code;
 				}

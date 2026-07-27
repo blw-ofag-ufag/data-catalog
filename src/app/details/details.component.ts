@@ -5,17 +5,17 @@ import {enumArrayFields, enumTypes} from '../models/enum-fields';
 import {DatasetService} from '../services/api/api.service';
 import {MultiDatasetService} from '../services/api/multi-dataset-service.service';
 import {IndexCardsComponent} from '../index-cards/index-cards.component';
-import {Observable, Subject, startWith, of, combineLatest} from 'rxjs';
+import {Observable, Subject, combineLatest, of, startWith} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {map, switchMap, takeUntil, tap} from 'rxjs/operators';
-import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPE_REGISTRY, resolveDataProductType} from '../models/data-product-type';
+import {DATA_PRODUCT_TYPE_REGISTRY, DEFAULT_DATA_PRODUCT_TYPE, DataProductType, resolveDataProductType} from '../models/data-product-type';
 import {MatChip} from '@angular/material/chips';
 import {OrgPipe} from '../org.pipe';
 import {TranslateFieldPipe} from '../translate-field.pipe';
 import {EnumComponent, MetadataItemComponent} from './metadata/metadata-item.component';
 import {NormalizedMetadataElement, filterAndNormalizeMetadata} from './details.helpers';
-import {DatasetMetadataService, DatasetMetadataConfig} from '../services/metadata/dataset-metadata.service';
+import {DatasetMetadataConfig, DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
 import {MatAccordion, MatExpansionModule, MatExpansionPanel, MatExpansionPanelDescription, MatExpansionPanelHeader} from '@angular/material/expansion';
 import {AdmindirLookupComponent} from '../admindir-lookup/admindir-lookup.component';
 import {KeywordsComponent} from './keywords/keywords.component';
@@ -114,7 +114,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 					if (!dataset) {
 						return of([] as NormalizedMetadataElement[]);
 					}
-					const type = resolveDataProductType(dataset.productType as string).type;
+					const type = resolveDataProductType(dataset.productType).type;
 					return this.metadataService.getMetadataForType(type).pipe(map(metadataConfig => this.buildDetailFields(dataset, metadataConfig)));
 				})
 			);
@@ -195,7 +195,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 		if (!record || record['dct:identifier'] !== this.dataset) {
 			return null;
 		}
-		return resolveDataProductType(record.productType as string).type;
+		return resolveDataProductType(record.productType).type;
 	}
 
 	// Resolve the product type so the GitHub/raw links point at the correct per-type folder

@@ -75,8 +75,7 @@ export class IndexListComponent {
 		for (const code of keywords) {
 			const labels = this.keywordService.getKeywordLabels(code);
 			if (labels) {
-				const label =
-					labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || code;
+				const label = labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || code;
 				if (label === displayValue) {
 					return code;
 				}

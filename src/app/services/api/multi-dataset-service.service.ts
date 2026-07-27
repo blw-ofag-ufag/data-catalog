@@ -3,7 +3,7 @@ import {BehaviorSubject, Observable, map} from 'rxjs';
 import {DataProduct, DatasetSchema} from '../../models/schemas/dataset';
 import {PublisherService} from './publisher.service';
 import {KeywordService} from './keyword.service';
-import {DataProductType, DATA_PRODUCT_TYPES, DATA_PRODUCT_TYPE_REGISTRY, resolveDataProductType} from '../../models/data-product-type';
+import {DATA_PRODUCT_TYPES, DATA_PRODUCT_TYPE_REGISTRY, DataProductType, resolveDataProductType} from '../../models/data-product-type';
 
 @Injectable({
 	providedIn: 'root'

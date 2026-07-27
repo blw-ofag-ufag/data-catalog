@@ -99,7 +99,7 @@ export class DatasetPickerFieldComponent implements ControlValueAccessor, OnInit
 		const query = (this.searchControl.value ?? '').toLowerCase();
 		return this.allDatasets.filter(d => {
 			const type = (d as unknown as {productType?: string}).productType;
-			const id = d['dct:identifier'] as string;
+			const id = d['dct:identifier'];
 			if (!(type === 'dataset' || !type) || this.selectedIds.includes(id)) {
 				return false;
 			}

@@ -1,6 +1,19 @@
 import {Component, Input, OnDestroy, forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AbstractControl, ControlValueAccessor, FormArray, FormBuilder, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, ValidationErrors, Validator, ValidatorFn, Validators} from '@angular/forms';
+import {
+	AbstractControl,
+	ControlValueAccessor,
+	FormArray,
+	FormBuilder,
+	FormGroup,
+	NG_VALIDATORS,
+	NG_VALUE_ACCESSOR,
+	ReactiveFormsModule,
+	ValidationErrors,
+	Validator,
+	ValidatorFn,
+	Validators
+} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
 import {TranslatePipe} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -183,7 +196,7 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 	validate(control: AbstractControl): ValidationErrors | null {
 		if (!this.personsArray || this.personsArray.length === 0) {
 			if (this.required) {
-				return { required: true, message: 'Qualified attribution is required' };
+				return {required: true, message: 'Qualified attribution is required'};
 			}
 			return null;
 		}
@@ -198,9 +211,7 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 			errors['dataOwnerCount'] = {
 				required: 1,
 				actual: dataOwners.length,
-				message: dataOwners.length === 0
-					? 'Exactly one Data Owner is required'
-					: `Only one Data Owner is allowed (currently ${dataOwners.length})`
+				message: dataOwners.length === 0 ? 'Exactly one Data Owner is required' : `Only one Data Owner is allowed (currently ${dataOwners.length})`
 			};
 		}
 
@@ -248,8 +259,7 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 	}
 
 	get hasRoleErrors(): boolean {
-		return this.personsArray.hasError('dataOwnerCount') ||
-			   this.personsArray.hasError('dataStewardCount');
+		return this.personsArray.hasError('dataOwnerCount') || this.personsArray.hasError('dataStewardCount');
 	}
 
 	get dataOwnerError(): string | null {

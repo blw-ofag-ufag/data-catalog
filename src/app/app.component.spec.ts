@@ -79,7 +79,7 @@ describe('AppComponent', () => {
 	});
 
 	describe('getLegalBasisUrl', () => {
-		const cases: Array<[string, string]> = [
+		const cases: [string, string][] = [
 			['de', 'https://www.admin.ch/gov/de/start/rechtliches.html'],
 			['fr', 'https://www.admin.ch/gov/fr/accueil/conditions-utilisation.html'],
 			['it', 'https://www.admin.ch/gov/it/pagina-iniziale/basi-legali.html'],

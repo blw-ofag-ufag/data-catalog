@@ -226,14 +226,8 @@ describe('FormCacheService', () => {
 		it('removes expired entries on construction', () => {
 			const expiredKey = `${CACHE_PREFIX}-stale`;
 			const freshKey = `${CACHE_PREFIX}-live`;
-			sessionStorage.setItem(
-				expiredKey,
-				JSON.stringify({data: {}, timestamp: Date.now() - (EXPIRY_MS + 1000), datasetId: 'stale', isEditMode: false})
-			);
-			sessionStorage.setItem(
-				freshKey,
-				JSON.stringify({data: {}, timestamp: Date.now(), datasetId: 'live', isEditMode: false})
-			);
+			sessionStorage.setItem(expiredKey, JSON.stringify({data: {}, timestamp: Date.now() - (EXPIRY_MS + 1000), datasetId: 'stale', isEditMode: false}));
+			sessionStorage.setItem(freshKey, JSON.stringify({data: {}, timestamp: Date.now(), datasetId: 'live', isEditMode: false}));
 
 			makeIterable([expiredKey, freshKey]);
 

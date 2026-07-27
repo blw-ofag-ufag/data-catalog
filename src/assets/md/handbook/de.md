@@ -1,6 +1,6 @@
 # Das Metadatenmodell
 
-Das Metadatenmodell, das unserem System zugrunde liegt, besteht aus vier zentralen Klassen: `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution` und `dcat:DataService`. 
+Das Metadatenmodell, das unserem System zugrunde liegt, besteht aus vier zentralen Klassen: `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution` und `dcat:DataService`.
 Das untenstehende Diagramm veranschaulicht die Beziehungen zwischen diesen Klassen:
 
 ```mermaid

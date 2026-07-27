@@ -103,9 +103,7 @@ describe('FieldDebugOverlayComponent', () => {
 
 		it('renders schema and component messages', () => {
 			const info: FieldValidationDebugInfo = {
-				bySchema: [
-					{schema: 'base', required: true, messages: [{text: 'must be set', source: 'schema'}]}
-				],
+				bySchema: [{schema: 'base', required: true, messages: [{text: 'must be set', source: 'schema'}]}],
 				componentMessages: [{text: 'Required', source: 'hardcoded'}]
 			};
 			component.validationInfo = info;
@@ -116,9 +114,7 @@ describe('FieldDebugOverlayComponent', () => {
 
 		it('formats translation source messages with their key', () => {
 			component.validationInfo = {
-				bySchema: [
-					{schema: 'ods', required: false, messages: [{text: 'msg', source: 'translation', key: 'k.1'}]}
-				]
+				bySchema: [{schema: 'ods', required: false, messages: [{text: 'msg', source: 'translation', key: 'k.1'}]}]
 			};
 			expect(component.getValidationDisplay()).toContain('[translation: k.1]');
 		});

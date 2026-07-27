@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {MultiDatasetService} from './multi-dataset-service.service';
 import {PublisherService} from './publisher.service';
 import {KeywordService} from './keyword.service';
-import {mockFetchJson, mockFetchByUrl, restoreFetch} from '../../../../tests/helpers/fetch-mock';
+import {mockFetchByUrl, mockFetchJson, restoreFetch} from '../../../../tests/helpers/fetch-mock';
 
 /** Wait one macrotask so the fetch promise chains inside the service settle. */
 function flush(): Promise<void> {

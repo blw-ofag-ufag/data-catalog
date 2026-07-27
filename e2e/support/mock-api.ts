@@ -11,8 +11,7 @@ const fixturesDir = path.join(__dirname, '..', 'fixtures');
  * this UA via `test.use({userAgent: CHROME_USER_AGENT})` in every spec keeps the
  * real app rendered.
  */
-export const CHROME_USER_AGENT =
-	'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
+export const CHROME_USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
 
 function readFixture(name: string): string {
 	return fs.readFileSync(path.join(fixturesDir, name), 'utf-8');

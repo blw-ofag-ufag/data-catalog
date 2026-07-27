@@ -1,5 +1,5 @@
 import {Validators} from '@angular/forms';
-import {SchemaParserUtil, ParsedValidationSchema} from './schema-parser.util';
+import {ParsedValidationSchema, SchemaParserUtil} from './schema-parser.util';
 
 describe('SchemaParserUtil', () => {
 	describe('parseSchema', () => {
@@ -40,7 +40,7 @@ describe('SchemaParserUtil', () => {
 		});
 
 		describe('getFieldType (via parsed field.type)', () => {
-			const cases: Array<[string, any, string]> = [
+			const cases: [string, any, string][] = [
 				['array', {type: 'array'}, 'array'],
 				['object', {type: 'object'}, 'object'],
 				['boolean', {type: 'boolean'}, 'boolean'],
@@ -177,9 +177,7 @@ describe('SchemaParserUtil', () => {
 			const field = parseMultilingual(['de'], {
 				de: {type: 'string', pattern: '[a-zA-Z0-9_\\-\\s]{10,75}'}
 			}).fields.get('dct:title')!;
-			expect(field.customMessage).toBe(
-				'dct:title must have DE text (10-75 characters, only letters A-Z, numbers 0-9, spaces, hyphens and underscores)'
-			);
+			expect(field.customMessage).toBe('dct:title must have DE text (10-75 characters, only letters A-Z, numbers 0-9, spaces, hyphens and underscores)');
 		});
 
 		describe('multilingual validator', () => {
@@ -233,9 +231,7 @@ describe('SchemaParserUtil', () => {
 					fr: {type: 'string'}
 				};
 				const result = runValidator(['de', 'fr'], {de: '', fr: 'Titre'}, langProps);
-				expect(result.multilingualRequired.requiredPattern).toBe(
-					'10-75 characters, only letters A-Z, numbers 0-9, spaces, hyphens and underscores'
-				);
+				expect(result.multilingualRequired.requiredPattern).toBe('10-75 characters, only letters A-Z, numbers 0-9, spaces, hyphens and underscores');
 			});
 		});
 	});
@@ -255,9 +251,7 @@ describe('SchemaParserUtil', () => {
 		}
 
 		it('describes the exact known character pattern', () => {
-			expect(messageFor('[a-zA-Z0-9_\\-\\s]{10,75}')).toContain(
-				'10-75 characters, only letters A-Z, numbers 0-9, spaces, hyphens and underscores'
-			);
+			expect(messageFor('[a-zA-Z0-9_\\-\\s]{10,75}')).toContain('10-75 characters, only letters A-Z, numbers 0-9, spaces, hyphens and underscores');
 		});
 
 		it('describes a {10,75} range pattern generically', () => {

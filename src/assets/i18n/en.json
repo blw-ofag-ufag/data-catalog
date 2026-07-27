@@ -188,7 +188,7 @@
     "prov:wasDerivedFrom": "What other data product whas this data product derived from?",
     "prov:wasGeneratedBy": "What business process has generated this data product?",
     "schema:comment": "Is the other relevant information to this data product?"
-    },
+  },
   "labels": {
     "dcat:endpointURL": "Endpoint URL",
     "dcat:endpointDescription": "Endpoint description",

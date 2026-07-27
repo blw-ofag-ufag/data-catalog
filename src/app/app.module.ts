@@ -1,7 +1,15 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ObButtonModule, ObExternalLinkModule, ObMasterLayoutConfig, ObMasterLayoutModule, ObIconModule, provideObliqueConfiguration, provideObliqueTranslations} from '@oblique/oblique';
+import {
+	ObButtonModule,
+	ObExternalLinkModule,
+	ObIconModule,
+	ObMasterLayoutConfig,
+	ObMasterLayoutModule,
+	provideObliqueConfiguration,
+	provideObliqueTranslations
+} from '@oblique/oblique';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MultiTranslateHttpLoader} from 'ngx-translate-multi-http-loader';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -9,8 +17,8 @@ import {registerLocaleData} from '@angular/common';
 import localeDECH from '@angular/common/locales/de-CH';
 import localeFRCH from '@angular/common/locales/fr-CH';
 import localeITCH from '@angular/common/locales/it-CH';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {provideHttpClient, withInterceptorsFromDi, HttpClient, HttpBackend} from '@angular/common/http';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {HttpBackend, HttpClient, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {HomeComponent} from './home/home.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -59,9 +67,7 @@ export const APP_DATE_FORMATS: MatDateFormats = {
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
-				useFactory: (httpBackend: HttpBackend) => new MultiTranslateHttpLoader(httpBackend, [
-					{prefix: './assets/i18n/', suffix: '.json'}
-				]),
+				useFactory: (httpBackend: HttpBackend) => new MultiTranslateHttpLoader(httpBackend, [{prefix: './assets/i18n/', suffix: '.json'}]),
 				deps: [HttpBackend]
 			}
 		}),

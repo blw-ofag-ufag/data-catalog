@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {ActivatedRoute, provideRouter, Router} from '@angular/router';
+import {ActivatedRoute, Router, provideRouter} from '@angular/router';
 import {of, throwError} from 'rxjs';
 import {ObNotificationService} from '@oblique/oblique';
 import {AuthComponent} from './auth.component';
@@ -75,10 +75,7 @@ describe('AuthComponent', () => {
 
 		component.onSubmit();
 
-		expect(githubAuth.validateCredentialsForRepository).toHaveBeenCalledWith(
-			{username: 'octocat', token: 'a-valid-token-123'},
-			'blw-ofag-ufag/metadata'
-		);
+		expect(githubAuth.validateCredentialsForRepository).toHaveBeenCalledWith({username: 'octocat', token: 'a-valid-token-123'}, 'blw-ofag-ufag/metadata');
 		expect(repoCreds.setSelectedRepository).toHaveBeenCalledWith('blw-ofag-ufag/metadata');
 		expect(notification.success).toHaveBeenCalled();
 		expect(navSpy).toHaveBeenCalledWith('/modify');

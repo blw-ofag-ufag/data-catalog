@@ -85,21 +85,23 @@ function configure(dataset: any, queryParams: Record<string, string> = {publishe
 		queryParams: of(queryParams),
 		snapshot: {queryParams}
 	};
-	return TestBed.configureTestingModule({
-		imports: [DetailsComponent, NoopAnimationsModule, provideTranslateTesting()],
-		providers: [
-			provideRouter([]),
-			{provide: DatasetService, useValue: stubDatasetService(dataset)},
-			{provide: MultiDatasetService, useValue: stubMultiDatasetService()},
-			{provide: PublisherService, useValue: stubPublisherService()},
-			{provide: DatasetMetadataService, useValue: stubMetadataService()},
-			{provide: ActivatedRoute, useValue: route}
-		]
-	})
-		// Drop the heavier standalone imports (Oblique popover/button, MatIcon svg
-		// registry, admindir-lookup fetch, child detail components) so the host
-		// template renders without external side effects.
-		.overrideComponent(DetailsComponent, {set: {imports: TEST_IMPORTS, template: TEST_TEMPLATE}});
+	return (
+		TestBed.configureTestingModule({
+			imports: [DetailsComponent, NoopAnimationsModule, provideTranslateTesting()],
+			providers: [
+				provideRouter([]),
+				{provide: DatasetService, useValue: stubDatasetService(dataset)},
+				{provide: MultiDatasetService, useValue: stubMultiDatasetService()},
+				{provide: PublisherService, useValue: stubPublisherService()},
+				{provide: DatasetMetadataService, useValue: stubMetadataService()},
+				{provide: ActivatedRoute, useValue: route}
+			]
+		})
+			// Drop the heavier standalone imports (Oblique popover/button, MatIcon svg
+			// registry, admindir-lookup fetch, child detail components) so the host
+			// template renders without external side effects.
+			.overrideComponent(DetailsComponent, {set: {imports: TEST_IMPORTS, template: TEST_TEMPLATE}})
+	);
 }
 
 // A trimmed template exercising the real bindings we care about: localized
@@ -205,9 +207,7 @@ describe('DetailsComponent', () => {
 			await configure(STUB_DATASET).compileComponents();
 			fixture = TestBed.createComponent(DetailsComponent);
 			fixture.detectChanges();
-			expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
-				'https://github.com/org/repo/blob/main/data/raw/datasets/ds-1.json'
-			);
+			expect(fixture.componentInstance.getGitHubFileUrl()).toBe('https://github.com/org/repo/blob/main/data/raw/datasets/ds-1.json');
 		});
 
 		it('builds the raw JSON URL via the publisher detail url', async () => {
@@ -218,7 +218,7 @@ describe('DetailsComponent', () => {
 		});
 
 		it('returns an empty URL when params are missing', async () => {
-			await configure(STUB_DATASET, {} as any).compileComponents();
+			await configure(STUB_DATASET, {}).compileComponents();
 			fixture = TestBed.createComponent(DetailsComponent);
 			fixture.detectChanges();
 			expect(fixture.componentInstance.getGitHubFileUrl()).toBe('');
@@ -239,27 +239,21 @@ describe('DetailsComponent', () => {
 				await configure({...STUB_DATASET, productType}, NO_TYPE_PARAM).compileComponents();
 				fixture = TestBed.createComponent(DetailsComponent);
 				fixture.detectChanges();
-				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
-					`https://github.com/org/repo/blob/main/data/raw/${segment}/ds-1.json`
-				);
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(`https://github.com/org/repo/blob/main/data/raw/${segment}/ds-1.json`);
 			});
 
 			it('falls back to the default type when the record carries no productType', async () => {
 				await configure(STUB_DATASET, NO_TYPE_PARAM).compileComponents();
 				fixture = TestBed.createComponent(DetailsComponent);
 				fixture.detectChanges();
-				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
-					'https://github.com/org/repo/blob/main/data/raw/datasets/ds-1.json'
-				);
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe('https://github.com/org/repo/blob/main/data/raw/datasets/ds-1.json');
 			});
 
 			it("prefers the record's productType over a stale `type` query param", async () => {
 				await configure({...STUB_DATASET, productType: 'datasetSeries'}, {...NO_TYPE_PARAM, type: 'dataset'}).compileComponents();
 				fixture = TestBed.createComponent(DetailsComponent);
 				fixture.detectChanges();
-				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
-					'https://github.com/org/repo/blob/main/data/raw/datasetSeries/ds-1.json'
-				);
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe('https://github.com/org/repo/blob/main/data/raw/datasetSeries/ds-1.json');
 			});
 
 			// getDatasetById ignores its id and returns the shared selectedDataset$ subject, which still
@@ -273,9 +267,7 @@ describe('DetailsComponent', () => {
 
 				// Route asks for ds-1; the replayed record is other-id -> fall back to the route/default,
 				// not the stale record's dataService type.
-				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
-					'https://github.com/org/repo/blob/main/data/raw/datasets/ds-1.json'
-				);
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe('https://github.com/org/repo/blob/main/data/raw/datasets/ds-1.json');
 			});
 
 			it('falls back to the `type` query param while the requested record has not loaded', async () => {
@@ -284,18 +276,14 @@ describe('DetailsComponent', () => {
 				fixture = TestBed.createComponent(DetailsComponent);
 				fixture.detectChanges();
 
-				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
-					'https://github.com/org/repo/blob/main/data/raw/dataServices/ds-1.json'
-				);
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe('https://github.com/org/repo/blob/main/data/raw/dataServices/ds-1.json');
 			});
 
 			it('ignores an unrecognised productType and falls back to the default', async () => {
 				await configure({...STUB_DATASET, productType: 'bogusType'}, NO_TYPE_PARAM).compileComponents();
 				fixture = TestBed.createComponent(DetailsComponent);
 				fixture.detectChanges();
-				expect(fixture.componentInstance.getGitHubFileUrl()).toBe(
-					'https://github.com/org/repo/blob/main/data/raw/datasets/ds-1.json'
-				);
+				expect(fixture.componentInstance.getGitHubFileUrl()).toBe('https://github.com/org/repo/blob/main/data/raw/datasets/ds-1.json');
 			});
 		});
 	});

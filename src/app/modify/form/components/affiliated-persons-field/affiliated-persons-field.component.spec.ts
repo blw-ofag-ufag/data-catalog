@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {AffiliatedPersonsFieldComponent, AffiliatedPerson} from './affiliated-persons-field.component';
+import {AffiliatedPerson, AffiliatedPersonsFieldComponent} from './affiliated-persons-field.component';
 import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
 import {provideTranslateTesting} from '../../../../../../tests/helpers/translate-testing';
 import {stubValidationSchemaService} from '../../../../../../tests/helpers/service-stubs';
