@@ -148,8 +148,6 @@
   },
   "tooltips": {
     "adms:status": "Status des Datenprodukts: Befindet es sich in Bearbeitung, ist es fertiggestellt usw.",
-    "applicableLegislation": "Diese Eigenschaft bezieht sich auf die Rechtsgrundlage des Datenprodukts",
-    "archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen eine anhaltende Nützlichkeit oder Bedeutung, die seine weitere Aufbewahrung rechtfertigt?",
     "bv:abrogation": "Was ist das Aufhebungdatum?",
     "bv:archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen einen anhaltenden Nutzen oder eine anhaltende Bedeutung, die seine weitere Aufbewahrung rechtfertigen?",
     "bv:classification": "Was ist die Klassifizierung der Datensammlung gemäss Informationssicherheitsgesetz (siehe Art. 13 ISG)?",
@@ -189,16 +187,7 @@
     "prov:qualifiedAttribution": "Wer hat welche Rolle für dieses Datenprodukt?",
     "prov:wasDerivedFrom": "Von welchem anderen Datenprodukt wurde dieses Datenprodukt abgeleitet?",
     "prov:wasGeneratedBy": "Durch welchen Geschäftsprozess wurde dieses Datenprodukt generiert?",
-    "qualifiedAttribution": "Wer hat welche Rolle für dieses Datenprodukt?",
-    "replaces": "Welches Datenprodukt wird ersetzt?",
-    "schema:comment": "Gibt es weitere relevante Informationen zu diesem Datenprodukt?",
-    "spatial": "Welcher geografische Bereich wird von dem Datenprodukt abgedeckt?",
-    "status": "Status des Datenprodukts: Befindet es sich in Arbeit, ist es fertiggestellt, veröffentlicht, oder archiviert?",
-    "temporal": "Welcher Zeitraum wird von Ihrem Datenprodukt abgedeckt?",
-    "theme": "Thema, das zur Klassifizierung der Datenprodukte des Katalogs verwendet wird",
-    "title": "Titel Ihres Datenprodukts",
-    "typeOfData": "Welcher Typ beschreibt Ihr Datenprodukt am besten?",
-    "version": "Um welche Version handelt es sich? Bitte verwenden Sie semantische Versionsnummern in der Form X.Y.Z, wobei eine Erhöhung von X auf größere Änderungen, Y auf kleinere Änderungen und Z auf einfache Korrekturen wie Tippfehler hinweist."
+    "schema:comment": "Gibt es weitere relevante Informationen zu diesem Datenprodukt?"
   },
   "labels": {
     "dcat:endpointURL": "Endpunkt-URL",
