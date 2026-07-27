@@ -28,6 +28,7 @@ import {MatButton} from '@angular/material/button';
 import {ActivatedRoute} from '@angular/router';
 import {ActiveFilters} from '../models/ActiveFilters';
 import {Keyword, KeywordService} from '../services/api/keyword.service';
+import {Dimension, DimensionService} from '../services/api/dimension.service';
 
 @Component({
 	selector: 'index-filter-col',
@@ -72,11 +73,18 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 	filteredKeywords$: Observable<Keyword[]>;
 	keywords: string[] = []; // Stores keyword codes for filtering
 	allKeywords: Keyword[] = []; // Full keyword objects with translations
+
+	// Distribution dimensions ("structure") facet — mirrors the keyword chip-autocomplete (issue #92)
+	dimensionControl = new FormControl('');
+	filteredDimensions$: Observable<Dimension[]>;
+	dimensions: string[] = []; // Stores dimension codes for filtering
+	allDimensions: Dimension[] = []; // Full dimension objects with translations
 	@Input() activatedFilters$!: BehaviorSubject<ActiveFilters>;
 	activatedFilters: ActiveFilters = {};
 
 	constructor(
 		private readonly keywordService: KeywordService,
+		private readonly dimensionService: DimensionService,
 		private readonly filterService: DatasetService,
 		private readonly route: ActivatedRoute,
 		private readonly translateService: TranslateService
@@ -88,6 +96,15 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 
 		// Subscribe to keyword changes from KeywordService
 		this.keywordService.keywords$.pipe(takeUntil(this.destroy$)).subscribe(keywords => (this.allKeywords = keywords));
+
+		this.filteredDimensions$ = this.dimensionControl.valueChanges.pipe(
+			startWith(null),
+			map((searchValue: string | null) => (searchValue ? this.filterDimensions(searchValue) : this.allDimensions.slice()))
+		);
+
+		// Subscribe to dimension changes from DimensionService and ensure the glossary is loaded
+		this.dimensionService.dimensions$.pipe(takeUntil(this.destroy$)).subscribe(dimensions => (this.allDimensions = dimensions));
+		this.dimensionService.loadDimensions().pipe(takeUntil(this.destroy$)).subscribe();
 	}
 
 	ngOnInit() {
@@ -107,6 +124,13 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 				this.keywords = Object.keys(filters['dcat:keyword']).filter(key => filters['dcat:keyword'][key]);
 			} else {
 				this.keywords = [];
+			}
+
+			// Extract dimensions from filters for UI display
+			if (filters['bv:dimensions']) {
+				this.dimensions = Object.keys(filters['bv:dimensions']).filter(key => filters['bv:dimensions'][key]);
+			} else {
+				this.dimensions = [];
 			}
 		});
 	}
@@ -203,6 +227,65 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 		});
 	}
 
+	// --- Distribution dimensions ("structure") facet — mirrors the keyword helpers above ---
+
+	addDimension(event: MatChipInputEvent): void {
+		const value = (event.value || '').trim();
+		const dimension = this.findDimensionByLabelOrCode(value);
+		const code = dimension ? dimension.code : value;
+
+		if (code && !this.dimensions.includes(code)) {
+			this.dimensions.push(code);
+			this.onCategoryChange('bv:dimensions', this.dimensions);
+		}
+
+		event.chipInput?.clear();
+		this.dimensionControl.setValue(null);
+	}
+
+	removeDimension(dimensionCode: string): void {
+		const index = this.dimensions.indexOf(dimensionCode);
+		if (index >= 0) {
+			this.dimensions.splice(index, 1);
+			this.onCategoryChange('bv:dimensions', this.dimensions);
+		}
+	}
+
+	selectedDimension(event: MatAutocompleteSelectedEvent): void {
+		const dimensionCode = event.option.value;
+		if (!this.dimensions.includes(dimensionCode)) {
+			this.dimensions.push(dimensionCode);
+			this.onCategoryChange('bv:dimensions', this.dimensions);
+		}
+		this.dimensionControl.setValue(null);
+	}
+
+	private filterDimensions(searchValue: string): Dimension[] {
+		const filterValue = searchValue.toLowerCase();
+		return this.allDimensions.filter(dimension => {
+			if (dimension.code.toLowerCase().includes(filterValue)) return true;
+			return Object.values(dimension.labels).some(label => label.toLowerCase().includes(filterValue));
+		});
+	}
+
+	getDimensionLabel(code: string): string {
+		const currentLang = this.translateService.currentLang || 'de';
+		return this.dimensionService.getDimensionLabel(code, currentLang);
+	}
+
+	getDimensionObjectLabel(dimension: Dimension): string {
+		const currentLang = this.translateService.currentLang || 'de';
+		return dimension.labels[currentLang as keyof typeof dimension.labels] || dimension.labels.de || dimension.labels.en || dimension.code;
+	}
+
+	private findDimensionByLabelOrCode(value: string): Dimension | undefined {
+		const lowerValue = value.toLowerCase();
+		return this.allDimensions.find(dimension => {
+			if (dimension.code.toLowerCase() === lowerValue) return true;
+			return Object.values(dimension.labels).some(label => label.toLowerCase() === lowerValue);
+		});
+	}
+
 	onCategoryChange(category: string, selectedOptions: string[]): void {
 		if (selectedOptions.length === 0) {
 			delete this.activatedFilters[category];
@@ -233,6 +316,7 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 
 	clearFilters() {
 		this.keywords = [];
+		this.dimensions = [];
 		this.activatedFilters = {};
 		this.activatedFilters$.next({});
 		this.filterService.setFilters({});

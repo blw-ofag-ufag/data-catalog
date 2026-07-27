@@ -10,6 +10,7 @@ import {MultiDatasetService} from './multi-dataset-service.service';
 import {ActiveFilters} from '../../models/ActiveFilters';
 import {TranslateService} from '@ngx-translate/core';
 import {KeywordService} from './keyword.service';
+import {DimensionService} from './dimension.service';
 
 const fuseOptions = {
 	threshold: 0.4,
@@ -50,8 +51,12 @@ export class DatasetService {
 		private readonly multiDatasetService: MultiDatasetService,
 		private readonly router: Router,
 		private readonly translate: TranslateService,
-		private readonly keywordService: KeywordService
+		private readonly keywordService: KeywordService,
+		private readonly dimensionService: DimensionService
 	) {
+		// Ensure the dimension glossary is available for filtering and label-aware search (issue #92)
+		this.dimensionService.loadDimensions().subscribe();
+
 		// Initialize sort from URL parameters if available
 		const initialSort = this.getInitialSortFromUrl();
 		this.sortSubject.next(initialSort);
@@ -138,6 +143,10 @@ export class DatasetService {
 								// For keywords, check if ANY of the selected keywords match ANY of the dataset keywords
 								const datasetKeywords = this.getKeywordsArray(schema);
 								categoryMatches = choices.some(choice => datasetKeywords.includes(choice));
+							} else if (category === 'bv:dimensions') {
+								// Dimensions live on distributions; aggregate across the dataset (issue #92)
+								const datasetDimensions = this.getDimensionsArray(schema);
+								categoryMatches = choices.some(choice => datasetDimensions.includes(choice));
 							} else {
 								// For other categories, check if the schema value matches any of the choices
 								categoryMatches = choices.includes(schema[category] as string);
@@ -155,7 +164,7 @@ export class DatasetService {
 
 				// Apply search with respect to current sort order
 				if (searchTerm) {
-					const fuse = new Fuse(filtered, fuseOptions);
+					const fuse = new Fuse(filtered, this.buildFuseOptions());
 					const searchResults = fuse.search(searchTerm);
 
 					if (currentSort === 'relevance') {
@@ -386,6 +395,48 @@ export class DatasetService {
 		}
 
 		return [];
+	}
+
+	/**
+	 * Aggregate a dataset's distribution dimension codes (`bv:dimensions`) into a de-duplicated array,
+	 * for dataset-level faceting/search (issue #92).
+	 */
+	public getDimensionsArray(dataset: DatasetSchema): string[] {
+		const distributions = dataset['dcat:distribution'];
+		if (!Array.isArray(distributions)) return [];
+
+		const codes = new Set<string>();
+		for (const distribution of distributions) {
+			const dimensions = distribution?.['bv:dimensions'];
+			if (Array.isArray(dimensions)) {
+				dimensions.forEach(code => code && codes.add(code));
+			}
+		}
+		return Array.from(codes);
+	}
+
+	/**
+	 * Build a searchable text blob for a dataset's dimensions: the codes plus all of their glossary
+	 * translations, so full-text search matches a dimension by code or localized label (issue #92).
+	 */
+	private getDimensionSearchText(dataset: DatasetSchema): string {
+		return this.getDimensionsArray(dataset)
+			.flatMap(code => {
+				const labels = this.dimensionService.getDimensionLabels(code);
+				return labels ? [code, ...Object.values(labels)] : [code];
+			})
+			.join(' ');
+	}
+
+	/**
+	 * Fuse options extended with a computed dimension key so search matches a dataset by the codes and
+	 * localized labels of its distributions' dimensions (issue #92).
+	 */
+	private buildFuseOptions() {
+		return {
+			...fuseOptions,
+			keys: [...fuseOptions.keys, {name: 'bv:dimensions', getFn: (dataset: DatasetSchema) => this.getDimensionSearchText(dataset)}]
+		};
 	}
 
 	/**

@@ -705,6 +705,18 @@
               "type": "string"
             },
             "description": "Reference to data services used to provide access to the data."
+          },
+          "bv:dimensions": {
+            "title": "Distribution dimensions",
+            "type": [
+              "array",
+              "null"
+            ],
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            },
+            "description": "Dimensions (structure) used in the distribution, as keys into the dimension glossary (data/schemas/dimensions.json)."
           }
         }
       }

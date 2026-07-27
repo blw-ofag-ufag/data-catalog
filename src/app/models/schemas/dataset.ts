@@ -262,6 +262,7 @@ export type Distribution =
 			'dct:license'?: License;
 			'schema:comment'?: Comments1;
 			'dcat:accessService'?: AccessService;
+			'bv:dimensions'?: DistributionDimensions;
 	  }[]
 	| null;
 /**
@@ -308,6 +309,10 @@ export type Comments1 = string;
  * Reference to data services used to provide access to the data.
  */
 export type AccessService = string[] | null;
+/**
+ * Dimensions (structure) used in the distribution, as keys into the dimension glossary.
+ */
+export type DistributionDimensions = string[] | null;
 
 /**
  * A JSON schema for a dataset file in the data catalog.
@@ -430,8 +435,9 @@ export const enumTypes = [
 	'bv:personalData',
 	'bv:typeOfData',
 	'dcat:keyword',
-	'dcat:theme'
+	'dcat:theme',
+	'bv:dimensions'
 ];
 
 // Fields that are enums but display as arrays in details
-export const enumArrayFields = ['dcat:theme', 'dcat:keyword'];
+export const enumArrayFields = ['dcat:theme', 'dcat:keyword', 'bv:dimensions'];

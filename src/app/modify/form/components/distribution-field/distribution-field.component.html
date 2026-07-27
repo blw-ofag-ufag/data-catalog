@@ -172,6 +172,16 @@
 						<input matInput formControlName="dct:conformsTo" [placeholder]="'modify.auth.form.placeholders.conformsTo' | translate" (blur)="onBlur()" />
 					</mat-form-field>
 				</div>
+
+				<!-- Structure (dimensions) -->
+				<div class="ob-w-full">
+					<app-dimension-select-field
+						formControlName="bv:dimensions"
+						[label]="'labels.bv:dimensions'"
+						[fieldName]="(fieldName || label.replace('labels.', '')) + '.bv:dimensions'"
+						[placeholder]="'modify.auth.form.placeholders.dimension'"
+					></app-dimension-select-field>
+				</div>
 			</div>
 		</div>
 	</div>
