@@ -148,8 +148,6 @@
   },
   "tooltips": {
     "adms:status": "Status of the data product: Is it work in progress, finished etc.",
-    "applicableLegislation": "This property refers to the legal basis of the data product.",
-    "archivalValue": "Does the data product have ongoing usefulness or significance, based on the administrative, legal, fiscal, evidential, or historical information they contain, which justifies their continued preservation.",
     "bv:abrogation": "What is the abrogation date?",
     "bv:archivalValue": "Does the data product have ongoing usefulness or significance, based on the administrative, legal, fiscal, evidential, or historical information they contain, which justifies their continued preservation.",
     "bv:classification": "What is the classification of data set according to the Information Security Act (see Art. 13 ISA)?",
@@ -189,16 +187,7 @@
     "prov:qualifiedAttribution": "Who has which role for this data product?",
     "prov:wasDerivedFrom": "What other data product whas this data product derived from?",
     "prov:wasGeneratedBy": "What business process has generated this data product?",
-    "qualitifedAttribution": "Who has which role for this data product?",
-    "replaces": "Which  data product is replaced?",
-    "schema:comment": "Is the other relevant information to this data product?",
-    "spatial": "What geographic region is covered by the data product?",
-    "status": "Status of the data product: Is it work in progress, finished etc.",
-    "temporal": "What time period is covered in your data product",
-    "theme": "Theme used to classify the catalogue's data products.",
-    "title": "Title of your data product",
-    "typeOfData": "What type best describes your data product?",
-    "version": "What version is this? Please use semantic versioning in the form of X.Y.Z where increases of X indicate major changes, Y minor changes and Z simple corrections such as typos."
+    "schema:comment": "Is the other relevant information to this data product?"
     },
   "labels": {
     "dcat:endpointURL": "Endpoint URL",

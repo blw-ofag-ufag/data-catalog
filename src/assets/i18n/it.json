@@ -148,8 +148,6 @@
   },
   "tooltips": {
     "adms:status": "Stato del prodotto dati: se è in fase di elaborazione, se è completato, ecc.",
-    "applicableLegislation": "Questa caratteristica si riferisce alla base giuridica del prodotto di dati.",
-    "archivalValue": "Il prodotto di dati ha un'utilità o un'importanza duratura che ne giustifica l'ulteriore conservazione a causa delle informazioni amministrative, legali, fiscali, probatorie o storiche in esso contenute?",
     "bv:abrogation": "Qual è la data di abrogazione?",
     "bv:archivalValue": "Il prodotto di dati ha un'utilità o un significato duraturo che ne giustifica l'ulteriore conservazione a causa delle informazioni amministrative, legali, fiscali, probatorie o storiche in esso contenute?",
     "bv:classification": "Qual è la classificazione della collezione di dati secondo la legge sulla sicurezza delle informazioni (cfr. art. 13 LSIn)?",
