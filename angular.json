@@ -18,7 +18,7 @@
         "@schematics/angular:pipe": {
           "standalone": true,
           "skipTests": true
-        },
+        }
       },
       "root": "",
       "sourceRoot": "src",
@@ -28,9 +28,7 @@
           "options": {
             "outputPath": "dist/DigiAgriFoodDB",
             "index": "src/index.html",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -51,13 +49,8 @@
               "node_modules/@oblique/oblique/styles/css/oblique-icons.css",
               "src/styles/styles.scss"
             ],
-            "scripts": [
-              "node_modules/@oblique/oblique/ob-features.js"
-            ],
-            "allowedCommonJsDependencies": [
-              "ajv",
-              "ajv-formats"
-            ],
+            "scripts": ["node_modules/@oblique/oblique/ob-features.js"],
+            "allowedCommonJsDependencies": ["ajv", "ajv-formats"],
             "main": "src/main.ts",
             "baseHref": "/data-catalog"
           },
@@ -132,10 +125,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
@@ -143,9 +133,7 @@
   },
   "cli": {
     "analytics": false,
-    "schematicCollections": [
-      "angular-eslint"
-    ]
+    "schematicCollections": ["angular-eslint"]
   },
   "schematics": {
     "@schematics/angular:component": {

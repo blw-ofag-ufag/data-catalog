@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import * as publisherData from '../../codegen/publishers.json';
 import {Publisher} from '../../models/publisher.model';
-import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPE_REGISTRY} from '../../models/data-product-type';
+import {DATA_PRODUCT_TYPE_REGISTRY, DEFAULT_DATA_PRODUCT_TYPE, DataProductType} from '../../models/data-product-type';
 
 @Injectable({
 	providedIn: 'root'

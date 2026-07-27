@@ -3,10 +3,10 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {of} from 'rxjs';
 import {ThemeSelectFieldComponent} from './theme-select-field.component';
 import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
-import {I14YThemeService, I14YTheme} from '../../../../services/api/i14y-theme.service';
+import {I14YTheme, I14YThemeService} from '../../../../services/api/i14y-theme.service';
 import {TranslateService} from '@ngx-translate/core';
 import {provideTranslateTesting} from '../../../../../../tests/helpers/translate-testing';
-import {stubValidationSchemaService, stubThemeService, stubTranslateService} from '../../../../../../tests/helpers/service-stubs';
+import {stubThemeService, stubTranslateService, stubValidationSchemaService} from '../../../../../../tests/helpers/service-stubs';
 import {expectCvaContract} from '../../../../../../tests/helpers/cva-harness';
 
 describe('ThemeSelectFieldComponent', () => {

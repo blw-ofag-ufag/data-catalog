@@ -1,4 +1,4 @@
-import {Directive, ElementRef, OnInit, Renderer2, OnDestroy} from '@angular/core';
+import {Directive, ElementRef, OnDestroy, OnInit, Renderer2} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Directive({
@@ -17,7 +17,7 @@ export class PopoverLinksDirective implements OnInit, OnDestroy {
 	ngOnInit() {
 		console.log('PopoverLinksDirective initialized');
 		// Use MutationObserver to detect when innerHTML content is added
-		const observer = new MutationObserver((mutations) => {
+		const observer = new MutationObserver(mutations => {
 			console.log('Mutations detected in popover');
 			// Check if there are any links in the content
 			const links = this.el.nativeElement.querySelectorAll('a');
@@ -95,36 +95,40 @@ export class PopoverLinksDirective implements OnInit, OnDestroy {
 		listeners.push(this.renderer.listen(this.el.nativeElement, 'click', handleLinkClick));
 
 		// Try mousedown (might fire before popover intercepts)
-		listeners.push(this.renderer.listen(this.el.nativeElement, 'mousedown', (event: MouseEvent) => {
-			const target = event.target as HTMLElement;
-			console.log('Mousedown detected on:', target.className);
-			if (target.classList.contains('popover-link')) {
-				// Store the href for mouseup
-				(target as any)._pendingHref = target.getAttribute('data-href');
-			}
-		}));
+		listeners.push(
+			this.renderer.listen(this.el.nativeElement, 'mousedown', (event: MouseEvent) => {
+				const target = event.target as HTMLElement;
+				console.log('Mousedown detected on:', target.className);
+				if (target.classList.contains('popover-link')) {
+					// Store the href for mouseup
+					(target as any)._pendingHref = target.getAttribute('data-href');
+				}
+			})
+		);
 
 		// Try mouseup
-		listeners.push(this.renderer.listen(this.el.nativeElement, 'mouseup', (event: MouseEvent) => {
-			const target = event.target as HTMLElement;
-			console.log('Mouseup detected on:', target.className);
-			if ((target as any)._pendingHref) {
-				const href = (target as any)._pendingHref;
-				delete (target as any)._pendingHref;
+		listeners.push(
+			this.renderer.listen(this.el.nativeElement, 'mouseup', (event: MouseEvent) => {
+				const target = event.target as HTMLElement;
+				console.log('Mouseup detected on:', target.className);
+				if ((target as any)._pendingHref) {
+					const href = (target as any)._pendingHref;
+					delete (target as any)._pendingHref;
 
-				if (href) {
-					if (href.startsWith('http://') || href.startsWith('https://')) {
-						console.log('Opening on mouseup:', href);
-						setTimeout(() => window.open(href, '_blank', 'noopener,noreferrer'), 0);
-					} else if (href.startsWith('/')) {
-						setTimeout(() => this.router.navigate([href]), 0);
-					} else {
-						const url = href.includes('://') ? href : `https://${href}`;
-						setTimeout(() => window.open(url, '_blank', 'noopener,noreferrer'), 0);
+					if (href) {
+						if (href.startsWith('http://') || href.startsWith('https://')) {
+							console.log('Opening on mouseup:', href);
+							setTimeout(() => window.open(href, '_blank', 'noopener,noreferrer'), 0);
+						} else if (href.startsWith('/')) {
+							setTimeout(() => this.router.navigate([href]), 0);
+						} else {
+							const url = href.includes('://') ? href : `https://${href}`;
+							setTimeout(() => window.open(url, '_blank', 'noopener,noreferrer'), 0);
+						}
 					}
 				}
-			}
-		}));
+			})
+		);
 
 		// Try pointerup (newer event type)
 		listeners.push(this.renderer.listen(this.el.nativeElement, 'pointerup', handleLinkClick));

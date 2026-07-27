@@ -1,6 +1,18 @@
 import {Component, Input, OnDestroy, forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AbstractControl, ControlValueAccessor, FormArray, FormBuilder, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, ValidationErrors, Validator, Validators} from '@angular/forms';
+import {
+	AbstractControl,
+	ControlValueAccessor,
+	FormArray,
+	FormBuilder,
+	FormGroup,
+	NG_VALIDATORS,
+	NG_VALUE_ACCESSOR,
+	ReactiveFormsModule,
+	ValidationErrors,
+	Validator,
+	Validators
+} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -91,11 +103,11 @@ export class DistributionFieldComponent implements ControlValueAccessor, Validat
 	private onTouched = () => {};
 	private onValidatorChange = () => {};
 
-	statuses: Array<{value: string; label: string}> = [];
+	statuses: {value: string; label: string}[] = [];
 
-	availabilities: Array<{value: string; label: string}> = [];
+	availabilities: {value: string; label: string}[] = [];
 
-	licenses: Array<{value: string; label: string}> = [];
+	licenses: {value: string; label: string}[] = [];
 
 	constructor(
 		private readonly fb: FormBuilder,

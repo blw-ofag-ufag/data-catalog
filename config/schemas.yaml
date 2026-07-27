@@ -6,7 +6,7 @@
   githubRepo: blw-ofag-ufag/metadata
   branch: main
   path: data/schemas/dataset.json
-  color: '#ff9800'
+  color: "#ff9800"
   alertType: warning
   icon: warning-triangle
 
@@ -15,7 +15,7 @@
   githubRepo: blw-ofag-ufag/metadata
   branch: main
   path: data/schema_strict/strict-i14y-dataset.json
-  color: '#0066cc'
+  color: "#0066cc"
   alertType: info
   icon: info-circle
 
@@ -24,6 +24,6 @@
   githubRepo: blw-ofag-ufag/metadata
   branch: main
   path: data/schema_strict/strict-ods-dataset.json
-  color: '#e91e63'
+  color: "#e91e63"
   alertType: warning
   icon: checkmark-circle

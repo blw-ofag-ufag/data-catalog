@@ -1,17 +1,17 @@
 .bleeding-landing-header {
 	position: relative;
-	background-color: #F0F4F7;
+	background-color: #f0f4f7;
 	margin-bottom: 100px;
 
 	&::before {
-		content: '';
+		content: "";
 		position: absolute;
 		top: -36px;
 		left: 50%;
 		transform: translateX(-50%);
 		width: 100vw;
 		height: calc(100% + 72px);
-		background-color: #F0F4F7;
+		background-color: #f0f4f7;
 		z-index: -1;
 	}
 }

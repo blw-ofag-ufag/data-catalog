@@ -17,7 +17,7 @@ import {MatButton} from '@angular/material/button';
 import {ActivatedRoute} from '@angular/router';
 import {ActiveFilters} from '../models/ActiveFilters';
 import {Keyword, KeywordService} from '../services/api/keyword.service';
-import {DatasetMetadataService, DatasetMetadataConfig} from '../services/metadata/dataset-metadata.service';
+import {DatasetMetadataConfig, DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
 import {DATA_PRODUCT_TYPES} from '../models/data-product-type';
 import {Dimension, DimensionService} from '../services/api/dimension.service';
 

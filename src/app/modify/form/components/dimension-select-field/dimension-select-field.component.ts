@@ -28,7 +28,12 @@ import {ValidationSchemaService} from '../../../../services/validation/validatio
 	],
 	template: `
 		<div class="dimension-select-field field-with-tooltip" style="position: relative;">
-			<app-field-debug-overlay [label]="label" [fieldName]="fieldName || ''" [required]="required" [validationInfo]="getValidationDebugInfo()"></app-field-debug-overlay>
+			<app-field-debug-overlay
+				[label]="label"
+				[fieldName]="fieldName || ''"
+				[required]="required"
+				[validationInfo]="getValidationDebugInfo()"
+			></app-field-debug-overlay>
 			<mat-form-field class="w-100">
 				<mat-label>
 					{{ label | translate }}

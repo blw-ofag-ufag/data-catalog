@@ -1,10 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {provideRouter} from '@angular/router';
-import {
-	DefaultDistributionItemComponent,
-	DistributionItemComponent,
-	DistributionLinkComponent
-} from './distribution-item.component';
+import {DefaultDistributionItemComponent, DistributionItemComponent, DistributionLinkComponent} from './distribution-item.component';
 import {provideTranslateTesting} from '../../../../tests/helpers/translate-testing';
 
 describe('DistributionItemComponent', () => {
@@ -42,7 +38,7 @@ describe('DistributionItemComponent', () => {
 
 	it('renders an access URL as an anchor link', () => {
 		component.label = 'dcat:accessURL';
-		component.data = 'https://example.com/access' as any;
+		component.data = 'https://example.com/access';
 		fixture.detectChanges();
 		const anchor: HTMLAnchorElement = fixture.nativeElement.querySelector('a');
 		expect(anchor).toBeTruthy();
@@ -52,7 +48,7 @@ describe('DistributionItemComponent', () => {
 
 	it('renders a non-URL value as plain text via translateField', () => {
 		component.label = 'dct:format';
-		component.data = 'CSV' as any;
+		component.data = 'CSV';
 		fixture.detectChanges();
 		expect(fixture.nativeElement.querySelector('a')).toBeNull();
 		expect(fixture.nativeElement.textContent).toContain('CSV');

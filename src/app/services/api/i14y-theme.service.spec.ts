@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {HttpClient} from '@angular/common/http';
 import {of, throwError} from 'rxjs';
-import {I14YThemeService, I14YTheme} from './i14y-theme.service';
+import {I14YTheme, I14YThemeService} from './i14y-theme.service';
 
 describe('I14YThemeService', () => {
 	let service: I14YThemeService;
@@ -61,9 +61,7 @@ describe('I14YThemeService', () => {
 			configure({get: httpGet});
 
 			service.loadThemes().subscribe((themes: I14YTheme[]) => {
-				expect(httpGet).toHaveBeenCalledWith(
-					'https://www.i14y.admin.ch/api/concepts/08da58dc-4dc8-f9cb-b6f2-7d16b3fa0cde/content'
-				);
+				expect(httpGet).toHaveBeenCalledWith('https://www.i14y.admin.ch/api/concepts/08da58dc-4dc8-f9cb-b6f2-7d16b3fa0cde/content');
 				// parseI14YResponse currently returns the fallback themes.
 				expect(themes.length).toBe(24);
 				service.themes$.subscribe(current => {

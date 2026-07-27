@@ -73,7 +73,7 @@ export class DatasetService {
 				const currentLang = this.translate.currentLang || 'en';
 
 				switch (sort) {
-				// Type-aware sorting: handle missing fields per product type
+					// Type-aware sorting: handle missing fields per product type
 					case 'new':
 						// Newest first - handle null dates properly
 						return [...schemas].sort((a, b) => {
@@ -91,8 +91,8 @@ export class DatasetService {
 						});
 
 					case 'owner':
-					// Sort by data owner/steward/contact (dataset-specific)
-					// Non-datasets may not have stewards; fallback to publisher
+						// Sort by data owner/steward/contact (dataset-specific)
+						// Non-datasets may not have stewards; fallback to publisher
 						// Sort by data owner/steward/contact
 						return [...schemas].sort((a, b) => {
 							const ownerA = this.getDatasetOwner(a).toLowerCase();
@@ -471,9 +471,7 @@ export class DatasetService {
 					// Look up translation from KeywordService
 					const labels = this.keywordService.getKeywordLabels(code);
 					if (labels) {
-						return (
-							labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || code
-						);
+						return labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || code;
 					}
 					// Fallback to the code itself if not found in KeywordService
 					return code;

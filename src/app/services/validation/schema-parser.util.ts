@@ -1,4 +1,4 @@
-import {Validators, ValidatorFn} from '@angular/forms';
+import {ValidatorFn, Validators} from '@angular/forms';
 
 export interface ParsedSchemaField {
 	key: string;
@@ -91,8 +91,7 @@ export class SchemaParserUtil {
 
 		// For multilingual fields, don't apply pattern/length validators to the object
 		// These will be handled at the individual language level
-		const isMultilingual = prop.type === 'object' && prop.properties &&
-			Object.keys(prop.properties).some(k => ['de', 'fr', 'it', 'en'].includes(k));
+		const isMultilingual = prop.type === 'object' && prop.properties && Object.keys(prop.properties).some(k => ['de', 'fr', 'it', 'en'].includes(k));
 
 		if (isRequired) {
 			validators.push(Validators.required);

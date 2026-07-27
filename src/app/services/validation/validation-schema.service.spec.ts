@@ -208,9 +208,7 @@ describe('ValidationSchemaService', () => {
 	describe('error handling', () => {
 		it('falls back to a minimal base schema and surfaces a load error when the fetcher fails', async () => {
 			const failingFetcher: any = {
-				fetchAllSchemas: jest.fn().mockReturnValue(
-					new (require('rxjs').Observable)((observer: any) => observer.error(new Error('boom')))
-				)
+				fetchAllSchemas: jest.fn().mockReturnValue(new (require('rxjs').Observable)((observer: any) => observer.error(new Error('boom'))))
 			};
 			TestBed.resetTestingModule();
 			TestBed.configureTestingModule({

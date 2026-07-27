@@ -1,11 +1,11 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {provideNativeDateAdapter} from '@angular/material/core';
-import {DistributionFieldComponent, Distribution} from './distribution-field.component';
+import {Distribution, DistributionFieldComponent} from './distribution-field.component';
 import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
 import {TranslateService} from '@ngx-translate/core';
 import {provideTranslateTesting} from '../../../../../../tests/helpers/translate-testing';
-import {stubValidationSchemaService, stubTranslateService} from '../../../../../../tests/helpers/service-stubs';
+import {stubTranslateService, stubValidationSchemaService} from '../../../../../../tests/helpers/service-stubs';
 import {expectCvaContract} from '../../../../../../tests/helpers/cva-harness';
 
 describe('DistributionFieldComponent', () => {

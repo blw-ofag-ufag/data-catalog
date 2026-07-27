@@ -19,7 +19,7 @@ Ultimately, everyone benefits: managers and decision-makers make strategic calls
 # ⚡ What are the key features?
 
 1. **Intuitive frontend:** A user-friendly interface for browsing, filtering, and sorting datasets, making it simple to discover the information you need.
-2. **Schema-based validation:** Each dataset is structured according to a robust JSON Schema, providing consistent quality and clarity throughout the catalog. *Note that data and schema are held on a [separate repository](https://github.com/blw-ofag-ufag/metadata).*
+2. **Schema-based validation:** Each dataset is structured according to a robust JSON Schema, providing consistent quality and clarity throughout the catalog. _Note that data and schema are held on a [separate repository](https://github.com/blw-ofag-ufag/metadata)._
 3. **Interoperability by design:** Metadata follows recognized standards and is compatible with both [I14Y](https://www.i14y.admin.ch/) and [opendata.swiss](https://opendata.swiss), ensuring seamless data exchange across platforms.
 4. **Open source collaboration:** We welcome pull requests and community-driven improvements. Join our open source culture by sharing your ideas, reporting issues, or enhancing features for the benefit of all users.
 
@@ -37,14 +37,14 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 Prerequisites to run locally: node.js and globally installed angular CLI
 
 1. **Explore the data catalog online:** Head over to our [GitHub page](https://blw-ofag-ufag.github.io/data-catalog/index.html?lang=en&sort=issued-desc) to see the development version of the data catalog in action. Not that the main version is deployed on an Azure instance.
-2. **Clone & run locally:**  
+2. **Clone & run locally:**
    ```bash
    git clone https://github.com/blw-ofag-ufag/data-catalog.git
    cd data-catalog
    npm install
    ng serve
    ```
-   
+
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
 ## Code scaffolding
@@ -150,7 +150,6 @@ The Dockerfile in the project root builds the angular application and copies the
 to the default document root of an nginx web server.
 The image doesn't contain any node.js runtime anymore.
 
-
 ## 🚀 Build the Docker Image
 
 ```bash
@@ -170,20 +169,24 @@ docker run -p yourusername/data-catalog:latest
 To interact with this project's repositories (i.e., add or edit metadata) in the **blw-ofag-ufag** organization, you need to generate a Fine-grained Personal Access Token (PAT).
 
 #### **1. Navigate to Settings**
-* Go to GitHub **Settings** > **Developer settings**.
-* Select **Personal access tokens** > **Fine-grained tokens** (see image).
+
+- Go to GitHub **Settings** > **Developer settings**.
+- Select **Personal access tokens** > **Fine-grained tokens** (see image).
 
 #### **2. Configuration**
-* **Resource owner**: Select **blw-ofag-ufag**.
-* **Token name**: e.g., `Metadata Repo`.
-* **Expiration**: 90 days.
+
+- **Resource owner**: Select **blw-ofag-ufag**.
+- **Token name**: e.g., `Metadata Repo`.
+- **Expiration**: 90 days.
 
 #### **3. Access & Permissions**
-* **Repository access**: Choose **Only select repositories** and pick your metadata repo.
-* **Permissions**: Set **Contents** to `Read and write`.
+
+- **Repository access**: Choose **Only select repositories** and pick your metadata repo.
+- **Permissions**: Set **Contents** to `Read and write`.
 
 #### **4. Save Securely**
-* Click **Generate token**.
-* **Copy immediately** and store it in **KeePass**.
+
+- Click **Generate token**.
+- **Copy immediately** and store it in **KeePass**.
 
 <br clear="right"/>

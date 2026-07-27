@@ -49,7 +49,7 @@ export let enumArrayFields: string[] = ['dcat:theme', 'dcat:keyword', 'bv:dimens
  * - `dcat:keyword`                 => array-enum facet (special-cased)
  */
 export function seedEnumFieldsFromSchema(schema: any): void {
-	const props = (schema && schema.properties) || {};
+	const props = schema?.properties || {};
 	const keys = Object.keys(props);
 
 	const scalarEnum = keys.filter(k => Array.isArray(props[k]?.enum));

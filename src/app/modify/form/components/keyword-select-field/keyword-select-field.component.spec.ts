@@ -3,10 +3,10 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {of} from 'rxjs';
 import {KeywordSelectFieldComponent} from './keyword-select-field.component';
 import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
-import {KeywordService, Keyword} from '../../../../services/api/keyword.service';
+import {Keyword, KeywordService} from '../../../../services/api/keyword.service';
 import {TranslateService} from '@ngx-translate/core';
 import {provideTranslateTesting} from '../../../../../../tests/helpers/translate-testing';
-import {stubValidationSchemaService, stubKeywordService, stubTranslateService} from '../../../../../../tests/helpers/service-stubs';
+import {stubKeywordService, stubTranslateService, stubValidationSchemaService} from '../../../../../../tests/helpers/service-stubs';
 import {expectCvaContract} from '../../../../../../tests/helpers/cva-harness';
 
 describe('KeywordSelectFieldComponent', () => {

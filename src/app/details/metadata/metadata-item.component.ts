@@ -270,7 +270,9 @@ export class DatasetIdListComponent {
 	template: `<ul>
 		@for (id of data; track $index) {
 			<li>
-				<a [routerLink]="['/details']" [queryParams]="getQueryParams(id)" (mouseup)="navigateToDataset(id)" style="cursor: pointer;">{{ getDatasetTitle(id) || id }}</a>
+				<a [routerLink]="['/details']" [queryParams]="getQueryParams(id)" (mouseup)="navigateToDataset(id)" style="cursor: pointer;">{{
+					getDatasetTitle(id) || id
+				}}</a>
 			</li>
 		}
 	</ul>`,
@@ -301,11 +303,9 @@ export class DatasetLinkListComponent implements OnInit, OnDestroy {
 		this.multiDatasetService.ensureIndexLoaded();
 
 		// Subscribe to datasets to lookup titles
-		this.multiDatasetService.datasets$
-			.pipe(takeUntil(this.destroy$))
-			.subscribe(datasets => {
-				this.datasets = datasets;
-			});
+		this.multiDatasetService.datasets$.pipe(takeUntil(this.destroy$)).subscribe(datasets => {
+			this.datasets = datasets;
+		});
 	}
 
 	ngOnDestroy(): void {
@@ -315,19 +315,14 @@ export class DatasetLinkListComponent implements OnInit, OnDestroy {
 
 	getDatasetTitle(datasetId: string): string {
 		const dataset = this.datasets.find(d => d['dct:identifier'] === datasetId);
-		if (dataset && dataset['dct:title']) {
+		if (dataset?.['dct:title']) {
 			const currentLang = this.translateService.currentLang || 'de';
 			const title = dataset['dct:title'];
 
 			// Try to get title in current language, fallback to German, then French
 			if (typeof title === 'object' && title !== null) {
 				const titleObj = title as any;
-				return titleObj[currentLang] ||
-					   titleObj.de ||
-					   titleObj.fr ||
-					   titleObj.it ||
-					   titleObj.en ||
-					   '';
+				return titleObj[currentLang] || titleObj.de || titleObj.fr || titleObj.it || titleObj.en || '';
 			}
 		}
 		return '';

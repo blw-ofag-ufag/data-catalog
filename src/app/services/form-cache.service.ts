@@ -79,7 +79,7 @@ export class FormCacheService {
 		try {
 			const parsedCache: CachedFormData = JSON.parse(cached);
 			// Check if not expired
-			return (Date.now() - parsedCache.timestamp) <= this.CACHE_EXPIRY_MS;
+			return Date.now() - parsedCache.timestamp <= this.CACHE_EXPIRY_MS;
 		} catch {
 			return false;
 		}
@@ -144,9 +144,7 @@ export class FormCacheService {
 	 * Generate cache key based on dataset ID
 	 */
 	private getCacheKey(datasetId: string | null): string {
-		return datasetId
-			? `${this.CACHE_PREFIX}-${datasetId}`
-			: `${this.CACHE_PREFIX}-new`;
+		return datasetId ? `${this.CACHE_PREFIX}-${datasetId}` : `${this.CACHE_PREFIX}-new`;
 	}
 
 	/**

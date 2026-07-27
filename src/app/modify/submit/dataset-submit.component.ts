@@ -1,11 +1,11 @@
-import {ChangeDetectorRef, Component, Input, OnInit, OnDestroy} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
 // Oblique imports
-import {ObButtonDirective, ObAlertModule, ObCollapseModule, ObNotificationService} from '@oblique/oblique';
+import {ObAlertModule, ObButtonDirective, ObCollapseModule, ObNotificationService} from '@oblique/oblique';
 
 // Material imports
 import {MatIconModule} from '@angular/material/icon';
@@ -21,20 +21,12 @@ import {FormCacheService} from '../../services/form-cache.service';
 // Models
 import {DatasetSchema} from '../../models/schemas/dataset';
 import {Publisher} from '../../models/publisher.model';
-import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE} from '../../models/data-product-type';
+import {DEFAULT_DATA_PRODUCT_TYPE, DataProductType} from '../../models/data-product-type';
 
 @Component({
 	selector: 'app-dataset-submit',
 	standalone: true,
-	imports: [
-		CommonModule,
-		TranslateModule,
-		ObButtonDirective,
-		ObAlertModule,
-		ObCollapseModule,
-		MatIconModule,
-		MatButtonModule
-	],
+	imports: [CommonModule, TranslateModule, ObButtonDirective, ObAlertModule, ObCollapseModule, MatIconModule, MatButtonModule],
 	templateUrl: './dataset-submit.component.html'
 })
 export class DatasetSubmitComponent implements OnInit, OnDestroy {
@@ -180,74 +172,69 @@ export class DatasetSubmitComponent implements OnInit, OnDestroy {
 		const commitMessage = defaultMessage;
 
 		// Call the commit service
-		this.githubAuthService.commitFileToRepository(
-			this.selectedRepository,
-			this.selectedPublisher.writeBranch,
-			this.filePath,
-			this.formattedJson,
-			commitMessage,
-			this.isEditMode
-		).subscribe({
-			next: (response) => {
-				this.isCommitting = false;
-				this.commitSuccess = true;
+		this.githubAuthService
+			.commitFileToRepository(this.selectedRepository, this.selectedPublisher.writeBranch, this.filePath, this.formattedJson, commitMessage, this.isEditMode)
+			.subscribe({
+				next: response => {
+					this.isCommitting = false;
+					this.commitSuccess = true;
 
-				// Clear the form cache after successful commit
-				this.formCacheService.clearFormData(this.datasetId);
+					// Clear the form cache after successful commit
+					this.formCacheService.clearFormData(this.datasetId);
 
-				// Show success notification
-				this.notificationService.success({
-					title: 'Success',
-					message: `Dataset successfully ${this.isEditMode ? 'updated' : 'created'} in GitHub`
-				});
+					// Show success notification
+					this.notificationService.success({
+						title: 'Success',
+						message: `Dataset successfully ${this.isEditMode ? 'updated' : 'created'} in GitHub`
+					});
 
-				// Force change detection so the success state renders without
-				// requiring a user interaction (see #237).
-				this.cdr.detectChanges();
+					// Force change detection so the success state renders without
+					// requiring a user interaction (see #237).
+					this.cdr.detectChanges();
 
-				// Open the file in GitHub after a short delay
-				setTimeout(() => {
-					if (response.htmlUrl) {
-						window.open(response.htmlUrl, '_blank');
+					// Open the file in GitHub after a short delay
+					setTimeout(() => {
+						if (response.htmlUrl) {
+							window.open(response.htmlUrl, '_blank');
+						}
+					}, 1500);
+				},
+				error: error => {
+					this.isCommitting = false;
+					this.commitError = error.message;
+
+					// Show error notification with specific message
+					let errorMessage = 'Failed to commit to GitHub';
+					switch (error.message) {
+						case 'INVALID_TOKEN':
+							errorMessage = 'Invalid GitHub token. Please re-authenticate.';
+							break;
+						case 'PERMISSION_DENIED':
+							errorMessage = 'You do not have permission to write to this repository.';
+							break;
+						case 'VALIDATION_ERROR':
+							errorMessage = 'GitHub validation error. Please check your data.';
+							break;
+						case 'CONFLICT_ERROR':
+							errorMessage = 'File has been modified by someone else. Please refresh and try again.';
+							break;
+						case 'NO_VALID_CREDENTIALS':
+							errorMessage = 'No valid credentials found. Please authenticate first.';
+							break;
 					}
-				}, 1500);
-			},
-			error: (error) => {
-				this.isCommitting = false;
-				this.commitError = error.message;
 
-				// Show error notification with specific message
-				let errorMessage = 'Failed to commit to GitHub';
-				switch(error.message) {
-					case 'INVALID_TOKEN':
-						errorMessage = 'Invalid GitHub token. Please re-authenticate.';
-						break;
-					case 'PERMISSION_DENIED':
-						errorMessage = 'You do not have permission to write to this repository.';
-						break;
-					case 'VALIDATION_ERROR':
-						errorMessage = 'GitHub validation error. Please check your data.';
-						break;
-					case 'CONFLICT_ERROR':
-						errorMessage = 'File has been modified by someone else. Please refresh and try again.';
-						break;
-					case 'NO_VALID_CREDENTIALS':
-						errorMessage = 'No valid credentials found. Please authenticate first.';
-						break;
+					this.notificationService.error({
+						title: 'Commit Failed',
+						message: errorMessage
+					});
+
+					// Force change detection so the error state renders without
+					// requiring a user interaction (see #237).
+					this.cdr.detectChanges();
+
+					console.error('Commit error:', error);
 				}
-
-				this.notificationService.error({
-					title: 'Commit Failed',
-					message: errorMessage
-				});
-
-				// Force change detection so the error state renders without
-				// requiring a user interaction (see #237).
-				this.cdr.detectChanges();
-
-				console.error('Commit error:', error);
-			}
-		});
+			});
 	}
 
 	// Private helper methods
@@ -292,7 +279,7 @@ export class DatasetSubmitComponent implements OnInit, OnDestroy {
 		}
 
 		if (this.generatedJson && this.generatedJson['dct:identifier']) {
-			return this.generatedJson['dct:identifier'] as string;
+			return this.generatedJson['dct:identifier'];
 		}
 
 		return null;
@@ -309,30 +296,18 @@ export class DatasetSubmitComponent implements OnInit, OnDestroy {
 
 			if (this.isEditMode && this.datasetId) {
 				// Edit existing file - pass the new content to pre-fill the edit form
-				return this.githubAuthService.generateEditFileUrlForRepository(
-					this.selectedRepository,
-					branch,
-					this.filePath,
-					this.formattedJson
-				);
-			} else {
-				// Create new file
-				return this.githubAuthService.generateCreateFileUrlForRepository(
-					this.selectedRepository,
-					branch,
-					this.filePath,
-					this.formattedJson
-				);
+				return this.githubAuthService.generateEditFileUrlForRepository(this.selectedRepository, branch, this.filePath, this.formattedJson);
 			}
+			// Create new file
+			return this.githubAuthService.generateCreateFileUrlForRepository(this.selectedRepository, branch, this.filePath, this.formattedJson);
 		}
 
 		// Fallback to legacy URL generation
 		if (this.isEditMode && this.datasetId) {
 			// Pass the new content for edit mode as well
 			return this.githubAuthService.generateEditFileUrl(this.filePath, this.formattedJson);
-		} else {
-			return this.githubAuthService.generateCreateFileUrl(this.filePath, this.formattedJson);
 		}
+		return this.githubAuthService.generateCreateFileUrl(this.filePath, this.formattedJson);
 	}
 
 	private downloadBlob(blob: Blob, filename: string): void {

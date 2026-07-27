@@ -85,7 +85,7 @@
 
 			// Configure Oblique icons for stepper
 			.mat-step-icon {
-				font-family: 'oblique-icons';
+				font-family: "oblique-icons";
 				// Make bubbles slightly larger to fit double-digit numbers
 				width: 28px !important;
 				height: 28px !important;
@@ -93,7 +93,7 @@
 				min-height: 28px !important;
 
 				.mat-step-icon-content {
-					font-family: 'oblique-icons';
+					font-family: "oblique-icons";
 					font-style: normal;
 					font-variant: normal;
 					text-rendering: auto;
@@ -175,7 +175,7 @@
 // Style mat-form-field labels for required fields
 mat-form-field.required {
 	mat-label::after {
-		content: ' *';
+		content: " *";
 		color: #dc3545;
 		font-weight: bold;
 	}

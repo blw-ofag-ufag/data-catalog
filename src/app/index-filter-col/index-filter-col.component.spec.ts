@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {BehaviorSubject, of} from 'rxjs';
 import {IndexFilterColComponent} from './index-filter-col.component';
 import {DatasetService} from '../services/api/api.service';
-import {KeywordService, Keyword} from '../services/api/keyword.service';
+import {Keyword, KeywordService} from '../services/api/keyword.service';
 import {ActiveFilters} from '../models/ActiveFilters';
 import {DatasetMetadataService} from '../services/metadata/dataset-metadata.service';
 import {provideTranslateTesting} from '../../../tests/helpers/translate-testing';

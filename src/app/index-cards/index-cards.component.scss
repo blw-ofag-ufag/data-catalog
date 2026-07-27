@@ -22,35 +22,35 @@ mat-card-title * {
 }
 
 .small-chip {
-	height: 24px;           /* smaller height for tighter layout */
-	font-size: 12px;        /* smaller font */
-	line-height: 24px;      /* vertically center text */
-	padding: 0 6px;         /* tighter horizontal padding */
+	height: 24px; /* smaller height for tighter layout */
+	font-size: 12px; /* smaller font */
+	line-height: 24px; /* vertically center text */
+	padding: 0 6px; /* tighter horizontal padding */
 	background-color: white !important; /* white background */
 	color: black !important; /* black text */
 	border: 1px solid #d1d5db !important; /* light grey border */
-	margin-right: 6px;      /* smaller gap between chips */
-	margin-bottom: 6px;     /* vertical gap when wrapping */
-	flex-shrink: 0;         /* prevent shrinking */
+	margin-right: 6px; /* smaller gap between chips */
+	margin-bottom: 6px; /* vertical gap when wrapping */
+	flex-shrink: 0; /* prevent shrinking */
 }
 
 .chip-container {
 	display: flex;
-	overflow: hidden;       /* hide overflow chips when collapsed */
+	overflow: hidden; /* hide overflow chips when collapsed */
 	padding-bottom: 4px;
 	align-items: flex-start;
 	transition: max-height 0.3s ease-in-out;
 }
 
 .chip-container.collapsed {
-	flex-wrap: nowrap;      /* single line when collapsed */
-	max-height: 32px;       /* height for one line of chips (24px + margin) */
+	flex-wrap: nowrap; /* single line when collapsed */
+	max-height: 32px; /* height for one line of chips (24px + margin) */
 }
 
 .chip-container.expanded {
-	flex-wrap: wrap;        /* allow wrapping when expanded */
-	overflow: visible;      /* show all chips when expanded */
-	max-height: none;       /* no height restriction when expanded */
+	flex-wrap: wrap; /* allow wrapping when expanded */
+	overflow: visible; /* show all chips when expanded */
+	max-height: none; /* no height restriction when expanded */
 }
 
 .more-chip {
@@ -63,8 +63,8 @@ mat-card-title * {
 	border: 1px solid #d1d5db !important;
 	cursor: pointer;
 	user-select: none;
-	flex-shrink: 0;         /* prevent shrinking */
-	margin-bottom: 6px;     /* vertical gap when wrapping */
+	flex-shrink: 0; /* prevent shrinking */
+	margin-bottom: 6px; /* vertical gap when wrapping */
 }
 
 .more-chip:hover {

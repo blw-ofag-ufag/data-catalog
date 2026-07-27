@@ -15,7 +15,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import {GitHubAuthService} from '../services/auth/github-auth.service';
 import {RepositoryCredentialsService} from '../services/auth/repository-credentials.service';
-import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE} from '../models/data-product-type';
+import {DEFAULT_DATA_PRODUCT_TYPE, DataProductType} from '../models/data-product-type';
 import {MultiDatasetService} from '../services/api/multi-dataset-service.service';
 import {I14YThemeService} from '../services/api/i14y-theme.service';
 import {PublisherService} from '../services/api/publisher.service';
@@ -262,8 +262,6 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		});
 	}
 
-
-
 	/**
 	 * Handle product type selection change in form
 	 * Loads appropriate schema and form structure for the selected type
@@ -286,11 +284,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		// Save form state when component is destroyed (e.g., navigating away)
 		// Only save if we have unsaved changes and we're not in submit section
 		if (this.datasetForm.dirty && !this.showSubmitSection) {
-			this.formCacheService.saveFormData(
-				this.datasetForm.value,
-				this.datasetId,
-				this.isEditMode
-			);
+			this.formCacheService.saveFormData(this.datasetForm.value, this.datasetId, this.isEditMode);
 		}
 
 		this.destroy$.next();
@@ -561,11 +555,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			this.isLoading = true;
 
 			// Save form data to cache before showing submit section
-			this.formCacheService.saveFormData(
-				this.datasetForm.value,
-				this.datasetId,
-				this.isEditMode
-			);
+			this.formCacheService.saveFormData(this.datasetForm.value, this.datasetId, this.isEditMode);
 
 			// Simulate processing time
 			setTimeout(() => {
@@ -610,7 +600,6 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 		// This is an actual reset (from the Reset button on the form)
 		this.submitAttempted = false;
-
 
 		if (this.isEditMode && this.originalDataset) {
 			// For edit mode: restore original dataset state
@@ -1064,7 +1053,6 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	getSelectedRepositoryDisplay(): string {
-
 		const selectedRepo = this.repositoryCredentialsService.getSelectedRepository();
 		if (selectedRepo) {
 			const publisher = this.publisherService.getPublishers().find(p => p.githubRepo === selectedRepo);
@@ -1227,15 +1215,17 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	 * but validates email format when a value is provided
 	 */
 	private emailOrBlankValidator() {
-		return [(control: FormControl) => {
-			const value = control.value;
-			// Allow blank/empty values
-			if (!value || value.trim() === '') {
-				return null;
+		return [
+			(control: FormControl) => {
+				const value = control.value;
+				// Allow blank/empty values
+				if (!value || value.trim() === '') {
+					return null;
+				}
+				// Validate email format when value is provided
+				const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+				return emailRegex.test(value) ? null : {email: true};
 			}
-			// Validate email format when value is provided
-			const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-			return emailRegex.test(value) ? null : { email: true };
-		}];
+		];
 	}
 }

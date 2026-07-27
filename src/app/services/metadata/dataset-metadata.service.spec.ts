@@ -85,7 +85,7 @@ describe('DatasetMetadataService', () => {
 	});
 
 	describe('field-type detection', () => {
-		const cases: Array<[string, string]> = [
+		const cases: [string, string][] = [
 			['dct:title', 'object'],
 			['dct:issued', 'date'],
 			['dct:accessRights', 'enum'],
@@ -113,7 +113,7 @@ describe('DatasetMetadataService', () => {
 	});
 
 	describe('step assignment', () => {
-		const stepCases: Array<[string, number]> = [
+		const stepCases: [string, number][] = [
 			['dct:title', 1],
 			['dct:description', 1],
 			['dct:accessRights', 2],
@@ -205,7 +205,16 @@ describe('DatasetMetadataService', () => {
 		it('excludes the configured non-details fields', done => {
 			service.getDetailsFields().subscribe(fields => {
 				const keys = fields.map(f => f.key);
-				['schema:image', 'dct:identifier', 'dct:title', 'dct:description', 'dct:publisher', 'prov:qualifiedAttribution', 'dcat:distribution', 'bv:externalCatalogs'].forEach(excluded => {
+				[
+					'schema:image',
+					'dct:identifier',
+					'dct:title',
+					'dct:description',
+					'dct:publisher',
+					'prov:qualifiedAttribution',
+					'dcat:distribution',
+					'bv:externalCatalogs'
+				].forEach(excluded => {
 					expect(keys).not.toContain(excluded);
 				});
 				done();

@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {ValidationSchemaFetcherService, SchemaConfig} from '../validation/validation-schema-fetcher.service';
+import {SchemaConfig, ValidationSchemaFetcherService} from '../validation/validation-schema-fetcher.service';
 import {SchemaParserUtil} from '../validation/schema-parser.util';
 import {seedEnumFieldsFromSchema} from '../../models/enum-fields';
 import * as schemaConfigs from '../../codegen/schemas.json';
 import * as formLayout from '../../codegen/form-layout.json';
-import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPE_REGISTRY} from '../../models/data-product-type';
+import {DATA_PRODUCT_TYPE_REGISTRY, DEFAULT_DATA_PRODUCT_TYPE, DataProductType} from '../../models/data-product-type';
 
 // Shared empty options array so template bindings get a stable reference.
 const EMPTY_OPTIONS: string[] = [];
@@ -139,7 +139,7 @@ export class DatasetMetadataService {
 	// codegen/form-layout.json), per product type. Field types/enums/validation come from the schema.
 	private stepsForType(type: DataProductType): StepConfiguration[] {
 		const layout = ((formLayout as any).default ?? formLayout) as Record<string, {steps: StepConfiguration[]}>;
-		return (layout[type]?.steps ?? layout[DEFAULT_DATA_PRODUCT_TYPE].steps) as StepConfiguration[];
+		return layout[type]?.steps ?? layout[DEFAULT_DATA_PRODUCT_TYPE].steps;
 	}
 
 	private parseSchema(schema: any, type: DataProductType, seedGlobalEnums = false): DatasetMetadataConfig {

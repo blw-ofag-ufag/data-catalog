@@ -10,7 +10,10 @@ test.use({userAgent: CHROME_USER_AGENT});
 async function switchLanguage(page: Page, lang: 'de' | 'fr' | 'it' | 'en'): Promise<void> {
 	const code = lang.toUpperCase();
 	await page.locator('.ob-language-dropdown mat-select').first().click();
-	await page.locator('mat-option').filter({hasText: new RegExp(`^${code}$`)}).click();
+	await page
+		.locator('mat-option')
+		.filter({hasText: new RegExp(`^${code}$`)})
+		.click();
 }
 
 test.beforeEach(async ({context}) => {

@@ -74,9 +74,7 @@ describe('KeywordsComponent', () => {
 		// Make the KeywordService resolve the code to a matching label.
 		// currentLang is undefined in the testing TranslateModule, so resolution
 		// falls back to the English label.
-		(component as any).keywordService.getKeywordLabels = jest
-			.fn()
-			.mockReturnValue({de: 'Boden', en: 'Soil', fr: '', it: ''});
+		(component as any).keywordService.getKeywordLabels = jest.fn().mockReturnValue({de: 'Boden', en: 'Soil', fr: '', it: ''});
 		expect(component.getKeywordKey('Soil')).toBe('soil-code');
 	});
 

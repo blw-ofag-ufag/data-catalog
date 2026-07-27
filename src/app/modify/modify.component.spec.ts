@@ -1,13 +1,13 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
-import {ReactiveFormsModule, FormArray, Validators} from '@angular/forms';
+import {FormArray, ReactiveFormsModule, Validators} from '@angular/forms';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {of, BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, of} from 'rxjs';
 
 import {ModifyComponent} from './modify.component';
-import {DatasetMetadataService, DatasetMetadataConfig, FieldMetadata, StepConfiguration} from '../services/metadata/dataset-metadata.service';
+import {DatasetMetadataConfig, DatasetMetadataService, FieldMetadata, StepConfiguration} from '../services/metadata/dataset-metadata.service';
 import {ValidationSchemaService} from '../services/validation/validation-schema.service';
 import {FormCacheService} from '../services/form-cache.service';
 import {GitHubAuthService} from '../services/auth/github-auth.service';
@@ -19,7 +19,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ObNotificationService} from '@oblique/oblique';
 
 import {provideTranslateTesting} from '../../../tests/helpers/translate-testing';
-import {stubValidationSchemaService, stubTranslateService, stubThemeService} from '../../../tests/helpers/service-stubs';
+import {stubThemeService, stubTranslateService, stubValidationSchemaService} from '../../../tests/helpers/service-stubs';
 
 // ---------------------------------------------------------------------------
 // Test fixtures: a deterministic metadata config that mirrors the real schema
@@ -31,18 +31,37 @@ const STEPS: StepConfiguration[] = [
 	{id: 1, key: 'basic', label: 'sections.basic', fields: ['dct:title', 'dct:description', 'dcat:keyword', 'dcat:theme']},
 	{id: 2, key: 'access', label: 'sections.access', fields: ['dct:accessRights', 'bv:classification', 'bv:personalData', 'adms:status']},
 	{id: 3, key: 'publisher', label: 'sections.publisher', fields: ['dct:publisher', 'dcat:contactPoint']},
-	{id: 4, key: 'metadata', label: 'sections.metadata', fields: ['dct:issued', 'dct:modified', 'dcat:version', 'dct:accrualPeriodicity', 'bv:typeOfData', 'bv:archivalValue']},
+	{
+		id: 4,
+		key: 'metadata',
+		label: 'sections.metadata',
+		fields: ['dct:issued', 'dct:modified', 'dcat:version', 'dct:accrualPeriodicity', 'bv:typeOfData', 'bv:archivalValue']
+	},
 	{id: 5, key: 'governance', label: 'sections.governance', fields: ['prov:qualifiedAttribution']},
 	{id: 6, key: 'external', label: 'sections.external', fields: ['bv:externalCatalogs', 'dcat:landingPage']},
 	{id: 7, key: 'coverage', label: 'sections.coverage', fields: ['dct:spatial', 'dct:temporal']},
 	{id: 8, key: 'business', label: 'sections.business', fields: ['bv:itSystem', 'bv:retentionPeriod', 'prov:wasGeneratedBy']},
-	{id: 9, key: 'additional', label: 'sections.additional', fields: ['schema:comment', 'bv:geoIdentifier', 'schema:image', 'bv:abrogation', 'prov:wasDerivedFrom', 'dcat:inSeries', 'dct:replaces']},
+	{
+		id: 9,
+		key: 'additional',
+		label: 'sections.additional',
+		fields: ['schema:comment', 'bv:geoIdentifier', 'schema:image', 'bv:abrogation', 'prov:wasDerivedFrom', 'dcat:inSeries', 'dct:replaces']
+	},
 	{id: 10, key: 'distributions', label: 'sections.distributions', fields: ['dcat:distribution']}
 ];
 
 // Required per dataset.json: identifier (auto-generated), title, description,
 // publisher, issued, status, classification, personalData.
-const REQUIRED_FIELDS = ['dct:identifier', 'dct:title', 'dct:description', 'dct:publisher', 'dct:issued', 'adms:status', 'bv:classification', 'bv:personalData'];
+const REQUIRED_FIELDS = [
+	'dct:identifier',
+	'dct:title',
+	'dct:description',
+	'dct:publisher',
+	'dct:issued',
+	'adms:status',
+	'bv:classification',
+	'bv:personalData'
+];
 const RECOMMENDED_FIELDS = ['dct:accessRights', 'dcat:contactPoint', 'dct:accrualPeriodicity', 'dct:modified', 'bv:archivalValue'];
 
 function field(key: string, type: string, extra: Partial<FieldMetadata> = {}): [string, FieldMetadata] {
@@ -230,11 +249,24 @@ describe('ModifyComponent', () => {
 		expect(component).toBeTruthy();
 		const controls = Object.keys(component.datasetForm.controls);
 		// A representative spread of fields across the 10 steps must be present.
-		expect(controls).toEqual(expect.arrayContaining([
-			'dct:identifier', 'dct:title', 'dct:description', 'dcat:keyword', 'dct:accessRights',
-			'bv:classification', 'adms:status', 'dct:publisher', 'dcat:contactPoint', 'dct:issued',
-			'prov:qualifiedAttribution', 'bv:externalCatalogs', 'dct:temporal', 'dcat:distribution'
-		]));
+		expect(controls).toEqual(
+			expect.arrayContaining([
+				'dct:identifier',
+				'dct:title',
+				'dct:description',
+				'dcat:keyword',
+				'dct:accessRights',
+				'bv:classification',
+				'adms:status',
+				'dct:publisher',
+				'dcat:contactPoint',
+				'dct:issued',
+				'prov:qualifiedAttribution',
+				'bv:externalCatalogs',
+				'dct:temporal',
+				'dcat:distribution'
+			])
+		);
 		// All 33 metadata fields become controls.
 		expect(controls.length).toBe(metadataConfig.fields.size);
 	});
@@ -531,7 +563,7 @@ describe('ModifyComponent', () => {
 			expect(component.datasetForm.get('dct:spatial')?.value).toBe('Unsaved Edit');
 		});
 
-		it('does not resurrect the previous type\'s values after an explicit product-type switch', () => {
+		it("does not resurrect the previous type's values after an explicit product-type switch", () => {
 			fixture.detectChanges();
 			component.datasetForm.get('dct:spatial')?.setValue('Bern');
 			component.datasetForm.markAsDirty();

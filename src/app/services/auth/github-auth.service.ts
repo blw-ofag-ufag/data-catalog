@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {BehaviorSubject, Observable, throwError, of} from 'rxjs';
+import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
 import {catchError, map, mergeMap, tap} from 'rxjs/operators';
 import {RepositoryCredentialsService} from './repository-credentials.service';
 import {environment} from '../../../environments/environment';
@@ -239,7 +239,7 @@ export class GitHubAuthService {
 	): Observable<any> {
 		// Get credentials for this repository
 		const repoCredentials = this.repositoryCredentialsService.getCredentials(repository);
-		if (!repoCredentials || !repoCredentials.isValid) {
+		if (!repoCredentials?.isValid) {
 			return throwError(() => new Error('NO_VALID_CREDENTIALS'));
 		}
 
@@ -252,7 +252,7 @@ export class GitHubAuthService {
 		// First, check if file exists to get its SHA (required for updates)
 		const checkUrl = `${this.API_BASE}/repos/${repository}/contents/${filePath}?ref=${branch}`;
 
-		return this.http.get<any>(checkUrl, { headers }).pipe(
+		return this.http.get<any>(checkUrl, {headers}).pipe(
 			// File exists, extract SHA for update
 			map(response => response.sha),
 			catchError(error => {
@@ -267,7 +267,7 @@ export class GitHubAuthService {
 				const payload: any = {
 					message: commitMessage,
 					content: btoa(unescape(encodeURIComponent(content))), // Base64 encode with UTF-8 support
-					branch: branch,
+					branch,
 					committer: {
 						name: repoCredentials.credentials.username,
 						email: `${repoCredentials.credentials.username}@users.noreply.github.com`
@@ -281,7 +281,7 @@ export class GitHubAuthService {
 
 				// Make the API call to create or update the file
 				const commitUrl = `${this.API_BASE}/repos/${repository}/contents/${filePath}`;
-				return this.http.put<any>(commitUrl, payload, { headers });
+				return this.http.put<any>(commitUrl, payload, {headers});
 			}),
 			map(response => {
 				// Return relevant information from the response
