@@ -84,8 +84,14 @@
     "uuid": "^11.1.1",
     "launch-editor": "^2.14.1",
     "vite": "^7.3.5",
+    "postcss": "^8.5.18",
+    "fast-uri": "^3.1.4",
+    "tar": "^7.5.22",
+    "brace-expansion@1": "^1.1.16",
+    "brace-expansion@2": "^2.1.2",
+    "brace-expansion@5": "^5.0.8",
     "webpack-dev-server": {
-      ".": "^5.2.5",
+      ".": "^5.2.6",
       "http-proxy-middleware": "^2.0.10"
     },
     "@angular-devkit/build-angular": {
