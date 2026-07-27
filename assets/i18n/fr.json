@@ -29,7 +29,7 @@
         "none": "Aucun",
         "secret": "Secret"
       },
-"bv:personalData": {
+      "bv:personalData": {
         "none": "Pas de données personnelles",
         "personalData": "Données personnelles",
         "sensitivePersonalData": "Données sensibles"
@@ -188,7 +188,7 @@
     "prov:wasDerivedFrom": "De quel autre produit de données ce produit de données est-il dérivé ?",
     "prov:wasGeneratedBy": "Par quel processus métier ce produit de données a-t-il été généré ?",
     "schema:comment": "Votre produit de données est-il conforme à certaines normes et/ou spécifications ?"
-},
+  },
   "labels": {
     "dcat:endpointURL": "URL du point d'accès",
     "dcat:endpointDescription": "Description du point d'accès",
