@@ -13,9 +13,13 @@
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:local": "playwright test --config=playwright.local.config.ts",
     "lint": "ng lint",
-    "format": "",
-    "format-old": "npm run lint -- --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint:fix": "npm run lint -- --fix",
     "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,html,scss,json,md}": "prettier --write"
   },
   "private": true,
   "dependencies": {
@@ -67,6 +71,7 @@
     "jest-environment-jsdom": "^30.0.0",
     "jest-sonar-reporter": "^2.0.0",
     "js-yaml": "^4.2.0",
+    "lint-staged": "17.2.0",
     "prettier": "^3.0.0",
     "typescript": "~5.9.0",
     "typescript-eslint": "^8.62.1",
