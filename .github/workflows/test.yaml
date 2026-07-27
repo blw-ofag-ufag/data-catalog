@@ -10,6 +10,11 @@ jobs:
     unit:
         name: Unit & component (Jest)
         runs-on: ubuntu-latest
+        # The #259 date-only regression is only observable on a clock east of UTC — the
+        # actual audience. It must be set here, before Node starts: assigning process.env.TZ
+        # from inside a spec does not reach Node's timezone setter under jsdom.
+        env:
+            TZ: Europe/Zurich
         steps:
             -   name: Checkout Repository
                 uses: actions/checkout@v4

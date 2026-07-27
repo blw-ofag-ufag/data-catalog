@@ -1,8 +1,3 @@
-// Pin the timezone BEFORE anything reads it: this regression must fail on a Swiss
-// (UTC+1/+2) clock, which is the actual audience. On a UTC CI runner the off-by-one
-// is invisible, so we force Europe/Zurich here (see issue #259).
-process.env.TZ = 'Europe/Zurich';
-
 import {DatePipe, registerLocaleData} from '@angular/common';
 import localeDeCh from '@angular/common/locales/de-CH';
 
@@ -20,15 +15,22 @@ describe('date-only rendering (issue #259)', () => {
 	const pipe = new DatePipe('de-CH');
 	const format = 'd. MMMM y';
 
+	// The off-by-one only manifests east of UTC. CI pins TZ=Europe/Zurich (see
+	// .github/workflows/test.yaml); run locally with `TZ=Europe/Zurich npm test` to exercise
+	// the negative control on a UTC machine. The real regression guard below is
+	// timezone-independent and always runs.
+	const isEastOfUtc = new Date('2026-07-02T00:00:00').getTimezoneOffset() < 0;
+	const itOnSwissClock = isEastOfUtc ? it : it.skip;
+
 	it('renders a date-only string as its literal day when no timezone is forced', () => {
 		expect(pipe.transform('2026-07-02', format, undefined, 'de-CH')).toBe('2. Juli 2026');
 		expect(pipe.transform('2026-07-05', format, undefined, 'de-CH')).toBe('5. Juli 2026');
 		expect(pipe.transform('1997-01-01', format, undefined, 'de-CH')).toBe('1. Januar 1997');
 	});
 
-	it('demonstrates that forcing "UTC" shifts a date-only value back one day on a Swiss clock (the bug)', () => {
-		// This asserts the WRONG output on purpose, to prove the TZ pin is effective and
-		// to pin the reason the templates must not pass "UTC" for date-only fields.
+	itOnSwissClock('demonstrates that forcing "UTC" shifts a date-only value back one day on a Swiss clock (the bug)', () => {
+		// Asserts the WRONG output on purpose, to pin the reason the templates must not pass
+		// "UTC" for date-only fields.
 		expect(pipe.transform('2026-07-02', format, 'UTC', 'de-CH')).toBe('1. Juli 2026');
 	});
 });
