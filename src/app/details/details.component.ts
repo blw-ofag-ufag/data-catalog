@@ -242,6 +242,12 @@ export class DetailsComponent implements OnInit, OnDestroy {
 			.unsubscribe(); // Unsubscribe immediately after getting the value
 	}
 
+	// bv:externalCatalogs entries are {dcat:catalog, dct:identifier} objects per the schema, but
+	// records written by the pre-#260 form stored bare strings. Used to render both shapes.
+	isString(value: unknown): value is string {
+		return typeof value === 'string';
+	}
+
 	getFormatIcon(format: string): string {
 		if (!format) return 'file';
 

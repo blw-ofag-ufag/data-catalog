@@ -43,6 +43,7 @@ import {ValidationGroup} from './components/validation-alert/validation-alert.co
 import {environment} from '../../environments/environment';
 import {MatIconModule} from '@angular/material/icon';
 import {FormCacheService} from '../services/form-cache.service';
+import {normalizeExternalCatalogs} from './external-catalogs.util';
 import {FormFieldTooltipComponent} from './form/components/form-field-tooltip/form-field-tooltip.component';
 import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from './form/components/field-debug-overlay/field-debug-overlay.component';
 
@@ -386,6 +387,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 					// This preserves user's unsaved changes when navigating back from submit
 					if (cachedData && !this.showSubmitSection) {
 						this.datasetForm.patchValue(cachedData);
+						// patchValue skips FormArrays; rebuild them from the cached value (#260).
+						this.populateExternalCatalogs(cachedData['bv:externalCatalogs']);
 						// Store the original dataset for reset functionality
 						this.originalDataset = {...dataset};
 					} else {
@@ -398,6 +401,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			// For new datasets, check if there's cached data
 			if (cachedData && !this.showSubmitSection) {
 				this.datasetForm.patchValue(cachedData);
+				this.populateExternalCatalogs(cachedData['bv:externalCatalogs']);
 			}
 		}
 	}
@@ -417,6 +421,10 @@ export class ModifyComponent implements OnInit, OnDestroy {
 		});
 
 		this.datasetForm.patchValue(patchData);
+
+		// FormArrays are not filled by patchValue (it only writes into controls that already exist),
+		// so they must be rebuilt explicitly from the record (#260).
+		this.populateExternalCatalogs(dataset['bv:externalCatalogs']);
 	}
 
 	onCancel(): void {
@@ -585,22 +593,63 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 	onExternalCatalogChange(catalogValue: string, isChecked: boolean): void {
 		const formArray = this.externalCatalogsArray;
+		const index = this.externalCatalogIndex(catalogValue);
 
 		if (isChecked) {
-			// Add the catalog to the array if it's not already there
-			if (!formArray.value.includes(catalogValue)) {
-				formArray.push(new FormControl(catalogValue));
+			if (index < 0) {
+				formArray.push(this.createExternalCatalogGroup(catalogValue));
 			}
-		} else {
-			// Remove the catalog from the array
-			const index = formArray.value.indexOf(catalogValue);
-			if (index >= 0) {
-				formArray.removeAt(index);
-			}
+		} else if (index >= 0) {
+			formArray.removeAt(index);
 		}
 
 		// Handle validation schema changes
 		this.handleValidationSchemaChanges(catalogValue, isChecked);
+	}
+
+	/**
+	 * One entry of `bv:externalCatalogs`. The schema declares an array of objects
+	 * (`dcat:catalog` required, `additionalProperties: false`), not an array of strings (issue #260).
+	 *
+	 * `dct:identifier` is the ID assigned by the external catalog at first publication. It is not
+	 * user-editable, but it MUST survive an edit round-trip — re-checking a box has to keep the
+	 * existing ID rather than silently clearing the record's link to the published dataset.
+	 */
+	private createExternalCatalogGroup(catalogValue: string, identifier = ''): FormGroup {
+		return this.fb.group({
+			'dcat:catalog': [catalogValue],
+			'dct:identifier': [identifier]
+		});
+	}
+
+	private externalCatalogIndex(catalogValue: string): number {
+		return this.externalCatalogsArray.controls.findIndex(control => control.get('dcat:catalog')?.value === catalogValue);
+	}
+
+	/**
+	 * Rebuild the `bv:externalCatalogs` FormArray from a loaded record.
+	 *
+	 * Necessary because FormArray.patchValue only writes into controls that already exist, and the
+	 * array is created empty — so a loaded record's catalogs were never restored, the checkboxes
+	 * rendered unchecked, and saving dropped the field entirely (taking the external catalogs'
+	 * dct:identifier with it). Legacy string entries (written by the pre-fix form) are normalised.
+	 */
+	private populateExternalCatalogs(value: unknown): void {
+		const formArray = this.externalCatalogsArray;
+		if (!formArray) {
+			return;
+		}
+		formArray.clear();
+
+		const entries = normalizeExternalCatalogs(value);
+		for (const entry of entries) {
+			formArray.push(this.createExternalCatalogGroup(entry['dcat:catalog'], entry['dct:identifier']));
+		}
+
+		// Re-arm the advisory i14y / ods validation for the catalogs the record already declares.
+		for (const entry of entries) {
+			this.handleValidationSchemaChanges(entry['dcat:catalog'], true);
+		}
 	}
 
 	private handleValidationSchemaChanges(catalogValue: string, isChecked: boolean): void {
@@ -822,7 +871,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	}
 
 	isExternalCatalogSelected(catalogValue: string): boolean {
-		return this.externalCatalogsArray.value.includes(catalogValue);
+		return this.externalCatalogIndex(catalogValue) >= 0;
 	}
 
 	private collectInvalidFields(): void {

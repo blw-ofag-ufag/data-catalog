@@ -152,10 +152,12 @@
 					<hr />
 					<table class="ob-table ob-table-plain">
 						<tbody>
+							<!-- Records written by the pre-#260 form stored bare strings instead of
+							     {dcat:catalog, dct:identifier} objects; render those rather than a blank row. -->
 							@for (pub of dataset["bv:externalCatalogs"]; track $index) {
 								<tr>
-									<td>{{ pub["dcat:catalog"] }}</td>
-									<td>{{ pub["dct:identifier"] }}</td>
+									<td>{{ isString(pub) ? pub : pub["dcat:catalog"] }}</td>
+									<td>{{ isString(pub) ? "" : pub["dct:identifier"] }}</td>
 								</tr>
 							}
 						</tbody>
