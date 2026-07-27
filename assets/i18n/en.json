@@ -10,6 +10,11 @@
     "title": "Agri-Food Data Catalog"
   },
   "choices": {
+    "productType": {
+      "dataset": "Dataset",
+      "dataService": "Data service",
+      "datasetSeries": "Dataset series"
+    },
     "dataset": {
       "adms:status": {
         "archived": "Archived",
@@ -130,6 +135,7 @@
       "distributions": "Distributions",
       "externalCatalogs": "Publication in external catalogs",
       "metadata": "Metadata",
+      "dataSets": "Data Sets",
       "publications": "Publication in external catalogs"
     },
     "noAffiliatedPersons": "Nobody's claiming this dataset yet—how about giving it some love by assigning a responsible human?"
@@ -195,6 +201,12 @@
     "version": "What version is this? Please use semantic versioning in the form of X.Y.Z where increases of X indicate major changes, Y minor changes and Z simple corrections such as typos."
     },
   "labels": {
+    "dcat:endpointURL": "Endpoint URL",
+    "dcat:endpointDescription": "Endpoint description",
+    "dcat:servesDataset": "Serves datasets",
+    "adms:versionNotes": "Version notes",
+    "dcat:dataset": "Datasets in series",
+    "dct:creator": "Creator",
     "adms:status": "Status",
     "bv:abrogation": "Abrogation date",
     "bv:archivalValue": "Archival value",
@@ -306,6 +318,7 @@
           "fillRequired": "Please fill out all required fields marked with an asterisk (*)",
           "recommended": "(recommended)",
           "invalidDate": "Please enter a valid date (DD.MM.YYYY)",
+          "dateNotFuture": "The date cannot be in the future.",
           "dateOrderIssuedModified": "The issued date must be on or before the modified date.",
           "dateOrderStartEnd": "The start date must be on or before the end date."
         },
@@ -332,6 +345,8 @@
         },
         "sections": {
           "basic": "Basic Information",
+          "service": "Service",
+          "series": "Series",
           "access": "Access & Classification",
           "publisher": "Publisher & Contact",
           "metadata": "Metadata & Versioning",
@@ -451,6 +466,7 @@
     "issueDate": "Issue Date",
     "keywords": "Keywords",
     "dimensions": "Dimensions",
+    "productType": "Type",
     "list": "List",
     "newKeyword": "New Keyword...",
     "newDimension": "New Dimension...",
@@ -488,6 +504,7 @@
     "generic": {
       "description": "Please check the following requirements"
     },
+    "advisory": "Advisory only — these requirements block submission once you publish to this catalog.",
     "errors": {
       "fieldRequired": "{{field}} is required for {{schema}}",
       "fieldRequiredPattern": "{{field}}: {{languages}} text must be {{pattern}}",
