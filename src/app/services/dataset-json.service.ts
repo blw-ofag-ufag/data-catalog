@@ -7,6 +7,17 @@ import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPE_REGISTRY} 
 })
 export class DatasetJsonService {
 	/**
+	 * Fields the schema declares as `array` of `string`, but which the edit form binds to a single
+	 * text input. An untouched control still holds the record's array, yet as soon as the user types
+	 * the control value becomes a bare string — and that scalar was written straight to the record,
+	 * violating the schema (issue #260 class; `prov:wasGeneratedBy: "Datenportal"` is a live example).
+	 *
+	 * Angular renders an array in a text input as `a,b,c`, so splitting on commas round-trips exactly
+	 * what the user was shown and keeps multi-valued records (prov:wasDerivedFrom holds up to 5) intact.
+	 */
+	private static readonly ARRAY_OF_STRING_FIELDS = ['prov:wasDerivedFrom', 'prov:wasGeneratedBy', 'dcat:inSeries', 'dct:replaces'];
+
+	/**
 	 * Generate dataset JSON from form data
 	 */
 	generateDatasetJson(formData: any): DatasetSchema {
@@ -24,11 +35,28 @@ export class DatasetJsonService {
 			});
 		}
 
+		// Restore the schema's array shape for fields the form edits as free text.
+		const shaped = this.coerceArrayOfStringFields(formData);
+
 		// Clean up empty values
-		const cleanedData = this.removeEmptyValues(formData);
+		const cleanedData = this.removeEmptyValues(shaped);
 
 		// Reorder to put identifier first
 		return this.reorderIdentifierFirst(cleanedData);
+	}
+
+	private coerceArrayOfStringFields(formData: any): any {
+		const shaped = {...formData};
+		for (const key of DatasetJsonService.ARRAY_OF_STRING_FIELDS) {
+			const value = shaped[key];
+			if (typeof value === 'string') {
+				shaped[key] = value
+					.split(',')
+					.map(entry => entry.trim())
+					.filter(entry => entry !== '');
+			}
+		}
+		return shaped;
 	}
 
 	/**

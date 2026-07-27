@@ -351,8 +351,8 @@ describe('ModifyComponent', () => {
 			component.onExternalCatalogChange('I14Y', true);
 			expect(component.activeValidationSchemas.has('i14y')).toBe(true);
 			expect(component.isExternalCatalogSelected('I14Y')).toBe(true);
-			// catalog value pushed into the FormArray
-			expect(component.externalCatalogsArray.value).toContain('I14Y');
+			// catalog value pushed into the FormArray, in the schema's object shape (#260)
+			expect(component.externalCatalogsArray.value).toContainEqual({'dcat:catalog': 'I14Y', 'dct:identifier': ''});
 		});
 
 		it('opendata.swiss maps to the ods schema layer', () => {
@@ -365,15 +365,15 @@ describe('ModifyComponent', () => {
 			expect(component.activeValidationSchemas.has('i14y')).toBe(true);
 			component.onExternalCatalogChange('I14Y', false);
 			expect(component.activeValidationSchemas.has('i14y')).toBe(false);
-			expect(component.externalCatalogsArray.value).not.toContain('I14Y');
+			expect(component.externalCatalogsArray.value.map((entry: any) => entry['dcat:catalog'])).not.toContain('I14Y');
 		});
 
 		it('a catalog with no schema mapping (geocat.ch) leaves active schemas unchanged', () => {
 			const before = Array.from(component.activeValidationSchemas);
 			component.onExternalCatalogChange('geocat.ch', true);
 			expect(Array.from(component.activeValidationSchemas)).toEqual(before);
-			// but it is still tracked in the FormArray
-			expect(component.externalCatalogsArray.value).toContain('geocat.ch');
+			// but it is still tracked in the FormArray, in the schema's object shape (#260)
+			expect(component.externalCatalogsArray.value).toContainEqual({'dcat:catalog': 'geocat.ch', 'dct:identifier': ''});
 		});
 
 		it('applies schema validators to mapped fields when a layer is added', () => {

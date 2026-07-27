@@ -48,7 +48,8 @@ export class DistributionComponent {
 			{label: 'dct:conformsTo', data: this.distribution['dct:conformsTo']},
 			{label: 'dct:license', data: this.distribution['dct:license']},
 			{label: 'schema:comment', data: this.distribution['schema:comment']},
-			{label: 'dcat:accessService', data: this.distribution['dcat:accessService']}
+			{label: 'dcat:accessService', data: this.distribution['dcat:accessService']},
+			{label: 'bv:dimensions', data: this.distribution['bv:dimensions']}
 		];
 
 		return fields.filter(

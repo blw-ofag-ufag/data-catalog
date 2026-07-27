@@ -37,7 +37,7 @@
 				</mat-card-subtitle>
 			</mat-card-header>
 			<mat-card-content>
-				{{ "ui.issueDate" | translate }}: {{ $any(dataset)["dct:issued"] | date: "d. MMMM y" : "UTC" : (currentLang$ | async)! }} <br /><br />
+				{{ "ui.issueDate" | translate }}: {{ $any(dataset)["dct:issued"] | date: "d. MMMM y" : undefined : (currentLang$ | async)! }} <br /><br />
 				<div [class]="getChipContainerClass(dataset['dct:identifier'])">
 					<!-- Show visible keywords when collapsed, or all keywords when expanded -->
 					@if (isExpanded(dataset["dct:identifier"])) {

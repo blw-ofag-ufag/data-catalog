@@ -11,4 +11,5 @@ export interface Publisher {
 	getDetailUrl: (id: string, type?: DataProductType) => string;
 
 	getKeywordUrl: () => string;
+	getDimensionUrl: () => string;
 }

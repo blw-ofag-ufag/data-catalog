@@ -11,6 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {ObButtonDirective} from '@oblique/oblique';
 import {MultilingualTextFieldComponent} from '../multilingual-text-field/multilingual-text-field.component';
+import {DimensionSelectFieldComponent} from '../dimension-select-field/dimension-select-field.component';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
 import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from '../field-debug-overlay/field-debug-overlay.component';
 import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
@@ -36,6 +37,7 @@ export interface Distribution {
 	'dct:conformsTo'?: string;
 	'dct:license'?: string;
 	'schema:comment'?: string;
+	'bv:dimensions'?: string[];
 }
 
 @Component({
@@ -53,6 +55,7 @@ export interface Distribution {
 		MatDatepickerModule,
 		ObButtonDirective,
 		MultilingualTextFieldComponent,
+		DimensionSelectFieldComponent,
 		FormFieldTooltipComponent,
 		FieldDebugOverlayComponent
 	],
@@ -233,7 +236,8 @@ export class DistributionFieldComponent implements ControlValueAccessor, Validat
 			'dct:description': [distribution?.['dct:description'] || null, Validators.required],
 			'dct:conformsTo': [distribution?.['dct:conformsTo'] || ''],
 			'dct:license': [distribution?.['dct:license'] || ''],
-			'schema:comment': [distribution?.['schema:comment'] || '']
+			'schema:comment': [distribution?.['schema:comment'] || ''],
+			'bv:dimensions': [distribution?.['bv:dimensions'] || []]
 		});
 	}
 

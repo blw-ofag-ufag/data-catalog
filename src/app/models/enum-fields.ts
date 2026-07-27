@@ -12,9 +12,15 @@
  * `dcat:keyword` is a special case: it is a coded vocabulary (free strings referencing
  * keyword codes), not a schema `enum`, but it is faceted and rendered like an enum
  * array. It is therefore always included in the array-enum set explicitly.
+ *
+ * `bv:dimensions` (#92) is the same kind of case, with one extra wrinkle: it is a coded
+ * vocabulary keyed into `dimensions.json`, and it lives on the *distribution*, not on the
+ * dataset root. `seedEnumFieldsFromSchema` only walks top-level properties, so it would
+ * never be discovered there — and dropping out of `enumTypes` would break the URL filter
+ * round-trip that the dimension chips on the detail page rely on.
  */
 
-const ALWAYS_ARRAY_ENUM = ['dcat:keyword'];
+const ALWAYS_ARRAY_ENUM = ['dcat:keyword', 'bv:dimensions'];
 
 // Facetable fields (scalar enums + array facets). Used for URL filter parsing and
 // detail-view enum dispatch. Default mirrors the previous static `enumTypes`.
@@ -28,12 +34,13 @@ export let enumTypes: string[] = [
 	'bv:personalData',
 	'bv:typeOfData',
 	'dcat:keyword',
-	'dcat:theme'
+	'dcat:theme',
+	'bv:dimensions'
 ];
 
 // Enum fields that hold arrays (rendered as chip/free lists). Default mirrors the
 // previous static `enumArrayFields`.
-export let enumArrayFields: string[] = ['dcat:theme', 'dcat:keyword'];
+export let enumArrayFields: string[] = ['dcat:theme', 'dcat:keyword', 'bv:dimensions'];
 
 /**
  * Re-derive the enum-field classification from a JSON schema's properties.

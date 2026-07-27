@@ -41,6 +41,33 @@
 			}
 		</mat-select>
 	</mat-form-field>
+
+	<!-- Distribution dimensions facet (#92) -->
+	<mat-form-field>
+		<mat-label>{{ "ui.dimensions" | translate }}</mat-label>
+		<mat-chip-grid #dimensionChipGrid aria-label="Dimension selection">
+			<mat-chip-row *ngFor="let dimensionCode of dimensions" (removed)="removeDimension(dimensionCode)">
+				{{ getDimensionLabel(dimensionCode) }}
+				<button type="button" matChipRemove [attr.aria-label]="('ui.remove' | translate) + ' ' + getDimensionLabel(dimensionCode)">
+					<mat-icon svgIcon="delete" />
+				</button>
+			</mat-chip-row>
+			<input
+				#dimensionInput
+				[placeholder]="'ui.newDimension' | translate"
+				[formControl]="dimensionControl"
+				[matChipInputFor]="dimensionChipGrid"
+				[matAutocomplete]="dimensionAuto"
+				[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+				(matChipInputTokenEnd)="addDimension($event)"
+			/>
+			<mat-autocomplete #dimensionAuto="matAutocomplete" (optionSelected)="selectedDimension($event)">
+				<mat-option *ngFor="let dimension of filteredDimensions$ | async" [value]="dimension.code">
+					{{ getDimensionObjectLabel(dimension) }}
+				</mat-option>
+			</mat-autocomplete>
+		</mat-chip-grid>
+	</mat-form-field>
 	@for (filterkey of availableFilters; track filterkey) {
 		<mat-form-field>
 			<mat-label>{{ getTranslationKey(filterkey) | translate }}</mat-label>

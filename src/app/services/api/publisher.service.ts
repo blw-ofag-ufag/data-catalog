@@ -17,6 +17,7 @@ export class PublisherService {
 			const segment = (type: DataProductType = DEFAULT_DATA_PRODUCT_TYPE) => DATA_PRODUCT_TYPE_REGISTRY[type].segment;
 			publisher.getProcessedUrl = (type: DataProductType = DEFAULT_DATA_PRODUCT_TYPE) => raw(`data/processed/${segment(type)}.json`);
 			publisher.getKeywordUrl = () => raw('data/schemas/keywords.json');
+			publisher.getDimensionUrl = () => raw('data/schemas/dimensions.json');
 			publisher.getDetailUrl = (id: string, type: DataProductType = DEFAULT_DATA_PRODUCT_TYPE) => raw(`data/raw/${segment(type)}/${id}.json`);
 		}
 	}

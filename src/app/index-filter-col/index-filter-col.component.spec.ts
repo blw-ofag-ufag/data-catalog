@@ -90,8 +90,8 @@ describe('IndexFilterColComponent', () => {
 	it('renders a select per available filter category', () => {
 		fixture.detectChanges();
 		const fields = fixture.nativeElement.querySelectorAll('mat-form-field');
-		// keyword field + product-type facet + one per available filter
-		expect(fields.length).toBe(component.availableFilters.length + 2);
+		// keyword field + product-type facet (#221) + dimensions facet (#92) + one per available filter
+		expect(fields.length).toBe(component.availableFilters.length + 3);
 	});
 
 	it('hydrates keyword chips from activated filters on init', () => {
