@@ -434,7 +434,13 @@
 
 		<!-- Submit Section -->
 		<div *ngIf="showSubmitSection">
-			<app-dataset-submit [formData]="datasetForm.value" [isEditMode]="isEditMode" [datasetId]="datasetId" [productType]="productType || 'dataset'">
+			<app-dataset-submit
+				[formData]="datasetForm.value"
+				[baseRecord]="preservedBaseRecord"
+				[isEditMode]="isEditMode"
+				[datasetId]="datasetId"
+				[productType]="productType || 'dataset'"
+			>
 			</app-dataset-submit>
 
 			<div class="ob-mt-3">

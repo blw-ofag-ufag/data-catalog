@@ -90,8 +90,14 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	schemaLoadError: string | null = null;
 	schemasLoading = true;
 
-	// Store original dataset for reset functionality in edit mode
+	// Store original dataset for reset functionality in edit mode, and as the base the submit step
+	// merges over so fields the schema no longer declares survive an edit (#284).
 	private originalDataset: any = null;
+
+	// The product type originalDataset was loaded as. The type selector is create-mode only, so this
+	// cannot drift today; it is kept so that making the type editable later cannot silently graft
+	// one type's fields onto another record.
+	private originalProductType: DataProductType | null = null;
 
 	// The data that must currently be present in the form (a loaded record, or cached unsaved edits).
 	// buildFormFromMetadata tears down and recreates every control whenever the product type's schema
@@ -469,6 +475,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 						this.patchIntoForm(cachedData);
 						// Store the original dataset for reset functionality
 						this.originalDataset = {...dataset};
+						this.originalProductType = this.productType;
 					} else {
 						this.populateForm(dataset);
 					}
@@ -489,7 +496,26 @@ export class ModifyComponent implements OnInit, OnDestroy {
 	private populateForm(dataset: any): void {
 		// Store original dataset for reset functionality
 		this.originalDataset = {...dataset};
+		this.originalProductType = this.productType;
 		this.patchIntoForm(dataset);
+	}
+
+	/**
+	 * The record the submit step merges its form output over, so an edit cannot delete fields the
+	 * schema no longer declares and the form therefore never rendered (#284).
+	 *
+	 * Empty unless we are editing that same record as the same product type — a new record has
+	 * nothing to preserve, and grafting one type's fields onto another would corrupt rather than
+	 * protect.
+	 */
+	protected get preservedBaseRecord(): Record<string, unknown> {
+		if (!this.isEditMode || !this.originalDataset) {
+			return {};
+		}
+		if (this.originalProductType && this.productType !== this.originalProductType) {
+			return {};
+		}
+		return this.originalDataset;
 	}
 
 	/**

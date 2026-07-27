@@ -18,25 +18,36 @@ export class DatasetJsonService {
 	private static readonly ARRAY_OF_STRING_FIELDS = ['prov:wasDerivedFrom', 'prov:wasGeneratedBy', 'dcat:inSeries', 'dct:replaces'];
 
 	/**
-	 * Generate dataset JSON from form data
+	 * Generate dataset JSON from form data.
+	 *
+	 * `baseRecord` is the record the form was loaded from, and exists to stop an edit destroying
+	 * data the form cannot show (issue #284). The form's controls are rebuilt from the runtime
+	 * schema, so a record field the schema no longer declares gets no control, never reaches
+	 * `formData`, and would otherwise vanish on save — `bv:itSystem` is still on 23 published
+	 * records after being dropped from the schema.
+	 *
+	 * Form values always win: every schema-declared field is present in `formData`, so a field the
+	 * user cleared arrives empty, overrides the base, and is then dropped by `removeEmptyValues`.
+	 * Only keys absent from `formData` survive from the base.
 	 */
-	generateDatasetJson(formData: any): DatasetSchema {
+	generateDatasetJson(formData: any, baseRecord: Record<string, unknown> = {}): DatasetSchema {
+		// Merge first, and work on the copy: the caller's form value must not be mutated.
+		const merged: any = {...baseRecord, ...formData};
+
 		// Generate identifier if not provided
-		if (!formData['dct:identifier']) {
-			formData['dct:identifier'] = this.generateUUID();
+		if (!merged['dct:identifier']) {
+			merged['dct:identifier'] = this.generateUUID();
 		}
 
 		// Process distributions - ensure each has an identifier
-		if (formData['dcat:distribution'] && Array.isArray(formData['dcat:distribution'])) {
-			formData['dcat:distribution'].forEach((dist: any, index: number) => {
-				if (!dist['dct:identifier']) {
-					dist['dct:identifier'] = this.generateUUID();
-				}
-			});
+		if (merged['dcat:distribution'] && Array.isArray(merged['dcat:distribution'])) {
+			merged['dcat:distribution'] = merged['dcat:distribution'].map((dist: any) =>
+				dist && !dist['dct:identifier'] ? {...dist, 'dct:identifier': this.generateUUID()} : dist
+			);
 		}
 
 		// Restore the schema's array shape for fields the form edits as free text.
-		const shaped = this.coerceArrayOfStringFields(formData);
+		const shaped = this.coerceArrayOfStringFields(merged);
 
 		// Clean up empty values
 		const cleanedData = this.removeEmptyValues(shaped);
