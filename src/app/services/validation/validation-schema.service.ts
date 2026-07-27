@@ -306,6 +306,16 @@ export class ValidationSchemaService {
 						parsedSchema: parsed
 					});
 				});
+
+				// The schema fetcher never errors: on failure with no usable cache it
+				// returns an empty offline fallback. An empty base schema therefore means
+				// we could not load a real schema - treat it as a hard load error so the
+				// form blocks editing rather than rendering with no validation.
+				const baseSchema = this.schemas.get('base');
+				if (!baseSchema || Object.keys(baseSchema.fields).length === 0) {
+					this.schemaLoadError$.next(this.translateService.instant('modify.auth.form.errors.schemaLoadFailed'));
+				}
+
 				this.schemasLoaded$.next(true);
 			},
 			error: error => {

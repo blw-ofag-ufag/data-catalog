@@ -1,0 +1,26 @@
+{
+	"apples": {
+		"de": "Apfel",
+		"fr": "Pomme",
+		"it": "Mela",
+		"en": "apples"
+	},
+	"harvest": {
+		"de": "Ernte",
+		"fr": "Recolte",
+		"it": "Raccolto",
+		"en": "harvest"
+	},
+	"soil": {
+		"de": "Boden",
+		"fr": "Sol",
+		"it": "Suolo",
+		"en": "soil"
+	},
+	"moisture": {
+		"de": "Feuchtigkeit",
+		"fr": "Humidite",
+		"it": "Umidita",
+		"en": "moisture"
+	}
+}

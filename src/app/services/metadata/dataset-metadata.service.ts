@@ -1,11 +1,16 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, of} from 'rxjs';
-import {catchError, map, shareReplay} from 'rxjs/operators';
-import {Validators} from '@angular/forms';
+import {map} from 'rxjs/operators';
 
-// Import the JSON schema directly
-import * as datasetSchema from '../../models/schemas/dataset.json';
+import {ValidationSchemaFetcherService, SchemaConfig} from '../validation/validation-schema-fetcher.service';
+import {SchemaParserUtil} from '../validation/schema-parser.util';
+import {seedEnumFieldsFromSchema} from '../../models/enum-fields';
+import * as schemaConfigs from '../../codegen/schemas.json';
+import * as formLayout from '../../codegen/form-layout.json';
+import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPE_REGISTRY} from '../../models/data-product-type';
+
+// Shared empty options array so template bindings get a stable reference.
+const EMPTY_OPTIONS: string[] = [];
 
 export interface FieldMetadata {
 	key: string;
@@ -42,85 +47,120 @@ export interface DatasetMetadataConfig {
 })
 export class DatasetMetadataService {
 	private readonly metadata$ = new BehaviorSubject<DatasetMetadataConfig | null>(null);
-	private readonly stepConfig: StepConfiguration[] = [
-		{
-			id: 1,
-			key: 'basic',
-			label: 'modify.auth.form.sections.basic',
-			fields: ['dct:title', 'dct:description', 'dcat:keyword', 'dcat:theme']
-		},
-		{
-			id: 2,
-			key: 'access',
-			label: 'modify.auth.form.sections.access',
-			fields: ['dct:accessRights', 'bv:classification', 'bv:personalData', 'adms:status']
-		},
-		{
-			id: 3,
-			key: 'publisher',
-			label: 'modify.auth.form.sections.publisher',
-			fields: ['dct:publisher', 'dcat:contactPoint']
-		},
-		{
-			id: 4,
-			key: 'metadata',
-			label: 'modify.auth.form.sections.metadata',
-			fields: ['dct:issued', 'dct:modified', 'dcat:version', 'dct:accrualPeriodicity', 'bv:typeOfData', 'bv:archivalValue']
-		},
-		{
-			id: 5,
-			key: 'governance',
-			label: 'modify.auth.form.sections.governance',
-			fields: ['prov:qualifiedAttribution']
-		},
-		{
-			id: 6,
-			key: 'external',
-			label: 'modify.auth.form.sections.external',
-			fields: ['bv:externalCatalogs', 'dcat:landingPage']
-		},
-		{
-			id: 7,
-			key: 'coverage',
-			label: 'modify.auth.form.sections.coverage',
-			fields: ['dct:spatial', 'dct:temporal', 'dcatap:applicableLegislation']
-		},
-		{
-			id: 8,
-			key: 'business',
-			label: 'modify.auth.form.sections.business',
-			fields: ['bv:itSystem', 'bv:retentionPeriod', 'prov:wasGeneratedBy']
-		},
-		{
-			id: 9,
-			key: 'additional',
-			label: 'modify.auth.form.sections.additional',
-			fields: ['schema:comment', 'bv:geoIdentifier', 'schema:image', 'bv:abrogation', 'prov:wasDerivedFrom', 'dcat:inSeries', 'dct:replaces']
-		},
-		{
-			id: 10,
-			key: 'distributions',
-			label: 'modify.auth.form.sections.distributions',
-			fields: ['dcat:distribution']
+	// Stable catalogue (dataset) metadata for index/filter consumers. Built once for 'dataset' and
+	// never overwritten when the modify form loads a non-dataset type, so the catalogue keeps the full
+	// dataset filter set even after editing a dataService/datasetSeries (#221 filter regression).
+	private readonly catalogueMetadata$ = new BehaviorSubject<DatasetMetadataConfig | null>(null);
+	private activeType: DataProductType = DEFAULT_DATA_PRODUCT_TYPE;
+
+	constructor(private readonly schemaFetcher: ValidationSchemaFetcherService) {
+		// Build dataset form metadata by default (back-compat); the modify form requests a
+		// specific type via loadForType() when editing a non-dataset product (#221).
+		this.loadForType(DEFAULT_DATA_PRODUCT_TYPE);
+	}
+
+	/**
+	 * Build form metadata for a given product type from its runtime-fetched schema (single source
+	 * of truth) merged with the per-type step layout. Defaults to 'dataset'.
+	 */
+	loadForType(type: DataProductType = DEFAULT_DATA_PRODUCT_TYPE): void {
+		const config = this.schemaConfigForType(type);
+		if (!config) {
+			this.metadata$.next(null);
+			return;
 		}
-	];
-
-	constructor() {
-		this.initializeMetadata();
+		this.activeType = type;
+		this.schemaFetcher.fetchSchema(config).subscribe({
+			next: schema => {
+				const isCatalogueType = type === DEFAULT_DATA_PRODUCT_TYPE;
+				const parsed = this.parseSchema(schema, type, isCatalogueType);
+				this.metadata$.next(parsed);
+				// Keep the catalogue channel pinned to dataset so a non-dataset form load can't
+				// shrink the index filters (#221).
+				if (isCatalogueType) {
+					this.catalogueMetadata$.next(parsed);
+				}
+			},
+			error: error => {
+				// Leave metadata null so the form does not build; the schema load error is
+				// surfaced to the user via ValidationSchemaService.
+				console.error(`Failed to load ${type} schema for form metadata:`, error);
+				this.metadata$.next(null);
+			}
+		});
 	}
 
-	private initializeMetadata(): void {
-		const config = this.parseSchema(datasetSchema);
-		this.metadata$.next(config);
+	getActiveType(): DataProductType {
+		return this.activeType;
 	}
 
-	private parseSchema(schema: any): DatasetMetadataConfig {
+	// Per-type metadata cache for read-only consumers (e.g. the detail page), built without mutating
+	// the shared metadata$ singleton or the global enum classification (#221).
+	private readonly typeMetadataCache = new Map<DataProductType, DatasetMetadataConfig>();
+
+	/**
+	 * Get the field metadata for a specific product type without affecting the form singleton or the
+	 * catalogue's global enum dispatch. Used by the detail page so dataService/datasetSeries records
+	 * render their own fields. Cached per type (the underlying schema fetch is also cached).
+	 */
+	getMetadataForType(type: DataProductType): Observable<DatasetMetadataConfig | null> {
+		const cached = this.typeMetadataCache.get(type);
+		if (cached) {
+			return of(cached);
+		}
+		const config = this.schemaConfigForType(type);
+		if (!config) {
+			return of(null);
+		}
+		return this.schemaFetcher.fetchSchema(config).pipe(
+			map(schema => {
+				const parsed = this.parseSchema(schema, type, false);
+				this.typeMetadataCache.set(type, parsed);
+				return parsed;
+			})
+		);
+	}
+
+	// Build a fetch config for the type's product schema, reusing the base config's repo/branch.
+	private schemaConfigForType(type: DataProductType): SchemaConfig | null {
+		const configs = (schemaConfigs as any).default as SchemaConfig[];
+		const base = configs.find(c => c.id === 'base');
+		if (!base) {
+			console.error('No "base" schema configured; cannot build form metadata.');
+			return null;
+		}
+		if (type === DEFAULT_DATA_PRODUCT_TYPE) {
+			return base; // base config already points at the dataset schema
+		}
+		return {...base, id: type, name: type, path: DATA_PRODUCT_TYPE_REGISTRY[type].schemaPath};
+	}
+
+	// Step grouping/order come from the augmentation overlay (config/form-layout.yaml →
+	// codegen/form-layout.json), per product type. Field types/enums/validation come from the schema.
+	private stepsForType(type: DataProductType): StepConfiguration[] {
+		const layout = ((formLayout as any).default ?? formLayout) as Record<string, {steps: StepConfiguration[]}>;
+		return (layout[type]?.steps ?? layout[DEFAULT_DATA_PRODUCT_TYPE].steps) as StepConfiguration[];
+	}
+
+	private parseSchema(schema: any, type: DataProductType, seedGlobalEnums = false): DatasetMetadataConfig {
+		const steps = this.stepsForType(type);
+		// Re-derive the *global* enum-field classification (enumTypes/enumArrayFields, used app-wide for
+		// catalogue facets and detail render-dispatch) only from the catalogue/dataset schema. Building
+		// per-type metadata (form or detail) must NOT reseed it, or it would point at a non-dataset
+		// type's enums and break the index filters/dispatch (#221).
+		if (seedGlobalEnums) {
+			seedEnumFieldsFromSchema(schema);
+		}
+
 		const fields = new Map<string, FieldMetadata>();
 		const requiredFields = schema.required || [];
 		const recommendedFields = schema.recommended || [];
 
 		// Parse each property from the schema
 		Object.entries(schema.properties || {}).forEach(([key, prop]: [string, any]) => {
+			// Enum option lists come from the schema. Scalar enums live on `enum`;
+			// array enums (e.g. dcat:theme) live on `items.enum`.
+			const optionList: string[] | undefined = prop.enum || prop.items?.enum;
 			const fieldMetadata: FieldMetadata = {
 				key,
 				required: requiredFields.includes(key),
@@ -128,8 +168,8 @@ export class DatasetMetadataService {
 				type: this.getFieldType(prop),
 				label: `labels.${key}`,
 				description: prop.description,
-				validators: this.generateValidators(key, prop, requiredFields.includes(key)),
-				enum: prop.enum?.filter((e: string) => e !== ''), // Filter out empty string from enums
+				validators: SchemaParserUtil.generateValidators(key, prop, requiredFields.includes(key)),
+				enum: optionList?.filter((e: string) => e !== ''), // Filter out empty string from enums
 				format: prop.format
 			};
 
@@ -145,7 +185,7 @@ export class DatasetMetadataService {
 			fieldMetadata.displayInDetails = this.shouldDisplayInDetails(key);
 
 			// Assign to step
-			const step = this.findStepForField(key);
+			const step = steps.find(s => s.fields.includes(key));
 			if (step) {
 				fieldMetadata.step = step.id;
 				fieldMetadata.group = step.key;
@@ -156,7 +196,7 @@ export class DatasetMetadataService {
 
 		return {
 			fields,
-			steps: this.stepConfig,
+			steps,
 			requiredFields
 		};
 	}
@@ -170,49 +210,6 @@ export class DatasetMetadataService {
 		if (prop.format === 'uri' || prop.format === 'url') return 'url';
 		if (prop.enum) return 'enum';
 		return 'string';
-	}
-
-	private generateValidators(key: string, prop: any, isRequired: boolean): any[] {
-		const validators: any[] = [];
-
-		// For multilingual fields, don't apply validators here - they'll be handled by the component
-		if (prop.type === 'object' && prop.properties &&
-		    Object.keys(prop.properties).some(k => ['de', 'fr', 'it', 'en'].includes(k))) {
-			// Skip validators for multilingual fields - handled by MultilingualTextFieldComponent
-			if (isRequired) {
-				validators.push(Validators.required);
-			}
-			return validators;
-		}
-
-		if (isRequired) {
-			validators.push(Validators.required);
-		}
-
-		// Email validation for contact point
-		if (key === 'schema:email' || prop.format === 'email') {
-			validators.push(Validators.email);
-		}
-
-		// URL validation
-		if (prop.format === 'uri' || prop.format === 'url') {
-			validators.push(Validators.pattern(/^https?:\/\/.+/));
-		}
-
-		// Min/max length if specified
-		if (prop.minLength) {
-			validators.push(Validators.minLength(prop.minLength));
-		}
-		if (prop.maxLength) {
-			validators.push(Validators.maxLength(prop.maxLength));
-		}
-
-		// Pattern if specified
-		if (prop.pattern) {
-			validators.push(Validators.pattern(prop.pattern));
-		}
-
-		return validators;
 	}
 
 	private shouldDisplayInDetails(key: string): boolean {
@@ -233,13 +230,15 @@ export class DatasetMetadataService {
 		return !excludedFromDetails.some(excluded => key.startsWith(excluded));
 	}
 
-	private findStepForField(key: string): StepConfiguration | undefined {
-		return this.stepConfig.find(step => step.fields.includes(key));
-	}
-
 	// Public methods
 	getMetadata(): Observable<DatasetMetadataConfig | null> {
 		return this.metadata$.asObservable();
+	}
+
+	// Stable dataset metadata for catalogue consumers (index filters), independent of the form's
+	// active product type so a non-dataset form load can't shrink the catalogue filters (#221).
+	getCatalogueMetadata(): Observable<DatasetMetadataConfig | null> {
+		return this.catalogueMetadata$.asObservable();
 	}
 
 	getFieldMetadata(key: string): Observable<FieldMetadata | undefined> {
@@ -286,6 +285,13 @@ export class DatasetMetadataService {
 
 		const field = config.fields.get(key);
 		return field?.validators || [];
+	}
+
+	// Get the schema-derived enum option list for a field (empty-string filtered).
+	// Returns a stable [] when the field has no options or metadata is not loaded yet.
+	getEnumOptions(key: string): string[] {
+		const field = this.metadata$.value?.fields.get(key);
+		return field?.enum ?? EMPTY_OPTIONS;
 	}
 
 	// Get all field metadata for form generation

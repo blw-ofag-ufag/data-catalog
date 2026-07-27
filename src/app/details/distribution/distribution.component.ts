@@ -26,6 +26,11 @@ import {TranslatePipe} from '@ngx-translate/core';
 })
 export class DistributionComponent {
 	@Input() distribution: any = {};
+	/**
+	 * Distribution component - dataset specific feature
+	 * Distributions are primarily for datasets but the structure is generic
+	 * and could be used by other product types in the future
+	 */
 
 	getDistributionFields() {
 		if (!this.distribution) return [];

@@ -4,5 +4,6 @@
     "module": "esnext",
     "types": ["jest", "node"]
   },
-  "include": ["**/*.spec.ts", "**/*.d.ts"]
+  "include": ["**/*.spec.ts", "**/*.d.ts"],
+  "exclude": ["e2e/**"]
 }

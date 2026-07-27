@@ -9,7 +9,8 @@ import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import {MatChip, MatChipSet} from '@angular/material/chips';
-import {ContactPoint, DatasetSchema, TemporalCoverage, enumArrayFields, enumTypes} from '../../models/schemas/dataset';
+import {ContactPoint, DataProduct, DatasetSchema, TemporalCoverage} from '../../models/schemas/dataset';
+import {enumArrayFields, enumTypes} from '../../models/enum-fields';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MultiDatasetService} from '../../services/api/multi-dataset-service.service';
 import {KeywordService} from '../../services/api/keyword.service';
@@ -283,7 +284,7 @@ export class DatasetLinkListComponent implements OnInit, OnDestroy {
 	private readonly router: Router;
 	private readonly multiDatasetService: MultiDatasetService;
 	private readonly translateService: TranslateService;
-	private datasets: DatasetSchema[] = [];
+	private datasets: DataProduct[] = [];
 	private readonly destroy$ = new Subject<void>();
 
 	constructor(private readonly injector: Injector) {
@@ -334,9 +335,14 @@ export class DatasetLinkListComponent implements OnInit, OnDestroy {
 
 	getQueryParams(datasetId: string) {
 		const currentParams = this.route.snapshot.queryParams;
+		// Resolve the referenced record's own publisher + product type so cross-publisher /
+		// non-dataset references load the correct detail page (#221); falls back to the current
+		// context when the reference isn't in the store.
+		const ref = this.datasets.find(d => d['dct:identifier'] === datasetId);
 		return {
-			publisher: currentParams['publisher'],
+			publisher: (ref?.['dct:publisher'] as string) ?? currentParams['publisher'],
 			dataset: datasetId,
+			type: ((ref as any)?.['productType'] as string) ?? 'dataset',
 			lang: currentParams['lang']
 		};
 	}

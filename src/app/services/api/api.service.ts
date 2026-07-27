@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, combineLatest, filter} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {DatasetSchema, enumTypes} from '../../models/schemas/dataset';
+import {DataProduct, DatasetSchema} from '../../models/schemas/dataset';
+import {enumTypes} from '../../models/enum-fields';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PageEvent} from '@angular/material/paginator';
 import Fuse from 'fuse.js';
@@ -32,7 +33,7 @@ const allFiltersOff = {};
 
 @Injectable({providedIn: 'root'})
 export class DatasetService {
-	private readonly filteredDatasetsSubject = new BehaviorSubject<DatasetSchema[]>([]);
+	private readonly filteredDatasetsSubject = new BehaviorSubject<DataProduct[]>([]);
 	private readonly searchTermSubject = new BehaviorSubject<string>('');
 	private readonly pageSubject = new BehaviorSubject<PageEvent>({pageIndex: 0, pageSize: 5, length: 0});
 	public filteredLength$ = new BehaviorSubject<number>(0);
@@ -65,30 +66,33 @@ export class DatasetService {
 		const initialPagination = this.getInitialPaginationFromUrl();
 		this.pageSubject.next(initialPagination);
 		const sortedSchemas$ = combineLatest([
-			this.multiDatasetService.datasets$.pipe(filter((schemas): schemas is DatasetSchema[] => schemas !== null)),
+			this.multiDatasetService.datasets$.pipe(filter((schemas): schemas is DataProduct[] => schemas !== null)),
 			this.sortSubject
 		]).pipe(
 			map(([schemas, sort]) => {
 				const currentLang = this.translate.currentLang || 'en';
 
 				switch (sort) {
+				// Type-aware sorting: handle missing fields per product type
 					case 'new':
 						// Newest first - handle null dates properly
 						return [...schemas].sort((a, b) => {
-							const dateA = a['dct:issued'] ? new Date(a['dct:issued']).getTime() : 0;
-							const dateB = b['dct:issued'] ? new Date(b['dct:issued']).getTime() : 0;
+							const dateA = (a['dct:issued'] as string) ? new Date(a['dct:issued'] as string).getTime() : 0;
+							const dateB = b['dct:issued'] ? new Date(b['dct:issued'] as string).getTime() : 0;
 							return dateB - dateA; // Newest first
 						});
 
 					case 'old':
 						// Oldest first - handle null dates properly
 						return [...schemas].sort((a, b) => {
-							const dateA = a['dct:issued'] ? new Date(a['dct:issued']).getTime() : Number.MAX_SAFE_INTEGER;
-							const dateB = b['dct:issued'] ? new Date(b['dct:issued']).getTime() : Number.MAX_SAFE_INTEGER;
+							const dateA = (a['dct:issued'] as string) ? new Date(a['dct:issued'] as string).getTime() : Number.MAX_SAFE_INTEGER;
+							const dateB = b['dct:issued'] ? new Date(b['dct:issued'] as string).getTime() : Number.MAX_SAFE_INTEGER;
 							return dateA - dateB; // Oldest first
 						});
 
 					case 'owner':
+					// Sort by data owner/steward/contact (dataset-specific)
+					// Non-datasets may not have stewards; fallback to publisher
 						// Sort by data owner/steward/contact
 						return [...schemas].sort((a, b) => {
 							const ownerA = this.getDatasetOwner(a).toLowerCase();
@@ -248,7 +252,8 @@ export class DatasetService {
 			if (!params['dataset']) {
 				this.multiDatasetService.onRouteChange(null);
 			} else {
-				this.multiDatasetService.onRouteChange({publisher: params['publisher'], klass: 'dataset', id: params['dataset']});
+				// `type` defaults to 'dataset' for back-compat with existing URLs/bookmarks (#221).
+				this.multiDatasetService.onRouteChange({publisher: params['publisher'], klass: params['type'] || 'dataset', id: params['dataset']});
 			}
 		});
 	}
@@ -261,8 +266,8 @@ export class DatasetService {
 		return this.multiDatasetService.loading$;
 	}
 
-	loadDatasetById(publisher: string, id: string): void {
-		this.multiDatasetService.loadDetail(publisher, 'dataset', id);
+	loadDatasetById(publisher: string, id: string, type = 'dataset'): void {
+		this.multiDatasetService.loadDetail(publisher, type, id);
 	}
 
 	search(query: string) {
@@ -348,9 +353,14 @@ export class DatasetService {
 	async setFilters(filters: ActiveFilters) {
 		this.filters$.next(filters);
 
-		const emptyFilters = Object.values(enumTypes).reduce(
-			(acc, enumKey) => {
-				acc[enumKey] = null;
+		// Reset set for the URL: every facet must be explicitly nulled to be cleared under
+		// queryParamsHandling: 'merge'. `productType` is a synthetic facet (not a schema enum, so not
+		// in enumTypes) — include it here or a deselected/absent klass filter stays stale in the URL
+		// and gets re-applied on the next navigation (pagination/sort/view-switch) (#221).
+		const facetKeys = [...enumTypes, 'productType'];
+		const emptyFilters = facetKeys.reduce(
+			(acc, key) => {
+				acc[key] = null;
 				return acc;
 			},
 			{} as Record<string, string | null>
@@ -374,7 +384,7 @@ export class DatasetService {
 	/**
 	 * Get localized title for a dataset in the specified language, with fallbacks
 	 */
-	private getLocalizedTitle(dataset: DatasetSchema, lang: string): string {
+	private getLocalizedTitle(dataset: DataProduct, lang: string): string {
 		if (dataset['dct:title'] && typeof dataset['dct:title'] === 'object') {
 			const title = dataset['dct:title'] as any;
 			return title[lang] || title['en'] || title['de'] || title['fr'] || title['it'] || '';
@@ -383,10 +393,11 @@ export class DatasetService {
 	}
 
 	/**
-	 * Get keywords as a normalized array for filtering
-	 * Keywords are stored as string array of codes
+	/**
+	 * Get keywords array from a dataset (dataset-specific field)
+	 * Returns empty array for non-dataset product types
 	 */
-	public getKeywordsArray(dataset: DatasetSchema): string[] {
+	public getKeywordsArray(dataset: DataProduct): string[] {
 		const keywords = dataset['dcat:keyword'];
 		if (!keywords) return [];
 
@@ -400,8 +411,11 @@ export class DatasetService {
 	/**
 	 * Aggregate a dataset's distribution dimension codes (`bv:dimensions`) into a de-duplicated array,
 	 * for dataset-level faceting/search (issue #92).
+	 *
+	 * Typed against `DataProduct` rather than `DatasetSchema` because the catalogue collection is
+	 * mixed since #221; product types without distributions simply yield an empty array.
 	 */
-	public getDimensionsArray(dataset: DatasetSchema): string[] {
+	public getDimensionsArray(dataset: DataProduct): string[] {
 		const distributions = dataset['dcat:distribution'];
 		if (!Array.isArray(distributions)) return [];
 
@@ -419,7 +433,7 @@ export class DatasetService {
 	 * Build a searchable text blob for a dataset's dimensions: the codes plus all of their glossary
 	 * translations, so full-text search matches a dimension by code or localized label (issue #92).
 	 */
-	private getDimensionSearchText(dataset: DatasetSchema): string {
+	private getDimensionSearchText(dataset: DataProduct): string {
 		return this.getDimensionsArray(dataset)
 			.flatMap(code => {
 				const labels = this.dimensionService.getDimensionLabels(code);
@@ -435,7 +449,7 @@ export class DatasetService {
 	private buildFuseOptions() {
 		return {
 			...fuseOptions,
-			keys: [...fuseOptions.keys, {name: 'bv:dimensions', getFn: (dataset: DatasetSchema) => this.getDimensionSearchText(dataset)}]
+			keys: [...fuseOptions.keys, {name: 'bv:dimensions', getFn: (dataset: DataProduct) => this.getDimensionSearchText(dataset)}]
 		};
 	}
 
@@ -444,7 +458,7 @@ export class DatasetService {
 	 * Returns an array of keyword strings in the current language
 	 * Keywords are stored as string array of codes, translations come from KeywordService
 	 */
-	public getLocalizedKeywords(dataset: DatasetSchema, lang?: string): string[] {
+	public getLocalizedKeywords(dataset: DataProduct, lang?: string): string[] {
 		const keywords = dataset['dcat:keyword'];
 		if (!keywords) return [];
 
@@ -474,7 +488,7 @@ export class DatasetService {
 	 * Check if dataset keywords match the search term
 	 * Searches keyword codes and all language translations via KeywordService
 	 */
-	private keywordsMatchSearch(dataset: DatasetSchema, searchTerm: string): boolean {
+	private keywordsMatchSearch(dataset: DataProduct, searchTerm: string): boolean {
 		const keywords = dataset['dcat:keyword'];
 		if (!keywords || !Array.isArray(keywords)) return false;
 
@@ -497,7 +511,7 @@ export class DatasetService {
 	/**
 	 * Get the dataset owner/steward/contact for sorting purposes
 	 */
-	private getDatasetOwner(dataset: DatasetSchema): string {
+	private getDatasetOwner(dataset: DataProduct): string {
 		// Try prov:qualifiedAttribution first (new structure)
 		if (dataset['prov:qualifiedAttribution'] && Array.isArray(dataset['prov:qualifiedAttribution'])) {
 			const stewards = dataset['prov:qualifiedAttribution']
@@ -544,7 +558,7 @@ export class DatasetService {
 	/**
 	 * Recursively find the last page that has content
 	 */
-	private findLastContentfulPage(filteredResults: DatasetSchema[], pageSize: number, startPageIndex: number): number {
+	private findLastContentfulPage(filteredResults: DataProduct[], pageSize: number, startPageIndex: number): number {
 		// Start from the given page and work backwards
 		for (let pageIndex = startPageIndex - 1; pageIndex >= 0; pageIndex--) {
 			const pageStart = pageIndex * pageSize;

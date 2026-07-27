@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {DatasetSchema} from '../models/schemas/dataset';
+import {DataProductType, DEFAULT_DATA_PRODUCT_TYPE, DATA_PRODUCT_TYPE_REGISTRY} from '../models/data-product-type';
 
 @Injectable({
 	providedIn: 'root'
@@ -161,6 +162,14 @@ export class DatasetJsonService {
 			'dct:accrualPeriodicity',
 			'dct:modified',
 			'dcat:version',
+			'adms:versionNotes',
+			// dataService fields
+			'dcat:endpointURL',
+			'dcat:endpointDescription',
+			'dcat:servesDataset',
+			'dct:conformsTo',
+			// datasetSeries member datasets
+			'dcat:dataset',
 			'prov:qualifiedAttribution',
 			'adms:status',
 			'bv:classification',
@@ -205,10 +214,12 @@ export class DatasetJsonService {
 	}
 
 	/**
-	 * Generate file path for dataset
+	 * Generate the repo file path for a record, using the product type's folder segment
+	 * (datasets / dataServices / datasetSeries) so non-dataset types are written to the right
+	 * location (#221). Defaults to 'dataset' for backward compatibility.
 	 */
-	generateFilePath(datasetId: string): string {
-		return `data/raw/datasets/${datasetId}.json`;
+	generateFilePath(datasetId: string, type: DataProductType = DEFAULT_DATA_PRODUCT_TYPE): string {
+		return `data/raw/${DATA_PRODUCT_TYPE_REGISTRY[type].segment}/${datasetId}.json`;
 	}
 
 	/**

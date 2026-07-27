@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {MatChip} from '@angular/material/chips';
 import {RouterLink} from '@angular/router';
-import {DatasetSchema} from '../../models/schemas/dataset';
+import {DataProduct, DatasetSchema} from '../../models/schemas/dataset';
 import {DatasetService} from '../../services/api/api.service';
 import {KeywordService} from '../../services/api/keyword.service';
 import {TranslateService} from '@ngx-translate/core';
@@ -13,7 +13,7 @@ import {TranslateService} from '@ngx-translate/core';
 	styleUrl: './keywords.component.scss'
 })
 export class KeywordsComponent {
-	@Input() dataset: DatasetSchema | null = null;
+	@Input() dataset: DataProduct | null = null;
 
 	constructor(
 		private readonly datasetService: DatasetService,
@@ -22,10 +22,20 @@ export class KeywordsComponent {
 	) {}
 
 	/**
+	 * Show keyword chips whenever the record actually carries keywords, regardless of product type
+	 * (all three types can have dcat:keyword) (#221). Mirrors IndexCardsComponent.hasKeywordSupport.
+	 */
+	hasKeywordSupport(): boolean {
+		if (!this.dataset) return false;
+		const keywords = this.dataset['dcat:keyword'];
+		return Array.isArray(keywords) && keywords.length > 0;
+	}
+
+	/**
 	 * Get localized keywords for display
 	 */
 	getLocalizedKeywords(): string[] {
-		if (this.dataset) {
+		if (this.dataset && this.hasKeywordSupport()) {
 			return this.datasetService.getLocalizedKeywords(this.dataset);
 		}
 		return [];
@@ -36,11 +46,11 @@ export class KeywordsComponent {
 	 * Since keywords are stored as codes, we need to find the code from the display value
 	 */
 	getKeywordKey(displayValue: string): string {
-		if (!this.dataset || !this.dataset['dcat:keyword']) {
+		if (!this.dataset || !this.hasKeywordSupport() || !this.dataset['dcat:keyword']) {
 			return displayValue;
 		}
 
-		const keywords = this.dataset['dcat:keyword'];
+		const keywords = this.dataset['dcat:keyword'] as string[];
 		if (!Array.isArray(keywords)) {
 			return displayValue;
 		}

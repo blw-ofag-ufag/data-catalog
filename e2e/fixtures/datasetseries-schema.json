@@ -1,0 +1,32 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Dataset Series",
+	"type": "object",
+	"required": ["dct:identifier", "dct:title", "dct:description", "dct:publisher"],
+	"recommended": [],
+	"properties": {
+		"dct:identifier": {"type": "string"},
+		"dct:title": {"type": "object", "properties": {"de": {"type": "string"}, "fr": {"type": "string"}, "it": {"type": "string"}, "en": {"type": "string"}}},
+		"dct:description": {"type": "object", "properties": {"de": {"type": "string"}, "fr": {"type": "string"}, "it": {"type": "string"}, "en": {"type": "string"}}},
+		"dcat:keyword": {"type": "array", "items": {"type": "string"}},
+		"dcat:theme": {"type": "array", "items": {"type": "string", "enum": ["AGRI", "ENVI"]}},
+		"dcat:dataset": {"type": "array", "items": {"type": "string"}},
+		"dcat:seriesMember": {"type": "array", "items": {"type": "string"}},
+		"dct:periodicity": {"type": "string"},
+		"dct:accessRights": {"type": "string", "enum": ["PUBLIC", "NON_PUBLIC", "RESTRICTED"]},
+		"adms:status": {"type": "string", "enum": ["Released", "Deprecated"]},
+		"dct:publisher": {"type": "string", "enum": ["BLW-OFAG-UFAG-FOAG"]},
+		"dcat:contactPoint": {"type": "object", "properties": {"schema:name": {"type": "string"}, "schema:email": {"type": "string", "format": "email"}}},
+		"dct:issued": {"type": "string", "format": "date"},
+		"dct:modified": {"type": "string", "format": "date"},
+		"dcat:version": {"type": "string"},
+		"adms:versionNotes": {"type": "string"},
+		"dct:accrualPeriodicity": {"type": "string", "enum": ["ANNUAL", "MONTHLY"]},
+		"dct:spatial": {"type": "string"},
+		"dct:temporal": {"type": "object", "properties": {"dcat:start_date": {"type": "string", "format": "date"}, "dcat:end_date": {"type": "string", "format": "date"}}},
+		"dcatap:applicableLegislation": {"type": "array", "items": {"type": "string"}},
+		"schema:comment": {"type": "string"},
+		"schema:image": {"type": "string"},
+		"foaf:page": {"type": "string"}
+	}
+}

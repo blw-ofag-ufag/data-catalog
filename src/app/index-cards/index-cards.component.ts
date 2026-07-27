@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {Observable, startWith} from 'rxjs';
-import {DatasetSchema} from '../models/schemas/dataset';
+import {DataProduct, DatasetSchema, DatasetIdentifier} from '../models/schemas/dataset';
 import {AsyncPipe, DatePipe, NgOptimizedImage} from '@angular/common';
 import {map} from 'rxjs/operators';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
@@ -11,6 +11,7 @@ import {OrgPipe} from '../org.pipe';
 import {TranslateFieldPipe} from '../translate-field.pipe';
 import {DatasetService} from '../services/api/api.service';
 import {KeywordService} from '../services/api/keyword.service';
+
 
 @Component({
 	standalone: true,
@@ -35,9 +36,11 @@ import {KeywordService} from '../services/api/keyword.service';
 	]
 })
 export class IndexCardsComponent {
-	@Input() datasets$!: Observable<DatasetSchema[] | null>;
+	@Input() datasets$!: Observable<DataProduct[] | null>;
 	currentLang$: Observable<string>;
-	fallbackImageUrl = 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg';
+	// Bundled local placeholder (served under the app base-href); used when a record has no
+	// schema:image. Replaces a dead external URL that returned 404 (imageless records showed nothing).
+	fallbackImageUrl = 'assets/images/placeholder.svg';
 
 	// Default number of keywords to show (fallback when dynamic calculation isn't available)
 	private readonly defaultMaxKeywords = 4;
@@ -61,15 +64,25 @@ export class IndexCardsComponent {
 		);
 	}
 
-	async openDataset(publisher: string, dataset: string) {
-		await this.router.navigate(['details'], {queryParams: {publisher, dataset}, queryParamsHandling: 'replace'});
+	async openDataset(publisher: string, dataset: string, type: string = 'dataset') {
+		// Carry the product type so the detail page loads from the right segment (#221).
+		await this.router.navigate(['details'], {queryParams: {publisher, dataset, type}, queryParamsHandling: 'replace'});
+	}
+
+	/**
+	 * Show keyword chips whenever the record actually carries keywords, regardless of product type
+	 * (all three types can have dcat:keyword) (#221).
+	 */
+	hasKeywordSupport(dataset: DataProduct): boolean {
+		const keywords = dataset['dcat:keyword'];
+		return Array.isArray(keywords) && keywords.length > 0;
 	}
 
 	/**
 	 * Get keyword code from display label
 	 */
-	private getKeywordKey(displayValue: string, dataset: DatasetSchema): string {
-		const keywords = dataset['dcat:keyword'];
+	private getKeywordKey(displayValue: string, dataset: DataProduct): string {
+		const keywords = dataset['dcat:keyword'] as string[] | undefined;
 		if (!keywords || !Array.isArray(keywords)) {
 			return displayValue;
 		}
@@ -90,7 +103,7 @@ export class IndexCardsComponent {
 		return displayValue;
 	}
 
-	keywordFiltered(keyword: string, dataset: DatasetSchema) {
+	keywordFiltered(keyword: string, dataset: DataProduct) {
 		const keywordCode = this.getKeywordKey(keyword, dataset);
 		const currentParams = this.route.snapshot.queryParams;
 		const existingKeywords = currentParams['dcat:keyword'];
@@ -107,9 +120,11 @@ export class IndexCardsComponent {
 		};
 	}
 
-	datasetFiltered() {
+	// Filter the index by a product type; used by the type chip so each tile links to its own type
+	// (dataset / dataService / datasetSeries), matching the productType facet (#221).
+	typeFiltered(type?: string) {
 		return {
-			class: 'dataset'
+			productType: type || 'dataset'
 		};
 	}
 
@@ -195,14 +210,14 @@ export class IndexCardsComponent {
 	/**
 	 * Get localized keywords for a dataset
 	 */
-	getLocalizedKeywords(dataset: DatasetSchema): string[] {
+	getLocalizedKeywords(dataset: DataProduct): string[] {
 		return this.datasetService.getLocalizedKeywords(dataset);
 	}
 
 	/**
 	 * Get visible keywords for a dataset (dynamic based on available width)
 	 */
-	getVisibleKeywords(dataset: DatasetSchema, datasetId: string): string[] {
+	getVisibleKeywords(dataset: DataProduct, datasetId: string): string[] {
 		const keywords = this.getLocalizedKeywords(dataset);
 		if (!keywords) return [];
 
@@ -213,7 +228,7 @@ export class IndexCardsComponent {
 	/**
 	 * Get hidden keywords for a dataset
 	 */
-	getHiddenKeywords(dataset: DatasetSchema, datasetId: string): string[] {
+	getHiddenKeywords(dataset: DataProduct, datasetId: string): string[] {
 		const keywords = this.getLocalizedKeywords(dataset);
 		if (!keywords) return [];
 
@@ -224,7 +239,7 @@ export class IndexCardsComponent {
 	/**
 	 * Check if there are keywords to hide
 	 */
-	hasHiddenKeywords(dataset: DatasetSchema, datasetId: string): boolean {
+	hasHiddenKeywords(dataset: DataProduct, datasetId: string): boolean {
 		const keywords = this.getLocalizedKeywords(dataset);
 		if (!keywords) return false;
 

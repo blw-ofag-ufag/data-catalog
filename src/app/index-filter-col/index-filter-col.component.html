@@ -32,6 +32,17 @@
 			</mat-autocomplete>
 		</mat-chip-grid>
 	</mat-form-field>
+	<!-- Product type ("klass") facet: filter between dataset / dataService / datasetSeries (#221) -->
+	<mat-form-field>
+		<mat-label>{{ "ui.productType" | translate }}</mat-label>
+		<mat-select multiple [value]="getSelectedOptions('productType')" (selectionChange)="onCategoryChange('productType', $event.value)">
+			@for (t of productTypeOptions; track t) {
+				<mat-option [value]="t">{{ productTypeLabel(t) | translate }}</mat-option>
+			}
+		</mat-select>
+	</mat-form-field>
+
+	<!-- Distribution dimensions facet (#92) -->
 	<mat-form-field>
 		<mat-label>{{ "ui.dimensions" | translate }}</mat-label>
 		<mat-chip-grid #dimensionChipGrid aria-label="Dimension selection">

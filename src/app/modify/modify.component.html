@@ -17,6 +17,28 @@
 			</div>
 		</div>
 
+		<!-- Product type selector (create mode only); read-only display in edit mode -->
+		@if (!isEditMode) {
+			<div class="ob-mb-4">
+				<label for="productTypeSelect" class="ob-block ob-mb-1">Product type</label>
+				<select
+					id="productTypeSelect"
+					[value]="productType || 'dataset'"
+					(change)="onProductTypeChange($event)"
+					style="padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; max-width: 320px;"
+				>
+					<option value="dataset">Dataset</option>
+					<option value="dataService">Data service</option>
+					<option value="datasetSeries">Dataset series</option>
+				</select>
+			</div>
+		} @else {
+			<div class="ob-mb-4">
+				<small class="ob-text-muted ob-block">Product type</small>
+				<strong>{{ ("choices.productType." + (productType || 'dataset')) | translate }}</strong>
+			</div>
+		}
+
 			<!-- Schema Loading Indicator -->
 		<ob-alert type="info" *ngIf="schemasLoading && !schemaLoadError" class="ob-mb-4">
 			<div class="ob-flex ob-items-center">
@@ -36,8 +58,8 @@
 			</p>
 		</ob-alert>
 
-		<!-- Dataset Form -->
-		<div class="dataset-form-container" *ngIf="!showSubmitSection">
+		<!-- Dataset Form (blocked while schemas load or on a hard load error) -->
+		<div class="dataset-form-container" *ngIf="!showSubmitSection && !schemasLoading && !schemaLoadError">
 			<form [formGroup]="datasetForm">
 				<mat-stepper [linear]="isLinear" orientation="vertical" #stepper class="vertical-stepper">
 					<ng-template matStepperIcon="edit">
@@ -57,494 +79,225 @@
 					<ng-template matStepperIcon="number" let-index="index">
 						<span style="white-space: nowrap">{{ index + 1 }}</span>
 					</ng-template>
-					<!-- Step 1: Basic Information -->
-					<mat-step [completed]="isStepValid(0)" [hasError]="!isStepValid(0) && (datasetForm.touched || submitAttempted)">
-						<ng-template matStepLabel>{{ "modify.auth.form.sections.basic" | translate }}</ng-template>
-						<div class="step-content">
-							<app-multilingual-text-field
-								formControlName="dct:title"
-								[label]="'labels.dct:title'"
-								[placeholder]="'modify.auth.form.placeholders.title'"
-								[required]="isFieldRequired('dct:title')"
-								[recommended]="isFieldRecommended('dct:title')"
-								[requiredLanguages]="['de', 'fr']"
-								[minLength]="10"
-								[maxLength]="75"
-								fieldName="dct:title"
-							>
-							</app-multilingual-text-field>
 
-							<app-multilingual-text-field
-								formControlName="dct:description"
-								[label]="'labels.dct:description'"
-								[placeholder]="'modify.auth.form.placeholders.description'"
-								[required]="isFieldRequired('dct:description')"
-								[recommended]="isFieldRecommended('dct:description')"
-								[requiredLanguages]="['de', 'fr']"
-								[textarea]="true"
-								[maxLength]="2000"
-								fieldName="dct:description"
-							>
-							</app-multilingual-text-field>
-
-							<app-keyword-select-field formControlName="dcat:keyword" [label]="'labels.dcat:keyword'" [placeholder]="'modify.auth.form.placeholders.keyword'" fieldName="dcat:keyword">
-							</app-keyword-select-field>
-
-							<app-theme-select-field formControlName="dcat:theme" [label]="'labels.dcat:theme'" [placeholder]="'modify.auth.form.placeholders.theme'" fieldName="dcat:theme">
-							</app-theme-select-field>
-						</div>
-					</mat-step>
-
-					<!-- Step 2: Access & Classification -->
-					<mat-step [completed]="isStepValid(1)" [hasError]="!isStepValid(1) && (datasetForm.touched || submitAttempted)">
-						<ng-template matStepLabel>{{ "modify.auth.form.sections.access" | translate }}</ng-template>
-						<div class="step-content">
-							<app-enum-select-field
-								formControlName="dct:accessRights"
-								[label]="'labels.dct:accessRights'"
-								[options]="accessRights"
-								[required]="isFieldRequired('dct:accessRights')"
-								[recommended]="isFieldRecommended('dct:accessRights')"
-								[translationPath]="'choices.dataset.dct:accessRights'"
-								fieldName="dct:accessRights"
-							>
-							</app-enum-select-field>
-
-							<app-enum-select-field
-								formControlName="bv:classification"
-								[label]="'labels.bv:classification'"
-								[options]="classificationLevels"
-								[required]="isFieldRequired('bv:classification')"
-								[recommended]="isFieldRecommended('bv:classification')"
-								[translationPath]="'choices.dataset.bv:classification'"
-								fieldName="bv:classification"
-							>
-							</app-enum-select-field>
-
-							<app-enum-select-field
-								formControlName="bv:personalData"
-								[label]="'labels.bv:personalData'"
-								[options]="personalDataCategories"
-								[required]="isFieldRequired('bv:personalData')"
-								[recommended]="isFieldRecommended('bv:personalData')"
-								[translationPath]="'choices.dataset.bv:personalData'"
-								fieldName="bv:personalData"
-							>
-							</app-enum-select-field>
-
-							<app-enum-select-field
-								formControlName="adms:status"
-								[label]="'labels.adms:status'"
-								[options]="statuses"
-								[required]="isFieldRequired('adms:status')"
-								[recommended]="isFieldRecommended('adms:status')"
-								[translationPath]="'choices.dataset.adms:status'"
-								fieldName="adms:status"
-							>
-							</app-enum-select-field>
-						</div>
-					</mat-step>
-
-					<!-- Step 3: Publisher & Contact -->
-					<mat-step [completed]="isStepValid(2)" [hasError]="!isStepValid(2) && (datasetForm.touched || submitAttempted)">
-						<ng-template matStepLabel>{{ "modify.auth.form.sections.publisher" | translate }}</ng-template>
-						<div class="step-content">
-							<app-enum-select-field
-								formControlName="dct:publisher"
-								[label]="'labels.dct:publisher'"
-								[options]="publishers"
-								[required]="isFieldRequired('dct:publisher')"
-								[recommended]="isFieldRecommended('dct:publisher')"
-								[translationPath]="'choices.dataset.dct:publisher'"
-								fieldName="dct:publisher"
-							>
-							</app-enum-select-field>
-
-							<div formGroupName="dcat:contactPoint">
-								<h5>
-									{{ "labels.dcat:contactPoint" | translate }}
-									<span *ngIf="isFieldRecommended('dcat:contactPoint')" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
-								</h5>
-
-								<div class="ob-flex ob-flex-wrap ob-gap-4">
-									<div class="ob-flex-1 ob-min-w-0">
-										<div class="field-with-tooltip" style="position: relative;">
-											<app-field-debug-overlay label="modify.auth.form.contactName" fieldName="dcat:contactPoint.schema:name" [required]="false" [validationInfo]="getFieldValidationDebugInfo('dcat:contactPoint.schema:name')"></app-field-debug-overlay>
-											<mat-form-field class="ob-w-full">
-												<mat-label>{{ "modify.auth.form.contactName" | translate }}</mat-label>
-												<input matInput formControlName="schema:name" />
-												<mat-error *ngIf="datasetForm.get('dcat:contactPoint.schema:name')?.invalid && datasetForm.get('dcat:contactPoint.schema:name')?.touched">
-													{{ "modify.auth.form.validation.required" | translate }}
-												</mat-error>
-											</mat-form-field>
-											<app-form-field-tooltip fieldName="dcat:contactPoint"></app-form-field-tooltip>
-										</div>
-									</div>
-									<div class="ob-flex-1 ob-min-w-0">
-										<div class="field-with-tooltip" style="position: relative;">
-											<app-field-debug-overlay label="modify.auth.form.contactEmail" fieldName="dcat:contactPoint.schema:email" [required]="false" [validationInfo]="getFieldValidationDebugInfo('dcat:contactPoint.schema:email')"></app-field-debug-overlay>
-											<mat-form-field class="ob-w-full">
-												<mat-label>{{ "modify.auth.form.contactEmail" | translate }}</mat-label>
-												<input matInput type="email" formControlName="schema:email"/>
-												<mat-error
-													*ngIf="
-														datasetForm.get('dcat:contactPoint.schema:email')?.hasError('required') && datasetForm.get('dcat:contactPoint.schema:email')?.touched
-													"
-												>
-													{{ "modify.auth.form.validation.required" | translate }}
-												</mat-error>
-												<mat-error
-													*ngIf="
-														datasetForm.get('dcat:contactPoint.schema:email')?.hasError('email') && datasetForm.get('dcat:contactPoint.schema:email')?.touched
-													"
-												>
-													{{ "modify.auth.form.validation.email" | translate }}
-												</mat-error>
-											</mat-form-field>
-											<app-form-field-tooltip fieldName="dcat:contactPoint"></app-form-field-tooltip>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</mat-step>
-
-					<!-- Step 4: Metadata & Versioning -->
-					<mat-step [completed]="isStepValid(3)" [hasError]="!isStepValid(3) && (datasetForm.touched || submitAttempted)">
-						<ng-template matStepLabel>{{ "modify.auth.form.sections.metadata" | translate }}</ng-template>
-						<div class="step-content">
-							<div class="ob-flex ob-flex-wrap ob-gap-4">
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.dct:issued" fieldName="dct:issued" [required]="isFieldRequired('dct:issued')" [validationInfo]="getFieldValidationDebugInfo('dct:issued')"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.dct:issued" | translate }}</mat-label>
-											<input matInput [matDatepicker]="issuePicker" formControlName="dct:issued" [errorStateMatcher]="issuedModifiedErrorMatcher" />
-											<mat-datepicker-toggle matIconSuffix [for]="issuePicker"></mat-datepicker-toggle>
-											<mat-datepicker #issuePicker></mat-datepicker>
-											<mat-error *ngIf="datasetForm.get('dct:issued')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="dct:issued"></app-form-field-tooltip>
-									</div>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<app-enum-select-field
-										formControlName="dcatap:availability"
-										[label]="'labels.dcatap:availability'"
-										[options]="availabilities"
-										[required]="isFieldRequired('dcatap:availability')"
-										[recommended]="isFieldRecommended('dcatap:availability')"
-										[translationPath]="'choices.dataset.dcatap:availability'"
-										fieldName="dcatap:availability"
-									>
-									</app-enum-select-field>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.dct:modified" fieldName="dct:modified" [required]="isFieldRequired('dct:modified')" [validationInfo]="getFieldValidationDebugInfo('dct:modified')"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>
-												{{ "labels.dct:modified" | translate }}
-												<span *ngIf="isFieldRecommended('dct:modified')" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
-											</mat-label>
-											<input matInput [matDatepicker]="modifiedPicker" formControlName="dct:modified" [errorStateMatcher]="issuedModifiedErrorMatcher" />
-											<mat-datepicker-toggle matIconSuffix [for]="modifiedPicker"></mat-datepicker-toggle>
-											<mat-datepicker #modifiedPicker></mat-datepicker>
-											<mat-error *ngIf="datasetForm.get('dct:modified')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
-											<mat-error *ngIf="datasetForm.hasError('issuedAfterModified') && !datasetForm.get('dct:modified')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.dateOrderIssuedModified" | translate }}</mat-error>
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="dct:modified"></app-form-field-tooltip>
-									</div>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.dcat:version" fieldName="dcat:version" [required]="isFieldRequired('dcat:version')" [validationInfo]="getFieldValidationDebugInfo('dcat:version')"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.dcat:version" | translate }}</mat-label>
-											<input matInput formControlName="dcat:version" placeholder="e.g., 1.0.0" />
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="dcat:version"></app-form-field-tooltip>
-									</div>
-								</div>
-							</div>
-
-							<div class="ob-flex ob-flex-wrap ob-gap-4">
-								<div class="ob-flex-1 ob-min-w-0">
-									<app-enum-select-field
-										formControlName="dct:accrualPeriodicity"
-										[label]="'labels.dct:accrualPeriodicity'"
-										[options]="accrualPeriocicites"
-										[required]="isFieldRequired('dct:accrualPeriodicity')"
-										[recommended]="isFieldRecommended('dct:accrualPeriodicity')"
-										[translationPath]="'choices.dataset.dct:accrualPeriodicity'"
-										fieldName="dct:accrualPeriodicity"
-									>
-									</app-enum-select-field>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<app-enum-select-field
-										formControlName="bv:typeOfData"
-										[label]="'labels.bv:typeOfData'"
-										[options]="dataTypes"
-										[required]="isFieldRequired('bv:typeOfData')"
-										[recommended]="isFieldRecommended('bv:typeOfData')"
-										[translationPath]="'choices.dataset.bv:typeOfData'"
-										fieldName="bv:typeOfData"
-									>
-									</app-enum-select-field>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="ob-form-field" style="position: relative;">
-										<app-field-debug-overlay label="labels.bv:archivalValue" fieldName="bv:archivalValue"></app-field-debug-overlay>
-										<mat-checkbox formControlName="bv:archivalValue" class="ob-checkbox-field">
-											{{ "labels.bv:archivalValue" | translate }}
-											<span *ngIf="isFieldRecommended('bv:archivalValue')" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
-											<app-form-field-tooltip fieldName="bv:archivalValue"></app-form-field-tooltip>
-										</mat-checkbox>
-									</div>
-								</div>
-							</div>
-						</div>
-					</mat-step>
-
-					<!-- Step 5: Governance -->
-					<mat-step [completed]="isStepValid(4)" [hasError]="!isStepValid(4) && (datasetForm.touched || submitAttempted)">
-						<ng-template matStepLabel>{{ "modify.auth.form.sections.governance" | translate }}</ng-template>
-						<div class="step-content">
-							<app-affiliated-persons-field formControlName="prov:qualifiedAttribution" [label]="'labels.prov:qualifiedAttribution'" [required]="true" fieldName="prov:qualifiedAttribution">
-							</app-affiliated-persons-field>
-						</div>
-					</mat-step>
-
-					<!-- Step 6: External References -->
-					<mat-step [completed]="isStepValid(5)" [hasError]="!isStepValid(5) && (datasetForm.touched || submitAttempted)">
-						<ng-template matStepLabel>{{ "modify.auth.form.sections.external" | translate }}</ng-template>
-						<div class="step-content">
-							<div class="ob-flex ob-flex-wrap ob-gap-4">
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="ob-form-group" style="position: relative;">
-										<app-field-debug-overlay label="labels.bv:externalCatalogs" fieldName="bv:externalCatalogs"></app-field-debug-overlay>
-										<label class="ob-form-label">{{ "labels.bv:externalCatalogs" | translate }}</label>
-										<div class="external-catalogs">
-											<mat-checkbox [checked]="isExternalCatalogSelected('I14Y')" (change)="onExternalCatalogChange('I14Y', $event.checked)" class="me-3">
-												I14Y
-											</mat-checkbox>
-											<mat-checkbox
-												[checked]="isExternalCatalogSelected('opendata.swiss')"
-												(change)="onExternalCatalogChange('opendata.swiss', $event.checked)"
-												class="me-3"
+					<!-- Dynamic steps driven by the per-product-type layout (metadataService.getMetadataValue().steps).
+					     Each field dispatches to the right widget via fieldKind(). (#221) -->
+					@for (step of steps; track step.id; let i = $index) {
+						<mat-step [completed]="isStepValid(i)" [hasError]="!isStepValid(i) && (datasetForm.touched || submitAttempted)">
+							<ng-template matStepLabel>{{ step.label | translate }}</ng-template>
+							<div class="step-content">
+								@for (fieldKey of stepFields(step); track fieldKey) {
+									@switch (fieldKind(fieldKey)) {
+										@case ('multilingual') {
+											<app-multilingual-text-field
+												[formControlName]="fieldKey"
+												[label]="'labels.' + fieldKey"
+												[placeholder]="fieldKey === 'dct:title' ? 'modify.auth.form.placeholders.title' : 'modify.auth.form.placeholders.description'"
+												[required]="isFieldRequired(fieldKey)"
+												[recommended]="isFieldRecommended(fieldKey)"
+												[requiredLanguages]="(fieldKey === 'dct:title' || fieldKey === 'dct:description') ? ['de', 'fr'] : []"
+												[textarea]="fieldKey === 'dct:description'"
+												[minLength]="fieldKey === 'dct:title' ? 10 : 0"
+												[maxLength]="fieldKey === 'dct:title' ? 75 : (fieldKey === 'dct:description' ? 2000 : 0)"
+												[fieldName]="fieldKey"
 											>
-												opendata.swiss
-											</mat-checkbox>
-											<mat-checkbox [checked]="isExternalCatalogSelected('geocat.ch')" (change)="onExternalCatalogChange('geocat.ch', $event.checked)">
-												geocat.ch
-											</mat-checkbox>
-										</div>
-										<small class="ob-text-muted">{{ "modify.auth.form.help.externalCatalogs" | translate }}</small>
-									</div>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.dcat:landingPage" fieldName="dcat:landingPage"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.dcat:landingPage" | translate }}</mat-label>
-											<input matInput formControlName="dcat:landingPage" type="url" placeholder="https://example.com" />
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="dcat:landingPage"></app-form-field-tooltip>
-									</div>
-								</div>
-							</div>
-						</div>
-					</mat-step>
+											</app-multilingual-text-field>
+										}
+										@case ('enum') {
+											<!-- `choices.dataset.*` is the SHARED enum-choice namespace, keyed by field rather than by
+											     product type. Every enum field on dataService/datasetSeries (dct:accessRights, adms:status,
+											     dct:publisher, dct:accrualPeriodicity) is shared with the dataset schema and uses identical
+											     codes, and the new types will never carry their own codes. Do NOT switch this to a per-type
+											     prefix: `choices.dataService.*` / `choices.datasetSeries.*` do not exist in the i18n files,
+											     so doing so would drop the labels these dropdowns render today (#221). -->
+											<app-enum-select-field
+												[formControlName]="fieldKey"
+												[label]="'labels.' + fieldKey"
+												[options]="getEnumOptions(fieldKey)"
+												[required]="isFieldRequired(fieldKey)"
+												[recommended]="isFieldRecommended(fieldKey)"
+												[translationPath]="'choices.dataset.' + fieldKey"
+												[fieldName]="fieldKey"
+											>
+											</app-enum-select-field>
+										}
+										@case ('keyword') {
+											<app-keyword-select-field [formControlName]="fieldKey" [label]="'labels.' + fieldKey" [placeholder]="'modify.auth.form.placeholders.keyword'" [fieldName]="fieldKey">
+											</app-keyword-select-field>
+										}
+										@case ('theme') {
+											<app-theme-select-field [formControlName]="fieldKey" [label]="'labels.' + fieldKey" [placeholder]="'modify.auth.form.placeholders.theme'" [fieldName]="fieldKey">
+											</app-theme-select-field>
+										}
+										@case ('affiliated') {
+											<app-affiliated-persons-field [formControlName]="fieldKey" [label]="'labels.' + fieldKey" [required]="isFieldRequired(fieldKey)" [fieldName]="fieldKey">
+											</app-affiliated-persons-field>
+										}
+										@case ('distribution') {
+											<app-distribution-field [formControlName]="fieldKey" [label]="'labels.' + fieldKey" [fieldName]="fieldKey"> </app-distribution-field>
+										}
+										@case ('datasetPicker') {
+											<app-dataset-picker-field [formControlName]="fieldKey" [label]="'labels.' + fieldKey" [fieldName]="fieldKey"></app-dataset-picker-field>
+										}
+										@case ('contactPoint') {
+											<div [formGroupName]="fieldKey">
+												<h5>
+													{{ ('labels.' + fieldKey) | translate }}
+													<span *ngIf="isFieldRecommended(fieldKey)" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
+												</h5>
 
-					<!-- Step 7: Coverage & Legal -->
-					<mat-step [completed]="isStepValid(6)" [hasError]="!isStepValid(6) && (datasetForm.touched || submitAttempted)">
-						<ng-template matStepLabel>{{ "modify.auth.form.sections.coverage" | translate }}</ng-template>
-						<div class="step-content">
-							<div class="ob-flex ob-flex-wrap ob-gap-4">
-								<div class="ob-flex-1 ob-min-w-0 ob-mb-3">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.dct:spatial" fieldName="dct:spatial"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.dct:spatial" | translate }}</mat-label>
-											<input matInput formControlName="dct:spatial" placeholder="e.g., Switzerland, Canton Bern" />
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="dct:spatial"></app-form-field-tooltip>
-									</div>
-								</div>
+												<div class="ob-flex ob-flex-wrap ob-gap-4">
+													<div class="ob-flex-1 ob-min-w-0">
+														<div class="field-with-tooltip" style="position: relative;">
+															<app-field-debug-overlay label="modify.auth.form.contactName" fieldName="dcat:contactPoint.schema:name" [required]="false" [validationInfo]="getFieldValidationDebugInfo('dcat:contactPoint.schema:name')"></app-field-debug-overlay>
+															<mat-form-field class="ob-w-full">
+																<mat-label>{{ "modify.auth.form.contactName" | translate }}</mat-label>
+																<input matInput formControlName="schema:name" />
+																<mat-error *ngIf="datasetForm.get('dcat:contactPoint.schema:name')?.invalid && datasetForm.get('dcat:contactPoint.schema:name')?.touched">
+																	{{ "modify.auth.form.validation.required" | translate }}
+																</mat-error>
+															</mat-form-field>
+															<app-form-field-tooltip fieldName="dcat:contactPoint"></app-form-field-tooltip>
+														</div>
+													</div>
+													<div class="ob-flex-1 ob-min-w-0">
+														<div class="field-with-tooltip" style="position: relative;">
+															<app-field-debug-overlay label="modify.auth.form.contactEmail" fieldName="dcat:contactPoint.schema:email" [required]="false" [validationInfo]="getFieldValidationDebugInfo('dcat:contactPoint.schema:email')"></app-field-debug-overlay>
+															<mat-form-field class="ob-w-full">
+																<mat-label>{{ "modify.auth.form.contactEmail" | translate }}</mat-label>
+																<input matInput type="email" formControlName="schema:email"/>
+																<mat-error
+																	*ngIf="
+																		datasetForm.get('dcat:contactPoint.schema:email')?.hasError('required') && datasetForm.get('dcat:contactPoint.schema:email')?.touched
+																	"
+																>
+																	{{ "modify.auth.form.validation.required" | translate }}
+																</mat-error>
+																<mat-error
+																	*ngIf="
+																		datasetForm.get('dcat:contactPoint.schema:email')?.hasError('email') && datasetForm.get('dcat:contactPoint.schema:email')?.touched
+																	"
+																>
+																	{{ "modify.auth.form.validation.email" | translate }}
+																</mat-error>
+															</mat-form-field>
+															<app-form-field-tooltip fieldName="dcat:contactPoint"></app-form-field-tooltip>
+														</div>
+													</div>
+												</div>
+											</div>
+										}
+										@case ('temporal') {
+											<div [formGroupName]="fieldKey" class="ob-flex ob-flex-wrap ob-gap-4">
+												<div class="ob-flex-1 ob-min-w-0">
+													<div class="field-with-tooltip" style="position: relative;">
+														<app-field-debug-overlay label="modify.auth.form.labels.temporalStart" fieldName="dct:temporal.dcat:start_date"></app-field-debug-overlay>
+														<mat-form-field class="ob-w-full">
+															<mat-label>{{ "modify.auth.form.labels.temporalStart" | translate }}</mat-label>
+															<input matInput [matDatepicker]="temporalStartPicker" formControlName="dcat:start_date" [errorStateMatcher]="temporalRangeErrorMatcher" />
+															<mat-datepicker-toggle matIconSuffix [for]="temporalStartPicker"></mat-datepicker-toggle>
+															<mat-datepicker #temporalStartPicker></mat-datepicker>
+															<mat-error *ngIf="datasetForm.get('dct:temporal.dcat:start_date')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
+														</mat-form-field>
+														<app-form-field-tooltip fieldName="dct:temporal"></app-form-field-tooltip>
+													</div>
+												</div>
+												<div class="ob-flex-1 ob-min-w-0">
+													<div class="field-with-tooltip" style="position: relative;">
+														<app-field-debug-overlay label="modify.auth.form.labels.temporalEnd" fieldName="dct:temporal.dcat:end_date"></app-field-debug-overlay>
+														<mat-form-field class="ob-w-full">
+															<mat-label>{{ "modify.auth.form.labels.temporalEnd" | translate }}</mat-label>
+															<input matInput [matDatepicker]="temporalEndPicker" formControlName="dcat:end_date" [errorStateMatcher]="temporalRangeErrorMatcher" />
+															<mat-datepicker-toggle matIconSuffix [for]="temporalEndPicker"></mat-datepicker-toggle>
+															<mat-datepicker #temporalEndPicker></mat-datepicker>
+															<mat-error *ngIf="datasetForm.get('dct:temporal.dcat:end_date')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
+															<mat-error *ngIf="datasetForm.get('dct:temporal')?.hasError('startAfterEnd') && !datasetForm.get('dct:temporal.dcat:end_date')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.dateOrderStartEnd" | translate }}</mat-error>
+														</mat-form-field>
+														<app-form-field-tooltip fieldName="dct:temporal"></app-form-field-tooltip>
+													</div>
+												</div>
+											</div>
+										}
+										@case ('externalCatalogs') {
+											<div class="ob-form-group" style="position: relative;">
+												<app-field-debug-overlay [label]="'labels.' + fieldKey" [fieldName]="fieldKey"></app-field-debug-overlay>
+												<label class="ob-form-label">{{ ('labels.' + fieldKey) | translate }}</label>
+												<div class="external-catalogs">
+													<mat-checkbox [checked]="isExternalCatalogSelected('I14Y')" (change)="onExternalCatalogChange('I14Y', $event.checked)" class="me-3">
+														I14Y
+													</mat-checkbox>
+													<mat-checkbox
+														[checked]="isExternalCatalogSelected('opendata.swiss')"
+														(change)="onExternalCatalogChange('opendata.swiss', $event.checked)"
+														class="me-3"
+													>
+														opendata.swiss
+													</mat-checkbox>
+													<mat-checkbox [checked]="isExternalCatalogSelected('geocat.ch')" (change)="onExternalCatalogChange('geocat.ch', $event.checked)">
+														geocat.ch
+													</mat-checkbox>
+												</div>
+												<small class="ob-text-muted">{{ "modify.auth.form.help.externalCatalogs" | translate }}</small>
+											</div>
+										}
+										@case ('boolean') {
+											<div class="ob-form-field" style="position: relative;">
+												<app-field-debug-overlay [label]="'labels.' + fieldKey" [fieldName]="fieldKey"></app-field-debug-overlay>
+												<mat-checkbox [formControlName]="fieldKey" class="ob-checkbox-field">
+													{{ ('labels.' + fieldKey) | translate }}
+													<span *ngIf="isFieldRecommended(fieldKey)" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
+													<app-form-field-tooltip [fieldName]="fieldKey"></app-form-field-tooltip>
+												</mat-checkbox>
+											</div>
+										}
+										@case ('date') {
+											<div class="field-with-tooltip" style="position: relative;">
+												<app-field-debug-overlay [label]="'labels.' + fieldKey" [fieldName]="fieldKey" [required]="isFieldRequired(fieldKey)" [validationInfo]="getFieldValidationDebugInfo(fieldKey)"></app-field-debug-overlay>
+												<mat-form-field class="ob-w-full">
+													<mat-label>
+														{{ ('labels.' + fieldKey) | translate }}
+														<span *ngIf="isFieldRecommended(fieldKey)" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
+													</mat-label>
+													<input matInput [matDatepicker]="datePicker" [max]="maxDateFor(fieldKey)" [formControlName]="fieldKey" [errorStateMatcher]="dateErrorMatcher(fieldKey)" />
+													<mat-datepicker-toggle matIconSuffix [for]="datePicker"></mat-datepicker-toggle>
+													<mat-datepicker #datePicker></mat-datepicker>
+													<mat-error *ngIf="datasetForm.get(fieldKey)?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
+													<mat-error *ngIf="datasetForm.get(fieldKey)?.hasError('matDatepickerMax')">{{ "modify.auth.form.validation.dateNotFuture" | translate }}</mat-error>
+													<mat-error *ngIf="fieldKey === 'dct:modified' && datasetForm.hasError('issuedAfterModified') && !datasetForm.get('dct:modified')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.dateOrderIssuedModified" | translate }}</mat-error>
+												</mat-form-field>
+												<app-form-field-tooltip [fieldName]="fieldKey"></app-form-field-tooltip>
+											</div>
+										}
+										@case ('textarea') {
+											<div class="ob-w-full ob-mb-3">
+												<div class="field-with-tooltip" style="position: relative;">
+													<app-field-debug-overlay [label]="'labels.' + fieldKey" [fieldName]="fieldKey"></app-field-debug-overlay>
+													<mat-form-field class="ob-w-full">
+														<mat-label>{{ ('labels.' + fieldKey) | translate }}</mat-label>
+														<textarea matInput [formControlName]="fieldKey" rows="3" [placeholder]="'modify.auth.form.placeholders.comment' | translate"></textarea>
+													</mat-form-field>
+													<app-form-field-tooltip [fieldName]="fieldKey"></app-form-field-tooltip>
+												</div>
+											</div>
+										}
+										@default {
+											<div class="field-with-tooltip" style="position: relative;">
+												<app-field-debug-overlay [label]="'labels.' + fieldKey" [fieldName]="fieldKey" [required]="isFieldRequired(fieldKey)" [validationInfo]="getFieldValidationDebugInfo(fieldKey)"></app-field-debug-overlay>
+												<mat-form-field class="ob-w-full">
+													<mat-label>
+														{{ ('labels.' + fieldKey) | translate }}
+														<span *ngIf="isFieldRecommended(fieldKey)" class="recommended-indicator">{{ "modify.auth.form.validation.recommended" | translate }}</span>
+													</mat-label>
+													<input matInput [formControlName]="fieldKey" />
+												</mat-form-field>
+												<app-form-field-tooltip [fieldName]="fieldKey"></app-form-field-tooltip>
+											</div>
+										}
+									}
+								}
 							</div>
-							<div formGroupName="dct:temporal" class="ob-flex ob-flex-wrap ob-gap-4">
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="modify.auth.form.labels.temporalStart" fieldName="dct:temporal.dcat:start_date"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "modify.auth.form.labels.temporalStart" | translate }}</mat-label>
-											<input matInput [matDatepicker]="temporalStartPicker" formControlName="dcat:start_date" [errorStateMatcher]="temporalRangeErrorMatcher" />
-											<mat-datepicker-toggle matIconSuffix [for]="temporalStartPicker"></mat-datepicker-toggle>
-											<mat-datepicker #temporalStartPicker></mat-datepicker>
-											<mat-error *ngIf="datasetForm.get('dct:temporal.dcat:start_date')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="dct:temporal"></app-form-field-tooltip>
-									</div>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="modify.auth.form.labels.temporalEnd" fieldName="dct:temporal.dcat:end_date"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "modify.auth.form.labels.temporalEnd" | translate }}</mat-label>
-											<input matInput [matDatepicker]="temporalEndPicker" formControlName="dcat:end_date" [errorStateMatcher]="temporalRangeErrorMatcher" />
-											<mat-datepicker-toggle matIconSuffix [for]="temporalEndPicker"></mat-datepicker-toggle>
-											<mat-datepicker #temporalEndPicker></mat-datepicker>
-											<mat-error *ngIf="datasetForm.get('dct:temporal.dcat:end_date')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.invalidDate" | translate }}</mat-error>
-											<mat-error *ngIf="datasetForm.get('dct:temporal')?.hasError('startAfterEnd') && !datasetForm.get('dct:temporal.dcat:end_date')?.hasError('matDatepickerParse')">{{ "modify.auth.form.validation.dateOrderStartEnd" | translate }}</mat-error>
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="dct:temporal"></app-form-field-tooltip>
-									</div>
-								</div>
-							</div>
-						</div>
-					</mat-step>
-
-					<!-- Step 8: Business Context -->
-					<mat-step [completed]="isStepValid(7)" [hasError]="!isStepValid(7) && (datasetForm.touched || submitAttempted)">
-						<ng-template matStepLabel>{{ "modify.auth.form.sections.business" | translate }}</ng-template>
-						<div class="step-content">
-							<div class="ob-flex ob-flex-wrap ob-gap-4">
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.bv:itSystem" fieldName="bv:itSystem"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.bv:itSystem" | translate }}</mat-label>
-											<input matInput formControlName="bv:itSystem" [placeholder]="'modify.auth.form.placeholders.itSystem' | translate" />
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="bv:itSystem"></app-form-field-tooltip>
-									</div>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.bv:retentionPeriod" fieldName="bv:retentionPeriod"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.bv:retentionPeriod" | translate }}</mat-label>
-											<input
-												min="0"
-												matInput
-												type="number"
-												formControlName="bv:retentionPeriod"
-												[placeholder]="'modify.auth.form.placeholders.retentionPeriod' | translate"
-											/>
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="bv:retentionPeriod"></app-form-field-tooltip>
-									</div>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<!-- Business Process field - could be expanded to textarea or array later -->
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.prov:wasGeneratedBy" fieldName="prov:wasGeneratedBy"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.prov:wasGeneratedBy" | translate }}</mat-label>
-											<input matInput formControlName="prov:wasGeneratedBy" [placeholder]="'modify.auth.form.placeholders.businessProcess' | translate" />
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="prov:wasGeneratedBy"></app-form-field-tooltip>
-									</div>
-								</div>
-							</div>
-						</div>
-					</mat-step>
-
-					<!-- Step 9: Additional Metadata & Relationships -->
-					<mat-step [completed]="isStepValid(8)" [hasError]="!isStepValid(8) && (datasetForm.touched || submitAttempted)">
-						<ng-template matStepLabel>{{ "modify.auth.form.sections.additional" | translate }}</ng-template>
-						<div class="step-content">
-							<div class="ob-w-full ob-mb-3">
-								<div class="field-with-tooltip" style="position: relative;">
-									<app-field-debug-overlay label="labels.schema:comment" fieldName="schema:comment"></app-field-debug-overlay>
-									<mat-form-field class="ob-w-full">
-										<mat-label>{{ "labels.schema:comment" | translate }}</mat-label>
-										<textarea matInput formControlName="schema:comment" rows="3" [placeholder]="'modify.auth.form.placeholders.comment' | translate"></textarea>
-									</mat-form-field>
-									<app-form-field-tooltip fieldName="schema:comment"></app-form-field-tooltip>
-								</div>
-							</div>
-							<div class="ob-flex ob-flex-wrap ob-gap-4">
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.bv:geoIdentifier" fieldName="bv:geoIdentifier"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.bv:geoIdentifier" | translate }}</mat-label>
-											<input matInput formControlName="bv:geoIdentifier" [placeholder]="'modify.auth.form.placeholders.geoIdentifier' | translate" />
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="bv:geoIdentifier"></app-form-field-tooltip>
-									</div>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="modify.auth.form.labels.imageUrl" fieldName="schema:image"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "modify.auth.form.labels.imageUrl" | translate }}</mat-label>
-											<input matInput formControlName="schema:image" type="url" placeholder="https://example.com/image.jpg" />
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="schema:image"></app-form-field-tooltip>
-									</div>
-								</div>
-								<div class="ob-flex-1 ob-min-w-0">
-									<div class="field-with-tooltip" style="position: relative;">
-										<app-field-debug-overlay label="labels.bv:abrogation" fieldName="bv:abrogation"></app-field-debug-overlay>
-										<mat-form-field class="ob-w-full">
-											<mat-label>{{ "labels.bv:abrogation" | translate }}</mat-label>
-											<input matInput [matDatepicker]="abrogationPicker" formControlName="bv:abrogation" />
-											<mat-datepicker-toggle matIconSuffix [for]="abrogationPicker"></mat-datepicker-toggle>
-											<mat-datepicker #abrogationPicker></mat-datepicker>
-										</mat-form-field>
-										<app-form-field-tooltip fieldName="bv:abrogation"></app-form-field-tooltip>
-									</div>
-								</div>
-							</div>
-							<div class="ob-w-full">
-								<label class="ob-form-label">{{ "modify.auth.form.labels.relationships" | translate }}</label>
-								<small class="form-text text-muted d-block mb-2"> {{ "modify.auth.form.help.relationships" | translate }} </small>
-								<div class="ob-flex ob-flex-wrap ob-gap-4">
-									<div class="ob-flex-1 ob-min-w-0">
-										<div class="field-with-tooltip" style="position: relative;">
-											<app-field-debug-overlay label="labels.prov:wasDerivedFrom" fieldName="prov:wasDerivedFrom"></app-field-debug-overlay>
-											<mat-form-field class="ob-w-full">
-												<mat-label>{{ "labels.prov:wasDerivedFrom" | translate }}</mat-label>
-												<input matInput formControlName="prov:wasDerivedFrom" [placeholder]="'modify.auth.form.placeholders.derivedFrom' | translate" />
-											</mat-form-field>
-											<app-form-field-tooltip fieldName="prov:wasDerivedFrom"></app-form-field-tooltip>
-										</div>
-									</div>
-									<div class="ob-flex-1 ob-min-w-0">
-										<div class="field-with-tooltip" style="position: relative;">
-											<app-field-debug-overlay label="labels.dcat:inSeries" fieldName="dcat:inSeries"></app-field-debug-overlay>
-											<mat-form-field class="ob-w-full">
-												<mat-label>{{ "labels.dcat:inSeries" | translate }}</mat-label>
-												<input matInput formControlName="dcat:inSeries" [placeholder]="'modify.auth.form.placeholders.inSeries' | translate" />
-											</mat-form-field>
-											<app-form-field-tooltip fieldName="dcat:inSeries"></app-form-field-tooltip>
-										</div>
-									</div>
-									<div class="ob-flex-1 ob-min-w-0">
-										<div class="field-with-tooltip" style="position: relative;">
-											<app-field-debug-overlay label="labels.dct:replaces" fieldName="dct:replaces"></app-field-debug-overlay>
-											<mat-form-field class="ob-w-full">
-												<mat-label>{{ "labels.dct:replaces" | translate }}</mat-label>
-												<input matInput formControlName="dct:replaces" [placeholder]="'modify.auth.form.placeholders.replaces' | translate" />
-											</mat-form-field>
-											<app-form-field-tooltip fieldName="dct:replaces"></app-form-field-tooltip>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</mat-step>
-
-					<!-- Step 10: Distributions -->
-					<mat-step [completed]="isStepValid(9)" [hasError]="!isStepValid(9) && (datasetForm.touched || submitAttempted)">
-						<ng-template matStepLabel>{{ "modify.auth.form.sections.distributions" | translate }}</ng-template>
-						<div class="step-content">
-							<app-distribution-field formControlName="dcat:distribution" [label]="'labels.dcat:distribution'" fieldName="dcat:distribution"> </app-distribution-field>
-						</div>
-					</mat-step>
+						</mat-step>
+					}
 				</mat-stepper>
 
 				<br>
@@ -564,14 +317,14 @@
 
 				<!-- Validation Summary - Schema-based Validation -->
 				<div class="validation-section" style="margin-top: 2rem;">
-					<div *ngFor="let validationGroup of activeValidationGroups" class="ob-mb-3">
+					<div *ngFor="let validationGroup of validationGroups" class="ob-mb-3">
 						<validation-alert [validationGroup]="validationGroup"></validation-alert>
 					</div>
 				</div>
 
 				<!-- Legacy Validation Summary (fallback) -->
 				<ob-alert
-					*ngIf="datasetForm.invalid && datasetForm.touched && invalidFields.length > 0 && activeValidationGroups.length === 0"
+					*ngIf="datasetForm.invalid && datasetForm.touched && invalidFields.length > 0 && validationGroups.length === 0"
 					type="warning"
 					class="ob-mb-4"
 				>
@@ -586,7 +339,7 @@
 
 		<!-- Submit Section -->
 		<div *ngIf="showSubmitSection">
-			<app-dataset-submit [formData]="datasetForm.value" [isEditMode]="isEditMode" [datasetId]="datasetId"> </app-dataset-submit>
+			<app-dataset-submit [formData]="datasetForm.value" [isEditMode]="isEditMode" [datasetId]="datasetId" [productType]="productType || 'dataset'"> </app-dataset-submit>
 
 			<div class="ob-mt-3">
 				<button type="button" mat-button obButton="secondary" (click)="onFormReset()">
