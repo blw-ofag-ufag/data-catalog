@@ -87,7 +87,7 @@ describe('DatasetSubmitComponent', () => {
 		expect(component.selectedRepository).toBe('blw-ofag-ufag/metadata');
 		expect(component.isAuthenticated).toBe(true);
 		expect(component.selectedPublisher).toEqual(publisher);
-		expect(datasetJson.generateDatasetJson).toHaveBeenCalledWith({title: 'x'});
+		expect(datasetJson.generateDatasetJson).toHaveBeenCalledWith({title: 'x'}, {});
 		expect(component.generatedJson).toBe(generatedJson);
 		expect(component.formattedJson).toBe('{"dct:identifier":"my-dataset"}');
 		expect(component.filePath).toBe('datasets/my-dataset.json');
@@ -98,6 +98,13 @@ describe('DatasetSubmitComponent', () => {
 		fixture.detectChanges();
 		expect(datasetJson.generateDatasetJson).not.toHaveBeenCalled();
 		expect(component.generatedJson).toBeNull();
+	});
+
+	it('passes the loaded record through as the merge base, so an edit cannot drop unknown fields (#284)', async () => {
+		await setup({formData: {title: 'x'}, baseRecord: {'bv:itSystem': 'https://agis.admin.ch'}});
+		fixture.detectChanges();
+
+		expect(datasetJson.generateDatasetJson).toHaveBeenCalledWith({title: 'x'}, {'bv:itSystem': 'https://agis.admin.ch'});
 	});
 
 	describe('commitDirectlyToGitHub', () => {

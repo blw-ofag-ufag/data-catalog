@@ -191,4 +191,49 @@ describe('DatasetJsonService', () => {
 			expect(json['bv:externalCatalogs']).toEqual([{'dcat:catalog': 'I14Y'}]);
 		});
 	});
+
+	describe('fields the schema no longer declares survive an edit (#284)', () => {
+		// The form builds its controls from the runtime schema, so a record field the schema dropped
+		// gets no control and never reaches formData. bv:itSystem is the live case: removed from the
+		// schema, still present on 23 published records.
+		it('keeps a base-record field that the form has no control for', () => {
+			const json: any = service.generateDatasetJson(
+				{'dct:identifier': 'test-id', 'dct:title': {de: 'Titel'}},
+				{'dct:identifier': 'test-id', 'bv:itSystem': 'https://agis.admin.ch', 'dct:title': {de: 'alt'}}
+			);
+
+			expect(json['bv:itSystem']).toBe('https://agis.admin.ch');
+		});
+
+		it('lets the form win over the base for every field the form does control', () => {
+			const json: any = service.generateDatasetJson(
+				{'dct:identifier': 'test-id', 'dct:title': {de: 'neu'}},
+				{'dct:identifier': 'test-id', 'dct:title': {de: 'alt'}}
+			);
+
+			expect(json['dct:title']).toEqual({de: 'neu'});
+		});
+
+		it('still clears a field the user emptied, rather than resurrecting it from the base', () => {
+			const json: any = service.generateDatasetJson({'dct:identifier': 'test-id', 'dcat:version': ''}, {'dct:identifier': 'test-id', 'dcat:version': '1.0.0'});
+
+			expect(json['dcat:version']).toBeUndefined();
+		});
+
+		it('defaults to no base, so creating a record cannot inherit anything', () => {
+			const json: any = service.generateDatasetJson({'dct:identifier': 'test-id', 'dct:title': {de: 'x'}});
+
+			expect(Object.keys(json)).toEqual(['dct:identifier', 'dct:title']);
+		});
+
+		it('does not mutate either argument', () => {
+			const formData = {'dct:identifier': 'test-id', 'dcat:distribution': [{'dct:title': {de: 'd'}}]};
+			const base = {'dct:identifier': 'test-id', 'bv:itSystem': 'x'};
+
+			service.generateDatasetJson(formData, base);
+
+			expect(formData).toEqual({'dct:identifier': 'test-id', 'dcat:distribution': [{'dct:title': {de: 'd'}}]});
+			expect(base).toEqual({'dct:identifier': 'test-id', 'bv:itSystem': 'x'});
+		});
+	});
 });

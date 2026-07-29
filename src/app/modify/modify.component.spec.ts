@@ -718,4 +718,47 @@ describe('ModifyComponent', () => {
 			expect(component.odsValidationErrors).toEqual([]);
 		});
 	});
+
+	describe('preservedBaseRecord (#284)', () => {
+		// What the submit step merges its form output over, so an edit cannot delete record fields
+		// the schema no longer declares and the form therefore never rendered.
+		const base = (c: any) => c['preservedBaseRecord'] as Record<string, unknown>;
+		const record = {'dct:identifier': 'id-1', 'bv:itSystem': 'https://agis.admin.ch'};
+
+		it('exposes the loaded record when editing it as the type it was loaded as', () => {
+			Object.assign(component as any, {
+				isEditMode: true,
+				productType: 'dataset',
+				originalDataset: record,
+				originalProductType: 'dataset'
+			});
+
+			expect(base(component)).toEqual(record);
+		});
+
+		it('is empty when creating, so a new record inherits nothing', () => {
+			Object.assign(component as any, {isEditMode: false, originalDataset: record, originalProductType: 'dataset'});
+
+			expect(base(component)).toEqual({});
+		});
+
+		it('is empty when no record was loaded', () => {
+			Object.assign(component as any, {isEditMode: true, originalDataset: null});
+
+			expect(base(component)).toEqual({});
+		});
+
+		it('is empty once the product type differs from the one the record was loaded as', () => {
+			// Not reachable today (the type selector is create-mode only), but grafting a dataset's
+			// fields onto a dataService would corrupt rather than protect.
+			Object.assign(component as any, {
+				isEditMode: true,
+				productType: 'dataService',
+				originalDataset: record,
+				originalProductType: 'dataset'
+			});
+
+			expect(base(component)).toEqual({});
+		});
+	});
 });

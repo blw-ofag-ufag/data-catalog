@@ -32,6 +32,12 @@ import {DEFAULT_DATA_PRODUCT_TYPE, DataProductType} from '../../models/data-prod
 export class DatasetSubmitComponent implements OnInit, OnDestroy {
 	// Inputs
 	@Input() formData: Record<string, unknown> = {};
+	/**
+	 * The record the form was loaded from. Merged under `formData` when generating the JSON so that
+	 * fields the current schema no longer declares — and which therefore have no form control —
+	 * survive an edit instead of being silently deleted (#284). Empty when creating.
+	 */
+	@Input() baseRecord: Record<string, unknown> = {};
 	@Input() isEditMode = false;
 	@Input() datasetId?: string | null;
 	@Input() productType: DataProductType = DEFAULT_DATA_PRODUCT_TYPE;
@@ -260,8 +266,9 @@ export class DatasetSubmitComponent implements OnInit, OnDestroy {
 			return;
 		}
 
-		// Generate dataset JSON
-		this.generatedJson = this.datasetJsonService.generateDatasetJson(this.formData);
+		// Generate dataset JSON, preserving any fields the loaded record carries but the schema-driven
+		// form has no control for (#284).
+		this.generatedJson = this.datasetJsonService.generateDatasetJson(this.formData, this.baseRecord);
 
 		// Format for display
 		this.formattedJson = this.datasetJsonService.formatJsonForDisplay(this.generatedJson);
