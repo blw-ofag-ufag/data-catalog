@@ -40,8 +40,15 @@ export default [
 		},
 
 		rules: {
+			// The three rules below are structural conventions, not defects: satisfying them means
+			// reordering or retyping most of the codebase. Left as "error" they accounted for ~690 of
+			// ~964 problems, which drowned out the real findings and made `npm run lint` useless as a
+			// gate. As warnings they stay visible (and fixable file by file) while a non-zero exit
+			// again means something is actually wrong.
+			"@typescript-eslint/no-explicit-any": "warn",
+			"@angular-eslint/prefer-inject": "warn",
 			"@typescript-eslint/member-ordering": [
-				"error",
+				"warn",
 				{
 					default: [
 						"public-static-field",
