@@ -92,11 +92,13 @@ datasetSeries:
     - id: 3
       key: access
       label: modify.auth.form.sections.access
-      fields: ["dct:accessRights", "adms:status"]
+      # bv:classification / bv:personalData are declared by the datasetSeries schema; without them
+      # here they could be validated but never entered (#221).
+      fields: ["dct:accessRights", "adms:status", "bv:classification", "bv:personalData"]
     - id: 4
       key: publisher
       label: modify.auth.form.sections.publisher
-      fields: ["dct:publisher", "dcat:contactPoint"]
+      fields: ["dct:publisher", "dcat:contactPoint", "dct:creator"]
     - id: 5
       key: metadata
       label: modify.auth.form.sections.metadata
