@@ -23,7 +23,7 @@ registerLocaleData(localeIt);
 @Component({
 	templateUrl: './free-list-item.component.html',
 	styleUrl: '../details.component.scss',
-	imports: [MatChip, MatChipSet, TranslatePipe],
+	imports: [MatChip, MatChipSet, TranslatePipe, RouterLink],
 	standalone: true
 })
 export class FreeListItemComponent {
@@ -37,6 +37,14 @@ export class FreeListItemComponent {
 		this.data = this.injector.get('data', []);
 		this.keywordService = this.injector.get(KeywordService);
 		this.translateService = this.injector.get(TranslateService);
+	}
+
+	/**
+	 * Query params that reproduce this chip as an index filter (#255).
+	 * Array facets filter with the same `field=value` URL shape as scalar enums.
+	 */
+	queryParamsFor(item: string): {[key: string]: string} {
+		return {[this.label]: item};
 	}
 
 	getTranslatedValue(item: string): string {

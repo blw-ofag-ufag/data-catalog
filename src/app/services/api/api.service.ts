@@ -152,8 +152,11 @@ export class DatasetService {
 								const datasetDimensions = this.getDimensionsArray(schema);
 								categoryMatches = choices.some(choice => datasetDimensions.includes(choice));
 							} else {
-								// For other categories, check if the schema value matches any of the choices
-								categoryMatches = choices.includes(schema[category] as string);
+								// For other categories, the stored value may be a scalar or an array
+								// (array facets such as `dcat:theme`, see #255). Treat both alike:
+								// a dataset matches when any of its values is among the choices.
+								const value = schema[category] as unknown;
+								categoryMatches = Array.isArray(value) ? value.some(v => choices.includes(v as string)) : choices.includes(value as string);
 							}
 
 							// If this category doesn't match, the dataset doesn't pass the filter
