@@ -206,6 +206,21 @@ describe('ValidationSchemaService', () => {
 		});
 	});
 
+	describe('strict profiles on non-dataset types (#221)', () => {
+		it('does not demand i14y/ods fields the active product type has no input for', () => {
+			// dcat:landingPage is required by the i14y profile but is not a datasetSeries property,
+			// so demanding it would be an unsatisfiable "Pflichtfeld".
+			service.loadBaseForType('datasetSeries');
+
+			// The translate stub echoes keys, so assert on the error count rather than the text.
+			expect(service.getFilteredSchemaValidationErrors('i14y', {})).toEqual([]);
+		});
+
+		it('still reports those fields for datasets', () => {
+			expect(service.getFilteredSchemaValidationErrors('i14y', {}).length).toBe(1);
+		});
+	});
+
 	describe('loadBaseForType (#221)', () => {
 		it("repoints the base slot at the requested type's own schema", () => {
 			service.loadBaseForType('datasetSeries');
