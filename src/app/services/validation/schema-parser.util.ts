@@ -140,7 +140,13 @@ export class SchemaParserUtil {
 				// Check if there's a pattern requirement for this language
 				const langProp = prop.properties?.[lang];
 				if (langProp?.pattern) {
-					const pattern = new RegExp(langProp.pattern);
+					// Anchor the pattern. JSON Schema `pattern` is an unanchored *search*, but the
+					// catalog's title patterns encode the full-value rule (`[a-zA-Z0-9_\-\s]{10,75}`),
+					// and Angular's Validators.pattern anchors too. Unanchored, any value containing
+					// 10 allowed characters anywhere passed: a 90-character title was accepted, and
+					// "Portail de données de l'agriculture suisse" passed on the substring
+					// "Portail de donn" while the message still quoted the 10-75 rule (#221).
+					const pattern = new RegExp(`^(?:${langProp.pattern})$`);
 					return !pattern.test(langValue);
 				}
 

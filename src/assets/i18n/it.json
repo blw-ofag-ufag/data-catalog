@@ -293,6 +293,9 @@
         "validation": {
           "required": "Questo campo è obbligatorio",
           "maxLength": "Lunghezza massima superata",
+          "minLength": "Sono richiesti almeno {{minLength}} caratteri",
+          "pattern": "Formato non valido",
+          "titlePattern": "Sono ammessi solo lettere A-Z, cifre 0-9, spazi, trattini e trattini bassi",
           "email": "Inserisci un indirizzo email valido",
           "summary": "Errori di validazione del modulo:",
           "fillRequired": "Compila tutti i campi obbligatori contrassegnati con un asterisco (*)",
