@@ -234,7 +234,7 @@
     "dct:temporal": "Temporal coverage",
     "dct:title": "Title",
     "foaf:page": "Related resources",
-    "image": "Image",
+    "schema:image": "Image",
     "prov:qualifiedAttribution": "Responsible persons",
     "prov:wasDerivedFrom": "Derived from",
     "prov:wasGeneratedBy": "Business process",
