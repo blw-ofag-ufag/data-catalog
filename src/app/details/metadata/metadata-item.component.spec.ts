@@ -14,6 +14,7 @@ import {
 	DateMetadataItemComponent,
 	DefaultMetadataItemComponent,
 	EnumComponent,
+	FreeListItemComponent,
 	LinkComponent,
 	MetadataItemComponent,
 	NoComponent,
@@ -105,7 +106,7 @@ describe('MetadataItemComponent', () => {
 
 describe('DatasetLinkListComponent', () => {
 	it('builds /details query params, falling back to current publisher + default type when the ref is not in the store', () => {
-		const route: any = {snapshot: {queryParams: {publisher: 'PUB', lang: 'de', dataset: 'old'}}};
+		const route: {snapshot: {queryParams: Record<string, string>}} = {snapshot: {queryParams: {publisher: 'PUB', lang: 'de', dataset: 'old'}}};
 		TestBed.configureTestingModule({
 			imports: [DatasetLinkListComponent, provideTranslateTesting()],
 			providers: [
@@ -135,5 +136,54 @@ describe('EnumComponent', () => {
 		fixture.componentInstance.data = 'PUBLIC';
 		fixture.detectChanges();
 		expect(fixture.componentInstance.paramEntry['dct:accessRights']).toBe('PUBLIC');
+	});
+});
+
+describe('FreeListItemComponent', () => {
+	/**
+	 * #255: array-facet chips (dcat:theme, bv:dimensions) are rendered through NgComponentOutlet,
+	 * where a plain routerLink click does not navigate. They therefore need the same explicit
+	 * mouseup navigation the other outlet-rendered components use, or they look dead to the user
+	 * while the scalar enum chips next to them work.
+	 */
+	function setup(label: string, data: string[]) {
+		const navigate = jest.fn();
+		TestBed.configureTestingModule({
+			imports: [FreeListItemComponent, NoopAnimationsModule, provideTranslateTesting()],
+			providers: [
+				{provide: Router, useValue: {navigate, createUrlTree: jest.fn(() => ({})), serializeUrl: jest.fn(() => ''), events: of()}},
+				{provide: ActivatedRoute, useValue: {snapshot: {queryParams: {}}}},
+				{provide: 'label', useValue: label},
+				{provide: 'data', useValue: data}
+			]
+		});
+		const fixture = TestBed.createComponent(FreeListItemComponent);
+		return {fixture, navigate};
+	}
+
+	it('builds the index filter query params for a theme', () => {
+		const {fixture} = setup('dcat:theme', ['agriculture']);
+		expect(fixture.componentInstance.queryParamsFor('agriculture')).toEqual({'dcat:theme': 'agriculture'});
+	});
+
+	it('navigates to the filtered index on mouseup', () => {
+		const {fixture, navigate} = setup('dcat:theme', ['agriculture']);
+		fixture.componentInstance.navigateTo('agriculture');
+		expect(navigate).toHaveBeenCalledWith(['/index'], {queryParams: {'dcat:theme': 'agriculture'}});
+	});
+
+	it('does the same for the dimensions facet, which shares this component', () => {
+		const {fixture, navigate} = setup('bv:dimensions', ['time']);
+		fixture.componentInstance.navigateTo('time');
+		expect(navigate).toHaveBeenCalledWith(['/index'], {queryParams: {'bv:dimensions': 'time'}});
+	});
+
+	it('wires mouseup on the rendered anchor, not only on click', () => {
+		const {fixture, navigate} = setup('dcat:theme', ['agriculture']);
+		fixture.detectChanges();
+		const anchor = fixture.nativeElement.querySelector('mat-chip a') as HTMLElement;
+		expect(anchor).toBeTruthy();
+		anchor.dispatchEvent(new MouseEvent('mouseup', {bubbles: true}));
+		expect(navigate).toHaveBeenCalledWith(['/index'], {queryParams: {'dcat:theme': 'agriculture'}});
 	});
 });
