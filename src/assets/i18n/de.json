@@ -147,6 +147,8 @@
     "version": "Version"
   },
   "tooltips": {
+    "dcat:endpointURL": "URL-Adresse, wo der Datendienst aufgerufen werden kann.",
+    "dcat:endpointDescription": "URL of technical documentation of the data service, such as for example a Swagger documentation."
     "adms:status": "Status des Datenprodukts: Befindet es sich in Bearbeitung, ist es fertiggestellt usw.",
     "bv:abrogation": "Was ist das Aufhebungdatum?",
     "bv:archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen einen anhaltenden Nutzen oder eine anhaltende Bedeutung, die seine weitere Aufbewahrung rechtfertigen?",
