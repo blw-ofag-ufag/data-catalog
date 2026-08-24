@@ -625,6 +625,16 @@ describe('ModifyComponent', () => {
 			expect(component.productType).toBe('dataService');
 			expect(metadataServiceStub.loadForType).toHaveBeenCalledWith('dataService');
 			expect(multiDatasetServiceStub.loadDetail).toHaveBeenCalledWith('BLW-OFAG-UFAG-FOAG', 'dataService', 'svc-1');
+			// "Basisanforderungen" must come from the dataService schema, not the dataset one (#221).
+			expect(validationSchemaServiceStub.loadBaseForType).toHaveBeenCalledWith('dataService');
+		});
+
+		it('repoints the base validation schema when the product type is switched (#221)', () => {
+			fixture.detectChanges();
+
+			component.onProductTypeChange({target: {value: 'datasetSeries'}} as any);
+
+			expect(validationSchemaServiceStub.loadBaseForType).toHaveBeenCalledWith('datasetSeries');
 		});
 
 		it('stays in create mode when no id is present', () => {

@@ -283,6 +283,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 			this.pendingFormData = null;
 			this.datasetForm.reset();
 			this.metadataService.loadForType(newType);
+			// The "Basisanforderungen" set is per product type (#221).
+			this.validationSchemaService.loadBaseForType(newType);
 		}
 	}
 
@@ -455,6 +457,8 @@ export class ModifyComponent implements OnInit, OnDestroy {
 							if (this.productType !== type) {
 								this.productType = type;
 								this.metadataService.loadForType(type);
+								// Validate against this type's own requirements, not the dataset's (#221).
+								this.validationSchemaService.loadBaseForType(type);
 							}
 
 							// Load full record details. loadDetail resolves the per-type detail URL and keys

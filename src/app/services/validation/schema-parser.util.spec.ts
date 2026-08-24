@@ -113,6 +113,37 @@ describe('SchemaParserUtil', () => {
 			});
 		});
 
+		describe('multilingual pattern is anchored (#221)', () => {
+			const titleProp = {
+				type: 'object',
+				required: ['de', 'fr'],
+				properties: {
+					de: {type: 'string', pattern: '[a-zA-Z0-9_\\-\\s]{10,75}'},
+					fr: {type: 'string', pattern: '[a-zA-Z0-9_\\-\\s]{10,75}'}
+				}
+			};
+
+			const titleErrors = (value: any) => {
+				const parsed = SchemaParserUtil.parseSchema({type: 'object', required: ['dct:title'], properties: {'dct:title': titleProp}});
+				const field = parsed.fields.get('dct:title')!;
+				return field.validators.map(v => v({value} as any)).filter(Boolean);
+			};
+
+			it('rejects a title longer than the 75 characters the pattern allows', () => {
+				const tooLong = 'a'.repeat(90);
+				expect(titleErrors({de: tooLong, fr: tooLong})).not.toEqual([]);
+			});
+
+			it('rejects a title whose disallowed characters sit outside the matched substring', () => {
+				// Unanchored, this passed on the substring "Portail de donn".
+				expect(titleErrors({de: 'Datenportal der Schweiz', fr: "Portail de données de l'agriculture suisse"})).not.toEqual([]);
+			});
+
+			it('still accepts a conforming title', () => {
+				expect(titleErrors({de: 'Datenportal der Schweiz', fr: 'Portail de donnees agricoles'})).toEqual([]);
+			});
+		});
+
 		describe('minLength / maxLength', () => {
 			it('enforces minLength', () => {
 				expect(validate({type: 'string', minLength: 3}, 'ab')).toEqual({minlength: expect.anything()});

@@ -202,7 +202,9 @@
         "label": "modify.auth.form.sections.access",
         "fields": [
           "dct:accessRights",
-          "adms:status"
+          "adms:status",
+          "bv:classification",
+          "bv:personalData"
         ]
       },
       {
@@ -211,7 +213,8 @@
         "label": "modify.auth.form.sections.publisher",
         "fields": [
           "dct:publisher",
-          "dcat:contactPoint"
+          "dcat:contactPoint",
+          "dct:creator"
         ]
       },
       {

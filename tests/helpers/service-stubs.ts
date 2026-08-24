@@ -16,6 +16,7 @@ export function stubValidationSchemaService(overrides: Record<string, unknown> =
 		isLoaded: jest.fn().mockReturnValue(of(true)),
 		getLoadError: jest.fn().mockReturnValue(of(null)),
 		retryLoadingSchemas: jest.fn(),
+		loadBaseForType: jest.fn(),
 		...overrides
 	};
 }

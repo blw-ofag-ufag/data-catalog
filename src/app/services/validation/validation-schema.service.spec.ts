@@ -52,8 +52,19 @@ function buildFetcherStub(): any {
 	results.set('i14y', {id: 'i14y', color: '#0066cc', alertType: 'info', schema: i14ySchema});
 	results.set('ods', {id: 'ods', color: '#e91e63', alertType: 'warning', schema: odsSchema});
 
+	// Per-type product schemas, fetched individually by loadBaseForType (#221).
+	const seriesSchema = {
+		type: 'object',
+		required: ['dct:creator'],
+		properties: {
+			'dct:creator': {type: 'object', properties: {'prov:agent': {type: 'string'}}},
+			'dct:title': {type: 'object', properties: {de: {type: 'string'}, fr: {type: 'string'}}, required: ['de', 'fr']}
+		}
+	};
+
 	return {
-		fetchAllSchemas: jest.fn().mockReturnValue(of(results))
+		fetchAllSchemas: jest.fn().mockReturnValue(of(results)),
+		fetchSchema: jest.fn((config: any) => of(config.path?.includes('datasetSeries') ? seriesSchema : baseSchema))
 	};
 }
 
@@ -192,6 +203,37 @@ describe('ValidationSchemaService', () => {
 				expect(entry.required).toBe(false);
 				expect(entry.messages).toEqual([]);
 			});
+		});
+	});
+
+	describe('strict profiles on non-dataset types (#221)', () => {
+		it('does not demand i14y/ods fields the active product type has no input for', () => {
+			// dcat:landingPage is required by the i14y profile but is not a datasetSeries property,
+			// so demanding it would be an unsatisfiable "Pflichtfeld".
+			service.loadBaseForType('datasetSeries');
+
+			// The translate stub echoes keys, so assert on the error count rather than the text.
+			expect(service.getFilteredSchemaValidationErrors('i14y', {})).toEqual([]);
+		});
+
+		it('still reports those fields for datasets', () => {
+			expect(service.getFilteredSchemaValidationErrors('i14y', {}).length).toBe(1);
+		});
+	});
+
+	describe('loadBaseForType (#221)', () => {
+		it("repoints the base slot at the requested type's own schema", () => {
+			service.loadBaseForType('datasetSeries');
+
+			const base = service.getSchema('base');
+			// The dataset requirement dct:title stays; the series-only requirement appears.
+			expect(base?.fields['dct:creator']?.required).toBe(true);
+			expect(fetcher.fetchSchema).toHaveBeenCalledWith(expect.objectContaining({path: 'data/schemas/datasetSeries.json'}));
+		});
+
+		it('does not refetch when the base already matches the requested type', () => {
+			service.loadBaseForType('dataset');
+			expect(fetcher.fetchSchema).not.toHaveBeenCalled();
 		});
 	});
 
