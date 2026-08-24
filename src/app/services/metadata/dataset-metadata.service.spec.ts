@@ -116,14 +116,15 @@ describe('DatasetMetadataService', () => {
 		const stepCases: [string, number][] = [
 			['dct:title', 1],
 			['dct:description', 1],
-			['dct:accessRights', 2],
-			['adms:status', 2],
-			['dct:publisher', 3],
-			['dct:issued', 4],
-			['prov:qualifiedAttribution', 5],
-			['bv:externalCatalogs', 6],
-			['dct:spatial', 7],
-			['prov:wasDerivedFrom', 8],
+			['schema:image', 1],
+			['dct:issued', 2],
+			['dct:accessRights', 3],
+			['adms:status', 3],
+			['bv:externalCatalogs', 4],
+			['dct:spatial', 5],
+			['prov:wasDerivedFrom', 6],
+			['dct:publisher', 7],
+			['prov:qualifiedAttribution', 8],
 			['dcat:distribution', 9]
 		];
 
@@ -150,6 +151,31 @@ describe('DatasetMetadataService', () => {
 				const step1 = steps.find(s => s.id === 1);
 				expect(step1?.key).toBe('basic');
 				expect(step1?.fields).toContain('dct:title');
+				done();
+			});
+		});
+
+		it('orders the steps as agreed in #225', done => {
+			service.getSteps().subscribe(steps => {
+				expect(steps.map(s => s.key)).toEqual([
+					'basic',
+					'metadata',
+					'access',
+					'external',
+					'coverage',
+					'additional',
+					'publisher',
+					'governance',
+					'distributions'
+				]);
+				done();
+			});
+		});
+
+		it('puts availability at the bottom of access & classification', done => {
+			service.getSteps().subscribe(steps => {
+				const access = steps.find(s => s.key === 'access');
+				expect(access?.fields.at(-1)).toBe('dcatap:availability');
 				done();
 			});
 		});

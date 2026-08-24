@@ -12,35 +12,35 @@ dataset:
     - id: 1
       key: basic
       label: modify.auth.form.sections.basic
-      fields: ["dct:title", "dct:description", "dcat:keyword", "dcat:theme"]
+      fields: ["dct:title", "dct:description", "dcat:keyword", "dcat:theme", "schema:image"]
     - id: 2
-      key: access
-      label: modify.auth.form.sections.access
-      fields: ["dct:accessRights", "dcatap:availability", "bv:classification", "bv:personalData", "adms:status"]
-    - id: 3
-      key: publisher
-      label: modify.auth.form.sections.publisher
-      fields: ["dct:publisher", "dcat:contactPoint"]
-    - id: 4
       key: metadata
       label: modify.auth.form.sections.metadata
       fields: ["dct:issued", "dct:modified", "dcat:version", "dct:accrualPeriodicity", "bv:typeOfData", "bv:archivalValue"]
-    - id: 5
-      key: governance
-      label: modify.auth.form.sections.governance
-      fields: ["prov:qualifiedAttribution"]
-    - id: 6
+    - id: 3
+      key: access
+      label: modify.auth.form.sections.access
+      fields: ["dct:accessRights", "bv:classification", "bv:personalData", "adms:status", "dcatap:availability"]
+    - id: 4
       key: external
       label: modify.auth.form.sections.external
       fields: ["bv:externalCatalogs", "dcat:landingPage"]
-    - id: 7
+    - id: 5
       key: coverage
       label: modify.auth.form.sections.coverage
       fields: ["dct:spatial", "dct:temporal", "dcatap:applicableLegislation"]
-    - id: 8
+    - id: 6
       key: additional
       label: modify.auth.form.sections.additional
-      fields: ["schema:comment", "bv:geoIdentifier", "schema:image", "bv:abrogation", "prov:wasDerivedFrom", "dcat:inSeries", "dct:replaces"]
+      fields: ["schema:comment", "bv:geoIdentifier", "bv:abrogation", "prov:wasDerivedFrom", "dcat:inSeries", "dct:replaces"]
+    - id: 7
+      key: publisher
+      label: modify.auth.form.sections.publisher
+      fields: ["dct:publisher", "dcat:contactPoint"]
+    - id: 8
+      key: governance
+      label: modify.auth.form.sections.governance
+      fields: ["prov:qualifiedAttribution"]
     - id: 9
       key: distributions
       label: modify.auth.form.sections.distributions
@@ -50,45 +50,45 @@ dataService:
     - id: 1
       key: basic
       label: modify.auth.form.sections.basic
-      fields: ["dct:title", "dct:description"]
+      fields: ["dct:title", "dct:description", "schema:image"]
     - id: 2
-      key: service
-      label: modify.auth.form.sections.service
-      fields: ["dcat:endpointURL", "dcat:endpointDescription", "dcat:servesDataset", "dct:conformsTo"]
+      key: metadata
+      label: modify.auth.form.sections.metadata
+      fields: ["dcat:version", "adms:versionNotes"]
     - id: 3
       key: access
       label: modify.auth.form.sections.access
       fields: ["dct:accessRights", "adms:status"]
     - id: 4
-      key: publisher
-      label: modify.auth.form.sections.publisher
-      fields: ["dct:publisher", "dcat:contactPoint"]
-    - id: 5
-      key: metadata
-      label: modify.auth.form.sections.metadata
-      fields: ["dcat:version", "adms:versionNotes"]
-    - id: 6
       key: external
       label: modify.auth.form.sections.external
       fields: ["bv:externalCatalogs", "dcat:landingPage"]
-    - id: 7
+    - id: 5
       key: coverage
       label: modify.auth.form.sections.coverage
       fields: ["dcatap:applicableLegislation"]
-    - id: 8
+    - id: 6
       key: additional
       label: modify.auth.form.sections.additional
-      fields: ["schema:comment", "schema:image", "foaf:page"]
+      fields: ["schema:comment", "foaf:page"]
+    - id: 7
+      key: publisher
+      label: modify.auth.form.sections.publisher
+      fields: ["dct:publisher", "dcat:contactPoint"]
+    - id: 8
+      key: service
+      label: modify.auth.form.sections.service
+      fields: ["dcat:endpointURL", "dcat:endpointDescription", "dcat:servesDataset", "dct:conformsTo"]
 datasetSeries:
   steps:
     - id: 1
       key: basic
       label: modify.auth.form.sections.basic
-      fields: ["dct:title", "dct:description", "dcat:keyword", "dcat:theme"]
+      fields: ["dct:title", "dct:description", "dcat:keyword", "dcat:theme", "schema:image"]
     - id: 2
-      key: series
-      label: modify.auth.form.sections.series
-      fields: ["dcat:dataset"]
+      key: metadata
+      label: modify.auth.form.sections.metadata
+      fields: ["dct:issued", "dct:modified", "dcat:version", "dct:accrualPeriodicity", "adms:versionNotes"]
     - id: 3
       key: access
       label: modify.auth.form.sections.access
@@ -96,18 +96,18 @@ datasetSeries:
       # here they could be validated but never entered (#221).
       fields: ["dct:accessRights", "adms:status", "bv:classification", "bv:personalData"]
     - id: 4
-      key: publisher
-      label: modify.auth.form.sections.publisher
-      fields: ["dct:publisher", "dcat:contactPoint", "dct:creator"]
-    - id: 5
-      key: metadata
-      label: modify.auth.form.sections.metadata
-      fields: ["dct:issued", "dct:modified", "dcat:version", "dct:accrualPeriodicity", "adms:versionNotes"]
-    - id: 6
       key: coverage
       label: modify.auth.form.sections.coverage
       fields: ["dct:spatial", "dct:temporal", "dcatap:applicableLegislation"]
-    - id: 7
+    - id: 5
       key: additional
       label: modify.auth.form.sections.additional
-      fields: ["schema:comment", "schema:image", "foaf:page"]
+      fields: ["schema:comment", "foaf:page"]
+    - id: 6
+      key: publisher
+      label: modify.auth.form.sections.publisher
+      fields: ["dct:publisher", "dcat:contactPoint", "dct:creator"]
+    - id: 7
+      key: series
+      label: modify.auth.form.sections.series
+      fields: ["dcat:dataset"]

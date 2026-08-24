@@ -234,7 +234,7 @@
     "dct:temporal": "Couverture temporelle",
     "dct:title": "Titre",
     "foaf:page": "Ressources associées",
-    "image": "Image",
+    "schema:image": "Image",
     "prov:qualifiedAttribution": "Personnes responsables",
     "prov:wasDerivedFrom": "Dérivé de",
     "prov:wasGeneratedBy": "Processus métier",

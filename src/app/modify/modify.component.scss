@@ -50,12 +50,26 @@
 	min-height: 56px; // Match the height of mat-form-field
 }
 
+// #236: the help text under the external-catalog checkboxes wrapped inside the
+// first grid column. Make the group and its help line span the full row.
+.external-catalogs-group {
+	width: 100%;
+
+	> .ob-text-muted {
+		display: block;
+	}
+}
+
 // Style external catalogs section
 .external-catalogs {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
 	margin-bottom: 0.5rem;
+	// #236: the group is laid out in columns, so the checkbox row and its help
+	// text below must claim the full width instead of wrapping inside column one.
+	width: 100%;
+	flex-basis: 100%;
 
 	.mat-mdc-checkbox {
 		.mdc-form-field {
@@ -232,25 +246,6 @@ mat-form-field.required {
 		font-weight: 500;
 		margin-left: 4px;
 		opacity: 0.8;
-	}
-}
-
-// Enhanced external catalog styling
-.external-catalogs {
-	.mat-mdc-checkbox {
-		&.i14y-catalog {
-			.mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
-				background-color: #0066cc;
-				border-color: #0066cc;
-			}
-		}
-
-		&.ods-catalog {
-			.mdc-checkbox__native-control:checked ~ .mdc-checkbox__background {
-				background-color: #e91e63;
-				border-color: #e91e63;
-			}
-		}
 	}
 }
 
