@@ -298,6 +298,9 @@
         "validation": {
           "required": "Dieses Feld ist erforderlich",
           "maxLength": "Maximale Länge überschritten",
+          "minLength": "Mindestens {{minLength}} Zeichen erforderlich",
+          "pattern": "Ungültiges Format",
+          "titlePattern": "Erlaubt sind nur Buchstaben A-Z, Ziffern 0-9, Leerzeichen, Bindestriche und Unterstriche",
           "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
           "summary": "Formularvalidierungsfehler:",
           "fillRequired": "Bitte füllen Sie alle Pflichtfelder aus, die mit einem Sternchen (*) markiert sind",

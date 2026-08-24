@@ -293,6 +293,9 @@
         "validation": {
           "required": "Ce champ est requis",
           "maxLength": "Longueur maximale dépassée",
+          "minLength": "Au moins {{minLength}} caractères requis",
+          "pattern": "Format non valide",
+          "titlePattern": "Seuls les lettres A-Z, les chiffres 0-9, les espaces, les traits d’union et les traits de soulignement sont autorisés",
           "email": "Veuillez saisir une adresse e-mail valide",
           "summary": "Erreurs de validation du formulaire :",
           "fillRequired": "Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*)",
