@@ -286,6 +286,7 @@
         "learnMore": "Mehr über GitHub Tokens erfahren"
       },
       "form": {
+        "productType": "Produkttyp",
         "title": {
           "new": "Neuen Datensatz erstellen",
           "edit": "Datensatz bearbeiten"

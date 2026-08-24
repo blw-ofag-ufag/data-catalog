@@ -287,6 +287,7 @@
         "learnMore": "Learn more about GitHub tokens"
       },
       "form": {
+        "productType": "Product type",
         "title": {
           "new": "Create New Dataset",
           "edit": "Edit Dataset"

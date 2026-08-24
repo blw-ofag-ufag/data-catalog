@@ -281,6 +281,7 @@
         "learnMore": "En savoir plus sur les tokens GitHub"
       },
       "form": {
+        "productType": "Type de produit",
         "title": {
           "new": "Créer un nouveau jeu de données",
           "edit": "Modifier le jeu de données"
