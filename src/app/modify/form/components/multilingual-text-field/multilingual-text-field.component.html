@@ -23,6 +23,7 @@
 						*ngIf="!textarea"
 						matInput
 						[formControl]="getControl(lang.code)"
+						[errorStateMatcher]="errorStateMatcher"
 						[placeholder]="placeholder | translate"
 						[maxlength]="maxLength || null"
 						(blur)="onBlur()"
@@ -32,6 +33,7 @@
 						*ngIf="textarea"
 						matInput
 						[formControl]="getControl(lang.code)"
+						[errorStateMatcher]="errorStateMatcher"
 						[placeholder]="placeholder | translate"
 						[maxlength]="maxLength || null"
 						rows="4"

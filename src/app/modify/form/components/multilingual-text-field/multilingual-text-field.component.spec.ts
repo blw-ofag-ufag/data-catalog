@@ -176,5 +176,18 @@ describe('MultilingualTextFieldComponent', () => {
 			fixture.detectChanges();
 			expect(fixture.nativeElement.querySelector('.field-help')).toBeNull();
 		});
+
+		it('renders the max-length error on loaded over-long data without interaction', () => {
+			component.maxLength = 75;
+			component.minLength = 10;
+			fixture.detectChanges();
+			// Loaded existing data arrives via writeValue and is never touched.
+			component.writeValue({de: 'x'.repeat(109), fr: '', it: '', en: ''});
+			fixture.detectChanges();
+			const active = fixture.nativeElement.querySelector('.mat-mdc-tab-body-active') || fixture.nativeElement;
+			const error = active.querySelector('mat-error');
+			expect(error).not.toBeNull();
+			expect(error.textContent).toContain('modify.auth.form.validation.maxLength');
+		});
 	});
 });

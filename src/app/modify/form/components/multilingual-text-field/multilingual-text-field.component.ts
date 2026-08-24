@@ -18,6 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
+import {ValueErrorStateMatcher} from '../../../../shared/value-error-state-matcher';
 import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from '../field-debug-overlay/field-debug-overlay.component';
 import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
 
@@ -71,6 +72,9 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, Val
 	@Input() fieldName?: string;
 
 	formGroup: FormGroup;
+	// #dev feedback: surface value-based violations (e.g. an over-long title) on loaded data
+	// without waiting for the control to be touched.
+	readonly errorStateMatcher = new ValueErrorStateMatcher();
 	private readonly destroy$ = new Subject<void>();
 	private onChange = (value: MultilingualText | null) => {};
 	private onTouched = () => {};
