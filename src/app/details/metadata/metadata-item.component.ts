@@ -31,12 +31,14 @@ export class FreeListItemComponent {
 	label: string = '';
 	private readonly keywordService: KeywordService;
 	private readonly translateService: TranslateService;
+	private readonly router: Router;
 
 	constructor(private readonly injector: Injector) {
 		this.label = this.injector.get('label', '');
 		this.data = this.injector.get('data', []);
 		this.keywordService = this.injector.get(KeywordService);
 		this.translateService = this.injector.get(TranslateService);
+		this.router = this.injector.get(Router);
 	}
 
 	/**
@@ -45,6 +47,16 @@ export class FreeListItemComponent {
 	 */
 	queryParamsFor(item: string): {[key: string]: string} {
 		return {[this.label]: item};
+	}
+
+	/**
+	 * Navigate on mouseup, like the other components rendered through NgComponentOutlet
+	 * (see DatasetLinkListComponent). Plain routerLink click navigation does not fire for
+	 * chips in this view, which is why the theme chip looked dead while the scalar enum
+	 * chips — rendered directly in details.component.html — worked (#255).
+	 */
+	navigateTo(item: string): void {
+		void this.router.navigate(['/index'], {queryParams: this.queryParamsFor(item)});
 	}
 
 	getTranslatedValue(item: string): string {
