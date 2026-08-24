@@ -9,32 +9,12 @@
           "dct:title",
           "dct:description",
           "dcat:keyword",
-          "dcat:theme"
+          "dcat:theme",
+          "schema:image"
         ]
       },
       {
         "id": 2,
-        "key": "access",
-        "label": "modify.auth.form.sections.access",
-        "fields": [
-          "dct:accessRights",
-          "dcatap:availability",
-          "bv:classification",
-          "bv:personalData",
-          "adms:status"
-        ]
-      },
-      {
-        "id": 3,
-        "key": "publisher",
-        "label": "modify.auth.form.sections.publisher",
-        "fields": [
-          "dct:publisher",
-          "dcat:contactPoint"
-        ]
-      },
-      {
-        "id": 4,
         "key": "metadata",
         "label": "modify.auth.form.sections.metadata",
         "fields": [
@@ -47,15 +27,19 @@
         ]
       },
       {
-        "id": 5,
-        "key": "governance",
-        "label": "modify.auth.form.sections.governance",
+        "id": 3,
+        "key": "access",
+        "label": "modify.auth.form.sections.access",
         "fields": [
-          "prov:qualifiedAttribution"
+          "dct:accessRights",
+          "bv:classification",
+          "bv:personalData",
+          "adms:status",
+          "dcatap:availability"
         ]
       },
       {
-        "id": 6,
+        "id": 4,
         "key": "external",
         "label": "modify.auth.form.sections.external",
         "fields": [
@@ -64,7 +48,7 @@
         ]
       },
       {
-        "id": 7,
+        "id": 5,
         "key": "coverage",
         "label": "modify.auth.form.sections.coverage",
         "fields": [
@@ -74,17 +58,33 @@
         ]
       },
       {
-        "id": 8,
+        "id": 6,
         "key": "additional",
         "label": "modify.auth.form.sections.additional",
         "fields": [
           "schema:comment",
           "bv:geoIdentifier",
-          "schema:image",
           "bv:abrogation",
           "prov:wasDerivedFrom",
           "dcat:inSeries",
           "dct:replaces"
+        ]
+      },
+      {
+        "id": 7,
+        "key": "publisher",
+        "label": "modify.auth.form.sections.publisher",
+        "fields": [
+          "dct:publisher",
+          "dcat:contactPoint"
+        ]
+      },
+      {
+        "id": 8,
+        "key": "governance",
+        "label": "modify.auth.form.sections.governance",
+        "fields": [
+          "prov:qualifiedAttribution"
         ]
       },
       {
