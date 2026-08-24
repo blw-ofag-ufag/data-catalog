@@ -72,28 +72,20 @@ describe('IndexSwitchComponent', () => {
 	});
 
 	describe('#216 active-filter badge', () => {
-		it('is zero when no filter is applied', () => {
-			queryParams.next({view: 'tile'});
-			fixture.detectChanges();
-			expect(component.activeFilterCount).toBe(0);
+		it('is null when no filter is applied, so the badge stays hidden', () => {
+			expect(component.getFilterCount({})).toBeNull();
+			expect(component.getFilterCount(null)).toBeNull();
 		});
 
-		it('counts a single applied facet value', () => {
-			queryParams.next({productType: 'dataset'});
-			fixture.detectChanges();
-			expect(component.activeFilterCount).toBe(1);
+		it('counts the number of active facets', () => {
+			expect(component.getFilterCount({productType: {dataset: true}})).toBe(1);
+			expect(component.getFilterCount({productType: {dataset: true}, 'dcat:keyword': {kw1: true}})).toBe(2);
 		});
 
-		it('counts every value across all facets', () => {
-			queryParams.next({productType: 'dataset,dataService', 'dcat:keyword': 'kw1'});
-			fixture.detectChanges();
-			expect(component.activeFilterCount).toBe(3);
-		});
-
-		it('ignores non-facet params like search and pagination', () => {
+		it('ignores non-facet params because they never reach the filter map', () => {
 			queryParams.next({search: 'milk', page: 2, view: 'table'});
 			fixture.detectChanges();
-			expect(component.activeFilterCount).toBe(0);
+			expect(component.getFilterCount(component.activatedFilters$.value)).toBeNull();
 		});
 	});
 

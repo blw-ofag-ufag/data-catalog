@@ -217,6 +217,21 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, Val
 		return control.hasError(errorType) && (control.dirty || control.touched);
 	}
 
+	/**
+	 * Whether to render the inline error for a language tab. Value-based violations
+	 * (maxlength/minlength/pattern) are shown even on pristine, untouched controls so that
+	 * an existing record loaded with e.g. an over-long title flags immediately (#dev feedback).
+	 * A missing required value stays quiet until the user interacts, to avoid nagging on load.
+	 */
+	shouldShowError(language: string): boolean {
+		const control = this.getControl(language);
+		if (control.valid) {
+			return false;
+		}
+		const hasValueError = control.hasError('maxlength') || control.hasError('minlength') || control.hasError('pattern');
+		return hasValueError || control.dirty || control.touched;
+	}
+
 	getErrorMessage(language: string): string {
 		const control = this.getControl(language);
 		if (control.hasError('required')) {

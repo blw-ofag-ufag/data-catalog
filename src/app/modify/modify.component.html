@@ -20,21 +20,21 @@
 		<!-- Product type selector (create mode only); read-only display in edit mode -->
 		@if (!isEditMode) {
 			<div class="ob-mb-4">
-				<label for="productTypeSelect" class="ob-block ob-mb-1">Product type</label>
+				<label for="productTypeSelect" class="ob-block ob-mb-2">{{ "modify.auth.form.productType" | translate }}</label>
 				<select
 					id="productTypeSelect"
 					[value]="productType || 'dataset'"
 					(change)="onProductTypeChange($event)"
 					style="padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; max-width: 320px"
 				>
-					<option value="dataset">Dataset</option>
-					<option value="dataService">Data service</option>
-					<option value="datasetSeries">Dataset series</option>
+					<option value="dataset">{{ "choices.productType.dataset" | translate }}</option>
+					<option value="dataService">{{ "choices.productType.dataService" | translate }}</option>
+					<option value="datasetSeries">{{ "choices.productType.datasetSeries" | translate }}</option>
 				</select>
 			</div>
 		} @else {
 			<div class="ob-mb-4">
-				<small class="ob-text-muted ob-block">Product type</small>
+				<small class="ob-text-muted ob-block">{{ "modify.auth.form.productType" | translate }}</small>
 				<strong>{{ "choices.productType." + (productType || "dataset") | translate }}</strong>
 			</div>
 		}

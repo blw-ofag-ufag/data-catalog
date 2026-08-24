@@ -118,6 +118,43 @@ describe('MultilingualTextFieldComponent', () => {
 		});
 	});
 
+	describe('shouldShowError', () => {
+		it('flags an over-long value even on a pristine, untouched control (loaded data)', () => {
+			component.maxLength = 5;
+			fixture.detectChanges();
+			const control = component.getControl('de');
+			// Simulate loaded existing data: set the value without marking dirty/touched.
+			control.setValue('way too long', {emitEvent: false});
+			expect(control.dirty).toBe(false);
+			expect(control.touched).toBe(false);
+			expect(component.shouldShowError('de')).toBe(true);
+		});
+
+		it('flags a too-short value on a pristine control', () => {
+			component.minLength = 10;
+			fixture.detectChanges();
+			component.getControl('de').setValue('short', {emitEvent: false});
+			expect(component.shouldShowError('de')).toBe(true);
+		});
+
+		it('stays quiet about a missing required value until the user interacts', () => {
+			component.requiredLanguages = ['de'];
+			fixture.detectChanges();
+			const control = component.getControl('de');
+			control.setValue('', {emitEvent: false});
+			expect(component.shouldShowError('de')).toBe(false);
+			control.markAsTouched();
+			expect(component.shouldShowError('de')).toBe(true);
+		});
+
+		it('returns false for a valid control', () => {
+			component.maxLength = 50;
+			fixture.detectChanges();
+			component.getControl('de').setValue('fine', {emitEvent: false});
+			expect(component.shouldShowError('de')).toBe(false);
+		});
+	});
+
 	describe('template', () => {
 		it('renders a tab per language', () => {
 			fixture.detectChanges();

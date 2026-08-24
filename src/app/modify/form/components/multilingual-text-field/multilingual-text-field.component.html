@@ -40,7 +40,7 @@
 
 					<mat-hint *ngIf="maxLength"> {{ getControl(lang.code).value?.length || 0 }}/{{ maxLength }} </mat-hint>
 
-					<mat-error *ngIf="getControl(lang.code).invalid && (getControl(lang.code).dirty || getControl(lang.code).touched)">
+					<mat-error *ngIf="shouldShowError(lang.code)">
 						{{ getErrorMessage(lang.code) }}
 					</mat-error>
 				</mat-form-field>
