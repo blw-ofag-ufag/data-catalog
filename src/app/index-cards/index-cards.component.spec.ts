@@ -120,10 +120,44 @@ describe('IndexCardsComponent', () => {
 		});
 	});
 
-	it('typeFiltered and publisherFiltered build filter params', () => {
-		expect(component.typeFiltered('dataService')).toEqual({productType: 'dataService'});
-		expect(component.typeFiltered()).toEqual({productType: 'dataset'});
-		expect(component.publisherFiltered('PUB')).toEqual({'dct:publisher': 'PUB'});
+	describe('#216 type and publisher chips', () => {
+		afterEach(() => {
+			routeStub.snapshot.queryParams = {};
+		});
+
+		it('builds filter params for a fresh click', () => {
+			expect(component.typeFiltered('dataService')).toEqual({productType: 'dataService', page: 1});
+			expect(component.typeFiltered()).toEqual({productType: 'dataset', page: 1});
+			expect(component.publisherFiltered('PUB')).toEqual({'dct:publisher': 'PUB', page: 1});
+		});
+
+		it('preserves filters the user already applied', () => {
+			routeStub.snapshot.queryParams = {'dcat:keyword': 'kw1', search: 'milk'};
+			const result = component.typeFiltered('dataset');
+			expect(result['dcat:keyword']).toBe('kw1');
+			expect(result['search']).toBe('milk');
+			expect(result['productType']).toBe('dataset');
+		});
+
+		it('adds the type to an existing productType filter instead of replacing it', () => {
+			routeStub.snapshot.queryParams = {productType: 'dataService'};
+			expect(component.typeFiltered('dataset')['productType']).toBe('dataService,dataset');
+		});
+
+		it('does not duplicate a type that is already filtered', () => {
+			routeStub.snapshot.queryParams = {productType: 'dataset'};
+			expect(component.typeFiltered('dataset')['productType']).toBe('dataset');
+		});
+
+		it('adds the publisher to an existing publisher filter', () => {
+			routeStub.snapshot.queryParams = {'dct:publisher': 'A'};
+			expect(component.publisherFiltered('B')['dct:publisher']).toBe('A,B');
+		});
+
+		it('resets pagination, because the result set changes', () => {
+			routeStub.snapshot.queryParams = {page: 4};
+			expect(component.typeFiltered('dataset')['page']).toBe(1);
+		});
 	});
 
 	describe('keyword expansion', () => {

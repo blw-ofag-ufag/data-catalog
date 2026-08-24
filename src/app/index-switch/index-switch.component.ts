@@ -49,6 +49,11 @@ import {TranslatePipe} from '@ngx-translate/core';
 export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 	view: 'table' | 'tile' = 'tile';
 	showFilters = false;
+	/**
+	 * #216: clicking a facet chip gave no feedback that a filter had been applied, especially with
+	 * the filter panel collapsed. Surface the number of active facet values on the filter button.
+	 */
+	activeFilterCount = 0;
 	@Input() datasets$: Observable<DataProduct[] | null> = new Observable();
 	activatedFilters$: BehaviorSubject<ActiveFilters> = new BehaviorSubject({});
 	@ViewChild(MatSelect) sortSelect!: MatSelect;
@@ -76,6 +81,7 @@ export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 			// Parse and populate filter state from URL parameters
 			const urlFilters = createActiveFiltersFromParams(params);
 			this.activatedFilters$.next(urlFilters);
+			this.activeFilterCount = this.countActiveFilters(urlFilters);
 
 			// Apply filters to the dataset service regardless of filter panel visibility
 			await this.datasetService.setFilters(urlFilters);
@@ -185,5 +191,10 @@ export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 				mode: 'new'
 			}
 		});
+	}
+
+	/** #216: total number of selected values across all facets. */
+	private countActiveFilters(filters: ActiveFilters): number {
+		return Object.values(filters).reduce((total, subfilters) => total + Object.values(subfilters).filter(Boolean).length, 0);
 	}
 }

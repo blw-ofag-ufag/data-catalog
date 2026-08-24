@@ -71,6 +71,32 @@ describe('IndexSwitchComponent', () => {
 		});
 	});
 
+	describe('#216 active-filter badge', () => {
+		it('is zero when no filter is applied', () => {
+			queryParams.next({view: 'tile'});
+			fixture.detectChanges();
+			expect(component.activeFilterCount).toBe(0);
+		});
+
+		it('counts a single applied facet value', () => {
+			queryParams.next({productType: 'dataset'});
+			fixture.detectChanges();
+			expect(component.activeFilterCount).toBe(1);
+		});
+
+		it('counts every value across all facets', () => {
+			queryParams.next({productType: 'dataset,dataService', 'dcat:keyword': 'kw1'});
+			fixture.detectChanges();
+			expect(component.activeFilterCount).toBe(3);
+		});
+
+		it('ignores non-facet params like search and pagination', () => {
+			queryParams.next({search: 'milk', page: 2, view: 'table'});
+			fixture.detectChanges();
+			expect(component.activeFilterCount).toBe(0);
+		});
+	});
+
 	describe('view switching', () => {
 		it('switchTo navigates with the view query param merged', async () => {
 			const router = TestBed.inject(Router);

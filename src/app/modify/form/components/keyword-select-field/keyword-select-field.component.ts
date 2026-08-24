@@ -103,7 +103,13 @@ export class KeywordSelectFieldComponent implements ControlValueAccessor, OnInit
 
 		// Subscribe to keyword changes from KeywordService
 		this.keywordService.keywords$.pipe(takeUntil(this.destroy$)).subscribe(keywords => {
-			this.keywords = keywords;
+			this.keywords = this.sortByLabel(keywords);
+		});
+
+		// #257: labels differ per language, so the dropdown has to be re-sorted
+		// whenever the user switches language.
+		this.translateService.onLangChange.pipe(takeUntil(this.destroy$)).subscribe(() => {
+			this.keywords = this.sortByLabel(this.keywords);
 		});
 
 		// Load keywords if not already loaded
@@ -184,5 +190,11 @@ export class KeywordSelectFieldComponent implements ControlValueAccessor, OnInit
 
 		// Join with comma and space
 		return selectedLabels.join(', ');
+	}
+
+	/** #257: alphabetical order in the dropdown, by the label shown in the active language. */
+	private sortByLabel(keywords: Keyword[]): Keyword[] {
+		const lang = this.translateService.currentLang || 'de';
+		return [...keywords].sort((a, b) => this.getKeywordLabel(a).localeCompare(this.getKeywordLabel(b), lang, {sensitivity: 'base'}));
 	}
 }
