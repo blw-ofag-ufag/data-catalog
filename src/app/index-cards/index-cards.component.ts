@@ -120,16 +120,17 @@ export class IndexCardsComponent {
 
 	// Filter the index by a product type; used by the type chip so each tile links to its own type
 	// (dataset / dataService / datasetSeries), matching the productType facet (#221).
+	/**
+	 * #216: the chips used to replace every query param, so clicking one silently dropped the
+	 * filters the user had already applied and (for a single-type catalogue) looked like nothing
+	 * happened at all. Merge into the current params instead, additively, like keywordFiltered.
+	 */
 	typeFiltered(type?: string) {
-		return {
-			productType: type || 'dataset'
-		};
+		return this.mergedFacetParams('productType', type || 'dataset');
 	}
 
 	publisherFiltered(publisher: string) {
-		return {
-			'dct:publisher': publisher
-		};
+		return this.mergedFacetParams('dct:publisher', publisher);
 	}
 
 	onChipClick(event: MouseEvent): void {
@@ -250,5 +251,19 @@ export class IndexCardsComponent {
 	 */
 	getChipContainerClass(datasetId: string): string {
 		return this.isExpanded(datasetId) ? 'chip-container expanded' : 'chip-container collapsed';
+	}
+
+	/** Add `value` to the comma-separated facet `key` while preserving the other query params. */
+	private mergedFacetParams(key: string, value: string) {
+		const currentParams = this.route.snapshot.queryParams;
+		const existing = currentParams[key];
+		const already = existing ? existing.split(',') : [];
+
+		return {
+			...currentParams,
+			[key]: already.includes(value) ? existing : [...already, value].join(','),
+			// A changed filter set invalidates the current page offset (#216).
+			page: 1
+		};
 	}
 }

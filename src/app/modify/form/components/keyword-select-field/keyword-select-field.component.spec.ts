@@ -50,6 +50,45 @@ describe('KeywordSelectFieldComponent', () => {
 		expect(component.keywords[0].code).toBe('kw-a');
 	});
 
+	describe('#257 alphabetical order', () => {
+		const unsorted: Keyword[] = [
+			{code: 'kw-z', labels: {de: 'Zucker', fr: 'Sucre', it: 'Zucchero', en: 'Sugar'}},
+			{code: 'kw-a', labels: {de: 'Apfel', fr: 'Pomme', it: 'Mela', en: 'Apple'}},
+			{code: 'kw-m', labels: {de: 'Milch', fr: 'Lait', it: 'Latte', en: 'Milk'}}
+		];
+
+		it('sorts the options by their label in the active language', () => {
+			setup(unsorted);
+			fixture.detectChanges();
+			expect(component.keywords.map(k => k.labels.de)).toEqual(['Apfel', 'Milch', 'Zucker']);
+		});
+
+		it('sorts by the French label when French is active', () => {
+			const keywordServiceStub = stubKeywordService(unsorted, {keywords$: of(unsorted)});
+			TestBed.configureTestingModule({
+				imports: [KeywordSelectFieldComponent, NoopAnimationsModule, provideTranslateTesting()],
+				providers: [
+					{provide: ValidationSchemaService, useValue: stubValidationSchemaService()},
+					{provide: KeywordService, useValue: keywordServiceStub},
+					{provide: TranslateService, useValue: stubTranslateService({currentLang: 'fr'})}
+				]
+			});
+			const frFixture = TestBed.createComponent(KeywordSelectFieldComponent);
+			frFixture.detectChanges();
+			// Lait, Pomme, Sucre
+			expect(frFixture.componentInstance.keywords.map(k => k.code)).toEqual(['kw-m', 'kw-a', 'kw-z']);
+		});
+
+		it('ignores case and diacritics when ordering', () => {
+			setup([
+				{code: 'b', labels: {de: 'Ähre', fr: 'a', it: 'a', en: 'a'}},
+				{code: 'a', labels: {de: 'apfel', fr: 'b', it: 'b', en: 'b'}}
+			]);
+			fixture.detectChanges();
+			expect(component.keywords.map(k => k.labels.de)).toEqual(['Ähre', 'apfel']);
+		});
+	});
+
 	describe('writeValue', () => {
 		it('accepts an array of codes', () => {
 			setup();
