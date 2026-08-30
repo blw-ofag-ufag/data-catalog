@@ -469,17 +469,21 @@ export class DatasetService {
 
 		// Keywords should be string[] of codes
 		if (Array.isArray(keywords)) {
-			return keywords
-				.map(code => {
-					// Look up translation from KeywordService
-					const labels = this.keywordService.getKeywordLabels(code);
-					if (labels) {
-						return labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || code;
-					}
-					// Fallback to the code itself if not found in KeywordService
-					return code;
-				})
-				.sort();
+			return (
+				keywords
+					.map(code => {
+						// Look up translation from KeywordService
+						const labels = this.keywordService.getKeywordLabels(code);
+						if (labels) {
+							return labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || code;
+						}
+						// Fallback to the code itself if not found in KeywordService
+						return code;
+					})
+					// #257: default Array.sort() is code-unit order, which puts "Ölsaaten" after "Zucker"
+					// and any capitalized label before all lowercase ones. Sort by the active locale.
+					.sort((a, b) => a.localeCompare(b, currentLang, {sensitivity: 'base'}))
+			);
 		}
 
 		return [];

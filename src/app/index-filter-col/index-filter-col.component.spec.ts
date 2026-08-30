@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ActivatedRoute} from '@angular/router';
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject, firstValueFrom, of} from 'rxjs';
 import {IndexFilterColComponent} from './index-filter-col.component';
 import {DatasetService} from '../services/api/api.service';
 import {Keyword, KeywordService} from '../services/api/keyword.service';
@@ -18,7 +18,10 @@ const ENUM_OPTIONS: Record<string, string[]> = {
 
 const KEYWORDS: Keyword[] = [
 	{code: 'agri', labels: {de: 'Landwirtschaft', fr: 'agriculture', it: 'agricoltura', en: 'agriculture'}},
-	{code: 'food', labels: {de: 'Essen', fr: 'nourriture', it: 'cibo', en: 'food'}}
+	{code: 'food', labels: {de: 'Essen', fr: 'nourriture', it: 'cibo', en: 'food'}},
+	// #257: sorts before the others by label ("Ölsaaten") but last by code, and its umlaut also
+	// breaks a naive code-unit sort.
+	{code: 'zoilseeds', labels: {de: 'Ölsaaten', fr: 'oléagineux', it: 'semi oleosi', en: 'oilseeds'}}
 ];
 
 describe('IndexFilterColComponent', () => {
@@ -28,6 +31,7 @@ describe('IndexFilterColComponent', () => {
 	const keywordsSubject = new BehaviorSubject<Keyword[]>(KEYWORDS);
 	const keywordServiceStub = {
 		keywords$: keywordsSubject.asObservable(),
+		loadKeywords: jest.fn(() => keywordsSubject.asObservable()),
 		getKeywordLabels: jest.fn((code: string) => KEYWORDS.find(k => k.code === code)?.labels ?? null)
 	} as any;
 
@@ -77,7 +81,24 @@ describe('IndexFilterColComponent', () => {
 
 	it('subscribes to keyword codes from the service', () => {
 		fixture.detectChanges();
-		expect(component.allKeywords).toEqual(KEYWORDS);
+		expect(component.allKeywords).toEqual(expect.arrayContaining(KEYWORDS));
+		expect(component.allKeywords.length).toBe(KEYWORDS.length);
+	});
+
+	// #257: the glossary arrives ordered by code; the facet must present it ordered by the label
+	// the user actually reads, with locale-aware collation for umlauts.
+	it('lists the keyword options alphabetically by localized label', async () => {
+		fixture.detectChanges();
+		expect(component.allKeywords.map(k => k.code)).toEqual(['food', 'agri', 'zoilseeds']);
+
+		const options = await firstValueFrom(component.filteredKeywords$);
+		expect(options.map(k => component.getKeywordObjectLabel(k))).toEqual(['Essen', 'Landwirtschaft', 'Ölsaaten']);
+	});
+
+	it('keeps filtered suggestions alphabetically ordered by label', () => {
+		fixture.detectChanges();
+		const suggestions = (component as any).filterKeywords('a').map((k: Keyword) => component.getKeywordObjectLabel(k));
+		expect(suggestions).toEqual([...suggestions].sort((a: string, b: string) => a.localeCompare(b, 'de', {sensitivity: 'base'})));
 	});
 
 	it('exposes the available filter categories', () => {
@@ -194,7 +215,7 @@ describe('IndexFilterColComponent — empty schema fallback', () => {
 			.configureTestingModule({
 				imports: [IndexFilterColComponent, NoopAnimationsModule, provideTranslateTesting()],
 				providers: [
-					{provide: KeywordService, useValue: {keywords$: of([]), getKeywordLabels: jest.fn()} as any},
+					{provide: KeywordService, useValue: {keywords$: of([]), loadKeywords: jest.fn(() => of([])), getKeywordLabels: jest.fn()} as any},
 					{provide: DatasetService, useValue: {setFilters: jest.fn()} as any},
 					{provide: ActivatedRoute, useValue: {queryParams: of({}), snapshot: {queryParams: {}}} as any},
 					{

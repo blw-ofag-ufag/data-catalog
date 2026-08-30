@@ -86,20 +86,38 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 	) {
 		this.filteredKeywords$ = this.keywordControl.valueChanges.pipe(
 			startWith(null),
-			map((searchValue: string | null) => (searchValue ? this.filterKeywords(searchValue) : this.allKeywords.slice()))
+			map((searchValue: string | null) => (searchValue ? this.filterKeywords(searchValue) : this.sortKeywordsByLabel(this.allKeywords)))
 		);
-
-		// Subscribe to keyword changes from KeywordService
-		this.keywordService.keywords$.pipe(takeUntil(this.destroy$)).subscribe(keywords => (this.allKeywords = keywords));
-
 		this.filteredDimensions$ = this.dimensionControl.valueChanges.pipe(
 			startWith(null),
-			map((searchValue: string | null) => (searchValue ? this.filterDimensions(searchValue) : this.allDimensions.slice()))
+			map((searchValue: string | null) => (searchValue ? this.filterDimensions(searchValue) : this.sortDimensionsByLabel(this.allDimensions)))
 		);
+		this.subscribeToGlossaries();
+	}
 
-		// Subscribe to dimension changes from DimensionService and ensure the glossary is loaded
-		this.dimensionService.dimensions$.pipe(takeUntil(this.destroy$)).subscribe(dimensions => (this.allDimensions = dimensions));
+	/**
+	 * Wire up the keyword/dimension glossaries feeding the chip autocompletes.
+	 *
+	 * #257: both glossaries arrive sorted by code, but the panels show localized labels, so each
+	 * emission is re-sorted by label — and again whenever the user switches language, since the
+	 * alphabet of the labels changes with it.
+	 */
+	private subscribeToGlossaries(): void {
+		this.keywordService.keywords$.pipe(takeUntil(this.destroy$)).subscribe(keywords => (this.allKeywords = this.sortKeywordsByLabel(keywords)));
+		this.dimensionService.dimensions$.pipe(takeUntil(this.destroy$)).subscribe(dimensions => (this.allDimensions = this.sortDimensionsByLabel(dimensions)));
+
+		this.translateService.onLangChange.pipe(takeUntil(this.destroy$)).subscribe(() => {
+			this.allKeywords = this.sortKeywordsByLabel(this.allKeywords);
+			this.allDimensions = this.sortDimensionsByLabel(this.allDimensions);
+			// Re-emit so an open autocomplete panel picks up the new order immediately.
+			this.keywordControl.setValue(this.keywordControl.value);
+			this.dimensionControl.setValue(this.dimensionControl.value);
+		});
+
+		// The glossaries are normally loaded by the catalogue service, but the facet must not depend
+		// on that ordering/timing to have options available.
 		this.dimensionService.loadDimensions().pipe(takeUntil(this.destroy$)).subscribe();
+		this.keywordService.loadKeywords().pipe(takeUntil(this.destroy$)).subscribe();
 	}
 
 	ngOnInit() {
@@ -215,11 +233,25 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 	private filterKeywords(searchValue: string): Keyword[] {
 		const filterValue = searchValue.toLowerCase();
 
-		return this.allKeywords.filter(keyword => {
-			// Search in code and all translations
-			if (keyword.code.toLowerCase().includes(filterValue)) return true;
-			return Object.values(keyword.labels).some(label => label.toLowerCase().includes(filterValue));
-		});
+		return this.sortKeywordsByLabel(
+			this.allKeywords.filter(keyword => {
+				// Search in code and all translations
+				if (keyword.code.toLowerCase().includes(filterValue)) return true;
+				return Object.values(keyword.labels).some(label => label.toLowerCase().includes(filterValue));
+			})
+		);
+	}
+
+	/** #257: alphabetical order of the facet options, by the label shown in the active language. */
+	private sortKeywordsByLabel(keywords: Keyword[]): Keyword[] {
+		const lang = this.translateService.currentLang || 'de';
+		return [...keywords].sort((a, b) => this.getKeywordObjectLabel(a).localeCompare(this.getKeywordObjectLabel(b), lang, {sensitivity: 'base'}));
+	}
+
+	/** Same alphabetical treatment for the dimensions facet. */
+	private sortDimensionsByLabel(dimensions: Dimension[]): Dimension[] {
+		const lang = this.translateService.currentLang || 'de';
+		return [...dimensions].sort((a, b) => this.getDimensionLabel(a.code).localeCompare(this.getDimensionLabel(b.code), lang, {sensitivity: 'base'}));
 	}
 
 	/**
@@ -288,10 +320,12 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 
 	private filterDimensions(searchValue: string): Dimension[] {
 		const filterValue = searchValue.toLowerCase();
-		return this.allDimensions.filter(dimension => {
-			if (dimension.code.toLowerCase().includes(filterValue)) return true;
-			return Object.values(dimension.labels).some(label => label.toLowerCase().includes(filterValue));
-		});
+		return this.sortDimensionsByLabel(
+			this.allDimensions.filter(dimension => {
+				if (dimension.code.toLowerCase().includes(filterValue)) return true;
+				return Object.values(dimension.labels).some(label => label.toLowerCase().includes(filterValue));
+			})
+		);
 	}
 
 	getDimensionLabel(code: string): string {

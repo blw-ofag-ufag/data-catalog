@@ -125,6 +125,20 @@ describe('DatasetService (api.service)', () => {
 		it('returns an empty array when there are no keywords', () => {
 			expect(service.getLocalizedKeywords({} as any, 'de')).toEqual([]);
 		});
+
+		// #257: plain Array.sort() compares UTF-16 code units, so umlauts and capitalization land in
+		// the wrong place. The chips must follow the active locale's alphabet.
+		it('sorts with locale-aware collation (umlauts and mixed case)', () => {
+			const labels: Record<string, string> = {o: 'Ölsaaten', z: 'Zucker', a: 'ackerbau'};
+			keywordService.getKeywordLabels.mockImplementation((code: string) => ({
+				de: labels[code],
+				fr: labels[code],
+				it: labels[code],
+				en: labels[code]
+			}));
+
+			expect(service.getLocalizedKeywords({'dcat:keyword': ['z', 'o', 'a']} as any, 'de')).toEqual(['ackerbau', 'Ölsaaten', 'Zucker']);
+		});
 	});
 
 	describe('search', () => {
