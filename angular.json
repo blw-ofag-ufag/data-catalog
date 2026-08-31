@@ -81,21 +81,6 @@
                 }
               ],
               "outputHashing": "all"
-            },
-            "prod": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "4mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "3kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "outputHashing": "all"
             }
           },
           "defaultConfiguration": "production"
