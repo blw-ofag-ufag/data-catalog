@@ -29,6 +29,10 @@ jobs:
                 run: npm run prebuild
             -   name: Run Jest
                 run: npm run test:ci
+            # Blocking: a key missing in one language renders the raw translation key in the
+            # UI. fr and it had drifted 37 keys behind de before this check existed.
+            -   name: Check i18n catalogs are in sync
+                run: npm run check:i18n
             # Reports when src/app/models/schemas/dataset.ts falls behind the runtime-fetched
             # schema. It currently FAILS on purpose: three fields the schema dropped are still
             # declared, and 23 published records still carry one of them (issue #284). Kept

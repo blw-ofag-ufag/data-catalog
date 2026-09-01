@@ -187,7 +187,9 @@
     "prov:qualifiedAttribution": "Who has which role for this data product?",
     "prov:wasDerivedFrom": "What other data product whas this data product derived from?",
     "prov:wasGeneratedBy": "What business process has generated this data product?",
-    "schema:comment": "Is the other relevant information to this data product?"
+    "schema:comment": "Is the other relevant information to this data product?",
+    "dcat:endpointURL": "URL where the data service can be called.",
+    "dcat:endpointDescription": "URL of technical documentation of the data service, such as for example a Swagger documentation."
   },
   "labels": {
     "dcat:endpointURL": "Endpoint URL",
@@ -211,6 +213,7 @@
     "dcat:accessURL": "Access URL",
     "dcat:catalog": "Catalog",
     "dcat:contactPoint": "Contact point",
+    "dcat:distribution": "Distributions",
     "dcat:downloadURL": "Download URL",
     "dcat:inSeries": "In dataset series",
     "dcat:keyword": "Keywords",
@@ -238,8 +241,7 @@
     "prov:qualifiedAttribution": "Responsible persons",
     "prov:wasDerivedFrom": "Derived from",
     "prov:wasGeneratedBy": "Business process",
-    "schema:comment": "Additional comments",
-    "dcat:distribution": "Distributions"
+    "schema:comment": "Additional comments"
   },
   "msg": {
     "adminDirError": "Could not look up on AdminDir",
@@ -274,12 +276,12 @@
       "errors": {
         "invalidToken": "Invalid token. Please check your Personal Access Token.",
         "tokenExpired": "Token has expired. Please create a new token.",
-        "usernameMismatch": "Username does not match the token owner.",
         "noWritePermission": "Token does not have write permission to the repository.",
         "repoNotFound": "Repository not found.",
         "noRepoAccess": "No access to the repository.",
         "networkError": "Network error. Please try again later.",
-        "unknown": "Unknown error occurred."
+        "unknown": "Unknown error occurred.",
+        "usernameMismatch": "Username does not match the token owner."
       },
       "help": {
         "title": "Need Help?",
@@ -316,16 +318,14 @@
           "unsavedChanges": "You have unsaved changes. Are you sure you want to leave? All changes will be lost."
         },
         "help": {
+          "multilingualRequired": "At least German and French are required",
           "externalCatalogs": "Select external catalogs where this dataset should be published",
           "relationships": "Enter dataset IDs separated by commas for related datasets",
+          "adminDirId": "The AdminDir ID from the person's AdminDir page URL",
+          "personsRequired": "At least one responsible person is required. AdminDir ID and role are mandatory for each person.",
           "accessUrl": "URL where the distribution can be accessed",
           "downloadUrl": "Direct download URL for the distribution file",
           "distributionsRequired": "At least one distribution is required"
-        },
-        "retrySchemaLoad": "Retry Loading Schemas",
-        "loadingSchemas": "Loading validation schemas...",
-        "errors": {
-          "schemaLoadFailed": "Unable to load validation schemas from remote server. Using minimal validation rules. Please check your internet connection and try again."
         },
         "options": {
           "none": "No selection",
@@ -355,6 +355,10 @@
           "keywordKey": "e.g., animal, cow, agriculture",
           "keywordTranslation": "Enter keyword translation",
           "theme": "Select theme",
+          "comment": "Additional remarks about this dataset",
+          "adminDirId": "e.g. p-2959456",
+          "fullName": "Full name",
+          "email": "email@example.com",
           "distributionId": "e.g. dist-001",
           "format": "e.g. CSV, JSON, XML",
           "accessUrl": "https://example.com/api/dataset",
@@ -369,6 +373,11 @@
           "temporalEnd": "Temporal Coverage End",
           "imageUrl": "Dataset Image URL",
           "relationships": "Dataset Relationships",
+          "person": "Person",
+          "adminDirId": "AdminDir ID",
+          "role": "Role",
+          "nameOptional": "Name (optional)",
+          "emailOptional": "Email (optional)",
           "distribution": "Distribution",
           "keyword": "Keyword",
           "keywordKey": "Keyword Key",
@@ -380,6 +389,18 @@
         "hints": {
           "keywordKey": "Unique identifier for the keyword (lowercase, no spaces)"
         },
+        "buttons": {
+          "addPerson": "Add person",
+          "addDistribution": "Add Distribution"
+        },
+        "navigation": {
+          "next": "Next",
+          "previous": "Previous"
+        },
+        "messages": {
+          "noPersons": "No responsible persons added yet. Click \"Add person\" to add one.",
+          "noDistributions": "No distributions added yet"
+        },
         "contactName": "Name of contact point (organization)",
         "contactEmail": "Email address of contact point (organization)",
         "generateJson": "Generate JSON",
@@ -387,23 +408,16 @@
         "authOptional": "Optional: Authentication",
         "selectedRepository": "Selected Repository",
         "changeRepository": "Change Repository",
-        "keywordArray": "Press Enter or use comma to add keywords",
-        "navigation": {
-          "next": "Next",
-          "previous": "Previous"
-        },
         "reset": "Reset",
         "submit": "Check",
-        "buttons": {
-          "addDistribution": "Add Distribution"
-        },
-        "messages": {
-          "noDistributions": "No distributions added yet"
+        "retrySchemaLoad": "Retry Loading Schemas",
+        "loadingSchemas": "Loading validation schemas...",
+        "errors": {
+          "schemaLoadFailed": "Unable to load validation schemas from remote server. Using minimal validation rules. Please check your internet connection and try again."
         }
       },
       "submit": {
         "title": "Dataset Ready for Submission",
-        "selectedRepository": "Selected repository",
         "authSuccess": "Successfully authenticated",
         "authInfo": "Please authenticate to make changes",
         "authenticate": "Authenticate",

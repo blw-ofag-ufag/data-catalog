@@ -187,7 +187,9 @@
     "prov:qualifiedAttribution": "Qui joue quel rôle dans ce produit de données ?",
     "prov:wasDerivedFrom": "De quel autre produit de données ce produit de données est-il dérivé ?",
     "prov:wasGeneratedBy": "Par quel processus métier ce produit de données a-t-il été généré ?",
-    "schema:comment": "Votre produit de données est-il conforme à certaines normes et/ou spécifications ?"
+    "schema:comment": "Votre produit de données est-il conforme à certaines normes et/ou spécifications ?",
+    "dcat:endpointURL": "URL à laquelle le service de données peut être appelé.",
+    "dcat:endpointDescription": "URL de la documentation technique du service de données, par exemple une documentation Swagger."
   },
   "labels": {
     "dcat:endpointURL": "URL du point d'accès",
@@ -211,6 +213,7 @@
     "dcat:accessURL": "URL d'accès",
     "dcat:catalog": "Catalogue",
     "dcat:contactPoint": "Point de contact",
+    "dcat:distribution": "Distributions",
     "dcat:downloadURL": "URL de téléchargement",
     "dcat:inSeries": "Dans la série de jeux de données",
     "dcat:keyword": "Mots-clés",
@@ -238,8 +241,7 @@
     "prov:qualifiedAttribution": "Personnes responsables",
     "prov:wasDerivedFrom": "Dérivé de",
     "prov:wasGeneratedBy": "Processus métier",
-    "schema:comment": "Commentaires supplémentaires",
-    "dcat:distribution": "Distributions"
+    "schema:comment": "Commentaires supplémentaires"
   },
   "msg": {
     "adminDirError": "Impossible de consulter AdminDir",
@@ -249,6 +251,9 @@
     "auth": {
       "title": "Authentification GitHub",
       "description": "Authentifiez-vous avec GitHub pour créer ou modifier des jeux de données.",
+      "repository": "Dépôt",
+      "customRepository": "Dépôt personnalisé",
+      "customRepositoryPlaceholder": "Dépôt GitHub (p. ex. owner/repo)",
       "username": "Nom d'utilisateur GitHub",
       "usernamePlaceholder": "Votre nom d'utilisateur GitHub",
       "token": "Token d'accès personnel",
@@ -262,6 +267,8 @@
         "step3": "Saisissez votre nom d'utilisateur et token ci-dessous"
       },
       "validation": {
+        "repositoryRequired": "Le dépôt est requis",
+        "customRepositoryRequired": "Le dépôt est requis",
         "usernameRequired": "Le nom d'utilisateur est requis",
         "tokenRequired": "Le token est requis",
         "tokenMinLength": "Le token doit contenir au moins 10 caractères"
@@ -273,7 +280,8 @@
         "repoNotFound": "Dépôt non trouvé.",
         "noRepoAccess": "Aucun accès au dépôt.",
         "networkError": "Erreur réseau. Veuillez réessayer plus tard.",
-        "unknown": "Erreur inconnue."
+        "unknown": "Erreur inconnue.",
+        "usernameMismatch": "Le nom d'utilisateur ne correspond pas au propriétaire du token."
       },
       "help": {
         "title": "Besoin d'aide ?",
@@ -310,8 +318,11 @@
           "unsavedChanges": "Vous avez des modifications non enregistrées. Êtes-vous sûr de vouloir quitter ? Toutes les modifications seront perdues."
         },
         "help": {
+          "multilingualRequired": "L'allemand et le français au minimum sont requis",
           "externalCatalogs": "Sélectionnez les catalogues externes où ce jeu de données doit être publié",
           "relationships": "Saisissez les IDs des jeux de données séparés par des virgules pour les jeux de données liés",
+          "adminDirId": "L'ID AdminDir figurant dans l'URL de la page AdminDir de la personne",
+          "personsRequired": "Au moins une personne responsable est requise. L'ID AdminDir et le rôle sont obligatoires pour chaque personne.",
           "accessUrl": "URL où la distribution peut être accédée",
           "downloadUrl": "URL de téléchargement direct du fichier",
           "distributionsRequired": "Au moins une distribution est requise"
@@ -344,6 +355,10 @@
           "keywordKey": "p.ex., animal, vache, agriculture",
           "keywordTranslation": "Saisir la traduction du mot-clé",
           "theme": "Sélectionner un thème",
+          "comment": "Remarques complémentaires sur ce jeu de données",
+          "adminDirId": "p. ex. p-2959456",
+          "fullName": "Nom complet",
+          "email": "email@exemple.com",
           "distributionId": "p.ex. dist-001",
           "format": "p.ex. CSV, JSON, XML",
           "accessUrl": "https://exemple.com/api/dataset",
@@ -358,6 +373,11 @@
           "temporalEnd": "Fin de la couverture temporelle",
           "imageUrl": "URL de l'image du jeu de données",
           "relationships": "Relations du jeu de données",
+          "person": "Personne",
+          "adminDirId": "ID AdminDir",
+          "role": "Rôle",
+          "nameOptional": "Nom (facultatif)",
+          "emailOptional": "E-mail (facultatif)",
           "distribution": "Distribution",
           "keyword": "Mot-clé",
           "keywordKey": "Clé du mot-clé",
@@ -369,29 +389,35 @@
         "hints": {
           "keywordKey": "Identifiant unique pour le mot-clé (minuscules, sans espaces)"
         },
+        "buttons": {
+          "addPerson": "Ajouter une personne",
+          "addDistribution": "Ajouter une distribution"
+        },
+        "navigation": {
+          "next": "Suivant",
+          "previous": "Précédent"
+        },
+        "messages": {
+          "noPersons": "Aucune personne responsable ajoutée pour le moment. Cliquez sur « Ajouter une personne » pour en ajouter une.",
+          "noDistributions": "Aucune distribution ajoutée pour le moment"
+        },
         "contactName": "Nom du point de contact (organisation)",
         "contactEmail": "E-mail du point de contact (organisation)",
         "generateJson": "Générer le JSON",
         "backToForm": "Retour au formulaire",
         "authOptional": "Optionnel : Authentification",
-        "keywordArray": "Appuyez sur Entrée ou utilisez une virgule pour ajouter des mots-clés",
-        "navigation": {
-          "next": "Suivant",
-          "previous": "Précédent"
-        },
+        "selectedRepository": "Dépôt sélectionné",
         "changeRepository": "Changer le dépôt",
         "reset": "Réinitialiser",
         "submit": "Vérifier",
-        "buttons": {
-          "addDistribution": "Ajouter une distribution"
-        },
-        "messages": {
-          "noDistributions": "Aucune distribution ajoutée pour le moment"
+        "retrySchemaLoad": "Recharger les schémas",
+        "loadingSchemas": "Chargement des schémas de validation...",
+        "errors": {
+          "schemaLoadFailed": "Impossible de charger les schémas de validation depuis le serveur. Des règles de validation minimales sont utilisées. Veuillez vérifier votre connexion Internet et réessayer."
         }
       },
       "submit": {
         "title": "Jeu de données prêt pour la soumission",
-        "selectedRepository": "Dépôt sélectionné",
         "authSuccess": "Authentifié avec succès",
         "authInfo": "Veuillez vous authentifier pour apporter des modifications",
         "authenticate": "S'authentifier",
@@ -406,6 +432,13 @@
         "copyDescription": "Copie les données JSON dans le presse-papiers",
         "downloadJson": "Télécharger JSON",
         "downloadDescription": "Télécharge le fichier JSON sur votre ordinateur",
+        "commitDirectly": "Commiter les modifications directement",
+        "createDirectly": "Créer le jeu de données directement",
+        "committing": "Commit en cours...",
+        "commitDirectDescription": "Commiter directement sur GitHub avec votre token authentifié (recommandé pour les grands jeux de données)",
+        "commitSuccess": "Jeu de données commité avec succès sur GitHub !",
+        "commitFailed": "Échec du commit",
+        "githubWebEditorDescription": "Ouvre l'éditeur web GitHub (nécessite un copier/coller manuel pour les grands jeux de données)",
         "help": {
           "title": "Prochaines étapes",
           "github": "Vérifiez les modifications dans GitHub",

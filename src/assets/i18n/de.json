@@ -148,7 +148,7 @@
   },
   "tooltips": {
     "dcat:endpointURL": "URL-Adresse, wo der Datendienst aufgerufen werden kann.",
-    "dcat:endpointDescription": "URL of technical documentation of the data service, such as for example a Swagger documentation.",
+    "dcat:endpointDescription": "URL zur technischen Dokumentation des Datendienstes, zum Beispiel einer Swagger-Dokumentation.",
     "adms:status": "Status des Datenprodukts: Befindet es sich in Bearbeitung, ist es fertiggestellt usw.",
     "bv:abrogation": "Was ist das Aufhebungdatum?",
     "bv:archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen einen anhaltenden Nutzen oder eine anhaltende Bedeutung, die seine weitere Aufbewahrung rechtfertigen?",
@@ -280,7 +280,8 @@
         "repoNotFound": "Repository nicht gefunden.",
         "noRepoAccess": "Kein Zugriff auf das Repository.",
         "networkError": "Netzwerkfehler. Bitte versuchen Sie es später erneut.",
-        "unknown": "Unbekannter Fehler aufgetreten."
+        "unknown": "Unbekannter Fehler aufgetreten.",
+        "usernameMismatch": "Benutzername stimmt nicht mit dem Token-Inhaber überein."
       },
       "help": {
         "title": "Hilfe benötigt?",
@@ -318,7 +319,6 @@
         },
         "help": {
           "multilingualRequired": "Mindestens Deutsch und Französisch sind erforderlich",
-          "keywordArray": "Enter drücken oder Komma verwenden, um Schlüsselwörter hinzuzufügen",
           "externalCatalogs": "Wählen Sie externe Kataloge aus, in denen dieser Datensatz veröffentlicht werden soll",
           "relationships": "Geben Sie Datensatz-IDs durch Kommas getrennt für verwandte Datensätze ein",
           "adminDirId": "Die AdminDir ID von der AdminDir-Seiten-URL der Person",
@@ -355,14 +355,7 @@
           "keywordKey": "z.B., tier, kuh, landwirtschaft",
           "keywordTranslation": "Schlüsselwort-Übersetzung eingeben",
           "theme": "Thema auswählen",
-          "itSystem": "Name des IT-Systems",
-          "retentionPeriod": "z.B., 10",
-          "businessProcess": "Zugehöriger Geschäftsprozess",
           "comment": "Zusätzliche Bemerkungen zu diesem Datensatz",
-          "geoIdentifier": "GeoIV-Identifikator",
-          "derivedFrom": "datensatz-id-1, datensatz-id-2",
-          "inSeries": "serie-id-1, serie-id-2",
-          "replaces": "alter-datensatz-id-1, alter-datensatz-id-2",
           "adminDirId": "z.B., p-2959456",
           "fullName": "Vollständiger Name",
           "email": "email@beispiel.com",
@@ -416,7 +409,12 @@
         "selectedRepository": "Ausgewähltes Repository",
         "changeRepository": "Repo wechseln",
         "reset": "Zurücksetzen",
-        "submit": "Prüfen"
+        "submit": "Prüfen",
+        "retrySchemaLoad": "Schemas erneut laden",
+        "loadingSchemas": "Validierungsschemas werden geladen...",
+        "errors": {
+          "schemaLoadFailed": "Validierungsschemas konnten nicht vom Server geladen werden. Es werden minimale Validierungsregeln verwendet. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut."
+        }
       },
       "submit": {
         "title": "Datensatz zur Übermittlung bereit",

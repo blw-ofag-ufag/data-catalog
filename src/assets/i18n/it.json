@@ -187,7 +187,9 @@
     "prov:qualifiedAttribution": "Chi ha quale ruolo per questo prodotto di dati?",
     "prov:wasDerivedFrom": "Da quale altro prodotto di dati è stato derivato questo prodotto di dati?",
     "prov:wasGeneratedBy": "Da quale processo aziendale è stato generato questo prodotto di dati?",
-    "schema:comment": "Esistono ulteriori informazioni rilevanti su questo prodotto di dati?"
+    "schema:comment": "Esistono ulteriori informazioni rilevanti su questo prodotto di dati?",
+    "dcat:endpointURL": "URL a cui è possibile richiamare il servizio di dati.",
+    "dcat:endpointDescription": "URL della documentazione tecnica del servizio di dati, ad esempio una documentazione Swagger."
   },
   "labels": {
     "dcat:endpointURL": "URL endpoint",
@@ -211,6 +213,7 @@
     "dcat:accessURL": "URL di accesso",
     "dcat:catalog": "Catalogo",
     "dcat:contactPoint": "Punto di contatto",
+    "dcat:distribution": "Distribuzioni",
     "dcat:downloadURL": "URL di download",
     "dcat:inSeries": "Nella serie di set di dati",
     "dcat:keyword": "Parole chiave",
@@ -238,8 +241,7 @@
     "prov:qualifiedAttribution": "Persone responsabili",
     "prov:wasDerivedFrom": "Derivato da",
     "prov:wasGeneratedBy": "Processo aziendale",
-    "schema:comment": "Commenti aggiuntivi",
-    "dcat:distribution": "Distribuzioni"
+    "schema:comment": "Commenti aggiuntivi"
   },
   "msg": {
     "adminDirError": "Impossibile cercare in AdminDir",
@@ -249,6 +251,9 @@
     "auth": {
       "title": "Autenticazione GitHub",
       "description": "Autenticati con GitHub per creare o modificare set di dati.",
+      "repository": "Repository",
+      "customRepository": "Repository personalizzato",
+      "customRepositoryPlaceholder": "Repository GitHub (ad es. owner/repo)",
       "username": "Nome utente GitHub",
       "usernamePlaceholder": "Il tuo nome utente GitHub",
       "token": "Token di accesso personale",
@@ -262,6 +267,8 @@
         "step3": "Inserisci il tuo nome utente e token qui sotto"
       },
       "validation": {
+        "repositoryRequired": "Il repository è richiesto",
+        "customRepositoryRequired": "Il repository è richiesto",
         "usernameRequired": "Il nome utente è richiesto",
         "tokenRequired": "Il token è richiesto",
         "tokenMinLength": "Il token deve essere lungo almeno 10 caratteri"
@@ -273,7 +280,8 @@
         "repoNotFound": "Repository non trovato.",
         "noRepoAccess": "Nessun accesso al repository.",
         "networkError": "Errore di rete. Riprova più tardi.",
-        "unknown": "Errore sconosciuto."
+        "unknown": "Errore sconosciuto.",
+        "usernameMismatch": "Il nome utente non corrisponde al proprietario del token."
       },
       "help": {
         "title": "Hai bisogno di aiuto?",
@@ -310,8 +318,11 @@
           "unsavedChanges": "Hai modifiche non salvate. Sei sicuro di voler uscire? Tutte le modifiche andranno perse."
         },
         "help": {
+          "multilingualRequired": "Sono richiesti almeno il tedesco e il francese",
           "externalCatalogs": "Seleziona i cataloghi esterni dove questo set di dati deve essere pubblicato",
           "relationships": "Inserisci gli ID dei set di dati separati da virgole per i set di dati correlati",
+          "adminDirId": "L'ID AdminDir presente nell'URL della pagina AdminDir della persona",
+          "personsRequired": "È richiesta almeno una persona responsabile. L'ID AdminDir e il ruolo sono obbligatori per ogni persona.",
           "accessUrl": "URL dove è possibile accedere alla distribuzione",
           "downloadUrl": "URL di download diretto del file",
           "distributionsRequired": "Almeno una distribuzione è richiesta"
@@ -344,6 +355,10 @@
           "keywordKey": "es., animale, mucca, agricoltura",
           "keywordTranslation": "Inserisci la traduzione della parola chiave",
           "theme": "Seleziona tema",
+          "comment": "Osservazioni aggiuntive su questo set di dati",
+          "adminDirId": "ad es. p-2959456",
+          "fullName": "Nome completo",
+          "email": "email@esempio.com",
           "distributionId": "es. dist-001",
           "format": "es. CSV, JSON, XML",
           "accessUrl": "https://esempio.com/api/dataset",
@@ -358,6 +373,11 @@
           "temporalEnd": "Fine copertura temporale",
           "imageUrl": "URL immagine del set di dati",
           "relationships": "Relazioni del set di dati",
+          "person": "Persona",
+          "adminDirId": "ID AdminDir",
+          "role": "Ruolo",
+          "nameOptional": "Nome (facoltativo)",
+          "emailOptional": "E-mail (facoltativo)",
           "distribution": "Distribuzione",
           "keyword": "Parola chiave",
           "keywordKey": "Chiave della parola chiave",
@@ -369,29 +389,35 @@
         "hints": {
           "keywordKey": "Identificatore unico per la parola chiave (minuscolo, senza spazi)"
         },
+        "buttons": {
+          "addPerson": "Aggiungi persona",
+          "addDistribution": "Aggiungi distribuzione"
+        },
+        "navigation": {
+          "next": "Avanti",
+          "previous": "Indietro"
+        },
+        "messages": {
+          "noPersons": "Nessuna persona responsabile ancora aggiunta. Fai clic su \"Aggiungi persona\" per aggiungerne una.",
+          "noDistributions": "Nessuna distribuzione aggiunta finora"
+        },
         "contactName": "Nome della punto di contatto (organizzazione)",
         "contactEmail": "Email della punto di contatto (organizzazione)",
         "generateJson": "Genera JSON",
         "backToForm": "Torna al modulo",
         "authOptional": "Opzionale: Autenticazione",
-        "keywordArray": "Premi Invio o usa la virgola per aggiungere parole chiave",
-        "navigation": {
-          "next": "Avanti",
-          "previous": "Indietro"
-        },
+        "selectedRepository": "Repository selezionato",
         "changeRepository": "Cambiare repository",
         "reset": "Ripristina",
         "submit": "Verifica",
-        "buttons": {
-          "addDistribution": "Aggiungi distribuzione"
-        },
-        "messages": {
-          "noDistributions": "Nessuna distribuzione aggiunta finora"
+        "retrySchemaLoad": "Ricarica gli schemi",
+        "loadingSchemas": "Caricamento degli schemi di validazione...",
+        "errors": {
+          "schemaLoadFailed": "Impossibile caricare gli schemi di validazione dal server. Vengono utilizzate regole di validazione minime. Verifica la tua connessione a Internet e riprova."
         }
       },
       "submit": {
         "title": "Set di dati pronto per l'invio",
-        "selectedRepository": "Repository selezionato",
         "authSuccess": "Autenticato con successo",
         "authInfo": "Si prega di autenticarsi per apportare modifiche",
         "authenticate": "Autentica",
@@ -406,6 +432,13 @@
         "copyDescription": "Copia i dati JSON negli appunti",
         "downloadJson": "Scarica JSON",
         "downloadDescription": "Scarica il file JSON sul tuo computer",
+        "commitDirectly": "Committa le modifiche direttamente",
+        "createDirectly": "Crea il set di dati direttamente",
+        "committing": "Commit in corso...",
+        "commitDirectDescription": "Committa direttamente su GitHub con il tuo token autenticato (consigliato per set di dati di grandi dimensioni)",
+        "commitSuccess": "Set di dati committato con successo su GitHub!",
+        "commitFailed": "Commit non riuscito",
+        "githubWebEditorDescription": "Apre l'editor web di GitHub (richiede copia/incolla manuale per set di dati di grandi dimensioni)",
         "help": {
           "title": "Prossimi passi",
           "github": "Verifica le modifiche in GitHub",
