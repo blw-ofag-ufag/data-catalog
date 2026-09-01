@@ -31,7 +31,7 @@ jobs:
             -   name: Build Angular App
                 run: |
                     npm run prebuild
-                    npm run build -- --output-path=docs
+                    npm run build:pages -- --output-path=docs
             -   name: Set Git identity
                 run: |
                     git config user.name "github-actions[bot]"
@@ -43,9 +43,13 @@ jobs:
                     CI: true
                     GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-            -   name: Update base href in docs/index.html #for prod setup
-                run: |
-                    sed -i 's|<base href="/data-catalog/">|<base href="/">|g' docs/index.html
+            # docs/ is the Azure production copy and is served from the domain root, so it
+            # needs a different base href than the GitHub Pages copy above (see #165).
+            # Rebuilt with the prod-root configuration rather than patched with sed: a
+            # regex over generated HTML fails silently if Angular ever changes its output,
+            # leaving a green build that serves a blank page.
+            -   name: Rebuild for production root path
+                run: npm run build:prod-root -- --output-path=docs
 
             -   name: Commit and push to docs directory
                 run: |

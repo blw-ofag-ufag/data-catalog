@@ -10,7 +10,6 @@ import {
 	provideObliqueConfiguration,
 	provideObliqueTranslations
 } from '@oblique/oblique';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MultiTranslateHttpLoader} from 'ngx-translate-multi-http-loader';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {registerLocaleData} from '@angular/common';

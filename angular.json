@@ -81,6 +81,12 @@
                 }
               ],
               "outputHashing": "all"
+            },
+            "pages": {
+              "baseHref": "/data-catalog/"
+            },
+            "prod-root": {
+              "baseHref": "/"
             }
           },
           "defaultConfiguration": "production"
