@@ -5,7 +5,18 @@ import {defineConfig, devices} from '@playwright/test';
  * so page URLs look like http://localhost:4200/data-catalog/#/index.
  * Network to GitHub (raw + api) is intercepted per-spec with fixtures, and
  * environment.debugMode bypasses the GitHub auth guard for /modify.
+ *
+ * Set CHROMIUM_PATH to run against a system-installed Chromium instead of the one
+ * Playwright bundles. Needed in sandboxes where `npx playwright install --with-deps`
+ * cannot run (WSL/containers missing libnspr4, which needs root to install):
+ *
+ *   CHROMIUM_PATH=/usr/bin/chromium-browser npm run test:e2e
+ *
+ * --no-sandbox is applied together with the override because the system browser is
+ * typically launched in a container without user namespaces.
  */
+const systemChromium = process.env['CHROMIUM_PATH'];
+
 export default defineConfig({
 	testDir: './e2e',
 	fullyParallel: true,
@@ -15,7 +26,8 @@ export default defineConfig({
 	reporter: process.env['CI'] ? [['html', {open: 'never'}], ['list']] : 'list',
 	use: {
 		baseURL: 'http://localhost:4300/data-catalog/',
-		trace: 'on-first-retry'
+		trace: 'on-first-retry',
+		...(systemChromium ? {launchOptions: {executablePath: systemChromium, args: ['--no-sandbox']}} : {})
 	},
 	projects: [{name: 'chromium', use: {...devices['Desktop Chrome']}}],
 	webServer: {

@@ -4,7 +4,7 @@
   "scripts": {
     "start": "ng serve",
     "start:e2e": "ng serve --configuration e2e --port 4300",
-    "prebuild": "node config/convert-yaml.js && node config/convert-schemas.js && node config/convert-form-layout.js",
+    "prebuild": "node config/convert-yaml.js && node config/convert-schemas.js && node config/convert-form-layout.js && node config/write-version.js",
     "build": "npm run build:pages",
     "build:pages": "ng build --configuration production,pages",
     "build:prod-root": "ng build --configuration production,prod-root",
@@ -13,7 +13,7 @@
     "test:ci": "ng test --ci",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:e2e:local": "playwright test --config=playwright.local.config.ts",
+    "test:e2e:local": "CHROMIUM_PATH=${CHROMIUM_PATH:-/usr/bin/chromium-browser} playwright test",
     "lint": "ng lint",
     "check:schema-drift": "node config/check-schema-drift.js",
     "check:i18n": "node config/check-i18n.js",

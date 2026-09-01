@@ -56,6 +56,15 @@ export async function installApiMocks(target: BrowserContext | Page): Promise<vo
 		return fulfillJson(route, '[]');
 	});
 
+	// The catalogue also fetches a processed index per non-dataset product type (#221).
+	// Without these routes those requests reached the real repository, so live production
+	// records were mixed into the list and pushed the fixture datasets onto page 2 —
+	// index.spec and details.spec failed for reasons that had nothing to do with the code
+	// under test. This mode is dataset-only by contract, so the other types serve [].
+	for (const segment of ['dataServices', 'datasetSeries']) {
+		await target.route(`**/data/processed/${segment}.json`, route => fulfillJson(route, '[]'));
+	}
+
 	// Keyword list (same payload for every publisher repo).
 	await target.route('**/data/schemas/keywords.json', route => fulfillJson(route, keywords));
 

@@ -23,13 +23,14 @@ if ! git diff-index --quiet HEAD --; then
     exit 1
 fi
 
-# Read current version from VERSION.txt or initialize
-if [ -f src/assets/VERSION.txt ]; then
-    CURRENT_VERSION=$(cat src/assets/VERSION.txt)
-else
-    # Initialize from package.json if VERSION.txt doesn't exist
-    CURRENT_VERSION=$(node -p "require('./package.json').version" 2>/dev/null || echo "0.1.0")
-    echo "$CURRENT_VERSION" > src/assets/VERSION.txt
+# package.json is the single source of truth for the version. src/assets/VERSION.txt is
+# generated from it by config/write-version.js during prebuild — it used to be maintained
+# in parallel here, which allowed the footer and the tag to disagree.
+CURRENT_VERSION=$(node -p "require('./package.json').version")
+
+if [ -z "$CURRENT_VERSION" ]; then
+    echo -e "${RED}Error: could not read version from package.json${NC}"
+    exit 1
 fi
 
 echo -e "${GREEN}Current version: $CURRENT_VERSION${NC}"
@@ -82,9 +83,6 @@ fi
 echo ""
 echo "📝 Writing new version to files..."
 
-# Update VERSION.txt
-echo "$NEW_VERSION" > src/assets/VERSION.txt
-
 # Update package.json
 if [ -f package.json ]; then
     # Use Node.js to update package.json to preserve formatting
@@ -96,6 +94,9 @@ if [ -f package.json ]; then
     "
     echo "✅ Updated package.json"
 fi
+
+# Regenerate VERSION.txt from the new package.json version
+node config/write-version.js
 
 # Commit version changes
 echo ""

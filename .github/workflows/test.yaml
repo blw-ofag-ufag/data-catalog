@@ -27,6 +27,11 @@ jobs:
                 run: npm install
             -   name: Generate config/schema JSON
                 run: npm run prebuild
+            # src/app/codegen/ is generated from the YAML in config/ but committed so that a
+            # fresh clone can `ng serve` without a prebuild. That only holds while the two
+            # stay in step, which nothing enforced until now.
+            -   name: Check committed codegen and VERSION.txt are up to date
+                run: git diff --exit-code -- src/app/codegen src/assets/VERSION.txt
             -   name: Run Jest
                 run: npm run test:ci
             # Blocking: a key missing in one language renders the raw translation key in the
