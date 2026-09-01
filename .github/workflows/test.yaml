@@ -54,5 +54,37 @@ jobs:
                     path: coverage/
                     if-no-files-found: ignore
 
-    # E2E (Playwright) is intentionally NOT run in CI — the suite is run locally
-    # (npm run test:e2e:local, system Chromium). See playwright.local.config.ts.
+    # E2E was previously not run in CI because the local sandbox could not install
+    # Playwright's browser dependencies (libnspr4 needs root). That constraint does not
+    # apply to ubuntu-latest, where `playwright install --with-deps` just works, and the
+    # suite is fully mocked (e2e/support/mock-api.ts), so it needs no network.
+    #
+    # continue-on-error while the job proves itself over a few runs. Once it has been
+    # green consistently, drop it so a broken workflow actually blocks a merge.
+    e2e:
+        name: E2E (Playwright)
+        runs-on: ubuntu-latest
+        continue-on-error: true
+        steps:
+            -   name: Checkout Repository
+                uses: actions/checkout@v4
+            -   name: Setup Node.js
+                uses: actions/setup-node@v4
+                with:
+                    node-version: 22
+                    cache: npm
+            -   name: Install Dependencies
+                run: npm install
+            -   name: Generate config/schema JSON
+                run: npm run prebuild
+            -   name: Install Playwright browser
+                run: npx playwright install --with-deps chromium
+            -   name: Run Playwright
+                run: npm run test:e2e
+            -   name: Upload report
+                if: failure()
+                uses: actions/upload-artifact@v4
+                with:
+                    name: playwright-report
+                    path: playwright-report/
+                    if-no-files-found: ignore
