@@ -36,7 +36,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 Prerequisites to run locally: node.js and globally installed angular CLI
 
-1. **Explore the data catalog online:** Head over to our [GitHub page](https://blw-ofag-ufag.github.io/data-catalog/index.html?lang=en&sort=issued-desc) to see the development version of the data catalog in action. Not that the main version is deployed on an Azure instance.
+1. **Explore the data catalog online:** Head over to our [GitHub page](https://blw-ofag-ufag.github.io/data-catalog/index.html?lang=en&sort=issued-desc) to see the data catalog in action. This is the deployment; the Azure instance that used to host a separate production copy has been abandoned.
 2. **Clone & run locally:**
    ```bash
    git clone https://github.com/blw-ofag-ufag/data-catalog.git
@@ -133,22 +133,19 @@ job runs the Playwright suite. It pins `TZ=Europe/Zurich` — the date-handling 
 is only observable on a clock east of UTC, so on a default UTC runner the test that guards it would
 pass for the wrong reason.
 
-**`develop.yaml`** runs on pushes to `develop`: builds the app, deploys it to the `gh-pages` branch,
-and commits a second build to `docs/`. It uses a `deploy-develop` concurrency group because the job
-pushes to `develop` itself — two runs in flight would otherwise race and the loser would fail with
-`! [rejected] develop -> develop`.
+**`develop.yaml`** runs on pushes to `develop`: it builds the app and publishes it to the
+`gh-pages` branch, which is what GitHub Pages serves. Nothing is committed back to `develop`.
 
-The resulting build is a SPA: just an `index.html` with colocated js bundles. There are two copies
-because the two deployment targets sit at different paths, and the base href has to be baked in at
-build time:
+The build is a SPA: just an `index.html` with colocated js bundles. The base href has to be baked
+in at build time, so there are two configurations:
 
-| Target                           | Build                     | `<base href>`    |
-| -------------------------------- | ------------------------- | ---------------- |
-| GitHub Pages (`gh-pages` branch) | `npm run build:pages`     | `/data-catalog/` |
-| Azure production (`docs/`)       | `npm run build:prod-root` | `/`              |
+| Target                             | Build                     | `<base href>`    |
+| ---------------------------------- | ------------------------- | ---------------- |
+| GitHub Pages (`gh-pages` branch)   | `npm run build:pages`     | `/data-catalog/` |
+| Served from a domain root (Docker) | `npm run build:prod-root` | `/`              |
 
 Both are ordinary Angular configurations in `angular.json`, so neither output is post-processed.
-`docs/` is committed for the production deployment; it is not a duplicate of the Pages build.
+Build output is never committed; `dist/` and `docs/` are both ignored.
 
 # Configuration (publishers)
 

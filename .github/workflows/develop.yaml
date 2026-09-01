@@ -4,13 +4,12 @@ on:
         branches:
             - develop
 
-# This job pushes the built docs/ back to develop. Two runs in flight at once race on that
-# push and the loser fails with "! [rejected] develop -> develop (fetch first)" — which is
-# exactly what happened three times on 2026-07-07. Serialise instead of cancelling: every
-# push to develop must still produce its deploy.
+# Only the newest commit needs to reach GitHub Pages; superseded runs can be dropped.
+# (Until Azure was abandoned this had to be cancel-in-progress: false, because the job
+# also pushed a build back to develop and two runs would race on that push.)
 concurrency:
     group: deploy-develop
-    cancel-in-progress: false
+    cancel-in-progress: true
 
 jobs:
     build:
@@ -18,47 +17,19 @@ jobs:
         steps:
             -   name: Checkout Repository
                 uses: actions/checkout@v4
-                with:
-                    # Full history: the deploy step rebases onto develop before pushing, which a
-                    # shallow clone cannot do.
-                    fetch-depth: 0
             -   name: Adding Node.js
                 uses: actions/setup-node@v4
                 with:
                     node-version: 22
+                    cache: npm
             -   name: Install Dependencies
                 run: npm install
             -   name: Build Angular App
                 run: |
                     npm run prebuild
-                    npm run build:pages -- --output-path=docs
-            -   name: Set Git identity
-                run: |
-                    git config user.name "github-actions[bot]"
-                    git config user.email "github-actions[bot]@users.noreply.github.com"
+                    npm run build:pages -- --output-path=dist/gh-pages
             -   name: Deploy to gh-pages
-                run: |
-                    npx angular-cli-ghpages --dir=docs
-                env:
-                    CI: true
-                    GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-            # docs/ is the Azure production copy and is served from the domain root, so it
-            # needs a different base href than the GitHub Pages copy above (see #165).
-            # Rebuilt with the prod-root configuration rather than patched with sed: a
-            # regex over generated HTML fails silently if Angular ever changes its output,
-            # leaving a green build that serves a blank page.
-            -   name: Rebuild for production root path
-                run: npm run build:prod-root -- --output-path=docs
-
-            -   name: Commit and push to docs directory
-                run: |
-                    git add docs/
-                    git commit -m "Deploy Angular app to docs directory" || echo "No changes to commit"
-                    # Second line of defence behind the concurrency group: if develop moved while
-                    # this run was building, replay the docs commit on top rather than failing.
-                    git pull --rebase origin develop
-                    git push origin develop
+                run: npx angular-cli-ghpages --dir=dist/gh-pages
                 env:
                     CI: true
                     GH_TOKEN: ${{ secrets.GH_TOKEN }}

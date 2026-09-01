@@ -8,8 +8,8 @@ RUN npm ci
 
 COPY . .
 
-# Served from the container root, so the root base href applies — same output as the
-# docs/ production copy built by .github/workflows/develop.yaml.
+# Served from the container root, so the app is built with the root base href rather than
+# the /data-catalog/ one GitHub Pages needs.
 RUN npm run prebuild && npm run build:prod-root
 
 FROM nginx:alpine

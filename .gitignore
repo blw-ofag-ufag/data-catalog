@@ -48,3 +48,7 @@ Thumbs.db
 /playwright/.cache
 # Project analysis / requirements docs (local only)
 /requirements
+
+# Former on-prem deploy copy. GitHub Pages is served from the gh-pages branch, which the
+# deploy workflow publishes from a build artifact, so no build output belongs in this branch.
+/docs
