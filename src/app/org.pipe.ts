@@ -6,7 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class OrgPipe implements PipeTransform {
 	constructor(private readonly translate: TranslateService) {}
-	transform(value: string, ...args: unknown[]): string {
+	transform(value: string, ..._args: unknown[]): string {
 		// const mapping = new Map<string, string>();
 		// mapping.set('BLW-OFAG-UFAG-FOAG', 'BLW');
 		// mapping.set('BLV-OSAV-USAV-FSVO', 'BLV');

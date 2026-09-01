@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
+import {DataProduct} from '../models/schemas/dataset';
 import {enumArrayFields, enumTypes} from '../models/enum-fields';
 import {DatasetService} from '../services/api/api.service';
 import {MultiDatasetService} from '../services/api/multi-dataset-service.service';
@@ -252,7 +252,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 			.subscribe(dataset => {
 				if (dataset && dataset['dct:identifier']) {
 					// Navigate to modify route with edit mode, dataset ID and product type (#221).
-					this.router.navigate(['/modify'], {
+					void this.router.navigate(['/modify'], {
 						queryParams: {
 							mode: 'edit',
 							dataset: dataset['dct:identifier'],

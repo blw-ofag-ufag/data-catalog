@@ -17,7 +17,7 @@ import localeDECH from '@angular/common/locales/de-CH';
 import localeFRCH from '@angular/common/locales/fr-CH';
 import localeITCH from '@angular/common/locales/it-CH';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {HttpBackend, HttpClient, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
+import {HttpBackend, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {HomeComponent} from './home/home.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';

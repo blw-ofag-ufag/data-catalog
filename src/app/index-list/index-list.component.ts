@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 import {Observable} from 'rxjs';
-import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
+import {DataProduct} from '../models/schemas/dataset';
 import {AsyncPipe, DatePipe} from '@angular/common';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MatChip} from '@angular/material/chips';

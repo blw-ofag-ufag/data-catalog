@@ -62,7 +62,7 @@ export class ThemeSelectFieldComponent implements ControlValueAccessor, OnInit, 
 	control: FormControl;
 	themes: I14YTheme[] = [];
 	private readonly destroy$ = new Subject<void>();
-	private onChange = (value: string[] | null) => {};
+	private onChange = (_value: string[] | null) => {};
 	private onTouched = () => {};
 
 	constructor(

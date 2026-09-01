@@ -560,7 +560,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
 
 	private closeCurrentTab(): void {
 		// Navigate back to the index page
-		this.router.navigate(['/']);
+		void this.router.navigate(['/']);
 	}
 
 	private updateTabUnsavedState(): void {

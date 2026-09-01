@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Observable, of, throwError, timer} from 'rxjs';
-import {catchError, map, retry, shareReplay, switchMap, tap} from 'rxjs/operators';
+import {Observable, of, timer} from 'rxjs';
+import {catchError, map, retry, shareReplay, tap} from 'rxjs/operators';
 
 export interface SchemaConfig {
 	id: string;

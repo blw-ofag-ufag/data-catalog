@@ -63,7 +63,7 @@ export class KeywordSelectFieldComponent implements ControlValueAccessor, OnInit
 	control: FormControl;
 	keywords: Keyword[] = [];
 	private readonly destroy$ = new Subject<void>();
-	private onChange = (value: string[] | null) => {};
+	private onChange = (_value: string[] | null) => {};
 	private onTouched = () => {};
 
 	constructor(

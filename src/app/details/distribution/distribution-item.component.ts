@@ -34,7 +34,7 @@ export class DistributionLinkComponent {
 		this.data = this.injector.get('data', '');
 	}
 
-	onMouseUp(event: Event) {
+	onMouseUp(_event: Event) {
 		if (this.data && this.data.startsWith('http')) {
 			window.open(this.data, '_blank', 'noopener,noreferrer');
 		}

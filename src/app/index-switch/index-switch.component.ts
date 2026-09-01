@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {AsyncPipe} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
@@ -12,8 +12,7 @@ import {MatOption} from '@angular/material/core';
 import {MatSelect} from '@angular/material/select';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
-import {enumTypes} from '../models/enum-fields';
+import {DataProduct} from '../models/schemas/dataset';
 import {DatasetService} from '../services/api/api.service';
 import {MatBadge} from '@angular/material/badge';
 import {ActiveFilters, createActiveFiltersFromParams} from '../models/ActiveFilters';
@@ -180,7 +179,7 @@ export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 	}
 
 	openNewDatasetTab(): void {
-		this.router.navigate(['/modify'], {
+		void this.router.navigate(['/modify'], {
 			queryParams: {
 				mode: 'new'
 			}

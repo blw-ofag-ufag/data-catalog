@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, combineLatest, filter} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {DataProduct, DatasetSchema} from '../../models/schemas/dataset';
+import {DataProduct} from '../../models/schemas/dataset';
 import {enumTypes} from '../../models/enum-fields';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PageEvent} from '@angular/material/paginator';
@@ -155,7 +155,7 @@ export class DatasetService {
 								// For other categories, the stored value may be a scalar or an array
 								// (array facets such as `dcat:theme`, see #255). Treat both alike:
 								// a dataset matches when any of its values is among the choices.
-								const value = schema[category] as unknown;
+								const value = schema[category];
 								categoryMatches = Array.isArray(value) ? value.some(v => choices.includes(v as string)) : choices.includes(value as string);
 							}
 
@@ -261,7 +261,7 @@ export class DatasetService {
 		});
 	}
 
-	getDatasetById(id: string) {
+	getDatasetById(_id: string) {
 		return this.multiDatasetService.selectedDataset$;
 	}
 
@@ -275,7 +275,7 @@ export class DatasetService {
 
 	search(query: string) {
 		this.searchTermSubject.next(query);
-		this.updateUrlWithSearch(query);
+		void this.updateUrlWithSearch(query);
 	}
 
 	private async updateUrlWithSearch(searchTerm: string) {
@@ -321,7 +321,7 @@ export class DatasetService {
 
 	onPageChange(event: PageEvent) {
 		this.pageSubject.next(event);
-		this.updateUrlWithPagination(event);
+		void this.updateUrlWithPagination(event);
 	}
 
 	onPaginatorInitialized(pageSize: number) {
@@ -337,20 +337,20 @@ export class DatasetService {
 
 		// If there are pagination params in URL, don't override them during initialization
 		if (!hasPageSizeInUrl && !hasPageInUrl) {
-			this.updateUrlWithPagination(newPageEvent);
+			void this.updateUrlWithPagination(newPageEvent);
 		}
 	}
 
 	setSort(order: 'title' | 'old' | 'new' | 'owner' | 'relevance') {
 		this.sortSubject.next(order);
-		this.updateUrlWithSort(order);
+		void this.updateUrlWithSort(order);
 	}
 
 	setPageSize(pageSize: number) {
 		const currentPage = this.pageSubject.value;
 		const newPageEvent = {...currentPage, pageSize, pageIndex: 0}; // Reset to first page when changing page size
 		this.pageSubject.next(newPageEvent);
-		this.updateUrlWithPagination(newPageEvent);
+		void this.updateUrlWithPagination(newPageEvent);
 	}
 
 	async setFilters(filters: ActiveFilters) {

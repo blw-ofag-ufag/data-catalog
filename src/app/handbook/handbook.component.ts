@@ -68,7 +68,7 @@ export class HandbookComponent implements OnInit, AfterViewInit {
 
 			// Render Mermaid diagrams after content is loaded
 			setTimeout(() => {
-				this.renderMermaidDiagrams();
+				void this.renderMermaidDiagrams();
 			}, 100);
 		} catch (error) {
 			console.error('Error loading markdown content:', error);

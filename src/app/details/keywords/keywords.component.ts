@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {MatChip} from '@angular/material/chips';
 import {RouterLink} from '@angular/router';
-import {DataProduct, DatasetSchema} from '../../models/schemas/dataset';
+import {DataProduct} from '../../models/schemas/dataset';
 import {DatasetService} from '../../services/api/api.service';
 import {KeywordService} from '../../services/api/keyword.service';
 import {TranslateService} from '@ngx-translate/core';

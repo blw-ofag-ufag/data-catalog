@@ -32,7 +32,7 @@ export class EnumSelectFieldComponent implements ControlValueAccessor, OnInit {
 	@Input() fieldName?: string;
 
 	control: FormControl;
-	private onChange = (value: string | null) => {};
+	private onChange = (_value: string | null) => {};
 	private onTouched = () => {};
 
 	constructor(private readonly validationSchemaService: ValidationSchemaService) {

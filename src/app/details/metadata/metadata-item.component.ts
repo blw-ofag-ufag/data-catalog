@@ -9,7 +9,7 @@ import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import {MatChip, MatChipSet} from '@angular/material/chips';
-import {ContactPoint, DataProduct, DatasetSchema, TemporalCoverage} from '../../models/schemas/dataset';
+import {ContactPoint, DataProduct, TemporalCoverage} from '../../models/schemas/dataset';
 import {enumArrayFields, enumTypes} from '../../models/enum-fields';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MultiDatasetService} from '../../services/api/multi-dataset-service.service';
@@ -182,7 +182,7 @@ export class LinkComponent {
 		this.data = this.injector.get('data', '');
 	}
 
-	onMouseUp(event: Event) {
+	onMouseUp(_event: Event) {
 		if (this.data && this.data.startsWith('http')) {
 			window.open(this.data, '_blank', 'noopener,noreferrer');
 		}
@@ -246,7 +246,7 @@ export class WasGeneratedByComponent {
 		this.data = this.injector.get('data', []);
 	}
 
-	onMouseUp(event: Event) {
+	onMouseUp(_event: Event) {
 		if (this.data[1] && this.data[1].startsWith('http')) {
 			window.open(this.data[1], '_blank', 'noopener,noreferrer');
 		}
@@ -366,7 +366,7 @@ export class DatasetLinkListComponent implements OnInit, OnDestroy {
 	// plain click navigation is intercepted in this view. routerLink is kept only
 	// to render a real href so the anchor gets normal link styling (hover/visited).
 	navigateToDataset(datasetId: string) {
-		this.router.navigate(['/details'], {queryParams: this.getQueryParams(datasetId)});
+		void this.router.navigate(['/details'], {queryParams: this.getQueryParams(datasetId)});
 	}
 }
 

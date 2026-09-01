@@ -71,7 +71,7 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 
 	personsArray: FormArray;
 	private readonly destroy$ = new Subject<void>();
-	private onChange = (value: AffiliatedPerson[] | null) => {};
+	private onChange = (_value: AffiliatedPerson[] | null) => {};
 	private onTouched = () => {};
 	private onValidatorChange = () => {};
 
@@ -193,7 +193,7 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 		this.onTouched();
 	}
 
-	validate(control: AbstractControl): ValidationErrors | null {
+	validate(_control: AbstractControl): ValidationErrors | null {
 		if (!this.personsArray || this.personsArray.length === 0) {
 			if (this.required) {
 				return {required: true, message: 'Qualified attribution is required'};
@@ -276,7 +276,6 @@ export class AffiliatedPersonsFieldComponent implements ControlValueAccessor, Va
 
 	get dataStewardError(): string | null {
 		if (this.personsArray.hasError('dataStewardCount')) {
-			const error = this.personsArray.getError('dataStewardCount');
 			return 'At least one Data Steward is required';
 		}
 		return null;

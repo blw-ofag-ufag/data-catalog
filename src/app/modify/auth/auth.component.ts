@@ -108,7 +108,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 				.validateCredentialsForRepository(credentials, repository)
 				.pipe(takeUntil(this.destroy$))
 				.subscribe({
-					next: user => {
+					next: _user => {
 						this.isLoading = false;
 						// Set the authenticated repository as selected
 						this.repositoryCredentialsService.setSelectedRepository(repository);
@@ -118,7 +118,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 							message: `Successfully authenticated with ${repository}`
 						});
 						// Redirect to the original destination URL
-						this.router.navigateByUrl(this.returnUrl);
+						void this.router.navigateByUrl(this.returnUrl);
 					},
 					error: error => {
 						this.isLoading = false;
@@ -172,7 +172,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 	}
 
 	onCancel(): void {
-		this.router.navigate(['/']);
+		void this.router.navigate(['/']);
 	}
 
 	onRepositoryChange(): void {

@@ -282,7 +282,7 @@ export class I14YThemeService {
 	/**
 	 * Parse I14Y API response to extract theme codes and labels
 	 */
-	private parseI14YResponse(response: any): I14YTheme[] {
+	private parseI14YResponse(_response: any): I14YTheme[] {
 		// This would need to be implemented based on the actual I14Y API response structure
 		// For now, return fallback themes
 		return this.fallbackThemes;

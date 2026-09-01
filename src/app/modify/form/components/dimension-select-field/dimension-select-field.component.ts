@@ -68,7 +68,7 @@ export class DimensionSelectFieldComponent implements ControlValueAccessor, OnIn
 	control: FormControl;
 	dimensions: Dimension[] = [];
 	private readonly destroy$ = new Subject<void>();
-	private onChange = (value: string[] | null) => {};
+	private onChange = (_value: string[] | null) => {};
 	private onTouched = () => {};
 
 	constructor(

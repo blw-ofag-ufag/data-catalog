@@ -9,7 +9,7 @@ import {TextOrTranslatable} from './models/types/TextOrTranslatable';
 export class TranslateFieldPipe implements PipeTransform {
 	constructor(private readonly translate: TranslateService) {}
 
-	transform([label, data]: [string, TextOrTranslatable | undefined], ...args: unknown[]): string {
+	transform([label, data]: [string, TextOrTranslatable | undefined], ..._args: unknown[]): string {
 		if (typeof data === 'string') {
 			const trans = this.translate.instant(`choices.dataset.${label}.${data}`);
 			const untrans = `choices.dataset.${label}.${data}`;

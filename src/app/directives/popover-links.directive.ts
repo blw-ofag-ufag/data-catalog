@@ -17,7 +17,7 @@ export class PopoverLinksDirective implements OnInit, OnDestroy {
 	ngOnInit() {
 		console.log('PopoverLinksDirective initialized');
 		// Use MutationObserver to detect when innerHTML content is added
-		const observer = new MutationObserver(mutations => {
+		const observer = new MutationObserver(_mutations => {
 			console.log('Mutations detected in popover');
 			// Check if there are any links in the content
 			const links = this.el.nativeElement.querySelectorAll('a');
@@ -77,7 +77,7 @@ export class PopoverLinksDirective implements OnInit, OnDestroy {
 						window.open(href, '_blank', 'noopener,noreferrer');
 					} else if (href.startsWith('/')) {
 						console.log('Navigating to internal route:', href);
-						this.router.navigate([href]);
+						void this.router.navigate([href]);
 					} else {
 						// Treat as external URL if no protocol
 						const url = href.includes('://') ? href : `https://${href}`;

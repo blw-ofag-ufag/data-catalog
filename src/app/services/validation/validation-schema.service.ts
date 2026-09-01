@@ -3,8 +3,7 @@ import {AbstractControl, ValidatorFn} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
 import {ParsedValidationSchema, SchemaParserUtil} from './schema-parser.util';
 import {SchemaConfig, ValidationSchemaFetcherService} from './validation-schema-fetcher.service';
-import {BehaviorSubject, Observable, forkJoin, of} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {BehaviorSubject, Observable} from 'rxjs';
 import * as schemaConfigs from '../../codegen/schemas.json';
 import {DATA_PRODUCT_TYPE_REGISTRY, DEFAULT_DATA_PRODUCT_TYPE, DataProductType} from '../../models/data-product-type';
 import {

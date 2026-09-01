@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {GitHubCredentials} from './github-auth.service';
 import {Publisher} from '../../models/publisher.model';
 

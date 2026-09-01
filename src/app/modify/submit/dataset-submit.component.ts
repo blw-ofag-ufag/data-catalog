@@ -1,7 +1,6 @@
 import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
 // Oblique imports

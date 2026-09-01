@@ -1,4 +1,4 @@
-import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
+import {DataProduct} from '../models/schemas/dataset';
 // usage
 // const metadataElements = filterAndNormalizeMetadata(dataset);
 

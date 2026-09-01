@@ -76,7 +76,7 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, Val
 	// without waiting for the control to be touched.
 	readonly errorStateMatcher = new ValueErrorStateMatcher();
 	private readonly destroy$ = new Subject<void>();
-	private onChange = (value: MultilingualText | null) => {};
+	private onChange = (_value: MultilingualText | null) => {};
 	private onTouched = () => {};
 	private onValidatorChange = () => {};
 
@@ -261,7 +261,7 @@ export class MultilingualTextFieldComponent implements ControlValueAccessor, Val
 		return this.requiredLanguages.includes(language) || (this.required && (language === 'de' || language === 'fr'));
 	}
 
-	validate(control: AbstractControl): ValidationErrors | null {
+	validate(_control: AbstractControl): ValidationErrors | null {
 		// If the internal form group is invalid, return the errors
 		if (this.formGroup && this.formGroup.invalid) {
 			const errors: ValidationErrors = {};

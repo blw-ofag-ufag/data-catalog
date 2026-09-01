@@ -185,7 +185,6 @@ export class GitHubAuthService {
 	 */
 	generateCreateFileUrlForRepository(repository: string, branch: string, filePath: string, content: string): string {
 		const encodedContent = encodeURIComponent(content);
-		const filename = filePath.split('/').pop();
 		return `https://github.com/${repository}/new/${branch}?filename=${filePath}&value=${encodedContent}`;
 	}
 
@@ -235,7 +234,7 @@ export class GitHubAuthService {
 		filePath: string,
 		content: string,
 		commitMessage: string,
-		isUpdate: boolean = false
+		_isUpdate: boolean = false
 	): Observable<any> {
 		// Get credentials for this repository
 		const repoCredentials = this.repositoryCredentialsService.getCredentials(repository);

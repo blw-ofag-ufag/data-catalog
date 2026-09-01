@@ -5,7 +5,7 @@ import * as deJson from '../../assets/i18n/de.json';
 import * as enJson from '../../assets/i18n/en.json';
 import * as frJson from '../../assets/i18n/fr.json';
 import * as itJson from '../../assets/i18n/it.json';
-import {DATA_PRODUCT_TYPES, DATA_PRODUCT_TYPE_REGISTRY, DEFAULT_DATA_PRODUCT_TYPE, DataProductType, resolveDataProductType} from './data-product-type';
+import {DATA_PRODUCT_TYPES, DATA_PRODUCT_TYPE_REGISTRY, DEFAULT_DATA_PRODUCT_TYPE, resolveDataProductType} from './data-product-type';
 
 const LOCALES: Record<string, any> = {de: deJson, en: enJson, fr: frJson, it: itJson};
 const layout = formLayout as any;

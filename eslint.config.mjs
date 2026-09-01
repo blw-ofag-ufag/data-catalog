@@ -83,6 +83,18 @@ export default [
 			"@typescript-eslint/no-floating-promises": "error",
 			"@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
 			"@typescript-eslint/no-unnecessary-type-assertion": "error",
+			// Parameters an implemented interface dictates (ControlValueAccessor.writeValue,
+			// PipeTransform.transform, MutationObserver callbacks) cannot be dropped without
+			// breaking the contract, and a leading underscore is the conventional way to say
+			// "required by the signature, deliberately unused". Everything else still errors.
+			"@typescript-eslint/no-unused-vars": [
+				"error",
+				{
+					argsIgnorePattern: "^_",
+					varsIgnorePattern: "^_",
+					caughtErrorsIgnorePattern: "^_",
+				},
+			],
 			"@typescript-eslint/prefer-includes": "error",
 			"@typescript-eslint/prefer-optional-chain": "error",
 			"@typescript-eslint/prefer-readonly": "error",

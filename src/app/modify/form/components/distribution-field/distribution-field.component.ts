@@ -99,7 +99,7 @@ export class DistributionFieldComponent implements ControlValueAccessor, Validat
 
 	distributionsArray: FormArray;
 	private readonly destroy$ = new Subject<void>();
-	private onChange = (value: Distribution[] | null) => {};
+	private onChange = (_value: Distribution[] | null) => {};
 	private onTouched = () => {};
 	private onValidatorChange = () => {};
 
@@ -257,7 +257,7 @@ export class DistributionFieldComponent implements ControlValueAccessor, Validat
 		this.onTouched();
 	}
 
-	validate(control: AbstractControl): ValidationErrors | null {
+	validate(_control: AbstractControl): ValidationErrors | null {
 		// Check if the FormArray is valid
 		if (this.distributionsArray && this.distributionsArray.invalid) {
 			// Collect errors from all invalid distributions

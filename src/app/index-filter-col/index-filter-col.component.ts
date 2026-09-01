@@ -357,7 +357,7 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 			this.activatedFilters[category][option] = true;
 		}
 
-		this.filterService.setFilters(this.activatedFilters);
+		void this.filterService.setFilters(this.activatedFilters);
 		this.activatedFilters$.next(this.activatedFilters);
 	}
 
@@ -379,6 +379,6 @@ export class IndexFilterColComponent implements OnInit, OnDestroy {
 		this.dimensions = [];
 		this.activatedFilters = {};
 		this.activatedFilters$.next({});
-		this.filterService.setFilters({});
+		void this.filterService.setFilters({});
 	}
 }

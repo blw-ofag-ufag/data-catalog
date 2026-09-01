@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
-import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
+import {DataProduct} from '../models/schemas/dataset';
 import {DatasetService} from '../services/api/api.service';
 
 @Component({

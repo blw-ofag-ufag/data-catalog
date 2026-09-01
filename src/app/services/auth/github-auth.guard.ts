@@ -28,7 +28,7 @@ export class GitHubAuthGuard implements CanActivate {
 		const returnUrl = state.url;
 
 		// Redirect to auth page with return URL
-		this.router.navigate(['/modify/auth'], {
+		void this.router.navigate(['/modify/auth'], {
 			queryParams: {returnUrl}
 		});
 		return false;

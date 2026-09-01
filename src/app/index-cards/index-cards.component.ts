@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardImage, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {Observable, startWith} from 'rxjs';
-import {DataProduct, DatasetIdentifier, DatasetSchema} from '../models/schemas/dataset';
+import {DataProduct} from '../models/schemas/dataset';
 import {AsyncPipe, DatePipe, NgOptimizedImage} from '@angular/common';
 import {map} from 'rxjs/operators';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';

@@ -1,7 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {MultiDatasetService} from './multi-dataset-service.service';
 import {PublisherService} from './publisher.service';
-import {KeywordService} from './keyword.service';
 import {mockFetchByUrl, mockFetchJson, restoreFetch} from '../../../../tests/helpers/fetch-mock';
 
 /** Wait one macrotask so the fetch promise chains inside the service settle. */

@@ -6,7 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class LengthPipe implements PipeTransform {
 	constructor() {}
 
-	transform(value: any, ...args: unknown[]): number {
+	transform(value: any, ..._args: unknown[]): number {
 		return value.length;
 	}
 }
