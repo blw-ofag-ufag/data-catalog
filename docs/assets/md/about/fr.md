@@ -10,12 +10,12 @@ Dans ce contexte, de nombreux types de données sont collectés, créés, géré
 Ces données servent de base aux prises de décisions pour diverses tâches de l'OFAG.
 
 Les données prennent de multiples formes : des simples feuilles Excel aux bases de données complexes.
-Certaines données concernent des individus et comportent donc des risques de sécurité ; d'autres données n'ont pas besoin de protection et sont destinées à être publiques. 
+Certaines données concernent des individus et comportent donc des risques de sécurité ; d'autres données n'ont pas besoin de protection et sont destinées à être publiques.
 Certaines données peuvent concerner la production de lait, tandis que d'autres abordent les pertes d'azote dans l'agriculture.
 
 Face à ce volume de données en constante augmentation, il est essentiel pour l'OFAG de disposer d'un outil permettant une gestion claire et structurée des données.
 C'est fondamentalement l'objectif d'un catalogue de données complet et à jour.
-Il contribue ainsi directement au respect des principes de la [stratégie de numérisation](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie), tels que *Once Only*, *Open by Default*, *Security & Privacy by Default*, et *Innovation First*.
+Il contribue ainsi directement au respect des principes de la [stratégie de numérisation](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie), tels que _Once Only_, _Open by Default_, _Security & Privacy by Default_, et _Innovation First_.
 
 Pour l'OFAG dans son ensemble et ses utilisateurs individuels, le catalogue de données garantit :
 
@@ -48,7 +48,9 @@ Différents groupes peuvent bénéficier significativement d'un catalogue de don
 - **Parties prenantes externes :** Accès facile aux données publiques en cas de besoin.
 
 # Que contient le catalogue de données ?
+
 Le catalogue de données comprend les produits de données qui sont activement gérés, régulièrement utilisés et qui offrent une valeur ajoutée continue. Voici quelques exemples :
+
 - Un fichier Excel annuel contenant les chiffres actualisés de la production laitière
 - Un rapport BI (Power BI, SAP BO) permettant de suivre l'évolution de la situation des revenus
 - Un tableau de l'entrepôt de données contenant un résumé des ventes d'œufs par détaillant

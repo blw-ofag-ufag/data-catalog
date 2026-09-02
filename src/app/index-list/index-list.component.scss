@@ -25,3 +25,35 @@
 .no-wrap {
 	white-space: nowrap;
 }
+
+// Set minimum width for title column to prevent excessive wrapping
+.ob-table td:first-child,
+.ob-table th:first-child {
+	min-width: 250px;
+	max-width: 400px;
+	word-wrap: break-word;
+	white-space: normal;
+}
+
+// Ensure proper table layout
+.ob-table {
+	table-layout: auto;
+	width: 100%;
+}
+
+// Adjust column widths
+.ob-table th:nth-child(2),
+.ob-table td:nth-child(2) {
+	width: 100px; // Issued date column
+}
+
+.ob-table th:nth-child(3),
+.ob-table td:nth-child(3) {
+	width: 150px; // Steward column
+}
+
+// Keywords column gets remaining space
+.ob-table th:nth-child(4),
+.ob-table td:nth-child(4) {
+	width: auto;
+}

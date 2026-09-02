@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {marked} from 'marked';
 
@@ -11,7 +11,10 @@ import {marked} from 'marked';
 export class AboutComponent implements OnInit {
 	markdownContent: string = '';
 
-	constructor(private readonly translate: TranslateService) {}
+	constructor(
+		private readonly translate: TranslateService,
+		private readonly cdr: ChangeDetectorRef
+	) {}
 
 	async ngOnInit() {
 		await this.loadMarkdownContent();
@@ -42,5 +45,8 @@ export class AboutComponent implements OnInit {
 			console.error('Error loading markdown content:', error);
 			this.markdownContent = '<p>Error loading content</p>';
 		}
+
+		// Trigger change detection after async content load
+		this.cdr.detectChanges();
 	}
 }

@@ -1,0 +1,18 @@
+.field-debug-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background: rgba(0, 0, 0, 0.85);
+	color: #0f0;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 11px;
+	line-height: 1.4;
+	padding: 8px;
+	margin: 0;
+	border-radius: 4px;
+	pointer-events: none;
+	white-space: pre-wrap;
+	word-break: break-all;
+}

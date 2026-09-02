@@ -1,3 +1,5 @@
+import {DataProductType} from '../data-product-type';
+
 /**
  * URL for an image to be displayed in the data catalog. Choose an image that is related to the dataset's content.
  */
@@ -13,13 +15,11 @@ export type English = string;
 /**
  * Defines the accessibility of the dataset (e.g., public, internal, etc.). You can find more information here: <a href='https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-access-right'>DCAT-AP CH 3.0 – Access Rights Vocabulary</a>.
  */
-export const AccessRights = ['', 'CONFIDENTIAL', 'NON_PUBLIC', 'PUBLIC', 'RESTRICTED', 'SENSITIVE'];
-export type AccessRight = (typeof AccessRights)[number];
+export type AccessRight = string;
 /**
  * Federal Office responsible for the data object
  */
-export const Publishers = ['', 'BLW-OFAG-UFAG-FOAG', 'BLV-OSAV-USAV-FSVO'];
-export type Publisher = (typeof Publishers)[number];
+export type Publisher = string;
 export type ContactPointName = string;
 export type ContactPointEmailAddress = string;
 /**
@@ -29,32 +29,16 @@ export type IssuedDate = string | null;
 /**
  * This property indicates how long it is planned to keep the Dataset available. You can find the available values here: <a href='http://publications.europa.eu/resource/authority/planned-availability'>Planned availability</a>.
  */
-export const DatasetAvailabilities = ['', 'AVAILABLE', 'EXPERIMENTAL', 'STABLE', 'TEMPORARY'] as const;
-
-export type DatasetAvailability = (typeof DatasetAvailabilities)[number];
+export type DatasetAvailability = string;
 /**
  * Keywords describing the dataset.
+ * Array of keyword codes that reference the keywords dictionary.
  */
 export type Keywords = string[] | null;
 /**
  * Frequency with which dataset is updated (e.g., 'Annual'). More information here: <a href='https://www.dcat-ap.ch/releases/3.0_workingdraft/dcat-ap-ch_3.0_workingdraft.html#bib-vocab-eu-frequency'>Available frequencies</a>.
  */
-export const AccrualPeriocicites = [
-	'',
-	'OTHER',
-	'HOURLY',
-	'UNKNOWN',
-	'QUARTERLY',
-	'NEVER',
-	'MONTHLY',
-	'ANNUAL',
-	'DAILY',
-	'AS_NEEDED',
-	'WEEKLY',
-	'IRREG',
-	'CONT'
-];
-export type AccrualPeriodicity = (typeof AccrualPeriocicites)[number];
+export type AccrualPeriodicity = string;
 
 /**
  * Last modification date of the data in the dataset.
@@ -92,27 +76,23 @@ export type Email = string;
 /**
  * Role this person has for this dataset.
  */
-export type Role = 'businessDataOwner' | 'dataSteward' | 'dataCustodian';
+export type Role = 'dataOwner' | 'dataSteward' | 'dataCustodian';
 /**
  * Current status of the dataset.
  */
-export const Statuses = ['', 'workInProgress', 'validated', 'published', 'deleted', 'archived'];
-export type Status = (typeof Statuses)[number];
+export type Status = string;
 /**
  * Classification level of the dataset according to the Swiss Informationssicherheitsgesetz, ISG. For information regarding the categorization, consult <a https://www.fedlex.admin.ch/eli/cc/2022/232/de#art_13'>the Swiss Informationssicherheitsgesetz article 13</a>
  */
-export const ClassificationLevels = ['', 'none', 'internal', 'confidential', 'secret'];
-export type ClassificationLevel = (typeof ClassificationLevels)[number];
+export type ClassificationLevel = string;
 /**
  * Categorization regarding the Swiss data protection act. For information regarding the categorization, consult <a href='https://www.fedlex.admin.ch/eli/oc/2022/491/de#art_5'>the Swiss data protection act article 5</a>.
  */
-export const CategorizationsDSG = ['', 'none', 'personalData', 'sensitivePersonalData'];
-export type CategorizationDSG = (typeof CategorizationsDSG)[number];
+export type CategorizationDSG = string;
 /**
  * Specifies the type of data in the dataset (master data, reference data, thematic data or unstructured data).
  */
-export const DataTypes = ['', 'primaryThematicData', 'secondaryThematicData', 'referenceData', 'masterData', 'unstructuredData'];
-export type DataType = (typeof DataTypes)[number];
+export type DataType = string;
 /**
  * Indicates if this dataset has archival value and must be sent to the BAR.
  */
@@ -137,34 +117,7 @@ export type IDInTheExternalCatalog = string;
 /**
  * This attribute classifies the dataset into one or more broad thematics. Proper classification allow other users interested in the topic to find the dataset without knowing its name or description. Those are opendata.swiss themes, which are then mapped to EU themes. For the mapping, please consult <a href='https://dcat-ap.ch/vocabulary/themes/20231122.html'>this page</a>.
  */
-export const DatasetThemes = [
-	'',
-	'work',
-	'construction',
-	'population',
-	'education',
-	'energy',
-	'finances',
-	'geography',
-	'legislation',
-	'health',
-	'trade',
-	'industry',
-	'crime',
-	'culture',
-	'agriculture',
-	'mobility',
-	'public-order',
-	'politics',
-	'prices',
-	'territory',
-	'social-security',
-	'statistical-basis',
-	'tourism',
-	'administration',
-	'national-economy'
-];
-export type DatasetTheme = (typeof DatasetThemes)[number];
+export type DatasetTheme = string;
 /**
  * Landing page or homepage for the dataset.
  */
@@ -261,6 +214,7 @@ export type Distribution =
 			'dct:license'?: License;
 			'schema:comment'?: Comments1;
 			'dcat:accessService'?: AccessService;
+			'bv:dimensions'?: DistributionDimensions;
 	  }[]
 	| null;
 /**
@@ -307,11 +261,15 @@ export type Comments1 = string;
  * Reference to data services used to provide access to the data.
  */
 export type AccessService = string[] | null;
+/**
+ * Dimensions (structure) used in the distribution, as keys into the dimension glossary.
+ */
+export type DistributionDimensions = string[] | null;
 
 /**
  * A JSON schema for a dataset file in the data catalog.
  */
-export interface DatasetSchema {
+export interface DatasetSchema extends DataProduct {
 	'schema:image'?: ImageURL;
 	'dct:identifier': DatasetIdentifier;
 	'dct:title': DatasetTitle;
@@ -332,7 +290,7 @@ export interface DatasetSchema {
 	'bv:typeOfData'?: DataType;
 	'bv:archivalValue': ArchivalValue;
 	'bv:externalCatalogs'?: ExternalCatalogs;
-	'dcat:theme'?: DatasetTheme;
+	'dcat:theme'?: DatasetTheme[] | DatasetTheme;
 	'dcat:landingPage'?: LandingPage;
 	'dct:spatial'?: SpatialCoverage;
 	'dct:temporal'?: TemporalCoverage;
@@ -419,21 +377,18 @@ export interface DistributionDescription {
 	[k: string]: unknown;
 }
 
-export const enumTypes = [
-	'dct:accessRights',
-	'dct:publisher',
-	'dcatap:availability',
-	'dct:accrualPeriodicity',
-	'adms:status',
-	'bv:classification',
-	'bv:personalData',
-	'bv:typeOfData',
-	'dcat:keyword',
-	'dcat:theme'
-];
+/**
+ * Minimal shared shape for any data product (dataset, dataService, datasetSeries).
+ * Generic code (catalogue cards, reference resolution) can compile against this
+ * base; concrete products (e.g. DatasetSchema) extend it. Field-level detail comes
+ * from the runtime schema, so the base is intentionally permissive.
+ */
+export interface DataProduct {
+	'dct:identifier': DatasetIdentifier;
+	'dct:title': DatasetTitle;
+	'dct:publisher': Publisher;
+	/** Resolved product type, tagged onto each item at load time (#221). */
+	productType?: DataProductType;
 
-// Fields that are enums but display as arrays in details
-export const enumArrayFields = [
-	'dcat:theme',
-	'dcat:keyword'
-];
+	[k: string]: unknown;
+}

@@ -1,43 +1,82 @@
-import { Injectable } from '@angular/core';
-import { DatasetSchema } from '../models/schemas/dataset';
+import {Injectable} from '@angular/core';
+import {DatasetSchema} from '../models/schemas/dataset';
+import {DATA_PRODUCT_TYPE_REGISTRY, DEFAULT_DATA_PRODUCT_TYPE, DataProductType} from '../models/data-product-type';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class DatasetJsonService {
+	/**
+	 * Fields the schema declares as `array` of `string`, but which the edit form binds to a single
+	 * text input. An untouched control still holds the record's array, yet as soon as the user types
+	 * the control value becomes a bare string — and that scalar was written straight to the record,
+	 * violating the schema (issue #260 class; `prov:wasGeneratedBy: "Datenportal"` is a live example).
+	 *
+	 * Angular renders an array in a text input as `a,b,c`, so splitting on commas round-trips exactly
+	 * what the user was shown and keeps multi-valued records (prov:wasDerivedFrom holds up to 5) intact.
+	 */
+	private static readonly ARRAY_OF_STRING_FIELDS = ['prov:wasDerivedFrom', 'prov:wasGeneratedBy', 'dcat:inSeries', 'dct:replaces'];
 
 	/**
-	 * Generate dataset JSON from form data
+	 * Generate dataset JSON from form data.
+	 *
+	 * `baseRecord` is the record the form was loaded from, and exists to stop an edit destroying
+	 * data the form cannot show (issue #284). The form's controls are rebuilt from the runtime
+	 * schema, so a record field the schema no longer declares gets no control, never reaches
+	 * `formData`, and would otherwise vanish on save — `bv:itSystem` is still on 23 published
+	 * records after being dropped from the schema.
+	 *
+	 * Form values always win: every schema-declared field is present in `formData`, so a field the
+	 * user cleared arrives empty, overrides the base, and is then dropped by `removeEmptyValues`.
+	 * Only keys absent from `formData` survive from the base.
 	 */
-	generateDatasetJson(formData: any): DatasetSchema {
+	generateDatasetJson(formData: any, baseRecord: Record<string, unknown> = {}): DatasetSchema {
+		// Merge first, and work on the copy: the caller's form value must not be mutated.
+		const merged: any = {...baseRecord, ...formData};
+
 		// Generate identifier if not provided
-		if (!formData['dct:identifier']) {
-			formData['dct:identifier'] = this.generateUUID();
+		if (!merged['dct:identifier']) {
+			merged['dct:identifier'] = this.generateUUID();
 		}
 
 		// Process distributions - ensure each has an identifier
-		if (formData['dcat:distribution'] && Array.isArray(formData['dcat:distribution'])) {
-			formData['dcat:distribution'].forEach((dist: any, index: number) => {
-				if (!dist['dct:identifier']) {
-					dist['dct:identifier'] = this.generateUUID();
-				}
-			});
+		if (merged['dcat:distribution'] && Array.isArray(merged['dcat:distribution'])) {
+			merged['dcat:distribution'] = merged['dcat:distribution'].map((dist: any) =>
+				dist && !dist['dct:identifier'] ? {...dist, 'dct:identifier': this.generateUUID()} : dist
+			);
 		}
 
+		// Restore the schema's array shape for fields the form edits as free text.
+		const shaped = this.coerceArrayOfStringFields(merged);
+
 		// Clean up empty values
-		const cleanedData = this.removeEmptyValues(formData);
+		const cleanedData = this.removeEmptyValues(shaped);
 
 		// Reorder to put identifier first
 		return this.reorderIdentifierFirst(cleanedData);
+	}
+
+	private coerceArrayOfStringFields(formData: any): any {
+		const shaped = {...formData};
+		for (const key of DatasetJsonService.ARRAY_OF_STRING_FIELDS) {
+			const value = shaped[key];
+			if (typeof value === 'string') {
+				shaped[key] = value
+					.split(',')
+					.map(entry => entry.trim())
+					.filter(entry => entry !== '');
+			}
+		}
+		return shaped;
 	}
 
 	/**
 	 * Generate a UUID v4
 	 */
 	private generateUUID(): string {
-		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-			const r = Math.random() * 16 | 0;
-			const v = c === 'x' ? r : (r & 0x3 | 0x8);
+		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+			const r = (Math.random() * 16) | 0;
+			const v = c === 'x' ? r : (r & 0x3) | 0x8;
 			return v.toString(16);
 		});
 	}
@@ -50,10 +89,20 @@ export class DatasetJsonService {
 			return obj;
 		}
 
+		// Preserve Date values (e.g. from datepickers) as YYYY-MM-DD strings.
+		// Without this, a Date passes the typeof === 'object' check below, gets
+		// recursed into (it has no own enumerable keys) and is reduced to null,
+		// silently dropping fields like dct:issued. Use local date parts rather
+		// than toISOString() to avoid a timezone-induced off-by-one day shift.
+		if (obj instanceof Date) {
+			const y = obj.getFullYear();
+			const m = String(obj.getMonth() + 1).padStart(2, '0');
+			const d = String(obj.getDate()).padStart(2, '0');
+			return `${y}-${m}-${d}`;
+		}
+
 		if (Array.isArray(obj)) {
-			const filtered = obj
-				.map(item => this.removeEmptyValues(item))
-				.filter(item => item !== null && item !== undefined && item !== '');
+			const filtered = obj.map(item => this.removeEmptyValues(item)).filter(item => item !== null && item !== undefined && item !== '');
 			return filtered.length > 0 ? filtered : null;
 		}
 
@@ -124,6 +173,14 @@ export class DatasetJsonService {
 			'dct:accrualPeriodicity',
 			'dct:modified',
 			'dcat:version',
+			'adms:versionNotes',
+			// dataService fields
+			'dcat:endpointURL',
+			'dcat:endpointDescription',
+			'dcat:servesDataset',
+			'dct:conformsTo',
+			// datasetSeries member datasets
+			'dcat:dataset',
 			'prov:qualifiedAttribution',
 			'adms:status',
 			'bv:classification',
@@ -168,10 +225,12 @@ export class DatasetJsonService {
 	}
 
 	/**
-	 * Generate file path for dataset
+	 * Generate the repo file path for a record, using the product type's folder segment
+	 * (datasets / dataServices / datasetSeries) so non-dataset types are written to the right
+	 * location (#221). Defaults to 'dataset' for backward compatibility.
 	 */
-	generateFilePath(datasetId: string): string {
-		return `data/raw/datasets/${datasetId}.json`;
+	generateFilePath(datasetId: string, type: DataProductType = DEFAULT_DATA_PRODUCT_TYPE): string {
+		return `data/raw/${DATA_PRODUCT_TYPE_REGISTRY[type].segment}/${datasetId}.json`;
 	}
 
 	/**
@@ -186,6 +245,6 @@ export class DatasetJsonService {
 	 */
 	createJsonBlob(data: any): Blob {
 		const jsonString = this.formatJsonForDisplay(data);
-		return new Blob([jsonString], { type: 'application/json' });
+		return new Blob([jsonString], {type: 'application/json'});
 	}
 }

@@ -1,10 +1,16 @@
-import {Component, OnDestroy, AfterViewInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ObINavigationLink} from '@oblique/oblique';
+import {DateAdapter} from '@angular/material/core';
+import {Locale} from 'date-fns';
+import {de, enUS, fr, it} from 'date-fns/locale';
 import {VersionService} from './services/version.service';
+import {DebugService} from './services/debug.service';
+
+const DATE_FNS_LOCALES: Record<string, Locale> = {de, fr, it, en: enUS};
 
 @Component({
 	selector: 'root',
@@ -24,10 +30,16 @@ export class AppComponent implements OnDestroy, AfterViewInit {
 		private readonly activatedRoute: ActivatedRoute,
 		private readonly translate: TranslateService,
 		private readonly router: Router,
-		private readonly versionService: VersionService
+		private readonly versionService: VersionService,
+		private readonly debugService: DebugService,
+		private readonly dateAdapter: DateAdapter<Date>
 	) {
 		this.version$ = this.versionService.getVersion();
 		this.updateNavigation();
+		this.updateDateAdapterLocale(translate.currentLang);
+
+		// Expose toggleDebug() to window for developer use
+		(window as any).toggleDebug = () => this.debugService.toggleDebug();
 
 		activatedRoute.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
 			const langFromUrl = params['lang'] || 'en';
@@ -38,12 +50,19 @@ export class AppComponent implements OnDestroy, AfterViewInit {
 		});
 		translate.onLangChange.pipe(takeUntil(this.destroy$)).subscribe(async event => {
 			this.updateNavigation();
+			this.updateDateAdapterLocale(event.lang);
 			const langFromUrl = activatedRoute.snapshot.queryParams['lang'];
 			const langFromTranslate = event.lang;
 			if (langFromUrl !== langFromTranslate) {
 				await router.navigate([], {queryParams: {lang: langFromTranslate}, queryParamsHandling: 'merge'});
 			}
 		});
+	}
+
+	// Localize the Material datepickers to the selected UI language (issue #224).
+	private updateDateAdapterLocale(lang: string | undefined): void {
+		const langCode = (lang || 'de').split('-')[0];
+		this.dateAdapter.setLocale(DATE_FNS_LOCALES[langCode] ?? de);
 	}
 
 	private updateNavigation() {

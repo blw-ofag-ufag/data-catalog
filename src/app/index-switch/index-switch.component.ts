@@ -1,9 +1,9 @@
-import {Component, Input, OnDestroy, OnInit, ViewChild, AfterViewInit, ElementRef, ChangeDetectorRef} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {AsyncPipe} from '@angular/common';
 import {MatIcon} from '@angular/material/icon';
 import {MatButton, MatIconButton} from '@angular/material/button';
-import { ObButtonDirective, ObInputClearDirective } from "@oblique/oblique";
+import {ObButtonDirective, ObInputClearDirective} from '@oblique/oblique';
 import {MatTooltip} from '@angular/material/tooltip';
 import {IndexFilterColComponent} from '../index-filter-col/index-filter-col.component';
 import {IndexOutletComponent} from '../index-outlet/index-outlet.component';
@@ -12,7 +12,8 @@ import {MatOption} from '@angular/material/core';
 import {MatSelect} from '@angular/material/select';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {DatasetSchema, enumTypes} from '../models/schemas/dataset';
+import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
+import {enumTypes} from '../models/enum-fields';
 import {DatasetService} from '../services/api/api.service';
 import {MatBadge} from '@angular/material/badge';
 import {ActiveFilters, createActiveFiltersFromParams} from '../models/ActiveFilters';
@@ -48,7 +49,7 @@ import {TranslatePipe} from '@ngx-translate/core';
 export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 	view: 'table' | 'tile' = 'tile';
 	showFilters = false;
-	@Input() datasets$: Observable<DatasetSchema[] | null> = new Observable();
+	@Input() datasets$: Observable<DataProduct[] | null> = new Observable();
 	activatedFilters$: BehaviorSubject<ActiveFilters> = new BehaviorSubject({});
 	@ViewChild(MatSelect) sortSelect!: MatSelect;
 	private readonly destroy$ = new Subject<void>();
@@ -92,8 +93,8 @@ export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 					// Approach 2: Trigger focus/blur events on the trigger element
 					if (this.sortSelect.trigger) {
 						const triggerElement = this.sortSelect.trigger.nativeElement;
-						triggerElement.dispatchEvent(new Event('focus', { bubbles: true }));
-						triggerElement.dispatchEvent(new Event('blur', { bubbles: true }));
+						triggerElement.dispatchEvent(new Event('focus', {bubbles: true}));
+						triggerElement.dispatchEvent(new Event('blur', {bubbles: true}));
 					}
 
 					// Approach 3: Force change detection
@@ -154,7 +155,6 @@ export class IndexSwitchComponent implements OnInit, OnDestroy, AfterViewInit {
 		}
 		return Object.keys(filters).length;
 	}
-
 
 	getSortLabel(sortType: 'title' | 'old' | 'new' | 'owner' | 'relevance' | null): string {
 		if (sortType === 'title' || !sortType) {

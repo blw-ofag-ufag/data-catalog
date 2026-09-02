@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {NgComponentOutlet} from '@angular/common';
 import {TextOrTranslatable} from '../../models/types/TextOrTranslatable';
 import {TranslateFieldPipe} from '../../translate-field.pipe';
+import {DistributionDimensionsComponent} from './distribution-dimensions.component';
 
 // Default distribution metadata item component
 @Component({
@@ -60,7 +61,12 @@ export class DistributionItemComponent {
 		private readonly router: Router
 	) {}
 
-	decideComponent(label: string, data: any) {
+	decideComponent(label: string, data: any): any {
+		// Distribution structure: render dimension codes as localized chips (issue #92)
+		if (label === 'bv:dimensions') {
+			return DistributionDimensionsComponent;
+		}
+
 		// Handle URLs
 		if (typeof data === 'string' && data.startsWith('http')) {
 			return DistributionLinkComponent;

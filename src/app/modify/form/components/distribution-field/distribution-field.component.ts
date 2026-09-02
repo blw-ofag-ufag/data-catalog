@@ -1,16 +1,40 @@
 import {Component, Input, OnDestroy, forwardRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ControlValueAccessor, FormArray, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validators} from '@angular/forms';
+import {
+	AbstractControl,
+	ControlValueAccessor,
+	FormArray,
+	FormBuilder,
+	FormGroup,
+	NG_VALIDATORS,
+	NG_VALUE_ACCESSOR,
+	ReactiveFormsModule,
+	ValidationErrors,
+	Validator,
+	Validators
+} from '@angular/forms';
 import {Subject, takeUntil} from 'rxjs';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
 import {ObButtonDirective} from '@oblique/oblique';
+import {MultilingualTextFieldComponent} from '../multilingual-text-field/multilingual-text-field.component';
+import {DimensionSelectFieldComponent} from '../dimension-select-field/dimension-select-field.component';
+import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
+import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from '../field-debug-overlay/field-debug-overlay.component';
+import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
+import {parseLocalDate} from '../../../../shared/date-only.util';
+
+export interface MultilingualText {
+	de: string;
+	fr: string;
+	it?: string;
+	en?: string;
+}
 
 export interface Distribution {
 	'dct:identifier': string;
@@ -20,11 +44,12 @@ export interface Distribution {
 	'dct:format': string;
 	'dct:modified': string | null;
 	'dcat:downloadURL'?: string;
-	'dct:title'?: string;
-	'dct:description'?: string;
+	'dct:title'?: MultilingualText;
+	'dct:description'?: MultilingualText;
 	'dct:conformsTo'?: string;
 	'dct:license'?: string;
 	'schema:comment'?: string;
+	'bv:dimensions'?: string[];
 }
 
 @Component({
@@ -40,12 +65,20 @@ export interface Distribution {
 		MatButtonModule,
 		MatIconModule,
 		MatDatepickerModule,
-		MatNativeDateModule,
-		ObButtonDirective
+		ObButtonDirective,
+		MultilingualTextFieldComponent,
+		DimensionSelectFieldComponent,
+		FormFieldTooltipComponent,
+		FieldDebugOverlayComponent
 	],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
+			useExisting: forwardRef(() => DistributionFieldComponent),
+			multi: true
+		},
+		{
+			provide: NG_VALIDATORS,
 			useExisting: forwardRef(() => DistributionFieldComponent),
 			multi: true
 		}
@@ -53,50 +86,107 @@ export interface Distribution {
 	templateUrl: './distribution-field.component.html',
 	styleUrl: './distribution-field.component.scss'
 })
-export class DistributionFieldComponent implements ControlValueAccessor, OnDestroy {
+export class DistributionFieldComponent implements ControlValueAccessor, Validator, OnDestroy {
+	// TODO(#225/#265): cross-field constraint not yet enforced. The metadata-repo
+	// schema defines `bv:internalPath` and `dcat:accessURL` at distribution level;
+	// they should be mutually exclusive (XOR), and `bv:internalPath` should be
+	// disallowed when publishing to external portals (I14Y / opendata.swiss). This
+	// is a per-distribution cross-field rule the plain JSON schema cannot express;
+	// implement once the augmentation-layer vehicle (config/form-layout.yaml) lands.
 	@Input() label = 'Distributions';
 	@Input() required = false;
+	@Input() fieldName?: string;
 
 	distributionsArray: FormArray;
 	private readonly destroy$ = new Subject<void>();
 	private onChange = (value: Distribution[] | null) => {};
 	private onTouched = () => {};
+	private onValidatorChange = () => {};
 
-	readonly statuses = [
-		{value: '', label: 'Select Status'},
-		{value: 'workInProgress', label: 'Work in Progress'},
-		{value: 'validated', label: 'Validated'},
-		{value: 'published', label: 'Published'},
-		{value: 'deleted', label: 'Deleted'},
-		{value: 'archived', label: 'Archived'}
-	];
+	statuses: {value: string; label: string}[] = [];
 
-	readonly availabilities = [
-		{value: '', label: 'Select Availability'},
-		{value: 'AVAILABLE', label: 'Available'},
-		{value: 'EXPERIMENTAL', label: 'Experimental'},
-		{value: 'STABLE', label: 'Stable'},
-		{value: 'TEMPORARY', label: 'Temporary'}
-	];
+	availabilities: {value: string; label: string}[] = [];
 
-	readonly licenses = [
-		{value: '', label: 'Select License'},
-		{value: 'terms_open', label: 'Open use'},
-		{value: 'terms_by', label: 'Open use. Must provide the source'},
-		{value: 'terms_ask', label: 'Open use. Use for commercial purposes requires permission'},
-		{value: 'terms_by_ask', label: 'Open use. Must provide source. Commercial use requires permission'},
-		{value: 'cc-zero', label: 'CC0'},
-		{value: 'cc-by/4.0', label: 'CC BY 4.0'},
-		{value: 'cc-by-sa/4.0', label: 'CC BY-SA 4.0'}
-	];
+	licenses: {value: string; label: string}[] = [];
 
-	constructor(private readonly fb: FormBuilder) {
+	constructor(
+		private readonly fb: FormBuilder,
+		private readonly translateService: TranslateService,
+		private readonly validationSchemaService: ValidationSchemaService
+	) {
 		this.distributionsArray = this.fb.array([]);
+
+		// Initialize translation arrays
+		this.initializeTranslations();
 
 		// Subscribe to form changes
 		this.distributionsArray.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(value => {
 			this.onChange(value.length > 0 ? value : null);
+			this.onValidatorChange(); // Notify that validation state may have changed
 		});
+
+		// Update translations when language changes
+		this.translateService.onLangChange.pipe(takeUntil(this.destroy$)).subscribe(() => {
+			this.initializeTranslations();
+		});
+	}
+
+	getValidationDebugInfo(): FieldValidationDebugInfo {
+		const schemaFieldKey = this.fieldName || this.label.replace('labels.', '');
+		const schemaInfo = this.validationSchemaService.getFieldDebugInfo(schemaFieldKey);
+
+		// Add component-level hardcoded validation messages
+		const componentMessages: {text: string; source: 'hardcoded'}[] = [
+			{text: 'Title requires German and French', source: 'hardcoded'},
+			{text: 'Description requires German and French', source: 'hardcoded'}
+		];
+
+		return {
+			...schemaInfo,
+			componentMessages
+		};
+	}
+
+	getSubfieldValidationDebugInfo(subfieldKey: string): FieldValidationDebugInfo {
+		const parentFieldKey = this.fieldName || this.label.replace('labels.', '');
+		const fullFieldKey = `${parentFieldKey}.${subfieldKey}`;
+		const schemaInfo = this.validationSchemaService.getFieldDebugInfo(fullFieldKey);
+
+		// Add component-level validation for subfields
+		const componentMessages: {text: string; source: 'hardcoded'}[] = [];
+
+		// Based on createDistributionGroup validators
+		if (subfieldKey === 'dct:identifier') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'dcat:accessURL') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+			componentMessages.push({text: 'URL pattern validation', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'adms:status') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'dct:format') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'dcat:downloadURL') {
+			componentMessages.push({text: 'URL pattern validation', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'dct:title') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+		if (subfieldKey === 'dct:description') {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+
+		return {
+			...schemaInfo,
+			componentMessages: componentMessages.length > 0 ? componentMessages : undefined
+		};
+	}
+
+	isSubfieldRequired(subfieldKey: string): boolean {
+		return ['dct:identifier', 'dcat:accessURL', 'adms:status', 'dct:format', 'dct:title', 'dct:description'].includes(subfieldKey);
 	}
 
 	ngOnDestroy(): void {
@@ -132,31 +222,106 @@ export class DistributionFieldComponent implements ControlValueAccessor, OnDestr
 	addDistribution(): void {
 		this.distributionsArray.push(this.createDistributionGroup());
 		this.onTouched();
+		this.onValidatorChange(); // Notify that validation state has changed
 	}
 
 	removeDistribution(index: number): void {
 		this.distributionsArray.removeAt(index);
 		this.onTouched();
+		this.onValidatorChange(); // Notify that validation state has changed
 	}
 
 	private createDistributionGroup(distribution?: Distribution): FormGroup {
+		// Handle date conversion - if it's a string, convert to a local Date object
+		// (parseLocalDate avoids the UTC-midnight off-by-one, issue #259).
+		const modifiedDate = parseLocalDate(distribution?.['dct:modified']);
+
 		return this.fb.group({
 			'dct:identifier': [distribution?.['dct:identifier'] || '', Validators.required],
 			'dcat:accessURL': [distribution?.['dcat:accessURL'] || '', [Validators.required, Validators.pattern(/^https?:\/\/.+/)]],
 			'adms:status': [distribution?.['adms:status'] || '', Validators.required],
 			'dcatap:availability': [distribution?.['dcatap:availability'] || ''],
 			'dct:format': [distribution?.['dct:format'] || '', Validators.required],
-			'dct:modified': [distribution?.['dct:modified'] || null],
+			'dct:modified': [modifiedDate],
 			'dcat:downloadURL': [distribution?.['dcat:downloadURL'] || '', Validators.pattern(/^https?:\/\/.+/)],
-			'dct:title': [distribution?.['dct:title'] || ''],
-			'dct:description': [distribution?.['dct:description'] || ''],
+			'dct:title': [distribution?.['dct:title'] || null, Validators.required],
+			'dct:description': [distribution?.['dct:description'] || null, Validators.required],
 			'dct:conformsTo': [distribution?.['dct:conformsTo'] || ''],
 			'dct:license': [distribution?.['dct:license'] || ''],
-			'schema:comment': [distribution?.['schema:comment'] || '']
+			'schema:comment': [distribution?.['schema:comment'] || ''],
+			'bv:dimensions': [distribution?.['bv:dimensions'] || []]
 		});
 	}
 
 	onBlur(): void {
 		this.onTouched();
+	}
+
+	validate(control: AbstractControl): ValidationErrors | null {
+		// Check if the FormArray is valid
+		if (this.distributionsArray && this.distributionsArray.invalid) {
+			// Collect errors from all invalid distributions
+			const errors: any = {};
+			const errorMessages: string[] = [];
+			let hasErrors = false;
+
+			this.distributionsArray.controls.forEach((distributionGroup, index) => {
+				if (distributionGroup.invalid) {
+					hasErrors = true;
+					// Check specifically for title and description validation
+					const titleControl = distributionGroup.get('dct:title');
+					const descControl = distributionGroup.get('dct:description');
+
+					if (titleControl?.invalid) {
+						errors[`distribution_${index}_title`] = true;
+						errorMessages.push(`Distribution ${index + 1}: Title requires German and French`);
+					}
+					if (descControl?.invalid) {
+						errors[`distribution_${index}_description`] = true;
+						errorMessages.push(`Distribution ${index + 1}: Description requires German and French`);
+					}
+				}
+			});
+
+			if (hasErrors) {
+				errors['message'] = errorMessages.join(', ');
+				return errors;
+			}
+		}
+		return null;
+	}
+
+	registerOnValidatorChange(fn: () => void): void {
+		this.onValidatorChange = fn;
+	}
+
+	private initializeTranslations(): void {
+		this.statuses = [
+			{value: '', label: this.translateService.instant('modify.auth.form.options.selectStatus')},
+			{value: 'workInProgress', label: this.translateService.instant('choices.dataset.adms:status.workInProgress')},
+			{value: 'validated', label: this.translateService.instant('choices.dataset.adms:status.validated')},
+			{value: 'published', label: this.translateService.instant('choices.dataset.adms:status.published')},
+			{value: 'deleted', label: this.translateService.instant('choices.dataset.adms:status.deleted')},
+			{value: 'archived', label: this.translateService.instant('choices.dataset.adms:status.archived')}
+		];
+
+		this.availabilities = [
+			{value: '', label: this.translateService.instant('modify.auth.form.options.selectAvailability')},
+			{value: 'AVAILABLE', label: this.translateService.instant('choices.dataset.dcatap:availability.AVAILABLE')},
+			{value: 'EXPERIMENTAL', label: this.translateService.instant('choices.dataset.dcatap:availability.EXPERIMENTAL')},
+			{value: 'STABLE', label: this.translateService.instant('choices.dataset.dcatap:availability.STABLE')},
+			{value: 'TEMPORARY', label: this.translateService.instant('choices.dataset.dcatap:availability.TEMPORARY')}
+		];
+
+		this.licenses = [
+			{value: '', label: this.translateService.instant('modify.auth.form.options.selectLicense')},
+			{value: 'terms_open', label: this.translateService.instant('choices.distribution.license.terms_open')},
+			{value: 'terms_by', label: this.translateService.instant('choices.distribution.license.terms_by')},
+			{value: 'terms_ask', label: this.translateService.instant('choices.distribution.license.terms_ask')},
+			{value: 'terms_by_ask', label: this.translateService.instant('choices.distribution.license.terms_by_ask')},
+			{value: 'cc-zero', label: this.translateService.instant('choices.distribution.license.cc-zero')},
+			{value: 'cc-by/4.0', label: this.translateService.instant('choices.distribution.license.cc-by/4.0')},
+			{value: 'cc-by-sa/4.0', label: this.translateService.instant('choices.distribution.license.cc-by-sa/4.0')}
+		];
 	}
 }

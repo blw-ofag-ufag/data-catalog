@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Data Service",
+  "type": "object",
+  "required": ["dct:identifier", "dct:title", "dct:description", "dct:publisher", "dcat:endpointURL"],
+  "recommended": ["dcat:endpointDescription"],
+  "properties": {
+    "dct:identifier": { "type": "string" },
+    "dct:title": {
+      "type": "object",
+      "properties": { "de": { "type": "string" }, "fr": { "type": "string" }, "it": { "type": "string" }, "en": { "type": "string" } }
+    },
+    "dct:description": {
+      "type": "object",
+      "properties": { "de": { "type": "string" }, "fr": { "type": "string" }, "it": { "type": "string" }, "en": { "type": "string" } }
+    },
+    "dcat:keyword": { "type": "array", "items": { "type": "string" } },
+    "dcat:theme": { "type": "array", "items": { "type": "string", "enum": ["AGRI", "ENVI"] } },
+    "dcat:endpointURL": { "type": "string", "format": "uri" },
+    "dcat:endpointDescription": { "type": "object", "properties": { "de": { "type": "string" }, "en": { "type": "string" } } },
+    "dcat:servesDataset": { "type": "array", "items": { "type": "string" } },
+    "dct:conformsTo": { "type": "string" },
+    "dct:accessRights": { "type": "string", "enum": ["PUBLIC", "NON_PUBLIC", "RESTRICTED"] },
+    "adms:status": { "type": "string", "enum": ["Released", "Deprecated"] },
+    "dct:publisher": { "type": "string", "enum": ["BLW-OFAG-UFAG-FOAG"] },
+    "dcat:contactPoint": { "type": "object", "properties": { "schema:name": { "type": "string" }, "schema:email": { "type": "string", "format": "email" } } },
+    "dcat:version": { "type": "string" },
+    "adms:versionNotes": { "type": "string" },
+    "dcat:landingPage": { "type": "string", "format": "uri" },
+    "bv:externalCatalogs": { "type": "array", "items": { "type": "string" } },
+    "dcatap:applicableLegislation": { "type": "array", "items": { "type": "string" } },
+    "schema:comment": { "type": "string" },
+    "schema:image": { "type": "string" },
+    "foaf:page": { "type": "string" }
+  }
+}

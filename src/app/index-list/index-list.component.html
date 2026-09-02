@@ -1,17 +1,17 @@
 <table class="ob-table ob-table-plain">
 	<thead>
 		<tr>
-			<th scope="col" class="no-wrap">{{ "ui.title" | translate }}</th>
+			<th scope="col">{{ "ui.title" | translate }}</th>
 			<th scope="col" class="no-wrap">{{ "ui.issued" | translate }}</th>
 			<th scope="col" class="no-wrap">{{ "ui.stewardOwnerContact" | translate }}</th>
-			<th scope="col" class="no-wrap">{{ "ui.keywords" | translate }}</th>
+			<th scope="col">{{ "ui.keywords" | translate }}</th>
 		</tr>
 	</thead>
 	<tbody>
 		@for (dataset of datasets$ | async; track $index) {
-			<tr (click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])" style="cursor: pointer">
+			<tr (click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'], dataset['productType'])" style="cursor: pointer">
 				<td data-title="Title">{{ ["dct:title", dataset["dct:title"]] | translateField }}</td>
-				<td data-title="Issued" class="no-wrap">{{ dataset["dct:issued"] | date: "shortDate" : translate.currentLang }}</td>
+				<td data-title="Issued" class="no-wrap">{{ $any(dataset)["dct:issued"] | date: "shortDate" : undefined : translate.currentLang }}</td>
 				<td data-title="Steward" class="no-wrap">
 					<div class="ob-flex ob-flex-wrap ob-gap-2">
 						@for (steward of getStewards(dataset); track $index) {
@@ -23,9 +23,9 @@
 				</td>
 				<td data-title="Keywords">
 					<div>
-						@for (tag of dataset["dcat:keyword"]; track $index) {
+						@for (tag of getLocalizedKeywords(dataset); track $index) {
 							<mat-chip (click)="onChipClick($event)" class="small-chip">
-								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
+								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag, dataset)">
 									{{ tag }}
 								</a>
 							</mat-chip>

@@ -4,11 +4,14 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModul
 import {TranslatePipe} from '@ngx-translate/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import {FormFieldTooltipComponent} from '../form-field-tooltip/form-field-tooltip.component';
+import {FieldDebugOverlayComponent, FieldValidationDebugInfo} from '../field-debug-overlay/field-debug-overlay.component';
+import {ValidationSchemaService} from '../../../../services/validation/validation-schema.service';
 
 @Component({
 	selector: 'app-enum-select-field',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatSelectModule],
+	imports: [CommonModule, ReactiveFormsModule, TranslatePipe, MatFormFieldModule, MatSelectModule, FormFieldTooltipComponent, FieldDebugOverlayComponent],
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
@@ -23,15 +26,33 @@ export class EnumSelectFieldComponent implements ControlValueAccessor, OnInit {
 	@Input() label = '';
 	@Input() options: readonly string[] = [];
 	@Input() required = false;
+	@Input() recommended = false;
 	@Input() translationPath = '';
 	@Input() placeholder = '';
+	@Input() fieldName?: string;
 
 	control: FormControl;
 	private onChange = (value: string | null) => {};
 	private onTouched = () => {};
 
-	constructor() {
+	constructor(private readonly validationSchemaService: ValidationSchemaService) {
 		this.control = new FormControl('');
+	}
+
+	getValidationDebugInfo(): FieldValidationDebugInfo {
+		const schemaFieldKey = this.fieldName || this.label.replace('labels.', '');
+		const schemaInfo = this.validationSchemaService.getFieldDebugInfo(schemaFieldKey);
+
+		// Add component-level validation messages
+		const componentMessages: {text: string; source: 'hardcoded'}[] = [];
+		if (this.required) {
+			componentMessages.push({text: 'Required', source: 'hardcoded'});
+		}
+
+		return {
+			...schemaInfo,
+			componentMessages: componentMessages.length > 0 ? componentMessages : undefined
+		};
 	}
 
 	ngOnInit(): void {
@@ -68,6 +89,10 @@ export class EnumSelectFieldComponent implements ControlValueAccessor, OnInit {
 
 	onBlur(): void {
 		this.onTouched();
+	}
+
+	get filteredOptions(): readonly string[] {
+		return this.options.filter(option => option && option.trim() !== '');
 	}
 
 	getOptionTranslationKey(option: string): string {

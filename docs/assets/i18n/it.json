@@ -10,6 +10,11 @@
     "title": "Catalogo dei dati agroalimentari"
   },
   "choices": {
+    "productType": {
+      "dataset": "Set di dati",
+      "dataService": "Servizio di dati",
+      "datasetSeries": "Serie di set di dati"
+    },
     "dataset": {
       "adms:status": {
         "archived": "Archiviato",
@@ -25,9 +30,9 @@
         "secret": "Segreto"
       },
       "bv:personalData": {
-        "none": "Nessuno",
+        "none": "Nessun dato personale",
         "personalData": "Dati personali",
-        "sensitivePersonalData": "Dati personali sensibili"
+        "sensitivePersonalData": "Dati degni di particolare protezione"
       },
       "bv:typeOfData": {
         "masterData": "Dati master",
@@ -94,7 +99,7 @@
         "BLW-OFAG-UFAG-FOAG": "UFAG"
       },
       "hadRole": {
-        "businessDataOwner": "Proprietario dei dati aziendali",
+        "dataOwner": "Proprietario dei dati",
         "dataCustodian": "Custode dei dati",
         "dataSteward": "Responsabile dei dati"
       }
@@ -130,6 +135,7 @@
       "distributions": "Distribuzioni",
       "externalCatalogs": "Pubblicazione in cataloghi esterni",
       "metadata": "Metadati",
+      "dataSets": "Set di dati",
       "publications": "Pubblicazione in cataloghi esterni"
     },
     "noAffiliatedPersons": "Nessuno ha ancora rivendicato questo set di dati—che ne dici di dargli un po' di cura assegnando una persona responsabile?"
@@ -140,29 +146,68 @@
     "source": "Fonte (GitHub)",
     "version": "Versione"
   },
+  "tooltips": {
+    "adms:status": "Stato del prodotto dati: se è in fase di elaborazione, se è completato, ecc.",
+    "bv:abrogation": "Qual è la data di abrogazione?",
+    "bv:archivalValue": "Il prodotto di dati ha un'utilità o un significato duraturo che ne giustifica l'ulteriore conservazione a causa delle informazioni amministrative, legali, fiscali, probatorie o storiche in esso contenute?",
+    "bv:classification": "Qual è la classificazione della collezione di dati secondo la legge sulla sicurezza delle informazioni (cfr. art. 13 LSIn)?",
+    "bv:externalCatalogs": "Il prodotto dati deve essere pubblicato su altre piattaforme come i14y e/o opendata.swiss?",
+    "bv:geoIdentifier": "Qual è il geoidentificatore corrispondente secondo l'Ordinanza sulla geoinformazione, allegato 1?",
+    "bv:itSystem": "In quale sistema IT viene utilizzato il vostro prodotto dati? Si prega di indicare un URL.",
+    "bv:personalData": "Qual è la classificazione della collezione di dati secondo la legge sulla protezione dei dati (cfr. art. 5 LPD)?",
+    "bv:retentionPeriod": "Per quanto tempo deve essere conservato il vostro prodotto di dati?",
+    "bv:typeOfData": "Quale tipo descrive meglio il tuo prodotto dati?",
+    "dcat:accessService": "Un servizio dati consente l'accesso alla diffusione del prodotto dati.",
+    "bv:dimensions": "Le dimensioni descrivono la struttura della distribuzione – le colonne/i concetti che contiene – utilizzando chiavi dal glossario delle dimensioni.",
+    "dcat:accessURL": "L'URL tramite il quale si accede alla risorsa (ad es. una landing page o un modulo web). L'URL indicato deve contenere informazioni sul protocollo utilizzato, ovvero https:// o http://.",
+    "dcat:contactPoint": "A chi può rivolgersi l'utente dei dati se ha domande o commenti sul contenuto del prodotto di dati? Si prega di fornire i dati di contatto di un'organizzazione.",
+    "dcat:distribution": "Un'istanza del prodotto dati che può essere visualizzata o utilizzata. Ad esempio, una tabella con informazioni identiche può essere fornita come file Excel, CSV o JSON. I tre file sono distribuzioni dello stesso prodotto dati.",
+    "dcat:downloadURL": "Dove è possibile accedere al prodotto dati?",
+    "dcat:inSeries": "Il vostro prodotto di dati fa parte di una serie di dati? Quale?",
+    "dcat:keyword": "Quali parole chiave sono utili per trovare il tuo prodotto dati? È più facile trovare il tuo prodotto dati se inserisci più parole chiave che compaiono anche nei prodotti dati dei tuoi colleghi. ",
+    "dcat:landingPage": "Dove possono trovare gli utenti dei dati ulteriori informazioni sul vostro prodotto o sull'organizzazione responsabile?",
+    "dcat:theme": "Tema utilizzato per classificare i prodotti di dati nel catalogo.",
+    "dcat:version": "Di quale versione si tratta? Si prega di utilizzare numeri di versione semantici nella forma X.Y.Z, dove un aumento di X indica modifiche significative, Y indica modifiche minori e Z indica semplici correzioni come errori di battitura.",
+    "dcatap:applicableLegislation": "Questa caratteristica si riferisce alla base giuridica del prodotto di dati.",
+    "dcatap:availability": "La disponibilità del vostro prodotto di dati è temporanea, stabile o sperimentale?",
+    "dct:accessRights": "Informazioni relative alla natura aperta dei dati contenuti nel prodotto, all'esistenza di restrizioni di accesso o alla loro natura non pubblica.",
+    "dct:accrualPeriodicity": "Frequenza con cui viene aggiornato il prodotto dati.",
+    "dct:conformsTo": "Il vostro prodotto dati è conforme a determinati standard e/o specifiche?",
+    "dct:description": "Si prega di fornire una descrizione affinché l'utente dei dati possa comprendere il contenuto del prodotto, chi è un potenziale utente e a cosa serve il prodotto.",
+    "dct:format": "Qual è il formato dei file di questa distribuzione?",
+    "dct:issued": "Quando è stato pubblicato originariamente il prodotto di dati?",
+    "dct:license": "Con quale licenza è possibile utilizzare il prodotto dati?",
+    "dct:modified": "Quando è stata effettuata l'ultima modifica al prodotto dati?",
+    "dct:publisher": "Chi è l'organizzazione che pubblica il prodotto di dati?",
+    "dct:replaces": "Quale prodotto di dati viene sostituito?",
+    "dct:spatial": "Qual è l'area geografica coperta dal prodotto di dati?",
+    "dct:temporal": "Qual è il periodo di tempo coperto dal vostro prodotto dati?",
+    "dct:title": "Titolo del vostro prodotto dati",
+    "foaf:page": "Esistono documentazioni o siti web che descrivono più dettagliatamente questo prodotto di dati?",
+    "prov:qualifiedAttribution": "Chi ha quale ruolo per questo prodotto di dati?",
+    "prov:wasDerivedFrom": "Da quale altro prodotto di dati è stato derivato questo prodotto di dati?",
+    "prov:wasGeneratedBy": "Da quale processo aziendale è stato generato questo prodotto di dati?",
+    "schema:comment": "Esistono ulteriori informazioni rilevanti su questo prodotto di dati?"
+  },
   "labels": {
-    "accessRights": "Diritti di accesso",
-    "accessService": "Servizio di accesso",
-    "accessURL": "URL di accesso",
-    "accrualPeriodicity": "Periodicità di accumulo",
+    "dcat:endpointURL": "URL endpoint",
+    "dcat:endpointDescription": "Descrizione endpoint",
+    "dcat:servesDataset": "Fornisce i set di dati",
+    "adms:versionNotes": "Note di versione",
+    "dcat:dataset": "Set di dati della serie",
+    "dct:creator": "Creatore",
     "adms:status": "Stato",
-    "applicableLegislation": "Base legale",
-    "archivalValue": "Valore archivistico",
     "bv:abrogation": "Data di abrogazione",
     "bv:archivalValue": "Valore archivistico",
-    "bv:classification": "Classificazione",
+    "bv:classification": "Classificazione secondo la LSI",
+    "bv:personalData": "Classificazione secondo la LPD",
     "bv:externalCatalogs": "Pubblicazione in cataloghi esterni",
     "bv:geoIdentifier": "Identificatore GeoIV",
     "bv:itSystem": "Sistema IT",
-    "bv:personalData": "Dati personali",
     "bv:retentionPeriod": "Periodo di conservazione",
     "bv:typeOfData": "Tipo di dati",
-    "catalog": "Catalogo",
-    "classification": "Classificazione",
-    "comment": "Commenti aggiuntivi",
-    "conformsTo": "Conforme a",
-    "contactPoint": "Punto di contatto",
     "dcat:accessService": "Servizio di accesso",
+    "bv:dimensions": "Dimensioni",
     "dcat:accessURL": "URL di accesso",
     "dcat:catalog": "Catalogo",
     "dcat:contactPoint": "Punto di contatto",
@@ -188,35 +233,13 @@
     "dct:spatial": "Copertura spaziale",
     "dct:temporal": "Copertura temporale",
     "dct:title": "Titolo",
-    "description": "Descrizione",
-    "downloadURL": "URL di download",
-    "externalCatalogs": "Pubblicazione in cataloghi esterni",
     "foaf:page": "Risorse correlate",
-    "format": "Formato del file",
-    "geoIdentifier": "Identificatore GeoIV",
-    "identifier": "Identificatore",
-    "image": "Immagine",
-    "inSeries": "Nella serie di set di dati",
-    "issued": "Data di pubblicazione",
-    "keyword": "Parole chiave",
-    "landingPage": "Pagina di destinazione",
-    "license": "Licenza",
-    "modified": "Data di modifica",
-    "page": "Risorse correlate",
-    "personalData": "Dati personali",
+    "schema:image": "Immagine",
     "prov:qualifiedAttribution": "Persone responsabili",
     "prov:wasDerivedFrom": "Derivato da",
     "prov:wasGeneratedBy": "Processo aziendale",
-    "qualitifedAttribution": "Persone responsabili",
-    "replaces": "Sostituisce",
     "schema:comment": "Commenti aggiuntivi",
-    "spatial": "Copertura spaziale",
-    "status": "Stato",
-    "temporal": "Copertura temporale",
-    "theme": "Tema",
-    "title": "Titolo",
-    "typeOfData": "Tipo di dati",
-    "version": "Versione"
+    "dcat:distribution": "Distribuzioni"
   },
   "msg": {
     "adminDirError": "Impossibile cercare in AdminDir",
@@ -258,6 +281,7 @@
         "learnMore": "Scopri di più sui token GitHub"
       },
       "form": {
+        "productType": "Tipo di prodotto",
         "title": {
           "new": "Crea nuovo set di dati",
           "edit": "Modifica set di dati"
@@ -270,21 +294,38 @@
         "validation": {
           "required": "Questo campo è obbligatorio",
           "maxLength": "Lunghezza massima superata",
+          "minLength": "Sono richiesti almeno {{minLength}} caratteri",
+          "pattern": "Formato non valido",
+          "titlePattern": "Sono ammessi solo lettere A-Z, cifre 0-9, spazi, trattini e trattini bassi",
           "email": "Inserisci un indirizzo email valido",
           "summary": "Errori di validazione del modulo:",
-          "fillRequired": "Compila tutti i campi obbligatori contrassegnati con un asterisco (*)"
+          "fillRequired": "Compila tutti i campi obbligatori contrassegnati con un asterisco (*)",
+          "recommended": "(raccomandato)",
+          "invalidDate": "Inserire una data valida (GG.MM.AAAA)",
+          "dateNotFuture": "La data non può essere nel futuro.",
+          "dateOrderIssuedModified": "La data di pubblicazione deve essere precedente o uguale alla data di modifica.",
+          "dateOrderStartEnd": "La data di inizio deve essere precedente o uguale alla data di fine."
         },
         "confirmation": {
           "unsavedChanges": "Hai modifiche non salvate. Sei sicuro di voler uscire? Tutte le modifiche andranno perse."
         },
         "help": {
-          "multilingualRequired": "Almeno tedesco e francese sono richiesti"
+          "externalCatalogs": "Seleziona i cataloghi esterni dove questo set di dati deve essere pubblicato",
+          "relationships": "Inserisci gli ID dei set di dati separati da virgole per i set di dati correlati",
+          "accessUrl": "URL dove è possibile accedere alla distribuzione",
+          "downloadUrl": "URL di download diretto del file",
+          "distributionsRequired": "Almeno una distribuzione è richiesta"
         },
         "options": {
-          "none": "Nessuna selezione"
+          "none": "Nessuna selezione",
+          "selectStatus": "Seleziona stato",
+          "selectAvailability": "Seleziona disponibilità",
+          "selectLicense": "Seleziona licenza"
         },
         "sections": {
           "basic": "Informazioni di base",
+          "service": "Servizio",
+          "series": "Serie",
           "access": "Accesso e classificazione",
           "publisher": "Editore e contatto",
           "metadata": "Metadati e versioning",
@@ -299,20 +340,37 @@
           "title": "Inserisci il titolo del set di dati",
           "description": "Inserisci la descrizione del set di dati",
           "keyword": "Aggiungi parola chiave",
-          "theme": "Seleziona tema"
+          "dimension": "Aggiungi dimensione",
+          "keywordKey": "es., animale, mucca, agricoltura",
+          "keywordTranslation": "Inserisci la traduzione della parola chiave",
+          "theme": "Seleziona tema",
+          "distributionId": "es. dist-001",
+          "format": "es. CSV, JSON, XML",
+          "accessUrl": "https://esempio.com/api/dataset",
+          "downloadUrl": "https://esempio.com/download/data.csv",
+          "distributionTitle": "Titolo della distribuzione",
+          "distributionDescription": "Descrizione della distribuzione",
+          "additionalComments": "Commenti aggiuntivi",
+          "conformsTo": "es. ISO 19115"
         },
         "labels": {
           "temporalStart": "Inizio copertura temporale",
           "temporalEnd": "Fine copertura temporale",
           "imageUrl": "URL immagine del set di dati",
-          "relationships": "Relazioni del set di dati"
+          "relationships": "Relazioni del set di dati",
+          "distribution": "Distribuzione",
+          "keyword": "Parola chiave",
+          "keywordKey": "Chiave della parola chiave",
+          "keywordTranslations": "Traduzioni della parola chiave"
         },
-        "help": {
-          "externalCatalogs": "Seleziona i cataloghi esterni dove questo set di dati deve essere pubblicato",
-          "relationships": "Inserisci gli ID dei set di dati separati da virgole per i set di dati correlati"
+        "addKeyword": "Aggiungi parola chiave",
+        "removeKeyword": "Rimuovi parola chiave",
+        "noKeywords": "Nessuna parola chiave aggiunta ancora",
+        "hints": {
+          "keywordKey": "Identificatore unico per la parola chiave (minuscolo, senza spazi)"
         },
-        "contactName": "Nome della persona di contatto",
-        "contactEmail": "Email della persona di contatto",
+        "contactName": "Nome della punto di contatto (organizzazione)",
+        "contactEmail": "Email della punto di contatto (organizzazione)",
         "generateJson": "Genera JSON",
         "backToForm": "Torna al modulo",
         "authOptional": "Opzionale: Autenticazione",
@@ -321,8 +379,39 @@
           "next": "Avanti",
           "previous": "Indietro"
         },
+        "changeRepository": "Cambiare repository",
         "reset": "Ripristina",
-        "submit": "Invia"
+        "submit": "Verifica",
+        "buttons": {
+          "addDistribution": "Aggiungi distribuzione"
+        },
+        "messages": {
+          "noDistributions": "Nessuna distribuzione aggiunta finora"
+        }
+      },
+      "submit": {
+        "title": "Set di dati pronto per l'invio",
+        "selectedRepository": "Repository selezionato",
+        "authSuccess": "Autenticato con successo",
+        "authInfo": "Si prega di autenticarsi per apportare modifiche",
+        "authenticate": "Autentica",
+        "showJson": "Mostra anteprima JSON",
+        "hideJson": "Nascondi JSON",
+        "options": "Opzioni di invio",
+        "createInGitHub": "Crea in GitHub",
+        "editInGitHub": "Modifica in GitHub",
+        "githubDescription": "Apre GitHub per modificare o creare il file direttamente",
+        "alternatives": "Opzioni alternative",
+        "copyJson": "Copia JSON",
+        "copyDescription": "Copia i dati JSON negli appunti",
+        "downloadJson": "Scarica JSON",
+        "downloadDescription": "Scarica il file JSON sul tuo computer",
+        "help": {
+          "title": "Prossimi passi",
+          "github": "Verifica le modifiche in GitHub",
+          "review": "Fai rivedere le modifiche da un collega",
+          "commit": "Committa le modifiche nel repository"
+        }
       }
     }
   },
@@ -330,6 +419,10 @@
     "back-home": "Torna alla home",
     "message": "La pagina che stai cercando non esiste.",
     "title": "Pagina non trovata"
+  },
+  "common": {
+    "yes": "Sì",
+    "no": "No"
   },
   "ui": {
     "addDataset": "Aggiungi set di dati",
@@ -343,8 +436,11 @@
     "issued": "Pubblicato",
     "issueDate": "Data di pubblicazione",
     "keywords": "Parole chiave",
+    "dimensions": "Dimensioni",
+    "productType": "Tipo",
     "list": "Lista",
     "newKeyword": "Nuova parola chiave...",
+    "newDimension": "Nuova dimensione...",
     "noResultsFound": "Nessun risultato trovato. Prova con filtri o ricerche più generali.",
     "remove": "Rimuovi",
     "reset": "Resetta",
@@ -361,5 +457,41 @@
     "steward": "Responsabile",
     "stewardOwnerContact": "Contatto",
     "title": "Titolo"
+  },
+  "validation": {
+    "i14y": {
+      "name": "Requisiti I14Y",
+      "description": "Requisiti aggiuntivi per la pubblicazione sulla piattaforma di interoperabilità I14Y"
+    },
+    "ods": {
+      "name": "Requisiti Open Data Swiss",
+      "description": "Requisiti aggiuntivi per la pubblicazione su Open Data Swiss"
+    },
+    "base": {
+      "name": "Requisiti di base",
+      "nameOffline": "Requisiti di base (Offline)",
+      "description": "Requisiti di base per tutti i set di dati"
+    },
+    "generic": {
+      "description": "Controllare i seguenti requisiti"
+    },
+    "advisory": "Solo a titolo indicativo: questi requisiti bloccano l'invio solo quando si pubblica su questo catalogo.",
+    "errors": {
+      "fieldRequired": "{{field}} è richiesto per {{schema}}",
+      "fieldRequiredPattern": "{{field}}: il testo {{languages}} deve essere {{pattern}}",
+      "fieldMissingLanguages": "{{field}} deve avere testo in {{languages}}{{pattern}}",
+      "formatInvalid": "Il formato di {{field}} non è valido per {{schema}}",
+      "validationError": "{{field}} ha errori di validazione per {{schema}}"
+    },
+    "formStatus": {
+      "complete": {
+        "title": "Validazione del modulo completata",
+        "message": "Il modulo del set di dati è valido e pronto per l'invio a GitHub"
+      },
+      "failed": {
+        "title": "Validazione del modulo fallita",
+        "message": "Correggere {{count}} campi obbligatori per continuare"
+      }
+    }
   }
 }

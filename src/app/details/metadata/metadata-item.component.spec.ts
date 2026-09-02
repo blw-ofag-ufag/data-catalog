@@ -1,0 +1,189 @@
+// metadata-item.component.ts statically imports @angular/common/locales/* which
+// ship as untransformed ESM; stub them so jest can parse the module graph.
+jest.mock('@angular/common/locales/de', () => ({__esModule: true, default: ['de']}));
+jest.mock('@angular/common/locales/fr', () => ({__esModule: true, default: ['fr']}));
+jest.mock('@angular/common/locales/it', () => ({__esModule: true, default: ['it']}));
+
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ActivatedRoute, Router, provideRouter} from '@angular/router';
+import {of} from 'rxjs';
+import {MultiDatasetService} from '../../services/api/multi-dataset-service.service';
+import {
+	DatasetLinkListComponent,
+	DateMetadataItemComponent,
+	DefaultMetadataItemComponent,
+	EnumComponent,
+	FreeListItemComponent,
+	LinkComponent,
+	MetadataItemComponent,
+	NoComponent,
+	NumberComponent,
+	YesComponent
+} from './metadata-item.component';
+import {provideTranslateTesting} from '../../../../tests/helpers/translate-testing';
+
+describe('MetadataItemComponent', () => {
+	let component: MetadataItemComponent;
+	let fixture: ComponentFixture<MetadataItemComponent>;
+
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
+			imports: [MetadataItemComponent, NoopAnimationsModule, provideTranslateTesting()],
+			providers: [provideRouter([])]
+		}).compileComponents();
+
+		fixture = TestBed.createComponent(MetadataItemComponent);
+		component = fixture.componentInstance;
+	});
+
+	it('should create', () => {
+		fixture.detectChanges();
+		expect(component).toBeTruthy();
+	});
+
+	describe('decideComponent', () => {
+		it('returns YesComponent for true and NoComponent for false', () => {
+			expect(component.decideComponent('whatever', true)).toBe(YesComponent);
+			expect(component.decideComponent('whatever', false)).toBe(NoComponent);
+		});
+
+		it('returns DateMetadataItemComponent for date fields', () => {
+			expect(component.decideComponent('dct:issued', '2024-01-01')).toBe(DateMetadataItemComponent);
+			expect(component.decideComponent('dct:modified', '2024-01-01')).toBe(DateMetadataItemComponent);
+		});
+
+		it('returns DatasetLinkListComponent for dataset reference fields', () => {
+			expect(component.decideComponent('dcat:inSeries', ['id-1'])).toBe(DatasetLinkListComponent);
+			expect(component.decideComponent('dct:replaces', ['id-1'])).toBe(DatasetLinkListComponent);
+			expect(component.decideComponent('prov:wasDerivedFrom', ['id-1'])).toBe(DatasetLinkListComponent);
+		});
+
+		it('returns LinkComponent for http string values', () => {
+			expect(component.decideComponent('dcat:landingPage', 'https://example.com')).toBe(LinkComponent);
+		});
+
+		it('returns NumberComponent for numeric values', () => {
+			expect(component.decideComponent('bv:retentionPeriod', 42)).toBe(NumberComponent);
+		});
+
+		it('returns EnumComponent for enum-type string fields', () => {
+			expect(component.decideComponent('dct:accessRights', 'PUBLIC')).toBe(EnumComponent);
+		});
+
+		it('falls back to DefaultMetadataItemComponent for plain strings', () => {
+			expect(component.decideComponent('dcat:version', '1.0')).toBe(DefaultMetadataItemComponent);
+		});
+	});
+
+	describe('rendering via the outlet', () => {
+		it('renders a default item label/value through translateField', () => {
+			component.label = 'dcat:version';
+			component.data = '2.0';
+			fixture.detectChanges();
+			// translateField echoes the raw string when no translation exists
+			expect(fixture.nativeElement.textContent).toContain('2.0');
+		});
+
+		it('renders an http value as an anchor link', () => {
+			component.label = 'dcat:landingPage';
+			component.data = 'https://example.org/page';
+			fixture.detectChanges();
+			const anchor = fixture.nativeElement.querySelector('a');
+			expect(anchor).toBeTruthy();
+			expect(anchor.getAttribute('href')).toBe('https://example.org/page');
+		});
+
+		it('renders the boolean "yes" component', () => {
+			component.label = 'bv:archivalValue';
+			component.data = true;
+			fixture.detectChanges();
+			// translate pipe echoes the key
+			expect(fixture.nativeElement.textContent).toContain('common.yes');
+		});
+	});
+});
+
+describe('DatasetLinkListComponent', () => {
+	it('builds /details query params, falling back to current publisher + default type when the ref is not in the store', () => {
+		const route: {snapshot: {queryParams: Record<string, string>}} = {snapshot: {queryParams: {publisher: 'PUB', lang: 'de', dataset: 'old'}}};
+		TestBed.configureTestingModule({
+			imports: [DatasetLinkListComponent, provideTranslateTesting()],
+			providers: [
+				{provide: Router, useValue: {navigate: jest.fn()}},
+				{provide: ActivatedRoute, useValue: route},
+				{provide: MultiDatasetService, useValue: {datasets$: of([]), ensureIndexLoaded: jest.fn()}}
+			]
+		});
+		const fixture = TestBed.createComponent(DatasetLinkListComponent);
+		expect(fixture.componentInstance.getQueryParams('new-id')).toEqual({
+			publisher: 'PUB',
+			dataset: 'new-id',
+			type: 'dataset',
+			lang: 'de'
+		});
+	});
+});
+
+describe('EnumComponent', () => {
+	it('maps label to data in paramEntry on init', () => {
+		TestBed.configureTestingModule({
+			imports: [EnumComponent, NoopAnimationsModule, provideTranslateTesting()],
+			providers: [provideRouter([])]
+		});
+		const fixture = TestBed.createComponent(EnumComponent);
+		fixture.componentInstance.label = 'dct:accessRights';
+		fixture.componentInstance.data = 'PUBLIC';
+		fixture.detectChanges();
+		expect(fixture.componentInstance.paramEntry['dct:accessRights']).toBe('PUBLIC');
+	});
+});
+
+describe('FreeListItemComponent', () => {
+	/**
+	 * #255: array-facet chips (dcat:theme, bv:dimensions) are rendered through NgComponentOutlet,
+	 * where a plain routerLink click does not navigate. They therefore need the same explicit
+	 * mouseup navigation the other outlet-rendered components use, or they look dead to the user
+	 * while the scalar enum chips next to them work.
+	 */
+	function setup(label: string, data: string[]) {
+		const navigate = jest.fn();
+		TestBed.configureTestingModule({
+			imports: [FreeListItemComponent, NoopAnimationsModule, provideTranslateTesting()],
+			providers: [
+				{provide: Router, useValue: {navigate, createUrlTree: jest.fn(() => ({})), serializeUrl: jest.fn(() => ''), events: of()}},
+				{provide: ActivatedRoute, useValue: {snapshot: {queryParams: {}}}},
+				{provide: 'label', useValue: label},
+				{provide: 'data', useValue: data}
+			]
+		});
+		const fixture = TestBed.createComponent(FreeListItemComponent);
+		return {fixture, navigate};
+	}
+
+	it('builds the index filter query params for a theme', () => {
+		const {fixture} = setup('dcat:theme', ['agriculture']);
+		expect(fixture.componentInstance.queryParamsFor('agriculture')).toEqual({'dcat:theme': 'agriculture'});
+	});
+
+	it('navigates to the filtered index on mouseup', () => {
+		const {fixture, navigate} = setup('dcat:theme', ['agriculture']);
+		fixture.componentInstance.navigateTo('agriculture');
+		expect(navigate).toHaveBeenCalledWith(['/index'], {queryParams: {'dcat:theme': 'agriculture'}});
+	});
+
+	it('does the same for the dimensions facet, which shares this component', () => {
+		const {fixture, navigate} = setup('bv:dimensions', ['time']);
+		fixture.componentInstance.navigateTo('time');
+		expect(navigate).toHaveBeenCalledWith(['/index'], {queryParams: {'bv:dimensions': 'time'}});
+	});
+
+	it('wires mouseup on the rendered anchor, not only on click', () => {
+		const {fixture, navigate} = setup('dcat:theme', ['agriculture']);
+		fixture.detectChanges();
+		const anchor = fixture.nativeElement.querySelector('mat-chip a') as HTMLElement;
+		expect(anchor).toBeTruthy();
+		anchor.dispatchEvent(new MouseEvent('mouseup', {bubbles: true}));
+		expect(navigate).toHaveBeenCalledWith(['/index'], {queryParams: {'dcat:theme': 'agriculture'}});
+	});
+});

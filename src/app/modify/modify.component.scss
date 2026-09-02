@@ -50,12 +50,26 @@
 	min-height: 56px; // Match the height of mat-form-field
 }
 
+// #236: the help text under the external-catalog checkboxes wrapped inside the
+// first grid column. Make the group and its help line span the full row.
+.external-catalogs-group {
+	width: 100%;
+
+	> .ob-text-muted {
+		display: block;
+	}
+}
+
 // Style external catalogs section
 .external-catalogs {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1rem;
 	margin-bottom: 0.5rem;
+	// #236: the group is laid out in columns, so the checkbox row and its help
+	// text below must claim the full width instead of wrapping inside column one.
+	width: 100%;
+	flex-basis: 100%;
 
 	.mat-mdc-checkbox {
 		.mdc-form-field {
@@ -81,6 +95,47 @@
 			.mat-step-label {
 				font-weight: 500;
 				font-size: 0.9rem;
+			}
+
+			// Configure Oblique icons for stepper
+			.mat-step-icon {
+				font-family: "oblique-icons";
+				// Make bubbles slightly larger to fit double-digit numbers
+				width: 28px !important;
+				height: 28px !important;
+				min-width: 28px !important;
+				min-height: 28px !important;
+
+				.mat-step-icon-content {
+					font-family: "oblique-icons";
+					font-style: normal;
+					font-variant: normal;
+					text-rendering: auto;
+					-webkit-font-smoothing: antialiased;
+					// Smaller font size for numbers
+					font-size: 14px !important;
+					line-height: 28px !important;
+					// Prevent number wrapping
+					white-space: nowrap !important;
+				}
+			}
+
+			// Style invalid step icons red when there are errors
+			&.mat-step-header-invalid {
+				.mat-step-icon {
+					background-color: #dc3545 !important;
+					color: white !important;
+				}
+			}
+
+			// Also style steps that aren't completed and have errors
+			&:not(.mat-step-header-completed) {
+				&.cdk-step-invalid {
+					.mat-step-icon {
+						background-color: #dc3545 !important;
+						color: white !important;
+					}
+				}
 			}
 		}
 
@@ -115,3 +170,121 @@
 	}
 }
 
+// Required field asterisk styling
+.required-asterisk {
+	color: #dc3545;
+	font-weight: bold;
+	margin-left: 2px;
+}
+
+// Recommended field indicator styling
+.recommended-indicator {
+	color: #0066cc;
+	font-size: 0.85em;
+	font-weight: 500;
+	margin-left: 4px;
+	opacity: 0.8;
+}
+
+// Style mat-form-field labels for required fields
+mat-form-field.required {
+	mat-label::after {
+		content: " *";
+		color: #dc3545;
+		font-weight: bold;
+	}
+}
+
+// Validation group styling
+.validation-groups {
+	margin-bottom: 1.5rem;
+
+	.validation-group {
+		margin-bottom: 1rem;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+// Field-level I14Y indicators
+.field-i14y-required {
+	position: relative;
+
+	&::after {
+		content: " (I14Y)";
+		color: #0066cc;
+		font-size: 0.85em;
+		font-weight: 500;
+		margin-left: 4px;
+		opacity: 0.8;
+	}
+
+	// Style the form field border when I14Y validation is active
+	.mat-mdc-form-field {
+		&.mat-form-field-invalid:not(.mat-form-field-disabled) {
+			.mat-mdc-text-field-wrapper {
+				.mat-mdc-form-field-flex {
+					.mat-mdc-form-field-infix {
+						border-bottom-color: #0066cc;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Field-level ODS indicators
+.field-ods-required {
+	position: relative;
+
+	&::after {
+		content: " (ODS)";
+		color: #e91e63;
+		font-size: 0.85em;
+		font-weight: 500;
+		margin-left: 4px;
+		opacity: 0.8;
+	}
+}
+
+// Validation section spacing
+.validation-section {
+	margin-top: 2rem !important;
+	padding-top: 1rem;
+	border-top: 1px solid #e9ecef;
+}
+
+// Validation alert spacing
+validation-alert {
+	display: block;
+	margin-bottom: 1rem;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.mat-step-icon-content {
+	white-space: nowrap;
+}
+
+// Field with tooltip layout
+.field-with-tooltip {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	width: 100%;
+
+	mat-form-field {
+		flex: 1;
+	}
+
+	app-form-field-tooltip {
+		display: flex;
+		align-items: center;
+		height: 56px;
+		padding-top: 4px;
+	}
+}

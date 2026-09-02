@@ -1,0 +1,1 @@
+(()=>{try{return!(window.localStorage&&CSS.supports("display: flex")&&CSS.supports("display: grid")&&CSS.supports("height","100dvh")&&"".startsWith&&[].includes&&Object.values&&document.querySelectorAll("c").forEach)}catch{return 1}})()&&document.querySelector(".ob-compatibility").removeAttribute("hidden");

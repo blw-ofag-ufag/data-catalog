@@ -1,7 +1,9 @@
 <mat-chip-set>
 	@for (item of data; track $index) {
 		<mat-chip>
-			{{ getTranslatedValue(item) | translate }}
+			<a [routerLink]="['/index']" [queryParams]="queryParamsFor(item)" (mouseup)="navigateTo(item)" style="cursor: pointer">
+				{{ getTranslatedValue(item) | translate }}
+			</a>
 		</mat-chip>
 	}
 </mat-chip-set>

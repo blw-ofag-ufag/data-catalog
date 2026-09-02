@@ -1,6 +1,6 @@
 <div class="card-container ob-grid">
 	@for (dataset of datasets$ | async; track $index) {
-		<mat-card class="ob-span-4" (click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'])" style="cursor: pointer">
+		<mat-card class="ob-span-4" (click)="openDataset(dataset['dct:publisher'], dataset['dct:identifier'], dataset['productType'])" style="cursor: pointer">
 			<div style="position: relative; width: 100%; height: 180px; background-color: #a3a58a; overflow: hidden">
 				<!-- Image -->
 				<img
@@ -15,8 +15,8 @@
 				<div style="position: absolute; top: 8px; left: 8px; z-index: 2">
 					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px">
 						<!--						{{dataset['class']?.[ (currentLang$ | async)! ]}}-->
-						<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
-							{{ "ui.dataSet" | translate }}
+						<a [routerLink]="['/index']" [queryParams]="typeFiltered(dataset['productType'])">
+							{{ "choices.productType." + (dataset["productType"] || "dataset") | translate }}
 						</a>
 					</mat-chip>
 					<mat-chip (click)="onChipClick($event)" class="small-chip" style="margin-right: 8px">
@@ -32,18 +32,42 @@
 				</mat-card-title>
 				<mat-card-subtitle>
 					<span class="truncate-text">
-						{{ ["dct:description", dataset["dct:description"]] | translateField }}
+						{{ ["dct:description", $any(dataset)["dct:description"]] | translateField }}
 					</span>
 				</mat-card-subtitle>
 			</mat-card-header>
 			<mat-card-content>
-				{{ "ui.issueDate" | translate }}: {{ dataset["dct:issued"] | date: "d. MMMM y" : "UTC" : (currentLang$ | async)! }} <br /><br />
-				<div class="chip-container">
-					@for (tag of dataset["dcat:keyword"]; track $index) {
-						<mat-chip (click)="onChipClick($event)" class="small-chip">
-							<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
-								{{ tag }}
-							</a>
+				{{ "ui.issueDate" | translate }}: {{ $any(dataset)["dct:issued"] | date: "d. MMMM y" : undefined : (currentLang$ | async)! }} <br /><br />
+				<div [class]="getChipContainerClass(dataset['dct:identifier'])">
+					<!-- Show visible keywords when collapsed, or all keywords when expanded -->
+					@if (isExpanded(dataset["dct:identifier"])) {
+						<!-- Show all keywords when expanded -->
+						@for (tag of getLocalizedKeywords(dataset); track $index) {
+							<mat-chip (click)="onChipClick($event)" class="small-chip">
+								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag, dataset)">
+									{{ tag }}
+								</a>
+							</mat-chip>
+						}
+					} @else {
+						<!-- Show only visible keywords when collapsed -->
+						@for (tag of getVisibleKeywords(dataset, dataset["dct:identifier"]); track $index) {
+							<mat-chip (click)="onChipClick($event)" class="small-chip">
+								<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag, dataset)">
+									{{ tag }}
+								</a>
+							</mat-chip>
+						}
+					}
+
+					<!-- +n chip to expand/collapse when there are hidden keywords -->
+					@if (hasHiddenKeywords(dataset, dataset["dct:identifier"])) {
+						<mat-chip (click)="toggleKeywordExpansion(dataset['dct:identifier'], $event)" class="more-chip">
+							@if (isExpanded(dataset["dct:identifier"])) {
+								−
+							} @else {
+								+{{ getHiddenKeywords(dataset, dataset["dct:identifier"]).length }}
+							}
 						</mat-chip>
 					}
 				</div>

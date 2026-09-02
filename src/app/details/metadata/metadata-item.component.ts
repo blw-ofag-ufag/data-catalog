@@ -1,5 +1,5 @@
 import {Component, Injector, Input, OnDestroy, OnInit} from '@angular/core';
-import {TranslateService, TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {TextOrTranslatable} from '../../models/types/TextOrTranslatable';
 import {TranslateFieldPipe} from '../../translate-field.pipe';
 import {DatePipe, NgComponentOutlet, registerLocaleData} from '@angular/common';
@@ -9,8 +9,11 @@ import localeDe from '@angular/common/locales/de';
 import localeFr from '@angular/common/locales/fr';
 import localeIt from '@angular/common/locales/it';
 import {MatChip, MatChipSet} from '@angular/material/chips';
-import {ContactPoint, TemporalCoverage, enumTypes, enumArrayFields} from '../../models/schemas/dataset';
+import {ContactPoint, DataProduct, DatasetSchema, TemporalCoverage} from '../../models/schemas/dataset';
+import {enumArrayFields, enumTypes} from '../../models/enum-fields';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import {MultiDatasetService} from '../../services/api/multi-dataset-service.service';
+import {KeywordService} from '../../services/api/keyword.service';
 
 // Lokalisierung registrieren
 registerLocaleData(localeDe);
@@ -20,16 +23,40 @@ registerLocaleData(localeIt);
 @Component({
 	templateUrl: './free-list-item.component.html',
 	styleUrl: '../details.component.scss',
-	imports: [MatChip, MatChipSet, TranslatePipe],
+	imports: [MatChip, MatChipSet, TranslatePipe, RouterLink],
 	standalone: true
 })
 export class FreeListItemComponent {
 	data: string[] = [];
 	label: string = '';
+	private readonly keywordService: KeywordService;
+	private readonly translateService: TranslateService;
+	private readonly router: Router;
 
 	constructor(private readonly injector: Injector) {
 		this.label = this.injector.get('label', '');
 		this.data = this.injector.get('data', []);
+		this.keywordService = this.injector.get(KeywordService);
+		this.translateService = this.injector.get(TranslateService);
+		this.router = this.injector.get(Router);
+	}
+
+	/**
+	 * Query params that reproduce this chip as an index filter (#255).
+	 * Array facets filter with the same `field=value` URL shape as scalar enums.
+	 */
+	queryParamsFor(item: string): {[key: string]: string} {
+		return {[this.label]: item};
+	}
+
+	/**
+	 * Navigate on mouseup, like the other components rendered through NgComponentOutlet
+	 * (see DatasetLinkListComponent). Plain routerLink click navigation does not fire for
+	 * chips in this view, which is why the theme chip looked dead while the scalar enum
+	 * chips — rendered directly in details.component.html — worked (#255).
+	 */
+	navigateTo(item: string): void {
+		void this.router.navigate(['/index'], {queryParams: this.queryParamsFor(item)});
 	}
 
 	getTranslatedValue(item: string): string {
@@ -37,8 +64,13 @@ export class FreeListItemComponent {
 		if (this.label === 'dcat:theme') {
 			return `choices.dataset.dcat:theme.${item}`;
 		}
-		// For keywords, return as-is (no translation needed)
+		// For keywords, translate using KeywordService
 		if (this.label === 'dcat:keyword') {
+			const labels = this.keywordService.getKeywordLabels(item);
+			if (labels) {
+				const currentLang = this.translateService.currentLang || 'en';
+				return labels[currentLang as keyof typeof labels] || labels.en || labels.de || labels.fr || labels.it || item;
+			}
 			return item;
 		}
 		// For other fields, return the value as-is or with appropriate translation key
@@ -223,33 +255,6 @@ export class WasGeneratedByComponent {
 
 @Component({
 	template:
-		'<p>{{ data[0] }} - <a (mouseup)="navigateToDataset(data[1])" style="cursor: pointer; text-decoration: underline; color: #0066cc;">{{ data[1] }}</a></p>',
-	standalone: true
-})
-export class WasDerivedFromComponent {
-	data: string[] = [];
-	private readonly route: ActivatedRoute;
-	private readonly router: Router;
-
-	constructor(private readonly injector: Injector) {
-		this.data = this.injector.get('data', []);
-		this.route = this.injector.get(ActivatedRoute);
-		this.router = this.injector.get(Router);
-	}
-
-	navigateToDataset(datasetId: string) {
-		const currentParams = this.route.snapshot.queryParams;
-		const queryParams = {
-			publisher: currentParams['publisher'],
-			dataset: datasetId,
-			lang: currentParams['lang']
-		};
-		this.router.navigate(['/details'], {queryParams});
-	}
-}
-
-@Component({
-	template:
 		'<ul>@for (item of data; track $index) {<li><a [href]="item.uri" target="_blank" rel="noopener noreferrer" (mouseup)="onMouseUp($event, item.uri)" style="cursor: pointer;">{{item.alias || item.uri}}</a></li>}</ul>',
 	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
 	standalone: true
@@ -285,44 +290,97 @@ export class DatasetIdListComponent {
 	template: `<ul>
 		@for (id of data; track $index) {
 			<li>
-				<a (mouseup)="navigateToDataset(id)" style="cursor: pointer; text-decoration: underline">{{ id }}</a>
+				<a [routerLink]="['/details']" [queryParams]="getQueryParams(id)" (mouseup)="navigateToDataset(id)" style="cursor: pointer;">{{
+					getDatasetTitle(id) || id
+				}}</a>
 			</li>
 		}
 	</ul>`,
 	styles: 'ul {list-style-type: none; padding: 0; margin: 0; padding-inline-start: 0;}',
-	standalone: true
+	standalone: true,
+	imports: [RouterLink]
 })
-export class DatasetLinkListComponent {
+export class DatasetLinkListComponent implements OnInit, OnDestroy {
 	data: string[] = [];
 	private readonly route: ActivatedRoute;
 	private readonly router: Router;
+	private readonly multiDatasetService: MultiDatasetService;
+	private readonly translateService: TranslateService;
+	private datasets: DataProduct[] = [];
+	private readonly destroy$ = new Subject<void>();
 
 	constructor(private readonly injector: Injector) {
 		this.data = this.injector.get('data', []);
 		this.route = this.injector.get(ActivatedRoute);
 		this.router = this.injector.get(Router);
+		this.multiDatasetService = this.injector.get(MultiDatasetService);
+		this.translateService = this.injector.get(TranslateService);
 	}
 
-	navigateToDataset(datasetId: string) {
+	ngOnInit(): void {
+		// Ensure the dataset index is available so reference IDs can be resolved to
+		// titles even when the details page was deep-linked (index never visited).
+		this.multiDatasetService.ensureIndexLoaded();
+
+		// Subscribe to datasets to lookup titles
+		this.multiDatasetService.datasets$.pipe(takeUntil(this.destroy$)).subscribe(datasets => {
+			this.datasets = datasets;
+		});
+	}
+
+	ngOnDestroy(): void {
+		this.destroy$.next();
+		this.destroy$.complete();
+	}
+
+	getDatasetTitle(datasetId: string): string {
+		const dataset = this.datasets.find(d => d['dct:identifier'] === datasetId);
+		if (dataset?.['dct:title']) {
+			const currentLang = this.translateService.currentLang || 'de';
+			const title = dataset['dct:title'];
+
+			// Try to get title in current language, fallback to German, then French
+			if (typeof title === 'object' && title !== null) {
+				const titleObj = title as any;
+				return titleObj[currentLang] || titleObj.de || titleObj.fr || titleObj.it || titleObj.en || '';
+			}
+		}
+		return '';
+	}
+
+	getQueryParams(datasetId: string) {
 		const currentParams = this.route.snapshot.queryParams;
-		const queryParams = {
-			publisher: currentParams['publisher'],
+		// Resolve the referenced record's own publisher + product type so cross-publisher /
+		// non-dataset references load the correct detail page (#221); falls back to the current
+		// context when the reference isn't in the store.
+		const ref = this.datasets.find(d => d['dct:identifier'] === datasetId);
+		return {
+			publisher: (ref?.['dct:publisher'] as string) ?? currentParams['publisher'],
 			dataset: datasetId,
+			type: ((ref as any)?.['productType'] as string) ?? 'dataset',
 			lang: currentParams['lang']
 		};
-		this.router.navigate(['/details'], {queryParams});
+	}
+
+	// Navigation happens on mouseup (matching the other detail-page links), since
+	// plain click navigation is intercepted in this view. routerLink is kept only
+	// to render a real href so the anchor gets normal link styling (hover/visited).
+	navigateToDataset(datasetId: string) {
+		this.router.navigate(['/details'], {queryParams: this.getQueryParams(datasetId)});
 	}
 }
 
 @Component({
-	template: '<p>Yes</p>',
-	standalone: true
+	template: '{{ "common.yes" | translate }}',
+	standalone: true,
+	imports: [TranslatePipe]
 })
 export class YesComponent {}
 
 @Component({
-	template: '<p>No</p>',
-	standalone: true
+	template: '{{ "common.no" | translate }}',
+	standalone: true,
+	imports: [TranslatePipe]
 })
 export class NoComponent {}
 
@@ -366,6 +424,7 @@ export class MetadataItemComponent {
 				return DateMetadataItemComponent;
 			case 'dcat:inSeries':
 			case 'dct:replaces':
+			case 'prov:wasDerivedFrom':
 				return DatasetLinkListComponent;
 			case 'dcat:contactPoint':
 				return ContactPointComponent;
@@ -373,8 +432,6 @@ export class MetadataItemComponent {
 				return TemporalComponent;
 			case 'prov:wasGeneratedBy':
 				return WasGeneratedByComponent;
-			case 'prov:wasDerivedFrom':
-				return WasDerivedFromComponent;
 		}
 
 		// Handle URL links

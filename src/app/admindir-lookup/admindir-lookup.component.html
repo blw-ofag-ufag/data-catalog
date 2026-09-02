@@ -3,10 +3,8 @@
 	<!--		<ob-alert type="warning">{{'msg.adminDirError' | translate }}: <b>{{ person['prov:agent'] }}</b></ob-alert>-->
 	<!--	} @else {-->
 	{{ "msg.adminDirLookup" | translate }}:
-	<a href="https://admindir.verzeichnisse.admin.ch/person/{{ person['prov:agent'] }}"
-	   target="_blank"
-           rel="noopener noreferrer">
-		{{ person['prov:agent'] }}
+	<a href="https://admindir.verzeichnisse.admin.ch/person/{{ person['prov:agent'] }}" target="_blank" rel="noopener noreferrer">
+		{{ person["prov:agent"] }}
 	</a>
 	<!--	}-->
 } @else {

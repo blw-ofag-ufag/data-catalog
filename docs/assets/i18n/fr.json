@@ -10,6 +10,11 @@
     "title": "Catalogue de données agroalimentaires"
   },
   "choices": {
+    "productType": {
+      "dataset": "Jeu de données",
+      "dataService": "Service de données",
+      "datasetSeries": "Série de jeux de données"
+    },
     "dataset": {
       "adms:status": {
         "archived": "Archivé",
@@ -25,9 +30,9 @@
         "secret": "Secret"
       },
       "bv:personalData": {
-        "none": "Aucun",
+        "none": "Pas de données personnelles",
         "personalData": "Données personnelles",
-        "sensitivePersonalData": "Données personnelles sensibles"
+        "sensitivePersonalData": "Données sensibles"
       },
       "bv:typeOfData": {
         "masterData": "Données de base",
@@ -94,7 +99,7 @@
         "BLW-OFAG-UFAG-FOAG": "OFAG"
       },
       "hadRole": {
-        "businessDataOwner": "Propriétaire des données métier",
+        "dataOwner": "Propriétaire des données",
         "dataCustodian": "Conservateur des données",
         "dataSteward": "Gestionnaire des données"
       }
@@ -130,6 +135,7 @@
       "distributions": "Distributions",
       "externalCatalogs": "Publication dans les catalogues externes",
       "metadata": "Métadonnées",
+      "dataSets": "Jeux de données",
       "publications": "Publication dans les catalogues externes"
     },
     "noAffiliatedPersons": "Personne n'a encore revendiqué cet ensemble de données — que diriez-vous de lui accorder de l'attention en attribuant une personne responsable ?"
@@ -140,29 +146,68 @@
     "source": "Source (GitHub)",
     "version": "Version"
   },
+  "tooltips": {
+    "adms:status": "Statut du produit de données : en cours de traitement, terminé, etc.",
+    "bv:abrogation": "Quelle est la date d'abrogation ?",
+    "bv:archivalValue": "Le produit de données présente-t-il, en raison des informations administratives, juridiques, fiscales, probantes ou historiques qu'il contient, une utilité ou une importance durable qui justifie sa conservation ?",
+    "bv:classification": "Quelle est la classification de la collecte de données selon la loi sur la sécurité de l'information (voir art. 13 LSI) ?",
+    "bv:externalCatalogs": "Le produit de données doit-il être publié sur d'autres plateformes telles que i14y et/ou opendata.swiss ?",
+    "bv:geoIdentifier": "Quel est le géo-identificateur correspondant selon l'annexe 1 de l'ordonnance sur la géoinformation ?",
+    "bv:itSystem": "Dans quel système informatique votre produit de données est-il utilisé ? Veuillez indiquer une URL.",
+    "bv:personalData": "Quel est le classification de la collecte de données selon la loi sur la protection des données (voir art. 5 LPD) ?",
+    "bv:retentionPeriod": "Combien de temps votre produit de données doit-il être conservé ?",
+    "bv:typeOfData": "Quel type décrit le mieux votre produit de données ?",
+    "dcat:accessService": "Un service de données permet d'accéder à la diffusion du produit de données.",
+    "bv:dimensions": "Les dimensions décrivent la structure de la distribution – les colonnes/concepts qu'elle contient – à l'aide de clés du glossaire des dimensions.",
+    "dcat:accessURL": "L'URL via laquelle l'accès à la ressource est effectué (par exemple, une page d'accueil ou un formulaire Web). L'URL indiquée doit contenir des informations sur le protocole utilisé, c'est-à-dire https:// ou http://.",
+    "dcat:contactPoint": "À qui l'utilisateur des données peut-il s'adresser s'il a des questions ou des remarques concernant le contenu du produit de données ? Veuillez indiquer les coordonnées d'une organisation.",
+    "dcat:distribution": "Une instance du produit de données qui peut être affichée ou utilisée. Par exemple, un tableau contenant des informations identiques peut être fourni sous forme de fichier Excel, CSV ou JSON. Ces trois fichiers sont des distributions du même produit de données.",
+    "dcat:downloadURL": "Lien de téléchargement direct vers le fichier (par exemple CSV ou PDF).",
+    "dcat:inSeries": "Votre produit de données fait-il partie d'une série de données ? Laquelle ?",
+    "dcat:keyword": "Quels mots-clés sont utiles pour trouver votre produit de données ? Il est plus facile de trouver votre produit de données si vous indiquez plusieurs mots-clés qui apparaissent également dans les produits de données de vos collègues.",
+    "dcat:landingPage": "Où les utilisateurs de données peuvent-ils trouver des informations supplémentaires sur votre produit de données ou l'organisation responsable ?",
+    "dcat:theme": "Thème utilisé pour classer les produits de données dans le catalogue.",
+    "dcat:version": "De quelle version s'agit-il ? Veuillez utiliser des numéros de version sémantiques sous la forme X.Y.Z, où une augmentation de X indique des modifications importantes, Y des modifications mineures et Z des corrections simples telles que des fautes de frappe.",
+    "dcatap:applicableLegislation": "Cette propriété se rapporte à la base juridique du produit de données.",
+    "dcatap:availability": "La disponibilité de votre produit de données est-elle temporaire, stable ou expérimentale ?",
+    "dct:accessRights": "Informations indiquant si le produit de données est une donnée ouverte, s'il existe des restrictions d'accès ou s'il n'est pas public.",
+    "dct:accrualPeriodicity": "Fréquence à laquelle le produit de données est mis à jour.",
+    "dct:conformsTo": "Votre produit de données est-il conforme à certaines normes et/ou spécifications ?",
+    "dct:description": "Veuillez fournir une description afin que l'utilisateur des données comprenne ce que contient le produit de données, qui est un utilisateur potentiel et à quoi sert le produit de données.",
+    "dct:format": "Quel est le format de fichier de cette distribution ?",
+    "dct:issued": "Quand le produit de données a-t-il été publié pour la première fois ?",
+    "dct:license": "Sous quelle licence le produit de données peut-il être utilisé ?",
+    "dct:modified": "Quand le produit de données a-t-il été modifié pour la dernière fois ?",
+    "dct:publisher": "Qui est l'éditeur du produit de données ?",
+    "dct:replaces": "Quel produit de données est remplacé ?",
+    "dct:spatial": "Quelle zone géographique couvre le produit de données ?",
+    "dct:temporal": "Quelle période votre produit de données couvre-t-il ?",
+    "dct:title": "Titre de votre produit de données",
+    "foaf:page": "Existe-t-il des documentations ou des sites web qui décrivent plus en détail ce produit de données ?",
+    "prov:qualifiedAttribution": "Qui joue quel rôle dans ce produit de données ?",
+    "prov:wasDerivedFrom": "De quel autre produit de données ce produit de données est-il dérivé ?",
+    "prov:wasGeneratedBy": "Par quel processus métier ce produit de données a-t-il été généré ?",
+    "schema:comment": "Votre produit de données est-il conforme à certaines normes et/ou spécifications ?"
+  },
   "labels": {
-    "accessRights": "Droits d'accès",
-    "accessService": "Service d'accès",
-    "accessURL": "URL d'accès",
-    "accrualPeriodicity": "Périodicité d'acquisition",
+    "dcat:endpointURL": "URL du point d'accès",
+    "dcat:endpointDescription": "Description du point d'accès",
+    "dcat:servesDataset": "Fournit les jeux de données",
+    "adms:versionNotes": "Notes de version",
+    "dcat:dataset": "Jeux de données de la série",
+    "dct:creator": "Créateur",
     "adms:status": "Statut",
-    "applicableLegislation": "Base légale",
-    "archivalValue": "Valeur archivistique",
     "bv:abrogation": "Date d'abrogation",
     "bv:archivalValue": "Valeur archivistique",
-    "bv:classification": "Classification",
+    "bv:classification": "Classification selon la LSI",
+    "bv:personalData": "Classification selon la LPD",
     "bv:externalCatalogs": "Publication dans les catalogues externes",
     "bv:geoIdentifier": "Identifiant GeoIV",
     "bv:itSystem": "Système informatique",
-    "bv:personalData": "Données personnelles",
     "bv:retentionPeriod": "Durée de conservation",
     "bv:typeOfData": "Type de données",
-    "catalog": "Catalogue",
-    "classification": "Classification",
-    "comment": "Commentaires supplémentaires",
-    "conformsTo": "Conforme à",
-    "contactPoint": "Point de contact",
     "dcat:accessService": "Service d'accès",
+    "bv:dimensions": "Dimensions",
     "dcat:accessURL": "URL d'accès",
     "dcat:catalog": "Catalogue",
     "dcat:contactPoint": "Point de contact",
@@ -188,35 +233,13 @@
     "dct:spatial": "Couverture spatiale",
     "dct:temporal": "Couverture temporelle",
     "dct:title": "Titre",
-    "description": "Description",
-    "downloadURL": "URL de téléchargement",
-    "externalCatalogs": "Publication dans les catalogues externes",
     "foaf:page": "Ressources associées",
-    "format": "Format de fichier",
-    "geoIdentifier": "Identifiant GeoIV",
-    "identifier": "Identifiant",
-    "image": "Image",
-    "inSeries": "Dans la série de jeux de données",
-    "issued": "Date de publication",
-    "keyword": "Mots-clés",
-    "landingPage": "Page d'accueil",
-    "license": "Licence",
-    "modified": "Date de modification",
-    "page": "Ressources associées",
-    "personalData": "Données personnelles",
+    "schema:image": "Image",
     "prov:qualifiedAttribution": "Personnes responsables",
     "prov:wasDerivedFrom": "Dérivé de",
     "prov:wasGeneratedBy": "Processus métier",
-    "qualitifedAttribution": "Personnes responsables",
-    "replaces": "Remplace",
     "schema:comment": "Commentaires supplémentaires",
-    "spatial": "Couverture spatiale",
-    "status": "Statut",
-    "temporal": "Couverture temporelle",
-    "theme": "Thème",
-    "title": "Titre",
-    "typeOfData": "Type de données",
-    "version": "Version"
+    "dcat:distribution": "Distributions"
   },
   "msg": {
     "adminDirError": "Impossible de consulter AdminDir",
@@ -258,6 +281,7 @@
         "learnMore": "En savoir plus sur les tokens GitHub"
       },
       "form": {
+        "productType": "Type de produit",
         "title": {
           "new": "Créer un nouveau jeu de données",
           "edit": "Modifier le jeu de données"
@@ -270,21 +294,38 @@
         "validation": {
           "required": "Ce champ est requis",
           "maxLength": "Longueur maximale dépassée",
+          "minLength": "Au moins {{minLength}} caractères requis",
+          "pattern": "Format non valide",
+          "titlePattern": "Seuls les lettres A-Z, les chiffres 0-9, les espaces, les traits d’union et les traits de soulignement sont autorisés",
           "email": "Veuillez saisir une adresse e-mail valide",
           "summary": "Erreurs de validation du formulaire :",
-          "fillRequired": "Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*)"
+          "fillRequired": "Veuillez remplir tous les champs obligatoires marqués d'un astérisque (*)",
+          "recommended": "(recommandé)",
+          "invalidDate": "Veuillez saisir une date valide (JJ.MM.AAAA)",
+          "dateNotFuture": "La date ne peut pas être dans le futur.",
+          "dateOrderIssuedModified": "La date de publication doit être antérieure ou égale à la date de modification.",
+          "dateOrderStartEnd": "La date de début doit être antérieure ou égale à la date de fin."
         },
         "confirmation": {
           "unsavedChanges": "Vous avez des modifications non enregistrées. Êtes-vous sûr de vouloir quitter ? Toutes les modifications seront perdues."
         },
         "help": {
-          "multilingualRequired": "Au moins l'allemand et le français sont requis"
+          "externalCatalogs": "Sélectionnez les catalogues externes où ce jeu de données doit être publié",
+          "relationships": "Saisissez les IDs des jeux de données séparés par des virgules pour les jeux de données liés",
+          "accessUrl": "URL où la distribution peut être accédée",
+          "downloadUrl": "URL de téléchargement direct du fichier",
+          "distributionsRequired": "Au moins une distribution est requise"
         },
         "options": {
-          "none": "Aucune sélection"
+          "none": "Aucune sélection",
+          "selectStatus": "Sélectionner le statut",
+          "selectAvailability": "Sélectionner la disponibilité",
+          "selectLicense": "Sélectionner la licence"
         },
         "sections": {
           "basic": "Informations de base",
+          "service": "Service",
+          "series": "Série",
           "access": "Accès et classification",
           "publisher": "Éditeur et contact",
           "metadata": "Métadonnées et versioning",
@@ -299,20 +340,37 @@
           "title": "Saisir le titre du jeu de données",
           "description": "Saisir la description du jeu de données",
           "keyword": "Ajouter un mot-clé",
-          "theme": "Sélectionner un thème"
+          "dimension": "Ajouter une dimension",
+          "keywordKey": "p.ex., animal, vache, agriculture",
+          "keywordTranslation": "Saisir la traduction du mot-clé",
+          "theme": "Sélectionner un thème",
+          "distributionId": "p.ex. dist-001",
+          "format": "p.ex. CSV, JSON, XML",
+          "accessUrl": "https://exemple.com/api/dataset",
+          "downloadUrl": "https://exemple.com/download/data.csv",
+          "distributionTitle": "Titre de la distribution",
+          "distributionDescription": "Description de la distribution",
+          "additionalComments": "Commentaires supplémentaires",
+          "conformsTo": "p.ex. ISO 19115"
         },
         "labels": {
           "temporalStart": "Début de la couverture temporelle",
           "temporalEnd": "Fin de la couverture temporelle",
           "imageUrl": "URL de l'image du jeu de données",
-          "relationships": "Relations du jeu de données"
+          "relationships": "Relations du jeu de données",
+          "distribution": "Distribution",
+          "keyword": "Mot-clé",
+          "keywordKey": "Clé du mot-clé",
+          "keywordTranslations": "Traductions du mot-clé"
         },
-        "help": {
-          "externalCatalogs": "Sélectionnez les catalogues externes où ce jeu de données doit être publié",
-          "relationships": "Saisissez les IDs des jeux de données séparés par des virgules pour les jeux de données liés"
+        "addKeyword": "Ajouter un mot-clé",
+        "removeKeyword": "Supprimer le mot-clé",
+        "noKeywords": "Aucun mot-clé ajouté pour le moment",
+        "hints": {
+          "keywordKey": "Identifiant unique pour le mot-clé (minuscules, sans espaces)"
         },
-        "contactName": "Nom de la personne de contact",
-        "contactEmail": "E-mail de la personne de contact",
+        "contactName": "Nom du point de contact (organisation)",
+        "contactEmail": "E-mail du point de contact (organisation)",
         "generateJson": "Générer le JSON",
         "backToForm": "Retour au formulaire",
         "authOptional": "Optionnel : Authentification",
@@ -321,8 +379,39 @@
           "next": "Suivant",
           "previous": "Précédent"
         },
+        "changeRepository": "Changer le dépôt",
         "reset": "Réinitialiser",
-        "submit": "Soumettre"
+        "submit": "Vérifier",
+        "buttons": {
+          "addDistribution": "Ajouter une distribution"
+        },
+        "messages": {
+          "noDistributions": "Aucune distribution ajoutée pour le moment"
+        }
+      },
+      "submit": {
+        "title": "Jeu de données prêt pour la soumission",
+        "selectedRepository": "Dépôt sélectionné",
+        "authSuccess": "Authentifié avec succès",
+        "authInfo": "Veuillez vous authentifier pour apporter des modifications",
+        "authenticate": "S'authentifier",
+        "showJson": "Afficher l'aperçu JSON",
+        "hideJson": "Masquer JSON",
+        "options": "Options de soumission",
+        "createInGitHub": "Créer dans GitHub",
+        "editInGitHub": "Modifier dans GitHub",
+        "githubDescription": "Ouvre GitHub pour modifier ou créer le fichier directement",
+        "alternatives": "Options alternatives",
+        "copyJson": "Copier JSON",
+        "copyDescription": "Copie les données JSON dans le presse-papiers",
+        "downloadJson": "Télécharger JSON",
+        "downloadDescription": "Télécharge le fichier JSON sur votre ordinateur",
+        "help": {
+          "title": "Prochaines étapes",
+          "github": "Vérifiez les modifications dans GitHub",
+          "review": "Faites réviser les modifications par un collègue",
+          "commit": "Commitez les modifications dans le dépôt"
+        }
       }
     }
   },
@@ -330,6 +419,10 @@
     "back-home": "Retour à l'accueil",
     "message": "La page que vous recherchez n'existe pas.",
     "title": "Page non trouvée"
+  },
+  "common": {
+    "yes": "Oui",
+    "no": "Non"
   },
   "ui": {
     "addDataset": "Ajouter un jeu de données",
@@ -343,8 +436,11 @@
     "issued": "Publié",
     "issueDate": "Date de publication",
     "keywords": "Mots-clés",
+    "dimensions": "Dimensions",
+    "productType": "Type",
     "list": "Liste",
     "newKeyword": "Nouveau mot-clé...",
+    "newDimension": "Nouvelle dimension...",
     "noResultsFound": "Aucun résultat trouvé. Essayez des filtres plus généraux ou une recherche.",
     "remove": "Supprimer",
     "reset": "Réinitialiser",
@@ -361,5 +457,41 @@
     "steward": "Gestionnaire",
     "stewardOwnerContact": "Contact",
     "title": "Titre"
+  },
+  "validation": {
+    "i14y": {
+      "name": "Exigences I14Y",
+      "description": "Exigences supplémentaires pour la publication sur la plateforme d'interopérabilité I14Y"
+    },
+    "ods": {
+      "name": "Exigences Open Data Swiss",
+      "description": "Exigences supplémentaires pour la publication sur Open Data Swiss"
+    },
+    "base": {
+      "name": "Exigences de base",
+      "nameOffline": "Exigences de base (Hors ligne)",
+      "description": "Exigences de base pour tous les jeux de données"
+    },
+    "generic": {
+      "description": "Veuillez vérifier les exigences suivantes"
+    },
+    "advisory": "À titre indicatif – ces exigences ne bloquent l'envoi que lorsque vous publiez sur ce catalogue.",
+    "errors": {
+      "fieldRequired": "{{field}} est requis pour {{schema}}",
+      "fieldRequiredPattern": "{{field}}: le texte {{languages}} doit être {{pattern}}",
+      "fieldMissingLanguages": "{{field}} doit avoir du texte en {{languages}}{{pattern}}",
+      "formatInvalid": "Le format de {{field}} est invalide pour {{schema}}",
+      "validationError": "{{field}} a des erreurs de validation pour {{schema}}"
+    },
+    "formStatus": {
+      "complete": {
+        "title": "Validation du formulaire terminée",
+        "message": "Le formulaire du jeu de données est valide et prêt pour la soumission à GitHub"
+      },
+      "failed": {
+        "title": "Échec de la validation du formulaire",
+        "message": "Veuillez corriger {{count}} champs obligatoires pour continuer"
+      }
+    }
   }
 }
