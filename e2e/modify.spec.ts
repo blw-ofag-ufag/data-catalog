@@ -55,7 +55,7 @@ test('can reach the Distributions step and add a distribution', async ({page}) =
 	await expect(identifierInput.first()).toBeVisible();
 });
 
-test('German issued-date label is "Ausgabedatum" (not "Veröffentlichungsdatum")', async ({page}) => {
+test('German issued-date label is "Veröffentlichungsdatum"', async ({page}) => {
 	// Switch the UI to German using the header language switcher.
 	await switchLanguage(page, 'DE');
 	// Step labels become German once the language is applied.
@@ -73,8 +73,10 @@ test('German issued-date label is "Ausgabedatum" (not "Veröffentlichungsdatum")
 		.first()
 		.click();
 
-	// The issued-date label uses translation key labels.dct:issued, which in the
-	// current develop German translations is "Ausgabedatum".
-	await expect(page.getByText('Ausgabedatum', {exact: false}).first()).toBeVisible();
-	await expect(page.getByText('Veröffentlichungsdatum')).toHaveCount(0);
+	// labels.dct:issued. German used to read "Ausgabedatum" while fr/it said
+	// "Date de publication" / "Data di pubblicazione" and the German tooltip already
+	// asked "Wann wurde das Datenprodukt ursprünglich veröffentlicht?" — the label was
+	// the odd one out and now matches.
+	await expect(page.getByText('Veröffentlichungsdatum', {exact: false}).first()).toBeVisible();
+	await expect(page.getByText('Ausgabedatum')).toHaveCount(0);
 });
