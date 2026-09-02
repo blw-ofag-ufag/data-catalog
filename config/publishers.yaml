@@ -9,11 +9,3 @@
   githubRepo: BLV-OSAV-USAV/FSVO-Metadata
   readBranch: main
   writeBranch: main
-
-# Dev/test publisher: serves example dataService/datasetSeries records from a fork for local
-# manual testing of the multi-data-product-type work (#221). Remove before production.
-- id: ROLAND-TEST
-  shortId: TEST
-  githubRepo: bar9/metadata-publisher-test
-  readBranch: main
-  writeBranch: main

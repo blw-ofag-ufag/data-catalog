@@ -21,10 +21,9 @@ export interface DataProductTypeConfig {
 	 * Path segment used in the publisher repo: `data/processed/{segment}.json` (catalogue index)
 	 * and `data/raw/{segment}/{id}.json` (single record).
 	 *
-	 * NOTE: on the production publishers only `datasets.json` exists; `dataServices.json` and
-	 * `datasetSeries.json` still 404 (their pipeline hasn't landed — #221 §5). Only the ROLAND-TEST
-	 * dev publisher serves all three today. Consumers must degrade gracefully (404 → empty) so the
-	 * missing indexes never break loading.
+	 * NOTE: not every publisher serves every index. BLW serves all three; FSVO currently 404s on
+	 * `dataServices.json` and `datasetSeries.json`. Consumers must degrade gracefully (404 → empty)
+	 * so a missing index never breaks loading.
 	 */
 	segment: string;
 	/** Product schema path in the metadata repo (`data/schemas/{...}.json`). */
@@ -34,10 +33,9 @@ export interface DataProductTypeConfig {
 	/**
 	 * Whether the catalogue should fetch this type's `data/processed/{segment}.json` index.
 	 *
-	 * All three are true so the ROLAND-TEST dev publisher (the only one serving dataService /
-	 * datasetSeries indexes today) surfaces the new types. The production publishers still 404 on
-	 * those two; loadIndex swallows the 404 (→ empty), so this costs a wasted request per publisher
-	 * until the upstream pipeline lands. Do NOT read this as "the indexes exist".
+	 * All three are true: BLW publishes dataService and datasetSeries indexes. FSVO still 404s on
+	 * those two; loadIndex swallows the 404 (→ empty), so this costs one wasted request per
+	 * publisher that does not serve them yet. Do NOT read this as "every publisher has the index".
 	 */
 	hasProcessedIndex: boolean;
 }
