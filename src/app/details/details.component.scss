@@ -60,6 +60,7 @@ mat-chip a:hover {
 	font-size: 2.5rem;
 	margin: 0;
 	flex: 1;
+	line-height: 1.1;
 }
 
 .action-buttons {
@@ -154,7 +155,6 @@ mat-chip a:hover {
 	}
 }
 
-
 // Accordion styling
 mat-panel-description mat-icon {
 	width: 20px;
@@ -197,6 +197,6 @@ mat-panel-title {
 	word-wrap: break-word;
 }
 
-:host{
+:host {
 	width: 100%;
 }

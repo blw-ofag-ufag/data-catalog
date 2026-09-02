@@ -10,6 +10,11 @@
     "title": "Agri-Food-Datenkatalog"
   },
   "choices": {
+    "productType": {
+      "dataset": "Datensatz",
+      "dataService": "Datendienst",
+      "datasetSeries": "Datensatzserie"
+    },
     "dataset": {
       "adms:status": {
         "archived": "Archiviert",
@@ -25,9 +30,9 @@
         "secret": "Geheim"
       },
       "bv:personalData": {
-        "none": "Keine",
-        "personalData": "Personenbezogene Daten",
-        "sensitivePersonalData": "Besonders schutzenswerte Personendaten"
+        "none": "Keine Personendaten",
+        "personalData": "Personendaten",
+        "sensitivePersonalData": "Besonders schützenswerte Personendaten"
       },
       "bv:typeOfData": {
         "masterData": "Stammdaten",
@@ -94,7 +99,7 @@
         "BLW-OFAG-UFAG-FOAG": "BLW"
       },
       "hadRole": {
-        "businessDataOwner": "Business Data Owner",
+        "dataOwner": "Data Owner",
         "dataCustodian": "Data Custodian",
         "dataSteward": "Data Steward"
       }
@@ -130,6 +135,7 @@
       "distributions": "Bereitstellungsformen",
       "externalCatalogs": "Veröffentlichung in externen Katalogen",
       "metadata": "Metadaten",
+      "dataSets": "Datensätze",
       "publications": "Publikationen in externen Katalogen"
     },
     "noAffiliatedPersons": "Niemand fühlt sich für diesen Datensatz zuständig – höchste Zeit, jemandem diese Ehre zu erteilen!"
@@ -140,29 +146,70 @@
     "source": "Quellcode (GitHub)",
     "version": "Version"
   },
+  "tooltips": {
+    "dcat:endpointURL": "URL-Adresse, wo der Datendienst aufgerufen werden kann.",
+    "dcat:endpointDescription": "URL of technical documentation of the data service, such as for example a Swagger documentation.",
+    "adms:status": "Status des Datenprodukts: Befindet es sich in Bearbeitung, ist es fertiggestellt usw.",
+    "bv:abrogation": "Was ist das Aufhebungdatum?",
+    "bv:archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen einen anhaltenden Nutzen oder eine anhaltende Bedeutung, die seine weitere Aufbewahrung rechtfertigen?",
+    "bv:classification": "Was ist die Klassifizierung der Datensammlung gemäss Informationssicherheitsgesetz (siehe Art. 13 ISG)?",
+    "bv:externalCatalogs": "Soll das Datenprodukt auf anderen Plattformen wie i14y und/oder opendata.swiss veröffentlicht werden?",
+    "bv:geoIdentifier": "Wie lautet der entsprechende Geoidentifikator gemäss Geoinformationsverordnung, Anhang 1?",
+    "bv:itSystem": "In welchem IT-System wird Ihr Datenprodukt verwendet? Bitte geben Sie eine URL an.",
+    "bv:personalData": "Was ist die Einordnung der Datensammlung gemäss Datenschutzgesetz (siehe Art. 5 DSG)?",
+    "bv:retentionPeriod": "Wie lange muss Ihr Datenprodukt aufbewahrt werden?",
+    "bv:typeOfData": "Welcher Typ beschreibt Ihr Datenprodukt am besten?",
+    "dcat:accessService": "Ein Datendienst ermöglicht den Zugriff auf die Verbreitung des Datenprodukts.",
+    "bv:dimensions": "Dimensionen beschreiben die Struktur der Verteilung – die enthaltenen Spalten/Konzepte – anhand von Schlüsseln aus dem gemeinsamen Dimensionsglossar.",
+    "dcat:accessURL": "Die URL, über die der Zugang zur Ressource erfolgt (z.B. eine Landingpage oder ein Web-Formular). Die angegebene URL muss Informationen zum verwendeten Protokoll enthalten, z. B. https:// oder http://.",
+    "dcat:contactPoint": "An wen sich der Datennutzer wenden sollte, wenn er Fragen oder Anmerkungen zum Inhalt der Datenprodukte hat. Bitte beachten Sie die Kontaktinformationen der Organisation.",
+    "dcat:distribution": "Eine Instanz des Datenprodukts, die angezeigt oder genutzt werden kann. Beispielsweise kann eine Tabelle mit identischen Informationen als Excel-, CSV- oder JSON-Datei bereitgestellt werden. Die drei Dateien sind Verteilungen desselben Datenprodukts.",
+    "dcat:downloadURL": "Direkter Download-Link zur Datei (z.B. CSV- oder PDF).",
+    "dcat:inSeries": "Ist Ihr Datenprodukt Teil einer Datensatzreihe? Welcher?",
+    "dcat:keyword": "Welche Schlüsselwörter sind hilfreich, um Ihr Datenprodukt zu finden? Es ist einfacher, Ihr Datenprodukt zu finden, wenn Sie mehrere Schlüsselwörter angeben, die auch in den Datenprodukten Ihrer Kollegen vorkommen.",
+    "dcat:landingPage": "Wo finden Datenbenutzer zusätzliche Informationen zu Ihrem Datenprodukt oder der verantwortlichen Organisation?",
+    "dcat:theme": "Thema, das zur Klassifizierung der Datenprodukte im Katalog verwendet wird.",
+    "dcat:version": "Um welche Version handelt es sich? Bitte verwenden Sie semantische Versionsnummern in der Form X.Y.Z, wobei eine Erhöhung von X auf größere Änderungen, Y auf kleinere Änderungen und Z auf einfache Korrekturen wie Tippfehler hinweist.",
+    "dcatap:applicableLegislation": "Diese Eigenschaft bezieht sich auf die Rechtsgrundlage des Datenprodukts.",
+    "dcatap:availability": "Ist die Verfügbarkeit Ihres Datenprodukts vorübergehend, stabil oder experimentell?",
+    "dct:accessRights": "Informationen, die angeben, ob das Datenprodukt offene Daten sind, Zugriffsbeschränkungen unterliegen oder nicht öffentlich sind.",
+    "dct:accrualPeriodicity": "Häufigkeit, mit der das Datenprodukt aktualisiert wird.",
+    "dct:conformsTo": "Entspricht Ihr Datenprodukt bestimmten Standards und/oder Spezifikationen?",
+    "dct:description": "Bitte geben Sie eine Beschreibung an, damit der Datennutzer versteht, was das Datenprodukt enthält, wer ein potenzieller Nutzer ist und wofür das Datenprodukt verwendet wird.",
+    "dct:format": "In welchem Dateiformat wird diese Distribution bereitgestellt?",
+    "dct:issued": "Wann wurde das Datenprodukt ursprünglich veröffentlicht?",
+    "dct:license": "Unter welcher Lizenz kann das Datenprodukt verwendet werden?",
+    "dct:modified": "Wann wurde das Datenprodukt letztmals modifiziert?",
+    "dct:publisher": "Wer ist die Herausgeberorganisation des Datenprodukts?",
+    "dct:replaces": "Welches Datenprodukt wird ersetzt?",
+    "dct:spatial": "Welchen geografischen Bereich deckt das Datenprodukt ab?",
+    "dct:temporal": "Welcher Zeitraum wird von Ihrem Datenprodukt abgedeckt?",
+    "dct:title": "Titel Ihres Datenprodukts",
+    "foaf:page": "Gibt es Dokumentationen oder Webseiten, die dieses Datenprodukt näher beschreiben?",
+    "prov:qualifiedAttribution": "Wer hat welche Rolle für dieses Datenprodukt?",
+    "prov:wasDerivedFrom": "Von welchem anderen Datenprodukt wurde dieses Datenprodukt abgeleitet?",
+    "prov:wasGeneratedBy": "Durch welchen Geschäftsprozess wurde dieses Datenprodukt generiert?",
+    "schema:comment": "Gibt es weitere relevante Informationen zu diesem Datenprodukt?"
+  },
   "labels": {
-    "accessRights": "Zugriffsrechte",
-    "accessService": "Zugriffsdienst",
-    "accessURL": "Zugriffs-URL",
-    "accrualPeriodicity": "Aktualisierungsintervall",
+    "dcat:endpointURL": "Endpunkt-URL",
+    "dcat:endpointDescription": "Endpunktbeschreibung",
+    "dcat:servesDataset": "Stellt Datensätze bereit",
+    "adms:versionNotes": "Versionshinweise",
+    "dcat:dataset": "Datensätze der Serie",
+    "dct:creator": "Ersteller",
     "adms:status": "Status",
-    "applicableLegislation": "Rechtsgrundlage",
-    "archivalValue": "Archivwürdig",
     "bv:abrogation": "Aufhebungsdatum",
     "bv:archivalValue": "Archivwürdig",
-    "bv:classification": "Klassifizierung",
+    "bv:classification": "Klassifizierung nach ISG",
+    "bv:personalData": "Klassifizierung nach DSG",
     "bv:externalCatalogs": "Veröffentlichung in externen Katalogen",
     "bv:geoIdentifier": "Identifikator GeoIV",
     "bv:itSystem": "IT-System",
-    "bv:personalData": "Personenbezogene Daten",
     "bv:retentionPeriod": "Aufbewahrungsfrist",
     "bv:typeOfData": "Datentyp",
-    "catalog": "Katalog",
-    "classification": "Klassifizierung",
-    "comment": "Zusätzliche Bemerkungen",
-    "conformsTo": "Entspricht",
-    "contactPoint": "Kontaktstelle",
     "dcat:accessService": "Zugriffsdienst",
+    "bv:dimensions": "Dimensionen",
     "dcat:accessURL": "Zugriffs-URL",
     "dcat:catalog": "Katalog",
     "dcat:contactPoint": "Kontaktstelle",
@@ -189,35 +236,12 @@
     "dct:spatial": "Räumliche Abdeckung",
     "dct:temporal": "Zeitliche Abdeckung",
     "dct:title": "Titel",
-    "description": "Beschreibung",
-    "downloadURL": "Download-URL",
-    "externalCatalogs": "Veröffentlichung in externen Katalogen",
     "foaf:page": "Verwandte Ressourcen",
-    "format": "Dateiformat",
-    "geoIdentifier": "Identifikator GeoIV",
-    "identifier": "Identifikator",
-    "image": "Bild",
-    "inSeries": "In dataset Serie",
-    "issued": "Ausgabedatum",
-    "keyword": "Schlüsselwörter",
-    "landingPage": "Einstiegsseite",
-    "license": "Lizenz",
-    "modified": "Änderungsdatum",
-    "page": "Verwandte Ressourcen",
-    "personalData": "Personenbezogene Daten",
+    "schema:image": "Bild",
     "prov:qualifiedAttribution": "Verantwortliche Personen",
     "prov:wasDerivedFrom": "Abgeleitet von",
     "prov:wasGeneratedBy": "Geschäftsprozess",
-    "qualitifedAttribution": "Verantwortliche Personen",
-    "replaces": "Ersetzt",
-    "schema:comment": "Zusätzliche Bemerkungen",
-    "spatial": "Räumliche Abdeckung",
-    "status": "Status",
-    "temporal": "Zeitliche Abdeckung",
-    "theme": "Thema",
-    "title": "Titel",
-    "typeOfData": "Datentyp",
-    "version": "Version"
+    "schema:comment": "Zusätzliche Bemerkungen"
   },
   "msg": {
     "adminDirError": "AdminDir konnte nicht erreicht werden",
@@ -264,6 +288,7 @@
         "learnMore": "Mehr über GitHub Tokens erfahren"
       },
       "form": {
+        "productType": "Produkttyp",
         "title": {
           "new": "Neuen Datensatz erstellen",
           "edit": "Datensatz bearbeiten"
@@ -276,21 +301,42 @@
         "validation": {
           "required": "Dieses Feld ist erforderlich",
           "maxLength": "Maximale Länge überschritten",
+          "minLength": "Mindestens {{minLength}} Zeichen erforderlich",
+          "pattern": "Ungültiges Format",
+          "titlePattern": "Erlaubt sind nur Buchstaben A-Z, Ziffern 0-9, Leerzeichen, Bindestriche und Unterstriche",
           "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
           "summary": "Formularvalidierungsfehler:",
-          "fillRequired": "Bitte füllen Sie alle Pflichtfelder aus, die mit einem Sternchen (*) markiert sind"
+          "fillRequired": "Bitte füllen Sie alle Pflichtfelder aus, die mit einem Sternchen (*) markiert sind",
+          "recommended": "(empfohlen)",
+          "invalidDate": "Bitte ein gültiges Datum eingeben (TT.MM.JJJJ)",
+          "dateNotFuture": "Das Datum darf nicht in der Zukunft liegen.",
+          "dateOrderIssuedModified": "Das Ausstellungsdatum muss vor oder am Änderungsdatum liegen.",
+          "dateOrderStartEnd": "Das Startdatum muss vor oder am Enddatum liegen."
         },
         "confirmation": {
           "unsavedChanges": "Sie haben ungespeicherte Änderungen. Sind Sie sicher, dass Sie die Seite verlassen möchten? Alle Änderungen gehen verloren."
         },
         "help": {
-          "multilingualRequired": "Mindestens Deutsch und Französisch sind erforderlich"
+          "multilingualRequired": "Mindestens Deutsch und Französisch sind erforderlich",
+          "keywordArray": "Enter drücken oder Komma verwenden, um Schlüsselwörter hinzuzufügen",
+          "externalCatalogs": "Wählen Sie externe Kataloge aus, in denen dieser Datensatz veröffentlicht werden soll",
+          "relationships": "Geben Sie Datensatz-IDs durch Kommas getrennt für verwandte Datensätze ein",
+          "adminDirId": "Die AdminDir ID von der AdminDir-Seiten-URL der Person",
+          "personsRequired": "Mindestens eine verantwortliche Person ist erforderlich. AdminDir ID und Rolle sind für jede Person obligatorisch.",
+          "accessUrl": "URL zur Seite für den Zugriff auf diese Distribution",
+          "downloadUrl": "Direkte Download-URL (optional)",
+          "distributionsRequired": "Mindestens eine Distribution ist erforderlich. Identifikator, Zugriffs-URL, Status und Format sind für jede Distribution obligatorisch."
         },
         "options": {
-          "none": "Keine Auswahl"
+          "none": "Keine Auswahl",
+          "selectStatus": "Status auswählen",
+          "selectAvailability": "Verfügbarkeit auswählen",
+          "selectLicense": "Lizenz auswählen"
         },
         "sections": {
           "basic": "Grundinformationen",
+          "service": "Service",
+          "series": "Serie",
           "access": "Zugriff & Klassifizierung",
           "publisher": "Herausgeber & Kontakt",
           "metadata": "Metadaten & Versionierung",
@@ -305,6 +351,9 @@
           "title": "Titel des Datensatzes eingeben",
           "description": "Beschreibung des Datensatzes eingeben",
           "keyword": "Schlüsselwort hinzufügen",
+          "dimension": "Dimension hinzufügen",
+          "keywordKey": "z.B., tier, kuh, landwirtschaft",
+          "keywordTranslation": "Schlüsselwort-Übersetzung eingeben",
           "theme": "Thema auswählen",
           "itSystem": "Name des IT-Systems",
           "retentionPeriod": "z.B., 10",
@@ -336,18 +385,16 @@
           "role": "Rolle",
           "nameOptional": "Name (optional)",
           "emailOptional": "E-Mail (optional)",
-          "distribution": "Distribution"
+          "distribution": "Distribution",
+          "keyword": "Schlüsselwort",
+          "keywordKey": "Schlüsselwort-Schlüssel",
+          "keywordTranslations": "Schlüsselwort-Übersetzungen"
         },
-        "help": {
-          "multilingualRequired": "Mindestens Deutsch und Französisch sind erforderlich",
-          "keywordArray": "Enter drücken oder Komma verwenden, um Schlüsselwörter hinzuzufügen",
-          "externalCatalogs": "Wählen Sie externe Kataloge aus, in denen dieser Datensatz veröffentlicht werden soll",
-          "relationships": "Geben Sie Datensatz-IDs durch Kommas getrennt für verwandte Datensätze ein",
-          "adminDirId": "Die AdminDir ID von der AdminDir-Seiten-URL der Person",
-          "personsRequired": "Mindestens eine verantwortliche Person ist erforderlich. AdminDir ID und Rolle sind für jede Person obligatorisch.",
-          "accessUrl": "URL zur Seite für den Zugriff auf diese Distribution",
-          "downloadUrl": "Direkte Download-URL (optional)",
-          "distributionsRequired": "Mindestens eine Distribution ist erforderlich. Identifikator, Zugriffs-URL, Status und Format sind für jede Distribution obligatorisch."
+        "addKeyword": "Schlüsselwort hinzufügen",
+        "removeKeyword": "Schlüsselwort entfernen",
+        "noKeywords": "Noch keine Schlüsselwörter hinzugefügt",
+        "hints": {
+          "keywordKey": "Eindeutige Kennung für das Schlüsselwort (Kleinbuchstaben, keine Leerzeichen)"
         },
         "buttons": {
           "addPerson": "Person hinzufügen",
@@ -361,37 +408,44 @@
           "noPersons": "Noch keine verantwortlichen Personen hinzugefügt. Klicken Sie auf \"Person hinzufügen\", um eine hinzuzufügen.",
           "noDistributions": "Noch keine Distributionen hinzugefügt. Klicken Sie auf \"Distribution hinzufügen\", um eine hinzuzufügen."
         },
-        "contactName": "Name der Kontaktperson",
-        "contactEmail": "E-Mail der Kontaktperson",
+        "contactName": "Name der Kontaktstelle (Organisation)",
+        "contactEmail": "E-Mail der Kontaktstelle (Organisation)",
         "generateJson": "JSON generieren",
         "backToForm": "Zurück zum Formular",
         "authOptional": "Optional: Authentifizierung",
         "selectedRepository": "Ausgewähltes Repository",
-        "changeRepository": "Repository wechseln",
+        "changeRepository": "Repo wechseln",
         "reset": "Zurücksetzen",
-        "submit": "Einreichen"
+        "submit": "Prüfen"
       },
       "submit": {
-        "title": "Datensatz einreichen",
-        "authSuccess": "GitHub-Berechtigung verifiziert",
-        "authInfo": "Authentifizierung ist optional - GitHub wird nach Anmeldedaten fragen",
-        "authenticate": "Jetzt authentifizieren",
-        "showJson": "JSON anzeigen",
+        "title": "Datensatz zur Übermittlung bereit",
+        "authSuccess": "Erfolgreich authentifiziert",
+        "authInfo": "Bitte authentifizieren Sie sich, um Änderungen vorzunehmen",
+        "authenticate": "Authentifizieren",
+        "showJson": "JSON-Vorschau anzeigen",
         "hideJson": "JSON verbergen",
-        "options": "Einreichungsoptionen",
+        "options": "Übermittlungsoptionen",
         "createInGitHub": "In GitHub erstellen",
         "editInGitHub": "In GitHub bearbeiten",
-        "githubDescription": "Öffnet GitHub mit vorausgefülltem Inhalt zum Review und Commit",
+        "githubDescription": "Öffnet GitHub, um die Datei direkt zu bearbeiten oder zu erstellen",
         "alternatives": "Alternative Optionen",
         "copyJson": "JSON kopieren",
-        "copyDescription": "Kopiert JSON in die Zwischenablage für manuelles Einfügen",
+        "copyDescription": "Kopiert die JSON-Daten in die Zwischenablage",
         "downloadJson": "JSON herunterladen",
-        "downloadDescription": "Lädt JSON-Datei für lokale Speicherung herunter",
+        "downloadDescription": "Lädt die JSON-Datei auf Ihren Computer herunter",
+        "commitDirectly": "Änderungen direkt committen",
+        "createDirectly": "Datensatz direkt erstellen",
+        "committing": "Wird committet...",
+        "commitDirectDescription": "Direkt zu GitHub committen mit Ihrem authentifizierten Token (empfohlen für große Datensätze)",
+        "commitSuccess": "Datensatz erfolgreich zu GitHub committet!",
+        "commitFailed": "Commit fehlgeschlagen",
+        "githubWebEditorDescription": "Öffnet den GitHub Web-Editor (erfordert manuelles Kopieren/Einfügen für große Datensätze)",
         "help": {
-          "title": "Wie funktioniert es?",
-          "github": "Klicken Sie auf 'In GitHub erstellen' um GitHub mit vorausgefülltem Inhalt zu öffnen",
-          "review": "Überprüfen Sie die Änderungen in GitHubs Diff-Ansicht",
-          "commit": "Erstellen Sie den Commit direkt in GitHub oder erstellen Sie einen Pull Request"
+          "title": "Nächste Schritte",
+          "github": "Überprüfen Sie die Änderungen in GitHub",
+          "review": "Lassen Sie die Änderungen von einem Kollegen überprüfen",
+          "commit": "Committen Sie die Änderungen ins Repository"
         }
       }
     }
@@ -400,6 +454,10 @@
     "back-home": "Zurück zur Startseite",
     "message": "Die gesuchte Seite existiert nicht.",
     "title": "Seite nicht gefunden"
+  },
+  "common": {
+    "yes": "Ja",
+    "no": "Nein"
   },
   "ui": {
     "addDataset": "Datensatz hinzufügen",
@@ -413,8 +471,11 @@
     "issued": "Veröffentlicht",
     "issueDate": "Ausgabedatum",
     "keywords": "Schlüsselwörter",
+    "dimensions": "Dimensionen",
+    "productType": "Typ",
     "list": "Liste",
     "newKeyword": "Neues Schlüsselwort...",
+    "newDimension": "Neue Dimension...",
     "noResultsFound": "Keine Ergebnisse gefunden. Versuchen Sie allgemeinere Filter oder Suche.",
     "remove": "Entfernen",
     "reset": "zurücksetzen",
@@ -431,5 +492,41 @@
     "steward": "Datenverwalter",
     "stewardOwnerContact": "Kontakt",
     "title": "Titel"
+  },
+  "validation": {
+    "i14y": {
+      "name": "I14Y-Anforderungen",
+      "description": "Zusätzliche Anforderungen für die Veröffentlichung auf der I14Y-Interoperabilitätsplattform"
+    },
+    "ods": {
+      "name": "Open Data Swiss-Anforderungen",
+      "description": "Zusätzliche Anforderungen für die Veröffentlichung auf Open Data Swiss"
+    },
+    "base": {
+      "name": "Basisanforderungen",
+      "nameOffline": "Basisanforderungen (Offline)",
+      "description": "Grundlegende Anforderungen für alle Datensätze"
+    },
+    "generic": {
+      "description": "Bitte prüfen Sie die folgenden Anforderungen"
+    },
+    "advisory": "Nur als Hinweis – diese Anforderungen blockieren die Übermittlung erst, wenn Sie auf diesem Katalog veröffentlichen.",
+    "errors": {
+      "fieldRequired": "{{field}} ist erforderlich für {{schema}}",
+      "fieldRequiredPattern": "{{field}}: {{languages}}-Text muss {{pattern}} sein",
+      "fieldMissingLanguages": "{{field}} muss Text in {{languages}}{{pattern}} enthalten",
+      "formatInvalid": "{{field}}-Format ist ungültig für {{schema}}",
+      "validationError": "{{field}} hat Validierungsfehler für {{schema}}"
+    },
+    "formStatus": {
+      "complete": {
+        "title": "Formularvalidierung abgeschlossen",
+        "message": "Datensatzformular ist gültig und bereit für die Übermittlung an GitHub"
+      },
+      "failed": {
+        "title": "Formularvalidierung fehlgeschlagen",
+        "message": "Bitte beheben Sie {{count}} erforderliche Felder, um fortzufahren"
+      }
+    }
   }
 }

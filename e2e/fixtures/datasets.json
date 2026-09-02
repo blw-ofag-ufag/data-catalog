@@ -1,0 +1,38 @@
+[
+  {
+    "dct:identifier": "ds-001",
+    "dct:publisher": "BLW-OFAG-UFAG-FOAG",
+    "dct:title": {
+      "de": "Apfelernte Statistik DE",
+      "fr": "Statistique recolte pommes FR",
+      "it": "Statistica raccolto mele IT",
+      "en": "Apple Harvest Statistics EN"
+    },
+    "dct:description": {
+      "de": "Beschreibung der Apfelernte.",
+      "fr": "Description de la recolte de pommes.",
+      "it": "Descrizione del raccolto di mele.",
+      "en": "Description of the apple harvest dataset."
+    },
+    "dct:issued": "2023-04-15",
+    "dcat:keyword": ["apples", "harvest"]
+  },
+  {
+    "dct:identifier": "ds-002",
+    "dct:publisher": "BLW-OFAG-UFAG-FOAG",
+    "dct:title": {
+      "de": "Bodenfeuchtigkeit Messungen DE",
+      "fr": "Mesures humidite sol FR",
+      "it": "Misure umidita suolo IT",
+      "en": "Soil Moisture Measurements EN"
+    },
+    "dct:description": {
+      "de": "Beschreibung der Bodenfeuchtigkeit.",
+      "fr": "Description de l humidite du sol.",
+      "it": "Descrizione dell umidita del suolo.",
+      "en": "Description of the soil moisture dataset."
+    },
+    "dct:issued": "2022-09-01",
+    "dcat:keyword": ["soil", "moisture"]
+  }
+]

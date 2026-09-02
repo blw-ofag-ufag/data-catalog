@@ -8,13 +8,13 @@
 				<h2 class="main-heading">{{ ["dct:title", dataset["dct:title"]] | translateField }}</h2>
 				<div class="action-buttons">
 					<button mat-button obButton="secondary" type="button" aria-label="data source on github" (click)="openGitHubFile()">
-						<mat-icon svgIcon="git-hub">github</mat-icon>
+						<mat-icon svgIcon="github"></mat-icon>
 					</button>
 					<button mat-button obButton="secondary" type="button" aria-label="raw data" (click)="openRawJson()">
-						<mat-icon svgIcon="file-json">raw</mat-icon>
+						<mat-icon svgIcon="file_json"></mat-icon>
 					</button>
 					<button mat-button obButton="primary" type="button" aria-label="edit dataset" (click)="openEditTab()">
-						<mat-icon svgIcon="pen">{{ "ui.editDataset" | translate }}</mat-icon>
+						<mat-icon svgIcon="pencil"></mat-icon>
 					</button>
 				</div>
 			</div>
@@ -23,11 +23,11 @@
 			<div class="content-side">
 				<div class="content-wrapper">
 					<div class="content-area">
-						<p class="description">{{ ["dct:description", dataset["dct:description"]] | translateField }}</p>
+						<p class="description">{{ ["dct:description", $any(dataset)["dct:description"]] | translateField }}</p>
 						<div class="tags">
 							<mat-chip>
-								<a [routerLink]="['/index']" [queryParams]="datasetFiltered()">
-									{{ "ui.dataSet" | translate }}
+								<a [routerLink]="['/index']" [queryParams]="typeFiltered(dataset['productType'])">
+									{{ "choices.productType." + (dataset["productType"] || "dataset") | translate }}
 								</a>
 							</mat-chip>
 							<mat-chip>
@@ -41,10 +41,7 @@
 				</div>
 			</div>
 			<div class="image-side">
-				<img
-					src="{{ dataset['schema:image'] || 'https://fal.media/files/koala/fu3fHRalAzcHsxBFze10d_dc302f8699ab49ffadb957300e226b94.jpg' }}"
-					alt="Dataset image"
-				/>
+				<img src="{{ dataset['schema:image'] || 'assets/images/placeholder.svg' }}" alt="Dataset image" />
 			</div>
 		</div>
 		<div class="ob-grid container">
@@ -52,10 +49,10 @@
 				<!-- persons -->
 				<h3>{{ "details.heading.affiliated" | translate }}</h3>
 				<hr />
-				@if (dataset["prov:qualifiedAttribution"] && dataset["prov:qualifiedAttribution"].length > 0) {
+				@if ($any(dataset)["prov:qualifiedAttribution"] && $any(dataset)["prov:qualifiedAttribution"].length > 0) {
 					<table class="ob-table ob-table-plain">
 						<tbody>
-							@for (person of dataset["prov:qualifiedAttribution"]; track $index) {
+							@for (person of $any(dataset)["prov:qualifiedAttribution"]; track $index) {
 								<tr>
 									<td>
 										@if (person["prov:agent"]) {
@@ -84,16 +81,36 @@
 						@for (meta of metadata$ | async; track $index) {
 							<tr>
 								<td>
-									{{ "labels." + meta.label | translate }}
+									<div style="display: flex; align-items: center; gap: 8px">
+										@if (hasTooltip(meta.label)) {
+											<button
+												type="button"
+												class="ob-button-icon"
+												[obPopover]="popoverTemplate"
+												placement="top"
+												[appendToBody]="true"
+												style="padding: 0; background: none; border: none; cursor: pointer; display: inline-flex; align-items: center"
+											>
+												<mat-icon svgIcon="info_circle" style="width: 18px; height: 18px; font-size: 18px"></mat-icon>
+											</button>
+											<ng-template #popoverTemplate>
+												<div [innerHTML]="getTooltipHtml(meta.label)" appPopoverLinks style="max-width: 400px"></div>
+											</ng-template>
+										}
+										<span>{{ "labels." + meta.label | translate }}</span>
+									</div>
 								</td>
 								<td>
 									@if (enumTypes.includes(meta.label) && meta.label !== "dcat:keyword" && !enumArrayFields.includes(meta.label)) {
 										<enum [label]="meta.label" [data]="meta.data"></enum>
 									}
 									@if (meta.label === "dcat:keyword") {
-										<keywords [keywords]="dataset['dcat:keyword'] || []"></keywords>
+										<keywords [dataset]="dataset"></keywords>
 									}
-									@if ((!enumTypes.includes(meta.label) && meta.label !== "dcat:keyword") || enumArrayFields.includes(meta.label) && meta.label !== "dcat:keyword") {
+									@if (
+										(!enumTypes.includes(meta.label) && meta.label !== "dcat:keyword") ||
+										(enumArrayFields.includes(meta.label) && meta.label !== "dcat:keyword")
+									) {
 										<metadata-item [label]="meta.label" [data]="meta.data"></metadata-item>
 									}
 									<!--									<a href="google.com">simple link</a>-->
@@ -103,12 +120,19 @@
 					</tbody>
 				</table>
 
+				<!-- data sets (contained/served datasets for container types) -->
+				@if ((subDatasets$ | async)?.length) {
+					<h3>{{ "details.heading.dataSets" | translate }}</h3>
+					<hr />
+					<index-cards [datasets$]="subDatasets$"></index-cards>
+				}
+
 				<!-- distribution -->
-				@if (dataset["dcat:distribution"] && dataset["dcat:distribution"].length > 0) {
+				@if ($any(dataset)["dcat:distribution"] && $any(dataset)["dcat:distribution"].length > 0) {
 					<h3>{{ "details.heading.distributions" | translate }}</h3>
 					<hr />
 					<mat-accordion>
-						@for (dist of dataset["dcat:distribution"]; track $index) {
+						@for (dist of $any(dataset)["dcat:distribution"]; track $index) {
 							<mat-expansion-panel>
 								<mat-expansion-panel-header>
 									<mat-panel-title>
@@ -127,15 +151,17 @@
 					</mat-accordion>
 				}
 
-				@if (dataset["bv:externalCatalogs"] && dataset["bv:externalCatalogs"].length > 0) {
+				@if ($any(dataset)["bv:externalCatalogs"] && $any(dataset)["bv:externalCatalogs"].length > 0) {
 					<h3>{{ "details.heading.publications" | translate }}</h3>
 					<hr />
 					<table class="ob-table ob-table-plain">
 						<tbody>
-							@for (pub of dataset["bv:externalCatalogs"]; track $index) {
+							<!-- Records written by the pre-#260 form stored bare strings instead of
+							     {dcat:catalog, dct:identifier} objects; render those rather than a blank row. -->
+							@for (pub of $any(dataset)["bv:externalCatalogs"]; track $index) {
 								<tr>
-									<td>{{ pub["dcat:catalog"] }}</td>
-									<td>{{ pub["dct:identifier"] }}</td>
+									<td>{{ isString(pub) ? pub : pub["dcat:catalog"] }}</td>
+									<td>{{ isString(pub) ? "" : pub["dct:identifier"] }}</td>
 								</tr>
 							}
 						</tbody>

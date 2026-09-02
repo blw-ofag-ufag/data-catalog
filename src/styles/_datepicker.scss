@@ -1,0 +1,10 @@
+// Oblique's theme forces the datepicker period button and body labels to
+// `text-transform: lowercase`, which is wrong for languages whose month names
+// are capitalized (e.g. German "Januar"). Restore capitalization. These selectors
+// match Oblique's specificity and load afterwards, so they win the cascade.
+mat-datepicker-content.mat-datepicker-content {
+	.mat-calendar-controls .mdc-button__label,
+	.mat-calendar-body-label {
+		text-transform: capitalize;
+	}
+}

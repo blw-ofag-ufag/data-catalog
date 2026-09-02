@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {marked} from 'marked';
 
@@ -15,7 +15,8 @@ export class HandbookComponent implements OnInit, AfterViewInit {
 
 	constructor(
 		private readonly translate: TranslateService,
-		private readonly elementRef: ElementRef
+		private readonly elementRef: ElementRef,
+		private readonly cdr: ChangeDetectorRef
 	) {}
 
 	async ngOnInit() {
@@ -62,11 +63,17 @@ export class HandbookComponent implements OnInit, AfterViewInit {
 				}
 			}
 
+			// Trigger change detection after content load
+			this.cdr.detectChanges();
+
 			// Render Mermaid diagrams after content is loaded
-			setTimeout(() => this.renderMermaidDiagrams(), 100);
+			setTimeout(() => {
+				this.renderMermaidDiagrams();
+			}, 100);
 		} catch (error) {
 			console.error('Error loading markdown content:', error);
 			this.markdownContent = '<p>Error loading content</p>';
+			this.cdr.detectChanges();
 		}
 	}
 
@@ -100,6 +107,11 @@ export class HandbookComponent implements OnInit, AfterViewInit {
 					element.innerHTML = `<p class="mermaid-error">Error rendering diagram: ${error}</p>`;
 				}
 			}
+		}
+
+		// Trigger change detection after rendering Mermaid diagrams
+		if (mermaidElements.length > 0) {
+			this.cdr.detectChanges();
 		}
 	}
 }

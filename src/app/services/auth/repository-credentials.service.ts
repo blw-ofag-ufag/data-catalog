@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { GitHubCredentials } from './github-auth.service';
-import { Publisher } from '../../models/publisher.model';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {GitHubCredentials} from './github-auth.service';
+import {Publisher} from '../../models/publisher.model';
 
 export interface RepositoryCredentials {
 	repository: string; // githubRepo format: "owner/repo"
@@ -16,7 +16,7 @@ export interface RepositoryCredentials {
 export class RepositoryCredentialsService {
 	private readonly STORAGE_KEY = 'repository_credentials';
 	private credentialsMap = new Map<string, RepositoryCredentials>();
-	private selectedRepositorySubject = new BehaviorSubject<string | null>(null);
+	private readonly selectedRepositorySubject = new BehaviorSubject<string | null>(null);
 
 	public selectedRepository$ = this.selectedRepositorySubject.asObservable();
 
@@ -96,9 +96,7 @@ export class RepositoryCredentialsService {
 	 * Get all repositories with credentials
 	 */
 	getAuthenticatedRepositories(): string[] {
-		return Array.from(this.credentialsMap.keys()).filter(repo =>
-			this.credentialsMap.get(repo)?.isValid
-		);
+		return Array.from(this.credentialsMap.keys()).filter(repo => this.credentialsMap.get(repo)?.isValid);
 	}
 
 	/**
@@ -170,7 +168,7 @@ export class RepositoryCredentialsService {
 		try {
 			const stored = sessionStorage.getItem(this.STORAGE_KEY);
 			if (stored) {
-				const parsed = JSON.parse(stored) as Array<[string, any]>;
+				const parsed = JSON.parse(stored) as [string, any][];
 				this.credentialsMap = new Map(
 					parsed.map(([key, value]) => [
 						key,

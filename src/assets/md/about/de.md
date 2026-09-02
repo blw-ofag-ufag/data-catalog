@@ -16,12 +16,12 @@ Gewisse Daten beziehen sich auf die Milchproduktion, andere auf die Stickstoffve
 
 Bei dieser (ständig wachsenden) Fülle an Daten ist es für das BLW unerlässlich, ein Instrument bereitzustellen, welches eine übersichtliche Verwaltung dieser Daten erlaubt.
 Das ist im Kern das Ziel eines vollständigen und aktuellen Datenkatalogs.
-Damit trägt er direkt zur Einhaltung [der Prinzipien der Digitalisierungsstrategie](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie) wie *Once Only*, *Open by Default*, *Security & Privacy by default* und *Innovation first* bei.
+Damit trägt er direkt zur Einhaltung [der Prinzipien der Digitalisierungsstrategie](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie) wie _Once Only_, _Open by Default_, _Security & Privacy by default_ und _Innovation first_ bei.
 
 Der Datenkatalog soll für das BLW insgesamt, aber auch für die Nutzenden sicherstellen, dass
 
 - die Daten leicht auffindbar und inhaltlich verständlich sind und
-- die *Governance*- und *Compliance*-Regeln bezüglich den Daten befolgt werden,
+- die _Governance_- und _Compliance_-Regeln bezüglich den Daten befolgt werden,
 - die Daten mehrfach genutzt werden können und damit Doppelspurigkeiten vermieden werden.
 
 Damit kann der Datenkatalog dazu beitragen, dass die Zusammenarbeit, Effizienz und Transparenz gefördert werden.
@@ -34,8 +34,8 @@ Dieser Datenkatalog verfolgt verschiedene Ziele gleichzeitig:
 2. **Zentraler Ausgangspunkt um Daten zu finden:** Der Datenkatalog soll eine Erleichterung des Verständnisses und des Zugriffs auf Daten für jedes Mitglied der Organisation erlauben. Wenn jemand nach spezifischen Daten sucht, soll durch die Betrachtung der Metadaten klar werden, ob die Daten jeweilige Geschäftsanforderungen an Qualität, Aktualitäts- und Granularität erfüllen.
 3. **Erleichterung der Zusammenarbeit:** Der Datenkatalog soll die Zusammenarbeit dadurch fördern indem klar wird, wer jeweils für bestimmte Daten zuständig ist beziehungsweise an wen man sich bei Fragen wenden kann.
 4. **Verbesserung der Interoperabilität:** Der Datenkatalog soll genutzte Stamm- und Referenzdaten offenlegen sodass sie bei der Entwicklung neuer IT-Systeme schnell gefunden und integriert werden können.
-5. **Synchronisation mit anderen Datenportalen:** Der Datenkatalog soll *eine* Lösung für die Verwaltung von Metadaten für das BLW sein. Je nach Kategorie sollen diese Metadaten jedoch auf Nationalen Datenkatalogen wie [i14y](https://www.i14y.admin.ch/), [opendata.swiss](https://opendata.swiss/), oder [geocat](https://www.geocat.ch/datahub) geteilt werden. Ein einziger Datenkatalog hilft, die Metadatenqualität auf allen Folge-Katalogen sicherzustellen.
-6. **Data Governance:** Der Datenkatalog soll helfen, die *Data Governance* des BLW umzusetzen. Dazu gehört zum Beispiel, dass es für alle Datensätze verantwortliche Personen gibt.
+5. **Synchronisation mit anderen Datenportalen:** Der Datenkatalog soll _eine_ Lösung für die Verwaltung von Metadaten für das BLW sein. Je nach Kategorie sollen diese Metadaten jedoch auf Nationalen Datenkatalogen wie [i14y](https://www.i14y.admin.ch/), [opendata.swiss](https://opendata.swiss/), oder [geocat](https://www.geocat.ch/datahub) geteilt werden. Ein einziger Datenkatalog hilft, die Metadatenqualität auf allen Folge-Katalogen sicherzustellen.
+6. **Data Governance:** Der Datenkatalog soll helfen, die _Data Governance_ des BLW umzusetzen. Dazu gehört zum Beispiel, dass es für alle Datensätze verantwortliche Personen gibt.
 7. **Einhaltung gesetzlicher Vorschriften:** Der Datenkatalog soll auch sicherstellen, dass gesetztliche Vorschriften eingehalten werden, insbesondere, wenn es um das [Datenschutzgesetz (DSG)](https://www.fedlex.admin.ch/eli/cc/2022/491) oder das [Informationssicherheitsgesetzt (ISG)](https://www.fedlex.admin.ch/eli/cc/2022/232) geht.
 8. **Digitalisierungsstrategie:** Der Datenkatalog soll einen gezielten Beitrag für die [digitale Transformation des Schweizer Agrar- und Ernährungssektors](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie) und die Vision eines datenbasierten Sektors erlauben.
 
@@ -49,15 +49,19 @@ Von einem Datenkatalog können unterschiedliche Gruppen profitieren. Hauptsächl
 - externe Interessensgruppen, weil sie bei Bedarf öffentlich verfügbare Daten finden können.
 
 # Was enthält der Datenkatalog?
+
 Der Datenkatalog umfasst Datenprodukte, die aktiv verwaltet und regelmässig genutzt werden sowie einen kontinuierlichen Mehrwert bieten. Beispiele hierfür sind:
+
 - Eine jährliche Excel-Datei mit aktualisierten Zahlen zur Milchproduktion
 - Ein BI-Report (Power BI, SAP BO) zur Verfolgung der Entwicklung der Einkommenssituation
 - Eine Data-Warehouse-Tabelle mit einer Zusammenfassung der Eierverkäufe nach Einzelhändlern
 - Ein Machine Learning Modell zur Vorhersage von Schädlingsrisiken basierend auf Wetter- und Anbaudaten
 - Ein öffentlich zugänglicher API-Dienst zur Echtzeitprognose der erwarteten Ernteerträge pro Kultur und Region
 
-Hinweis: Dateien mit Rohdaten, wie z. B. die Originalverkaufsdaten eines Einzelhändlers für einen bestimmten Zeitraum, sollten nicht als separate Datenprodukte aufgeführt werden. Stattdessen sollten diese Rohdaten in ein bestehendes Datenprodukt über den Verkauf integriert werden. 
-Darüber hinaus gelten temporäre Dateien, wie z. B. eine CSV-Datei für eine einmalige Analyse, nicht als relevante Datenprodukte.
+Hinweis:
+
+- Dateien mit Rohdaten, wie z. B. die Originalverkaufsdaten eines Einzelhändlers für einen bestimmten Zeitraum, sollten nicht als separate Datenprodukte aufgeführt werden. Stattdessen sollten diese Rohdaten in ein bestehendes Datenprodukt über den Verkauf integriert werden.
+- Temporäre Dateien, wie z. B. eine CSV-Datei für eine einmalige Analyse, gelten nicht als relevante Datenprodukte.
 
 # Nächste Schritte
 

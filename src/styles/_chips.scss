@@ -1,0 +1,23 @@
+// Oblique 15 / Angular Material 21 theme standard chips as `mat-primary`, which sets the MDC label
+// text token (--mat-chip-label-text-color) to white. The catalog's chips sit on light backgrounds,
+// so every chip whose text isn't wrapped in a separately-coloured <a> turned white-on-light and
+// unreadable — e.g. the "+n" keyword-overflow chip in cards and the filter/keyword chips.
+//
+// Restore a readable dark label for standard chips, while leaving Oblique's semantic chips
+// (info/success/error/warning), genuinely selected chips (dark background) and the removable
+// filter/keyword input chips (mat-chip-row, also dark background) with their white text.
+.mat-mdc-standard-chip:not(.info):not(.success):not(.error):not(.warning):not(.mat-mdc-chip-selected):not(.mat-mdc-chip-row):not(.more-chip) {
+	--mat-chip-label-text-color: rgba(0, 0, 0, 0.87);
+}
+
+// Removable filter/keyword chips (mat-chip-row) render on a dark background but do not carry the
+// selected class, so force white label + remove-icon for contrast (#dev feedback).
+.mat-mdc-chip-row {
+	--mat-chip-label-text-color: #fff;
+	--mdc-chip-with-trailing-icon-trailing-icon-color: #fff;
+}
+
+// The keyword-overflow chip is intentionally muted grey.
+.more-chip {
+	--mat-chip-label-text-color: #6b7280 !important;
+}

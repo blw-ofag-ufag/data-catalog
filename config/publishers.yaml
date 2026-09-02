@@ -1,14 +1,19 @@
 - id: BLW-OFAG-UFAG-FOAG
   shortId: BLW
   githubRepo: blw-ofag-ufag/metadata
-  branch: main
+  readBranch: main
+  writeBranch: drafts
 
 - id: BLV-OSAV-USAV-FSVO
   shortId: BLV
   githubRepo: BLV-OSAV-USAV/FSVO-Metadata
-  branch: main
+  readBranch: main
+  writeBranch: main
 
+# Dev/test publisher: serves example dataService/datasetSeries records from a fork for local
+# manual testing of the multi-data-product-type work (#221). Remove before production.
 - id: ROLAND-TEST
   shortId: TEST
   githubRepo: bar9/metadata-publisher-test
-  branch: main
+  readBranch: main
+  writeBranch: main

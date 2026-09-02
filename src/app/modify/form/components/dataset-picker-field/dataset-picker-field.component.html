@@ -1,0 +1,37 @@
+<div class="field-with-tooltip" style="position: relative">
+	<app-field-debug-overlay [label]="label" [fieldName]="fieldName || ''"></app-field-debug-overlay>
+	<label class="ob-form-label">{{ label | translate }}</label>
+
+	<div class="dataset-tile-grid">
+		@for (tile of selectedTiles(); track tile.id) {
+			<div class="dataset-tile">
+				<button type="button" mat-icon-button class="remove-btn" (click)="remove(tile.id)" [attr.aria-label]="'Remove ' + tile.title">
+					<mat-icon svgIcon="delete"></mat-icon>
+				</button>
+				<div class="tile-thumb"></div>
+				<div class="tile-title" [title]="tile.title">{{ tile.title }}</div>
+			</div>
+		}
+
+		@if (!adding) {
+			<button type="button" class="dataset-tile add-tile" (click)="startAdding()" [disabled]="disabled">
+				<mat-icon svgIcon="plus"></mat-icon>
+				<span>{{ "ui.addDataset" | translate }}</span>
+			</button>
+		} @else {
+			<div class="dataset-tile add-tile add-tile--input">
+				<mat-form-field class="ob-w-full" appearance="outline">
+					<mat-label>{{ "ui.addDataset" | translate }}</mat-label>
+					<input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto" [placeholder]="'ui.search' | translate" />
+					<mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+						@for (d of addableDatasets(); track d["dct:identifier"]) {
+							<mat-option [value]="d['dct:identifier']">{{ titleFor(d["dct:identifier"]) }}</mat-option>
+						}
+					</mat-autocomplete>
+				</mat-form-field>
+			</div>
+		}
+	</div>
+
+	<app-form-field-tooltip [fieldName]="fieldName || ''"></app-form-field-tooltip>
+</div>

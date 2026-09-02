@@ -1,4 +1,4 @@
-import {DatasetSchema} from '../models/schemas/dataset';
+import {DataProduct, DatasetSchema} from '../models/schemas/dataset';
 // usage
 // const metadataElements = filterAndNormalizeMetadata(dataset);
 
@@ -7,7 +7,7 @@ export interface NormalizedMetadataElement {
 	data: any;
 }
 
-export function filterAndNormalizeMetadata(dataset: DatasetSchema): NormalizedMetadataElement[] {
+export function filterAndNormalizeMetadata(dataset: DataProduct): NormalizedMetadataElement[] {
 	const metadata = Object.fromEntries(Object.entries(dataset).filter(([key]) => isKeyMetadata(key)));
 
 	const normalizedMetadata = Object.entries(metadata)

@@ -10,10 +10,10 @@
 	<mat-form-field>
 		<mat-label>{{ "ui.keywords" | translate }}</mat-label>
 		<mat-chip-grid #chipGrid aria-label="Keyword selection">
-			<mat-chip-row *ngFor="let keyword of keywords" (removed)="remove(keyword)">
-				{{ keyword }}
-				<button type="button" matChipRemove [attr.aria-label]="('ui.remove' | translate) + ' ' + keyword">
-					<mat-icon svgIcon="cancel-circle" />
+			<mat-chip-row *ngFor="let keywordCode of keywords" (removed)="remove(keywordCode)">
+				{{ getKeywordLabel(keywordCode) }}
+				<button type="button" matChipRemove [attr.aria-label]="('ui.remove' | translate) + ' ' + getKeywordLabel(keywordCode)">
+					<mat-icon svgIcon="delete" />
 				</button>
 			</mat-chip-row>
 			<input
@@ -26,8 +26,44 @@
 				(matChipInputTokenEnd)="add($event)"
 			/>
 			<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-				<mat-option *ngFor="let keyword of filteredKeywords$ | async" [value]="keyword">
-					{{ keyword }}
+				<mat-option *ngFor="let keyword of filteredKeywords$ | async" [value]="keyword.code">
+					{{ getKeywordObjectLabel(keyword) }}
+				</mat-option>
+			</mat-autocomplete>
+		</mat-chip-grid>
+	</mat-form-field>
+	<!-- Product type ("klass") facet: filter between dataset / dataService / datasetSeries (#221) -->
+	<mat-form-field>
+		<mat-label>{{ "ui.productType" | translate }}</mat-label>
+		<mat-select multiple [value]="getSelectedOptions('productType')" (selectionChange)="onCategoryChange('productType', $event.value)">
+			@for (t of productTypeOptions; track t) {
+				<mat-option [value]="t">{{ productTypeLabel(t) | translate }}</mat-option>
+			}
+		</mat-select>
+	</mat-form-field>
+
+	<!-- Distribution dimensions facet (#92) -->
+	<mat-form-field>
+		<mat-label>{{ "ui.dimensions" | translate }}</mat-label>
+		<mat-chip-grid #dimensionChipGrid aria-label="Dimension selection">
+			<mat-chip-row *ngFor="let dimensionCode of dimensions" (removed)="removeDimension(dimensionCode)">
+				{{ getDimensionLabel(dimensionCode) }}
+				<button type="button" matChipRemove [attr.aria-label]="('ui.remove' | translate) + ' ' + getDimensionLabel(dimensionCode)">
+					<mat-icon svgIcon="delete" />
+				</button>
+			</mat-chip-row>
+			<input
+				#dimensionInput
+				[placeholder]="'ui.newDimension' | translate"
+				[formControl]="dimensionControl"
+				[matChipInputFor]="dimensionChipGrid"
+				[matAutocomplete]="dimensionAuto"
+				[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+				(matChipInputTokenEnd)="addDimension($event)"
+			/>
+			<mat-autocomplete #dimensionAuto="matAutocomplete" (optionSelected)="selectedDimension($event)">
+				<mat-option *ngFor="let dimension of filteredDimensions$ | async" [value]="dimension.code">
+					{{ getDimensionObjectLabel(dimension) }}
 				</mat-option>
 			</mat-autocomplete>
 		</mat-chip-grid>

@@ -1,9 +1,14 @@
-<div class="chip-container">
-	@for (tag of keywords; track $index) {
-		<mat-chip (click)="onChipClick($event)" class="small-chip" style="display: inline-block; margin-right: 8px">
-			<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
-				{{ tag }}
-			</a>
-		</mat-chip>
-	}
-</div>
+<!-- Keywords section - dataset specific feature -->
+@if (hasKeywordSupport()) {
+	<div class="chip-container">
+		@for (tag of getLocalizedKeywords(); track $index) {
+			<mat-chip (click)="onChipClick($event)" class="small-chip" style="display: inline-block; margin-right: 8px">
+				<a [routerLink]="['/index']" [queryParams]="keywordFiltered(tag)">
+					{{ tag }}
+				</a>
+			</mat-chip>
+		}
+	</div>
+} @else {
+	<p style="opacity: 0.6; font-style: italic; font-size: 0.9em">—</p>
+}

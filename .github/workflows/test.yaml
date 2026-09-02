@@ -1,0 +1,49 @@
+name: Tests
+
+on:
+    pull_request:
+    push:
+        branches:
+            - develop
+
+jobs:
+    unit:
+        name: Unit & component (Jest)
+        runs-on: ubuntu-latest
+        # The #259 date-only regression is only observable on a clock east of UTC — the
+        # actual audience. It must be set here, before Node starts: assigning process.env.TZ
+        # from inside a spec does not reach Node's timezone setter under jsdom.
+        env:
+            TZ: Europe/Zurich
+        steps:
+            -   name: Checkout Repository
+                uses: actions/checkout@v4
+            -   name: Setup Node.js
+                uses: actions/setup-node@v4
+                with:
+                    node-version: 22
+                    cache: npm
+            -   name: Install Dependencies
+                run: npm install
+            -   name: Generate config/schema JSON
+                run: npm run prebuild
+            -   name: Run Jest
+                run: npm run test:ci
+            # Reports when src/app/models/schemas/dataset.ts falls behind the runtime-fetched
+            # schema. It currently FAILS on purpose: three fields the schema dropped are still
+            # declared, and 23 published records still carry one of them (issue #284). Kept
+            # non-blocking until that data question is settled, then drop continue-on-error so
+            # the next drift is caught rather than merely noted.
+            -   name: Check schema drift (non-blocking, see #284)
+                run: npm run check:schema-drift
+                continue-on-error: true
+            -   name: Upload coverage
+                if: always()
+                uses: actions/upload-artifact@v4
+                with:
+                    name: coverage
+                    path: coverage/
+                    if-no-files-found: ignore
+
+    # E2E (Playwright) is intentionally NOT run in CI — the suite is run locally
+    # (npm run test:e2e:local, system Chromium). See playwright.local.config.ts.

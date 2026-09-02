@@ -1,6 +1,4 @@
 .multilingual-field {
-	margin-bottom: 1.5rem;
-
 	.field-label {
 		display: block;
 		font-weight: 500;
@@ -11,10 +9,18 @@
 			color: #d32f2f;
 			margin-left: 0.25rem;
 		}
+
+		.recommended-indicator {
+			color: #0066cc;
+			font-size: 0.85em;
+			font-weight: 500;
+			margin-left: 4px;
+			opacity: 0.8;
+		}
 	}
 
 	.tab-content {
-		padding: 1rem 0;
+		padding: 0 0;
 	}
 
 	.field-help {

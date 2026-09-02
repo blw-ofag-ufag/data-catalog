@@ -1,14 +1,14 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Subject, takeUntil} from 'rxjs';
 import {TranslatePipe} from '@ngx-translate/core';
 import {ObButtonDirective} from '@oblique/oblique';
 import {ObErrorMessagesModule} from '@oblique/oblique';
 import {ObAlertModule} from '@oblique/oblique';
 import {ObSpinnerModule} from '@oblique/oblique';
-import {ObNotificationService, ObNotificationModule} from '@oblique/oblique';
+import {ObNotificationModule, ObNotificationService} from '@oblique/oblique';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -42,13 +42,14 @@ import {Publisher} from '../../models/publisher.model';
 	templateUrl: './auth.component.html',
 	styleUrl: './auth.component.scss'
 })
-export class AuthComponent implements OnDestroy {
+export class AuthComponent implements OnInit, OnDestroy {
 	authForm: FormGroup;
 	isLoading = false;
 	errorMessage: string | null = null;
 	publishers: Publisher[] = [];
 	selectedRepository: string | null = null;
 	customRepositoryMode = false;
+	private returnUrl: string = '/modify';
 	private readonly destroy$ = new Subject<void>();
 
 	constructor(
@@ -57,6 +58,7 @@ export class AuthComponent implements OnDestroy {
 		private readonly repositoryCredentialsService: RepositoryCredentialsService,
 		private readonly publisherService: PublisherService,
 		private readonly router: Router,
+		private readonly route: ActivatedRoute,
 		private readonly notificationService: ObNotificationService
 	) {
 		this.publishers = this.publisherService.getPublishers();
@@ -75,6 +77,13 @@ export class AuthComponent implements OnDestroy {
 			});
 			this.selectedRepository = this.publishers[0].githubRepo;
 		}
+	}
+
+	ngOnInit(): void {
+		// Capture the return URL from query parameters
+		this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+			this.returnUrl = params['returnUrl'] || '/modify';
+		});
 	}
 
 	ngOnDestroy(): void {
@@ -108,8 +117,8 @@ export class AuthComponent implements OnDestroy {
 							title: 'Authentication Successful',
 							message: `Successfully authenticated with ${repository}`
 						});
-						// Redirect to the form (or back to original destination)
-						this.router.navigate(['/modify']);
+						// Redirect to the original destination URL
+						this.router.navigateByUrl(this.returnUrl);
 					},
 					error: error => {
 						this.isLoading = false;
@@ -132,6 +141,8 @@ export class AuthComponent implements OnDestroy {
 				return 'modify.auth.errors.invalidToken';
 			case 'TOKEN_EXPIRED':
 				return 'modify.auth.errors.tokenExpired';
+			case 'USERNAME_MISMATCH':
+				return 'modify.auth.errors.usernameMismatch';
 			case 'NO_WRITE_PERMISSION':
 				return 'modify.auth.errors.noWritePermission';
 			case 'REPO_NOT_FOUND':
