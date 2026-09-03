@@ -63,3 +63,6 @@ Beispiele für Keywords, die Sie vermeiden sollten:
 - `"fertiliserProductCategory"`: Dieser Tag verwendet CamelCase anstelle von Bindestrichen. Eine bessere Wahl wäre, ihn in `"fertilizer"` und `"product-category"` aufzuteilen.
 
 Indem Sie diese Richtlinien beachten, helfen Sie, unseren Katalog übersichtlich und benutzerfreundlich zu halten. Dadurch wird es einfacher für alle, Ihre Daten zu finden, zu verstehen und wiederzuverwenden.
+
+> [!IMPORTANT]
+> - Bitte eröffnen Sie ein Issue, wenn Sie Anforderungen haben, die der Datenkatalog erfüllen soll. Alternativ können Sie uns per E-Mail kontaktieren.

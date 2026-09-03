@@ -60,3 +60,6 @@ Here are examples of keywords that you should avoid using:
 - `"fertiliserProductCategory"`: this keyword uses camel case instead of hyphens. A better choice would be splitting the tag into `"fertilizer"` and `"product-category"`.
 
 By following these guidelines, you’ll help keep our catalog organized and user-friendly, making it easier for everyone to find, understand, and reuse your data.
+
+> [!IMPORTANT]
+> - Please open an Issue if you have requirements that the data catalog should meet. Alternatively, you can reach us per mail.
