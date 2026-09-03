@@ -14,6 +14,7 @@ Each dataset includes clear ownership and provenance information, empowering dat
 Ultimately, everyone benefits: managers and decision-makers make strategic calls faster with trusted data; technical teams simplify system integrations and metadata maintenance; and external stakeholders can easily access public datasets for research or community-driven projects.
 
 > [!IMPORTANT]
+> Please open an Issue if you have requirements that the data catalog should meet. Alternatively, you can reach us per mail.
 > While the code and metadata are publicly available, some dataset links point to internal services and require the right credentials to access.
 
 # ⚡ What are the key features?
