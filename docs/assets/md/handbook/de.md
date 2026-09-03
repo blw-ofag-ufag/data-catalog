@@ -23,46 +23,65 @@ Die Attribute dieser Schemata können Sie über die folgenden Links einsehen:
 
 Bitte beachten Sie, dass diese Seiten automatisch aus den tatsächlichen JSON-Schemata generiert werden, die [hier](https://github.com/blw-ofag-ufag/metadata/tree/main/data/schemas) gespeichert sind.
 
+# Attribute
+```
+
+    "dcat:endpointURL": "URL-Adresse, wo der Datendienst aufgerufen werden kann.",
+    "dcat:endpointDescription": "URL of technical documentation of the data service, such as for example a Swagger documentation.",
+    "adms:status": "Status des Datenprodukts: Befindet es sich in Bearbeitung, ist es fertiggestellt usw.",
+    "bv:abrogation": "Was ist das Aufhebungdatum?",
+    "bv:archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen einen anhaltenden Nutzen oder eine anhaltende Bedeutung, die seine weitere Aufbewahrung rechtfertigen?",
+    "bv:classification": "Was ist die Klassifizierung der Datensammlung gemäss Informationssicherheitsgesetz (siehe Art. 13 ISG)?",
+    "bv:externalCatalogs": "Soll das Datenprodukt auf anderen Plattformen wie i14y und/oder opendata.swiss veröffentlicht werden?",
+    "bv:geoIdentifier": "Wie lautet der entsprechende Geoidentifikator gemäss Geoinformationsverordnung, Anhang 1?",
+    "bv:itSystem": "In welchem IT-System wird Ihr Datenprodukt verwendet? Bitte geben Sie eine URL an.",
+    "bv:personalData": "Was ist die Einordnung der Datensammlung gemäss Datenschutzgesetz (siehe Art. 5 DSG)?",
+    "bv:retentionPeriod": "Wie lange muss Ihr Datenprodukt aufbewahrt werden?",
+    "bv:typeOfData": "Welcher Typ beschreibt Ihr Datenprodukt am besten?",
+    "dcat:accessService": "Ein Datendienst ermöglicht den Zugriff auf die Verbreitung des Datenprodukts.",
+    "bv:dimensions": "Dimensionen beschreiben die Struktur der Verteilung – die enthaltenen Spalten/Konzepte – anhand von Schlüsseln aus dem gemeinsamen Dimensionsglossar.",
+    "dcat:accessURL": "Die URL, über die der Zugang zur Ressource erfolgt (z.B. eine Landingpage oder ein Web-Formular). Die angegebene URL muss Informationen zum verwendeten Protokoll enthalten, z. B. https:// oder http://.",
+    "dcat:contactPoint": "An wen sich der Datennutzer wenden sollte, wenn er Fragen oder Anmerkungen zum Inhalt der Datenprodukte hat. Bitte beachten Sie die Kontaktinformationen der Organisation.",
+    "dcat:distribution": "Eine Instanz des Datenprodukts, die angezeigt oder genutzt werden kann. Beispielsweise kann eine Tabelle mit identischen Informationen als Excel-, CSV- oder JSON-Datei bereitgestellt werden. Die drei Dateien sind Verteilungen desselben Datenprodukts.",
+    "dcat:downloadURL": "Direkter Download-Link zur Datei (z.B. CSV- oder PDF).",
+    "dcat:inSeries": "Ist Ihr Datenprodukt Teil einer Datensatzreihe? Welcher?",
+    "dcat:keyword": "Welche Schlüsselwörter sind hilfreich, um Ihr Datenprodukt zu finden? Es ist einfacher, Ihr Datenprodukt zu finden, wenn Sie mehrere Schlüsselwörter angeben, die auch in den Datenprodukten Ihrer Kollegen vorkommen.",
+    "dcat:landingPage": "Wo finden Datenbenutzer zusätzliche Informationen zu Ihrem Datenprodukt oder der verantwortlichen Organisation?",
+    "dcat:theme": "Thema, das zur Klassifizierung der Datenprodukte im Katalog verwendet wird.",
+    "dcat:version": "Um welche Version handelt es sich? Bitte verwenden Sie semantische Versionsnummern in der Form X.Y.Z, wobei eine Erhöhung von X auf größere Änderungen, Y auf kleinere Änderungen und Z auf einfache Korrekturen wie Tippfehler hinweist.",
+    "dcatap:applicableLegislation": "Diese Eigenschaft bezieht sich auf die Rechtsgrundlage des Datenprodukts.",
+    "dcatap:availability": "Ist die Verfügbarkeit Ihres Datenprodukts vorübergehend, stabil oder experimentell?",
+    "dct:accessRights": "Informationen, die angeben, ob das Datenprodukt offene Daten sind, Zugriffsbeschränkungen unterliegen oder nicht öffentlich sind.",
+    "dct:accrualPeriodicity": "Häufigkeit, mit der das Datenprodukt aktualisiert wird.",
+    "dct:conformsTo": "Entspricht Ihr Datenprodukt bestimmten Standards und/oder Spezifikationen?",
+    "dct:description": "Bitte geben Sie eine Beschreibung an, damit der Datennutzer versteht, was das Datenprodukt enthält, wer ein potenzieller Nutzer ist und wofür das Datenprodukt verwendet wird.",
+    "dct:format": "In welchem Dateiformat wird diese Distribution bereitgestellt?",
+    "dct:issued": "Wann wurde das Datenprodukt ursprünglich veröffentlicht?",
+    "dct:license": "Unter welcher Lizenz kann das Datenprodukt verwendet werden?",
+    "dct:modified": "Wann wurde das Datenprodukt letztmals modifiziert?",
+    "dct:publisher": "Wer ist die Herausgeberorganisation des Datenprodukts?",
+    "dct:replaces": "Welches Datenprodukt wird ersetzt?",
+    "dct:spatial": "Welchen geografischen Bereich deckt das Datenprodukt ab?",
+    "dct:temporal": "Welcher Zeitraum wird von Ihrem Datenprodukt abgedeckt?",
+    "dct:title": "Titel Ihres Datenprodukts",
+    "foaf:page": "Gibt es Dokumentationen oder Webseiten, die dieses Datenprodukt näher beschreiben?",
+    "prov:qualifiedAttribution": "Wer hat welche Rolle für dieses Datenprodukt?",
+    "prov:wasDerivedFrom": "Von welchem anderen Datenprodukt wurde dieses Datenprodukt abgeleitet?",
+    "prov:wasGeneratedBy": "Durch welchen Geschäftsprozess wurde dieses Datenprodukt generiert?",
+    "schema:comment": "Gibt es weitere relevante Informationen zu diesem Datenprodukt?"
+
+
+```
+
 # Tagging-Richtlinien
 
 Tags erfüllen mehrere Zwecke in unserem Datenkatalog.
 Sie helfen Ihnen, Ihren Kolleginnen und Kollegen sowie externen Nutzenden, Datensätze rasch zu finden, zu organisieren und anzuzeigen, welche Themen oder Sachgebiete ein Datensatz abdeckt.
-Durch die Wahl von guten, konsistenten Tags gewährleisten Sie, dass sowohl Sie als auch andere die Daten leichter finden und wiederverwenden können.
+
+Durch die Wahl von guten, konsistenten Tags wird gewährleistet, dass sowohl Sie als auch andere die Daten leichter finden und wiederverwenden können.
 Andere können Ihre Daten entdecken, indem sie nach einem Tag suchen, den sie möglicherweise bereits bei einem anderen Datensatz gesehen haben.
 
-Um die universelle Verwendbarkeit und Standardisierung zu maximieren, empfehlen wir dringend, Tags auf Englisch zu verwenden.
-Dieser Ansatz erweitert den Nutzerkreis, der Ihre Datensätze verstehen und durchsuchen kann.
-
-Wenn Sie Tags zur Eigenschaft `dcat:keyword` hinzufügen, achten Sie darauf, dass diese prägnant und aussagekräftig sind.
-Einzelne Wörter wie beispielsweise `"milk"` oder `"software"` eignen sich oft am besten, aber kurze mehrgliedrige Begriffe wie `time-series` oder `"market-data"` können ebenfalls hilfreich sein.
-Wenn Sie mehrere Wörter kombinieren, verbinden Sie diese mit Bindestrichen (`-`) und vermeiden Sie Leerzeichen (z. B. `"something like this"`) oder CamelCase (z. B. `"tryNotToDoThis"`).
-In der Regel sollten Tags kleingeschrieben sein, es sei denn, es handelt sich um anerkannte Abkürzungen oder Markennamen (z. B. `"GIS"`, `"FOAG"`, `"digiFLUX"`, `"DigiAgriFoodCH"` oder `"eCH-0261"`).
-
-Vermeiden Sie es, einen einzelnen Tag mit zu vielen Konzepten zu überladen.
-Wenn ein potentieller Tag sehr lang ist oder mehrere Themen abdeckt, teilen Sie ihn in einzelne, klarere und präzisere Tags auf.
-Schliesslich gilt, dass es keine feste Obergrenze für die Anzahl an Tags gibt – achten Sie jedoch darauf, dass jeder Tag relevant für den Datensatz ist.
-
-Hier sind einige zulässige Beispiele für Tags:
-
-- `"milk"`
-- `"animal-production"`
-- `"time-series"`
-- `"linked-data"`
-- `"agricultural-report"`
-- `"agricultural-policy"`
-- `"eCH-0261"`
-- `"digiFLUX"`
-- `"DigiAgriFoodCH"`
-
-Diese Tags sind kurz, bei Bedarf mit Bindestrichen verbunden und enthalten Grossbuchstaben nur bei anerkannten Abkürzungen oder Markennamen.
-
-Beispiele für Keywords, die Sie vermeiden sollten:
-
-- `"conservation-and-archiving-planning-aap---confederation"`: Dieser Tag ist viel zu lang und kombiniert mehrere Themen. Besser wäre es, diesen Tag in `"conservation"`, `"archivation"` und `"confederation"` aufzuteilen.
-- `"Data standard agricultural data"`: Dieser Tag verwendet Leerzeichen statt Bindestriche, ist zu lang und beginnt mit einem Grossbuchstaben. Eine bessere Wahl wäre `"data-standard"`.
-- `"fertiliserProductCategory"`: Dieser Tag verwendet CamelCase anstelle von Bindestrichen. Eine bessere Wahl wäre, ihn in `"fertilizer"` und `"product-category"` aufzuteilen.
-
-Indem Sie diese Richtlinien beachten, helfen Sie, unseren Katalog übersichtlich und benutzerfreundlich zu halten. Dadurch wird es einfacher für alle, Ihre Daten zu finden, zu verstehen und wiederzuverwenden.
+Fehlen wichtige Keywords, eröffnen Sie bitte ein Issue oder schreiben Sie uns eine Mail.
 
 > [!IMPORTANT]
 > - Bitte eröffnen Sie ein Issue, wenn Sie Anforderungen haben, die der Datenkatalog erfüllen soll. Alternativ können Sie uns per E-Mail kontaktieren.
