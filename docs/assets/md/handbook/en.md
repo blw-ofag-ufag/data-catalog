@@ -1,5 +1,5 @@
 # How to contribute?
-Please open an Issue if you have requirements that the data catalog should meet. Alternatively, you can reach us per mail.
+Please open an Issue if you have requirements that the data catalog or the entry form should meet. Alternatively, you can reach us per mail.
 
 # The metadata model
 

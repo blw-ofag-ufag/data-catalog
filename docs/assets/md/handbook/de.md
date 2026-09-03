@@ -1,5 +1,5 @@
 # Wie können Sie beitragen?
-Bitte eröffnen Sie ein Issue, wenn Sie Anforderungen haben, die der Datenkatalog erfüllen soll. Alternativ können Sie uns per E-Mail kontaktieren.
+Bitte eröffnen Sie ein Issue, wenn Sie Anforderungen haben, die der Datenkatalog oder das Erfassungsformular erfüllen soll. Alternativ können Sie uns per E-Mail kontaktieren.
 
 # Das Metadatenmodell
 
