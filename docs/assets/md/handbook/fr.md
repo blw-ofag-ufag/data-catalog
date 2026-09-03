@@ -64,3 +64,6 @@ Voici des exemples de mots-clés à éviter :
 - `"fertiliserProductCategory"` : ce tag utilise du CamelCase au lieu de tirets. Un meilleur choix serait de le diviser en `"fertilizer"` et `"product-category"`.
 
 En suivant ces directives, vous contribuerez à maintenir notre catalogue organisé et convivial, facilitant ainsi la recherche, la compréhension et la réutilisation des données par tous.
+
+> [!IMPORTANT]
+> - Veuillez ouvrir une « Issue » (ticket) si vous avez des besoins auxquels le catalogue de données doit répondre. Vous pouvez également nous contacter par e-mail.
