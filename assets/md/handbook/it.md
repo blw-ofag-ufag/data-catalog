@@ -1,5 +1,5 @@
 # Come contribuire?
-Si prega di aprire una segnalazione (issue) se si hanno requisiti che il catalogo dati dovrebbe soddisfare. In alternativa, è possibile contattarci via e-mail.
+Si prega di aprire una segnalazione (issue) se si hanno requisiti che il catalogo dati o il modulo di rilevamento dovrebbe soddisfare. In alternativa, è possibile contattarci via e-mail.
 
 # Il modello dei metadati
 
