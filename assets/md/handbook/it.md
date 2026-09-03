@@ -23,6 +23,53 @@ Puoi consultare gli attributi di questi schemi attraverso i seguenti link:
 
 Si noti che queste pagine sono generate automaticamente a partire dai reali schemi JSON memorizzati [qui](https://github.com/blw-ofag-ufag/metadata/tree/main/data/schemas).
 
+# Attributi
+```
+
+    "adms:status": "Stato del prodotto dati: se è in fase di elaborazione, se è completato, ecc.",
+    "bv:abrogation": "Qual è la data di abrogazione?",
+    "bv:archivalValue": "Il prodotto di dati ha un'utilità o un significato duraturo che ne giustifica l'ulteriore conservazione a causa delle informazioni amministrative, legali, fiscali, probatorie o storiche in esso contenute?",
+    "bv:classification": "Qual è la classificazione della collezione di dati secondo la legge sulla sicurezza delle informazioni (cfr. art. 13 LSIn)?",
+    "bv:externalCatalogs": "Il prodotto dati deve essere pubblicato su altre piattaforme come i14y e/o opendata.swiss?",
+    "bv:geoIdentifier": "Qual è il geoidentificatore corrispondente secondo l'Ordinanza sulla geoinformazione, allegato 1?",
+    "bv:itSystem": "In quale sistema IT viene utilizzato il vostro prodotto dati? Si prega di indicare un URL.",
+    "bv:personalData": "Qual è la classificazione della collezione di dati secondo la legge sulla protezione dei dati (cfr. art. 5 LPD)?",
+    "bv:retentionPeriod": "Per quanto tempo deve essere conservato il vostro prodotto di dati?",
+    "bv:typeOfData": "Quale tipo descrive meglio il tuo prodotto dati?",
+    "dcat:accessService": "Un servizio dati consente l'accesso alla diffusione del prodotto dati.",
+    "bv:dimensions": "Le dimensioni descrivono la struttura della distribuzione – le colonne/i concetti che contiene – utilizzando chiavi dal glossario delle dimensioni.",
+    "dcat:accessURL": "L'URL tramite il quale si accede alla risorsa (ad es. una landing page o un modulo web). L'URL indicato deve contenere informazioni sul protocollo utilizzato, ovvero https:// o http://.",
+    "dcat:contactPoint": "A chi può rivolgersi l'utente dei dati se ha domande o commenti sul contenuto del prodotto di dati? Si prega di fornire i dati di contatto di un'organizzazione.",
+    "dcat:distribution": "Un'istanza del prodotto dati che può essere visualizzata o utilizzata. Ad esempio, una tabella con informazioni identiche può essere fornita come file Excel, CSV o JSON. I tre file sono distribuzioni dello stesso prodotto dati.",
+    "dcat:downloadURL": "Dove è possibile accedere al prodotto dati?",
+    "dcat:inSeries": "Il vostro prodotto di dati fa parte di una serie di dati? Quale?",
+    "dcat:keyword": "Quali parole chiave sono utili per trovare il tuo prodotto dati? È più facile trovare il tuo prodotto dati se inserisci più parole chiave che compaiono anche nei prodotti dati dei tuoi colleghi. ",
+    "dcat:landingPage": "Dove possono trovare gli utenti dei dati ulteriori informazioni sul vostro prodotto o sull'organizzazione responsabile?",
+    "dcat:theme": "Tema utilizzato per classificare i prodotti di dati nel catalogo.",
+    "dcat:version": "Di quale versione si tratta? Si prega di utilizzare numeri di versione semantici nella forma X.Y.Z, dove un aumento di X indica modifiche significative, Y indica modifiche minori e Z indica semplici correzioni come errori di battitura.",
+    "dcatap:applicableLegislation": "Questa caratteristica si riferisce alla base giuridica del prodotto di dati.",
+    "dcatap:availability": "La disponibilità del vostro prodotto di dati è temporanea, stabile o sperimentale?",
+    "dct:accessRights": "Informazioni relative alla natura aperta dei dati contenuti nel prodotto, all'esistenza di restrizioni di accesso o alla loro natura non pubblica.",
+    "dct:accrualPeriodicity": "Frequenza con cui viene aggiornato il prodotto dati.",
+    "dct:conformsTo": "Il vostro prodotto dati è conforme a determinati standard e/o specifiche?",
+    "dct:description": "Si prega di fornire una descrizione affinché l'utente dei dati possa comprendere il contenuto del prodotto, chi è un potenziale utente e a cosa serve il prodotto.",
+    "dct:format": "Qual è il formato dei file di questa distribuzione?",
+    "dct:issued": "Quando è stato pubblicato originariamente il prodotto di dati?",
+    "dct:license": "Con quale licenza è possibile utilizzare il prodotto dati?",
+    "dct:modified": "Quando è stata effettuata l'ultima modifica al prodotto dati?",
+    "dct:publisher": "Chi è l'organizzazione che pubblica il prodotto di dati?",
+    "dct:replaces": "Quale prodotto di dati viene sostituito?",
+    "dct:spatial": "Qual è l'area geografica coperta dal prodotto di dati?",
+    "dct:temporal": "Qual è il periodo di tempo coperto dal vostro prodotto dati?",
+    "dct:title": "Titolo del vostro prodotto dati",
+    "foaf:page": "Esistono documentazioni o siti web che descrivono più dettagliatamente questo prodotto di dati?",
+    "prov:qualifiedAttribution": "Chi ha quale ruolo per questo prodotto di dati?",
+    "prov:wasDerivedFrom": "Da quale altro prodotto di dati è stato derivato questo prodotto di dati?",
+    "prov:wasGeneratedBy": "Da quale processo aziendale è stato generato questo prodotto di dati?",
+    "schema:comment": "Esistono ulteriori informazioni rilevanti su questo prodotto di dati?"
+
+```
+
 # Linee guida per i tag
 
 I tag svolgono diverse funzioni nel nostro catalogo di dati.
@@ -30,39 +77,7 @@ Aiutano voi, i vostri colleghi e gli utenti esterni a scoprire e organizzare rap
 Scegliendo tag coerenti e pertinenti, vi assicurate che voi stessi e altri utenti possiate trovare e riutilizzare i dati con maggiore facilità.
 Gli utenti possono individuare i vostri dati cercando un tag che hanno già incontrato in un altro dataset.
 
-Per mantenere il più possibile l’universalità e la standardizzazione, raccomandiamo fortemente di utilizzare l’inglese per i tag.
-Questo approccio amplia il numero di utenti che possono comprendere e cercare i vostri dataset.
-
-Quando aggiungete i tag sotto la proprietà `dcat:keyword`, concentratevi su termini concisi e descrittivi.
-Singole parole come `"milk"` o `"software"` spesso funzionano meglio, ma anche brevi espressioni composte da più parole come `time-series` o `"market-data"` possono essere utili.
-Se dovete combinare più parole, unitele con trattini (`-`) invece che spazi (ad esempio, `"something like this"`) o CamelCase (ad esempio, `"tryNotToDoThis"`).
-Generalmente i tag dovrebbero essere scritti in minuscolo, a meno che non si tratti di abbreviazioni riconosciute o marchi (ad esempio, `"GIS"`, `"FOAG"`, `"digiFLUX"`, `"DigiAgriFoodCH"` o `"eCH-0261"`).
-
-Evitate di sovraccaricare un singolo tag con troppi concetti.
-Se vi accorgete che un potenziale tag è molto lungo o copre più argomenti, suddividetelo in tag separati più chiari e precisi.
-Infine, ricordate che non c’è un limite rigido al numero di tag che potete inserire; assicuratevi semplicemente che ciascuno sia pertinente al dataset.
-
-Ecco alcuni esempi consentiti di tag:
-
-- `"milk"`
-- `"animal-production"`
-- `"time-series"`
-- `"linked-data"`
-- `"agricultural-report"`
-- `"agricultural-policy"`
-- `"eCH-0261"`
-- `"digiFLUX"`
-- `"DigiAgriFoodCH"`
-
-Questi tag sono brevi, connessi con trattini se necessario e contengono lettere maiuscole solo in caso di abbreviazioni riconosciute o marchi.
-
-Ecco esempi di parole chiave da evitare:
-
-- `"conservation-and-archiving-planning-aap---confederation"`: questo tag è troppo lungo e combina diversi concetti. Sarebbe meglio suddividerlo in `"conservation"`, `"archivation"` e `"confederation"`.
-- `"Data standard agricultural data"`: questo tag usa spazi invece di trattini, è troppo lungo e inizia con la lettera maiuscola. Una scelta migliore sarebbe `"data-standard"`.
-- `"fertiliserProductCategory"`: questo tag usa CamelCase invece di trattini. È preferibile suddividerlo in `"fertilizer"` e `"product-category"`.
-
-Seguendo queste linee guida, contribuirete a mantenere il nostro catalogo organizzato e semplice da utilizzare, facilitando così per tutti il ritrovamento, la comprensione e il riutilizzo dei dati.
+Se mancano parole chiave importanti, vi preghiamo di aprire una segnalazione o di inviarci un'e-mail.
 
 > [!IMPORTANT]
 > - Si prega di aprire una segnalazione (issue) se si hanno requisiti che il catalogo dati dovrebbe soddisfare. In alternativa, è possibile contattarci via e-mail.

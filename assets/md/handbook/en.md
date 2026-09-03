@@ -20,6 +20,51 @@ In particular, three of these classes — `dcat:Dataset`, `dcat:DatasetSeries`, 
 
 Please note that these pages are automatically generated from the actual JSON schemas stored [here](https://github.com/blw-ofag-ufag/metadata/tree/main/data/schemas).
 
+# Attributes
+```
+    "adms:status": "Status of the data product: Is it work in progress, finished etc.",
+    "bv:abrogation": "What is the abrogation date?",
+    "bv:archivalValue": "Does the data product have ongoing usefulness or significance, based on the administrative, legal, fiscal, evidential, or historical information they contain, which justifies their continued preservation.",
+    "bv:classification": "What is the classification of data set according to the Information Security Act (see Art. 13 ISA)?",
+    "bv:externalCatalogs": "Shall the data product be published on other plattforms such as i14y and or opendata.swiss?",
+    "bv:geoIdentifier": "What is the corresponding geoidentifier according to Geoinformationsverordnung, Appendix 1.",
+    "bv:itSystem": "What IT system is your data product used in? Please provide an URL.",
+    "bv:personalData": "What is the classification of data set according to the Data Protection Act (see Art. 5 FADP)?",
+    "bv:retentionPeriod": "How long does your data product need to be retained?",
+    "bv:typeOfData": "What type best describes your data product?",
+    "dcat:accessService": "A data service gives access to the distribution of the data product.",
+    "bv:dimensions": "Dimensions describe the structure of the distribution — the columns/concepts it contains — using keys from the shared dimension glossary.",
+    "dcat:accessURL": "The URL that gives access to a distribution of the data product. The resource at the access URL may contain information about how to get the Dataset. The URL provided must contain the information on the used protocol, i.e. https:// or http://",
+    "dcat:contactPoint": "Who should be contacted if the data user has questions or comments concerning the data products content. Please refer to an organizations contact information",
+    "dcat:distribution": "An instance of the data product that can be viewed or consumed. For example a table containing the identic information can be provided as an excel-, csv- or json-file. The three files are distributions of the same data product.",
+    "dcat:downloadURL": "Direct URL to download the data product.",
+    "dcat:inSeries": "Is your data product part of a dataset series? Which one?",
+    "dcat:keyword": "What keywords are helpful to find your dataproduct? It is easier to find your data product if you provide several keywords that are shared with your collegues data products.",
+    "dcat:landingPage": "Where can a data user find additional context to your data product or the responsible organization?",
+    "dcat:theme": "Theme used to classify the catalogue's data products.",
+    "dcat:version": "What version is this? Please use semantic versioning in the form of X.Y.Z where increases of X indicate major changes, Y minor changes and Z simple corrections such as typos.",
+    "dcatap:applicableLegislation": "This property refers to the legal basis of the data product",
+    "dcatap:availability": "Is the availability of your data product temporary, stable, experimental?",
+    "dct:accessRights": "Information that indicates whether the data product is open data, has access restrictions or is not public.",
+    "dct:accrualPeriodicity": "Frequency at which the data product is updated.",
+    "dct:conformsTo": "Does your data product conform to specific standards and/or specifications?",
+    "dct:description": "Please provide a description so that the data user understand what the data product contains, who is a potential user, and what the data product is used for.",
+    "dct:format": "What file format does this distribution have.",
+    "dct:issued": "When was the data product originally issued?",
+    "dct:license": "Under what license can the data product be used?",
+    "dct:modified": "When was the data product last modified?",
+    "dct:publisher": "Who is the data products publisher organization?",
+    "dct:replaces": "Which  data product is replaced?",
+    "dct:spatial": "What geographic region is covered by the data product?",
+    "dct:temporal": "What time period is covered in your data product",
+    "dct:title": "Title of your data product",
+    "foaf:page": "What other data products are linked to this one?",
+    "prov:qualifiedAttribution": "Who has which role for this data product?",
+    "prov:wasDerivedFrom": "What other data product whas this data product derived from?",
+    "prov:wasGeneratedBy": "What business process has generated this data product?",
+    "schema:comment": "Is the other relevant information to this data product?"
+```
+
 # Tagging guidelines
 
 Tags serve multiple purposes in our data catalog.
@@ -27,39 +72,7 @@ They help you, your colleagues, and external users quickly discover and organize
 By selecting good, consistent tags, you ensure that both you and others can locate and reuse the data more easily.
 They can find your data by searching for a tag they may have found under another data set (with the same tag).
 
-To keep things as universal and standard as possible, we strongly encourage using English for tags.
-This approach broadens the audience that can understand and search for your datasets.
-
-When adding tags under the `dcat:keyword` property, focus on making them concise and descriptive.
-Single words such as `"milk"` or `"software"` often work best, but short multiword phrases like `time-series` or `"market-data"` can also be helpful.
-If you’re combining multiple words, connect them with hyphens (`-`) rather than spaces (e.g. `"something like this"`) or CamelCase (e.g. `"tryNotToDoThis"`).
-Typically, tags should be lowercase, unless you’re dealing with recognized abbreviations or brand names (e.g., `"GIS"`, `"FOAG"`, `"digiFLUX"`, `"DigiAgriFoodCH"` or `"eCH-0261"`).
-
-Try to avoid overloading a single tag with too many concepts.
-If you find a potential tag is very long or covers multiple topics, break it down into separate tags that are clearer and more precise.
-Finally, remember there is no hard limit on how many tags you may include — just ensure each is relevant to the dataset.
-
-Here are a few allowed examples for tags:
-
-- `"milk"`
-- `"animal-production"`
-- `"time-series"`
-- `"linked-data"`
-- `"agricultural-report"`
-- `"agricultural-policy"`
-- `"eCH-0261"`
-- `"digiFLUX"`
-- `"DigiAgriFoodCH"`
-
-These are all short, connected with hyphens when needed, and capitalize only recognized abbreviations or brand names.
-
-Here are examples of keywords that you should avoid using:
-
-- `"conservation-and-archiving-planning-aap---confederation"`: this is far too long and lumps multiple ideas into one tag. A better choice would be splitting the tag into `"conservation"`, `"archivation"` and `"confederation"`.
-- `"Data standard agricultural data"`: this uses spaces instead of hyphens, is too long and capitalizes first word. A better choice would be `"data-standard"`.
-- `"fertiliserProductCategory"`: this keyword uses camel case instead of hyphens. A better choice would be splitting the tag into `"fertilizer"` and `"product-category"`.
-
-By following these guidelines, you’ll help keep our catalog organized and user-friendly, making it easier for everyone to find, understand, and reuse your data.
+If important keywords are missing, please open an Issue or contact us by mail.
 
 > [!IMPORTANT]
 > - Please open an Issue if you have requirements that the data catalog should meet. Alternatively, you can reach us per mail.
