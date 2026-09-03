@@ -70,3 +70,6 @@ Nous affinerons davantage le catalogue en impliquant les propriétaires de donn�
 - [Description du modèle de métadonnées (page Confluence)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/403701818)
 - [Vision du catalogue de données (page Confluence)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/KDT/pages/342098136)
 - [Manuel de gestion des données de référence (page Confluence)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/354025506)
+
+> [!IMPORTANT]
+> - Veuillez ouvrir une « Issue » (ticket) si vous avez des besoins auxquels le catalogue de données doit répondre. Vous pouvez également nous contacter par e-mail.

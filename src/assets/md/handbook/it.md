@@ -63,3 +63,6 @@ Ecco esempi di parole chiave da evitare:
 - `"fertiliserProductCategory"`: questo tag usa CamelCase invece di trattini. È preferibile suddividerlo in `"fertilizer"` e `"product-category"`.
 
 Seguendo queste linee guida, contribuirete a mantenere il nostro catalogo organizzato e semplice da utilizzare, facilitando così per tutti il ritrovamento, la comprensione e il riutilizzo dei dati.
+
+> [!IMPORTANT]
+> - Si prega di aprire una segnalazione (issue) se si hanno requisiti che il catalogo dati dovrebbe soddisfare. In alternativa, è possibile contattarci via e-mail.

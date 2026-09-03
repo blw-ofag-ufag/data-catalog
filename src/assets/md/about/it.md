@@ -62,3 +62,6 @@ Affineremo ulteriormente il catalogo coinvolgendo i proprietari dei dati, aggior
 - [Descrizione del modello di metadati (pagina Confluence)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/403701818)
 - [Visione del catalogo dei dati (pagina Confluence)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/KDT/pages/342098136)
 - [Manuale di gestione dei dati di riferimento (pagina Confluence)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/354025506)
+
+> [!IMPORTANT]
+> - Si prega di aprire una segnalazione (issue) se si hanno requisiti che il catalogo dati dovrebbe soddisfare. In alternativa, è possibile contattarci via e-mail.
