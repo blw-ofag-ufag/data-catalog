@@ -1,3 +1,6 @@
+# Wie können Sie beitragen?
+Bitte eröffnen Sie ein Issue, wenn Sie Anforderungen haben, die der Datenkatalog erfüllen soll. Alternativ können Sie uns per E-Mail kontaktieren.
+
 # Das Metadatenmodell
 
 Das Metadatenmodell, das unserem System zugrunde liegt, besteht aus vier zentralen Klassen: `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution` und `dcat:DataService`.
@@ -82,6 +85,3 @@ Durch die Wahl von guten, konsistenten Tags wird gewährleistet, dass sowohl Sie
 Andere können Ihre Daten entdecken, indem sie nach einem Tag suchen, den sie möglicherweise bereits bei einem anderen Datensatz gesehen haben.
 
 Fehlen wichtige Keywords, eröffnen Sie bitte ein Issue oder schreiben Sie uns eine Mail.
-
-> [!IMPORTANT]
-> - Bitte eröffnen Sie ein Issue, wenn Sie Anforderungen haben, die der Datenkatalog erfüllen soll. Alternativ können Sie uns per E-Mail kontaktieren.

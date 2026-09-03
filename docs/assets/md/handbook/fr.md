@@ -1,3 +1,6 @@
+# Comment contribuer?
+Veuillez ouvrir une « Issue » (ticket) si vous avez des besoins auxquels le catalogue de données doit répondre. Vous pouvez également nous contacter par e-mail.
+
 # Le modèle de métadonnées
 
 Le modèle de métadonnées qui sous-tend notre système se compose de quatre classes principales : `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution` et `dcat:DataService`.
@@ -79,6 +82,3 @@ En choisissant des tags pertinents et cohérents, vous permettez à chacun, y co
 Les utilisateurs peuvent découvrir vos données en recherchant un tag qu'ils auraient vu sur un autre jeu de données.
 
 Si des mots-clés importants manquent, veuillez ouvrir une « issue » ou nous envoyer un e-mail.
-
-> [!IMPORTANT]
-> - Veuillez ouvrir une « Issue » (ticket) si vous avez des besoins auxquels le catalogue de données doit répondre. Vous pouvez également nous contacter par e-mail.
