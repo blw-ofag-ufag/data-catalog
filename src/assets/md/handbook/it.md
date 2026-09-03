@@ -1,3 +1,6 @@
+# Come contribuire?
+Si prega di aprire una segnalazione (issue) se si hanno requisiti che il catalogo dati dovrebbe soddisfare. In alternativa, è possibile contattarci via e-mail.
+
 # Il modello dei metadati
 
 Il modello dei metadati che sottende il nostro sistema è composto da quattro classi principali: `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution` e `dcat:DataService`.  
@@ -79,5 +82,3 @@ Gli utenti possono individuare i vostri dati cercando un tag che hanno già inco
 
 Se mancano parole chiave importanti, vi preghiamo di aprire una segnalazione o di inviarci un'e-mail.
 
-> [!IMPORTANT]
-> - Si prega di aprire una segnalazione (issue) se si hanno requisiti che il catalogo dati dovrebbe soddisfare. In alternativa, è possibile contattarci via e-mail.

@@ -1,3 +1,6 @@
+# How to contribute?
+Please open an Issue if you have requirements that the data catalog should meet. Alternatively, you can reach us per mail.
+
 # The metadata model
 
 The metadata model underpinning our system is comprised of four core classes: `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution`, and `dcat:DataService`. The diagram below illustrates the relationships among these classes:
@@ -73,6 +76,3 @@ By selecting good, consistent tags, you ensure that both you and others can loca
 They can find your data by searching for a tag they may have found under another data set (with the same tag).
 
 If important keywords are missing, please open an Issue or contact us by mail.
-
-> [!IMPORTANT]
-> - Please open an Issue if you have requirements that the data catalog should meet. Alternatively, you can reach us per mail.
