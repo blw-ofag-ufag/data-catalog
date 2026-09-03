@@ -66,3 +66,4 @@ Over time, we aim to establish this tool as an indispensable resource for intern
 - [Metadata model description (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/403701818)
 - [Data catalog vision (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/KDT/pages/342098136)
 - [Reference data management handbook (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/354025506)
+
