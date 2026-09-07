@@ -74,5 +74,4 @@ Mit der Zeit wollen wir dieses Tool zu einer unverzichtbaren Ressource für inte
 - [Zielbild des Datenkatalogs (Confluence-Seite)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/KDT/pages/342098136)
 - [Handbuch für das Referenzdaten-Management (Confluence-Seite)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/354025506)
 
-> [!IMPORTANT]
-> - Bitte eröffnen Sie ein Issue, wenn Sie Anforderungen haben, die der Datenkatalog erfüllen soll. Alternativ können Sie uns per E-Mail kontaktieren.
+ - Bitte eröffnen Sie ein [GitHub-Issue](https://github.com/blw-ofag-ufag/data-catalog/issues), wenn Sie Anforderungen haben, die der Datenkatalog oder das Erfassungsformular erfüllen soll. Alternativ können Sie uns per E-Mail kontaktieren.

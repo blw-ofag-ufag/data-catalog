@@ -1,5 +1,5 @@
 # How to contribute?
-Please open an Issue if you have requirements that the data catalog or the entry form should meet. Alternatively, you can reach us per mail.
+Please open an [GitHub-Issue](https://github.com/blw-ofag-ufag/data-catalog/issues) if you have requirements that the data catalog or the entry form should meet. Alternatively, you can reach us per mail.
 
 # The metadata model
 
