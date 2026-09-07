@@ -1,69 +1,156 @@
-# What is a Data Catalog?
+# Data Catalogue of FOAG and FSVO
 
-A data catalog works similarly to a library catalog but is designed for digital information rather than books. It provides a centralized overview of an organization's data products, allowing users to quickly identify what data exists, where it is stored, who is responsible for it, and how they can access it.
+## Find data. Understand the context. Make better use of data.
 
-# Why is this Relevant for Us?
+The data catalogue is the central entry point for **finding, understanding and using** data products from the **Federal Office for Agriculture (FOAG)** and the **Federal Food Safety and Veterinary Office (FSVO)**.
 
-The Federal Office for Agriculture (FOAG) is committed to promoting a multifunctional, value-adding agricultural and food sector that ensures food security for the Swiss population.
-In doing so, many different types of data are collected, created, managed, processed, assessed, and published. These data serve as the basis for decision-making for various FOAG tasks.
+Like a library catalogue provides an overview of available books, the data catalogue provides an overview of the data products of both offices. It shows, among other things:
 
-Data come in many forms: from simple Excel sheets to complex databases. Some data relate to individuals and thus carry security risks; other data don't need protection but instead are meant to be publicly available.
-Certain data might pertain to milk production, while others address nitrogen losses in agriculture.
+- **Which data** are available
+- **What the data are about** and what they represent
+- **Who is responsible for the data**
+- **Where and in what form** the data are available
+- **How and under which conditions** the data can be accessed
 
-With this constantly growing volume of data, it is essential for FOAG to provide a tool that allows for clear and structured data management.
-This is fundamentally the goal of a comprehensive and up-to-date data catalog.
-As a result, it directly contributes to adherence to the principles of the [digitalization strategy](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie), such as _Once Only_, _Open by Default_, _Security & Privacy by Default_, and _Innovation First_.
+The catalogue does not replace the data itself. Instead, it helps users **find the right data product for a specific question or need**.
 
-For FOAG as a whole and individual users, the data catalog ensures that:
+---
 
-- data are easily discoverable and understandable,
-- data governance and compliance rules are followed,
-- data can be reused multiple times, thus avoiding redundancies.
+## Why do we need a shared data catalogue?
 
-Consequently, the data catalog can significantly enhance collaboration, efficiency, and transparency.
+FOAG and FSVO collect, create, process, evaluate and publish a wide variety of data. These range from Excel files and databases to BI reports, APIs and machine-learning models.
 
-# What are the Objectives of this Data Catalog?
+The content and requirements also vary considerably:
 
-The data catalog aims to achieve several objectives simultaneously:
+- Data on **milk production** sit alongside data relating to **food safety and animal health**.
+- Some data contain sensitive information and need to be protected, while other data are intended to be **publicly accessible**.
+- Some data are updated regularly, while others provide the basis for long-term analyses.
+- Data are distributed across different systems, formats and areas of responsibility.
 
-1. **Metadata Management:** Allow users to capture and edit metadata.
-2. **Centralized Data Discovery:** Facilitate understanding and access to data for all members of the organization. By examining metadata, users can determine if the data meet specific business requirements regarding quality, timeliness, and granularity.
-3. **Enhancing Collaboration:** Promote collaboration by clearly indicating who is responsible for certain data or who can answer related questions.
-4. **Improving Interoperability:** Reveal core and reference data so they can be quickly located and integrated when developing new IT systems.
-5. **Synchronization with Other Data Portals:** Serve as a unified solution for managing FOAG metadata, with certain metadata being shared on national data portals such as [i14y](https://www.i14y.admin.ch/), [opendata.swiss](https://opendata.swiss/), or [geocat](https://www.geocat.ch/datahub), thus ensuring metadata quality across all downstream catalogs.
-6. **Data Governance:** Assist in implementing FOAG's data governance practices, including assigning responsible persons for all datasets.
-7. **Compliance with Legal Regulations:** Ensure compliance with legal requirements, particularly the [Data Protection Act (DSG)](https://www.fedlex.admin.ch/eli/cc/2022/491) and the [Information Security Act (ISG)](https://www.fedlex.admin.ch/eli/cc/2022/232).
-8. **Digitalization Strategy:** Specifically contribute to the [digital transformation of the Swiss agri-food sector](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie) and support the vision of a data-driven sector.
+As this diversity continues to grow, it becomes increasingly important to maintain an overview.
 
-# Who Benefits from a Data Catalog?
+A complete and up-to-date data catalogue provides a common foundation. It makes data **easier to find, understand and use**, while also supporting clear data governance.
 
-Different groups can benefit significantly from a data catalog, especially:
+The catalogue therefore contributes directly to the principles of the [Digitalisation Strategy](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie), in particular **Once Only**, **Open by Default**, **Security & Privacy by Default** and **Innovation First**.
 
-- **Data creators and owners:** Clarifying responsibilities and avoiding duplication.
-- **Managers and decision-makers:** Quickly gaining an overview of existing data resources to support evidence-based strategies.
-- **Technical teams:** Improving the planning and assessment of system integrations.
-- **External stakeholders:** Finding publicly available data easily when needed.
+---
 
-# What does the Data Catalog contain?
+## What does the data catalogue do for me?
 
-The Data Catalog includes data products that are actively managed, regularly used, and provide ongoing value. Examples include:
+The data catalogue should help answer a key question as quickly as possible:
 
-- An Excel file with updated milk production figures per year
-- A BI report (Power BI, SAP BO) tracking the development of the income situation
-- A data warehouse table summarizing egg sales by retailer
-- A machine learning model to predict pest risks based on weather and crop data
-- A publicly accessible API service for real-time forecasting of expected crop yields per crop and region
+> **Does suitable data already exist for my task or question?**
 
-Note: Raw data files, such as a retailer’s original sales data for a specific period, should not be listed as separate data products. Instead, this raw data should be incorporated into an existing sales data product covering that period. Additionally, temporary or single-use files, like a one-off CSV created for quick analysis, are not considered relevant data products.
+Once a relevant data product has been found, its metadata provides important information for the next decision: **Are these data suitable for my purpose?**
 
-# Next Steps
+For example:
 
-We will refine the catalog further by engaging data owners, updating existing entries, and examining integration with other platforms.
-Over time, we aim to establish this tool as an indispensable resource for internal and external partners, enabling data-driven innovation across all areas.
+- Do the data cover the required **content**?
+- Are they sufficiently up to date?
+- Do they have the required level of **granularity**?
+- In what form and through which channel are they available?
+- Who can answer questions about them?
+- Which usage, governance or compliance requirements apply?
 
-# Additional Information
+The catalogue therefore helps **avoid duplication, reuse existing data and access reliable information more quickly**.
 
-- [Metadata model description (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/403701818)
-- [Data catalog vision (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/KDT/pages/342098136)
-- [Reference data management handbook (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/354025506)
-- Please open an [GitHub-Issue](https://github.com/blw-ofag-ufag/data-catalog/issues) if you have requirements that the data catalog or the entry form should meet. Alternatively, you can reach us per mail.
+---
+
+## Objectives of the data catalogue
+
+The data catalogue pursues several interconnected objectives.
+
+### 🔎 Make data easy to find and understand
+
+The catalogue provides a central starting point for searching for data products. Descriptions and metadata help users understand the available data and assess their suitability for a specific question or need.
+
+### 👤 Make responsibilities visible
+
+Clear responsibilities should be defined for data products. This makes it possible to identify who is responsible for a data product and whom to contact with questions.
+
+### 🔄 Reuse data
+
+Where suitable data already exist, they should be reused wherever possible. This reduces duplication and avoids collecting or preparing the same data multiple times.
+
+### 🔗 Support interoperability
+
+The catalogue makes the master and reference data used within the organisation visible. This allows them to be found and taken into account more quickly when developing or evolving IT systems.
+
+### 🌐 Share metadata with other data portals
+
+The data catalogue is intended to be the central solution for managing metadata at FOAG and FSVO. Depending on the category, metadata can subsequently be shared with national data portals such as [i14y](https://www.i14y.admin.ch/), [opendata.swiss](https://opendata.swiss/) or [geocat](https://www.geocat.ch/datahub).
+
+Having a common source for metadata helps ensure its quality and currency across these downstream catalogues as well.
+
+### 🛡️ Support data governance and compliance
+
+The data catalogue supports the implementation of data governance at FOAG and FSVO. This includes clearly defined responsibilities as well as information about governance and compliance requirements.
+
+In particular, it helps take applicable legal requirements into account when handling data, for example those arising from the [Data Protection Act (DPA)](https://www.fedlex.admin.ch/eli/cc/2022/491) and the [Information Security Act (ISA)](https://www.fedlex.admin.ch/eli/cc/2022/232).
+
+### 🚀 Support digital transformation
+
+The data catalogue contributes to the [digital transformation of the Swiss agri-food sector](https://digiagrifood.ch/digiknowhow/digitalisierungsstrategie) and to the vision of a data-driven sector.
+
+---
+
+## Who benefits from the data catalogue?
+
+The catalogue is intended for everyone at FOAG and FSVO who **creates, manages, searches for, uses or processes data**.
+
+| Target group | Benefit |
+|---|---|
+| **Subject-matter experts and data users** | Find relevant data more quickly and better assess whether they are suitable. |
+| **Data owners and data stewards** | Make their data visible and clarify responsibilities and conditions of use. |
+| **Managers and decision-makers** | Gain an overview of available data resources and can take them into account when making evidence-based decisions. |
+| **Technical teams** | Find relevant data, master data and reference data more quickly and can plan integrations more effectively. |
+
+---
+
+## What is a data product?
+
+The catalogue describes **data products** – data or data-based results that are actively managed, regularly used and provide lasting value.
+
+Data products can take many different forms, for example:
+
+- 📊 An annually updated **Excel file** containing figures on milk production
+- 📈 A **BI report** (e.g. Power BI or SAP BO) for monitoring developments in income levels
+- 🗄️ A **data warehouse table** summarising egg sales by retailer
+- 🤖 A **machine-learning model** for predicting pest risks based on weather and crop data
+- 🔌 A publicly accessible **API service** providing real-time forecasts of expected crop yields by crop and region
+
+### What does not belong in the catalogue?
+
+Not every individual file or data source automatically constitutes a data product.
+
+**Raw data** should generally not be registered as separate data products. For example, a retailer's original sales data for a specific period should be integrated into an existing data product covering sales.
+
+**Temporary files**, such as a CSV file created for a one-off analysis, are not considered independent data products either.
+
+The focus is on data products that are **permanently relevant and can be reused**.
+
+---
+
+## What happens next?
+
+The data catalogue is continuously being developed and improved.
+
+The next steps include:
+
+- completing and updating existing entries together with data owners,
+- continuously improving the quality and completeness of metadata,
+- further strengthening responsibilities and data governance, and
+- assessing integration and synchronisation with other data platforms.
+
+Our goal is to make the data catalogue a tool that is naturally used in everyday work: **the first place to go when data needs to be found, understood or reused**.
+
+The catalogue should thus become a shared foundation for **collaboration, efficiency, transparency and data-driven innovation**.
+
+---
+
+## Further information
+
+- [Description of the metadata model (Confluence)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/403701818)
+- [Target vision for the data catalogue (Confluence)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/KDT/pages/342098136)
+- [Reference Data Management Handbook (Confluence)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/354025506)
+- Requirements or suggestions for improvement can be submitted as a [GitHub Issue](https://github.com/blw-ofag-ufag/data-catalog/issues). Alternatively, you can contact us by e-mail.
