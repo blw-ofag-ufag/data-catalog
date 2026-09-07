@@ -1,5 +1,7 @@
 # Data Catalogue of FOAG and FSVO
 
+---
+
 ## Find data. Understand the context. Make better use of data.
 
 The data catalogue is the central entry point for **finding, understanding and using** data products from the **Federal Office for Agriculture (FOAG)** and the **Federal Food Safety and Veterinary Office (FSVO)**.
