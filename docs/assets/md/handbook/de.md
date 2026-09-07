@@ -65,7 +65,7 @@ Die Angaben helfen sowohl bei der Suche als auch dabei, ein Datenprodukt inhaltl
 
 ### Beschreibung und Auffindbarkeit
 
-| Attribut | Beschreibung |
+| Attribut           | Beschreibung |
 |---|---|
 | `dct:title` | Titel des Datenprodukts. |
 | `dct:description` | Beschreibung des Datenprodukts. Die Beschreibung sollte verständlich machen, welche Inhalte das Datenprodukt umfasst, für wen es relevant ist und wofür es verwendet werden kann. |
@@ -77,7 +77,7 @@ Die Angaben helfen sowohl bei der Suche als auch dabei, ein Datenprodukt inhaltl
 
 ### Zugriff und Bereitstellung
 
-| Attribut | Beschreibung |
+| Attribut           | Beschreibung |
 |---|---|
 | `dcat:endpointURL` | URL, unter der ein Datendienst aufgerufen werden kann. |
 | `dcat:endpointDescription` | URL zur technischen Dokumentation des Datendienstes, beispielsweise zu einer Swagger-Dokumentation. |
@@ -89,7 +89,7 @@ Die Angaben helfen sowohl bei der Suche als auch dabei, ein Datenprodukt inhaltl
 
 ### Verantwortung und Herkunft
 
-| Attribut | Beschreibung |
+| Attribut           | Beschreibung |
 |---|---|
 | `dcat:contactPoint` | Kontaktstelle für Fragen oder Anmerkungen zum Inhalt des Datenprodukts. Bitte verwenden Sie die Kontaktinformationen der zuständigen Organisation. |
 | `dct:publisher` | Organisation, die das Datenprodukt veröffentlicht. |
@@ -99,7 +99,7 @@ Die Angaben helfen sowohl bei der Suche als auch dabei, ein Datenprodukt inhaltl
 
 ### Rechtliche und organisatorische Aspekte
 
-| Attribut | Beschreibung |
+| Attribut           | Beschreibung |
 |---|---|
 | `dcatap:applicableLegislation` | Rechtsgrundlage, die für das Datenprodukt relevant ist. |
 | `dct:accessRights` | Gibt an, ob das Datenprodukt offen zugänglich ist, Zugriffsbeschränkungen unterliegt oder nicht öffentlich ist. |
@@ -114,7 +114,7 @@ Die Angaben helfen sowohl bei der Suche als auch dabei, ein Datenprodukt inhaltl
 
 ### Zeit, Version und Aktualisierung
 
-| Attribut | Beschreibung |
+| Attribut           | Beschreibung |
 |---|---|
 | `dct:issued` | Datum, an dem das Datenprodukt ursprünglich veröffentlicht wurde. |
 | `dct:modified` | Datum der letzten Änderung des Datenprodukts. |
@@ -126,7 +126,7 @@ Die Angaben helfen sowohl bei der Suche als auch dabei, ein Datenprodukt inhaltl
 
 ### Fachliche und technische Einordnung
 
-| Attribut | Beschreibung |
+| Attribut           | Beschreibung |
 |---|---|
 | `bv:typeOfData` | Typ, der das Datenprodukt am besten beschreibt. |
 | `bv:dimensions` | Dimensionen beschreiben die Struktur einer Distribution – beispielsweise die enthaltenen Spalten oder Konzepte. Sie werden anhand von Schlüsseln aus dem gemeinsamen Dimensionsglossar angegeben. |
