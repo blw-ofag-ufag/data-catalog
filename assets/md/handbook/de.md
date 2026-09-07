@@ -1,5 +1,7 @@
 # Handbuch
 
+---
+
 Dieses Handbuch erklärt die wichtigsten Grundlagen des Datenkatalogs und unterstützt Sie dabei, Datenprodukte korrekt zu beschreiben und zu erfassen.
 
 ## Wie können Sie beitragen?

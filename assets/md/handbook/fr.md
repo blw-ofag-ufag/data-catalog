@@ -1,5 +1,7 @@
 # Manuel
 
+---
+
 Ce manuel présente les principaux éléments du catalogue de données et vous aide à décrire et à enregistrer correctement les produits de données.
 
 ## Comment pouvez-vous contribuer ?

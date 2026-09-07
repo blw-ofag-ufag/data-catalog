@@ -1,5 +1,7 @@
 # Catalogo dei dati dell’UFAG e dell’USAV
 
+---
+
 ## Trovare i dati. Comprenderne il contesto. Utilizzarli meglio.
 
 Il catalogo dei dati è il punto di accesso centrale per **trovare, comprendere e utilizzare** i prodotti di dati dell’**Ufficio federale dell’agricoltura (UFAG)** e dell’**Ufficio federale della sicurezza alimentare e di veterinaria (USAV)**.
