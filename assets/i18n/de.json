@@ -147,8 +147,6 @@
     "version": "Version"
   },
   "tooltips": {
-    "dcat:endpointURL": "URL-Adresse, wo der Datendienst aufgerufen werden kann.",
-    "dcat:endpointDescription": "URL of technical documentation of the data service, such as for example a Swagger documentation.",
     "adms:status": "Status des Datenprodukts: Befindet es sich in Bearbeitung, ist es fertiggestellt usw.",
     "bv:abrogation": "Was ist das Aufhebungdatum?",
     "bv:archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen einen anhaltenden Nutzen oder eine anhaltende Bedeutung, die seine weitere Aufbewahrung rechtfertigen?",
@@ -165,6 +163,8 @@
     "dcat:contactPoint": "An wen sich der Datennutzer wenden sollte, wenn er Fragen oder Anmerkungen zum Inhalt der Datenprodukte hat. Bitte beachten Sie die Kontaktinformationen der Organisation.",
     "dcat:distribution": "Eine Instanz des Datenprodukts, die angezeigt oder genutzt werden kann. Beispielsweise kann eine Tabelle mit identischen Informationen als Excel-, CSV- oder JSON-Datei bereitgestellt werden. Die drei Dateien sind Verteilungen desselben Datenprodukts.",
     "dcat:downloadURL": "Direkter Download-Link zur Datei (z.B. CSV- oder PDF).",
+    "dcat:endpointDescription": "URL der technischen Dokumentation des Datendienstes.",
+    "dcat:endpointURL": "URL-Adresse, wo der Datendienst aufgerufen werden kann.",
     "dcat:inSeries": "Ist Ihr Datenprodukt Teil einer Datensatzreihe? Welcher?",
     "dcat:keyword": "Welche Schlüsselwörter sind hilfreich, um Ihr Datenprodukt zu finden? Es ist einfacher, Ihr Datenprodukt zu finden, wenn Sie mehrere Schlüsselwörter angeben, die auch in den Datenprodukten Ihrer Kollegen vorkommen.",
     "dcat:landingPage": "Wo finden Datenbenutzer zusätzliche Informationen zu Ihrem Datenprodukt oder der verantwortlichen Organisation?",
