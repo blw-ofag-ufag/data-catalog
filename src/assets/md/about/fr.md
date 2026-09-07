@@ -1,5 +1,7 @@
 # Catalogue de données de l’OFAG et de l’OSAV
 
+---
+
 ## Trouver des données. Comprendre leur contexte. Mieux les utiliser.
 
 Le catalogue de données est le point d’entrée central pour **trouver, comprendre et utiliser** les produits de données de l’**Office fédéral de l’agriculture (OFAG)** et de l’**Office fédéral de la sécurité alimentaire et des affaires vétérinaires (OSAV)**.

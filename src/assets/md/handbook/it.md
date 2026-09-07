@@ -1,5 +1,7 @@
 # Manuale
 
+---
+
 Questo manuale illustra i principali elementi del catalogo dei dati e fornisce supporto per descrivere e registrare correttamente i prodotti di dati.
 
 ## Come potete contribuire?

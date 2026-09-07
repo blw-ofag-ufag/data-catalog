@@ -1,5 +1,7 @@
 # Handbook
 
+---
+
 This handbook explains the key principles of the data catalogue and helps you describe and register data products correctly.
 
 ## How can you contribute?
