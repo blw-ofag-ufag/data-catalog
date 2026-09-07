@@ -1,5 +1,5 @@
 # Comment contribuer?
-Veuillez ouvrir une « Issue » (ticket) si vous avez des besoins auxquels le catalogue de données ou le formulaire de saisie doit répondre. Vous pouvez également nous contacter par e-mail.
+Veuillez ouvrir une [GitHub-Issue/ticket](https://github.com/blw-ofag-ufag/data-catalog/issues) si vous avez des besoins auxquels le catalogue de données ou le formulaire de saisie doit répondre. Vous pouvez également nous contacter par e-mail.
 
 # Le modèle de métadonnées
 
