@@ -1,10 +1,32 @@
-# Wie können Sie beitragen?
-Bitte eröffnen Sie ein [GitHub-Issue](https://github.com/blw-ofag-ufag/data-catalog/issues), wenn Sie Anforderungen haben, die der Datenkatalog oder das Erfassungsformular erfüllen soll. Alternativ können Sie uns per E-Mail kontaktieren.
+# Handbuch
 
-# Das Metadatenmodell
+Dieses Handbuch erklärt die wichtigsten Grundlagen des Datenkatalogs und unterstützt Sie dabei, Datenprodukte korrekt zu beschreiben und zu erfassen.
 
-Das Metadatenmodell, das unserem System zugrunde liegt, besteht aus vier zentralen Klassen: `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution` und `dcat:DataService`.
-Das untenstehende Diagramm veranschaulicht die Beziehungen zwischen diesen Klassen:
+## Wie können Sie beitragen?
+
+Der Datenkatalog lebt von **vollständigen, verständlichen und aktuellen Metadaten**.
+
+Wenn Sie ein Datenprodukt kennen, das im Katalog fehlt, oder wenn Informationen zu einem bestehenden Eintrag ergänzt oder korrigiert werden müssen, können Sie uns unterstützen.
+
+Auch Vorschläge zur Weiterentwicklung des Datenkatalogs oder des Erfassungsformulars sind willkommen:
+
+- Eröffnen Sie ein [GitHub-Issue](https://github.com/blw-ofag-ufag/data-catalog/issues), wenn Sie eine Anforderung oder einen Verbesserungsvorschlag haben.
+- Alternativ können Sie uns per E-Mail kontaktieren: agridata.ch@blw.admin.ch.
+
+---
+
+## Das Metadatenmodell
+
+Das Metadatenmodell bildet die Grundlage für die Beschreibung der Datenprodukte im Katalog.
+
+Es basiert auf vier zentralen Klassen:
+
+- `dcat:Dataset` – beschreibt das eigentliche Datenprodukt
+- `dcat:DatasetSeries` – fasst mehrere zeitlich oder fachlich zusammengehörende Datensätze zu einer Reihe zusammen
+- `dcat:Distribution` – beschreibt eine konkrete Bereitstellungsform eines Datenprodukts, beispielsweise als CSV-, Excel- oder JSON-Datei
+- `dcat:DataService` – beschreibt einen Dienst, über den auf ein Datenprodukt zugegriffen werden kann, beispielsweise eine API
+
+Die Beziehungen zwischen diesen Klassen sind im Metadatenmodell definiert.
 
 ```mermaid
 erDiagram
@@ -14,74 +36,135 @@ erDiagram
     "dcat:Dataservice" ||--o{ "dcat:Dataset" : "dcat:servesDataset"
 ```
 
-Viele der Klassen und deren Attribute wurden direkt aus dem Swiss DCAT Application Profile (DCAT-AP CH) übernommen, wie auf [DCAT-AP CH](https://www.dcat-ap.ch/) detailliert beschrieben.
-Um unseren spezifischen Anforderungen besser gerecht zu werden, haben wir diese Klassen durch zusätzliche Attribute erweitert, die mit dem Präfix `bv:` gekennzeichnet sind.
 
-Insbesondere sind drei dieser Klassen — `dcat:Dataset`, `dcat:DatasetSeries` und `dcat:DataService` — in eigenen JSON-Schemata definiert. Die vierte Klasse, `dcat:Distribution`, wird im gleichen Schema wie `dcat:Dataset` beschrieben, was die strikte 1:n-Beziehung zwischen Datensätzen und Distributionen widerspiegelt.
-Die Attribute dieser Schemata können Sie über die folgenden Links einsehen:
+Viele Klassen und Attribute wurden direkt aus dem [Swiss DCAT Application Profile (DCAT-AP CH)](https://www.dcat-ap.ch/) übernommen.
 
-- [`dcat:Dataset` (with `dcat:Distribution`)](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2Fdataset.json)
-- [`dcat:DatasetSeries`)](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdatasetSeries.json)
-- [`dcat:Dataset`)](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdataService.json)
+Um die spezifischen Anforderungen von BLW und BLV abzudecken, wurde das Modell um zusätzliche Attribute erweitert. Diese sind am Präfix `bv:` erkennbar.
 
-Bitte beachten Sie, dass diese Seiten automatisch aus den tatsächlichen JSON-Schemata generiert werden, die [hier](https://github.com/blw-ofag-ufag/metadata/tree/main/data/schemas) gespeichert sind.
+### JSON-Schemata
 
-# Attribute
-```
+Die drei Klassen `dcat:Dataset`, `dcat:DatasetSeries` und `dcat:DataService` sind jeweils in einem eigenen JSON-Schema definiert.
 
-    "dcat:endpointURL": "URL-Adresse, wo der Datendienst aufgerufen werden kann.",
-    "dcat:endpointDescription": "URL of technical documentation of the data service, such as for example a Swagger documentation.",
-    "adms:status": "Status des Datenprodukts: Befindet es sich in Bearbeitung, ist es fertiggestellt usw.",
-    "bv:abrogation": "Was ist das Aufhebungdatum?",
-    "bv:archivalValue": "Hat das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen einen anhaltenden Nutzen oder eine anhaltende Bedeutung, die seine weitere Aufbewahrung rechtfertigen?",
-    "bv:classification": "Was ist die Klassifizierung der Datensammlung gemäss Informationssicherheitsgesetz (siehe Art. 13 ISG)?",
-    "bv:externalCatalogs": "Soll das Datenprodukt auf anderen Plattformen wie i14y und/oder opendata.swiss veröffentlicht werden?",
-    "bv:geoIdentifier": "Wie lautet der entsprechende Geoidentifikator gemäss Geoinformationsverordnung, Anhang 1?",
-    "bv:itSystem": "In welchem IT-System wird Ihr Datenprodukt verwendet? Bitte geben Sie eine URL an.",
-    "bv:personalData": "Was ist die Einordnung der Datensammlung gemäss Datenschutzgesetz (siehe Art. 5 DSG)?",
-    "bv:retentionPeriod": "Wie lange muss Ihr Datenprodukt aufbewahrt werden?",
-    "bv:typeOfData": "Welcher Typ beschreibt Ihr Datenprodukt am besten?",
-    "dcat:accessService": "Ein Datendienst ermöglicht den Zugriff auf die Verbreitung des Datenprodukts.",
-    "bv:dimensions": "Dimensionen beschreiben die Struktur der Verteilung – die enthaltenen Spalten/Konzepte – anhand von Schlüsseln aus dem gemeinsamen Dimensionsglossar.",
-    "dcat:accessURL": "Die URL, über die der Zugang zur Ressource erfolgt (z.B. eine Landingpage oder ein Web-Formular). Die angegebene URL muss Informationen zum verwendeten Protokoll enthalten, z. B. https:// oder http://.",
-    "dcat:contactPoint": "An wen sich der Datennutzer wenden sollte, wenn er Fragen oder Anmerkungen zum Inhalt der Datenprodukte hat. Bitte beachten Sie die Kontaktinformationen der Organisation.",
-    "dcat:distribution": "Eine Instanz des Datenprodukts, die angezeigt oder genutzt werden kann. Beispielsweise kann eine Tabelle mit identischen Informationen als Excel-, CSV- oder JSON-Datei bereitgestellt werden. Die drei Dateien sind Verteilungen desselben Datenprodukts.",
-    "dcat:downloadURL": "Direkter Download-Link zur Datei (z.B. CSV- oder PDF).",
-    "dcat:inSeries": "Ist Ihr Datenprodukt Teil einer Datensatzreihe? Welcher?",
-    "dcat:keyword": "Welche Schlüsselwörter sind hilfreich, um Ihr Datenprodukt zu finden? Es ist einfacher, Ihr Datenprodukt zu finden, wenn Sie mehrere Schlüsselwörter angeben, die auch in den Datenprodukten Ihrer Kollegen vorkommen.",
-    "dcat:landingPage": "Wo finden Datenbenutzer zusätzliche Informationen zu Ihrem Datenprodukt oder der verantwortlichen Organisation?",
-    "dcat:theme": "Thema, das zur Klassifizierung der Datenprodukte im Katalog verwendet wird.",
-    "dcat:version": "Um welche Version handelt es sich? Bitte verwenden Sie semantische Versionsnummern in der Form X.Y.Z, wobei eine Erhöhung von X auf größere Änderungen, Y auf kleinere Änderungen und Z auf einfache Korrekturen wie Tippfehler hinweist.",
-    "dcatap:applicableLegislation": "Diese Eigenschaft bezieht sich auf die Rechtsgrundlage des Datenprodukts.",
-    "dcatap:availability": "Ist die Verfügbarkeit Ihres Datenprodukts vorübergehend, stabil oder experimentell?",
-    "dct:accessRights": "Informationen, die angeben, ob das Datenprodukt offene Daten sind, Zugriffsbeschränkungen unterliegen oder nicht öffentlich sind.",
-    "dct:accrualPeriodicity": "Häufigkeit, mit der das Datenprodukt aktualisiert wird.",
-    "dct:conformsTo": "Entspricht Ihr Datenprodukt bestimmten Standards und/oder Spezifikationen?",
-    "dct:description": "Bitte geben Sie eine Beschreibung an, damit der Datennutzer versteht, was das Datenprodukt enthält, wer ein potenzieller Nutzer ist und wofür das Datenprodukt verwendet wird.",
-    "dct:format": "In welchem Dateiformat wird diese Distribution bereitgestellt?",
-    "dct:issued": "Wann wurde das Datenprodukt ursprünglich veröffentlicht?",
-    "dct:license": "Unter welcher Lizenz kann das Datenprodukt verwendet werden?",
-    "dct:modified": "Wann wurde das Datenprodukt letztmals modifiziert?",
-    "dct:publisher": "Wer ist die Herausgeberorganisation des Datenprodukts?",
-    "dct:replaces": "Welches Datenprodukt wird ersetzt?",
-    "dct:spatial": "Welchen geografischen Bereich deckt das Datenprodukt ab?",
-    "dct:temporal": "Welcher Zeitraum wird von Ihrem Datenprodukt abgedeckt?",
-    "dct:title": "Titel Ihres Datenprodukts",
-    "foaf:page": "Gibt es Dokumentationen oder Webseiten, die dieses Datenprodukt näher beschreiben?",
-    "prov:qualifiedAttribution": "Wer hat welche Rolle für dieses Datenprodukt?",
-    "prov:wasDerivedFrom": "Von welchem anderen Datenprodukt wurde dieses Datenprodukt abgeleitet?",
-    "prov:wasGeneratedBy": "Durch welchen Geschäftsprozess wurde dieses Datenprodukt generiert?",
-    "schema:comment": "Gibt es weitere relevante Informationen zu diesem Datenprodukt?"
+`dcat:Distribution` wird gemeinsam mit `dcat:Dataset` im Schema `dataset.json` beschrieben. Damit wird die Beziehung zwischen einem Datenprodukt und seinen verschiedenen Bereitstellungsformen abgebildet.
 
+Die aktuellen Schemata können hier eingesehen werden:
 
-```
+- [`dcat:Dataset` (inkl. `dcat:Distribution`)](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2Fdataset.json)
+- [`dcat:DatasetSeries`](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdatasetSeries.json)
+- [`dcat:DataService`](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdataService.json)
 
-# Tagging-Richtlinien
+> **Hinweis:** Die oben verlinkten Seiten werden automatisch aus den tatsächlich verwendeten JSON-Schemata generiert. Die Original-Schemata sind im [GitHub-Repository](https://github.com/blw-ofag-ufag/metadata/tree/main/data/schemas) abgelegt.
 
-Tags erfüllen mehrere Zwecke in unserem Datenkatalog.
-Sie helfen Ihnen, Ihren Kolleginnen und Kollegen sowie externen Nutzenden, Datensätze rasch zu finden, zu organisieren und anzuzeigen, welche Themen oder Sachgebiete ein Datensatz abdeckt.
+---
 
-Durch die Wahl von guten, konsistenten Tags wird gewährleistet, dass sowohl Sie als auch andere die Daten leichter finden und wiederverwenden können.
-Andere können Ihre Daten entdecken, indem sie nach einem Tag suchen, den sie möglicherweise bereits bei einem anderen Datensatz gesehen haben.
+## Attribute
 
-Fehlen wichtige Keywords, eröffnen Sie bitte ein Issue oder schreiben Sie uns eine Mail.
+Die folgenden Attribute bilden die wichtigsten Informationen ab, die für die Beschreibung eines Datenprodukts benötigt werden.
+
+Die Angaben helfen sowohl bei der Suche als auch dabei, ein Datenprodukt inhaltlich, technisch und organisatorisch einzuordnen.
+
+### Beschreibung und Auffindbarkeit
+
+| Attribut | Beschreibung |
+|---|---|
+| `dct:title` | Titel des Datenprodukts. |
+| `dct:description` | Beschreibung des Datenprodukts. Die Beschreibung sollte verständlich machen, welche Inhalte das Datenprodukt umfasst, für wen es relevant ist und wofür es verwendet werden kann. |
+| `dcat:keyword` | Schlüsselwörter, über die das Datenprodukt gefunden werden kann. Verwenden Sie mehrere passende und möglichst konsistente Begriffe. Begriffe, die auch bei anderen Datenprodukten verwendet werden, erleichtern die Suche. |
+| `dcat:theme` | Thema, das zur fachlichen Klassifizierung des Datenprodukts im Katalog verwendet wird. |
+| `dcat:landingPage` | Webseite, auf der Datenbenutzende zusätzliche Informationen zum Datenprodukt oder zur verantwortlichen Organisation finden. |
+| `foaf:page` | Dokumentation oder Webseite, die das Datenprodukt näher beschreibt. |
+| `schema:comment` | Weitere relevante Informationen zum Datenprodukt. |
+
+### Zugriff und Bereitstellung
+
+| Attribut | Beschreibung |
+|---|---|
+| `dcat:endpointURL` | URL, unter der ein Datendienst aufgerufen werden kann. |
+| `dcat:endpointDescription` | URL zur technischen Dokumentation des Datendienstes, beispielsweise zu einer Swagger-Dokumentation. |
+| `dcat:accessService` | Datendienst, über den auf eine Distribution des Datenprodukts zugegriffen werden kann. |
+| `dcat:accessURL` | URL, über die auf die Ressource zugegriffen werden kann, z. B. eine Landingpage oder ein Webformular. Die URL muss das verwendete Protokoll enthalten, beispielsweise `https://` oder `http://`. |
+| `dcat:downloadURL` | Direkter Download-Link zu einer Datei, beispielsweise einer CSV- oder PDF-Datei. |
+| `dcat:distribution` | Konkrete Bereitstellungsform eines Datenprodukts. Ein Datenprodukt kann beispielsweise als Excel-, CSV- oder JSON-Datei angeboten werden. Diese Dateien sind unterschiedliche Distributionen desselben Datenprodukts. |
+| `dct:format` | Dateiformat der jeweiligen Distribution. |
+
+### Verantwortung und Herkunft
+
+| Attribut | Beschreibung |
+|---|---|
+| `dcat:contactPoint` | Kontaktstelle für Fragen oder Anmerkungen zum Inhalt des Datenprodukts. Bitte verwenden Sie die Kontaktinformationen der zuständigen Organisation. |
+| `dct:publisher` | Organisation, die das Datenprodukt veröffentlicht. |
+| `prov:qualifiedAttribution` | Personen oder Organisationen und ihre jeweiligen Rollen in Bezug auf das Datenprodukt. |
+| `prov:wasDerivedFrom` | Datenprodukt, von dem dieses Datenprodukt abgeleitet wurde. |
+| `dcat:inSeries` | Datensatzreihe, zu der das Datenprodukt gehört. |
+
+### Rechtliche und organisatorische Aspekte
+
+| Attribut | Beschreibung |
+|---|---|
+| `dcatap:applicableLegislation` | Rechtsgrundlage, die für das Datenprodukt relevant ist. |
+| `dct:accessRights` | Gibt an, ob das Datenprodukt offen zugänglich ist, Zugriffsbeschränkungen unterliegt oder nicht öffentlich ist. |
+| `dct:license` | Lizenz, unter der das Datenprodukt verwendet werden kann. |
+| `bv:classification` | Klassifizierung der Datensammlung gemäss Informationssicherheitsgesetz (siehe Art. 13 ISG). |
+| `bv:personalData` | Einordnung der Datensammlung gemäss Datenschutzgesetz (siehe Art. 5 DSG). |
+| `bv:retentionPeriod` | Zeitraum, während dessen das Datenprodukt aufbewahrt werden muss. |
+| `bv:abrogation` | Aufhebungsdatum des Datenprodukts. |
+| `bv:archivalValue` | Gibt an, ob das Datenprodukt aufgrund der darin enthaltenen administrativen, rechtlichen, steuerlichen, beweiskräftigen oder historischen Informationen einen dauerhaften Nutzen oder eine dauerhafte Bedeutung hat, die eine weitere Aufbewahrung rechtfertigt. |
+| `bv:externalCatalogs` | Gibt an, ob das Datenprodukt bzw. seine Metadaten auf weiteren Plattformen wie [i14y](https://www.i14y.admin.ch/) und/oder [opendata.swiss](https://opendata.swiss/) veröffentlicht werden sollen. |
+| `dcatap:availability` | Gibt an, ob die Verfügbarkeit des Datenprodukts vorübergehend, stabil oder experimentell ist. |
+
+### Zeit, Version und Aktualisierung
+
+| Attribut | Beschreibung |
+|---|---|
+| `dct:issued` | Datum, an dem das Datenprodukt ursprünglich veröffentlicht wurde. |
+| `dct:modified` | Datum der letzten Änderung des Datenprodukts. |
+| `dct:temporal` | Zeitraum, den das Datenprodukt abdeckt. |
+| `dct:accrualPeriodicity` | Häufigkeit, mit der das Datenprodukt aktualisiert wird. |
+| `dcat:version` | Version des Datenprodukts. Verwenden Sie semantische Versionsnummern im Format `X.Y.Z`: Erhöhungen von `X` kennzeichnen grössere Änderungen, `Y` kleinere Änderungen und `Z` Korrekturen wie beispielsweise Tippfehler. |
+| `adms:status` | Status des Datenprodukts, beispielsweise in Bearbeitung oder fertiggestellt. |
+| `dct:replaces` | Datenprodukt, das durch dieses Datenprodukt ersetzt wird. |
+
+### Fachliche und technische Einordnung
+
+| Attribut | Beschreibung |
+|---|---|
+| `bv:typeOfData` | Typ, der das Datenprodukt am besten beschreibt. |
+| `bv:dimensions` | Dimensionen beschreiben die Struktur einer Distribution – beispielsweise die enthaltenen Spalten oder Konzepte. Sie werden anhand von Schlüsseln aus dem gemeinsamen Dimensionsglossar angegeben. |
+| `bv:geoIdentifier` | Entsprechender Geoidentifikator gemäss Geoinformationsverordnung, Anhang 1. |
+| `dct:spatial` | Geografischer Bereich, den das Datenprodukt abdeckt. |
+| `dct:conformsTo` | Standard oder Spezifikation, dem bzw. der das Datenprodukt entspricht. |
+
+---
+
+## Tagging-Richtlinien
+
+Tags bzw. Keywords sind ein wichtiger Bestandteil des Datenkatalogs. Sie helfen dabei, Datenprodukte **schnell zu finden, thematisch einzuordnen und miteinander zu verknüpfen**.
+
+Ein gutes Tagging ist deshalb nicht nur für den eigenen Eintrag wichtig. Es hilft auch Kolleginnen und Kollegen dabei, Datenprodukte zu entdecken, wenn sie nach einem Begriff suchen, der bereits bei einem anderen Datenprodukt verwendet wird.
+
+### Gute Tags wählen
+
+Beachten Sie bei der Vergabe von Tags insbesondere folgende Grundsätze:
+
+- **Relevant:** Verwenden Sie Begriffe, die den Inhalt und das Thema des Datenprodukts tatsächlich beschreiben.
+- **Konsistent:** Verwenden Sie möglichst dieselben Begriffe wie bei vergleichbaren Datenprodukten.
+- **Mehrere Begriffe:** Verwenden Sie mehrere relevante Keywords, wenn unterschiedliche Begriffe zur Beschreibung oder Suche sinnvoll sind.
+- **Verständlich:** Wählen Sie Begriffe, die auch von Personen verstanden werden, die nicht unmittelbar an der Erstellung des Datenprodukts beteiligt sind.
+- **Bestehende Begriffe bevorzugen:** Prüfen Sie vor der Vergabe neuer Tags, ob ein passender Begriff bereits im Katalog verwendet wird.
+
+### Beispiel
+
+Ein Datenprodukt zur Milchproduktion könnte beispielsweise mit folgenden Tags versehen werden:
+
+`Milchproduktion`, `Milch`, `Landwirtschaft`, `Tierhaltung`
+
+Welche Tags tatsächlich sinnvoll sind, hängt vom konkreten Inhalt und vom bestehenden Vokabular des Katalogs ab.
+
+### Fehlende Tags oder Begriffe
+
+Falls wichtige Begriffe oder Keywords im Katalog fehlen, können Sie uns dies gerne mitteilen:
+
+- Eröffnen Sie ein [GitHub-Issue](https://github.com/blw-ofag-ufag/data-catalog/issues), oder
+- kontaktieren Sie uns per E-Mail.
+
+Gemeinsam können wir so sicherstellen, dass die verwendeten Begriffe konsistent bleiben und Datenprodukte möglichst einfach gefunden werden können.

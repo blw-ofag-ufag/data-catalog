@@ -1,10 +1,32 @@
-# Comment contribuer?
-Veuillez ouvrir une [GitHub-Issue/ticket](https://github.com/blw-ofag-ufag/data-catalog/issues) si vous avez des besoins auxquels le catalogue de données ou le formulaire de saisie doit répondre. Vous pouvez également nous contacter par e-mail.
+# Manuel
 
-# Le modèle de métadonnées
+Ce manuel présente les principaux éléments du catalogue de données et vous aide à décrire et à enregistrer correctement les produits de données.
 
-Le modèle de métadonnées qui sous-tend notre système se compose de quatre classes principales : `dcat:Dataset`, `dcat:DatasetSeries`, `dcat:Distribution` et `dcat:DataService`.
-Le diagramme ci-dessous illustre les relations entre ces classes:
+## Comment pouvez-vous contribuer ?
+
+Le catalogue de données repose sur des **métadonnées complètes, compréhensibles et à jour**.
+
+Si vous connaissez un produit de données qui ne figure pas encore dans le catalogue, ou si des informations relatives à une entrée existante doivent être complétées ou corrigées, vous pouvez contribuer à son amélioration.
+
+Les suggestions concernant le développement du catalogue de données ou du formulaire de saisie sont également les bienvenues :
+
+- Ouvrez une [issue GitHub](https://github.com/blw-ofag-ufag/data-catalog/issues) si vous avez une demande ou une proposition d'amélioration concernant le catalogue de données ou le formulaire de saisie.
+- Vous pouvez également nous contacter par e-mail : agridata.ch@blw.admin.ch.
+
+---
+
+## Le modèle de métadonnées
+
+Le modèle de métadonnées constitue la base de la description des produits de données dans le catalogue.
+
+Il repose sur quatre classes centrales :
+
+- `dcat:Dataset` – décrit le produit de données proprement dit
+- `dcat:DatasetSeries` – regroupe plusieurs jeux de données liés entre eux sur le plan temporel ou thématique
+- `dcat:Distribution` – décrit une forme concrète de mise à disposition d'un produit de données, par exemple sous forme de fichier CSV, Excel ou JSON
+- `dcat:DataService` – décrit un service permettant d'accéder à un produit de données, par exemple une API
+
+Les relations entre ces classes sont définies dans le modèle de métadonnées.
 
 ```mermaid
 erDiagram
@@ -14,71 +36,135 @@ erDiagram
     "dcat:Dataservice" ||--o{ "dcat:Dataset" : "dcat:servesDataset"
 ```
 
-De nombreuses classes et leurs attributs ont été directement dérivés du Swiss DCAT Application Profile (DCAT-AP CH), tel que détaillé sur [DCAT-AP CH](https://www.dcat-ap.ch/).
-Afin de mieux répondre à nos exigences spécifiques, nous avons enrichi ces classes avec des attributs supplémentaires, indiqués par le préfixe `bv:`.
+De nombreuses classes et propriétés ont été reprises directement du [Swiss DCAT Application Profile (DCAT-AP CH)](https://www.dcat-ap.ch/).
 
-En particulier, trois de ces classes — `dcat:Dataset`, `dcat:DatasetSeries` et `dcat:DataService` — sont définies dans des schémas JSON dédiés.
-La quatrième classe, `dcat:Distribution`, est décrite dans le même schéma que `dcat:Dataset`, ce qui reflète la relation stricte 1:n entre les ensembles de données et les distributions.
-Vous pouvez consulter les attributs de ces schémas via les liens suivants :
+Afin de répondre aux besoins spécifiques de l'OFAG et de l'OSAV, le modèle a été complété par des propriétés supplémentaires. Celles-ci sont reconnaissables au préfixe `bv:`.
 
-- [`dcat:Dataset` (with `dcat:Distribution`)](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2Fdataset.json)
+### Schémas JSON
+
+Les trois classes `dcat:Dataset`, `dcat:DatasetSeries` et `dcat:DataService` sont chacune définies dans un schéma JSON spécifique.
+
+`dcat:Distribution` est décrite conjointement avec `dcat:Dataset` dans le schéma `dataset.json`. Cela permet de représenter la relation entre un produit de données et ses différentes formes de mise à disposition.
+
+Les schémas actuels peuvent être consultés ici :
+
+- [`dcat:Dataset` (y compris `dcat:Distribution`)](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2Fdataset.json)
 - [`dcat:DatasetSeries`](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdatasetSeries.json)
 - [`dcat:DataService`](https://json-schema.app/view/%23?url=https%3A%2F%2Fraw.githubusercontent.com%2Fblw-ofag-ufag%2Fmetadata%2Frefs%2Fheads%2Fmain%2Fdata%2Fschemas%2FdataService.json)
 
-Veuillez noter que ces pages sont générées automatiquement à partir des schémas JSON réels stockés [ici](https://github.com/blw-ofag-ufag/metadata/tree/main/data/schemas).
+> **Remarque :** Les pages mentionnées ci-dessus sont générées automatiquement à partir des schémas JSON effectivement utilisés. Les schémas originaux sont disponibles dans le [dépôt GitHub](https://github.com/blw-ofag-ufag/metadata/tree/main/data/schemas).
 
-# Attribute
+---
 
-```
-    "adms:status": "Statut du produit de données : en cours de traitement, terminé, etc.",
-    "bv:abrogation": "Quelle est la date d'abrogation ?",
-    "bv:archivalValue": "Le produit de données présente-t-il, en raison des informations administratives, juridiques, fiscales, probantes ou historiques qu'il contient, une utilité ou une importance durable qui justifie sa conservation ?",
-    "bv:classification": "Quelle est la classification de la collecte de données selon la loi sur la sécurité de l'information (voir art. 13 LSI) ?",
-    "bv:externalCatalogs": "Le produit de données doit-il être publié sur d'autres plateformes telles que i14y et/ou opendata.swiss ?",
-    "bv:geoIdentifier": "Quel est le géo-identificateur correspondant selon l'annexe 1 de l'ordonnance sur la géoinformation ?",
-    "bv:itSystem": "Dans quel système informatique votre produit de données est-il utilisé ? Veuillez indiquer une URL.",
-    "bv:personalData": "Quel est le classification de la collecte de données selon la loi sur la protection des données (voir art. 5 LPD) ?",
-    "bv:retentionPeriod": "Combien de temps votre produit de données doit-il être conservé ?",
-    "bv:typeOfData": "Quel type décrit le mieux votre produit de données ?",
-    "dcat:accessService": "Un service de données permet d'accéder à la diffusion du produit de données.",
-    "bv:dimensions": "Les dimensions décrivent la structure de la distribution – les colonnes/concepts qu'elle contient – à l'aide de clés du glossaire des dimensions.",
-    "dcat:accessURL": "L'URL via laquelle l'accès à la ressource est effectué (par exemple, une page d'accueil ou un formulaire Web). L'URL indiquée doit contenir des informations sur le protocole utilisé, c'est-à-dire https:// ou http://.",
-    "dcat:contactPoint": "À qui l'utilisateur des données peut-il s'adresser s'il a des questions ou des remarques concernant le contenu du produit de données ? Veuillez indiquer les coordonnées d'une organisation.",
-    "dcat:distribution": "Une instance du produit de données qui peut être affichée ou utilisée. Par exemple, un tableau contenant des informations identiques peut être fourni sous forme de fichier Excel, CSV ou JSON. Ces trois fichiers sont des distributions du même produit de données.",
-    "dcat:downloadURL": "Lien de téléchargement direct vers le fichier (par exemple CSV ou PDF).",
-    "dcat:inSeries": "Votre produit de données fait-il partie d'une série de données ? Laquelle ?",
-    "dcat:keyword": "Quels mots-clés sont utiles pour trouver votre produit de données ? Il est plus facile de trouver votre produit de données si vous indiquez plusieurs mots-clés qui apparaissent également dans les produits de données de vos collègues.",
-    "dcat:landingPage": "Où les utilisateurs de données peuvent-ils trouver des informations supplémentaires sur votre produit de données ou l'organisation responsable ?",
-    "dcat:theme": "Thème utilisé pour classer les produits de données dans le catalogue.",
-    "dcat:version": "De quelle version s'agit-il ? Veuillez utiliser des numéros de version sémantiques sous la forme X.Y.Z, où une augmentation de X indique des modifications importantes, Y des modifications mineures et Z des corrections simples telles que des fautes de frappe.",
-    "dcatap:applicableLegislation": "Cette propriété se rapporte à la base juridique du produit de données.",
-    "dcatap:availability": "La disponibilité de votre produit de données est-elle temporaire, stable ou expérimentale ?",
-    "dct:accessRights": "Informations indiquant si le produit de données est une donnée ouverte, s'il existe des restrictions d'accès ou s'il n'est pas public.",
-    "dct:accrualPeriodicity": "Fréquence à laquelle le produit de données est mis à jour.",
-    "dct:conformsTo": "Votre produit de données est-il conforme à certaines normes et/ou spécifications ?",
-    "dct:description": "Veuillez fournir une description afin que l'utilisateur des données comprenne ce que contient le produit de données, qui est un utilisateur potentiel et à quoi sert le produit de données.",
-    "dct:format": "Quel est le format de fichier de cette distribution ?",
-    "dct:issued": "Quand le produit de données a-t-il été publié pour la première fois ?",
-    "dct:license": "Sous quelle licence le produit de données peut-il être utilisé ?",
-    "dct:modified": "Quand le produit de données a-t-il été modifié pour la dernière fois ?",
-    "dct:publisher": "Qui est l'éditeur du produit de données ?",
-    "dct:replaces": "Quel produit de données est remplacé ?",
-    "dct:spatial": "Quelle zone géographique couvre le produit de données ?",
-    "dct:temporal": "Quelle période votre produit de données couvre-t-il ?",
-    "dct:title": "Titre de votre produit de données",
-    "foaf:page": "Existe-t-il des documentations ou des sites web qui décrivent plus en détail ce produit de données ?",
-    "prov:qualifiedAttribution": "Qui joue quel rôle dans ce produit de données ?",
-    "prov:wasDerivedFrom": "De quel autre produit de données ce produit de données est-il dérivé ?",
-    "prov:wasGeneratedBy": "Par quel processus métier ce produit de données a-t-il été généré ?",
-    "schema:comment": "Votre produit de données est-il conforme à certaines normes et/ou spécifications ?"
+## Propriétés
 
-```
+Les propriétés suivantes regroupent les principales informations nécessaires à la description d'un produit de données.
 
-# Directives pour les tags
+Elles facilitent à la fois la recherche et la classification d'un produit de données sur les plans du contenu, de la technique et de l'organisation.
 
-Les tags servent plusieurs objectifs dans notre catalogue de données.
-Ils aident vous-même, vos collègues et les utilisateurs externes à rapidement trouver et organiser des jeux de données, ainsi qu’à identifier les thèmes ou sujets qu'un jeu de données couvre.
-En choisissant des tags pertinents et cohérents, vous permettez à chacun, y compris vous-même, de trouver et réutiliser plus facilement les données.
-Les utilisateurs peuvent découvrir vos données en recherchant un tag qu'ils auraient vu sur un autre jeu de données.
+### Description et recherche
 
-Si des mots-clés importants manquent, veuillez ouvrir une « issue » ou nous envoyer un e-mail.
+| Propriété | Description |
+|---|---|
+| `dct:title` | Titre du produit de données. |
+| `dct:description` | Description du produit de données. La description doit permettre de comprendre quels contenus sont couverts par le produit de données, à qui il s'adresse et à quelles fins il peut être utilisé. |
+| `dcat:keyword` | Mots-clés permettant de trouver le produit de données. Utilisez plusieurs termes pertinents et, dans la mesure du possible, cohérents. L'utilisation de termes également employés pour d'autres produits de données facilite la recherche. |
+| `dcat:theme` | Thème utilisé pour la classification thématique du produit de données dans le catalogue. |
+| `dcat:landingPage` | Page web sur laquelle les utilisateurs peuvent trouver des informations supplémentaires sur le produit de données ou sur l'organisation responsable. |
+| `foaf:page` | Documentation ou page web décrivant plus en détail le produit de données. |
+| `schema:comment` | Autres informations pertinentes concernant le produit de données. |
+
+### Accès et mise à disposition
+
+| Propriété | Description |
+|---|---|
+| `dcat:endpointURL` | URL à laquelle un service de données peut être appelé. |
+| `dcat:endpointDescription` | URL vers la documentation technique du service de données, par exemple une documentation Swagger. |
+| `dcat:accessService` | Service de données permettant d'accéder à une distribution du produit de données. |
+| `dcat:accessURL` | URL permettant d'accéder à la ressource, par exemple une page de destination ou un formulaire web. L'URL doit contenir le protocole utilisé, par exemple `https://` ou `http://`. |
+| `dcat:downloadURL` | Lien de téléchargement direct vers un fichier, par exemple un fichier CSV ou PDF. |
+| `dcat:distribution` | Forme concrète de mise à disposition d'un produit de données. Un produit de données peut par exemple être proposé sous forme de fichier Excel, CSV ou JSON. Ces fichiers constituent différentes distributions du même produit de données. |
+| `dct:format` | Format de fichier de la distribution concernée. |
+
+### Responsabilité et provenance
+
+| Propriété | Description |
+|---|---|
+| `dcat:contactPoint` | Point de contact pour les questions ou remarques concernant le contenu du produit de données. Veuillez utiliser les coordonnées de l'organisation compétente. |
+| `dct:publisher` | Organisation qui publie le produit de données. |
+| `prov:qualifiedAttribution` | Personnes ou organisations ainsi que leurs rôles respectifs en relation avec le produit de données. |
+| `prov:wasDerivedFrom` | Produit de données à partir duquel ce produit de données a été dérivé. |
+| `dcat:inSeries` | Série de jeux de données à laquelle appartient le produit de données. |
+
+### Aspects juridiques et organisationnels
+
+| Propriété | Description |
+|---|---|
+| `dcatap:applicableLegislation` | Base légale applicable au produit de données. |
+| `dct:accessRights` | Indique si le produit de données est librement accessible, soumis à des restrictions d'accès ou non public. |
+| `dct:license` | Licence sous laquelle le produit de données peut être utilisé. |
+| `bv:classification` | Classification de la collecte de données conformément à la loi sur la sécurité de l'information (voir art. 13 LSI). |
+| `bv:personalData` | Classification de la collecte de données conformément à la loi sur la protection des données (voir art. 5 LPD). |
+| `bv:retentionPeriod` | Durée pendant laquelle le produit de données doit être conservé. |
+| `bv:abrogation` | Date d'abrogation du produit de données. |
+| `bv:archivalValue` | Indique si le produit de données présente, en raison des informations administratives, juridiques, fiscales, probatoires ou historiques qu'il contient, une utilité ou une importance durable justifiant sa conservation à long terme. |
+| `bv:externalCatalogs` | Indique si le produit de données ou ses métadonnées doivent être publiés sur d'autres plateformes telles que [i14y](https://www.i14y.admin.ch/) et/ou [opendata.swiss](https://opendata.swiss/). |
+| `dcatap:availability` | Indique si la disponibilité du produit de données est temporaire, stable ou expérimentale. |
+
+### Temps, version et mise à jour
+
+| Propriété | Description |
+|---|---|
+| `dct:issued` | Date à laquelle le produit de données a été publié pour la première fois. |
+| `dct:modified` | Date de la dernière modification du produit de données. |
+| `dct:temporal` | Période couverte par le produit de données. |
+| `dct:accrualPeriodicity` | Fréquence à laquelle le produit de données est mis à jour. |
+| `dcat:version` | Version du produit de données. Utilisez des numéros de version sémantique au format `X.Y.Z` : une augmentation de `X` indique une modification majeure, de `Y` une modification mineure et de `Z` une correction, par exemple d'une faute de frappe. |
+| `adms:status` | Statut du produit de données, par exemple en cours de traitement ou terminé. |
+| `dct:replaces` | Produit de données remplacé par ce produit de données. |
+
+### Classification thématique et technique
+
+| Propriété | Description |
+|---|---|
+| `bv:typeOfData` | Type qui décrit le mieux le produit de données. |
+| `bv:dimensions` | Les dimensions décrivent la structure d'une distribution, par exemple les colonnes ou concepts qu'elle contient. Elles sont indiquées à l'aide de clés provenant du glossaire commun des dimensions. |
+| `bv:geoIdentifier` | Identifiant géographique correspondant conformément à l'ordonnance sur la géoinformation, annexe 1. |
+| `dct:spatial` | Zone géographique couverte par le produit de données. |
+| `dct:conformsTo` | Norme ou spécification à laquelle le produit de données est conforme. |
+
+---
+
+## Directives relatives aux tags
+
+Les tags ou mots-clés constituent un élément important du catalogue de données. Ils permettent de **trouver rapidement les produits de données, de les classer par thème et de les mettre en relation**.
+
+Un bon système de tags n'est donc pas seulement important pour sa propre entrée. Il aide également les collègues à découvrir des produits de données lorsqu'ils recherchent un terme déjà utilisé pour un autre produit de données.
+
+### Choisir de bons tags
+
+Lors de l'attribution des tags, veuillez notamment respecter les principes suivants :
+
+- **Pertinence :** utilisez des termes qui décrivent réellement le contenu et le thème du produit de données.
+- **Cohérence :** utilisez autant que possible les mêmes termes que pour des produits de données comparables.
+- **Plusieurs termes :** utilisez plusieurs mots-clés pertinents lorsque différents termes sont utiles pour décrire ou rechercher le produit de données.
+- **Compréhensibilité :** choisissez des termes qui peuvent également être compris par des personnes qui ne participent pas directement à la création du produit de données.
+- **Privilégier les termes existants :** avant de créer un nouveau tag, vérifiez si un terme approprié est déjà utilisé dans le catalogue.
+
+### Exemple
+
+Un produit de données concernant la production de lait pourrait par exemple être associé aux tags suivants :
+
+`production laitière`, `lait`, `agriculture`, `élevage`
+
+Les tags réellement pertinents dépendent du contenu concret du produit de données et du vocabulaire existant dans le catalogue.
+
+### Tags ou termes manquants
+
+Si des termes ou mots-clés importants manquent dans le catalogue, n'hésitez pas à nous en informer :
+
+- Ouvrez une [issue GitHub](https://github.com/blw-ofag-ufag/data-catalog/issues), ou
+- contactez-nous par e-mail.
+
+Ensemble, nous pouvons ainsi garantir une utilisation cohérente des termes et faire en sorte que les produits de données soient aussi faciles que possible à trouver.
+
