@@ -163,6 +163,8 @@
     "dcat:contactPoint": "À qui l'utilisateur des données peut-il s'adresser s'il a des questions ou des remarques concernant le contenu du produit de données ? Veuillez indiquer les coordonnées d'une organisation.",
     "dcat:distribution": "Une instance du produit de données qui peut être affichée ou utilisée. Par exemple, un tableau contenant des informations identiques peut être fourni sous forme de fichier Excel, CSV ou JSON. Ces trois fichiers sont des distributions du même produit de données.",
     "dcat:downloadURL": "Lien de téléchargement direct vers le fichier (par exemple CSV ou PDF).",
+    "dcat:endpointDescription": "URL de la documentation technique du service de données.",
+    "dcat:endpointURL": "Adresse URL permettant d'accéder au service de données.",
     "dcat:inSeries": "Votre produit de données fait-il partie d'une série de données ? Laquelle ?",
     "dcat:keyword": "Quels mots-clés sont utiles pour trouver votre produit de données ? Il est plus facile de trouver votre produit de données si vous indiquez plusieurs mots-clés qui apparaissent également dans les produits de données de vos collègues.",
     "dcat:landingPage": "Où les utilisateurs de données peuvent-ils trouver des informations supplémentaires sur votre produit de données ou l'organisation responsable ?",

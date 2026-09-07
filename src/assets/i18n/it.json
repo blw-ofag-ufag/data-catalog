@@ -163,6 +163,8 @@
     "dcat:contactPoint": "A chi può rivolgersi l'utente dei dati se ha domande o commenti sul contenuto del prodotto di dati? Si prega di fornire i dati di contatto di un'organizzazione.",
     "dcat:distribution": "Un'istanza del prodotto dati che può essere visualizzata o utilizzata. Ad esempio, una tabella con informazioni identiche può essere fornita come file Excel, CSV o JSON. I tre file sono distribuzioni dello stesso prodotto dati.",
     "dcat:downloadURL": "Dove è possibile accedere al prodotto dati?",
+    "dcat:endpointDescription": "URL della documentazione tecnica del servizio dati.",
+    "dcat:endpointURL": "Indirizzo URL presso cui è possibile accedere al servizio dati.",
     "dcat:inSeries": "Il vostro prodotto di dati fa parte di una serie di dati? Quale?",
     "dcat:keyword": "Quali parole chiave sono utili per trovare il tuo prodotto dati? È più facile trovare il tuo prodotto dati se inserisci più parole chiave che compaiono anche nei prodotti dati dei tuoi colleghi. ",
     "dcat:landingPage": "Dove possono trovare gli utenti dei dati ulteriori informazioni sul vostro prodotto o sull'organizzazione responsabile?",

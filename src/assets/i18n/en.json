@@ -163,6 +163,8 @@
     "dcat:contactPoint": "Who should be contacted if the data user has questions or comments concerning the data products content. Please refer to an organizations contact information",
     "dcat:distribution": "An instance of the data product that can be viewed or consumed. For example a table containing the identic information can be provided as an excel-, csv- or json-file. The three files are distributions of the same data product.",
     "dcat:downloadURL": "Direct URL to download the data product.",
+    "dcat:endpointDescription": "URL where the data service's technical documentation can be found.",
+    "dcat:endpointURL": "URL-Adresse where to access the data service.",
     "dcat:inSeries": "Is your data product part of a dataset series? Which one?",
     "dcat:keyword": "What keywords are helpful to find your dataproduct? It is easier to find your data product if you provide several keywords that are shared with your collegues data products.",
     "dcat:landingPage": "Where can a data user find additional context to your data product or the responsible organization?",
