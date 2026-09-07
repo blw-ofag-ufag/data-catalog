@@ -66,6 +66,4 @@ Over time, we aim to establish this tool as an indispensable resource for intern
 - [Metadata model description (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/403701818)
 - [Data catalog vision (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/KDT/pages/342098136)
 - [Reference data management handbook (Confluence page)](https://blw-ofag-ufag.atlassian.net/wiki/spaces/AB/pages/354025506)
-
-> [!IMPORTANT]
-> - Please open an Issue if you have requirements that the data catalog should meet. Alternatively, you can reach us per mail.
+- Please open an [GitHub-Issue](https://github.com/blw-ofag-ufag/data-catalog/issues) if you have requirements that the data catalog or the entry form should meet. Alternatively, you can reach us per mail.
